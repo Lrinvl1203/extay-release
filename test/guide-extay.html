@@ -76,12 +76,12 @@ body.is-home .top{position:fixed;top:0;background:transparent;color:#fff;grid-te
 body.is-home .top h1{order:1;text-shadow:0 2px 18px rgba(0,0,0,.34)}
 body.is-home .top #menuTop{order:2;background:rgba(0,0,0,.08);color:#fff}
 body.is-home .top .top-actions{display:none}
-body.is-gallery .top,body.is-checkin .top,body.is-wifi .top,body.is-transport .top{position:sticky;top:0;left:auto;transform:none;width:100%;background:rgba(247,242,236,.94);color:#221b15;grid-template-columns:1fr auto;border-bottom:1px solid rgba(216,198,180,.72);backdrop-filter:blur(18px)}
-body.is-gallery .top h1,body.is-checkin .top h1,body.is-wifi .top h1,body.is-transport .top h1{order:1;text-align:left;text-shadow:none}
-body.is-gallery .top #menuTop,body.is-checkin .top #menuTop,body.is-wifi .top #menuTop,body.is-transport .top #menuTop{order:2;background:rgba(123,99,79,.1);color:#221b15}
-body.is-gallery .top .top-actions,body.is-checkin .top .top-actions,body.is-wifi .top .top-actions,body.is-transport .top .top-actions{display:none}
-body:not(.is-home):not(.is-gallery):not(.is-checkin):not(.is-wifi):not(.is-transport) .top{position:sticky;top:0;left:auto;transform:none;width:100%;background:rgba(247,242,236,.94);color:#221b15;border-bottom:1px solid rgba(216,198,180,.72);backdrop-filter:blur(18px)}
-body:not(.is-home):not(.is-gallery):not(.is-checkin):not(.is-wifi):not(.is-transport) .top h1{text-align:center}
+body.is-gallery .top,body.is-checkin .top,body.is-wifi .top,body.is-transport .top,body.is-guidebook .top{position:sticky;top:0;left:auto;transform:none;width:100%;background:rgba(247,242,236,.94);color:#221b15;grid-template-columns:1fr auto;border-bottom:1px solid rgba(216,198,180,.72);backdrop-filter:blur(18px)}
+body.is-gallery .top h1,body.is-checkin .top h1,body.is-wifi .top h1,body.is-transport .top h1,body.is-guidebook .top h1{order:1;text-align:left;text-shadow:none}
+body.is-gallery .top #menuTop,body.is-checkin .top #menuTop,body.is-wifi .top #menuTop,body.is-transport .top #menuTop,body.is-guidebook .top #menuTop{order:2;background:rgba(123,99,79,.1);color:#221b15}
+body.is-gallery .top .top-actions,body.is-checkin .top .top-actions,body.is-wifi .top .top-actions,body.is-transport .top .top-actions,body.is-guidebook .top .top-actions{display:none}
+body:not(.is-home):not(.is-gallery):not(.is-checkin):not(.is-wifi):not(.is-transport):not(.is-guidebook) .top{position:sticky;top:0;left:auto;transform:none;width:100%;background:rgba(247,242,236,.94);color:#221b15;border-bottom:1px solid rgba(216,198,180,.72);backdrop-filter:blur(18px)}
+body:not(.is-home):not(.is-gallery):not(.is-checkin):not(.is-wifi):not(.is-transport):not(.is-guidebook) .top h1{text-align:center}
 .landing-hero{position:relative;min-height:74svh;background:linear-gradient(180deg,rgba(20,15,10,.34) 0%,rgba(20,15,10,.28) 36%,rgba(20,15,10,.68) 100%),url('../assets/extay/crops/main-living-logo.png') center/cover no-repeat;color:#fff;isolation:isolate}
 .landing-hero:after{content:"";position:absolute;inset:auto 0 0;height:24%;background:linear-gradient(180deg,rgba(247,242,236,0),#f7f2ec);pointer-events:none}
 .hero-panel{position:absolute;left:0;right:0;bottom:0;z-index:1;padding:0 34px 38px}
@@ -99,7 +99,7 @@ body:not(.is-home):not(.is-gallery):not(.is-checkin):not(.is-wifi):not(.is-trans
 .hotel-section{padding:36px 31px 0}
 .section-kicker{color:#77685a}
 .hotel-heading{margin:0 0 22px;font-size:24px;line-height:1.18;font-weight:700;color:#221b15}
-.quick-access-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;width:100%}
+.quick-access-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;width:100%}
 .quick-tile{width:100%;min-width:0;min-inline-size:0;max-width:100%;overflow:hidden;min-height:112px;border:1px solid rgba(216,198,180,.62);border-radius:14px;background:rgba(255,255,255,.82);box-shadow:0 12px 32px rgba(58,43,30,.08);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;padding:10px 5px;text-align:center;color:#221b15;cursor:pointer}
 .quick-tile .mi{font-size:27px;color:#7b634f}
 .quick-tile b{display:block;max-width:100%;font-size:11px;line-height:1.2;font-weight:800;white-space:normal;overflow-wrap:anywhere}
@@ -206,6 +206,31 @@ body:not(.is-home):not(.is-gallery):not(.is-checkin):not(.is-wifi):not(.is-trans
 .transport-note ul{display:grid;gap:10px;margin:0;padding:0;list-style:none}
 .transport-note li{position:relative;padding-left:24px;font-size:14px;line-height:1.55;color:#665646;word-break:keep-all}
 .transport-note li:before{content:"";position:absolute;left:0;top:.62em;width:7px;height:7px;border-radius:50%;background:#7b634f}
+.guidebook-screen{background:#f7f2ec;min-height:calc(100dvh - 72px)}
+.guidebook-head{padding:8px 0 18px}
+.guidebook-head .section-kicker{margin-bottom:10px}
+.guidebook-head h2{margin:0 0 10px;font-size:32px;line-height:1.08;color:#221b15;font-weight:800}
+.guidebook-head p:last-child{margin:0;color:#6f5f50;font-size:14px;line-height:1.55;word-break:keep-all}
+.guidebook-viewer{background:#fffaf4;border:1px solid rgba(216,198,180,.72);border-radius:22px;box-shadow:0 12px 32px rgba(58,43,30,.08);padding:16px}
+.guidebook-toolbar{display:grid;grid-template-columns:1fr auto;gap:10px;align-items:center;margin-bottom:14px}
+.guidebook-lang{display:grid;grid-template-columns:1fr 1fr;gap:8px;padding:4px;border-radius:999px;background:#efe4d6}
+.guidebook-lang button{border:0;border-radius:999px;background:transparent;min-height:38px;font-size:13px;font-weight:900;color:#7b634f;cursor:pointer}
+.guidebook-lang button.active{background:#2b2118;color:#fff}
+.guidebook-open{min-height:46px;border-radius:999px;border:1px solid rgba(123,99,79,.24);background:#fff;display:flex;align-items:center;justify-content:center;gap:6px;padding:0 14px;font-size:13px;font-weight:800;color:#221b15}
+.guidebook-open .mi{font-size:18px}
+.guidebook-stage{position:relative;min-height:180px;border-radius:18px;background:#efe4d6;display:grid;place-items:center;overflow:hidden;padding:12px}
+.guidebook-canvas-wrap{width:100%;display:grid;place-items:center}
+.guidebook-canvas-wrap canvas{max-width:100%;height:auto;border-radius:10px;background:#fff;box-shadow:0 10px 26px rgba(58,43,30,.12)}
+.guidebook-status{position:absolute;inset:0;display:grid;place-items:center;text-align:center;padding:22px;color:#6b5a4a;font-size:14px;line-height:1.55;word-break:keep-all;z-index:2}
+.guidebook-status.hidden{display:none}
+.guidebook-fallback{display:none;width:100%;height:68svh;border:0;border-radius:12px;background:#fff}
+.guidebook-viewer.fallback .guidebook-canvas-wrap{display:none}
+.guidebook-viewer.fallback .guidebook-fallback{display:block}
+.guidebook-pager{display:grid;grid-template-columns:48px 1fr 48px;align-items:center;gap:12px;margin-top:14px}
+.guidebook-nav{width:48px;height:48px;border:0;border-radius:50%;background:#2b2118;color:#fff;display:grid;place-items:center;cursor:pointer}
+.guidebook-nav:disabled{opacity:.34;cursor:default}
+.guidebook-nav .mi{font-size:25px}
+.guidebook-page-label{text-align:center;color:#221b15;font-size:14px;font-weight:900}
 .checkin-hero{position:relative;overflow:hidden;border-radius:26px;min-height:230px;padding:28px 24px;display:flex;flex-direction:column;justify-content:flex-end;color:#fff;background:linear-gradient(180deg,rgba(35,26,18,.18),rgba(35,26,18,.82)),url('../assets/extay/crops/main-living-logo.png') center/cover no-repeat;box-shadow:0 18px 44px rgba(58,43,30,.16);margin-bottom:24px}
 .checkin-hero .section-kicker{color:rgba(255,255,255,.82)}
 .checkin-hero h2{margin:0;font-family:'Playfair Display',Georgia,serif;font-size:42px;line-height:.95;color:#fff}
@@ -254,13 +279,15 @@ body:not(.is-home) main{padding-top:0}
   .wifi-credential .mini-btn{width:100%}
   .transport-hero h2{font-size:35px}
   .transport-facts,.transport-actions{grid-template-columns:1fr}
+  .guidebook-toolbar{grid-template-columns:1fr}
+  .guidebook-open{width:100%}
 }
 
   </style>
 </head>
 <body class="is-home">
   <div class="app">
-    <header class="top"><button class="icon-btn" aria-label="메뉴" id="menuTop"><span class="mi">menu</span></button><h1>익스테이</h1><div class="top-actions"><a class="icon-btn" href="../assets/guidebook/Extay_Mansion_Haebangchon_Guide.pdf" target="_blank" rel="noopener" aria-label="가이드북 열기" id="openGuidebookTop"><span class="mi">menu_book</span></a><button class="icon-btn lang-toggle" aria-label="Switch to English" id="langToggle" type="button"><span class="mi">translate</span><span id="langToggleText">EN</span></button><button class="icon-btn" aria-label="안내 도우미" id="openChatTop"><span class="mi">smart_toy</span></button></div></header>
+    <header class="top"><button class="icon-btn" aria-label="메뉴" id="menuTop"><span class="mi">menu</span></button><h1>익스테이</h1><div class="top-actions"><a class="icon-btn" href="../assets/guidebook/Extay_Mansion_Haebangchon_Guide_KO_no_NotebookLM.pdf" target="_blank" rel="noopener" aria-label="가이드북 열기" id="openGuidebookTop"><span class="mi">menu_book</span></a><button class="icon-btn lang-toggle" aria-label="Switch to English" id="langToggle" type="button"><span class="mi">translate</span><span id="langToggleText">EN</span></button><button class="icon-btn" aria-label="안내 도우미" id="openChatTop"><span class="mi">smart_toy</span></button></div></header>
 
     <main>
       <section class="screen active" data-screen="home">
@@ -283,7 +310,6 @@ body:not(.is-home) main{padding-top:0}
             <button class="quick-tile" type="button" data-go="checkin"><span class="mi">calendar_month</span><b>체크인 안내</b><small>입실 방법 확인</small></button>
             <button class="quick-tile" type="button" data-go="wifi"><span class="mi">wifi</span><b>와이파이</b><small>네트워크 정보</small></button>
             <button class="quick-tile" type="button" data-go="transport"><span class="mi">directions_car</span><b>교통 안내</b><small>공항·지하철·버스</small></button>
-            <button class="quick-tile" type="button" data-open-chat><span class="mi">forum</span><b>문의하기</b><small>호스트에게 연락</small></button>
           </div>
         </section>
 
@@ -291,7 +317,7 @@ body:not(.is-home) main{padding-top:0}
           <p class="section-kicker">STAY GUIDE</p>
           <h2 class="hotel-heading" id="stayTitle">이용 가이드</h2>
           <div class="stay-card-grid">
-            <a class="image-card large" href="../assets/guidebook/Extay_Mansion_Haebangchon_Guide.pdf" target="_blank" rel="noopener" style="--card-img:url('../assets/extay/crops/main-living-logo.png')"><span>이용 안내</span><small>숙소 이용 규칙 및 안내사항</small></a>
+            <button class="image-card large" type="button" data-go="guidebook" style="--card-img:url('../assets/extay/crops/main-living-logo.png')"><span>이용 안내</span><small>숙소 이용 규칙 및 안내사항</small></button>
             <button class="image-card" type="button" data-open-chat data-question="주변 맛집 추천해줘" style="--card-img:url('../assets/extay/crops/hero-extay.jpg')"><span>주변 맛집</span><small>현지인이 추천하는 맛집 리스트</small></button>
             <button class="image-card" type="button" data-go="transport" style="--card-img:url('../assets/extay/crops/rooftop-namsan.jpg')"><span>교통 안내</span><small>공항·지하철·버스 이용 방법</small></button>
             <button class="image-card" type="button" data-open-chat data-question="자주 묻는 질문 알려줘" style="--card-img:url('../assets/extay/smart-card/stay-day.png')"><span>FAQ</span><small>자주 묻는 질문 모음</small></button>
@@ -482,6 +508,33 @@ body:not(.is-home) main{padding-top:0}
         </div>
       </section>
 
+      <section class="screen guidebook-screen" data-screen="guidebook">
+        <div class="guidebook-head">
+          <p class="section-kicker">STAY GUIDEBOOK</p>
+          <h2>이용 안내</h2>
+          <p>한글/영문 가이드 원본을 화면 안에서 페이지별로 넘겨볼 수 있습니다.</p>
+        </div>
+        <article class="guidebook-viewer" id="guidebookViewer">
+          <div class="guidebook-toolbar">
+            <div class="guidebook-lang" role="group" aria-label="가이드 언어 선택">
+              <button class="active" type="button" data-guide-lang="ko">KOR</button>
+              <button type="button" data-guide-lang="en">ENG</button>
+            </div>
+            <a class="guidebook-open" id="guidebookOpenPdf" href="../assets/guidebook/Extay_Mansion_Haebangchon_Guide_KO_no_NotebookLM.pdf" target="_blank" rel="noopener"><span class="mi">open_in_new</span>원본 PDF</a>
+          </div>
+          <div class="guidebook-stage" id="guidebookStage">
+            <div class="guidebook-status" id="guidebookStatus">가이드를 불러오는 중입니다.</div>
+            <div class="guidebook-canvas-wrap"><canvas id="guidebookCanvas" aria-label="가이드북 페이지"></canvas></div>
+            <iframe class="guidebook-fallback" id="guidebookFallback" title="이용 안내 PDF" src="../assets/guidebook/Extay_Mansion_Haebangchon_Guide_KO_no_NotebookLM.pdf"></iframe>
+          </div>
+          <div class="guidebook-pager">
+            <button class="guidebook-nav" type="button" data-guide-nav="prev" aria-label="이전 페이지"><span class="mi">chevron_left</span></button>
+            <span class="guidebook-page-label" id="guidebookPageLabel">- / -</span>
+            <button class="guidebook-nav" type="button" data-guide-nav="next" aria-label="다음 페이지"><span class="mi">chevron_right</span></button>
+          </div>
+        </article>
+      </section>
+
       <section class="screen gallery-screen" data-screen="gallery">
         <div class="gallery-head">
           <p class="section-kicker">ROOM GALLERY</p>
@@ -568,6 +621,7 @@ body:not(.is-home) main{padding-top:0}
   <aside class="menu-panel" id="menuPanel" aria-label="빠른 메뉴">
     <div class="menu-panel-head"><strong>EXTAY</strong><button class="icon-btn" type="button" id="closeMenu" aria-label="메뉴 닫기"><span class="mi">close</span></button></div>
     <button class="menu-link" type="button" data-go="home"><span>Home</span><small>처음 화면</small></button>
+    <button class="menu-link" type="button" data-go="guidebook"><span>Guidebook</span><small>한글 · 영문 PDF 보기</small></button>
     <button class="menu-link" type="button" data-go="gallery"><span>Room Gallery</span><small>숙소 사진 보기</small></button>
     <button class="menu-link" type="button" data-go="checkin"><span>Check-in Guide</span><small>입실 방법과 도어락 안내</small></button>
     <button class="menu-link" type="button" data-go="transport"><span>Transportation</span><small>공항에서 숙소까지</small></button>
@@ -645,7 +699,7 @@ body:not(.is-home) main{padding-top:0}
       const meta=q('meta[name="description"]'); if(meta)meta.setAttribute('content',tr.docDesc);
       text(q('.top h1'),tr.headerTitle); text(q('.hero .label'),tr.heroSub); text(q('#langToggleText'),tr.langButton);
       const menu=q('#menuTop'), guide=q('#openGuidebookTop'), chatTop=q('#openChatTop'), chatFab=q('#openChatFab'), close=q('#closeChat'), langBtn=q('#langToggle');
-      if(menu)menu.setAttribute('aria-label',tr.menuAria); if(guide)guide.setAttribute('aria-label',tr.guideAria); if(chatTop)chatTop.setAttribute('aria-label',tr.chatAria); if(chatFab)chatFab.setAttribute('aria-label',tr.chatFabAria); if(close)close.setAttribute('aria-label',tr.chat.close); if(langBtn)langBtn.setAttribute('aria-label',tr.langAria);
+      if(menu)menu.setAttribute('aria-label',tr.menuAria); if(guide){guide.setAttribute('aria-label',tr.guideAria);guide.href=GUIDEBOOK_PDFS[currentLang==='en'?'en':'ko']} if(chatTop)chatTop.setAttribute('aria-label',tr.chatAria); if(chatFab)chatFab.setAttribute('aria-label',tr.chatFabAria); if(close)close.setAttribute('aria-label',tr.chat.close); if(langBtn)langBtn.setAttribute('aria-label',tr.langAria);
       eachText(qa('.bottom .tab span:not(.mi)'),tr.bottom);
       qa('.quick button>span').forEach((el,i)=>html(el,iconLabel(['wifi_password','tv','thermostat','local_laundry_service'][i],tr.quick[i])));
       const homeInfo=q('.home-info-card'); if(homeInfo){text(homeInfo.querySelector('.section-title'),tr.home.infoTitle); eachText(qa('.home-info-card small'),tr.home.labels); eachText(qa('.home-info-card b'),tr.home.values); eachText(qa('.home-info-card .mini-btn'),[tr.home.view]);}
@@ -662,8 +716,20 @@ body:not(.is-home) main{padding-top:0}
       text(q('[data-screen="trash"] .page-title'),tr.trash.title); text(q('[data-screen="trash"] .page-sub'),tr.trash.sub); const trashCards=qa('[data-screen="trash"] article.card'); if(trashCards[0]){text(trashCards[0].querySelector('h3'),tr.trash.basis);text(trashCards[0].querySelector('.mini-btn'),tr.trash.types);eachText([...trashCards[0].querySelectorAll('.guide-item span')],tr.trash.items);eachText([...trashCards[0].querySelectorAll('figcaption')],tr.trash.captions)}; [1,2,3].forEach((idx,i)=>{const card=trashCards[idx],data=tr.trash.cards[i];if(card&&data){text(card.querySelector('h3'),data[0]);text(card.querySelector('p'),data[1]);eachText([...card.querySelectorAll('figcaption')],data[2])}});
       text(q('.chat-head h2'),tr.chat.title); text(q('.chat-head p'),tr.chat.sub); const firstBot=q('.chat-log .msg.bot:first-child'); if(firstBot&&!q('.chat-log .msg.user'))text(firstBot,tr.chat.hello); text(q('.chat-note'),tr.chat.note); const input=q('#chatInput'); if(input)input.placeholder=tr.chat.placeholder; text(q('#toast'),tr.copied);
     }
-    function show(name, openDevice=''){document.body.classList.toggle('is-home',name==='home');document.body.classList.toggle('is-gallery',name==='gallery');document.body.classList.toggle('is-checkin',name==='checkin');document.body.classList.toggle('is-wifi',name==='wifi');document.body.classList.toggle('is-transport',name==='transport');screens.forEach(s=>s.classList.toggle('active',s.dataset.screen===name));tabs.forEach(t=>t.classList.toggle('active',t.dataset.go===name));if(openDevice){document.querySelectorAll('details.device').forEach(d=>{d.open=d.dataset.device===openDevice});const target=document.querySelector(`details.device[data-device="${openDevice}"]`);if(target)setTimeout(()=>target.scrollIntoView({behavior:'smooth',block:'start'}),80)}else if(name==='appliances'){document.querySelectorAll('details.device').forEach((d,i)=>{d.open=i===0})}scrollTo({top:0,behavior:'smooth'});history.replaceState(null,'','#'+name)}
+    const GUIDEBOOK_PDFS={ko:'../assets/guidebook/Extay_Mansion_Haebangchon_Guide_KO_no_NotebookLM.pdf',en:'../assets/guidebook/Extay_Mansion_Haebangchon_Guide_EN_no_NotebookLM.pdf'};
+    const PDFJS_SRC='https://cdn.jsdelivr.net/npm/pdfjs-dist@4.10.38/build/pdf.min.mjs';
+    const PDFJS_WORKER='https://cdn.jsdelivr.net/npm/pdfjs-dist@4.10.38/build/pdf.worker.min.mjs';
+    let guidebookLang=currentLang==='en'?'en':'ko',guidebookDoc=null,guidebookPage=1,guidebookTotal=0,guidebookPdfjs=null,guidebookLoadId=0,guidebookResizeTimer=0;
+    function guidebookElements(){return{viewer:q('#guidebookViewer'),status:q('#guidebookStatus'),canvas:q('#guidebookCanvas'),fallback:q('#guidebookFallback'),open:q('#guidebookOpenPdf'),label:q('#guidebookPageLabel'),prev:q('[data-guide-nav="prev"]'),next:q('[data-guide-nav="next"]')}}
+    function updateGuidebookControls(){const els=guidebookElements(),src=GUIDEBOOK_PDFS[guidebookLang];qa('[data-guide-lang]').forEach(btn=>btn.classList.toggle('active',btn.dataset.guideLang===guidebookLang));if(els.open)els.open.href=src;if(els.fallback)els.fallback.src=src;if(els.label)els.label.textContent=guidebookTotal?`${guidebookPage} / ${guidebookTotal}`:'- / -';if(els.prev)els.prev.disabled=guidebookPage<=1||!guidebookTotal;if(els.next)els.next.disabled=guidebookPage>=guidebookTotal||!guidebookTotal}
+    async function ensurePdfjs(){if(!guidebookPdfjs){guidebookPdfjs=await import(PDFJS_SRC);guidebookPdfjs.GlobalWorkerOptions.workerSrc=PDFJS_WORKER}return guidebookPdfjs}
+    async function loadGuidebook(lang=guidebookLang,force=false){const els=guidebookElements();if(!els.viewer)return;guidebookLang=lang;updateGuidebookControls();if(guidebookDoc&&!force&&guidebookLang===lang){renderGuidebookPage(guidebookPage);return}const loadId=++guidebookLoadId;const src=GUIDEBOOK_PDFS[guidebookLang];els.viewer.classList.remove('fallback');if(els.status){els.status.textContent='가이드를 불러오는 중입니다.';els.status.classList.remove('hidden')}try{const pdfjs=await ensurePdfjs();const doc=await pdfjs.getDocument(src).promise;if(loadId!==guidebookLoadId)return;guidebookDoc=doc;guidebookPage=1;guidebookTotal=doc.numPages;updateGuidebookControls();await renderGuidebookPage(1)}catch(_){if(loadId!==guidebookLoadId)return;guidebookDoc=null;guidebookTotal=0;guidebookPage=1;updateGuidebookControls();if(els.status){els.status.textContent='PDF 뷰어를 불러오지 못해 기본 PDF 화면으로 표시합니다.';setTimeout(()=>els.status.classList.add('hidden'),1200)}els.viewer.classList.add('fallback')}}
+    async function renderGuidebookPage(pageNumber){const els=guidebookElements();if(!guidebookDoc||!els.canvas)return;guidebookPage=Math.max(1,Math.min(pageNumber,guidebookTotal));updateGuidebookControls();if(els.status){els.status.textContent='페이지를 불러오는 중입니다.';els.status.classList.remove('hidden')}try{const page=await guidebookDoc.getPage(guidebookPage);const wrap=els.canvas.parentElement,stage=els.canvas.closest('.guidebook-stage'),base=page.getViewport({scale:1});const cssWidth=Math.max(260,(stage?.clientWidth||wrap?.clientWidth||320)-24);const scale=cssWidth/base.width;const dpr=Math.min(window.devicePixelRatio||1,2);const viewport=page.getViewport({scale:scale*dpr});els.canvas.width=Math.floor(viewport.width);els.canvas.height=Math.floor(viewport.height);els.canvas.style.width=`${Math.floor(viewport.width/dpr)}px`;els.canvas.style.height=`${Math.floor(viewport.height/dpr)}px`;await page.render({canvasContext:els.canvas.getContext('2d'),viewport}).promise;if(els.status)els.status.classList.add('hidden');updateGuidebookControls()}catch(_){if(els.status)els.status.textContent='페이지를 표시하지 못했습니다. 원본 PDF 버튼을 이용해 주세요.'}}
+    function initGuidebook(){if(!q('[data-screen="guidebook"]'))return;loadGuidebook(guidebookLang||'ko')}
+    function show(name, openDevice=''){document.body.classList.toggle('is-home',name==='home');document.body.classList.toggle('is-gallery',name==='gallery');document.body.classList.toggle('is-checkin',name==='checkin');document.body.classList.toggle('is-wifi',name==='wifi');document.body.classList.toggle('is-transport',name==='transport');document.body.classList.toggle('is-guidebook',name==='guidebook');screens.forEach(s=>s.classList.toggle('active',s.dataset.screen===name));tabs.forEach(t=>t.classList.toggle('active',t.dataset.go===name));if(name==='guidebook')setTimeout(initGuidebook,60);if(openDevice){document.querySelectorAll('details.device').forEach(d=>{d.open=d.dataset.device===openDevice});const target=document.querySelector(`details.device[data-device="${openDevice}"]`);if(target)setTimeout(()=>target.scrollIntoView({behavior:'smooth',block:'start'}),80)}else if(name==='appliances'){document.querySelectorAll('details.device').forEach((d,i)=>{d.open=i===0})}scrollTo({top:0,behavior:'smooth'});history.replaceState(null,'','#'+name)}
     document.addEventListener('click',e=>{const g=e.target.closest('[data-go]'); if(g){show(g.dataset.go,g.dataset.open||'')}});
+    document.addEventListener('click',e=>{const lang=e.target.closest('[data-guide-lang]');if(lang){loadGuidebook(lang.dataset.guideLang,true);return}const nav=e.target.closest('[data-guide-nav]');if(nav&&guidebookDoc){renderGuidebookPage(guidebookPage+(nav.dataset.guideNav==='next'?1:-1))}});
+    window.addEventListener('resize',()=>{if(!document.body.classList.contains('is-guidebook')||!guidebookDoc)return;clearTimeout(guidebookResizeTimer);guidebookResizeTimer=setTimeout(()=>renderGuidebookPage(guidebookPage),160)});
     document.addEventListener('click',e=>{const s=e.target.closest('[data-scroll-target]'); if(!s)return; const target=document.querySelector(s.dataset.scrollTarget); if(target)target.scrollIntoView({behavior:'smooth',block:'start'});});
     function selectGalleryImage(button){const main=q('#galleryMain'), title=q('#galleryTitle'), desc=q('#galleryDesc'); if(!button||!main||!title||!desc)return; qa('.gallery-thumb').forEach(t=>{const active=t===button;t.classList.toggle('active',active);t.setAttribute('aria-selected',active?'true':'false')}); main.src=button.dataset.full; main.alt=button.dataset.alt||''; title.textContent=button.dataset.title||''; desc.textContent=button.dataset.desc||''; button.scrollIntoView({behavior:'smooth',inline:'center',block:'nearest'});}
     document.addEventListener('click',e=>{const thumb=e.target.closest('.gallery-thumb'); if(thumb)selectGalleryImage(thumb)});
@@ -674,7 +740,7 @@ body:not(.is-home) main{padding-top:0}
     const extaySmartModes={trash:{bg:'../assets/extay/smart-card/trash-evening.png',ko:{badge:'저녁 정리',title:'쓰레기 배출 확인',copy:'음식물, 재활용, 일반 쓰레기 위치가 다릅니다. 장기 숙박 시 냄새가 나지 않도록 먼저 확인해 주세요.',actions:[['trash','쓰레기 보기','delete'],['appliances','비품 위치','inventory_2']],suggestions:['쓰레기 어디에 버려?','음식물 쓰레기는 어디야?','재활용은 어디야?','비품 보관함 비밀번호 알려줘']},en:{badge:'Evening cleanup',title:'Check Trash Disposal',copy:'Food waste, recycling, and general trash have different locations. Check the guide first to prevent odor during longer stays.',actions:[['trash','Trash Guide','delete'],['appliances','Supply Cabinet','inventory_2']],suggestions:['Where do I throw away trash?','Where does food waste go?','Where is recycling?','What is the supply cabinet password?']}},ready:{bg:'../assets/extay/smart-card/ready-morning.jpg',ko:{badge:'입실 준비',title:'먼저 확인하면 좋은 정보',copy:'와이파이 ID와 비밀번호, 체크인 시간, TV·OTT 사용법, 온수 버튼을 먼저 확인해 주세요.',actions:[['wifi','와이파이 확인','wifi_password'],['appliances','사용법 보기','robot_2']],suggestions:['와이파이 비밀번호 알려줘','체크인은 몇 시야?','TV OTT 어떻게 봐?','온수 어떻게 켜?']},en:{badge:'Check-in ready',title:'Good Things to Check First',copy:'Check the Wi-Fi ID/password, check-in time, TV/OTT steps, and hot-water button first.',actions:[['wifi','Wi-Fi Info','wifi_password'],['appliances','How to Use','robot_2']],suggestions:['What is the Wi-Fi password?','What time is check-in?','How do I use TV OTT?','How do I turn on hot water?']}},stay:{bg:'../assets/extay/smart-card/stay-day.png',ko:{badge:'숙박 중 안내',title:'자주 찾는 정보',copy:'TV·OTT, 온수·난방, 세탁기·건조기, 비품 보관함, 옥상 정보를 바로 확인할 수 있습니다.',actions:[['appliances','사용법 보기','robot_2'],['laundry','세탁 안내','local_laundry_service']],suggestions:['OTT 어떻게 봐?','온수가 안 나와','세탁기 어떻게 써?','옥상 이용 가능해?']},en:{badge:'During your stay',title:'Frequently Needed Info',copy:'Quickly check TV/OTT, hot water and heating, washer/dryer, the supply cabinet, and rooftop information.',actions:[['appliances','How to Use','robot_2'],['laundry','Laundry','local_laundry_service']],suggestions:['How do I use OTT?','Hot water is not working','How do I use the washer?','Can I use the rooftop?']}},night:{bg:'../assets/extay/smart-card/night.jpg',ko:{badge:'야간 안내',title:'밤 시간 이용 안내',copy:'21시 이후에는 매너타임입니다. 세탁기·건조기 진동, 옥상 소음, 흡연 구역에 유의해 주세요.',actions:[['appliances','사용법 보기','thermostat'],['trash','쓰레기 안내','delete']],suggestions:['온수 어떻게 켜?','공용 화장실 비밀번호 알려줘','OTT가 안 켜져','주차는 어디에 해?']},en:{badge:'Night guide',title:'Night-Time Guide',copy:'Quiet hours start after 21:00. Please be mindful of washer/dryer vibration, rooftop noise, and smoking rules.',actions:[['appliances','How to Use','thermostat'],['trash','Trash Guide','delete']],suggestions:['How do I turn on hot water?','What is the shared restroom password?','OTT is not working','Where can I park?']}}};
     function pickSmartMode(){const h=new Date().getHours(); if(h>=6&&h<12)return 'ready'; if(h>=12&&h<17)return 'stay'; if(h>=17&&h<22)return 'trash'; return 'night'}
     function renderSmartGuide(){const key=pickSmartMode(),m=extaySmartModes[key],copyText=m[currentLang]||m.ko; const pad=n=>String(n).padStart(2,'0'); const now=new Date(); const card=document.getElementById('smartCard'); if(card&&m.bg)card.style.setProperty('--smart-bg',`url('${m.bg}')`); const clk=document.getElementById('smartClock'); if(clk) clk.textContent=`${pad(now.getHours())}:${pad(now.getMinutes())}`; const badge=document.getElementById('smartBadge'), title=document.getElementById('smartTitle'), copy=document.getElementById('smartCopy'), actions=document.getElementById('smartActions'); if(!badge||!title||!copy||!actions)return; badge.textContent=copyText.badge; title.textContent=copyText.title; copy.textContent=copyText.copy; actions.innerHTML=copyText.actions.map((a,i)=>`<button class="btn ${i===0?'primary':''}" data-go="${a[0]}"><span class="mi">${a[2]}</span>${a[1]}</button>`).join(''); document.querySelectorAll('.suggestion').forEach((b,i)=>{if(copyText.suggestions[i])b.textContent=copyText.suggestions[i]});}
-    document.getElementById('langToggle')?.addEventListener('click',()=>{currentLang=currentLang==='ko'?'en':'ko';localStorage.setItem(LANG_KEY,currentLang);applyStaticLanguage();renderSmartGuide()});
+    document.getElementById('langToggle')?.addEventListener('click',()=>{currentLang=currentLang==='ko'?'en':'ko';localStorage.setItem(LANG_KEY,currentLang);applyStaticLanguage();renderSmartGuide();if(document.body.classList.contains('is-guidebook'))loadGuidebook(currentLang==='en'?'en':'ko',true)});
     applyStaticLanguage(); renderSmartGuide(); setInterval(renderSmartGuide,60000);
     const guideAnswers={ko:[],en:[]};
     const extayGuideAnswers={
