@@ -76,12 +76,12 @@ body.is-home .top{position:fixed;top:0;background:transparent;color:#fff;grid-te
 body.is-home .top h1{order:1;text-shadow:0 2px 18px rgba(0,0,0,.34)}
 body.is-home .top #menuTop{order:2;background:rgba(0,0,0,.08);color:#fff}
 body.is-home .top .top-actions{display:none}
-body.is-gallery .top,body.is-checkin .top{position:sticky;top:0;left:auto;transform:none;width:100%;background:rgba(247,242,236,.94);color:#221b15;grid-template-columns:1fr auto;border-bottom:1px solid rgba(216,198,180,.72);backdrop-filter:blur(18px)}
-body.is-gallery .top h1,body.is-checkin .top h1{order:1;text-align:left;text-shadow:none}
-body.is-gallery .top #menuTop,body.is-checkin .top #menuTop{order:2;background:rgba(123,99,79,.1);color:#221b15}
-body.is-gallery .top .top-actions,body.is-checkin .top .top-actions{display:none}
-body:not(.is-home):not(.is-gallery):not(.is-checkin) .top{position:sticky;top:0;left:auto;transform:none;width:100%;background:rgba(247,242,236,.94);color:#221b15;border-bottom:1px solid rgba(216,198,180,.72);backdrop-filter:blur(18px)}
-body:not(.is-home):not(.is-gallery):not(.is-checkin) .top h1{text-align:center}
+body.is-gallery .top,body.is-checkin .top,body.is-wifi .top{position:sticky;top:0;left:auto;transform:none;width:100%;background:rgba(247,242,236,.94);color:#221b15;grid-template-columns:1fr auto;border-bottom:1px solid rgba(216,198,180,.72);backdrop-filter:blur(18px)}
+body.is-gallery .top h1,body.is-checkin .top h1,body.is-wifi .top h1{order:1;text-align:left;text-shadow:none}
+body.is-gallery .top #menuTop,body.is-checkin .top #menuTop,body.is-wifi .top #menuTop{order:2;background:rgba(123,99,79,.1);color:#221b15}
+body.is-gallery .top .top-actions,body.is-checkin .top .top-actions,body.is-wifi .top .top-actions{display:none}
+body:not(.is-home):not(.is-gallery):not(.is-checkin):not(.is-wifi) .top{position:sticky;top:0;left:auto;transform:none;width:100%;background:rgba(247,242,236,.94);color:#221b15;border-bottom:1px solid rgba(216,198,180,.72);backdrop-filter:blur(18px)}
+body:not(.is-home):not(.is-gallery):not(.is-checkin):not(.is-wifi) .top h1{text-align:center}
 .landing-hero{position:relative;min-height:74svh;background:linear-gradient(180deg,rgba(20,15,10,.34) 0%,rgba(20,15,10,.28) 36%,rgba(20,15,10,.68) 100%),url('../assets/extay/crops/main-living-logo.png') center/cover no-repeat;color:#fff;isolation:isolate}
 .landing-hero:after{content:"";position:absolute;inset:auto 0 0;height:24%;background:linear-gradient(180deg,rgba(247,242,236,0),#f7f2ec);pointer-events:none}
 .hero-panel{position:absolute;left:0;right:0;bottom:0;z-index:1;padding:0 34px 38px}
@@ -150,6 +150,31 @@ body:not(.is-home):not(.is-gallery):not(.is-checkin) .top h1{text-align:center}
 .gallery-viewer figcaption{padding:18px 18px 20px;background:#fffaf4;color:#221b15}
 .gallery-viewer figcaption strong{display:block;font-size:19px;line-height:1.25}
 .gallery-viewer figcaption span{display:block;margin-top:7px;font-size:13px;line-height:1.45;color:#6f5f50}
+.wifi-screen{background:#f7f2ec;min-height:calc(100dvh - 72px)}
+.wifi-hero{position:relative;overflow:hidden;border-radius:26px;min-height:236px;padding:28px 24px;display:flex;flex-direction:column;justify-content:flex-end;color:#fff;background:linear-gradient(180deg,rgba(35,26,18,.16),rgba(35,26,18,.82)),url('../assets/extay/crops/tv-hdmi.jpg') center/cover no-repeat;box-shadow:0 18px 44px rgba(58,43,30,.16);margin-bottom:20px}
+.wifi-hero .section-kicker{color:rgba(255,255,255,.82)}
+.wifi-hero .page-title{margin:0;font-family:'Noto Serif KR','Pretendard',serif;font-size:43px;line-height:1.12;font-weight:600;color:#fff;letter-spacing:0;text-shadow:0 2px 24px rgba(0,0,0,.28)}
+.wifi-hero .page-sub{margin:14px 0 0;font-size:14px;line-height:1.62;color:rgba(255,255,255,.9);word-break:keep-all;text-shadow:0 2px 18px rgba(0,0,0,.28)}
+.wifi-stack{display:grid;gap:14px}
+.wifi-card{background:#fffaf4;border:1px solid rgba(216,198,180,.72);border-radius:22px;box-shadow:0 12px 32px rgba(58,43,30,.08);padding:22px}
+.wifi-card h3{margin:0 0 14px;font-size:21px;line-height:1.25;color:#221b15}
+.wifi-credentials{display:grid;gap:12px}
+.wifi-credential{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:14px;align-items:center;border-radius:18px;background:#f3eadf;padding:17px}
+.wifi-credential.wide{grid-template-columns:1fr}
+.wifi-credential small{display:block;margin-bottom:7px;color:#8a7663;font-size:11px;font-weight:800;text-transform:uppercase}
+.wifi-credential b{display:block;color:#221b15;font-size:20px;line-height:1.26;overflow-wrap:anywhere}
+.wifi-credential.wide b{font-size:15px;line-height:1.5;word-break:keep-all}
+.wifi-credential .mini-btn{margin:0;min-width:72px;border:0;border-radius:999px;background:#2b2118;color:#fff;padding:12px 16px;font-size:13px}
+.wifi-steps{counter-reset:wifi;display:grid;gap:12px;margin:0;padding:0;list-style:none}
+.wifi-steps li{counter-increment:wifi;display:grid;grid-template-columns:34px 1fr;gap:12px;align-items:start}
+.wifi-steps li:before{content:counter(wifi);width:34px;height:34px;border-radius:50%;display:grid;place-items:center;background:#2b2118;color:#fff;font-size:13px;font-weight:800}
+.wifi-steps strong{display:block;margin-bottom:4px;font-size:15px;color:#221b15}
+.wifi-steps span{display:block;font-size:13px;line-height:1.55;color:#665646;word-break:keep-all}
+.wifi-list{display:grid;gap:10px;margin:0;padding:0;list-style:none}
+.wifi-list li{position:relative;padding-left:24px;font-size:14px;line-height:1.55;color:#665646;word-break:keep-all}
+.wifi-list li:before{content:"";position:absolute;left:0;top:.62em;width:7px;height:7px;border-radius:50%;background:#7b634f}
+.wifi-soft-card{background:#efe4d6;border-color:rgba(123,99,79,.26)}
+.wifi-chat{margin-top:16px;color:#fff;background:#2b2118;border-color:#2b2118}
 .checkin-hero{position:relative;overflow:hidden;border-radius:26px;min-height:230px;padding:28px 24px;display:flex;flex-direction:column;justify-content:flex-end;color:#fff;background:linear-gradient(180deg,rgba(35,26,18,.18),rgba(35,26,18,.82)),url('../assets/extay/crops/main-living-logo.png') center/cover no-repeat;box-shadow:0 18px 44px rgba(58,43,30,.16);margin-bottom:24px}
 .checkin-hero .section-kicker{color:rgba(255,255,255,.82)}
 .checkin-hero h2{margin:0;font-family:'Playfair Display',Georgia,serif;font-size:42px;line-height:.95;color:#fff}
@@ -193,6 +218,9 @@ body:not(.is-home) main{padding-top:0}
   .gallery-thumb{flex-basis:76px;width:76px;height:88px}
   .checkin-grid,.contact-actions{grid-template-columns:1fr}
   .checkin-hero h2{font-size:37px}
+  .wifi-hero .page-title{font-size:38px}
+  .wifi-credential{grid-template-columns:1fr}
+  .wifi-credential .mini-btn{width:100%}
 }
 
   </style>
@@ -295,8 +323,8 @@ body:not(.is-home) main{padding-top:0}
               <li>마을버스를 이용하면 약 10분 정도 소요됩니다.</li>
             </ul>
             <div class="contact-actions">
-              <a class="hotel-btn primary" href="https://www.google.com/maps/search/?api=1&query=%EC%84%9C%EC%9A%B8%EC%8B%9C%20%EC%9A%A9%EC%82%B0%EA%B5%AC%20%EC%8B%A0%ED%9D%A5%EB%A1%9C%2059%202%EC%B8%B5" target="_blank" rel="noopener"><span class="mi">map</span>지도 열기</a>
-              <button class="hotel-btn" type="button" data-open-chat><span class="mi">forum</span>문의하기</button>
+              <a class="hotel-btn primary" href="https://map.naver.com/p/search/%EC%84%9C%EC%9A%B8%EC%8B%9C%20%EC%9A%A9%EC%82%B0%EA%B5%AC%20%EC%8B%A0%ED%9D%A5%EB%A1%9C%2059%202%EC%B8%B5" target="_blank" rel="noopener"><span class="mi">location_on</span>네이버 지도</a>
+              <a class="hotel-btn" href="https://www.google.com/maps/search/?api=1&query=%EC%84%9C%EC%9A%B8%EC%8B%9C%20%EC%9A%A9%EC%82%B0%EA%B5%AC%20%EC%8B%A0%ED%9D%A5%EB%A1%9C%2059%202%EC%B8%B5" target="_blank" rel="noopener"><span class="mi">map</span>구글 지도</a>
             </div>
           </article>
 
@@ -356,7 +384,50 @@ body:not(.is-home) main{padding-top:0}
         </figure>
       </section>
 
-      <section class="screen" data-screen="wifi"><h2 class="page-title">와이파이</h2><p class="page-sub">숙소 Wi-Fi ID와 비밀번호입니다. 대소문자와 특수문자를 그대로 입력해 주세요.</p><article class="card"><div class="info-row"><span class="circle"><span class="mi">router</span></span><div><small>ID</small><b>U+Net46F0_5G</b></div><button class="mini-btn" data-copy="U+Net46F0_5G">복사</button></div><div class="info-row"><span class="circle"><span class="mi">password</span></span><div><small>Password</small><b>8H3#22E97B</b></div><button class="mini-btn" data-copy="8H3#22E97B">복사</button></div><div class="info-row"><span class="circle"><span class="mi">info</span></span><div><small>연결 안내</small><b>연결이 안 되면 Wi-Fi를 껐다 켠 뒤 다시 선택해 주세요.</b></div></div></article></section>
+      <section class="screen wifi-screen" data-screen="wifi">
+        <article class="wifi-hero">
+          <p class="section-kicker">IN-ROOM WI-FI</p>
+          <h2 class="page-title">와이파이</h2>
+          <p class="page-sub">숙소 Wi-Fi ID와 비밀번호입니다. 대소문자와 특수문자를 그대로 입력해 주세요.</p>
+        </article>
+        <div class="wifi-stack">
+          <article class="wifi-card">
+            <h3>네트워크 정보</h3>
+            <div class="wifi-credentials">
+              <div class="wifi-credential">
+                <div><small>ID</small><b>U+Net46F0_5G</b></div>
+                <button class="mini-btn" data-copy="U+Net46F0_5G">복사</button>
+              </div>
+              <div class="wifi-credential">
+                <div><small>Password</small><b>8H3#22E97B</b></div>
+                <button class="mini-btn" data-copy="8H3#22E97B">복사</button>
+              </div>
+              <div class="wifi-credential wide">
+                <div><small>연결 안내</small><b>연결이 안 되면 Wi-Fi를 껐다 켠 뒤 다시 선택해 주세요.</b></div>
+              </div>
+            </div>
+          </article>
+
+          <article class="wifi-card">
+            <h3>연결 순서</h3>
+            <ol class="wifi-steps">
+              <li><div><strong>Wi-Fi 설정 열기</strong><span>휴대폰 또는 노트북의 Wi-Fi 설정 화면을 열어주세요.</span></div></li>
+              <li><div><strong>네트워크 선택</strong><span><em>U+Net46F0_5G</em>를 선택한 뒤 비밀번호를 입력합니다.</span></div></li>
+              <li><div><strong>입력값 확인</strong><span>대문자, 소문자, 숫자, 특수문자를 안내된 그대로 입력해 주세요.</span></div></li>
+            </ol>
+          </article>
+
+          <article class="wifi-card wifi-soft-card">
+            <h3>연결이 불안정할 때</h3>
+            <ul class="wifi-list">
+              <li>기기 Wi-Fi를 껐다가 다시 켠 뒤 네트워크를 다시 선택해 주세요.</li>
+              <li>비밀번호를 복사한 경우 앞뒤 공백이 함께 들어가지 않았는지 확인해 주세요.</li>
+              <li>계속 연결되지 않으면 호스트에게 메시지로 알려주세요.</li>
+            </ul>
+            <button class="hotel-btn wifi-chat" type="button" data-open-chat data-question="와이파이 연결이 안 돼요"><span class="mi">forum</span>연결 문제 문의하기</button>
+          </article>
+        </div>
+      </section>
 
       <section class="screen" data-screen="appliances"><h2 class="page-title">기기 사용법</h2><p class="page-sub">필요한 기기를 열어서 사용 방법과 사진을 확인하세요.</p>
         <details class="device" data-device="tv" open><summary><span class="circle" style="background:var(--ink);color:#fff"><span class="mi">tv</span></span><div><h3>TV · OTT 리모컨 <span class="badge">자주 사용</span></h3><small>NSM OTT · HDMI 입력</small></div><span class="mi">expand_less</span></summary><div class="device-body"><ol class="steps"><li>TV 리모컨은 외부입력 선택이 필요할 때 사용하세요.</li><li>OTT 전용 리모컨에서 원하는 OTT를 선택한 뒤 확인 버튼을 누르세요.</li><li>화면 팝업이 뜨면 바로 실행을 선택하세요. 작동이 안 되면 전원 버튼을 3초 이상 누르거나 셋탑 전원을 10초간 분리 후 재연결하세요.</li></ol><figure class="figure"><img src="../assets/extay/crops/nsm-guide.png" alt="NSM OTT 사용법"></figure><figure class="figure"><img src="../assets/extay/crops/tv-hdmi.jpg" alt="TV HDMI 입력 위치"></figure></div></details>
@@ -471,7 +542,7 @@ body:not(.is-home) main{padding-top:0}
       text(q('[data-screen="trash"] .page-title'),tr.trash.title); text(q('[data-screen="trash"] .page-sub'),tr.trash.sub); const trashCards=qa('[data-screen="trash"] article.card'); if(trashCards[0]){text(trashCards[0].querySelector('h3'),tr.trash.basis);text(trashCards[0].querySelector('.mini-btn'),tr.trash.types);eachText([...trashCards[0].querySelectorAll('.guide-item span')],tr.trash.items);eachText([...trashCards[0].querySelectorAll('figcaption')],tr.trash.captions)}; [1,2,3].forEach((idx,i)=>{const card=trashCards[idx],data=tr.trash.cards[i];if(card&&data){text(card.querySelector('h3'),data[0]);text(card.querySelector('p'),data[1]);eachText([...card.querySelectorAll('figcaption')],data[2])}});
       text(q('.chat-head h2'),tr.chat.title); text(q('.chat-head p'),tr.chat.sub); const firstBot=q('.chat-log .msg.bot:first-child'); if(firstBot&&!q('.chat-log .msg.user'))text(firstBot,tr.chat.hello); text(q('.chat-note'),tr.chat.note); const input=q('#chatInput'); if(input)input.placeholder=tr.chat.placeholder; text(q('#toast'),tr.copied);
     }
-    function show(name, openDevice=''){document.body.classList.toggle('is-home',name==='home');document.body.classList.toggle('is-gallery',name==='gallery');document.body.classList.toggle('is-checkin',name==='checkin');screens.forEach(s=>s.classList.toggle('active',s.dataset.screen===name));tabs.forEach(t=>t.classList.toggle('active',t.dataset.go===name));if(openDevice){document.querySelectorAll('details.device').forEach(d=>{d.open=d.dataset.device===openDevice});const target=document.querySelector(`details.device[data-device="${openDevice}"]`);if(target)setTimeout(()=>target.scrollIntoView({behavior:'smooth',block:'start'}),80)}else if(name==='appliances'){document.querySelectorAll('details.device').forEach((d,i)=>{d.open=i===0})}scrollTo({top:0,behavior:'smooth'});history.replaceState(null,'','#'+name)}
+    function show(name, openDevice=''){document.body.classList.toggle('is-home',name==='home');document.body.classList.toggle('is-gallery',name==='gallery');document.body.classList.toggle('is-checkin',name==='checkin');document.body.classList.toggle('is-wifi',name==='wifi');screens.forEach(s=>s.classList.toggle('active',s.dataset.screen===name));tabs.forEach(t=>t.classList.toggle('active',t.dataset.go===name));if(openDevice){document.querySelectorAll('details.device').forEach(d=>{d.open=d.dataset.device===openDevice});const target=document.querySelector(`details.device[data-device="${openDevice}"]`);if(target)setTimeout(()=>target.scrollIntoView({behavior:'smooth',block:'start'}),80)}else if(name==='appliances'){document.querySelectorAll('details.device').forEach((d,i)=>{d.open=i===0})}scrollTo({top:0,behavior:'smooth'});history.replaceState(null,'','#'+name)}
     document.addEventListener('click',e=>{const g=e.target.closest('[data-go]'); if(g){show(g.dataset.go,g.dataset.open||'')}});
     document.addEventListener('click',e=>{const s=e.target.closest('[data-scroll-target]'); if(!s)return; const target=document.querySelector(s.dataset.scrollTarget); if(target)target.scrollIntoView({behavior:'smooth',block:'start'});});
     function selectGalleryImage(button){const main=q('#galleryMain'), title=q('#galleryTitle'), desc=q('#galleryDesc'); if(!button||!main||!title||!desc)return; qa('.gallery-thumb').forEach(t=>{const active=t===button;t.classList.toggle('active',active);t.setAttribute('aria-selected',active?'true':'false')}); main.src=button.dataset.full; main.alt=button.dataset.alt||''; title.textContent=button.dataset.title||''; desc.textContent=button.dataset.desc||''; button.scrollIntoView({behavior:'smooth',inline:'center',block:'nearest'});}
