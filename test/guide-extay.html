@@ -76,8 +76,12 @@ body.is-home .top{position:fixed;top:0;background:transparent;color:#fff;grid-te
 body.is-home .top h1{order:1;text-shadow:0 2px 18px rgba(0,0,0,.34)}
 body.is-home .top #menuTop{order:2;background:rgba(0,0,0,.08);color:#fff}
 body.is-home .top .top-actions{display:none}
-body:not(.is-home) .top{position:sticky;top:0;left:auto;transform:none;width:100%;background:rgba(247,242,236,.94);color:#221b15;border-bottom:1px solid rgba(216,198,180,.72);backdrop-filter:blur(18px)}
-body:not(.is-home) .top h1{text-align:center}
+body.is-gallery .top,body.is-checkin .top{position:sticky;top:0;left:auto;transform:none;width:100%;background:rgba(247,242,236,.94);color:#221b15;grid-template-columns:1fr auto;border-bottom:1px solid rgba(216,198,180,.72);backdrop-filter:blur(18px)}
+body.is-gallery .top h1,body.is-checkin .top h1{order:1;text-align:left;text-shadow:none}
+body.is-gallery .top #menuTop,body.is-checkin .top #menuTop{order:2;background:rgba(123,99,79,.1);color:#221b15}
+body.is-gallery .top .top-actions,body.is-checkin .top .top-actions{display:none}
+body:not(.is-home):not(.is-gallery):not(.is-checkin) .top{position:sticky;top:0;left:auto;transform:none;width:100%;background:rgba(247,242,236,.94);color:#221b15;border-bottom:1px solid rgba(216,198,180,.72);backdrop-filter:blur(18px)}
+body:not(.is-home):not(.is-gallery):not(.is-checkin) .top h1{text-align:center}
 .landing-hero{position:relative;min-height:74svh;background:linear-gradient(180deg,rgba(20,15,10,.34) 0%,rgba(20,15,10,.28) 36%,rgba(20,15,10,.68) 100%),url('../assets/extay/crops/main-living-logo.png') center/cover no-repeat;color:#fff;isolation:isolate}
 .landing-hero:after{content:"";position:absolute;inset:auto 0 0;height:24%;background:linear-gradient(180deg,rgba(247,242,236,0),#f7f2ec);pointer-events:none}
 .hero-panel{position:absolute;left:0;right:0;bottom:0;z-index:1;padding:0 34px 38px}
@@ -129,6 +133,51 @@ body:not(.is-home) .top h1{text-align:center}
 .menu-link{width:100%;border:0;border-bottom:1px solid rgba(216,198,180,.62);background:transparent;padding:18px 2px;display:block;text-align:left;color:#221b15;cursor:pointer}
 .menu-link span{display:block;font-size:19px;font-weight:800;line-height:1.2}
 .menu-link small{display:block;margin-top:6px;font-size:12px;line-height:1.3;color:#7d6d5e}
+.gallery-screen{background:#f7f2ec;min-height:calc(100dvh - 72px)}
+.gallery-head{padding:8px 0 20px}
+.gallery-head .section-kicker{margin-bottom:10px}
+.gallery-head h2{margin:0 0 10px;font-size:32px;line-height:1.08;color:#221b15;font-weight:800}
+.gallery-head p:last-child{margin:0;color:#6f5f50;font-size:14px;line-height:1.55}
+.gallery-thumbs{display:flex;gap:10px;overflow-x:auto;overscroll-behavior-x:contain;scroll-snap-type:x proximity;padding:4px 0 16px;margin:0 -22px 0 0}
+.gallery-thumbs::-webkit-scrollbar{display:none}
+.gallery-thumb{flex:0 0 82px;width:82px;height:94px;border:1px solid rgba(216,198,180,.72);border-radius:16px;background:#fff;padding:4px;box-shadow:0 8px 20px rgba(58,43,30,.08);scroll-snap-align:start;cursor:pointer}
+.gallery-thumb:first-child{margin-left:0}
+.gallery-thumb img{width:100%;height:100%;display:block;object-fit:cover;border-radius:12px}
+.gallery-thumb.active{border-color:#7b634f;box-shadow:0 0 0 2px rgba(123,99,79,.18),0 10px 24px rgba(58,43,30,.12)}
+.gallery-viewer{margin:4px 0 0;border-radius:24px;overflow:hidden;background:#241d17;box-shadow:0 20px 48px rgba(58,43,30,.16)}
+.gallery-main-wrap{background:#241d17;display:flex;align-items:center;justify-content:center}
+.gallery-viewer img{max-width:100%;max-height:64svh;width:auto;height:auto;display:block;object-fit:contain}
+.gallery-viewer figcaption{padding:18px 18px 20px;background:#fffaf4;color:#221b15}
+.gallery-viewer figcaption strong{display:block;font-size:19px;line-height:1.25}
+.gallery-viewer figcaption span{display:block;margin-top:7px;font-size:13px;line-height:1.45;color:#6f5f50}
+.checkin-hero{position:relative;overflow:hidden;border-radius:26px;min-height:230px;padding:28px 24px;display:flex;flex-direction:column;justify-content:flex-end;color:#fff;background:linear-gradient(180deg,rgba(35,26,18,.18),rgba(35,26,18,.82)),url('../assets/extay/crops/main-living-logo.png') center/cover no-repeat;box-shadow:0 18px 44px rgba(58,43,30,.16);margin-bottom:24px}
+.checkin-hero .section-kicker{color:rgba(255,255,255,.82)}
+.checkin-hero h2{margin:0;font-family:'Playfair Display',Georgia,serif;font-size:42px;line-height:.95;color:#fff}
+.checkin-hero p{margin:14px 0 0;font-size:14px;line-height:1.62;color:rgba(255,255,255,.9);word-break:keep-all}
+.checkin-stack{display:grid;gap:14px}
+.checkin-card{background:#fffaf4;border:1px solid rgba(216,198,180,.72);border-radius:22px;box-shadow:0 12px 32px rgba(58,43,30,.08);padding:22px}
+.checkin-card h3{margin:0 0 14px;font-size:21px;line-height:1.25;color:#221b15}
+.checkin-card p{margin:0;color:#665646;font-size:14px;line-height:1.62}
+.checkin-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.checkin-fact{border-radius:16px;background:#f3eadf;padding:15px}
+.checkin-fact small{display:block;margin-bottom:6px;color:#8a7663;font-size:11px;font-weight:800;text-transform:uppercase}
+.checkin-fact b{display:block;color:#221b15;font-size:15px;line-height:1.42;word-break:keep-all}
+.door-steps{counter-reset:door;display:grid;gap:12px;margin:0;padding:0;list-style:none}
+.door-steps li{counter-increment:door;display:grid;grid-template-columns:34px 1fr;gap:12px;align-items:start}
+.door-steps li:before{content:counter(door);width:34px;height:34px;border-radius:50%;display:grid;place-items:center;background:#2b2118;color:#fff;font-size:13px;font-weight:800}
+.door-steps strong{display:block;margin-bottom:4px;font-size:15px;color:#221b15}
+.door-steps span{display:block;font-size:13px;line-height:1.55;color:#665646;word-break:keep-all}
+.code-card{margin-top:14px;border-radius:16px;background:#2b2118;color:#fff;padding:16px}
+.code-card small{display:block;margin-bottom:8px;color:rgba(255,255,255,.72);font-size:11px;font-weight:800;text-transform:uppercase}
+.code-card b{display:block;font-size:18px;line-height:1.35}
+.check-list{display:grid;gap:10px;margin:0;padding:0;list-style:none}
+.check-list li{position:relative;padding-left:24px;font-size:14px;line-height:1.55;color:#665646;word-break:keep-all}
+.check-list li:before{content:"";position:absolute;left:0;top:.62em;width:7px;height:7px;border-radius:50%;background:#7b634f}
+.notice-card{background:#efe4d6;border-color:rgba(123,99,79,.26)}
+.contact-actions{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:16px}
+.contact-actions.single{grid-template-columns:1fr}
+.contact-actions .hotel-btn{color:#221b15;border-color:rgba(123,99,79,.28);background:#fff}
+.contact-actions .hotel-btn.primary{background:#2b2118;color:#fff;border-color:#2b2118}
 body:not(.is-home) main{padding-top:0}
 @media (max-width:380px){
   .hero-panel{padding:0 24px 34px}
@@ -141,6 +190,9 @@ body:not(.is-home) main{padding-top:0}
   .quick-tile small,.location-tile small{font-size:9px}
   .image-card{min-height:130px;padding:15px}
   .menu-panel{right:0;width:88vw}
+  .gallery-thumb{flex-basis:76px;width:76px;height:88px}
+  .checkin-grid,.contact-actions{grid-template-columns:1fr}
+  .checkin-hero h2{font-size:37px}
 }
 
   </style>
@@ -157,8 +209,7 @@ body:not(.is-home) main{padding-top:0}
             <h2 class="hero-title" id="heroTitle">EXTAY</h2>
             <p class="hero-copy">서울 중심, 나만의 프라이빗 스테이<br>편안하고 특별한 시간을 보내세요.</p>
             <div class="hero-actions">
-              <a class="hotel-btn primary" href="../assets/guidebook/Extay_Mansion_Haebangchon_Guide.pdf" target="_blank" rel="noopener"><span class="mi">menu_book</span>체크인 가이드</a>
-              <button class="hotel-btn ghost" type="button" data-scroll-target="#stayGuide"><span class="mi">bed</span>객실 둘러보기</button>
+              <button class="hotel-btn ghost" type="button" data-go="gallery"><span class="mi">bed</span>객실 둘러보기</button>
             </div>
             <button class="scroll-cue" type="button" data-scroll-target="#quickAccess">SCROLL<span class="mi">keyboard_arrow_down</span></button>
           </div>
@@ -168,7 +219,7 @@ body:not(.is-home) main{padding-top:0}
           <p class="section-kicker">QUICK ACCESS</p>
           <h2 class="hotel-heading" id="quickTitle">빠르게 찾는 정보</h2>
           <div class="quick-access-grid">
-            <a class="quick-tile" href="../assets/guidebook/Extay_Mansion_Haebangchon_Guide.pdf" target="_blank" rel="noopener"><span class="mi">calendar_month</span><b>체크인 안내</b><small>입실 방법 확인</small></a>
+            <button class="quick-tile" type="button" data-go="checkin"><span class="mi">calendar_month</span><b>체크인 안내</b><small>입실 방법 확인</small></button>
             <button class="quick-tile" type="button" data-go="wifi"><span class="mi">wifi</span><b>와이파이</b><small>네트워크 정보</small></button>
             <a class="quick-tile" href="https://www.google.com/maps/search/?api=1&query=%EC%84%9C%EC%9A%B8%EC%8B%9C%20%EC%9A%A9%EC%82%B0%EA%B5%AC%20%EC%8B%A0%ED%9D%A5%EB%A1%9C%2059%202%EC%B8%B5" target="_blank" rel="noopener"><span class="mi">directions_car</span><b>교통 안내</b><small>공항·지하철·버스</small></a>
             <button class="quick-tile" type="button" data-open-chat><span class="mi">forum</span><b>문의하기</b><small>호스트에게 연락</small></button>
@@ -207,6 +258,104 @@ body:not(.is-home) main{padding-top:0}
         </section>
       </section>
 
+      <section class="screen" data-screen="checkin">
+        <article class="checkin-hero">
+          <p class="section-kicker">SELF CHECK-IN</p>
+          <h2>Check-in Guide</h2>
+          <p>입실 전 꼭 필요한 도어락, 위치, 보안, 숙소 규칙만 정리했습니다.</p>
+        </article>
+        <div class="checkin-stack">
+          <article class="checkin-card">
+            <h3>체크인 기본 정보</h3>
+            <div class="checkin-grid">
+              <div class="checkin-fact"><small>Address</small><b>서울시 용산구 신흥로 59, 2층</b></div>
+              <div class="checkin-fact"><small>Time</small><b>체크인 16:00<br>체크아웃 11:00</b></div>
+              <div class="checkin-fact"><small>Access</small><b>비대면 셀프 체크인</b></div>
+              <div class="checkin-fact"><small>Parking</small><b>건물 주차 불가<br>주변 유료 공영주차장 이용</b></div>
+            </div>
+            <p style="margin-top:14px">개인 키번호는 체크인 당일 12시쯤 호스트 메시지로 안내됩니다. 체크아웃 시간을 10분 초과하면 10분당 10,000원의 비용이 발생할 수 있습니다.</p>
+          </article>
+
+          <article class="checkin-card">
+            <h3>현관 도어락 사용 방법</h3>
+            <ol class="door-steps">
+              <li><div><strong>키패드를 살짝 터치</strong><span>현관 도어락 화면을 가볍게 터치해 숫자 키패드를 켜주세요.</span></div></li>
+              <li><div><strong>개별 안내받은 번호 입력</strong><span>호스트 메시지에 안내된 형식대로 입력한 뒤 마지막에 <b>*</b> 버튼을 누릅니다.</span></div></li>
+            </ol>
+            <div class="code-card"><small>입력 예시</small><b>게스트 이름 기준 휴대폰 뒷 4자리 + *</b></div>
+            <p style="margin-top:14px">예: 영희님으로 안내받았다면 메시지에 적힌 기준에 맞춰 입력합니다. 이 페이지에는 실제 예약자별 키번호를 저장하거나 노출하지 않습니다.</p>
+          </article>
+
+          <article class="checkin-card">
+            <h3>오시는 길</h3>
+            <ul class="check-list">
+              <li>세븐일레븐과 베제투스 레스토랑 사이 골목으로 들어오세요.</li>
+              <li>숙소는 베제투스 레스토랑 2층 단독 건물입니다.</li>
+              <li>녹사평역 2번 출구에서 해방촌 입구 방향으로 올라오면 도보 약 15분입니다.</li>
+              <li>마을버스를 이용하면 약 10분 정도 소요됩니다.</li>
+            </ul>
+            <div class="contact-actions">
+              <a class="hotel-btn primary" href="https://www.google.com/maps/search/?api=1&query=%EC%84%9C%EC%9A%B8%EC%8B%9C%20%EC%9A%A9%EC%82%B0%EA%B5%AC%20%EC%8B%A0%ED%9D%A5%EB%A1%9C%2059%202%EC%B8%B5" target="_blank" rel="noopener"><span class="mi">map</span>지도 열기</a>
+              <button class="hotel-btn" type="button" data-open-chat><span class="mi">forum</span>문의하기</button>
+            </div>
+          </article>
+
+          <article class="checkin-card notice-card">
+            <h3>보안과 프라이버시</h3>
+            <ul class="check-list">
+              <li>안전과 보안을 위해 CCTV는 현관 입구에만 설치되어 있습니다.</li>
+              <li>객실 안에 머무는 중 모르는 사람이 벨을 누르면 응답하지 마세요.</li>
+              <li>숙소 오시는 길이나 체크인 중 문제가 생기면 바로 연락 주세요.</li>
+            </ul>
+          </article>
+
+          <article class="checkin-card">
+            <h3>입실 후 확인</h3>
+            <ul class="check-list">
+              <li>체크인 후 룸 상태를 확인하고 불편한 점은 바로 메시지로 알려주세요.</li>
+              <li>주변 맛집과 배달 정보는 전날 안내 링크에서 확인할 수 있습니다.</li>
+              <li>필요한 것이 있으면 언제든 메시지를 남겨주시고, 급한 경우 전화로 연락 주세요.</li>
+            </ul>
+            <div class="contact-actions single">
+              <a class="hotel-btn primary" href="https://juas.notion.site/HBC-BLUES-stay-65690275250d4509ae3149965c0f5a48?pvs=4" target="_blank" rel="noopener"><span class="mi">menu_book</span>전날 안내 링크 보기</a>
+            </div>
+          </article>
+
+          <article class="checkin-card">
+            <h3>꼭 지켜주세요</h3>
+            <ul class="check-list">
+              <li>객실 내부, 베란다, 현관 입구, 계단은 모두 금연 구역입니다.</li>
+              <li>흡연은 1층 지정 장소에서만 가능하며 담배꽁초는 지정된 통에 버려주세요.</li>
+              <li>반려동물 동반과 기준 인원 외 방문자 입실은 불가합니다.</li>
+              <li>저녁 9시 이후에는 매너타임입니다. 늦은 시간에는 소리를 낮춰주세요.</li>
+              <li>실내에서는 간단한 취사만 가능하며 냄새가 강한 음식은 피해주세요.</li>
+              <li>인원수에 맞춰 일회용 칫솔과 수건이 제공됩니다.</li>
+            </ul>
+          </article>
+        </div>
+      </section>
+
+      <section class="screen gallery-screen" data-screen="gallery">
+        <div class="gallery-head">
+          <p class="section-kicker">ROOM GALLERY</p>
+          <h2>객실 둘러보기</h2>
+          <p>썸네일을 좌우로 넘겨 원하는 공간을 선택하고, 아래에서 크게 확인하세요.</p>
+        </div>
+        <div class="gallery-thumbs" role="listbox" aria-label="숙소 사진 선택">
+          <button class="gallery-thumb active" type="button" role="option" aria-selected="true" data-gallery-index="0" data-full="../assets/extay/crops/main-living-logo.png" data-title="거실 라운지" data-desc="따뜻한 조명과 편안한 소파가 있는 메인 거실 공간입니다." data-alt="익스테이 거실 라운지 사진"><img src="../assets/extay/crops/main-living-logo.png" alt=""></button>
+          <button class="gallery-thumb" type="button" role="option" aria-selected="false" data-gallery-index="1" data-full="../assets/extay/crops/hero-extay.jpg" data-title="다이닝 & 키친" data-desc="모임과 식사를 편하게 즐길 수 있는 다이닝 공간입니다." data-alt="익스테이 다이닝과 키친 사진"><img src="../assets/extay/crops/hero-extay.jpg" alt=""></button>
+          <button class="gallery-thumb" type="button" role="option" aria-selected="false" data-gallery-index="2" data-full="../assets/extay/crops/rooftop-namsan.jpg" data-title="남산 루프탑 뷰" data-desc="해방촌의 분위기와 남산타워를 함께 볼 수 있는 루프탑 뷰입니다." data-alt="익스테이 루프탑 남산타워 뷰 사진"><img src="../assets/extay/crops/rooftop-namsan.jpg" alt=""></button>
+          <button class="gallery-thumb" type="button" role="option" aria-selected="false" data-gallery-index="3" data-full="../assets/extay/crops/rooftop.jpg" data-title="루프탑" data-desc="머무는 동안 잠시 바람을 쐴 수 있는 루프탑 공간입니다." data-alt="익스테이 루프탑 사진"><img src="../assets/extay/crops/rooftop.jpg" alt=""></button>
+          <button class="gallery-thumb" type="button" role="option" aria-selected="false" data-gallery-index="4" data-full="../assets/extay/crops/tv-hdmi.jpg" data-title="TV & 미디어" data-desc="TV와 OTT 이용을 위한 미디어 공간입니다." data-alt="익스테이 TV와 미디어 사진"><img src="../assets/extay/crops/tv-hdmi.jpg" alt=""></button>
+          <button class="gallery-thumb" type="button" role="option" aria-selected="false" data-gallery-index="5" data-full="../assets/extay/crops/secret-storage-guide.jpg" data-title="비품 보관함" data-desc="수건과 휴지, 쓰레기 봉투 등 여분 비품을 확인할 수 있는 공간입니다." data-alt="익스테이 비품 보관함 사진"><img src="../assets/extay/crops/secret-storage-guide.jpg" alt=""></button>
+          <button class="gallery-thumb" type="button" role="option" aria-selected="false" data-gallery-index="6" data-full="../assets/extay/crops/towels.jpeg" data-title="수건과 비품" data-desc="숙박 중 필요한 수건과 기본 비품을 정리해둔 공간입니다." data-alt="익스테이 수건과 비품 사진"><img src="../assets/extay/crops/towels.jpeg" alt=""></button>
+        </div>
+        <figure class="gallery-viewer">
+          <div class="gallery-main-wrap"><img id="galleryMain" src="../assets/extay/crops/main-living-logo.png" alt="익스테이 거실 라운지 사진"></div>
+          <figcaption><strong id="galleryTitle">거실 라운지</strong><span id="galleryDesc">따뜻한 조명과 편안한 소파가 있는 메인 거실 공간입니다.</span></figcaption>
+        </figure>
+      </section>
+
       <section class="screen" data-screen="wifi"><h2 class="page-title">와이파이</h2><p class="page-sub">숙소 Wi-Fi ID와 비밀번호입니다. 대소문자와 특수문자를 그대로 입력해 주세요.</p><article class="card"><div class="info-row"><span class="circle"><span class="mi">router</span></span><div><small>ID</small><b>U+Net46F0_5G</b></div><button class="mini-btn" data-copy="U+Net46F0_5G">복사</button></div><div class="info-row"><span class="circle"><span class="mi">password</span></span><div><small>Password</small><b>8H3#22E97B</b></div><button class="mini-btn" data-copy="8H3#22E97B">복사</button></div><div class="info-row"><span class="circle"><span class="mi">info</span></span><div><small>연결 안내</small><b>연결이 안 되면 Wi-Fi를 껐다 켠 뒤 다시 선택해 주세요.</b></div></div></article></section>
 
       <section class="screen" data-screen="appliances"><h2 class="page-title">기기 사용법</h2><p class="page-sub">필요한 기기를 열어서 사용 방법과 사진을 확인하세요.</p>
@@ -229,7 +378,8 @@ body:not(.is-home) main{padding-top:0}
   <aside class="menu-panel" id="menuPanel" aria-label="빠른 메뉴">
     <div class="menu-panel-head"><strong>EXTAY</strong><button class="icon-btn" type="button" id="closeMenu" aria-label="메뉴 닫기"><span class="mi">close</span></button></div>
     <button class="menu-link" type="button" data-go="home"><span>Home</span><small>처음 화면</small></button>
-    <a class="menu-link" href="../assets/guidebook/Extay_Mansion_Haebangchon_Guide.pdf" target="_blank" rel="noopener"><span>Check-in Guide</span><small>가이드북 열기</small></a>
+    <button class="menu-link" type="button" data-go="gallery"><span>Room Gallery</span><small>숙소 사진 보기</small></button>
+    <button class="menu-link" type="button" data-go="checkin"><span>Check-in Guide</span><small>입실 방법과 도어락 안내</small></button>
     <button class="menu-link" type="button" data-go="wifi"><span>Wi-Fi</span><small>네트워크 정보</small></button>
     <button class="menu-link" type="button" data-go="appliances"><span>Stay Guide</span><small>TV · 온수 · 비품 · 옥상</small></button>
     <button class="menu-link" type="button" data-go="laundry"><span>Laundry</span><small>세탁기 · 건조기 사용법</small></button>
@@ -321,10 +471,12 @@ body:not(.is-home) main{padding-top:0}
       text(q('[data-screen="trash"] .page-title'),tr.trash.title); text(q('[data-screen="trash"] .page-sub'),tr.trash.sub); const trashCards=qa('[data-screen="trash"] article.card'); if(trashCards[0]){text(trashCards[0].querySelector('h3'),tr.trash.basis);text(trashCards[0].querySelector('.mini-btn'),tr.trash.types);eachText([...trashCards[0].querySelectorAll('.guide-item span')],tr.trash.items);eachText([...trashCards[0].querySelectorAll('figcaption')],tr.trash.captions)}; [1,2,3].forEach((idx,i)=>{const card=trashCards[idx],data=tr.trash.cards[i];if(card&&data){text(card.querySelector('h3'),data[0]);text(card.querySelector('p'),data[1]);eachText([...card.querySelectorAll('figcaption')],data[2])}});
       text(q('.chat-head h2'),tr.chat.title); text(q('.chat-head p'),tr.chat.sub); const firstBot=q('.chat-log .msg.bot:first-child'); if(firstBot&&!q('.chat-log .msg.user'))text(firstBot,tr.chat.hello); text(q('.chat-note'),tr.chat.note); const input=q('#chatInput'); if(input)input.placeholder=tr.chat.placeholder; text(q('#toast'),tr.copied);
     }
-    function show(name, openDevice=''){document.body.classList.toggle('is-home',name==='home');screens.forEach(s=>s.classList.toggle('active',s.dataset.screen===name));tabs.forEach(t=>t.classList.toggle('active',t.dataset.go===name));if(openDevice){document.querySelectorAll('details.device').forEach(d=>{d.open=d.dataset.device===openDevice});const target=document.querySelector(`details.device[data-device="${openDevice}"]`);if(target)setTimeout(()=>target.scrollIntoView({behavior:'smooth',block:'start'}),80)}else if(name==='appliances'){document.querySelectorAll('details.device').forEach((d,i)=>{d.open=i===0})}scrollTo({top:0,behavior:'smooth'});history.replaceState(null,'','#'+name)}
+    function show(name, openDevice=''){document.body.classList.toggle('is-home',name==='home');document.body.classList.toggle('is-gallery',name==='gallery');document.body.classList.toggle('is-checkin',name==='checkin');screens.forEach(s=>s.classList.toggle('active',s.dataset.screen===name));tabs.forEach(t=>t.classList.toggle('active',t.dataset.go===name));if(openDevice){document.querySelectorAll('details.device').forEach(d=>{d.open=d.dataset.device===openDevice});const target=document.querySelector(`details.device[data-device="${openDevice}"]`);if(target)setTimeout(()=>target.scrollIntoView({behavior:'smooth',block:'start'}),80)}else if(name==='appliances'){document.querySelectorAll('details.device').forEach((d,i)=>{d.open=i===0})}scrollTo({top:0,behavior:'smooth'});history.replaceState(null,'','#'+name)}
     document.addEventListener('click',e=>{const g=e.target.closest('[data-go]'); if(g){show(g.dataset.go,g.dataset.open||'')}});
     document.addEventListener('click',e=>{const s=e.target.closest('[data-scroll-target]'); if(!s)return; const target=document.querySelector(s.dataset.scrollTarget); if(target)target.scrollIntoView({behavior:'smooth',block:'start'});});
-    document.addEventListener('click',async e=>{const c=e.target.closest('[data-copy]'); if(!c)return; try{await navigator.clipboard.writeText(c.dataset.copy); toast(uiText[currentLang].copied)}catch(_){toast(c.dataset.copy)}});
+    function selectGalleryImage(button){const main=q('#galleryMain'), title=q('#galleryTitle'), desc=q('#galleryDesc'); if(!button||!main||!title||!desc)return; qa('.gallery-thumb').forEach(t=>{const active=t===button;t.classList.toggle('active',active);t.setAttribute('aria-selected',active?'true':'false')}); main.src=button.dataset.full; main.alt=button.dataset.alt||''; title.textContent=button.dataset.title||''; desc.textContent=button.dataset.desc||''; button.scrollIntoView({behavior:'smooth',inline:'center',block:'nearest'});}
+    document.addEventListener('click',e=>{const thumb=e.target.closest('.gallery-thumb'); if(thumb)selectGalleryImage(thumb)});
+    document.addEventListener('click',async e=>{const c=e.target.closest('[data-copy]'); if(!c)return; try{await navigator.clipboard.writeText(c.dataset.copy); toast(uiText[currentLang].copied)}catch(_){toast(c.dataset.copy)}}); 
     function toast(t){const el=document.getElementById('toast');el.textContent=t;el.classList.add('show');clearTimeout(window.__t);window.__t=setTimeout(()=>el.classList.remove('show'),1500)}
     const initial=location.hash.replace('#',''); if(initial && document.querySelector(`[data-screen="${initial}"]`)) show(initial);
     const smartModes={};
