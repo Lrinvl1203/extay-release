@@ -8,6 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Noto+Serif+KR:wght@500;600&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
   <style>
     @font-face{font-family:'Grindy Brush';src:url('assets/font/Grindy%20Brush.otf') format('opentype');font-weight:400;font-style:normal;font-display:swap}
@@ -58,26 +59,770 @@ body{background:var(--bg);color:var(--ink)}
 .hero:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(248,243,235,0) 30%,rgba(248,243,235,.64) 70%,rgba(248,243,235,.98) 100%);z-index:1;pointer-events:none}
 .hero-copy{display:none}
 .hero .label{margin:8px 0 0;color:var(--secondary);font-size:18px;line-height:1.28;letter-spacing:0;text-transform:none;font-weight:800}
-.hero-title{margin:0;font-family:'Grindy Brush','Brush Script MT','Segoe Script',cursive;font-size:43px;line-height:.92;letter-spacing:0;font-weight:400;color:#17131A;white-space:nowrap;transform:rotate(-3deg);transform-origin:left center;text-shadow:0 2px 0 rgba(255,255,255,.72),0 10px 22px rgba(43,33,24,.18)}
-@media (max-width:360px){.hero{height:330px}.hero-copy{padding:0 16px 24px}.hero-title{font-size:34px}.hero .label{font-size:16px}}
+  .hero-title{margin:0;font-family:'Grindy Brush','Brush Script MT','Segoe Script',cursive;font-size:43px;line-height:.92;letter-spacing:0;font-weight:400;color:#17131A;white-space:nowrap;transform:rotate(-3deg);transform-origin:left center;text-shadow:0 2px 0 rgba(255,255,255,.72),0 10px 22px rgba(43,33,24,.18)}
+  @media (max-width:360px){.hero{height:330px}.hero-copy{padding:0 16px 24px}.hero-title{font-size:34px}.hero .label{font-size:16px}}
+
+/* Premium hotel landing redesign for the isolated test build. */
+body{background:#eee8df;color:#221b15;letter-spacing:0}
+body *{letter-spacing:0}
+.app{max-width:480px;padding-bottom:0;background:#f7f2ec;overflow:hidden}
+.screen{padding:24px 22px 44px}
+[data-screen="home"].screen{padding:0;background:#f7f2ec}
+.bottom{display:none}
+.top{width:min(480px,100%);height:72px;left:50%;transform:translateX(-50%);padding:0 28px;z-index:60;border:0;box-shadow:none}
+.top h1{font-family:'Playfair Display',Georgia,serif;font-size:22px;font-weight:700;text-align:left;line-height:1;color:inherit}
+.top .icon-btn{width:38px;height:38px;border-radius:999px}
+body.is-home .top{position:fixed;top:0;background:transparent;color:#fff;grid-template-columns:1fr auto}
+body.is-home .top h1{order:1;text-shadow:0 2px 18px rgba(0,0,0,.34)}
+body.is-home .top #menuTop{order:2;background:rgba(0,0,0,.08);color:#fff}
+body.is-home .top .top-actions{display:none}
+body.is-gallery .top,body.is-checkin .top,body.is-wifi .top,body.is-transport .top,body.is-guidebook .top,body.is-restaurants .top,body.is-faq .top{position:sticky;top:0;left:auto;transform:none;width:100%;background:rgba(247,242,236,.94);color:#221b15;grid-template-columns:1fr auto;border-bottom:1px solid rgba(216,198,180,.72);backdrop-filter:blur(18px)}
+body.is-gallery .top h1,body.is-checkin .top h1,body.is-wifi .top h1,body.is-transport .top h1,body.is-guidebook .top h1,body.is-restaurants .top h1,body.is-faq .top h1{order:1;text-align:left;text-shadow:none}
+body.is-gallery .top #menuTop,body.is-checkin .top #menuTop,body.is-wifi .top #menuTop,body.is-transport .top #menuTop,body.is-guidebook .top #menuTop,body.is-restaurants .top #menuTop,body.is-faq .top #menuTop{order:2;background:rgba(123,99,79,.1);color:#221b15}
+body.is-gallery .top .top-actions,body.is-checkin .top .top-actions,body.is-wifi .top .top-actions,body.is-transport .top .top-actions,body.is-guidebook .top .top-actions,body.is-restaurants .top .top-actions,body.is-faq .top .top-actions{display:none}
+body:not(.is-home):not(.is-gallery):not(.is-checkin):not(.is-wifi):not(.is-transport):not(.is-guidebook):not(.is-restaurants):not(.is-faq) .top{position:sticky;top:0;left:auto;transform:none;width:100%;background:rgba(247,242,236,.94);color:#221b15;border-bottom:1px solid rgba(216,198,180,.72);backdrop-filter:blur(18px)}
+body:not(.is-home):not(.is-gallery):not(.is-checkin):not(.is-wifi):not(.is-transport):not(.is-guidebook):not(.is-restaurants):not(.is-faq) .top h1{text-align:center}
+.landing-hero{position:relative;min-height:74svh;background:linear-gradient(180deg,rgba(20,15,10,.34) 0%,rgba(20,15,10,.28) 36%,rgba(20,15,10,.68) 100%),url('assets/extay/crops/main-living-logo.png') center/cover no-repeat;color:#fff;isolation:isolate}
+.landing-hero:after{content:"";position:absolute;inset:auto 0 0;height:24%;background:linear-gradient(180deg,rgba(247,242,236,0),#f7f2ec);pointer-events:none}
+.hero-panel{position:absolute;left:0;right:0;bottom:0;z-index:1;padding:0 34px 38px}
+.eyebrow,.section-kicker{margin:0 0 12px;font-size:12px;font-weight:700;line-height:1.2;text-transform:uppercase;color:inherit}
+.landing-hero .hero-title{margin:0 0 16px;font-family:'Playfair Display',Georgia,serif;font-size:58px;line-height:.94;font-weight:700;color:#fff;text-shadow:0 2px 26px rgba(0,0,0,.32);transform:none;white-space:normal}
+.hero-copy{margin:0 0 28px;font-family:'Noto Serif KR','Pretendard',serif;font-size:16px;line-height:1.72;color:rgba(255,255,255,.94)}
+.hero-actions{display:grid;grid-template-columns:1fr 1fr;gap:12px;max-width:336px}
+.hotel-btn{min-height:54px;border-radius:13px;border:1px solid rgba(255,255,255,.55);display:flex;align-items:center;justify-content:center;gap:8px;padding:0 15px;font-size:14px;font-weight:700;line-height:1;color:#fff;background:rgba(255,255,255,.06);backdrop-filter:blur(12px);cursor:pointer}
+.hotel-btn .mi{font-size:20px}
+.hotel-btn.primary{border-color:#fff;background:#fff;color:#241d17;box-shadow:0 10px 30px rgba(0,0,0,.16)}
+.hotel-btn.ghost{color:#fff}
+.hotel-btn.compact{width:auto;min-height:42px;padding:0 18px;font-size:13px}
+.scroll-cue{margin-top:36px;border:0;background:transparent;color:#fff;display:inline-grid;gap:2px;padding:0;font-size:11px;font-weight:700;line-height:1.2;cursor:pointer}
+.scroll-cue .mi{font-size:22px}
+.hotel-section{padding:36px 31px 0}
+.section-kicker{color:#77685a}
+.hotel-heading{margin:0 0 22px;font-size:24px;line-height:1.18;font-weight:700;color:#221b15}
+.quick-access-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;width:100%}
+.quick-tile{width:100%;min-width:0;min-inline-size:0;max-width:100%;overflow:hidden;min-height:112px;border:1px solid rgba(216,198,180,.62);border-radius:14px;background:rgba(255,255,255,.82);box-shadow:0 12px 32px rgba(58,43,30,.08);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;padding:10px 5px;text-align:center;color:#221b15;cursor:pointer}
+.quick-tile .mi{font-size:27px;color:#7b634f}
+.quick-tile b{display:block;max-width:100%;font-size:11px;line-height:1.2;font-weight:800;white-space:normal;overflow-wrap:anywhere}
+.quick-tile small{display:block;max-width:100%;font-size:9px;line-height:1.3;color:#7d6d5e;white-space:normal;overflow-wrap:anywhere}
+.stay-card-grid{display:grid;grid-template-columns:1fr 1fr;gap:9px}
+.image-card{position:relative;min-height:142px;border:0;border-radius:13px;overflow:hidden;background:linear-gradient(180deg,rgba(26,19,14,.06),rgba(26,19,14,.68)),var(--card-img) center/cover no-repeat;color:#fff;box-shadow:0 12px 28px rgba(58,43,30,.12);display:flex;flex-direction:column;justify-content:flex-end;align-items:flex-start;text-align:left;padding:18px;cursor:pointer}
+.image-card:before{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.02) 20%,rgba(0,0,0,.64) 100%);pointer-events:none}
+.image-card span,.image-card small{position:relative;z-index:1}
+.image-card span{font-size:17px;font-weight:800;line-height:1.25}
+.image-card small{margin-top:7px;font-size:12px;line-height:1.38;color:rgba(255,255,255,.9)}
+.concierge-banner{position:relative;overflow:hidden;border-radius:16px;min-height:174px;padding:28px 28px 26px;color:#fff;background:linear-gradient(90deg,rgba(70,54,41,.82),rgba(70,54,41,.46)),url('assets/extay/smart-card/stay-day.png') center/cover no-repeat;box-shadow:0 16px 38px rgba(58,43,30,.13)}
+.concierge-banner .section-kicker{color:rgba(255,255,255,.82)}
+.concierge-banner h2{margin:0 0 8px;font-size:22px;line-height:1.25;color:#fff}
+.concierge-banner p{margin:0 0 18px;font-size:13px;line-height:1.5;color:rgba(255,255,255,.88)}
+.contact-heading{display:flex;align-items:center;gap:10px}
+.contact-heading .section-kicker{margin:0}
+.contact-mini-actions{display:flex;align-items:center;gap:6px}
+.contact-icon-btn{width:27px;height:27px;border:1px solid rgba(123,99,79,.2);border-radius:50%;background:#fffaf4;color:#6d5643;box-shadow:0 7px 16px rgba(58,43,30,.07);display:grid;place-items:center;cursor:pointer;padding:0}
+.contact-icon-btn .mi{font-size:16px}
+.kakao-symbol{width:16px;height:13px;border-radius:8px;background:#3b2b1e;color:#f7d95b;display:grid;place-items:center;font-size:8px;font-weight:900;line-height:1;position:relative;font-family:Arial,sans-serif}
+.kakao-symbol:after{content:"";position:absolute;left:3px;bottom:-3px;width:5px;height:5px;background:#3b2b1e;transform:rotate(45deg);border-radius:1px}
+.hotel-footer{padding:34px 0 28px;text-align:center;color:#7d6d5e;font-size:12px}
+.hotel-footer strong{display:block;margin-bottom:8px;font-family:'Playfair Display',Georgia,serif;font-size:18px;color:#6d5643}
+.contact-backdrop{position:fixed;inset:0;background:rgba(28,22,17,.34);backdrop-filter:blur(5px);z-index:85;opacity:0;pointer-events:none;transition:opacity .22s ease}
+.contact-backdrop.open{opacity:1;pointer-events:auto}
+.contact-modal{position:fixed;left:50%;top:50%;width:min(390px,calc(100% - 40px));z-index:90;background:#fffaf4;border:1px solid rgba(216,198,180,.76);border-radius:24px;box-shadow:0 24px 70px rgba(44,34,25,.24);padding:22px;transform:translate(-50%,-46%) scale(.96);opacity:0;pointer-events:none;transition:opacity .22s ease,transform .22s ease}
+.contact-modal.open{opacity:1;pointer-events:auto;transform:translate(-50%,-50%) scale(1)}
+.contact-modal-head{display:flex;align-items:flex-start;justify-content:space-between;gap:14px;margin-bottom:18px}
+.contact-modal-head h2{margin:0;font-size:23px;line-height:1.2;color:#221b15}
+.contact-modal-head p{margin:7px 0 0;font-size:13px;line-height:1.5;color:#7d6d5e;word-break:keep-all}
+.contact-close{width:38px;height:38px;border:0;border-radius:50%;background:#efe4d6;color:#221b15;display:grid;place-items:center;cursor:pointer;flex:0 0 auto}
+.contact-close .mi{font-size:22px}
+.contact-phone-card{border-radius:18px;background:#efe4d6;padding:17px;margin-bottom:12px}
+.contact-phone-card small{display:block;margin-bottom:7px;color:#8a7663;font-size:11px;font-weight:900;text-transform:uppercase}
+.contact-phone-card b{display:block;color:#221b15;font-size:26px;line-height:1.2;letter-spacing:0;overflow-wrap:anywhere}
+.contact-phone-card.link b{font-size:13px;line-height:1.45;font-weight:800}
+.contact-modal-actions{display:grid;grid-template-columns:1fr;gap:9px}
+.contact-modal-actions .hotel-btn{min-height:46px;border-radius:999px;border-color:rgba(123,99,79,.24);background:#fff;color:#221b15;font-size:13px;text-decoration:none}
+.contact-modal-actions .hotel-btn.primary{background:#2b2118;color:#fff;border-color:#2b2118}
+.contact-modal-note{margin:13px 0 0;color:#8a7663;font-size:11px;line-height:1.45;word-break:keep-all}
+.contact-modal-note:empty{display:none}
+.menu-backdrop{position:fixed;inset:0;background:rgba(28,22,17,.28);backdrop-filter:blur(4px);z-index:75;opacity:0;pointer-events:none;transition:opacity .22s ease}
+.menu-backdrop.open{opacity:1;pointer-events:auto}
+.menu-panel{position:fixed;top:0;right:calc(50% - min(240px,50vw));width:min(360px,92vw);max-height:100dvh;overflow:auto;z-index:80;background:#fffaf4;color:#221b15;border-left:1px solid rgba(216,198,180,.74);box-shadow:-18px 0 54px rgba(44,34,25,.18);padding:22px 22px calc(22px + var(--safe));transform:translateX(105%);transition:transform .25s ease}
+.menu-panel.open{transform:translateX(0)}
+.menu-panel-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:20px}
+.menu-panel-head strong{font-family:'Playfair Display',Georgia,serif;font-size:24px}
+.menu-panel-head .icon-btn{background:#efe4d6}
+.menu-link{width:100%;border:0;border-bottom:1px solid rgba(216,198,180,.62);background:transparent;padding:18px 2px;display:block;text-align:left;color:#221b15;cursor:pointer}
+.menu-link span{display:block;font-size:19px;font-weight:800;line-height:1.2}
+.menu-link small{display:block;margin-top:6px;font-size:12px;line-height:1.3;color:#7d6d5e}
+.gallery-screen{background:#f7f2ec;min-height:calc(100dvh - 72px)}
+.gallery-head{padding:8px 0 20px}
+.gallery-head .section-kicker{margin-bottom:10px}
+.gallery-head h2{margin:0 0 10px;font-size:32px;line-height:1.08;color:#221b15;font-weight:800}
+.gallery-head p:last-child{margin:0;color:#6f5f50;font-size:14px;line-height:1.55}
+.gallery-thumbs{display:flex;gap:10px;overflow-x:auto;overscroll-behavior-x:contain;scroll-snap-type:x proximity;padding:4px 0 16px;margin:0 -22px 0 0}
+.gallery-thumbs::-webkit-scrollbar{display:none}
+.gallery-thumb{flex:0 0 82px;width:82px;height:94px;border:1px solid rgba(216,198,180,.72);border-radius:16px;background:#fff;padding:4px;box-shadow:0 8px 20px rgba(58,43,30,.08);scroll-snap-align:start;cursor:pointer}
+.gallery-thumb:first-child{margin-left:0}
+.gallery-thumb img{width:100%;height:100%;display:block;object-fit:cover;border-radius:12px}
+.gallery-thumb.active{border-color:#7b634f;box-shadow:0 0 0 2px rgba(123,99,79,.18),0 10px 24px rgba(58,43,30,.12)}
+.gallery-viewer{margin:4px 0 0;border-radius:24px;overflow:hidden;background:#241d17;box-shadow:0 20px 48px rgba(58,43,30,.16)}
+.gallery-main-wrap{background:#241d17;display:flex;align-items:center;justify-content:center}
+.gallery-viewer img{max-width:100%;max-height:64svh;width:auto;height:auto;display:block;object-fit:contain}
+.gallery-viewer figcaption{padding:18px 18px 20px;background:#fffaf4;color:#221b15}
+.gallery-viewer figcaption strong{display:block;font-size:19px;line-height:1.25}
+.gallery-viewer figcaption span{display:block;margin-top:7px;font-size:13px;line-height:1.45;color:#6f5f50}
+.wifi-screen{background:#f7f2ec;min-height:calc(100dvh - 72px)}
+.wifi-hero{position:relative;overflow:hidden;border-radius:26px;min-height:236px;padding:28px 24px;display:flex;flex-direction:column;justify-content:flex-end;color:#fff;background:linear-gradient(180deg,rgba(35,26,18,.12),rgba(35,26,18,.84)),url('assets/wifi-hero.jpg') center/cover no-repeat;box-shadow:0 18px 44px rgba(58,43,30,.16);margin-bottom:20px}
+.wifi-hero .section-kicker{color:rgba(255,255,255,.82)}
+.wifi-hero .page-title{margin:0;font-family:'Noto Serif KR','Pretendard',serif;font-size:43px;line-height:1.12;font-weight:600;color:#fff;letter-spacing:0;text-shadow:0 2px 24px rgba(0,0,0,.28)}
+.wifi-hero .page-sub{margin:14px 0 0;font-size:14px;line-height:1.62;color:rgba(255,255,255,.9);word-break:keep-all;text-shadow:0 2px 18px rgba(0,0,0,.28)}
+.wifi-stack{display:grid;gap:14px}
+.wifi-card{background:#fffaf4;border:1px solid rgba(216,198,180,.72);border-radius:22px;box-shadow:0 12px 32px rgba(58,43,30,.08);padding:22px}
+.wifi-card h3{margin:0 0 14px;font-size:21px;line-height:1.25;color:#221b15}
+.wifi-credentials{display:grid;gap:12px}
+.wifi-credential{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:14px;align-items:center;border-radius:18px;background:#f3eadf;padding:17px}
+.wifi-credential.wide{grid-template-columns:1fr}
+.wifi-credential small{display:block;margin-bottom:7px;color:#8a7663;font-size:11px;font-weight:800;text-transform:uppercase}
+.wifi-credential b{display:block;color:#221b15;font-size:20px;line-height:1.26;overflow-wrap:anywhere}
+.wifi-credential.wide b{font-size:15px;line-height:1.5;word-break:keep-all}
+.wifi-credential .mini-btn{margin:0;min-width:72px;border:0;border-radius:999px;background:#2b2118;color:#fff;padding:12px 16px;font-size:13px}
+.wifi-steps{counter-reset:wifi;display:grid;gap:12px;margin:0;padding:0;list-style:none}
+.wifi-steps li{counter-increment:wifi;display:grid;grid-template-columns:34px 1fr;gap:12px;align-items:start}
+.wifi-steps li:before{content:counter(wifi);width:34px;height:34px;border-radius:50%;display:grid;place-items:center;background:#2b2118;color:#fff;font-size:13px;font-weight:800}
+.wifi-steps strong{display:block;margin-bottom:4px;font-size:15px;color:#221b15}
+.wifi-steps span{display:block;font-size:13px;line-height:1.55;color:#665646;word-break:keep-all}
+.wifi-list{display:grid;gap:10px;margin:0;padding:0;list-style:none}
+.wifi-list li{position:relative;padding-left:24px;font-size:14px;line-height:1.55;color:#665646;word-break:keep-all}
+.wifi-list li:before{content:"";position:absolute;left:0;top:.62em;width:7px;height:7px;border-radius:50%;background:#7b634f}
+.wifi-soft-card{background:#efe4d6;border-color:rgba(123,99,79,.26)}
+.wifi-chat{margin-top:16px;color:#fff;background:#2b2118;border-color:#2b2118}
+.transport-screen{background:#f7f2ec;min-height:calc(100dvh - 72px)}
+.transport-hero{position:relative;overflow:hidden;border-radius:26px;min-height:246px;padding:28px 24px;display:flex;flex-direction:column;justify-content:flex-end;color:#fff;background:linear-gradient(180deg,rgba(35,26,18,.16),rgba(35,26,18,.84)),url('assets/extay/crops/rooftop-namsan.jpg') center/cover no-repeat;box-shadow:0 18px 44px rgba(58,43,30,.16);margin-bottom:20px}
+.transport-hero .section-kicker{color:rgba(255,255,255,.82)}
+.transport-hero h2{margin:0;font-family:'Noto Serif KR','Pretendard',serif;font-size:40px;line-height:1.12;font-weight:600;color:#fff;text-shadow:0 2px 24px rgba(0,0,0,.28)}
+.transport-hero p:last-child{margin:14px 0 0;font-size:14px;line-height:1.62;color:rgba(255,255,255,.9);word-break:keep-all;text-shadow:0 2px 18px rgba(0,0,0,.28)}
+.transport-stack{display:grid;gap:14px}
+.transport-card{background:#fffaf4;border:1px solid rgba(216,198,180,.72);border-radius:22px;box-shadow:0 12px 32px rgba(58,43,30,.08);padding:22px}
+.transport-card h3{margin:0 0 14px;font-size:21px;line-height:1.25;color:#221b15}
+.transport-card p{margin:0;color:#665646;font-size:14px;line-height:1.62;word-break:keep-all}
+.transport-actions{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:16px}
+.transport-actions .hotel-btn{color:#221b15;border-color:rgba(123,99,79,.28);background:#fff}
+.transport-actions .hotel-btn.primary{background:#2b2118;color:#fff;border-color:#2b2118}
+.transport-facts{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.transport-fact{border-radius:16px;background:#f3eadf;padding:15px}
+.transport-fact small{display:block;margin-bottom:6px;color:#8a7663;font-size:11px;font-weight:800;text-transform:uppercase}
+.transport-fact b{display:block;color:#221b15;font-size:15px;line-height:1.42;word-break:keep-all}
+.route-card{display:grid;gap:14px;border-radius:20px;background:#fff;border:1px solid rgba(216,198,180,.66);padding:18px;margin-top:12px}
+.route-card:first-of-type{margin-top:0}
+.route-top{display:flex;align-items:flex-start;justify-content:space-between;gap:12px}
+.route-top h4{margin:0;font-size:18px;line-height:1.28;color:#221b15}
+.route-badge{flex:0 0 auto;border-radius:999px;background:#efe4d6;color:#7b634f;padding:7px 10px;font-size:10px;font-weight:900;letter-spacing:.04em;text-transform:uppercase}
+.route-meta{display:flex;flex-wrap:wrap;gap:7px}
+.route-meta span{border-radius:999px;background:#f3eadf;color:#6b5a4a;padding:7px 10px;font-size:11px;font-weight:800}
+.route-steps{counter-reset:route;display:grid;gap:11px;margin:0;padding:0;list-style:none}
+.route-steps li{counter-increment:route;display:grid;grid-template-columns:30px 1fr;gap:10px;align-items:start;font-size:13px;line-height:1.55;color:#665646;word-break:keep-all}
+.route-steps li:before{content:counter(route);width:30px;height:30px;border-radius:50%;display:grid;place-items:center;background:#2b2118;color:#fff;font-size:12px;font-weight:800}
+.route-steps b{display:block;margin-bottom:3px;color:#221b15;font-size:14px}
+.transport-note{background:#efe4d6;border-color:rgba(123,99,79,.26)}
+.transport-note ul{display:grid;gap:10px;margin:0;padding:0;list-style:none}
+.transport-note li{position:relative;padding-left:24px;font-size:14px;line-height:1.55;color:#665646;word-break:keep-all}
+.transport-note li:before{content:"";position:absolute;left:0;top:.62em;width:7px;height:7px;border-radius:50%;background:#7b634f}
+.guidebook-screen{background:#f7f2ec;min-height:calc(100dvh - 72px)}
+.guidebook-head{padding:8px 0 18px}
+.guidebook-head .section-kicker{margin-bottom:10px}
+.guidebook-head h2{margin:0 0 10px;font-size:32px;line-height:1.08;color:#221b15;font-weight:800}
+.guidebook-head p:last-child{margin:0;color:#6f5f50;font-size:14px;line-height:1.55;word-break:keep-all}
+.guidebook-viewer{background:#fffaf4;border:1px solid rgba(216,198,180,.72);border-radius:22px;box-shadow:0 12px 32px rgba(58,43,30,.08);padding:16px}
+.guidebook-toolbar{display:grid;grid-template-columns:1fr auto;gap:10px;align-items:center;margin-bottom:14px}
+.guidebook-lang{display:grid;grid-template-columns:1fr 1fr;gap:8px;padding:4px;border-radius:999px;background:#efe4d6}
+.guidebook-lang button{border:0;border-radius:999px;background:transparent;min-height:38px;font-size:13px;font-weight:900;color:#7b634f;cursor:pointer}
+.guidebook-lang button.active{background:#2b2118;color:#fff}
+.guidebook-open{min-height:46px;border-radius:999px;border:1px solid rgba(123,99,79,.24);background:#fff;display:flex;align-items:center;justify-content:center;gap:6px;padding:0 14px;font-size:13px;font-weight:800;color:#221b15}
+.guidebook-open .mi{font-size:18px}
+.guidebook-stage{position:relative;min-height:180px;border-radius:18px;background:#efe4d6;display:grid;place-items:center;overflow:hidden;padding:12px}
+.guidebook-canvas-wrap{width:100%;display:grid;place-items:center}
+.guidebook-canvas-wrap canvas{max-width:100%;height:auto;border-radius:10px;background:#fff;box-shadow:0 10px 26px rgba(58,43,30,.12)}
+.guidebook-status{position:absolute;inset:0;display:grid;place-items:center;text-align:center;padding:22px;color:#6b5a4a;font-size:14px;line-height:1.55;word-break:keep-all;z-index:2}
+.guidebook-status.hidden{display:none}
+.guidebook-fallback{display:none;width:100%;height:68svh;border:0;border-radius:12px;background:#fff}
+.guidebook-viewer.fallback .guidebook-canvas-wrap{display:none}
+.guidebook-viewer.fallback .guidebook-fallback{display:block}
+.guidebook-pager{display:grid;grid-template-columns:48px 1fr 48px;align-items:center;gap:12px;margin-top:14px}
+.guidebook-nav{width:48px;height:48px;border:0;border-radius:50%;background:#2b2118;color:#fff;display:grid;place-items:center;cursor:pointer}
+.guidebook-nav:disabled{opacity:.34;cursor:default}
+.guidebook-nav .mi{font-size:25px}
+.guidebook-page-label{text-align:center;color:#221b15;font-size:14px;font-weight:900}
+.restaurants-screen{background:#f7f2ec;min-height:calc(100dvh - 72px)}
+.restaurants-hero{position:relative;overflow:hidden;border-radius:26px;min-height:236px;padding:28px 24px;display:flex;flex-direction:column;justify-content:flex-end;color:#fff;background:linear-gradient(180deg,rgba(35,26,18,.12),rgba(35,26,18,.84)),url('assets/restaurants-hero.jpg') center/cover no-repeat;box-shadow:0 18px 44px rgba(58,43,30,.16);margin-bottom:20px}
+.restaurants-hero .section-kicker{color:rgba(255,255,255,.82)}
+.restaurants-hero h2{margin:0;font-family:'Noto Serif KR','Pretendard',serif;font-size:40px;line-height:1.12;font-weight:600;color:#fff;text-shadow:0 2px 24px rgba(0,0,0,.28)}
+.restaurants-hero p:last-child{margin:14px 0 0;font-size:14px;line-height:1.62;color:rgba(255,255,255,.9);word-break:keep-all;text-shadow:0 2px 18px rgba(0,0,0,.28)}
+.restaurants-controls{display:grid;gap:12px;margin-bottom:16px}
+.restaurants-filter{display:flex;gap:8px;overflow-x:auto;padding:2px 0 4px;scroll-snap-type:x proximity}
+.restaurants-filter::-webkit-scrollbar{display:none}
+.restaurant-chip{flex:0 0 auto;border:1px solid rgba(216,198,180,.8);border-radius:999px;background:#fffaf4;color:#7b634f;min-height:38px;padding:0 14px;font-size:13px;font-weight:900;cursor:pointer;scroll-snap-align:start}
+.restaurant-chip.active{background:#2b2118;border-color:#2b2118;color:#fff}
+.restaurant-search{height:52px;border:1px solid rgba(216,198,180,.72);border-radius:16px;background:#fffaf4;display:grid;grid-template-columns:34px 1fr;align-items:center;padding:0 14px;box-shadow:0 10px 28px rgba(58,43,30,.06)}
+.restaurant-search .mi{font-size:22px;color:#7b634f}
+.restaurant-search input{width:100%;border:0;background:transparent;outline:0;font:inherit;font-size:15px;color:#221b15}
+.restaurant-summary{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:14px;color:#6f5f50;font-size:13px}
+.restaurant-summary b{font-size:15px;color:#221b15}
+.restaurant-source{font-weight:900;color:#7b634f}
+.restaurants-list{display:grid;gap:12px}
+.restaurant-card{overflow:hidden;background:#fffaf4;border:1px solid rgba(216,198,180,.72);border-radius:22px;box-shadow:0 12px 32px rgba(58,43,30,.08)}
+.restaurant-photo{margin:0;position:relative;aspect-ratio:16/10;background:#efe4d6;overflow:hidden}
+.restaurant-photo img{width:100%;height:100%;object-fit:cover;display:block;transform:scale(1.01)}
+.restaurant-body{padding:18px}
+.restaurant-top{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;margin-bottom:10px}
+.restaurant-name{margin:0;font-size:19px;line-height:1.28;color:#221b15}
+.restaurant-badge{flex:0 0 auto;border-radius:999px;background:#efe4d6;color:#7b634f;padding:7px 10px;font-size:10px;font-weight:900;white-space:nowrap}
+.restaurant-note{margin:0 0 12px;color:#665646;font-size:13px;line-height:1.55;word-break:keep-all}
+.restaurant-tags{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:14px}
+.restaurant-tags span{border-radius:999px;background:#f3eadf;color:#6b5a4a;padding:6px 9px;font-size:11px;font-weight:800}
+.restaurant-actions{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+.restaurant-actions a{min-width:0;border-radius:999px;border:1px solid rgba(123,99,79,.24);background:#fff;color:#221b15;min-height:38px;display:flex;align-items:center;justify-content:center;gap:5px;font-size:12px;font-weight:900}
+.restaurant-actions a.primary{background:#2b2118;color:#fff;border-color:#2b2118}
+.restaurant-actions .mi{font-size:17px}
+.restaurants-empty{display:none;background:#fffaf4;border:1px solid rgba(216,198,180,.72);border-radius:18px;padding:22px;text-align:center;color:#665646;font-size:14px;line-height:1.55}
+.restaurants-note{margin:16px 0 0;color:#7b634f;font-size:12px;line-height:1.55;word-break:keep-all}
+.faq-screen{background:#f7f2ec;min-height:calc(100dvh - 72px)}
+.faq-hero{position:relative;overflow:hidden;border-radius:26px;min-height:236px;padding:28px 24px;display:flex;flex-direction:column;justify-content:flex-end;color:#fff;background:linear-gradient(180deg,rgba(35,26,18,.14),rgba(35,26,18,.84)),url('assets/extay/smart-card/stay-day.png') center/cover no-repeat;box-shadow:0 18px 44px rgba(58,43,30,.16);margin-bottom:20px}
+.faq-hero .section-kicker{color:rgba(255,255,255,.82)}
+.faq-hero h2{margin:0;font-family:'Noto Serif KR','Pretendard',serif;font-size:40px;line-height:1.12;font-weight:600;color:#fff;text-shadow:0 2px 24px rgba(0,0,0,.28)}
+.faq-hero p:last-child{margin:14px 0 0;font-size:14px;line-height:1.62;color:rgba(255,255,255,.9);word-break:keep-all;text-shadow:0 2px 18px rgba(0,0,0,.28)}
+.faq-stack{display:grid;gap:14px}
+.faq-card{background:#fffaf4;border:1px solid rgba(216,198,180,.72);border-radius:22px;box-shadow:0 12px 32px rgba(58,43,30,.08);padding:18px}
+.faq-card.highlight{background:#efe4d6;border-color:rgba(123,99,79,.26)}
+.faq-section-title{display:flex;align-items:center;justify-content:space-between;gap:12px;margin:0 0 14px}
+.faq-section-title h3{margin:0;font-size:20px;line-height:1.25;color:#221b15}
+.faq-section-title span{flex:0 0 auto;border-radius:999px;background:#2b2118;color:#fff;padding:7px 10px;font-size:10px;font-weight:900}
+.faq-list{display:grid;gap:10px}
+.faq-item{border:1px solid rgba(216,198,180,.64);border-radius:18px;background:#fff;overflow:hidden}
+.faq-item summary{list-style:none;display:grid;grid-template-columns:minmax(0,1fr) 24px;gap:12px;align-items:center;padding:17px 16px;cursor:pointer;color:#221b15;font-size:15px;font-weight:900;line-height:1.38;word-break:keep-all}
+.faq-item summary::-webkit-details-marker{display:none}
+.faq-item summary:after{content:"+";width:24px;height:24px;border-radius:50%;display:grid;place-items:center;background:#efe4d6;color:#7b634f;font-size:18px;font-weight:900;line-height:1}
+.faq-item[open] summary:after{content:"-"}
+.faq-answer{padding:0 16px 17px;color:#665646;font-size:13px;line-height:1.62;word-break:keep-all}
+.faq-answer p{margin:0}
+.faq-answer ul{display:grid;gap:7px;margin:0;padding:0;list-style:none}
+.faq-answer li{position:relative;padding-left:18px}
+.faq-answer li:before{content:"";position:absolute;left:0;top:.68em;width:6px;height:6px;border-radius:50%;background:#7b634f}
+.faq-actions{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:12px}
+.faq-actions .hotel-btn{min-height:42px;border-radius:999px;border-color:rgba(123,99,79,.24);background:#fff;color:#221b15;font-size:12px}
+.faq-actions .hotel-btn.primary{background:#2b2118;color:#fff;border-color:#2b2118}
+.faq-source-note{margin:14px 0 0;color:#7b634f;font-size:12px;line-height:1.55;word-break:keep-all}
+.checkin-hero{position:relative;overflow:hidden;border-radius:26px;min-height:230px;padding:28px 24px;display:flex;flex-direction:column;justify-content:flex-end;color:#fff;background:linear-gradient(180deg,rgba(35,26,18,.18),rgba(35,26,18,.82)),url('assets/extay/crops/main-living-logo.png') center/cover no-repeat;box-shadow:0 18px 44px rgba(58,43,30,.16);margin-bottom:24px}
+.checkin-hero .section-kicker{color:rgba(255,255,255,.82)}
+.checkin-hero h2{margin:0;font-family:'Playfair Display',Georgia,serif;font-size:42px;line-height:.95;color:#fff}
+.checkin-hero p{margin:14px 0 0;font-size:14px;line-height:1.62;color:rgba(255,255,255,.9);word-break:keep-all}
+.checkin-stack{display:grid;gap:14px}
+.checkin-card{background:#fffaf4;border:1px solid rgba(216,198,180,.72);border-radius:22px;box-shadow:0 12px 32px rgba(58,43,30,.08);padding:22px}
+.checkin-card h3{margin:0 0 14px;font-size:21px;line-height:1.25;color:#221b15}
+.checkin-card p{margin:0;color:#665646;font-size:14px;line-height:1.62}
+.checkin-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.checkin-fact{border-radius:16px;background:#f3eadf;padding:15px}
+.checkin-fact small{display:block;margin-bottom:6px;color:#8a7663;font-size:11px;font-weight:800;text-transform:uppercase}
+.checkin-fact b{display:block;color:#221b15;font-size:15px;line-height:1.42;word-break:keep-all}
+.door-steps{counter-reset:door;display:grid;gap:12px;margin:0;padding:0;list-style:none}
+.door-steps li{counter-increment:door;display:grid;grid-template-columns:34px 1fr;gap:12px;align-items:start}
+.door-steps li:before{content:counter(door);width:34px;height:34px;border-radius:50%;display:grid;place-items:center;background:#2b2118;color:#fff;font-size:13px;font-weight:800}
+.door-steps strong{display:block;margin-bottom:4px;font-size:15px;color:#221b15}
+.door-steps span{display:block;font-size:13px;line-height:1.55;color:#665646;word-break:keep-all}
+.code-card{margin-top:14px;border-radius:16px;background:#2b2118;color:#fff;padding:16px}
+.code-card small{display:block;margin-bottom:8px;color:rgba(255,255,255,.72);font-size:11px;font-weight:800;text-transform:uppercase}
+.code-card b{display:block;font-size:18px;line-height:1.35}
+.check-list{display:grid;gap:10px;margin:0;padding:0;list-style:none}
+.check-list li{position:relative;padding-left:24px;font-size:14px;line-height:1.55;color:#665646;word-break:keep-all}
+.check-list li:before{content:"";position:absolute;left:0;top:.62em;width:7px;height:7px;border-radius:50%;background:#7b634f}
+.notice-card{background:#efe4d6;border-color:rgba(123,99,79,.26)}
+.contact-actions{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:16px}
+.contact-actions.single{grid-template-columns:1fr}
+.contact-actions .hotel-btn{color:#221b15;border-color:rgba(123,99,79,.28);background:#fff}
+.contact-actions .hotel-btn.primary{background:#2b2118;color:#fff;border-color:#2b2118}
+body:not(.is-home) main{padding-top:0}
+@media (max-width:380px){
+  .hero-panel{padding:0 24px 34px}
+  .landing-hero .hero-title{font-size:50px}
+  .hero-copy{font-size:15px}
+  .hotel-section{padding-left:20px;padding-right:20px}
+  .quick-access-grid{gap:7px}
+  .quick-tile{min-height:104px;padding:9px 5px}
+  .quick-tile b{font-size:10px}
+  .quick-tile small{font-size:9px}
+  .image-card{min-height:130px;padding:15px}
+  .menu-panel{right:0;width:88vw}
+  .gallery-thumb{flex-basis:76px;width:76px;height:88px}
+  .checkin-grid,.contact-actions{grid-template-columns:1fr}
+  .checkin-hero h2{font-size:37px}
+  .wifi-hero .page-title{font-size:38px}
+  .wifi-credential{grid-template-columns:1fr}
+  .wifi-credential .mini-btn{width:100%}
+  .transport-hero h2{font-size:35px}
+  .transport-facts,.transport-actions{grid-template-columns:1fr}
+  .guidebook-toolbar{grid-template-columns:1fr}
+  .guidebook-open{width:100%}
+  .restaurants-hero h2{font-size:35px}
+  .restaurant-actions{grid-template-columns:1fr 1fr}
+  .restaurant-actions a:last-child{grid-column:1/-1}
+  .faq-hero h2{font-size:35px}
+  .faq-actions{grid-template-columns:1fr}
+}
 
   </style>
 </head>
-<body>
+<body class="is-home">
   <div class="app">
-    <header class="top"><button class="icon-btn" aria-label="메뉴" id="menuTop"><span class="mi">menu</span></button><h1>익스테이</h1><div class="top-actions"><a class="icon-btn" href="assets/guidebook/Extay_Mansion_Haebangchon_Guide.pdf" target="_blank" rel="noopener" aria-label="가이드북 열기" id="openGuidebookTop"><span class="mi">menu_book</span></a><button class="icon-btn lang-toggle" aria-label="Switch to English" id="langToggle" type="button"><span class="mi">translate</span><span id="langToggleText">EN</span></button><button class="icon-btn" aria-label="안내 도우미" id="openChatTop"><span class="mi">smart_toy</span></button></div></header>
+    <header class="top"><button class="icon-btn" aria-label="메뉴" id="menuTop"><span class="mi">menu</span></button><h1>익스테이</h1><div class="top-actions"><a class="icon-btn" href="assets/guidebook/Extay_Mansion_Haebangchon_Guide_KO_no_NotebookLM.pdf" target="_blank" rel="noopener" aria-label="가이드북 열기" id="openGuidebookTop"><span class="mi">menu_book</span></a><button class="icon-btn lang-toggle" aria-label="Switch to English" id="langToggle" type="button"><span class="mi">translate</span><span id="langToggleText">EN</span></button><button class="icon-btn" aria-label="안내 도우미" id="openChatTop"><span class="mi">smart_toy</span></button></div></header>
 
     <main>
       <section class="screen active" data-screen="home">
-        <div class="hero"><div class="hero-copy"><div class="hero-title">EXTAY</div><div class="label">your cozy home in Seoul.</div></div></div>
-        <article class="card smart-card" id="smartCard"><div class="smart-top"><span class="smart-badge" id="smartBadge">스마트 안내</span><span class="smart-clock" id="smartClock">--:--</span></div><h2 class="section-title" id="smartTitle" style="margin-top:10px">자주 찾는 안내</h2><p class="smart-copy" id="smartCopy">와이파이, 텔레비전, 난방·온수, 세탁기, 쓰레기 배출 방법을 바로 확인할 수 있습니다.</p><div class="smart-actions" id="smartActions"><button class="btn primary" data-go="wifi"><span class="mi">wifi_password</span>와이파이</button><button class="btn" data-go="appliances"><span class="mi">robot_2</span>기기 사용법</button></div></article>
-        <div class="quick"><button data-go="wifi"><span><span class="mi">wifi_password</span><br>와이파이</span></button><button data-go="appliances" data-open="tv"><span><span class="mi">tv</span><br>TV 및 미디어</span></button><button data-go="appliances" data-open="boiler"><span><span class="mi">thermostat</span><br>냉·난방</span></button><button data-go="laundry"><span><span class="mi">local_laundry_service</span><br>세탁</span></button></div>
-        <article class="card home-info-card"><h2 class="section-title" style="margin-top:0">기본 정보</h2><div class="info-row"><span class="circle"><span class="mi">home</span></span><div><small>숙소</small><b>익스테이 맨션 해방촌</b></div></div><div class="info-row"><span class="circle"><span class="mi">location_on</span></span><div><small>주소</small><b>서울시 용산구 신흥로 59, 2층</b></div></div><div class="info-row"><span class="circle"><span class="mi">schedule</span></span><div><small>체크인 · 체크아웃</small><b>16:00 · 11:00</b></div></div><div class="info-row"><span class="circle"><span class="mi">wifi</span></span><div><small>와이파이</small><b>U+Net46F0_5G</b></div><button class="mini-btn" data-go="wifi">보기</button></div><div class="info-row"><span class="circle"><span class="mi">tv</span></span><div><small>TV · OTT</small><b>NSM OTT / HDMI 입력</b></div></div><div class="info-row"><span class="circle"><span class="mi">local_parking</span></span><div><small>주차</small><b>건물 주차 불가 · 주변 유료 공영주차장</b></div></div></article>
-        <article class="card contact-card home-guide-card"><span class="circle"><span class="mi">door_open</span></span><h3>체크인 · 위치 안내</h3><div class="guide-list"><div class="guide-item"><b>1</b><span>비대면 셀프 체크인이며, 개인 키번호는 체크인 당일 12시쯤 안내됩니다.</span></div><div class="guide-item"><b>2</b><span>녹사평역 2번 출구에서 도보 약 15분, 마을버스 이용 시 약 10분입니다.</span></div><div class="guide-item"><b>3</b><span>세븐일레븐과 베제투스 레스토랑 사이 골목으로 들어와 2층으로 올라오세요.</span></div><div class="guide-item"><b>4</b><span>퇴실 시 설거지, 쓰레기 분리수거, 에어컨 전원, 창문과 현관문을 확인해 주세요.</span></div></div></article>
-        <article class="card contact-card home-rules-card"><span class="circle"><span class="mi">rule</span></span><h3>주차 · 숙소 규칙</h3><div class="guide-list"><div class="guide-item"><b>1</b><span>건물 주차는 불가합니다. 모두의주차장 앱 또는 주변 유료 공영주차장을 이용해 주세요.</span></div><div class="guide-item"><b>2</b><span>예약 인원 외 방문자 입실, 반려동물 동반, 상업적 촬영은 불가합니다.</span></div><div class="guide-item"><b>3</b><span>객실, 화장실, 베란다, 현관입구, 계단은 모두 금연 구역입니다.</span></div><div class="guide-item"><b>4</b><span>실내에서는 간단한 취사만 가능하며, 냄새나 연기가 많은 음식은 피해주세요. 21시 이후에는 매너타임입니다.</span></div></div></article>
+        <section class="landing-hero" aria-labelledby="heroTitle">
+          <div class="hero-panel">
+            <p class="eyebrow">SEOUL PRIVATE STAY</p>
+            <h2 class="hero-title" id="heroTitle">EXTAY</h2>
+            <p class="hero-copy">서울 중심, 나만의 프라이빗 스테이<br>편안하고 특별한 시간을 보내세요.</p>
+            <div class="hero-actions">
+              <button class="hotel-btn ghost" type="button" data-go="gallery"><span class="mi">bed</span>객실 둘러보기</button>
+            </div>
+            <button class="scroll-cue" type="button" data-scroll-target="#quickAccess">SCROLL<span class="mi">keyboard_arrow_down</span></button>
+          </div>
         </section>
 
-      <section class="screen" data-screen="wifi"><h2 class="page-title">와이파이</h2><p class="page-sub">숙소 Wi-Fi ID와 비밀번호입니다. 대소문자와 특수문자를 그대로 입력해 주세요.</p><article class="card"><div class="info-row"><span class="circle"><span class="mi">router</span></span><div><small>ID</small><b>U+Net46F0_5G</b></div><button class="mini-btn" data-copy="U+Net46F0_5G">복사</button></div><div class="info-row"><span class="circle"><span class="mi">password</span></span><div><small>Password</small><b>8H3#22E97B</b></div><button class="mini-btn" data-copy="8H3#22E97B">복사</button></div><div class="info-row"><span class="circle"><span class="mi">info</span></span><div><small>연결 안내</small><b>연결이 안 되면 Wi-Fi를 껐다 켠 뒤 다시 선택해 주세요.</b></div></div></article></section>
+        <section class="hotel-section" id="quickAccess" aria-labelledby="quickTitle">
+          <p class="section-kicker">QUICK ACCESS</p>
+          <h2 class="hotel-heading" id="quickTitle">빠르게 찾는 정보</h2>
+          <div class="quick-access-grid">
+            <button class="quick-tile" type="button" data-go="checkin"><span class="mi">calendar_month</span><b>체크인 안내</b><small>입실 방법 확인</small></button>
+            <button class="quick-tile" type="button" data-go="wifi"><span class="mi">wifi</span><b>와이파이</b><small>네트워크 정보</small></button>
+            <button class="quick-tile" type="button" data-go="transport"><span class="mi">directions_car</span><b>교통 안내</b><small>공항·지하철·버스</small></button>
+          </div>
+        </section>
+
+        <section class="hotel-section" id="stayGuide" aria-labelledby="stayTitle">
+          <p class="section-kicker">STAY GUIDE</p>
+          <h2 class="hotel-heading" id="stayTitle">이용 가이드</h2>
+          <div class="stay-card-grid">
+            <button class="image-card large" type="button" data-go="guidebook" style="--card-img:url('assets/extay/crops/main-living-logo.png')"><span>이용 안내</span><small>숙소 이용 규칙 및 안내사항</small></button>
+            <button class="image-card" type="button" data-go="restaurants" style="--card-img:url('assets/extay/crops/hero-extay.jpg')"><span>주변 맛집</span><small>현지인이 추천하는 맛집 리스트</small></button>
+            <button class="image-card" type="button" data-go="transport" style="--card-img:url('assets/extay/crops/rooftop-namsan.jpg')"><span>교통 안내</span><small>공항·지하철·버스 이용 방법</small></button>
+            <button class="image-card" type="button" data-go="faq" style="--card-img:url('assets/extay/smart-card/stay-day.png')"><span>FAQ</span><small>자주 묻는 질문 모음</small></button>
+          </div>
+        </section>
+
+        <section class="hotel-section" id="aiConcierge" aria-labelledby="aiTitle">
+          <article class="concierge-banner">
+            <p class="section-kicker">AI CONCIERGE</p>
+            <h2 id="aiTitle">궁금한 내용을 바로 물어보세요</h2>
+            <p>AI가 24시간 친절하게 답변해드려요.</p>
+            <button class="hotel-btn primary compact" type="button" id="openChatCard"><span class="mi">smart_toy</span>AI 챗봇 상담하기</button>
+          </article>
+        </section>
+
+        <section class="hotel-section location-section" id="locationContact" aria-label="Contact">
+          <div class="contact-heading">
+            <p class="section-kicker">CONTACT</p>
+            <div class="contact-mini-actions" aria-label="호스트 연락처">
+              <button class="contact-icon-btn" type="button" data-open-contact="phone" aria-label="전화번호 보기"><span class="mi">call</span></button>
+              <button class="contact-icon-btn" type="button" data-open-contact="kakao" aria-label="카카오톡 오픈채팅 링크 보기"><span class="kakao-symbol" aria-hidden="true">K</span></button>
+            </div>
+          </div>
+          <footer class="hotel-footer"><strong>EXTAY</strong><span>Extay Mansion Haebangchon.</span></footer>
+        </section>
+      </section>
+
+      <section class="screen" data-screen="checkin">
+        <article class="checkin-hero">
+          <p class="section-kicker">SELF CHECK-IN</p>
+          <h2>Check-in Guide</h2>
+          <p>입실 전 꼭 필요한 도어락, 위치, 보안, 숙소 규칙만 정리했습니다.</p>
+        </article>
+        <div class="checkin-stack">
+          <article class="checkin-card">
+            <h3>체크인 기본 정보</h3>
+            <div class="checkin-grid">
+              <div class="checkin-fact"><small>Address</small><b>서울시 용산구 신흥로 59, 2층</b></div>
+              <div class="checkin-fact"><small>Time</small><b>체크인 16:00<br>체크아웃 11:00</b></div>
+              <div class="checkin-fact"><small>Access</small><b>비대면 셀프 체크인</b></div>
+              <div class="checkin-fact"><small>Parking</small><b>건물 주차 불가<br>주변 유료 공영주차장 이용</b></div>
+            </div>
+            <p style="margin-top:14px">개인 키번호는 체크인 당일 12시쯤 호스트 메시지로 안내됩니다. 체크아웃 시간을 10분 초과하면 10분당 10,000원의 비용이 발생할 수 있습니다.</p>
+          </article>
+
+          <article class="checkin-card">
+            <h3>현관 도어락 사용 방법</h3>
+            <ol class="door-steps">
+              <li><div><strong>키패드를 살짝 터치</strong><span>현관 도어락 화면을 가볍게 터치해 숫자 키패드를 켜주세요.</span></div></li>
+              <li><div><strong>개별 안내받은 번호 입력</strong><span>호스트 메시지에 안내된 형식대로 입력한 뒤 마지막에 <b>*</b> 버튼을 누릅니다.</span></div></li>
+            </ol>
+            <div class="code-card"><small>입력 예시</small><b>게스트 이름 기준 휴대폰 뒷 4자리 + *</b></div>
+            <p style="margin-top:14px">예: 영희님으로 안내받았다면 메시지에 적힌 기준에 맞춰 입력합니다. 이 페이지에는 실제 예약자별 키번호를 저장하거나 노출하지 않습니다.</p>
+          </article>
+
+          <article class="checkin-card">
+            <h3>오시는 길</h3>
+            <ul class="check-list">
+              <li>세븐일레븐과 베제투스 레스토랑 사이 골목으로 들어오세요.</li>
+              <li>숙소는 베제투스 레스토랑 2층 단독 건물입니다.</li>
+              <li>녹사평역 2번 출구에서 해방촌 입구 방향으로 올라오면 도보 약 15분입니다.</li>
+              <li>마을버스를 이용하면 약 10분 정도 소요됩니다.</li>
+            </ul>
+            <div class="contact-actions">
+              <a class="hotel-btn primary" href="https://map.naver.com/p/search/%EC%84%9C%EC%9A%B8%EC%8B%9C%20%EC%9A%A9%EC%82%B0%EA%B5%AC%20%EC%8B%A0%ED%9D%A5%EB%A1%9C%2059%202%EC%B8%B5" target="_blank" rel="noopener"><span class="mi">location_on</span>네이버 지도</a>
+              <a class="hotel-btn" href="https://www.google.com/maps/search/?api=1&query=%EC%84%9C%EC%9A%B8%EC%8B%9C%20%EC%9A%A9%EC%82%B0%EA%B5%AC%20%EC%8B%A0%ED%9D%A5%EB%A1%9C%2059%202%EC%B8%B5" target="_blank" rel="noopener"><span class="mi">map</span>구글 지도</a>
+            </div>
+          </article>
+
+          <article class="checkin-card notice-card">
+            <h3>보안과 프라이버시</h3>
+            <ul class="check-list">
+              <li>안전과 보안을 위해 CCTV는 현관 입구에만 설치되어 있습니다.</li>
+              <li>객실 안에 머무는 중 모르는 사람이 벨을 누르면 응답하지 마세요.</li>
+              <li>숙소 오시는 길이나 체크인 중 문제가 생기면 바로 연락 주세요.</li>
+            </ul>
+          </article>
+
+          <article class="checkin-card">
+            <h3>입실 후 확인</h3>
+            <ul class="check-list">
+              <li>체크인 후 룸 상태를 확인하고 불편한 점은 바로 메시지로 알려주세요.</li>
+              <li>주변 맛집과 배달 정보는 전날 안내 링크에서 확인할 수 있습니다.</li>
+              <li>필요한 것이 있으면 언제든 메시지를 남겨주시고, 급한 경우 전화로 연락 주세요.</li>
+            </ul>
+            <div class="contact-actions single">
+              <a class="hotel-btn primary" href="https://juas.notion.site/HBC-BLUES-stay-65690275250d4509ae3149965c0f5a48?pvs=4" target="_blank" rel="noopener"><span class="mi">menu_book</span>전날 안내 링크 보기</a>
+            </div>
+          </article>
+
+          <article class="checkin-card">
+            <h3>꼭 지켜주세요</h3>
+            <ul class="check-list">
+              <li>객실 내부, 베란다, 현관 입구, 계단은 모두 금연 구역입니다.</li>
+              <li>흡연은 1층 지정 장소에서만 가능하며 담배꽁초는 지정된 통에 버려주세요.</li>
+              <li>반려동물 동반과 기준 인원 외 방문자 입실은 불가합니다.</li>
+              <li>저녁 9시 이후에는 매너타임입니다. 늦은 시간에는 소리를 낮춰주세요.</li>
+              <li>실내에서는 간단한 취사만 가능하며 냄새가 강한 음식은 피해주세요.</li>
+              <li>인원수에 맞춰 일회용 칫솔과 수건이 제공됩니다.</li>
+            </ul>
+          </article>
+        </div>
+      </section>
+
+      <section class="screen transport-screen" data-screen="transport">
+        <article class="transport-hero">
+          <p class="section-kicker">AIRPORT ACCESS</p>
+          <h2>교통 안내</h2>
+          <p>인천공항과 김포공항에서 EXTAY까지 오는 대표 경로를 정리했습니다.</p>
+        </article>
+        <div class="transport-stack">
+          <article class="transport-card">
+            <h3>목적지 정보</h3>
+            <div class="transport-facts">
+              <div class="transport-fact"><small>Address</small><b>서울시 용산구 신흥로 59, 2층</b></div>
+              <div class="transport-fact"><small>Landmark</small><b>세븐일레븐과 베제투스 레스토랑 사이 골목</b></div>
+              <div class="transport-fact"><small>Nearest Station</small><b>녹사평역 2번 출구</b></div>
+              <div class="transport-fact"><small>Last Mile</small><b>도보 약 15분<br>마을버스 약 10분</b></div>
+            </div>
+            <div class="transport-actions">
+              <a class="hotel-btn primary" href="https://map.naver.com/p/search/%EC%84%9C%EC%9A%B8%EC%8B%9C%20%EC%9A%A9%EC%82%B0%EA%B5%AC%20%EC%8B%A0%ED%9D%A5%EB%A1%9C%2059%202%EC%B8%B5" target="_blank" rel="noopener"><span class="mi">location_on</span>네이버 지도</a>
+              <a class="hotel-btn" href="https://www.google.com/maps/dir/?api=1&destination=%EC%84%9C%EC%9A%B8%EC%8B%9C%20%EC%9A%A9%EC%82%B0%EA%B5%AC%20%EC%8B%A0%ED%9D%A5%EB%A1%9C%2059%202%EC%B8%B5" target="_blank" rel="noopener"><span class="mi">map</span>구글 지도</a>
+            </div>
+          </article>
+
+          <article class="transport-card">
+            <h3>인천공항에서</h3>
+            <div class="route-card">
+              <div class="route-top"><h4>공항철도 + 지하철</h4><span class="route-badge">추천</span></div>
+              <div class="route-meta"><span>가성비 좋음</span><span>환승 1회</span><span>약 80~95분</span></div>
+              <ol class="route-steps">
+                <li><div><b>공항철도 탑승</b>인천공항 1터미널 또는 2터미널역에서 공항철도 일반열차를 탑니다.</div></li>
+                <li><div><b>공덕역 환승</b>공덕역에서 6호선으로 갈아타고 녹사평역 방향으로 이동합니다.</div></li>
+                <li><div><b>녹사평역 하차</b>녹사평역 2번 출구로 나와 해방촌 입구 방향으로 올라옵니다.</div></li>
+                <li><div><b>숙소 이동</b>도보 약 15분, 짐이 많으면 역 주변에서 택시나 마을버스를 이용하세요.</div></li>
+              </ol>
+            </div>
+            <div class="route-card">
+              <div class="route-top"><h4>공항 리무진 + 짧은 택시</h4><span class="route-badge">짐 많을 때</span></div>
+              <div class="route-meta"><span>환승 부담 적음</span><span>도로 상황 영향</span><span>약 90~120분</span></div>
+              <ol class="route-steps">
+                <li><div><b>6702 노선 확인</b>K Airport Limousine 6702 노선의 남산·이태원 인근 정류장을 확인합니다.</div></li>
+                <li><div><b>남산/이태원 인근 하차</b>그랜드 하얏트 서울 또는 이태원 인근 정류장에서 내리는 동선을 우선 확인하세요.</div></li>
+                <li><div><b>택시 이동</b>하차 지점에서 숙소까지는 짐이 있으면 택시 이동이 편합니다.</div></li>
+              </ol>
+            </div>
+            <div class="route-card">
+              <div class="route-top"><h4>공항 택시</h4><span class="route-badge">가장 편함</span></div>
+              <div class="route-meta"><span>직행</span><span>심야 가능</span><span>약 70~100분</span></div>
+              <ol class="route-steps">
+                <li><div><b>목적지 제시</b>기사님께 “용산구 신흥로 59, 2층, 해방촌 베제투스 레스토랑 건물”로 안내하세요.</div></li>
+                <li><div><b>교통상황 확인</b>출퇴근 시간과 심야 할증 시간에는 요금과 시간이 크게 달라질 수 있습니다.</div></li>
+              </ol>
+            </div>
+          </article>
+
+          <article class="transport-card">
+            <h3>김포공항에서</h3>
+            <div class="route-card">
+              <div class="route-top"><h4>공항철도 + 6호선</h4><span class="route-badge">추천</span></div>
+              <div class="route-meta"><span>빠른 편</span><span>환승 1회</span><span>약 45~60분</span></div>
+              <ol class="route-steps">
+                <li><div><b>공항철도 탑승</b>김포공항역에서 공항철도를 타고 공덕역으로 이동합니다.</div></li>
+                <li><div><b>6호선 환승</b>공덕역에서 6호선 녹사평역 방향으로 갈아탑니다.</div></li>
+                <li><div><b>녹사평역 2번 출구</b>출구에서 해방촌 입구 방향으로 이동하면 됩니다.</div></li>
+                <li><div><b>마지막 이동</b>도보 약 15분 또는 마을버스·택시를 이용하세요.</div></li>
+              </ol>
+            </div>
+            <div class="route-card">
+              <div class="route-top"><h4>택시</h4><span class="route-badge">간편</span></div>
+              <div class="route-meta"><span>직행</span><span>짐 많을 때</span><span>약 35~60분</span></div>
+              <ol class="route-steps">
+                <li><div><b>택시 승차장 이동</b>공항 택시 승차장에서 용산구 신흥로 59를 목적지로 설정합니다.</div></li>
+                <li><div><b>골목 진입 안내</b>세븐일레븐과 베제투스 레스토랑 사이 골목, 베제투스 레스토랑 2층 건물이라고 설명하면 쉽습니다.</div></li>
+              </ol>
+            </div>
+          </article>
+
+          <article class="transport-card transport-note">
+            <h3>이용 팁</h3>
+            <ul>
+              <li>공항철도와 지하철은 정시성이 좋아 낮 시간대에 가장 무난합니다.</li>
+              <li>큰 캐리어가 있거나 비가 오는 날은 녹사평역에서 마지막 구간만 택시를 권장합니다.</li>
+              <li>심야 도착은 대중교통 막차 시간을 먼저 확인하고, 불확실하면 택시를 이용하세요.</li>
+              <li>지도 앱에서 “서울시 용산구 신흥로 59, 2층”을 목적지로 설정하면 됩니다.</li>
+            </ul>
+          </article>
+        </div>
+      </section>
+
+      <section class="screen restaurants-screen" data-screen="restaurants">
+        <article class="restaurants-hero">
+          <p class="section-kicker">NEARBY RESTAURANTS</p>
+          <h2>주변 맛집</h2>
+          <p>호스트가 정리한 도보 10분권 맛집을 카테고리별로 빠르게 찾아보세요.</p>
+        </article>
+        <div class="restaurants-controls">
+          <div class="restaurants-filter" id="restaurantFilters" aria-label="맛집 카테고리"></div>
+          <label class="restaurant-search"><span class="mi">search</span><input id="restaurantSearch" type="search" placeholder="이름, 메뉴, 카테고리 검색"></label>
+        </div>
+        <div class="restaurant-summary">
+          <b id="restaurantCount">0곳</b>
+          <a class="restaurant-source" href="https://juas.notion.site/4091068d724948cdaa4a1d63e36a898a?v=7696891d8c864357b976582f859d9cfd" target="_blank" rel="noopener">원본 리스트</a>
+        </div>
+        <div class="restaurants-list" id="restaurantList"></div>
+        <div class="restaurants-empty" id="restaurantEmpty">조건에 맞는 맛집이 없습니다. 카테고리나 검색어를 다시 선택해 주세요.</div>
+        <p class="restaurants-note">영업시간, 휴무, 대기 여부는 방문 전 지도 앱이나 원본 리스트에서 한 번 더 확인해 주세요.</p>
+      </section>
+
+      <section class="screen faq-screen" data-screen="faq">
+        <article class="faq-hero">
+          <p class="section-kicker">FREQUENTLY ASKED</p>
+          <h2>FAQ</h2>
+          <p>체크인 전날 안내, 메시지 템플릿, 숙소 이용 가이드에서 반복되는 질문만 추려 정리했습니다.</p>
+        </article>
+        <div class="faq-stack">
+          <article class="faq-card highlight">
+            <div class="faq-section-title"><h3>먼저 많이 물어봐요</h3><span>TOP 4</span></div>
+            <div class="faq-list">
+              <details class="faq-item" open>
+                <summary>체크인은 몇 시이고 도어락 번호는 어디서 확인하나요?</summary>
+                <div class="faq-answer">
+                  <p>체크인은 오후 4시부터입니다. 비대면 셀프 체크인이며 개인 키번호는 체크인 당일 12시쯤 Airbnb 또는 호스트 메시지로 안내됩니다. 현관 도어락 키패드를 살짝 터치한 뒤 안내받은 번호를 입력하고 마지막에 <b>*</b> 버튼을 누르세요.</p>
+                  <div class="faq-actions"><button class="hotel-btn primary" type="button" data-go="checkin"><span class="mi">calendar_month</span>체크인 안내</button><button class="hotel-btn" type="button" data-go="guidebook"><span class="mi">menu_book</span>이용 안내</button></div>
+                </div>
+              </details>
+              <details class="faq-item">
+                <summary>숙소 주소와 찾아오는 방법은 어떻게 되나요?</summary>
+                <div class="faq-answer">
+                  <p>주소는 서울시 용산구 신흥로 59, 2층입니다. 세븐일레븐과 베제투스 레스토랑 사이 골목으로 들어오면 되고, 숙소는 베제투스 레스토랑 2층 단독 건물입니다. 녹사평역 2번 출구에서 도보 약 15분, 마을버스 이용 시 약 10분입니다.</p>
+                  <div class="faq-actions"><button class="hotel-btn primary" type="button" data-go="transport"><span class="mi">directions_car</span>교통 안내</button><button class="hotel-btn" type="button" data-go="checkin"><span class="mi">location_on</span>오시는 길</button></div>
+                </div>
+              </details>
+              <details class="faq-item">
+                <summary>주차가 가능한가요?</summary>
+                <div class="faq-answer">
+                  <p>건물 주차는 불가합니다. 모두의주차장 앱에서 실시간 가능 여부를 확인하거나, 용산2가동 기계식 공용주차장, 용산2가 주민센터 공용주차장, 해방촌공영주차장 같은 주변 유료 공영주차장을 이용해 주세요. 주말 점심과 저녁 피크 시간에는 자리가 부족할 수 있습니다.</p>
+                  <div class="faq-actions"><button class="hotel-btn primary" type="button" data-go="transport"><span class="mi">local_parking</span>주차 안내</button></div>
+                </div>
+              </details>
+              <details class="faq-item">
+                <summary>와이파이 ID와 비밀번호는 무엇인가요?</summary>
+                <div class="faq-answer">
+                  <p>Wi-Fi ID는 <b>U+Net46F0_5G</b>, 비밀번호는 <b>8H3#22E97B</b> 입니다. 대소문자와 특수문자를 그대로 입력해 주세요. 연결이 안 되면 Wi-Fi를 껐다 켠 뒤 네트워크를 다시 선택하세요.</p>
+                  <div class="faq-actions"><button class="hotel-btn primary" type="button" data-go="wifi"><span class="mi">wifi</span>와이파이 보기</button></div>
+                </div>
+              </details>
+            </div>
+          </article>
+
+          <article class="faq-card">
+            <div class="faq-section-title"><h3>숙박 중 이용</h3><span>STAY</span></div>
+            <div class="faq-list">
+              <details class="faq-item">
+                <summary>TV나 OTT는 어떻게 보나요?</summary>
+                <div class="faq-answer"><p>TV 리모컨은 외부입력 선택이 필요할 때 사용하고, OTT 전용 리모컨에서 원하는 OTT 서비스를 선택한 뒤 확인 버튼을 누르세요. 화면에 팝업이 뜨면 바로 실행을 선택하면 됩니다. 작동이 안 되면 전원 버튼을 3초 이상 누르거나 셋탑 전원을 10초간 분리 후 재연결하세요.</p><div class="faq-actions"><button class="hotel-btn primary" type="button" data-go="appliances" data-open="tv"><span class="mi">tv</span>TV 안내</button></div></div>
+              </details>
+              <details class="faq-item">
+                <summary>온수나 난방은 어떻게 켜나요?</summary>
+                <div class="faq-answer"><p>거실 스탠드 에어컨 뒤쪽의 Rinnai 조절기를 확인하세요. 온수를 사용할 때는 온수 버튼을 누르고, 화면에 60도가 표시되면 정상 작동 중입니다. 외출 시에는 외출 버튼 또는 전원 버튼을 눌러주세요.</p><div class="faq-actions"><button class="hotel-btn primary" type="button" data-go="appliances" data-open="boiler"><span class="mi">thermostat</span>온수 안내</button></div></div>
+              </details>
+              <details class="faq-item">
+                <summary>수건, 휴지, 쓰레기 봉투 같은 여분 비품은 어디에 있나요?</summary>
+                <div class="faq-answer"><p>여분 비품은 비밀 보관함에서 확인할 수 있고 비밀번호는 <b>007</b>입니다. 만약 2번 방이 열리지 않으면 싱크대 인덕션 아래도 확인해 주세요. 기본 일회용 칫솔과 수건은 인원수에 맞춰 제공됩니다.</p><div class="faq-actions"><button class="hotel-btn primary" type="button" data-go="appliances" data-open="air"><span class="mi">inventory_2</span>비품 위치</button></div></div>
+              </details>
+              <details class="faq-item">
+                <summary>세탁기와 건조기를 사용할 수 있나요?</summary>
+                <div class="faq-answer"><p>사용 가능합니다. 세탁기는 전원 버튼을 누르고 코스를 선택한 뒤 시작/일시정지를 누르세요. 건조기는 전원을 켜고 건조 코스를 선택한 뒤 시작 버튼을 누르면 됩니다. 밤 시간에는 진동과 소음에 유의해 주세요.</p><div class="faq-actions"><button class="hotel-btn primary" type="button" data-go="laundry"><span class="mi">local_laundry_service</span>세탁 안내</button></div></div>
+              </details>
+              <details class="faq-item">
+                <summary>공용 화장실이나 옥상은 이용할 수 있나요?</summary>
+                <div class="faq-answer"><p>일행이 많아 화장실이 부족할 때는 1층 레스토랑 뒤편 공용 화장실을 이용할 수 있습니다. 비밀번호는 <b>*7003*</b> 입니다. 옥상에서는 남산타워 뷰를 볼 수 있지만 늦은 시간에는 소음에 유의해 주세요.</p><div class="faq-actions"><button class="hotel-btn primary" type="button" data-go="appliances" data-open="induction"><span class="mi">roofing</span>공용 공간</button></div></div>
+              </details>
+              <details class="faq-item">
+                <summary>주변 맛집이나 배달 맛집은 어디서 보나요?</summary>
+                <div class="faq-answer"><p>해방촌 주변 맛집은 별도 주변 맛집 페이지에 정리했습니다. 카테고리별로 보고 네이버 지도, 구글 지도, 원본 상세 링크를 바로 열 수 있습니다. 배달 맛집과 주변 맛집은 체크인 전날 안내 링크에도 포함되어 있습니다.</p><div class="faq-actions"><button class="hotel-btn primary" type="button" data-go="restaurants"><span class="mi">restaurant</span>주변 맛집</button></div></div>
+              </details>
+            </div>
+          </article>
+
+          <article class="faq-card">
+            <div class="faq-section-title"><h3>규칙과 퇴실</h3><span>RULES</span></div>
+            <div class="faq-list">
+              <details class="faq-item">
+                <summary>체크아웃은 몇 시이고 늦으면 어떻게 되나요?</summary>
+                <div class="faq-answer"><p>체크아웃은 오전 11시입니다. 체크아웃 시간을 10분 초과하면 10분당 10,000원의 비용이 발생할 수 있습니다. 퇴실 전 설거지, 쓰레기 분리수거, 거실과 침실 에어컨 끄기, 창문 닫기, 현관문 닫기를 확인해 주세요.</p><div class="faq-actions"><button class="hotel-btn primary" type="button" data-go="guidebook"><span class="mi">checklist</span>퇴실 안내</button></div></div>
+              </details>
+              <details class="faq-item">
+                <summary>쓰레기는 어떻게 분리해서 버리나요?</summary>
+                <div class="faq-answer"><ul><li>음식물 쓰레기는 부엌 싱크대 위 음식물 쓰레기통에 넣어 주세요.</li><li>재활용은 베란다 재활용 통에 넣고 병, 캔, 플라스틱은 흰색 비닐봉투에 함께 담아 주세요.</li><li>일반 쓰레기는 식탁 아래 또는 베란다 쓰레기통에 종량제 봉투로 버려 주세요.</li><li>장기 숙박 중 음식물 냄새가 나면 1층 입구 주황색 통을 이용해 주세요.</li></ul><div class="faq-actions"><button class="hotel-btn primary" type="button" data-go="trash"><span class="mi">delete</span>쓰레기 안내</button></div></div>
+              </details>
+              <details class="faq-item">
+                <summary>흡연은 어디서 가능한가요?</summary>
+                <div class="faq-answer"><p>객실 내부, 화장실, 베란다, 현관 입구, 계단은 모두 금연 구역입니다. 흡연은 1층 지정 장소에서만 가능하며 담배꽁초는 지정된 통에 버려 주세요.</p></div>
+              </details>
+              <details class="faq-item">
+                <summary>방문자, 반려동물, 촬영은 가능한가요?</summary>
+                <div class="faq-answer"><p>예약 인원 외 추가 인원이나 방문자 입실은 불가합니다. 반려동물 동반 숙박과 상업적 촬영도 불가합니다.</p></div>
+              </details>
+              <details class="faq-item">
+                <summary>실내 취사는 어디까지 가능한가요?</summary>
+                <div class="faq-answer"><p>간단한 취사 정도만 가능합니다. 생선, 고기구이처럼 냄새나 연기가 많이 나는 음식은 실내 반입과 조리를 피해주세요.</p></div>
+              </details>
+              <details class="faq-item">
+                <summary>밤에는 어떤 점을 조심해야 하나요?</summary>
+                <div class="faq-answer"><p>저녁 9시 이후에는 매너타임입니다. 늦은 시간에는 대화 소리, 세탁기와 건조기 진동, 옥상 이용 소음을 낮춰 주세요. 이웃 주민 민원이 발생할 수 있습니다.</p></div>
+              </details>
+            </div>
+          </article>
+
+          <article class="faq-card">
+            <div class="faq-section-title"><h3>문제 상황</h3><span>HELP</span></div>
+            <div class="faq-list">
+              <details class="faq-item">
+                <summary>체크인 중 문제가 생기면 어떻게 하나요?</summary>
+                <div class="faq-answer"><p>숙소 오시는 길이나 도어락 입력 중 문제가 생기면 바로 호스트에게 연락해 주세요. 개인 키번호와 긴급 상황은 이 페이지에 저장하지 않으며, Airbnb 또는 호스트 메시지를 기준으로 확인해야 합니다.</p></div>
+              </details>
+              <details class="faq-item">
+                <summary>모르는 사람이 벨을 누르면 응답해야 하나요?</summary>
+                <div class="faq-answer"><p>응답하지 마세요. 안전과 보안을 위해 CCTV는 현관 입구에만 설치되어 있으며, 객실 안에 머무는 중 모르는 사람이 벨을 누를 경우 대응하지 않는 것을 권장합니다.</p></div>
+              </details>
+              <details class="faq-item">
+                <summary>물건을 두고 나온 것 같으면 어떻게 하나요?</summary>
+                <div class="faq-answer"><p>퇴실 전 놓고 가는 물건이 없는지 한 번 더 확인해 주세요. 이미 퇴실한 뒤 분실물이 생각나면 가능한 빨리 호스트에게 메시지로 문의해 주세요.</p></div>
+              </details>
+            </div>
+            <p class="faq-source-note">FAQ는 HBC BLUES stay 안내 페이지, Airbnb 메시지 템플릿, 현재 모바일 가이드의 체크인·와이파이·교통·이용안내 내용을 기준으로 구성했습니다.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="screen guidebook-screen" data-screen="guidebook">
+        <div class="guidebook-head">
+          <p class="section-kicker">STAY GUIDEBOOK</p>
+          <h2>이용 안내</h2>
+          <p>한글/영문 가이드 원본을 화면 안에서 페이지별로 넘겨볼 수 있습니다.</p>
+        </div>
+        <article class="guidebook-viewer" id="guidebookViewer">
+          <div class="guidebook-toolbar">
+            <div class="guidebook-lang" role="group" aria-label="가이드 언어 선택">
+              <button class="active" type="button" data-guide-lang="ko">KOR</button>
+              <button type="button" data-guide-lang="en">ENG</button>
+            </div>
+            <a class="guidebook-open" id="guidebookOpenPdf" href="assets/guidebook/Extay_Mansion_Haebangchon_Guide_KO_no_NotebookLM.pdf" target="_blank" rel="noopener"><span class="mi">open_in_new</span>원본 PDF</a>
+          </div>
+          <div class="guidebook-stage" id="guidebookStage">
+            <div class="guidebook-status" id="guidebookStatus">가이드를 불러오는 중입니다.</div>
+            <div class="guidebook-canvas-wrap"><canvas id="guidebookCanvas" aria-label="가이드북 페이지"></canvas></div>
+            <iframe class="guidebook-fallback" id="guidebookFallback" title="이용 안내 PDF" src="assets/guidebook/Extay_Mansion_Haebangchon_Guide_KO_no_NotebookLM.pdf"></iframe>
+          </div>
+          <div class="guidebook-pager">
+            <button class="guidebook-nav" type="button" data-guide-nav="prev" aria-label="이전 페이지"><span class="mi">chevron_left</span></button>
+            <span class="guidebook-page-label" id="guidebookPageLabel">- / -</span>
+            <button class="guidebook-nav" type="button" data-guide-nav="next" aria-label="다음 페이지"><span class="mi">chevron_right</span></button>
+          </div>
+        </article>
+      </section>
+
+      <section class="screen gallery-screen" data-screen="gallery">
+        <div class="gallery-head">
+          <p class="section-kicker">ROOM GALLERY</p>
+          <h2>객실 둘러보기</h2>
+          <p>썸네일을 좌우로 넘겨 원하는 공간을 선택하고, 아래에서 크게 확인하세요.</p>
+        </div>
+        <div class="gallery-thumbs" role="listbox" aria-label="숙소 사진 선택">
+          <button class="gallery-thumb active" type="button" role="option" aria-selected="true" data-gallery-index="0" data-full="assets/extay/crops/main-living-logo.png" data-title="거실 라운지" data-desc="따뜻한 조명과 편안한 소파가 있는 메인 거실 공간입니다." data-alt="익스테이 거실 라운지 사진"><img src="assets/extay/crops/main-living-logo.png" alt=""></button>
+          <button class="gallery-thumb" type="button" role="option" aria-selected="false" data-gallery-index="1" data-full="assets/extay/crops/hero-extay.jpg" data-title="다이닝 & 키친" data-desc="모임과 식사를 편하게 즐길 수 있는 다이닝 공간입니다." data-alt="익스테이 다이닝과 키친 사진"><img src="assets/extay/crops/hero-extay.jpg" alt=""></button>
+          <button class="gallery-thumb" type="button" role="option" aria-selected="false" data-gallery-index="2" data-full="assets/extay/crops/rooftop-namsan.jpg" data-title="남산 루프탑 뷰" data-desc="해방촌의 분위기와 남산타워를 함께 볼 수 있는 루프탑 뷰입니다." data-alt="익스테이 루프탑 남산타워 뷰 사진"><img src="assets/extay/crops/rooftop-namsan.jpg" alt=""></button>
+          <button class="gallery-thumb" type="button" role="option" aria-selected="false" data-gallery-index="3" data-full="assets/extay/crops/rooftop.jpg" data-title="루프탑" data-desc="머무는 동안 잠시 바람을 쐴 수 있는 루프탑 공간입니다." data-alt="익스테이 루프탑 사진"><img src="assets/extay/crops/rooftop.jpg" alt=""></button>
+          <button class="gallery-thumb" type="button" role="option" aria-selected="false" data-gallery-index="4" data-full="assets/extay/crops/tv-hdmi.jpg" data-title="TV & 미디어" data-desc="TV와 OTT 이용을 위한 미디어 공간입니다." data-alt="익스테이 TV와 미디어 사진"><img src="assets/extay/crops/tv-hdmi.jpg" alt=""></button>
+          <button class="gallery-thumb" type="button" role="option" aria-selected="false" data-gallery-index="5" data-full="assets/extay/crops/secret-storage-guide.jpg" data-title="비품 보관함" data-desc="수건과 휴지, 쓰레기 봉투 등 여분 비품을 확인할 수 있는 공간입니다." data-alt="익스테이 비품 보관함 사진"><img src="assets/extay/crops/secret-storage-guide.jpg" alt=""></button>
+          <button class="gallery-thumb" type="button" role="option" aria-selected="false" data-gallery-index="6" data-full="assets/extay/crops/towels.jpeg" data-title="수건과 비품" data-desc="숙박 중 필요한 수건과 기본 비품을 정리해둔 공간입니다." data-alt="익스테이 수건과 비품 사진"><img src="assets/extay/crops/towels.jpeg" alt=""></button>
+        </div>
+        <figure class="gallery-viewer">
+          <div class="gallery-main-wrap"><img id="galleryMain" src="assets/extay/crops/main-living-logo.png" alt="익스테이 거실 라운지 사진"></div>
+          <figcaption><strong id="galleryTitle">거실 라운지</strong><span id="galleryDesc">따뜻한 조명과 편안한 소파가 있는 메인 거실 공간입니다.</span></figcaption>
+        </figure>
+      </section>
+
+      <section class="screen wifi-screen" data-screen="wifi">
+        <article class="wifi-hero">
+          <p class="section-kicker">IN-ROOM WI-FI</p>
+          <h2 class="page-title">와이파이</h2>
+          <p class="page-sub">숙소 Wi-Fi ID와 비밀번호입니다. 대소문자와 특수문자를 그대로 입력해 주세요.</p>
+        </article>
+        <div class="wifi-stack">
+          <article class="wifi-card">
+            <h3>네트워크 정보</h3>
+            <div class="wifi-credentials">
+              <div class="wifi-credential">
+                <div><small>ID</small><b>U+Net46F0_5G</b></div>
+                <button class="mini-btn" data-copy="U+Net46F0_5G">복사</button>
+              </div>
+              <div class="wifi-credential">
+                <div><small>Password</small><b>8H3#22E97B</b></div>
+                <button class="mini-btn" data-copy="8H3#22E97B">복사</button>
+              </div>
+              <div class="wifi-credential wide">
+                <div><small>연결 안내</small><b>연결이 안 되면 Wi-Fi를 껐다 켠 뒤 다시 선택해 주세요.</b></div>
+              </div>
+            </div>
+          </article>
+
+          <article class="wifi-card">
+            <h3>연결 순서</h3>
+            <ol class="wifi-steps">
+              <li><div><strong>Wi-Fi 설정 열기</strong><span>휴대폰 또는 노트북의 Wi-Fi 설정 화면을 열어주세요.</span></div></li>
+              <li><div><strong>네트워크 선택</strong><span><em>U+Net46F0_5G</em>를 선택한 뒤 비밀번호를 입력합니다.</span></div></li>
+              <li><div><strong>입력값 확인</strong><span>대문자, 소문자, 숫자, 특수문자를 안내된 그대로 입력해 주세요.</span></div></li>
+            </ol>
+          </article>
+
+          <article class="wifi-card wifi-soft-card">
+            <h3>연결이 불안정할 때</h3>
+            <ul class="wifi-list">
+              <li>기기 Wi-Fi를 껐다가 다시 켠 뒤 네트워크를 다시 선택해 주세요.</li>
+              <li>비밀번호를 복사한 경우 앞뒤 공백이 함께 들어가지 않았는지 확인해 주세요.</li>
+              <li>계속 연결되지 않으면 호스트에게 메시지로 알려주세요.</li>
+            </ul>
+            <button class="hotel-btn wifi-chat" type="button" data-open-chat data-question="와이파이 연결이 안 돼요"><span class="mi">forum</span>연결 문제 문의하기</button>
+          </article>
+        </div>
+      </section>
 
       <section class="screen" data-screen="appliances"><h2 class="page-title">기기 사용법</h2><p class="page-sub">필요한 기기를 열어서 사용 방법과 사진을 확인하세요.</p>
         <details class="device" data-device="tv" open><summary><span class="circle" style="background:var(--ink);color:#fff"><span class="mi">tv</span></span><div><h3>TV · OTT 리모컨 <span class="badge">자주 사용</span></h3><small>NSM OTT · HDMI 입력</small></div><span class="mi">expand_less</span></summary><div class="device-body"><ol class="steps"><li>TV 리모컨은 외부입력 선택이 필요할 때 사용하세요.</li><li>OTT 전용 리모컨에서 원하는 OTT를 선택한 뒤 확인 버튼을 누르세요.</li><li>화면 팝업이 뜨면 바로 실행을 선택하세요. 작동이 안 되면 전원 버튼을 3초 이상 누르거나 셋탑 전원을 10초간 분리 후 재연결하세요.</li></ol><figure class="figure"><img src="assets/extay/crops/nsm-guide.png" alt="NSM OTT 사용법"></figure><figure class="figure"><img src="assets/extay/crops/tv-hdmi.jpg" alt="TV HDMI 입력 위치"></figure></div></details>
@@ -95,6 +840,39 @@ body{background:var(--bg);color:var(--ink)}
 
     <nav class="bottom"><button class="tab active" data-go="home"><span class="mi">home</span><span>홈</span></button><button class="tab" data-go="wifi"><span class="mi">wifi</span><span>와이파이</span></button><button class="tab" data-go="appliances"><span class="mi">robot_2</span><span>사용법</span></button><button class="tab" data-go="laundry"><span class="mi">local_laundry_service</span><span>세탁</span></button><button class="tab" data-go="trash"><span class="mi">delete</span><span>쓰레기</span></button></nav>
   </div>
+  <div class="menu-backdrop" id="menuBackdrop"></div>
+  <aside class="menu-panel" id="menuPanel" aria-label="빠른 메뉴">
+    <div class="menu-panel-head"><strong>EXTAY</strong><button class="icon-btn" type="button" id="closeMenu" aria-label="메뉴 닫기"><span class="mi">close</span></button></div>
+    <button class="menu-link" type="button" data-go="home"><span>Home</span><small>처음 화면</small></button>
+    <button class="menu-link" type="button" data-go="guidebook"><span>Guidebook</span><small>한글 · 영문 PDF 보기</small></button>
+    <button class="menu-link" type="button" data-go="restaurants"><span>Restaurants</span><small>도보 10분 맛집 리스트</small></button>
+    <button class="menu-link" type="button" data-go="faq"><span>FAQ</span><small>자주 묻는 질문</small></button>
+    <button class="menu-link" type="button" data-go="gallery"><span>Room Gallery</span><small>숙소 사진 보기</small></button>
+    <button class="menu-link" type="button" data-go="checkin"><span>Check-in Guide</span><small>입실 방법과 도어락 안내</small></button>
+    <button class="menu-link" type="button" data-go="transport"><span>Transportation</span><small>공항에서 숙소까지</small></button>
+    <button class="menu-link" type="button" data-go="wifi"><span>Wi-Fi</span><small>네트워크 정보</small></button>
+    <button class="menu-link" type="button" data-go="appliances"><span>Stay Guide</span><small>TV · 온수 · 비품 · 옥상</small></button>
+    <button class="menu-link" type="button" data-go="laundry"><span>Laundry</span><small>세탁기 · 건조기 사용법</small></button>
+    <button class="menu-link" type="button" data-go="trash"><span>Trash</span><small>분리수거와 배출 안내</small></button>
+  </aside>
+  <div class="contact-backdrop" id="contactBackdrop"></div>
+  <section class="contact-modal" id="contactModal" aria-label="호스트 연락처" aria-modal="true" role="dialog">
+    <div class="contact-modal-head">
+      <div>
+        <h2 id="contactModalTitle">전화번호</h2>
+        <p id="contactModalDesc">필요할 때 아래 번호를 복사해 사용해 주세요.</p>
+      </div>
+      <button class="contact-close" type="button" id="closeContactModal" aria-label="연락처 닫기"><span class="mi">close</span></button>
+    </div>
+    <div class="contact-phone-card" id="contactValueCard">
+      <small id="contactValueLabel">Phone</small>
+      <b id="contactValueText">010-000-0000</b>
+    </div>
+    <div class="contact-modal-actions">
+      <button class="hotel-btn primary" type="button" id="contactCopyButton" data-copy="010-000-0000"><span class="mi">content_copy</span>번호 복사</button>
+    </div>
+    <p class="contact-modal-note" id="contactModalNote"></p>
+  </section>
   <button class="chat-fab" id="openChatFab" aria-label="안내 도우미 열기"><span class="mi">smart_toy</span></button>
   <div class="chat-backdrop" id="chatBackdrop"></div>
   <section class="chat-panel" id="chatPanel" aria-label="익스테이 안내 도우미">
@@ -113,7 +891,7 @@ body{background:var(--bg);color:var(--ink)}
     Object.assign(uiText,{
       ko:{
         docTitle:'익스테이 맨션 해방촌 모바일 가이드',docDesc:'익스테이 맨션 해방촌 숙박 안내 모바일 가이드',
-        headerTitle:'익스테이',menuAria:'메뉴',guideAria:'가이드북 열기',chatAria:'안내 도우미',chatFabAria:'안내 도우미 열기',langAria:'Switch to English',langButton:'EN',
+        headerTitle:'EXTAY',menuAria:'메뉴',guideAria:'가이드북 열기',chatAria:'안내 도우미',chatFabAria:'안내 도우미 열기',langAria:'Switch to English',langButton:'EN',
         heroSub:'your cozy home in Seoul.',copied:'복사했습니다',
         bottom:['홈','와이파이','사용법','세탁','쓰레기'],
         quick:['와이파이','TV · OTT','온수 · 난방','세탁'],
@@ -164,7 +942,7 @@ body{background:var(--bg);color:var(--ink)}
       const meta=q('meta[name="description"]'); if(meta)meta.setAttribute('content',tr.docDesc);
       text(q('.top h1'),tr.headerTitle); text(q('.hero .label'),tr.heroSub); text(q('#langToggleText'),tr.langButton);
       const menu=q('#menuTop'), guide=q('#openGuidebookTop'), chatTop=q('#openChatTop'), chatFab=q('#openChatFab'), close=q('#closeChat'), langBtn=q('#langToggle');
-      if(menu)menu.setAttribute('aria-label',tr.menuAria); if(guide)guide.setAttribute('aria-label',tr.guideAria); if(chatTop)chatTop.setAttribute('aria-label',tr.chatAria); if(chatFab)chatFab.setAttribute('aria-label',tr.chatFabAria); if(close)close.setAttribute('aria-label',tr.chat.close); if(langBtn)langBtn.setAttribute('aria-label',tr.langAria);
+      if(menu)menu.setAttribute('aria-label',tr.menuAria); if(guide){guide.setAttribute('aria-label',tr.guideAria);guide.href=GUIDEBOOK_PDFS[currentLang==='en'?'en':'ko']} if(chatTop)chatTop.setAttribute('aria-label',tr.chatAria); if(chatFab)chatFab.setAttribute('aria-label',tr.chatFabAria); if(close)close.setAttribute('aria-label',tr.chat.close); if(langBtn)langBtn.setAttribute('aria-label',tr.langAria);
       eachText(qa('.bottom .tab span:not(.mi)'),tr.bottom);
       qa('.quick button>span').forEach((el,i)=>html(el,iconLabel(['wifi_password','tv','thermostat','local_laundry_service'][i],tr.quick[i])));
       const homeInfo=q('.home-info-card'); if(homeInfo){text(homeInfo.querySelector('.section-title'),tr.home.infoTitle); eachText(qa('.home-info-card small'),tr.home.labels); eachText(qa('.home-info-card b'),tr.home.values); eachText(qa('.home-info-card .mini-btn'),[tr.home.view]);}
@@ -181,8 +959,70 @@ body{background:var(--bg);color:var(--ink)}
       text(q('[data-screen="trash"] .page-title'),tr.trash.title); text(q('[data-screen="trash"] .page-sub'),tr.trash.sub); const trashCards=qa('[data-screen="trash"] article.card'); if(trashCards[0]){text(trashCards[0].querySelector('h3'),tr.trash.basis);text(trashCards[0].querySelector('.mini-btn'),tr.trash.types);eachText([...trashCards[0].querySelectorAll('.guide-item span')],tr.trash.items);eachText([...trashCards[0].querySelectorAll('figcaption')],tr.trash.captions)}; [1,2,3].forEach((idx,i)=>{const card=trashCards[idx],data=tr.trash.cards[i];if(card&&data){text(card.querySelector('h3'),data[0]);text(card.querySelector('p'),data[1]);eachText([...card.querySelectorAll('figcaption')],data[2])}});
       text(q('.chat-head h2'),tr.chat.title); text(q('.chat-head p'),tr.chat.sub); const firstBot=q('.chat-log .msg.bot:first-child'); if(firstBot&&!q('.chat-log .msg.user'))text(firstBot,tr.chat.hello); text(q('.chat-note'),tr.chat.note); const input=q('#chatInput'); if(input)input.placeholder=tr.chat.placeholder; text(q('#toast'),tr.copied);
     }
-    function show(name, openDevice=''){screens.forEach(s=>s.classList.toggle('active',s.dataset.screen===name));tabs.forEach(t=>t.classList.toggle('active',t.dataset.go===name));if(openDevice){document.querySelectorAll('details.device').forEach(d=>{d.open=d.dataset.device===openDevice});const target=document.querySelector(`details.device[data-device="${openDevice}"]`);if(target)setTimeout(()=>target.scrollIntoView({behavior:'smooth',block:'start'}),80)}else if(name==='appliances'){document.querySelectorAll('details.device').forEach((d,i)=>{d.open=i===0})}scrollTo({top:0,behavior:'smooth'});history.replaceState(null,'','#'+name)}
+    const RESTAURANT_SOURCE='https://juas.notion.site/4091068d724948cdaa4a1d63e36a898a?v=7696891d8c864357b976582f859d9cfd';
+    const RESTAURANT_CATEGORIES=[['all','전체'],['korean','한식'],['western','양식'],['burger','버거·타코'],['brunch','브런치'],['cafe','카페'],['dessert','디저트'],['bar','술집'],['asian','아시안'],['vegan','비건']];
+    const RESTAURANTS=[
+      {name:'semolina club (세몰리나 클럽)',cat:'western',label:'양식',tags:['파스타','캐주얼'],note:'해방촌 도보권의 캐주얼 양식 맛집입니다.',href:'https://juas.notion.site/semolina-club-1c920d6eecb14bfcb012d1141caac8a9?pvs=25'},
+      {name:'Vegetus (베제투스)',cat:'vegan',label:'비건',tags:['비건식당','가까움'],note:'숙소 근처 비건 식당. 가볍게 식사하기 좋습니다.',href:'https://juas.notion.site/Vegetus-8c75c27831a74ec08a2a39b314de2b9d?pvs=25'},
+      {name:'aeil (애일)',cat:'western',label:'다이닝',tags:['해방촌','분위기'],note:'조용한 분위기의 동네 다이닝으로 보기 좋은 곳입니다.',href:'https://juas.notion.site/aeil-7b7227e17ed24e42871273fca66cb35a?pvs=25'},
+      {name:'NOSTRESSBURGER (노스트레스버거)',cat:'burger',label:'버거',tags:['버거','캐주얼'],note:'부담 없이 빠르게 먹기 좋은 버거집입니다.',href:'https://juas.notion.site/NOSTRESSBURGER-e5c98aa175bb4c3bbc2ab3440d01dc8a?pvs=25'},
+      {name:'COMME MOA 꼼모아',cat:'western',label:'프렌치',tags:['미쉐린가이드2023','프렌치'],note:'미쉐린 가이드 2023에 소개된 프렌치 레스토랑입니다.',href:'https://juas.notion.site/COMME-MOA-2023-284d3aa5f948459fa6c9b40d74d6770f?pvs=25'},
+      {name:'코타티',cat:'dessert',label:'젤라또',tags:['아이스크림','디저트'],note:'식사 후 들르기 좋은 젤라또 매장입니다.',href:'https://juas.notion.site/icecream-73e91c6707644be08b69a6aa92eec828?pvs=25'},
+      {name:'성광대도',cat:'asian',label:'중식',tags:['중식','해방촌'],note:'해방촌에서 중식이 당길 때 확인하기 좋은 선택지입니다.',href:'https://juas.notion.site/b1bb8f0006e44e6685a024537ba91559?pvs=25'},
+      {name:'자코비 버거',cat:'burger',label:'버거',tags:['수제버거','캐주얼'],note:'이태원·해방촌권에서 유명한 버거집입니다.',href:'https://juas.notion.site/bdd0957f72f14ff6a742f4d31422fa57?pvs=25'},
+      {name:'잠수교 삼겹살',cat:'korean',label:'삼겹살',tags:['삼겹살','고기'],note:'고기 식사를 원할 때 선택하기 좋은 삼겹살집입니다.',href:'https://juas.notion.site/Pork-belly-c99ae21b876a496f9cf0ec7e04513f1d?pvs=25'},
+      {name:'Ori (해방촌 오리)',cat:'korean',label:'오리',tags:['오리','한식'],note:'오리 요리를 찾는다면 확인해볼 만한 곳입니다.',href:'https://juas.notion.site/Ori-ab16e4503e004f26b1e3f79a308d20ac?pvs=25'},
+      {name:'OPATO (오파토)',cat:'brunch',label:'브런치',tags:['브런치','오전 8시'],note:'오전 8시부터 이용 가능한 브런치 선택지입니다.',href:'https://juas.notion.site/OPATO-am-8-00-71dd6e4886374878b9d86caad544fb33?pvs=25'},
+      {name:'산솔',cat:'bar',label:'한식주점',tags:['한식주점','저녁'],note:'저녁 시간에 한식 안주와 술을 즐기기 좋은 곳입니다.',href:'https://juas.notion.site/a-Korean-restaurant-81cb8fe3009c4e3c99afd13cdc620a69?pvs=25'},
+      {name:'소월솥밥',cat:'korean',label:'솥밥',tags:['솥밥','한식'],note:'따뜻한 한식 한 끼가 필요할 때 좋은 솥밥집입니다.',href:'https://juas.notion.site/906cea07e63a4c7f9fe3a5ce3abb1a23?pvs=25'},
+      {name:'해방식당',cat:'korean',label:'한식',tags:['한식','식사'],note:'동네 식당 느낌의 한식 메뉴를 찾을 때 좋습니다.',href:'https://juas.notion.site/64a090a4da9247ac9269e44f12ac3174?pvs=25'},
+      {name:'나무솥밥경리단',cat:'korean',label:'솥밥',tags:['솥밥','경리단'],note:'경리단길 방향의 솥밥 식당입니다.',href:'https://juas.notion.site/008065b48d534518a39879205e673605?pvs=25'},
+      {name:'명동교자 이태원점',cat:'korean',label:'칼국수',tags:['칼국수','만두'],note:'칼국수와 만두가 생각날 때 안정적인 선택지입니다.',href:'https://juas.notion.site/d5e46b1a53f3479189c21764b7ae2bf1?pvs=25'},
+      {name:'걸구네',cat:'korean',label:'고기',tags:['삼겹살','막창'],note:'삼겹살과 막창을 먹기 좋은 고기집입니다.',href:'https://juas.notion.site/cb4f9b6d3dea431fb85f5c2bf1986c73?pvs=25'},
+      {name:'남매국밥',cat:'korean',label:'국밥',tags:['국밥','든든함'],note:'든든한 국밥 한 그릇이 필요할 때 추천됩니다.',href:'https://juas.notion.site/0f91e8fd076e44caa4f4c398db42731a?pvs=25'},
+      {name:'마루',cat:'korean',label:'한식세트',tags:['한식세트','정식'],note:'깔끔한 한식 세트 메뉴를 찾을 때 좋습니다.',href:'https://juas.notion.site/05f94fed691947ee9477f7b97c122a5d?pvs=25'},
+      {name:'보마',cat:'korean',label:'수육',tags:['수육','편육'],note:'수육과 편육 메뉴를 찾는 게스트에게 맞는 곳입니다.',href:'https://juas.notion.site/cd68ac40d98d468395bded3b57442962?pvs=25'},
+      {name:'아담스타코',cat:'burger',label:'타코',tags:['타코','멕시칸'],note:'가볍고 캐주얼한 타코 메뉴를 즐길 수 있습니다.',href:'https://juas.notion.site/2052bb90866744fbb182007343ee0910?pvs=25'},
+      {name:'노이이탈리안하우스',cat:'western',label:'이탈리안',tags:['이탈리안','양식'],note:'이탈리안 메뉴를 원할 때 보기 좋은 양식집입니다.',href:'https://juas.notion.site/4102217890fe442db9a4ce867b55c2a2?pvs=25'},
+      {name:'hmmmarket (흠마켓)',cat:'brunch',label:'브런치',tags:['브런치','카페'],note:'브런치와 가벼운 카페 메뉴를 함께 보기 좋은 곳입니다.',href:'https://juas.notion.site/hmmmarket-_-303ec5a0b5764ec8bbe38fa4cfc914bb?pvs=25'},
+      {name:'차경',cat:'bar',label:'와인',tags:['와인집','저녁'],note:'와인과 함께 조용한 저녁을 보내기 좋은 선택지입니다.',href:'https://juas.notion.site/ac83dac5cb5b4715a2d5c7cbbf52cfbe?pvs=25'},
+      {name:'심야식당기억',cat:'bar',label:'이자카야',tags:['이자카야','심야'],note:'늦은 시간 가볍게 술과 안주를 찾을 때 좋습니다.',href:'https://juas.notion.site/c27368401a2d469ba690dbd304b87357?pvs=25'},
+      {name:'팟카파우',cat:'asian',label:'태국음식',tags:['태국음식','아시안'],note:'태국음식이 당길 때 확인하기 좋은 곳입니다.',href:'https://juas.notion.site/3ea1530c3a06422b8461ae9268285cc6?pvs=25'},
+      {name:'테이블뷰',cat:'western',label:'양식',tags:['양식','다이닝'],note:'양식 메뉴와 분위기 있는 식사를 찾을 때 좋습니다.',href:'https://juas.notion.site/d7a3394309c24e188b136262fbd9343f?pvs=25'},
+      {name:'한남소관',cat:'asian',label:'홍콩식포차',tags:['홍콩식','포차'],note:'홍콩식 포차 분위기의 아시안 메뉴를 즐길 수 있습니다.',href:'https://juas.notion.site/a842a8369b384c7fb1c063c4db13dfc6?pvs=25'},
+      {name:'야상해',cat:'asian',label:'딤섬',tags:['딤섬','중식'],note:'딤섬이 생각날 때 확인하기 좋은 곳입니다.',href:'https://juas.notion.site/4cc1b8416d6e462ea1fe9a370ac68fc8?pvs=25'},
+      {name:'토터스',cat:'dessert',label:'디저트',tags:['디저트','카페'],note:'디저트를 즐기기 좋은 카페형 매장입니다.',href:'https://juas.notion.site/9ccd72f87b504452851f0a8e44284b77?pvs=25'},
+      {name:'오잇',cat:'dessert',label:'디저트',tags:['디저트','카페'],note:'달콤한 디저트가 필요할 때 들르기 좋습니다.',href:'https://juas.notion.site/46b0d4267b5b4f80b83f53eb8827e8bb?pvs=25'},
+      {name:'쉘터해방',cat:'dessert',label:'디저트',tags:['디저트','해방촌'],note:'해방촌에서 디저트를 찾을 때 좋은 선택지입니다.',href:'https://juas.notion.site/29810e7230194871b98e705f224cf51f?pvs=25'},
+      {name:'에이티익스프레스 해방촌점',cat:'cafe',label:'카페',tags:['레몬에이드','카페'],note:'레몬에이드 등 가볍게 마실 메뉴를 찾을 때 좋습니다.',href:'https://juas.notion.site/2c0417cbfeb14f469c91aebecfde15e9?pvs=25'},
+      {name:'카페올리버 해방촌',cat:'cafe',label:'커피',tags:['커피맛집','카페'],note:'커피 맛집으로 적어둔 카페입니다.',href:'https://juas.notion.site/e2d247b44bb64b5d9c8a306f0aa526a4?pvs=25'},
+      {name:'미니마이즈',cat:'dessert',label:'디저트',tags:['쌀푸딩','디저트'],note:'쌀푸딩 등 디저트 메뉴가 있는 곳입니다.',href:'https://juas.notion.site/647ca52d2f26405fafb70a9b1fe25481?pvs=25'}
+    ];
+    let restaurantCategory='all',restaurantSearch='';
+    function escRestaurant(s){return String(s).replace(/[&<>"']/g,ch=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[ch]))}
+    function restaurantImageUrl(r){const idx=RESTAURANTS.indexOf(r);return idx<0?'assets/extay/crops/rooftop-namsan.jpg':`assets/restaurants/restaurant-${String(idx+1).padStart(2,'0')}.jpg`}
+    function restaurantMapUrl(name,type){const query=encodeURIComponent(`${name.replace(/\([^)]*\)/g,'').trim()} 해방촌`);return type==='naver'?`https://map.naver.com/p/search/${query}`:`https://www.google.com/maps/search/?api=1&query=${query}`}
+    function renderRestaurantFilters(){const wrap=q('#restaurantFilters');if(!wrap)return;wrap.innerHTML=RESTAURANT_CATEGORIES.map(([key,label])=>`<button class="restaurant-chip ${key===restaurantCategory?'active':''}" type="button" data-restaurant-filter="${key}">${label}</button>`).join('')}
+    function renderRestaurants(){const list=q('#restaurantList'),count=q('#restaurantCount'),empty=q('#restaurantEmpty');if(!list)return;renderRestaurantFilters();const needle=restaurantSearch.trim().toLowerCase();const filtered=RESTAURANTS.filter(r=>(restaurantCategory==='all'||r.cat===restaurantCategory)&&(!needle||[r.name,r.label,r.note,...r.tags].join(' ').toLowerCase().includes(needle)));if(count)count.textContent=`${filtered.length}곳`;if(empty)empty.style.display=filtered.length?'none':'block';list.innerHTML=filtered.map(r=>{const name=escRestaurant(r.name);return `<article class="restaurant-card"><figure class="restaurant-photo"><img src="${restaurantImageUrl(r)}" alt="${name}" loading="lazy"></figure><div class="restaurant-body"><div class="restaurant-top"><h3 class="restaurant-name">${name}</h3><span class="restaurant-badge">${escRestaurant(r.label)}</span></div><p class="restaurant-note">${escRestaurant(r.note)}</p><div class="restaurant-tags">${r.tags.map(t=>`<span>${escRestaurant(t)}</span>`).join('')}</div><div class="restaurant-actions"><a class="primary" href="${restaurantMapUrl(r.name,'naver')}" target="_blank" rel="noopener"><span class="mi">location_on</span>네이버</a><a href="${restaurantMapUrl(r.name,'google')}" target="_blank" rel="noopener"><span class="mi">map</span>구글</a><a href="${r.href}" target="_blank" rel="noopener"><span class="mi">open_in_new</span>상세</a></div></div></article>`}).join('')}
+    const GUIDEBOOK_PDFS={ko:'assets/guidebook/Extay_Mansion_Haebangchon_Guide_KO_no_NotebookLM.pdf',en:'assets/guidebook/Extay_Mansion_Haebangchon_Guide_EN_no_NotebookLM.pdf'};
+    const PDFJS_SRC='https://cdn.jsdelivr.net/npm/pdfjs-dist@4.10.38/build/pdf.min.mjs';
+    const PDFJS_WORKER='https://cdn.jsdelivr.net/npm/pdfjs-dist@4.10.38/build/pdf.worker.min.mjs';
+    let guidebookLang=currentLang==='en'?'en':'ko',guidebookDoc=null,guidebookPage=1,guidebookTotal=0,guidebookPdfjs=null,guidebookLoadId=0,guidebookResizeTimer=0;
+    function guidebookElements(){return{viewer:q('#guidebookViewer'),status:q('#guidebookStatus'),canvas:q('#guidebookCanvas'),fallback:q('#guidebookFallback'),open:q('#guidebookOpenPdf'),label:q('#guidebookPageLabel'),prev:q('[data-guide-nav="prev"]'),next:q('[data-guide-nav="next"]')}}
+    function updateGuidebookControls(){const els=guidebookElements(),src=GUIDEBOOK_PDFS[guidebookLang];qa('[data-guide-lang]').forEach(btn=>btn.classList.toggle('active',btn.dataset.guideLang===guidebookLang));if(els.open)els.open.href=src;if(els.fallback)els.fallback.src=src;if(els.label)els.label.textContent=guidebookTotal?`${guidebookPage} / ${guidebookTotal}`:'- / -';if(els.prev)els.prev.disabled=guidebookPage<=1||!guidebookTotal;if(els.next)els.next.disabled=guidebookPage>=guidebookTotal||!guidebookTotal}
+    async function ensurePdfjs(){if(!guidebookPdfjs){guidebookPdfjs=await import(PDFJS_SRC);guidebookPdfjs.GlobalWorkerOptions.workerSrc=PDFJS_WORKER}return guidebookPdfjs}
+    async function loadGuidebook(lang=guidebookLang,force=false){const els=guidebookElements();if(!els.viewer)return;guidebookLang=lang;updateGuidebookControls();if(guidebookDoc&&!force&&guidebookLang===lang){renderGuidebookPage(guidebookPage);return}const loadId=++guidebookLoadId;const src=GUIDEBOOK_PDFS[guidebookLang];els.viewer.classList.remove('fallback');if(els.status){els.status.textContent='가이드를 불러오는 중입니다.';els.status.classList.remove('hidden')}try{const pdfjs=await ensurePdfjs();const doc=await pdfjs.getDocument(src).promise;if(loadId!==guidebookLoadId)return;guidebookDoc=doc;guidebookPage=1;guidebookTotal=doc.numPages;updateGuidebookControls();await renderGuidebookPage(1)}catch(_){if(loadId!==guidebookLoadId)return;guidebookDoc=null;guidebookTotal=0;guidebookPage=1;updateGuidebookControls();if(els.status){els.status.textContent='PDF 뷰어를 불러오지 못해 기본 PDF 화면으로 표시합니다.';setTimeout(()=>els.status.classList.add('hidden'),1200)}els.viewer.classList.add('fallback')}}
+    async function renderGuidebookPage(pageNumber){const els=guidebookElements();if(!guidebookDoc||!els.canvas)return;guidebookPage=Math.max(1,Math.min(pageNumber,guidebookTotal));updateGuidebookControls();if(els.status){els.status.textContent='페이지를 불러오는 중입니다.';els.status.classList.remove('hidden')}try{const page=await guidebookDoc.getPage(guidebookPage);const wrap=els.canvas.parentElement,stage=els.canvas.closest('.guidebook-stage'),base=page.getViewport({scale:1});const cssWidth=Math.max(260,(stage?.clientWidth||wrap?.clientWidth||320)-24);const scale=cssWidth/base.width;const dpr=Math.min(window.devicePixelRatio||1,2);const viewport=page.getViewport({scale:scale*dpr});els.canvas.width=Math.floor(viewport.width);els.canvas.height=Math.floor(viewport.height);els.canvas.style.width=`${Math.floor(viewport.width/dpr)}px`;els.canvas.style.height=`${Math.floor(viewport.height/dpr)}px`;await page.render({canvasContext:els.canvas.getContext('2d'),viewport}).promise;if(els.status)els.status.classList.add('hidden');updateGuidebookControls()}catch(_){if(els.status)els.status.textContent='페이지를 표시하지 못했습니다. 원본 PDF 버튼을 이용해 주세요.'}}
+    function initGuidebook(){if(!q('[data-screen="guidebook"]'))return;loadGuidebook(guidebookLang||'ko')}
+    function show(name, openDevice=''){document.body.classList.toggle('is-home',name==='home');document.body.classList.toggle('is-gallery',name==='gallery');document.body.classList.toggle('is-checkin',name==='checkin');document.body.classList.toggle('is-wifi',name==='wifi');document.body.classList.toggle('is-transport',name==='transport');document.body.classList.toggle('is-guidebook',name==='guidebook');document.body.classList.toggle('is-restaurants',name==='restaurants');document.body.classList.toggle('is-faq',name==='faq');screens.forEach(s=>s.classList.toggle('active',s.dataset.screen===name));tabs.forEach(t=>t.classList.toggle('active',t.dataset.go===name));if(name==='guidebook')setTimeout(initGuidebook,60);if(name==='restaurants')setTimeout(renderRestaurants,0);if(openDevice){document.querySelectorAll('details.device').forEach(d=>{d.open=d.dataset.device===openDevice});const target=document.querySelector(`details.device[data-device="${openDevice}"]`);if(target)setTimeout(()=>target.scrollIntoView({behavior:'smooth',block:'start'}),80)}else if(name==='appliances'){document.querySelectorAll('details.device').forEach((d,i)=>{d.open=i===0})}scrollTo({top:0,behavior:'smooth'});history.replaceState(null,'','#'+name)}
     document.addEventListener('click',e=>{const g=e.target.closest('[data-go]'); if(g){show(g.dataset.go,g.dataset.open||'')}});
+    document.addEventListener('click',e=>{const f=e.target.closest('[data-restaurant-filter]');if(!f)return;restaurantCategory=f.dataset.restaurantFilter;renderRestaurants()});
+    document.getElementById('restaurantSearch')?.addEventListener('input',e=>{restaurantSearch=e.target.value;renderRestaurants()});
+    document.addEventListener('click',e=>{const lang=e.target.closest('[data-guide-lang]');if(lang){loadGuidebook(lang.dataset.guideLang,true);return}const nav=e.target.closest('[data-guide-nav]');if(nav&&guidebookDoc){renderGuidebookPage(guidebookPage+(nav.dataset.guideNav==='next'?1:-1))}});
+    window.addEventListener('resize',()=>{if(!document.body.classList.contains('is-guidebook')||!guidebookDoc)return;clearTimeout(guidebookResizeTimer);guidebookResizeTimer=setTimeout(()=>renderGuidebookPage(guidebookPage),160)});
+    document.addEventListener('click',e=>{const s=e.target.closest('[data-scroll-target]'); if(!s)return; const target=document.querySelector(s.dataset.scrollTarget); if(target)target.scrollIntoView({behavior:'smooth',block:'start'});});
+    function selectGalleryImage(button){const main=q('#galleryMain'), title=q('#galleryTitle'), desc=q('#galleryDesc'); if(!button||!main||!title||!desc)return; qa('.gallery-thumb').forEach(t=>{const active=t===button;t.classList.toggle('active',active);t.setAttribute('aria-selected',active?'true':'false')}); main.src=button.dataset.full; main.alt=button.dataset.alt||''; title.textContent=button.dataset.title||''; desc.textContent=button.dataset.desc||''; button.scrollIntoView({behavior:'smooth',inline:'center',block:'nearest'});}
+    document.addEventListener('click',e=>{const thumb=e.target.closest('.gallery-thumb'); if(thumb)selectGalleryImage(thumb)});
     document.addEventListener('click',async e=>{const c=e.target.closest('[data-copy]'); if(!c)return; try{await navigator.clipboard.writeText(c.dataset.copy); toast(uiText[currentLang].copied)}catch(_){toast(c.dataset.copy)}});
     function toast(t){const el=document.getElementById('toast');el.textContent=t;el.classList.add('show');clearTimeout(window.__t);window.__t=setTimeout(()=>el.classList.remove('show'),1500)}
     const initial=location.hash.replace('#',''); if(initial && document.querySelector(`[data-screen="${initial}"]`)) show(initial);
@@ -190,7 +1030,7 @@ body{background:var(--bg);color:var(--ink)}
     const extaySmartModes={trash:{bg:'assets/extay/smart-card/trash-evening.png',ko:{badge:'저녁 정리',title:'쓰레기 배출 확인',copy:'음식물, 재활용, 일반 쓰레기 위치가 다릅니다. 장기 숙박 시 냄새가 나지 않도록 먼저 확인해 주세요.',actions:[['trash','쓰레기 보기','delete'],['appliances','비품 위치','inventory_2']],suggestions:['쓰레기 어디에 버려?','음식물 쓰레기는 어디야?','재활용은 어디야?','비품 보관함 비밀번호 알려줘']},en:{badge:'Evening cleanup',title:'Check Trash Disposal',copy:'Food waste, recycling, and general trash have different locations. Check the guide first to prevent odor during longer stays.',actions:[['trash','Trash Guide','delete'],['appliances','Supply Cabinet','inventory_2']],suggestions:['Where do I throw away trash?','Where does food waste go?','Where is recycling?','What is the supply cabinet password?']}},ready:{bg:'assets/extay/smart-card/ready-morning.jpg',ko:{badge:'입실 준비',title:'먼저 확인하면 좋은 정보',copy:'와이파이 ID와 비밀번호, 체크인 시간, TV·OTT 사용법, 온수 버튼을 먼저 확인해 주세요.',actions:[['wifi','와이파이 확인','wifi_password'],['appliances','사용법 보기','robot_2']],suggestions:['와이파이 비밀번호 알려줘','체크인은 몇 시야?','TV OTT 어떻게 봐?','온수 어떻게 켜?']},en:{badge:'Check-in ready',title:'Good Things to Check First',copy:'Check the Wi-Fi ID/password, check-in time, TV/OTT steps, and hot-water button first.',actions:[['wifi','Wi-Fi Info','wifi_password'],['appliances','How to Use','robot_2']],suggestions:['What is the Wi-Fi password?','What time is check-in?','How do I use TV OTT?','How do I turn on hot water?']}},stay:{bg:'assets/extay/smart-card/stay-day.png',ko:{badge:'숙박 중 안내',title:'자주 찾는 정보',copy:'TV·OTT, 온수·난방, 세탁기·건조기, 비품 보관함, 옥상 정보를 바로 확인할 수 있습니다.',actions:[['appliances','사용법 보기','robot_2'],['laundry','세탁 안내','local_laundry_service']],suggestions:['OTT 어떻게 봐?','온수가 안 나와','세탁기 어떻게 써?','옥상 이용 가능해?']},en:{badge:'During your stay',title:'Frequently Needed Info',copy:'Quickly check TV/OTT, hot water and heating, washer/dryer, the supply cabinet, and rooftop information.',actions:[['appliances','How to Use','robot_2'],['laundry','Laundry','local_laundry_service']],suggestions:['How do I use OTT?','Hot water is not working','How do I use the washer?','Can I use the rooftop?']}},night:{bg:'assets/extay/smart-card/night.jpg',ko:{badge:'야간 안내',title:'밤 시간 이용 안내',copy:'21시 이후에는 매너타임입니다. 세탁기·건조기 진동, 옥상 소음, 흡연 구역에 유의해 주세요.',actions:[['appliances','사용법 보기','thermostat'],['trash','쓰레기 안내','delete']],suggestions:['온수 어떻게 켜?','공용 화장실 비밀번호 알려줘','OTT가 안 켜져','주차는 어디에 해?']},en:{badge:'Night guide',title:'Night-Time Guide',copy:'Quiet hours start after 21:00. Please be mindful of washer/dryer vibration, rooftop noise, and smoking rules.',actions:[['appliances','How to Use','thermostat'],['trash','Trash Guide','delete']],suggestions:['How do I turn on hot water?','What is the shared restroom password?','OTT is not working','Where can I park?']}}};
     function pickSmartMode(){const h=new Date().getHours(); if(h>=6&&h<12)return 'ready'; if(h>=12&&h<17)return 'stay'; if(h>=17&&h<22)return 'trash'; return 'night'}
     function renderSmartGuide(){const key=pickSmartMode(),m=extaySmartModes[key],copyText=m[currentLang]||m.ko; const pad=n=>String(n).padStart(2,'0'); const now=new Date(); const card=document.getElementById('smartCard'); if(card&&m.bg)card.style.setProperty('--smart-bg',`url('${m.bg}')`); const clk=document.getElementById('smartClock'); if(clk) clk.textContent=`${pad(now.getHours())}:${pad(now.getMinutes())}`; const badge=document.getElementById('smartBadge'), title=document.getElementById('smartTitle'), copy=document.getElementById('smartCopy'), actions=document.getElementById('smartActions'); if(!badge||!title||!copy||!actions)return; badge.textContent=copyText.badge; title.textContent=copyText.title; copy.textContent=copyText.copy; actions.innerHTML=copyText.actions.map((a,i)=>`<button class="btn ${i===0?'primary':''}" data-go="${a[0]}"><span class="mi">${a[2]}</span>${a[1]}</button>`).join(''); document.querySelectorAll('.suggestion').forEach((b,i)=>{if(copyText.suggestions[i])b.textContent=copyText.suggestions[i]});}
-    document.getElementById('langToggle')?.addEventListener('click',()=>{currentLang=currentLang==='ko'?'en':'ko';localStorage.setItem(LANG_KEY,currentLang);applyStaticLanguage();renderSmartGuide()});
+    document.getElementById('langToggle')?.addEventListener('click',()=>{currentLang=currentLang==='ko'?'en':'ko';localStorage.setItem(LANG_KEY,currentLang);applyStaticLanguage();renderSmartGuide();if(document.body.classList.contains('is-guidebook'))loadGuidebook(currentLang==='en'?'en':'ko',true)});
     applyStaticLanguage(); renderSmartGuide(); setInterval(renderSmartGuide,60000);
     const guideAnswers={ko:[],en:[]};
     const extayGuideAnswers={
@@ -198,9 +1038,28 @@ body{background:var(--bg);color:var(--ink)}
       en:[[['wifi','wi-fi'],'The Wi-Fi ID is `U+Net46F0_5G` and the password is `8H3#22E97B`. Please enter uppercase/lowercase letters and symbols exactly as shown.'],[['check-in','checkin','check in','arrival','door code','door lock'],'Check-in starts at 16:00. This is self check-in. Your personal door code is sent through Airbnb/host messages around noon on check-in day. Touch the keypad, then enter the code you received followed by the * button.'],[['checkout','check-out','check out','leave'],'Checkout is at 11:00. Before leaving, please wash dishes, sort trash, turn off the living room and bedroom AC, close the windows, and make sure the front door is closed. A late checkout fee may apply after a 10-minute grace period.'],[['address','location','directions','noksapyeong','haebangchon'],'The stay is on the 2nd floor, 59 Sinheung-ro, Yongsan-gu, Seoul. It is about 15 minutes on foot from Noksapyeong Station Exit 2, or about 10 minutes by village bus. Enter the alley between Seven Eleven and Vegetus restaurant, then go up to the 2nd floor.'],[['parking','car'],'There is no on-site parking. Please check real-time availability with the Modu Parking app or use nearby paid public parking such as Yongsan 2-ga mechanical public parking, Yongsan 2-ga Community Center public parking, or Haebangchon public parking.'],[['rule','rules','smoking','pet','visitor','noise','quiet','cooking','filming'],'Extra visitors, pets, and commercial filming are not allowed. The room, bathroom, balcony, entrance, and stairs are all non-smoking areas. Please keep indoor cooking simple and avoid food with strong smoke or odor. Quiet hours start after 21:00.'],[['tv','television','ott','netflix','youtube','nsm'],'Use the TV remote when selecting an external input. On the OTT remote, choose the OTT service you want and press confirm. If a pop-up appears, select run now.'],[['hot water','heating','boiler'],'Use the Rinnai controller behind the standing AC in the living room. Press the hot-water button. If 60 degrees appears on the screen, hot water is working normally.'],[['supplies','towel','toilet paper','trash bag','cabinet'],'Extra towels, toilet paper, trash bags, and supplies are in the secret supply cabinet. The password is 007. If room 2 does not open, also check under the induction cooktop.'],[['washer','dryer','laundry'],'Turn on the washer, choose a course, and press start/pause. For the dryer, turn it on, choose a drying course, and press start. At night, please be mindful of vibration and noise.'],[['restroom','toilet','bathroom','7003'],'If your group needs another restroom, use the shared restroom behind the 1st-floor restaurant. The password is *7003*.'],[['rooftop','namsan'],'The rooftop has a Namsan Tower view. Please keep noise low late at night.'],[['trash','recycling','food waste','garbage'],'Put food waste in the bin above the kitchen sink, recycling in the balcony recycling bin, and general trash in the standard trash bag under the dining table or on the balcony. For longer stays, use the orange bin near the 1st-floor entrance if food waste starts to smell.']]
     };
     const chatPanel=document.getElementById('chatPanel'), chatBackdrop=document.getElementById('chatBackdrop'), chatLog=document.getElementById('chatLog'), chatInput=document.getElementById('chatInput'), chatForm=document.getElementById('chatForm');
+    const menuPanel=document.getElementById('menuPanel'), menuBackdropEl=document.getElementById('menuBackdrop');
+    const contactModal=document.getElementById('contactModal'), contactBackdrop=document.getElementById('contactBackdrop');
+    const CONTACT_DETAILS={
+      phone:{title:'전화번호',desc:'필요할 때 아래 번호를 복사해 사용해 주세요.',label:'Phone',value:'010-000-0000',copy:'번호 복사',note:''},
+      kakao:{title:'카카오톡 오픈채팅',desc:'아래 임시 오픈채팅 URL을 복사해 사용해 주세요.',label:'Open chat URL',value:'https://open.kakao.com/o/sExtayTemp',copy:'URL 복사',note:'카카오톡 링크는 현재 임시 링크입니다.'}
+    };
     function openChat(){chatPanel.classList.add('open');chatBackdrop.classList.add('open');setTimeout(()=>chatInput.focus(),120)}
     function closeChat(){chatPanel.classList.remove('open');chatBackdrop.classList.remove('open')}
+    function openMenu(){menuPanel?.classList.add('open');menuBackdropEl?.classList.add('open');document.getElementById('menuTop')?.setAttribute('aria-expanded','true')}
+    function closeMenuPanel(){menuPanel?.classList.remove('open');menuBackdropEl?.classList.remove('open');document.getElementById('menuTop')?.setAttribute('aria-expanded','false')}
+    function openContactModal(kind='phone'){const data=CONTACT_DETAILS[kind]||CONTACT_DETAILS.phone;text(q('#contactModalTitle'),data.title);text(q('#contactModalDesc'),data.desc);text(q('#contactValueLabel'),data.label);text(q('#contactValueText'),data.value);text(q('#contactCopyButton'),data.copy);q('#contactCopyButton')?.setAttribute('data-copy',data.value);text(q('#contactModalNote'),data.note);q('#contactValueCard')?.classList.toggle('link',kind==='kakao');contactModal?.classList.add('open');contactBackdrop?.classList.add('open');setTimeout(()=>document.getElementById('closeContactModal')?.focus(),80)}
+    function closeContactModal(){contactModal?.classList.remove('open');contactBackdrop?.classList.remove('open')}
     ['openChatFab','openChatTop','openChatCard'].forEach(id=>{const el=document.getElementById(id); if(el) el.addEventListener('click',openChat)});
+    document.querySelectorAll('[data-open-chat]').forEach(el=>el.addEventListener('click',()=>{openChat();const question=el.dataset.question;if(question){setTimeout(()=>{chatInput.value=question;chatForm.requestSubmit()},180)}}));
+    document.querySelectorAll('[data-open-contact]').forEach(el=>el.addEventListener('click',()=>openContactModal(el.dataset.openContact)));
+    document.getElementById('menuTop')?.addEventListener('click',openMenu);
+    document.getElementById('closeMenu')?.addEventListener('click',closeMenuPanel);
+    menuBackdropEl?.addEventListener('click',closeMenuPanel);
+    document.getElementById('closeContactModal')?.addEventListener('click',closeContactModal);
+    contactBackdrop?.addEventListener('click',closeContactModal);
+    document.addEventListener('keydown',e=>{if(e.key==='Escape')closeContactModal()});
+    document.addEventListener('click',e=>{if(e.target.closest('.menu-link'))closeMenuPanel()});
     document.getElementById('closeChat').addEventListener('click',closeChat); chatBackdrop.addEventListener('click',closeChat);
     document.querySelectorAll('.suggestion').forEach(b=>b.addEventListener('click',()=>{chatInput.value=b.textContent; chatForm.requestSubmit()}));
     function escapeHtml(text){return String(text).replace(/[&<>"']/g,ch=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[ch]))}
