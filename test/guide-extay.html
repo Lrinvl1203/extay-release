@@ -76,12 +76,12 @@ body.is-home .top{position:fixed;top:0;background:transparent;color:#fff;grid-te
 body.is-home .top h1{order:1;text-shadow:0 2px 18px rgba(0,0,0,.34)}
 body.is-home .top #menuTop{order:2;background:rgba(0,0,0,.08);color:#fff}
 body.is-home .top .top-actions{display:none}
-body.is-gallery .top,body.is-checkin .top,body.is-wifi .top{position:sticky;top:0;left:auto;transform:none;width:100%;background:rgba(247,242,236,.94);color:#221b15;grid-template-columns:1fr auto;border-bottom:1px solid rgba(216,198,180,.72);backdrop-filter:blur(18px)}
-body.is-gallery .top h1,body.is-checkin .top h1,body.is-wifi .top h1{order:1;text-align:left;text-shadow:none}
-body.is-gallery .top #menuTop,body.is-checkin .top #menuTop,body.is-wifi .top #menuTop{order:2;background:rgba(123,99,79,.1);color:#221b15}
-body.is-gallery .top .top-actions,body.is-checkin .top .top-actions,body.is-wifi .top .top-actions{display:none}
-body:not(.is-home):not(.is-gallery):not(.is-checkin):not(.is-wifi) .top{position:sticky;top:0;left:auto;transform:none;width:100%;background:rgba(247,242,236,.94);color:#221b15;border-bottom:1px solid rgba(216,198,180,.72);backdrop-filter:blur(18px)}
-body:not(.is-home):not(.is-gallery):not(.is-checkin):not(.is-wifi) .top h1{text-align:center}
+body.is-gallery .top,body.is-checkin .top,body.is-wifi .top,body.is-transport .top{position:sticky;top:0;left:auto;transform:none;width:100%;background:rgba(247,242,236,.94);color:#221b15;grid-template-columns:1fr auto;border-bottom:1px solid rgba(216,198,180,.72);backdrop-filter:blur(18px)}
+body.is-gallery .top h1,body.is-checkin .top h1,body.is-wifi .top h1,body.is-transport .top h1{order:1;text-align:left;text-shadow:none}
+body.is-gallery .top #menuTop,body.is-checkin .top #menuTop,body.is-wifi .top #menuTop,body.is-transport .top #menuTop{order:2;background:rgba(123,99,79,.1);color:#221b15}
+body.is-gallery .top .top-actions,body.is-checkin .top .top-actions,body.is-wifi .top .top-actions,body.is-transport .top .top-actions{display:none}
+body:not(.is-home):not(.is-gallery):not(.is-checkin):not(.is-wifi):not(.is-transport) .top{position:sticky;top:0;left:auto;transform:none;width:100%;background:rgba(247,242,236,.94);color:#221b15;border-bottom:1px solid rgba(216,198,180,.72);backdrop-filter:blur(18px)}
+body:not(.is-home):not(.is-gallery):not(.is-checkin):not(.is-wifi):not(.is-transport) .top h1{text-align:center}
 .landing-hero{position:relative;min-height:74svh;background:linear-gradient(180deg,rgba(20,15,10,.34) 0%,rgba(20,15,10,.28) 36%,rgba(20,15,10,.68) 100%),url('../assets/extay/crops/main-living-logo.png') center/cover no-repeat;color:#fff;isolation:isolate}
 .landing-hero:after{content:"";position:absolute;inset:auto 0 0;height:24%;background:linear-gradient(180deg,rgba(247,242,236,0),#f7f2ec);pointer-events:none}
 .hero-panel{position:absolute;left:0;right:0;bottom:0;z-index:1;padding:0 34px 38px}
@@ -175,6 +175,37 @@ body:not(.is-home):not(.is-gallery):not(.is-checkin):not(.is-wifi) .top h1{text-
 .wifi-list li:before{content:"";position:absolute;left:0;top:.62em;width:7px;height:7px;border-radius:50%;background:#7b634f}
 .wifi-soft-card{background:#efe4d6;border-color:rgba(123,99,79,.26)}
 .wifi-chat{margin-top:16px;color:#fff;background:#2b2118;border-color:#2b2118}
+.transport-screen{background:#f7f2ec;min-height:calc(100dvh - 72px)}
+.transport-hero{position:relative;overflow:hidden;border-radius:26px;min-height:246px;padding:28px 24px;display:flex;flex-direction:column;justify-content:flex-end;color:#fff;background:linear-gradient(180deg,rgba(35,26,18,.16),rgba(35,26,18,.84)),url('../assets/extay/crops/rooftop-namsan.jpg') center/cover no-repeat;box-shadow:0 18px 44px rgba(58,43,30,.16);margin-bottom:20px}
+.transport-hero .section-kicker{color:rgba(255,255,255,.82)}
+.transport-hero h2{margin:0;font-family:'Noto Serif KR','Pretendard',serif;font-size:40px;line-height:1.12;font-weight:600;color:#fff;text-shadow:0 2px 24px rgba(0,0,0,.28)}
+.transport-hero p:last-child{margin:14px 0 0;font-size:14px;line-height:1.62;color:rgba(255,255,255,.9);word-break:keep-all;text-shadow:0 2px 18px rgba(0,0,0,.28)}
+.transport-stack{display:grid;gap:14px}
+.transport-card{background:#fffaf4;border:1px solid rgba(216,198,180,.72);border-radius:22px;box-shadow:0 12px 32px rgba(58,43,30,.08);padding:22px}
+.transport-card h3{margin:0 0 14px;font-size:21px;line-height:1.25;color:#221b15}
+.transport-card p{margin:0;color:#665646;font-size:14px;line-height:1.62;word-break:keep-all}
+.transport-actions{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:16px}
+.transport-actions .hotel-btn{color:#221b15;border-color:rgba(123,99,79,.28);background:#fff}
+.transport-actions .hotel-btn.primary{background:#2b2118;color:#fff;border-color:#2b2118}
+.transport-facts{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.transport-fact{border-radius:16px;background:#f3eadf;padding:15px}
+.transport-fact small{display:block;margin-bottom:6px;color:#8a7663;font-size:11px;font-weight:800;text-transform:uppercase}
+.transport-fact b{display:block;color:#221b15;font-size:15px;line-height:1.42;word-break:keep-all}
+.route-card{display:grid;gap:14px;border-radius:20px;background:#fff;border:1px solid rgba(216,198,180,.66);padding:18px;margin-top:12px}
+.route-card:first-of-type{margin-top:0}
+.route-top{display:flex;align-items:flex-start;justify-content:space-between;gap:12px}
+.route-top h4{margin:0;font-size:18px;line-height:1.28;color:#221b15}
+.route-badge{flex:0 0 auto;border-radius:999px;background:#efe4d6;color:#7b634f;padding:7px 10px;font-size:10px;font-weight:900;letter-spacing:.04em;text-transform:uppercase}
+.route-meta{display:flex;flex-wrap:wrap;gap:7px}
+.route-meta span{border-radius:999px;background:#f3eadf;color:#6b5a4a;padding:7px 10px;font-size:11px;font-weight:800}
+.route-steps{counter-reset:route;display:grid;gap:11px;margin:0;padding:0;list-style:none}
+.route-steps li{counter-increment:route;display:grid;grid-template-columns:30px 1fr;gap:10px;align-items:start;font-size:13px;line-height:1.55;color:#665646;word-break:keep-all}
+.route-steps li:before{content:counter(route);width:30px;height:30px;border-radius:50%;display:grid;place-items:center;background:#2b2118;color:#fff;font-size:12px;font-weight:800}
+.route-steps b{display:block;margin-bottom:3px;color:#221b15;font-size:14px}
+.transport-note{background:#efe4d6;border-color:rgba(123,99,79,.26)}
+.transport-note ul{display:grid;gap:10px;margin:0;padding:0;list-style:none}
+.transport-note li{position:relative;padding-left:24px;font-size:14px;line-height:1.55;color:#665646;word-break:keep-all}
+.transport-note li:before{content:"";position:absolute;left:0;top:.62em;width:7px;height:7px;border-radius:50%;background:#7b634f}
 .checkin-hero{position:relative;overflow:hidden;border-radius:26px;min-height:230px;padding:28px 24px;display:flex;flex-direction:column;justify-content:flex-end;color:#fff;background:linear-gradient(180deg,rgba(35,26,18,.18),rgba(35,26,18,.82)),url('../assets/extay/crops/main-living-logo.png') center/cover no-repeat;box-shadow:0 18px 44px rgba(58,43,30,.16);margin-bottom:24px}
 .checkin-hero .section-kicker{color:rgba(255,255,255,.82)}
 .checkin-hero h2{margin:0;font-family:'Playfair Display',Georgia,serif;font-size:42px;line-height:.95;color:#fff}
@@ -221,6 +252,8 @@ body:not(.is-home) main{padding-top:0}
   .wifi-hero .page-title{font-size:38px}
   .wifi-credential{grid-template-columns:1fr}
   .wifi-credential .mini-btn{width:100%}
+  .transport-hero h2{font-size:35px}
+  .transport-facts,.transport-actions{grid-template-columns:1fr}
 }
 
   </style>
@@ -249,7 +282,7 @@ body:not(.is-home) main{padding-top:0}
           <div class="quick-access-grid">
             <button class="quick-tile" type="button" data-go="checkin"><span class="mi">calendar_month</span><b>체크인 안내</b><small>입실 방법 확인</small></button>
             <button class="quick-tile" type="button" data-go="wifi"><span class="mi">wifi</span><b>와이파이</b><small>네트워크 정보</small></button>
-            <a class="quick-tile" href="https://www.google.com/maps/search/?api=1&query=%EC%84%9C%EC%9A%B8%EC%8B%9C%20%EC%9A%A9%EC%82%B0%EA%B5%AC%20%EC%8B%A0%ED%9D%A5%EB%A1%9C%2059%202%EC%B8%B5" target="_blank" rel="noopener"><span class="mi">directions_car</span><b>교통 안내</b><small>공항·지하철·버스</small></a>
+            <button class="quick-tile" type="button" data-go="transport"><span class="mi">directions_car</span><b>교통 안내</b><small>공항·지하철·버스</small></button>
             <button class="quick-tile" type="button" data-open-chat><span class="mi">forum</span><b>문의하기</b><small>호스트에게 연락</small></button>
           </div>
         </section>
@@ -260,7 +293,7 @@ body:not(.is-home) main{padding-top:0}
           <div class="stay-card-grid">
             <a class="image-card large" href="../assets/guidebook/Extay_Mansion_Haebangchon_Guide.pdf" target="_blank" rel="noopener" style="--card-img:url('../assets/extay/crops/main-living-logo.png')"><span>이용 안내</span><small>숙소 이용 규칙 및 안내사항</small></a>
             <button class="image-card" type="button" data-open-chat data-question="주변 맛집 추천해줘" style="--card-img:url('../assets/extay/crops/hero-extay.jpg')"><span>주변 맛집</span><small>현지인이 추천하는 맛집 리스트</small></button>
-            <a class="image-card" href="https://www.google.com/maps/search/?api=1&query=%EC%84%9C%EC%9A%B8%EC%8B%9C%20%EC%9A%A9%EC%82%B0%EA%B5%AC%20%EC%8B%A0%ED%9D%A5%EB%A1%9C%2059%202%EC%B8%B5" target="_blank" rel="noopener" style="--card-img:url('../assets/extay/crops/rooftop-namsan.jpg')"><span>교통 안내</span><small>공항·지하철·버스 이용 방법</small></a>
+            <button class="image-card" type="button" data-go="transport" style="--card-img:url('../assets/extay/crops/rooftop-namsan.jpg')"><span>교통 안내</span><small>공항·지하철·버스 이용 방법</small></button>
             <button class="image-card" type="button" data-open-chat data-question="자주 묻는 질문 알려줘" style="--card-img:url('../assets/extay/smart-card/stay-day.png')"><span>FAQ</span><small>자주 묻는 질문 모음</small></button>
           </div>
         </section>
@@ -363,6 +396,92 @@ body:not(.is-home) main{padding-top:0}
         </div>
       </section>
 
+      <section class="screen transport-screen" data-screen="transport">
+        <article class="transport-hero">
+          <p class="section-kicker">AIRPORT ACCESS</p>
+          <h2>교통 안내</h2>
+          <p>인천공항과 김포공항에서 EXTAY까지 오는 대표 경로를 정리했습니다.</p>
+        </article>
+        <div class="transport-stack">
+          <article class="transport-card">
+            <h3>목적지 정보</h3>
+            <div class="transport-facts">
+              <div class="transport-fact"><small>Address</small><b>서울시 용산구 신흥로 59, 2층</b></div>
+              <div class="transport-fact"><small>Landmark</small><b>세븐일레븐과 베제투스 레스토랑 사이 골목</b></div>
+              <div class="transport-fact"><small>Nearest Station</small><b>녹사평역 2번 출구</b></div>
+              <div class="transport-fact"><small>Last Mile</small><b>도보 약 15분<br>마을버스 약 10분</b></div>
+            </div>
+            <div class="transport-actions">
+              <a class="hotel-btn primary" href="https://map.naver.com/p/search/%EC%84%9C%EC%9A%B8%EC%8B%9C%20%EC%9A%A9%EC%82%B0%EA%B5%AC%20%EC%8B%A0%ED%9D%A5%EB%A1%9C%2059%202%EC%B8%B5" target="_blank" rel="noopener"><span class="mi">location_on</span>네이버 지도</a>
+              <a class="hotel-btn" href="https://www.google.com/maps/dir/?api=1&destination=%EC%84%9C%EC%9A%B8%EC%8B%9C%20%EC%9A%A9%EC%82%B0%EA%B5%AC%20%EC%8B%A0%ED%9D%A5%EB%A1%9C%2059%202%EC%B8%B5" target="_blank" rel="noopener"><span class="mi">map</span>구글 지도</a>
+            </div>
+          </article>
+
+          <article class="transport-card">
+            <h3>인천공항에서</h3>
+            <div class="route-card">
+              <div class="route-top"><h4>공항철도 + 지하철</h4><span class="route-badge">추천</span></div>
+              <div class="route-meta"><span>가성비 좋음</span><span>환승 1회</span><span>약 80~95분</span></div>
+              <ol class="route-steps">
+                <li><div><b>공항철도 탑승</b>인천공항 1터미널 또는 2터미널역에서 공항철도 일반열차를 탑니다.</div></li>
+                <li><div><b>공덕역 환승</b>공덕역에서 6호선으로 갈아타고 녹사평역 방향으로 이동합니다.</div></li>
+                <li><div><b>녹사평역 하차</b>녹사평역 2번 출구로 나와 해방촌 입구 방향으로 올라옵니다.</div></li>
+                <li><div><b>숙소 이동</b>도보 약 15분, 짐이 많으면 역 주변에서 택시나 마을버스를 이용하세요.</div></li>
+              </ol>
+            </div>
+            <div class="route-card">
+              <div class="route-top"><h4>공항 리무진 + 짧은 택시</h4><span class="route-badge">짐 많을 때</span></div>
+              <div class="route-meta"><span>환승 부담 적음</span><span>도로 상황 영향</span><span>약 90~120분</span></div>
+              <ol class="route-steps">
+                <li><div><b>6702 노선 확인</b>K Airport Limousine 6702 노선의 남산·이태원 인근 정류장을 확인합니다.</div></li>
+                <li><div><b>남산/이태원 인근 하차</b>그랜드 하얏트 서울 또는 이태원 인근 정류장에서 내리는 동선을 우선 확인하세요.</div></li>
+                <li><div><b>택시 이동</b>하차 지점에서 숙소까지는 짐이 있으면 택시 이동이 편합니다.</div></li>
+              </ol>
+            </div>
+            <div class="route-card">
+              <div class="route-top"><h4>공항 택시</h4><span class="route-badge">가장 편함</span></div>
+              <div class="route-meta"><span>직행</span><span>심야 가능</span><span>약 70~100분</span></div>
+              <ol class="route-steps">
+                <li><div><b>목적지 제시</b>기사님께 “용산구 신흥로 59, 2층, 해방촌 베제투스 레스토랑 건물”로 안내하세요.</div></li>
+                <li><div><b>교통상황 확인</b>출퇴근 시간과 심야 할증 시간에는 요금과 시간이 크게 달라질 수 있습니다.</div></li>
+              </ol>
+            </div>
+          </article>
+
+          <article class="transport-card">
+            <h3>김포공항에서</h3>
+            <div class="route-card">
+              <div class="route-top"><h4>공항철도 + 6호선</h4><span class="route-badge">추천</span></div>
+              <div class="route-meta"><span>빠른 편</span><span>환승 1회</span><span>약 45~60분</span></div>
+              <ol class="route-steps">
+                <li><div><b>공항철도 탑승</b>김포공항역에서 공항철도를 타고 공덕역으로 이동합니다.</div></li>
+                <li><div><b>6호선 환승</b>공덕역에서 6호선 녹사평역 방향으로 갈아탑니다.</div></li>
+                <li><div><b>녹사평역 2번 출구</b>출구에서 해방촌 입구 방향으로 이동하면 됩니다.</div></li>
+                <li><div><b>마지막 이동</b>도보 약 15분 또는 마을버스·택시를 이용하세요.</div></li>
+              </ol>
+            </div>
+            <div class="route-card">
+              <div class="route-top"><h4>택시</h4><span class="route-badge">간편</span></div>
+              <div class="route-meta"><span>직행</span><span>짐 많을 때</span><span>약 35~60분</span></div>
+              <ol class="route-steps">
+                <li><div><b>택시 승차장 이동</b>공항 택시 승차장에서 용산구 신흥로 59를 목적지로 설정합니다.</div></li>
+                <li><div><b>골목 진입 안내</b>세븐일레븐과 베제투스 레스토랑 사이 골목, 베제투스 레스토랑 2층 건물이라고 설명하면 쉽습니다.</div></li>
+              </ol>
+            </div>
+          </article>
+
+          <article class="transport-card transport-note">
+            <h3>이용 팁</h3>
+            <ul>
+              <li>공항철도와 지하철은 정시성이 좋아 낮 시간대에 가장 무난합니다.</li>
+              <li>큰 캐리어가 있거나 비가 오는 날은 녹사평역에서 마지막 구간만 택시를 권장합니다.</li>
+              <li>심야 도착은 대중교통 막차 시간을 먼저 확인하고, 불확실하면 택시를 이용하세요.</li>
+              <li>지도 앱에서 “서울시 용산구 신흥로 59, 2층”을 목적지로 설정하면 됩니다.</li>
+            </ul>
+          </article>
+        </div>
+      </section>
+
       <section class="screen gallery-screen" data-screen="gallery">
         <div class="gallery-head">
           <p class="section-kicker">ROOM GALLERY</p>
@@ -451,6 +570,7 @@ body:not(.is-home) main{padding-top:0}
     <button class="menu-link" type="button" data-go="home"><span>Home</span><small>처음 화면</small></button>
     <button class="menu-link" type="button" data-go="gallery"><span>Room Gallery</span><small>숙소 사진 보기</small></button>
     <button class="menu-link" type="button" data-go="checkin"><span>Check-in Guide</span><small>입실 방법과 도어락 안내</small></button>
+    <button class="menu-link" type="button" data-go="transport"><span>Transportation</span><small>공항에서 숙소까지</small></button>
     <button class="menu-link" type="button" data-go="wifi"><span>Wi-Fi</span><small>네트워크 정보</small></button>
     <button class="menu-link" type="button" data-go="appliances"><span>Stay Guide</span><small>TV · 온수 · 비품 · 옥상</small></button>
     <button class="menu-link" type="button" data-go="laundry"><span>Laundry</span><small>세탁기 · 건조기 사용법</small></button>
@@ -542,7 +662,7 @@ body:not(.is-home) main{padding-top:0}
       text(q('[data-screen="trash"] .page-title'),tr.trash.title); text(q('[data-screen="trash"] .page-sub'),tr.trash.sub); const trashCards=qa('[data-screen="trash"] article.card'); if(trashCards[0]){text(trashCards[0].querySelector('h3'),tr.trash.basis);text(trashCards[0].querySelector('.mini-btn'),tr.trash.types);eachText([...trashCards[0].querySelectorAll('.guide-item span')],tr.trash.items);eachText([...trashCards[0].querySelectorAll('figcaption')],tr.trash.captions)}; [1,2,3].forEach((idx,i)=>{const card=trashCards[idx],data=tr.trash.cards[i];if(card&&data){text(card.querySelector('h3'),data[0]);text(card.querySelector('p'),data[1]);eachText([...card.querySelectorAll('figcaption')],data[2])}});
       text(q('.chat-head h2'),tr.chat.title); text(q('.chat-head p'),tr.chat.sub); const firstBot=q('.chat-log .msg.bot:first-child'); if(firstBot&&!q('.chat-log .msg.user'))text(firstBot,tr.chat.hello); text(q('.chat-note'),tr.chat.note); const input=q('#chatInput'); if(input)input.placeholder=tr.chat.placeholder; text(q('#toast'),tr.copied);
     }
-    function show(name, openDevice=''){document.body.classList.toggle('is-home',name==='home');document.body.classList.toggle('is-gallery',name==='gallery');document.body.classList.toggle('is-checkin',name==='checkin');document.body.classList.toggle('is-wifi',name==='wifi');screens.forEach(s=>s.classList.toggle('active',s.dataset.screen===name));tabs.forEach(t=>t.classList.toggle('active',t.dataset.go===name));if(openDevice){document.querySelectorAll('details.device').forEach(d=>{d.open=d.dataset.device===openDevice});const target=document.querySelector(`details.device[data-device="${openDevice}"]`);if(target)setTimeout(()=>target.scrollIntoView({behavior:'smooth',block:'start'}),80)}else if(name==='appliances'){document.querySelectorAll('details.device').forEach((d,i)=>{d.open=i===0})}scrollTo({top:0,behavior:'smooth'});history.replaceState(null,'','#'+name)}
+    function show(name, openDevice=''){document.body.classList.toggle('is-home',name==='home');document.body.classList.toggle('is-gallery',name==='gallery');document.body.classList.toggle('is-checkin',name==='checkin');document.body.classList.toggle('is-wifi',name==='wifi');document.body.classList.toggle('is-transport',name==='transport');screens.forEach(s=>s.classList.toggle('active',s.dataset.screen===name));tabs.forEach(t=>t.classList.toggle('active',t.dataset.go===name));if(openDevice){document.querySelectorAll('details.device').forEach(d=>{d.open=d.dataset.device===openDevice});const target=document.querySelector(`details.device[data-device="${openDevice}"]`);if(target)setTimeout(()=>target.scrollIntoView({behavior:'smooth',block:'start'}),80)}else if(name==='appliances'){document.querySelectorAll('details.device').forEach((d,i)=>{d.open=i===0})}scrollTo({top:0,behavior:'smooth'});history.replaceState(null,'','#'+name)}
     document.addEventListener('click',e=>{const g=e.target.closest('[data-go]'); if(g){show(g.dataset.go,g.dataset.open||'')}});
     document.addEventListener('click',e=>{const s=e.target.closest('[data-scroll-target]'); if(!s)return; const target=document.querySelector(s.dataset.scrollTarget); if(target)target.scrollIntoView({behavior:'smooth',block:'start'});});
     function selectGalleryImage(button){const main=q('#galleryMain'), title=q('#galleryTitle'), desc=q('#galleryDesc'); if(!button||!main||!title||!desc)return; qa('.gallery-thumb').forEach(t=>{const active=t===button;t.classList.toggle('active',active);t.setAttribute('aria-selected',active?'true':'false')}); main.src=button.dataset.full; main.alt=button.dataset.alt||''; title.textContent=button.dataset.title||''; desc.textContent=button.dataset.desc||''; button.scrollIntoView({behavior:'smooth',inline:'center',block:'nearest'});}
