@@ -76,12 +76,12 @@ body.is-home .top{position:fixed;top:0;background:transparent;color:#fff;grid-te
 body.is-home .top h1{order:1;text-shadow:0 2px 18px rgba(0,0,0,.34)}
 body.is-home .top #menuTop{order:2;background:rgba(0,0,0,.08);color:#fff}
 body.is-home .top .top-actions{display:none}
-body.is-gallery .top,body.is-checkin .top,body.is-wifi .top,body.is-transport .top,body.is-guidebook .top{position:sticky;top:0;left:auto;transform:none;width:100%;background:rgba(247,242,236,.94);color:#221b15;grid-template-columns:1fr auto;border-bottom:1px solid rgba(216,198,180,.72);backdrop-filter:blur(18px)}
-body.is-gallery .top h1,body.is-checkin .top h1,body.is-wifi .top h1,body.is-transport .top h1,body.is-guidebook .top h1{order:1;text-align:left;text-shadow:none}
-body.is-gallery .top #menuTop,body.is-checkin .top #menuTop,body.is-wifi .top #menuTop,body.is-transport .top #menuTop,body.is-guidebook .top #menuTop{order:2;background:rgba(123,99,79,.1);color:#221b15}
-body.is-gallery .top .top-actions,body.is-checkin .top .top-actions,body.is-wifi .top .top-actions,body.is-transport .top .top-actions,body.is-guidebook .top .top-actions{display:none}
-body:not(.is-home):not(.is-gallery):not(.is-checkin):not(.is-wifi):not(.is-transport):not(.is-guidebook) .top{position:sticky;top:0;left:auto;transform:none;width:100%;background:rgba(247,242,236,.94);color:#221b15;border-bottom:1px solid rgba(216,198,180,.72);backdrop-filter:blur(18px)}
-body:not(.is-home):not(.is-gallery):not(.is-checkin):not(.is-wifi):not(.is-transport):not(.is-guidebook) .top h1{text-align:center}
+body.is-gallery .top,body.is-checkin .top,body.is-wifi .top,body.is-transport .top,body.is-guidebook .top,body.is-restaurants .top{position:sticky;top:0;left:auto;transform:none;width:100%;background:rgba(247,242,236,.94);color:#221b15;grid-template-columns:1fr auto;border-bottom:1px solid rgba(216,198,180,.72);backdrop-filter:blur(18px)}
+body.is-gallery .top h1,body.is-checkin .top h1,body.is-wifi .top h1,body.is-transport .top h1,body.is-guidebook .top h1,body.is-restaurants .top h1{order:1;text-align:left;text-shadow:none}
+body.is-gallery .top #menuTop,body.is-checkin .top #menuTop,body.is-wifi .top #menuTop,body.is-transport .top #menuTop,body.is-guidebook .top #menuTop,body.is-restaurants .top #menuTop{order:2;background:rgba(123,99,79,.1);color:#221b15}
+body.is-gallery .top .top-actions,body.is-checkin .top .top-actions,body.is-wifi .top .top-actions,body.is-transport .top .top-actions,body.is-guidebook .top .top-actions,body.is-restaurants .top .top-actions{display:none}
+body:not(.is-home):not(.is-gallery):not(.is-checkin):not(.is-wifi):not(.is-transport):not(.is-guidebook):not(.is-restaurants) .top{position:sticky;top:0;left:auto;transform:none;width:100%;background:rgba(247,242,236,.94);color:#221b15;border-bottom:1px solid rgba(216,198,180,.72);backdrop-filter:blur(18px)}
+body:not(.is-home):not(.is-gallery):not(.is-checkin):not(.is-wifi):not(.is-transport):not(.is-guidebook):not(.is-restaurants) .top h1{text-align:center}
 .landing-hero{position:relative;min-height:74svh;background:linear-gradient(180deg,rgba(20,15,10,.34) 0%,rgba(20,15,10,.28) 36%,rgba(20,15,10,.68) 100%),url('../assets/extay/crops/main-living-logo.png') center/cover no-repeat;color:#fff;isolation:isolate}
 .landing-hero:after{content:"";position:absolute;inset:auto 0 0;height:24%;background:linear-gradient(180deg,rgba(247,242,236,0),#f7f2ec);pointer-events:none}
 .hero-panel{position:absolute;left:0;right:0;bottom:0;z-index:1;padding:0 34px 38px}
@@ -231,6 +231,39 @@ body:not(.is-home):not(.is-gallery):not(.is-checkin):not(.is-wifi):not(.is-trans
 .guidebook-nav:disabled{opacity:.34;cursor:default}
 .guidebook-nav .mi{font-size:25px}
 .guidebook-page-label{text-align:center;color:#221b15;font-size:14px;font-weight:900}
+.restaurants-screen{background:#f7f2ec;min-height:calc(100dvh - 72px)}
+.restaurants-hero{position:relative;overflow:hidden;border-radius:26px;min-height:236px;padding:28px 24px;display:flex;flex-direction:column;justify-content:flex-end;color:#fff;background:linear-gradient(180deg,rgba(35,26,18,.12),rgba(35,26,18,.84)),url('../assets/extay/crops/rooftop-namsan.jpg') center/cover no-repeat;box-shadow:0 18px 44px rgba(58,43,30,.16);margin-bottom:20px}
+.restaurants-hero .section-kicker{color:rgba(255,255,255,.82)}
+.restaurants-hero h2{margin:0;font-family:'Noto Serif KR','Pretendard',serif;font-size:40px;line-height:1.12;font-weight:600;color:#fff;text-shadow:0 2px 24px rgba(0,0,0,.28)}
+.restaurants-hero p:last-child{margin:14px 0 0;font-size:14px;line-height:1.62;color:rgba(255,255,255,.9);word-break:keep-all;text-shadow:0 2px 18px rgba(0,0,0,.28)}
+.restaurants-controls{display:grid;gap:12px;margin-bottom:16px}
+.restaurants-filter{display:flex;gap:8px;overflow-x:auto;padding:2px 0 4px;scroll-snap-type:x proximity}
+.restaurants-filter::-webkit-scrollbar{display:none}
+.restaurant-chip{flex:0 0 auto;border:1px solid rgba(216,198,180,.8);border-radius:999px;background:#fffaf4;color:#7b634f;min-height:38px;padding:0 14px;font-size:13px;font-weight:900;cursor:pointer;scroll-snap-align:start}
+.restaurant-chip.active{background:#2b2118;border-color:#2b2118;color:#fff}
+.restaurant-search{height:52px;border:1px solid rgba(216,198,180,.72);border-radius:16px;background:#fffaf4;display:grid;grid-template-columns:34px 1fr;align-items:center;padding:0 14px;box-shadow:0 10px 28px rgba(58,43,30,.06)}
+.restaurant-search .mi{font-size:22px;color:#7b634f}
+.restaurant-search input{width:100%;border:0;background:transparent;outline:0;font:inherit;font-size:15px;color:#221b15}
+.restaurant-summary{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:14px;color:#6f5f50;font-size:13px}
+.restaurant-summary b{font-size:15px;color:#221b15}
+.restaurant-source{font-weight:900;color:#7b634f}
+.restaurants-list{display:grid;gap:12px}
+.restaurant-card{overflow:hidden;background:#fffaf4;border:1px solid rgba(216,198,180,.72);border-radius:22px;box-shadow:0 12px 32px rgba(58,43,30,.08)}
+.restaurant-photo{margin:0;position:relative;aspect-ratio:16/10;background:#efe4d6;overflow:hidden}
+.restaurant-photo img{width:100%;height:100%;object-fit:cover;display:block;transform:scale(1.01)}
+.restaurant-body{padding:18px}
+.restaurant-top{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;margin-bottom:10px}
+.restaurant-name{margin:0;font-size:19px;line-height:1.28;color:#221b15}
+.restaurant-badge{flex:0 0 auto;border-radius:999px;background:#efe4d6;color:#7b634f;padding:7px 10px;font-size:10px;font-weight:900;white-space:nowrap}
+.restaurant-note{margin:0 0 12px;color:#665646;font-size:13px;line-height:1.55;word-break:keep-all}
+.restaurant-tags{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:14px}
+.restaurant-tags span{border-radius:999px;background:#f3eadf;color:#6b5a4a;padding:6px 9px;font-size:11px;font-weight:800}
+.restaurant-actions{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+.restaurant-actions a{min-width:0;border-radius:999px;border:1px solid rgba(123,99,79,.24);background:#fff;color:#221b15;min-height:38px;display:flex;align-items:center;justify-content:center;gap:5px;font-size:12px;font-weight:900}
+.restaurant-actions a.primary{background:#2b2118;color:#fff;border-color:#2b2118}
+.restaurant-actions .mi{font-size:17px}
+.restaurants-empty{display:none;background:#fffaf4;border:1px solid rgba(216,198,180,.72);border-radius:18px;padding:22px;text-align:center;color:#665646;font-size:14px;line-height:1.55}
+.restaurants-note{margin:16px 0 0;color:#7b634f;font-size:12px;line-height:1.55;word-break:keep-all}
 .checkin-hero{position:relative;overflow:hidden;border-radius:26px;min-height:230px;padding:28px 24px;display:flex;flex-direction:column;justify-content:flex-end;color:#fff;background:linear-gradient(180deg,rgba(35,26,18,.18),rgba(35,26,18,.82)),url('../assets/extay/crops/main-living-logo.png') center/cover no-repeat;box-shadow:0 18px 44px rgba(58,43,30,.16);margin-bottom:24px}
 .checkin-hero .section-kicker{color:rgba(255,255,255,.82)}
 .checkin-hero h2{margin:0;font-family:'Playfair Display',Georgia,serif;font-size:42px;line-height:.95;color:#fff}
@@ -281,6 +314,9 @@ body:not(.is-home) main{padding-top:0}
   .transport-facts,.transport-actions{grid-template-columns:1fr}
   .guidebook-toolbar{grid-template-columns:1fr}
   .guidebook-open{width:100%}
+  .restaurants-hero h2{font-size:35px}
+  .restaurant-actions{grid-template-columns:1fr 1fr}
+  .restaurant-actions a:last-child{grid-column:1/-1}
 }
 
   </style>
@@ -318,7 +354,7 @@ body:not(.is-home) main{padding-top:0}
           <h2 class="hotel-heading" id="stayTitle">이용 가이드</h2>
           <div class="stay-card-grid">
             <button class="image-card large" type="button" data-go="guidebook" style="--card-img:url('../assets/extay/crops/main-living-logo.png')"><span>이용 안내</span><small>숙소 이용 규칙 및 안내사항</small></button>
-            <button class="image-card" type="button" data-open-chat data-question="주변 맛집 추천해줘" style="--card-img:url('../assets/extay/crops/hero-extay.jpg')"><span>주변 맛집</span><small>현지인이 추천하는 맛집 리스트</small></button>
+            <button class="image-card" type="button" data-go="restaurants" style="--card-img:url('../assets/extay/crops/hero-extay.jpg')"><span>주변 맛집</span><small>현지인이 추천하는 맛집 리스트</small></button>
             <button class="image-card" type="button" data-go="transport" style="--card-img:url('../assets/extay/crops/rooftop-namsan.jpg')"><span>교통 안내</span><small>공항·지하철·버스 이용 방법</small></button>
             <button class="image-card" type="button" data-open-chat data-question="자주 묻는 질문 알려줘" style="--card-img:url('../assets/extay/smart-card/stay-day.png')"><span>FAQ</span><small>자주 묻는 질문 모음</small></button>
           </div>
@@ -508,6 +544,25 @@ body:not(.is-home) main{padding-top:0}
         </div>
       </section>
 
+      <section class="screen restaurants-screen" data-screen="restaurants">
+        <article class="restaurants-hero">
+          <p class="section-kicker">NEARBY RESTAURANTS</p>
+          <h2>주변 맛집</h2>
+          <p>호스트가 정리한 도보 10분권 맛집을 카테고리별로 빠르게 찾아보세요.</p>
+        </article>
+        <div class="restaurants-controls">
+          <div class="restaurants-filter" id="restaurantFilters" aria-label="맛집 카테고리"></div>
+          <label class="restaurant-search"><span class="mi">search</span><input id="restaurantSearch" type="search" placeholder="이름, 메뉴, 카테고리 검색"></label>
+        </div>
+        <div class="restaurant-summary">
+          <b id="restaurantCount">0곳</b>
+          <a class="restaurant-source" href="https://juas.notion.site/4091068d724948cdaa4a1d63e36a898a?v=7696891d8c864357b976582f859d9cfd" target="_blank" rel="noopener">원본 리스트</a>
+        </div>
+        <div class="restaurants-list" id="restaurantList"></div>
+        <div class="restaurants-empty" id="restaurantEmpty">조건에 맞는 맛집이 없습니다. 카테고리나 검색어를 다시 선택해 주세요.</div>
+        <p class="restaurants-note">영업시간, 휴무, 대기 여부는 방문 전 지도 앱이나 원본 리스트에서 한 번 더 확인해 주세요.</p>
+      </section>
+
       <section class="screen guidebook-screen" data-screen="guidebook">
         <div class="guidebook-head">
           <p class="section-kicker">STAY GUIDEBOOK</p>
@@ -622,6 +677,7 @@ body:not(.is-home) main{padding-top:0}
     <div class="menu-panel-head"><strong>EXTAY</strong><button class="icon-btn" type="button" id="closeMenu" aria-label="메뉴 닫기"><span class="mi">close</span></button></div>
     <button class="menu-link" type="button" data-go="home"><span>Home</span><small>처음 화면</small></button>
     <button class="menu-link" type="button" data-go="guidebook"><span>Guidebook</span><small>한글 · 영문 PDF 보기</small></button>
+    <button class="menu-link" type="button" data-go="restaurants"><span>Restaurants</span><small>도보 10분 맛집 리스트</small></button>
     <button class="menu-link" type="button" data-go="gallery"><span>Room Gallery</span><small>숙소 사진 보기</small></button>
     <button class="menu-link" type="button" data-go="checkin"><span>Check-in Guide</span><small>입실 방법과 도어락 안내</small></button>
     <button class="menu-link" type="button" data-go="transport"><span>Transportation</span><small>공항에서 숙소까지</small></button>
@@ -716,6 +772,51 @@ body:not(.is-home) main{padding-top:0}
       text(q('[data-screen="trash"] .page-title'),tr.trash.title); text(q('[data-screen="trash"] .page-sub'),tr.trash.sub); const trashCards=qa('[data-screen="trash"] article.card'); if(trashCards[0]){text(trashCards[0].querySelector('h3'),tr.trash.basis);text(trashCards[0].querySelector('.mini-btn'),tr.trash.types);eachText([...trashCards[0].querySelectorAll('.guide-item span')],tr.trash.items);eachText([...trashCards[0].querySelectorAll('figcaption')],tr.trash.captions)}; [1,2,3].forEach((idx,i)=>{const card=trashCards[idx],data=tr.trash.cards[i];if(card&&data){text(card.querySelector('h3'),data[0]);text(card.querySelector('p'),data[1]);eachText([...card.querySelectorAll('figcaption')],data[2])}});
       text(q('.chat-head h2'),tr.chat.title); text(q('.chat-head p'),tr.chat.sub); const firstBot=q('.chat-log .msg.bot:first-child'); if(firstBot&&!q('.chat-log .msg.user'))text(firstBot,tr.chat.hello); text(q('.chat-note'),tr.chat.note); const input=q('#chatInput'); if(input)input.placeholder=tr.chat.placeholder; text(q('#toast'),tr.copied);
     }
+    const RESTAURANT_SOURCE='https://juas.notion.site/4091068d724948cdaa4a1d63e36a898a?v=7696891d8c864357b976582f859d9cfd';
+    const RESTAURANT_CATEGORIES=[['all','전체'],['korean','한식'],['western','양식'],['burger','버거·타코'],['brunch','브런치'],['cafe','카페'],['dessert','디저트'],['bar','술집'],['asian','아시안'],['vegan','비건']];
+    const RESTAURANTS=[
+      {name:'semolina club (세몰리나 클럽)',cat:'western',label:'양식',tags:['파스타','캐주얼'],note:'해방촌 도보권의 캐주얼 양식 맛집입니다.',href:'https://juas.notion.site/semolina-club-1c920d6eecb14bfcb012d1141caac8a9?pvs=25'},
+      {name:'Vegetus (베제투스)',cat:'vegan',label:'비건',tags:['비건식당','가까움'],note:'숙소 근처 비건 식당. 가볍게 식사하기 좋습니다.',href:'https://juas.notion.site/Vegetus-8c75c27831a74ec08a2a39b314de2b9d?pvs=25'},
+      {name:'aeil (애일)',cat:'western',label:'다이닝',tags:['해방촌','분위기'],note:'조용한 분위기의 동네 다이닝으로 보기 좋은 곳입니다.',href:'https://juas.notion.site/aeil-7b7227e17ed24e42871273fca66cb35a?pvs=25'},
+      {name:'NOSTRESSBURGER (노스트레스버거)',cat:'burger',label:'버거',tags:['버거','캐주얼'],note:'부담 없이 빠르게 먹기 좋은 버거집입니다.',href:'https://juas.notion.site/NOSTRESSBURGER-e5c98aa175bb4c3bbc2ab3440d01dc8a?pvs=25'},
+      {name:'COMME MOA 꼼모아',cat:'western',label:'프렌치',tags:['미쉐린가이드2023','프렌치'],note:'미쉐린 가이드 2023에 소개된 프렌치 레스토랑입니다.',href:'https://juas.notion.site/COMME-MOA-2023-284d3aa5f948459fa6c9b40d74d6770f?pvs=25'},
+      {name:'코타티',cat:'dessert',label:'젤라또',tags:['아이스크림','디저트'],note:'식사 후 들르기 좋은 젤라또 매장입니다.',href:'https://juas.notion.site/icecream-73e91c6707644be08b69a6aa92eec828?pvs=25'},
+      {name:'성광대도',cat:'asian',label:'중식',tags:['중식','해방촌'],note:'해방촌에서 중식이 당길 때 확인하기 좋은 선택지입니다.',href:'https://juas.notion.site/b1bb8f0006e44e6685a024537ba91559?pvs=25'},
+      {name:'자코비 버거',cat:'burger',label:'버거',tags:['수제버거','캐주얼'],note:'이태원·해방촌권에서 유명한 버거집입니다.',href:'https://juas.notion.site/bdd0957f72f14ff6a742f4d31422fa57?pvs=25'},
+      {name:'잠수교 삼겹살',cat:'korean',label:'삼겹살',tags:['삼겹살','고기'],note:'고기 식사를 원할 때 선택하기 좋은 삼겹살집입니다.',href:'https://juas.notion.site/Pork-belly-c99ae21b876a496f9cf0ec7e04513f1d?pvs=25'},
+      {name:'Ori (해방촌 오리)',cat:'korean',label:'오리',tags:['오리','한식'],note:'오리 요리를 찾는다면 확인해볼 만한 곳입니다.',href:'https://juas.notion.site/Ori-ab16e4503e004f26b1e3f79a308d20ac?pvs=25'},
+      {name:'OPATO (오파토)',cat:'brunch',label:'브런치',tags:['브런치','오전 8시'],note:'오전 8시부터 이용 가능한 브런치 선택지입니다.',href:'https://juas.notion.site/OPATO-am-8-00-71dd6e4886374878b9d86caad544fb33?pvs=25'},
+      {name:'산솔',cat:'bar',label:'한식주점',tags:['한식주점','저녁'],note:'저녁 시간에 한식 안주와 술을 즐기기 좋은 곳입니다.',href:'https://juas.notion.site/a-Korean-restaurant-81cb8fe3009c4e3c99afd13cdc620a69?pvs=25'},
+      {name:'소월솥밥',cat:'korean',label:'솥밥',tags:['솥밥','한식'],note:'따뜻한 한식 한 끼가 필요할 때 좋은 솥밥집입니다.',href:'https://juas.notion.site/906cea07e63a4c7f9fe3a5ce3abb1a23?pvs=25'},
+      {name:'해방식당',cat:'korean',label:'한식',tags:['한식','식사'],note:'동네 식당 느낌의 한식 메뉴를 찾을 때 좋습니다.',href:'https://juas.notion.site/64a090a4da9247ac9269e44f12ac3174?pvs=25'},
+      {name:'나무솥밥경리단',cat:'korean',label:'솥밥',tags:['솥밥','경리단'],note:'경리단길 방향의 솥밥 식당입니다.',href:'https://juas.notion.site/008065b48d534518a39879205e673605?pvs=25'},
+      {name:'명동교자 이태원점',cat:'korean',label:'칼국수',tags:['칼국수','만두'],note:'칼국수와 만두가 생각날 때 안정적인 선택지입니다.',href:'https://juas.notion.site/d5e46b1a53f3479189c21764b7ae2bf1?pvs=25'},
+      {name:'걸구네',cat:'korean',label:'고기',tags:['삼겹살','막창'],note:'삼겹살과 막창을 먹기 좋은 고기집입니다.',href:'https://juas.notion.site/cb4f9b6d3dea431fb85f5c2bf1986c73?pvs=25'},
+      {name:'남매국밥',cat:'korean',label:'국밥',tags:['국밥','든든함'],note:'든든한 국밥 한 그릇이 필요할 때 추천됩니다.',href:'https://juas.notion.site/0f91e8fd076e44caa4f4c398db42731a?pvs=25'},
+      {name:'마루',cat:'korean',label:'한식세트',tags:['한식세트','정식'],note:'깔끔한 한식 세트 메뉴를 찾을 때 좋습니다.',href:'https://juas.notion.site/05f94fed691947ee9477f7b97c122a5d?pvs=25'},
+      {name:'보마',cat:'korean',label:'수육',tags:['수육','편육'],note:'수육과 편육 메뉴를 찾는 게스트에게 맞는 곳입니다.',href:'https://juas.notion.site/cd68ac40d98d468395bded3b57442962?pvs=25'},
+      {name:'아담스타코',cat:'burger',label:'타코',tags:['타코','멕시칸'],note:'가볍고 캐주얼한 타코 메뉴를 즐길 수 있습니다.',href:'https://juas.notion.site/2052bb90866744fbb182007343ee0910?pvs=25'},
+      {name:'노이이탈리안하우스',cat:'western',label:'이탈리안',tags:['이탈리안','양식'],note:'이탈리안 메뉴를 원할 때 보기 좋은 양식집입니다.',href:'https://juas.notion.site/4102217890fe442db9a4ce867b55c2a2?pvs=25'},
+      {name:'hmmmarket (흠마켓)',cat:'brunch',label:'브런치',tags:['브런치','카페'],note:'브런치와 가벼운 카페 메뉴를 함께 보기 좋은 곳입니다.',href:'https://juas.notion.site/hmmmarket-_-303ec5a0b5764ec8bbe38fa4cfc914bb?pvs=25'},
+      {name:'차경',cat:'bar',label:'와인',tags:['와인집','저녁'],note:'와인과 함께 조용한 저녁을 보내기 좋은 선택지입니다.',href:'https://juas.notion.site/ac83dac5cb5b4715a2d5c7cbbf52cfbe?pvs=25'},
+      {name:'심야식당기억',cat:'bar',label:'이자카야',tags:['이자카야','심야'],note:'늦은 시간 가볍게 술과 안주를 찾을 때 좋습니다.',href:'https://juas.notion.site/c27368401a2d469ba690dbd304b87357?pvs=25'},
+      {name:'팟카파우',cat:'asian',label:'태국음식',tags:['태국음식','아시안'],note:'태국음식이 당길 때 확인하기 좋은 곳입니다.',href:'https://juas.notion.site/3ea1530c3a06422b8461ae9268285cc6?pvs=25'},
+      {name:'테이블뷰',cat:'western',label:'양식',tags:['양식','다이닝'],note:'양식 메뉴와 분위기 있는 식사를 찾을 때 좋습니다.',href:'https://juas.notion.site/d7a3394309c24e188b136262fbd9343f?pvs=25'},
+      {name:'한남소관',cat:'asian',label:'홍콩식포차',tags:['홍콩식','포차'],note:'홍콩식 포차 분위기의 아시안 메뉴를 즐길 수 있습니다.',href:'https://juas.notion.site/a842a8369b384c7fb1c063c4db13dfc6?pvs=25'},
+      {name:'야상해',cat:'asian',label:'딤섬',tags:['딤섬','중식'],note:'딤섬이 생각날 때 확인하기 좋은 곳입니다.',href:'https://juas.notion.site/4cc1b8416d6e462ea1fe9a370ac68fc8?pvs=25'},
+      {name:'토터스',cat:'dessert',label:'디저트',tags:['디저트','카페'],note:'디저트를 즐기기 좋은 카페형 매장입니다.',href:'https://juas.notion.site/9ccd72f87b504452851f0a8e44284b77?pvs=25'},
+      {name:'오잇',cat:'dessert',label:'디저트',tags:['디저트','카페'],note:'달콤한 디저트가 필요할 때 들르기 좋습니다.',href:'https://juas.notion.site/46b0d4267b5b4f80b83f53eb8827e8bb?pvs=25'},
+      {name:'쉘터해방',cat:'dessert',label:'디저트',tags:['디저트','해방촌'],note:'해방촌에서 디저트를 찾을 때 좋은 선택지입니다.',href:'https://juas.notion.site/29810e7230194871b98e705f224cf51f?pvs=25'},
+      {name:'에이티익스프레스 해방촌점',cat:'cafe',label:'카페',tags:['레몬에이드','카페'],note:'레몬에이드 등 가볍게 마실 메뉴를 찾을 때 좋습니다.',href:'https://juas.notion.site/2c0417cbfeb14f469c91aebecfde15e9?pvs=25'},
+      {name:'카페올리버 해방촌',cat:'cafe',label:'커피',tags:['커피맛집','카페'],note:'커피 맛집으로 적어둔 카페입니다.',href:'https://juas.notion.site/e2d247b44bb64b5d9c8a306f0aa526a4?pvs=25'},
+      {name:'미니마이즈',cat:'dessert',label:'디저트',tags:['쌀푸딩','디저트'],note:'쌀푸딩 등 디저트 메뉴가 있는 곳입니다.',href:'https://juas.notion.site/647ca52d2f26405fafb70a9b1fe25481?pvs=25'}
+    ];
+    let restaurantCategory='all',restaurantSearch='';
+    function escRestaurant(s){return String(s).replace(/[&<>"']/g,ch=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[ch]))}
+    function restaurantImageUrl(r){const idx=RESTAURANTS.indexOf(r);return idx<0?'../assets/extay/crops/rooftop-namsan.jpg':`assets/restaurants/restaurant-${String(idx+1).padStart(2,'0')}.jpg`}
+    function restaurantMapUrl(name,type){const query=encodeURIComponent(`${name.replace(/\([^)]*\)/g,'').trim()} 해방촌`);return type==='naver'?`https://map.naver.com/p/search/${query}`:`https://www.google.com/maps/search/?api=1&query=${query}`}
+    function renderRestaurantFilters(){const wrap=q('#restaurantFilters');if(!wrap)return;wrap.innerHTML=RESTAURANT_CATEGORIES.map(([key,label])=>`<button class="restaurant-chip ${key===restaurantCategory?'active':''}" type="button" data-restaurant-filter="${key}">${label}</button>`).join('')}
+    function renderRestaurants(){const list=q('#restaurantList'),count=q('#restaurantCount'),empty=q('#restaurantEmpty');if(!list)return;renderRestaurantFilters();const needle=restaurantSearch.trim().toLowerCase();const filtered=RESTAURANTS.filter(r=>(restaurantCategory==='all'||r.cat===restaurantCategory)&&(!needle||[r.name,r.label,r.note,...r.tags].join(' ').toLowerCase().includes(needle)));if(count)count.textContent=`${filtered.length}곳`;if(empty)empty.style.display=filtered.length?'none':'block';list.innerHTML=filtered.map(r=>{const name=escRestaurant(r.name);return `<article class="restaurant-card"><figure class="restaurant-photo"><img src="${restaurantImageUrl(r)}" alt="${name}" loading="lazy"></figure><div class="restaurant-body"><div class="restaurant-top"><h3 class="restaurant-name">${name}</h3><span class="restaurant-badge">${escRestaurant(r.label)}</span></div><p class="restaurant-note">${escRestaurant(r.note)}</p><div class="restaurant-tags">${r.tags.map(t=>`<span>${escRestaurant(t)}</span>`).join('')}</div><div class="restaurant-actions"><a class="primary" href="${restaurantMapUrl(r.name,'naver')}" target="_blank" rel="noopener"><span class="mi">location_on</span>네이버</a><a href="${restaurantMapUrl(r.name,'google')}" target="_blank" rel="noopener"><span class="mi">map</span>구글</a><a href="${r.href}" target="_blank" rel="noopener"><span class="mi">open_in_new</span>상세</a></div></div></article>`}).join('')}
     const GUIDEBOOK_PDFS={ko:'../assets/guidebook/Extay_Mansion_Haebangchon_Guide_KO_no_NotebookLM.pdf',en:'../assets/guidebook/Extay_Mansion_Haebangchon_Guide_EN_no_NotebookLM.pdf'};
     const PDFJS_SRC='https://cdn.jsdelivr.net/npm/pdfjs-dist@4.10.38/build/pdf.min.mjs';
     const PDFJS_WORKER='https://cdn.jsdelivr.net/npm/pdfjs-dist@4.10.38/build/pdf.worker.min.mjs';
@@ -726,8 +827,10 @@ body:not(.is-home) main{padding-top:0}
     async function loadGuidebook(lang=guidebookLang,force=false){const els=guidebookElements();if(!els.viewer)return;guidebookLang=lang;updateGuidebookControls();if(guidebookDoc&&!force&&guidebookLang===lang){renderGuidebookPage(guidebookPage);return}const loadId=++guidebookLoadId;const src=GUIDEBOOK_PDFS[guidebookLang];els.viewer.classList.remove('fallback');if(els.status){els.status.textContent='가이드를 불러오는 중입니다.';els.status.classList.remove('hidden')}try{const pdfjs=await ensurePdfjs();const doc=await pdfjs.getDocument(src).promise;if(loadId!==guidebookLoadId)return;guidebookDoc=doc;guidebookPage=1;guidebookTotal=doc.numPages;updateGuidebookControls();await renderGuidebookPage(1)}catch(_){if(loadId!==guidebookLoadId)return;guidebookDoc=null;guidebookTotal=0;guidebookPage=1;updateGuidebookControls();if(els.status){els.status.textContent='PDF 뷰어를 불러오지 못해 기본 PDF 화면으로 표시합니다.';setTimeout(()=>els.status.classList.add('hidden'),1200)}els.viewer.classList.add('fallback')}}
     async function renderGuidebookPage(pageNumber){const els=guidebookElements();if(!guidebookDoc||!els.canvas)return;guidebookPage=Math.max(1,Math.min(pageNumber,guidebookTotal));updateGuidebookControls();if(els.status){els.status.textContent='페이지를 불러오는 중입니다.';els.status.classList.remove('hidden')}try{const page=await guidebookDoc.getPage(guidebookPage);const wrap=els.canvas.parentElement,stage=els.canvas.closest('.guidebook-stage'),base=page.getViewport({scale:1});const cssWidth=Math.max(260,(stage?.clientWidth||wrap?.clientWidth||320)-24);const scale=cssWidth/base.width;const dpr=Math.min(window.devicePixelRatio||1,2);const viewport=page.getViewport({scale:scale*dpr});els.canvas.width=Math.floor(viewport.width);els.canvas.height=Math.floor(viewport.height);els.canvas.style.width=`${Math.floor(viewport.width/dpr)}px`;els.canvas.style.height=`${Math.floor(viewport.height/dpr)}px`;await page.render({canvasContext:els.canvas.getContext('2d'),viewport}).promise;if(els.status)els.status.classList.add('hidden');updateGuidebookControls()}catch(_){if(els.status)els.status.textContent='페이지를 표시하지 못했습니다. 원본 PDF 버튼을 이용해 주세요.'}}
     function initGuidebook(){if(!q('[data-screen="guidebook"]'))return;loadGuidebook(guidebookLang||'ko')}
-    function show(name, openDevice=''){document.body.classList.toggle('is-home',name==='home');document.body.classList.toggle('is-gallery',name==='gallery');document.body.classList.toggle('is-checkin',name==='checkin');document.body.classList.toggle('is-wifi',name==='wifi');document.body.classList.toggle('is-transport',name==='transport');document.body.classList.toggle('is-guidebook',name==='guidebook');screens.forEach(s=>s.classList.toggle('active',s.dataset.screen===name));tabs.forEach(t=>t.classList.toggle('active',t.dataset.go===name));if(name==='guidebook')setTimeout(initGuidebook,60);if(openDevice){document.querySelectorAll('details.device').forEach(d=>{d.open=d.dataset.device===openDevice});const target=document.querySelector(`details.device[data-device="${openDevice}"]`);if(target)setTimeout(()=>target.scrollIntoView({behavior:'smooth',block:'start'}),80)}else if(name==='appliances'){document.querySelectorAll('details.device').forEach((d,i)=>{d.open=i===0})}scrollTo({top:0,behavior:'smooth'});history.replaceState(null,'','#'+name)}
+    function show(name, openDevice=''){document.body.classList.toggle('is-home',name==='home');document.body.classList.toggle('is-gallery',name==='gallery');document.body.classList.toggle('is-checkin',name==='checkin');document.body.classList.toggle('is-wifi',name==='wifi');document.body.classList.toggle('is-transport',name==='transport');document.body.classList.toggle('is-guidebook',name==='guidebook');document.body.classList.toggle('is-restaurants',name==='restaurants');screens.forEach(s=>s.classList.toggle('active',s.dataset.screen===name));tabs.forEach(t=>t.classList.toggle('active',t.dataset.go===name));if(name==='guidebook')setTimeout(initGuidebook,60);if(name==='restaurants')setTimeout(renderRestaurants,0);if(openDevice){document.querySelectorAll('details.device').forEach(d=>{d.open=d.dataset.device===openDevice});const target=document.querySelector(`details.device[data-device="${openDevice}"]`);if(target)setTimeout(()=>target.scrollIntoView({behavior:'smooth',block:'start'}),80)}else if(name==='appliances'){document.querySelectorAll('details.device').forEach((d,i)=>{d.open=i===0})}scrollTo({top:0,behavior:'smooth'});history.replaceState(null,'','#'+name)}
     document.addEventListener('click',e=>{const g=e.target.closest('[data-go]'); if(g){show(g.dataset.go,g.dataset.open||'')}});
+    document.addEventListener('click',e=>{const f=e.target.closest('[data-restaurant-filter]');if(!f)return;restaurantCategory=f.dataset.restaurantFilter;renderRestaurants()});
+    document.getElementById('restaurantSearch')?.addEventListener('input',e=>{restaurantSearch=e.target.value;renderRestaurants()});
     document.addEventListener('click',e=>{const lang=e.target.closest('[data-guide-lang]');if(lang){loadGuidebook(lang.dataset.guideLang,true);return}const nav=e.target.closest('[data-guide-nav]');if(nav&&guidebookDoc){renderGuidebookPage(guidebookPage+(nav.dataset.guideNav==='next'?1:-1))}});
     window.addEventListener('resize',()=>{if(!document.body.classList.contains('is-guidebook')||!guidebookDoc)return;clearTimeout(guidebookResizeTimer);guidebookResizeTimer=setTimeout(()=>renderGuidebookPage(guidebookPage),160)});
     document.addEventListener('click',e=>{const s=e.target.closest('[data-scroll-target]'); if(!s)return; const target=document.querySelector(s.dataset.scrollTarget); if(target)target.scrollIntoView({behavior:'smooth',block:'start'});});
