@@ -1,0 +1,518 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>숙소 모바일 가이드 자료 요청서</title>
+  <style>
+    :root{
+      --bg:#f7f2ec;
+      --paper:#fffaf4;
+      --ink:#221b15;
+      --muted:#6f5f50;
+      --line:#dfcdbb;
+      --soft:#efe4d6;
+      --dark:#2b2118;
+      --accent:#7b634f;
+      --radius:18px;
+      --shadow:0 14px 38px rgba(58,43,30,.09);
+    }
+    *{box-sizing:border-box}
+    body{margin:0;background:var(--bg);color:var(--ink);font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;line-height:1.6;letter-spacing:0;overflow-x:hidden}
+    a{color:inherit}
+    .wrap{max-width:1120px;margin:0 auto;padding:34px 20px 80px}
+    .hero{display:grid;gap:26px;grid-template-columns:minmax(0,1.15fr) minmax(300px,.85fr);align-items:end;padding:42px;border-radius:28px;background:linear-gradient(135deg,#2b2118,#7b634f);color:#fff;box-shadow:var(--shadow);overflow:hidden}
+    .hero p{margin:0;color:rgba(255,255,255,.82);overflow-wrap:anywhere}
+    .eyebrow{font-size:13px;font-weight:800;text-transform:uppercase;letter-spacing:.08em}
+    h1{margin:10px 0 16px;font-size:44px;line-height:1.08;letter-spacing:-.03em}
+    h2{margin:0 0 16px;font-size:26px;line-height:1.2}
+    h3{margin:0 0 10px;font-size:18px;line-height:1.25}
+    .hero-card{background:rgba(255,255,255,.11);border:1px solid rgba(255,255,255,.18);border-radius:22px;padding:22px;min-width:0}
+    .hero-card strong{display:block;font-size:22px;margin-bottom:8px}
+    .nav{position:sticky;top:0;z-index:5;margin:18px 0 22px;padding:10px;border-radius:999px;background:rgba(255,250,244,.88);backdrop-filter:blur(16px);border:1px solid rgba(216,198,180,.7);display:flex;gap:8px;overflow:auto}
+    .nav a{flex:0 0 auto;text-decoration:none;border-radius:999px;padding:10px 14px;background:#fff;color:var(--muted);font-size:13px;font-weight:800}
+    section{margin-top:22px;padding:28px;border-radius:24px;background:var(--paper);border:1px solid rgba(216,198,180,.75);box-shadow:var(--shadow)}
+    .grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+    .grid.two{grid-template-columns:repeat(2,minmax(0,1fr))}
+    .card{border-radius:18px;background:#fff;border:1px solid rgba(216,198,180,.7);padding:18px}
+    .card small{display:block;margin-bottom:7px;color:var(--accent);font-size:11px;font-weight:900;text-transform:uppercase}
+    .card strong{display:block;font-size:18px;line-height:1.35}
+    .card p{margin:8px 0 0;color:var(--muted);font-size:14px}
+    .step-list{display:grid;gap:12px;counter-reset:step}
+    .step{counter-increment:step;display:grid;grid-template-columns:44px 1fr;gap:14px;align-items:start;border-radius:18px;background:#fff;border:1px solid rgba(216,198,180,.7);padding:18px}
+    .step:before{content:counter(step);width:44px;height:44px;border-radius:50%;display:grid;place-items:center;background:var(--dark);color:#fff;font-weight:900}
+    .step p{margin:5px 0 0;color:var(--muted)}
+    table{width:100%;border-collapse:collapse;overflow:hidden;border-radius:16px;background:#fff;border:1px solid rgba(216,198,180,.7)}
+    th,td{padding:13px 14px;border-bottom:1px solid rgba(216,198,180,.65);vertical-align:top;text-align:left}
+    th{background:var(--soft);font-size:13px}
+    tr:last-child td{border-bottom:0}
+    .checklist{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+    label.check{display:grid;grid-template-columns:26px 1fr;gap:10px;align-items:start;border-radius:14px;background:#fff;border:1px solid rgba(216,198,180,.7);padding:13px;color:var(--muted);font-size:14px}
+    input[type="checkbox"]{width:20px;height:20px;accent-color:var(--dark)}
+    .photo-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
+    .photo{border-radius:16px;background:#fff;border:1px solid rgba(216,198,180,.7);padding:15px}
+    .photo b{display:block;font-size:15px}
+    .photo span{display:block;margin-top:6px;color:var(--muted);font-size:13px}
+    .example-viewer{margin-top:14px;overflow:hidden;border-radius:22px;background:#fff;border:1px solid rgba(216,198,180,.72);box-shadow:0 10px 24px rgba(58,43,30,.07)}
+    .example-tabs{display:flex;gap:8px;overflow:auto;padding:12px;background:var(--soft);border-bottom:1px solid rgba(216,198,180,.7)}
+    .example-tab{flex:0 0 auto;border:1px solid rgba(216,198,180,.9);background:#fff;color:var(--muted);padding:9px 13px;font-size:13px}
+    .example-tab.is-active{background:var(--dark);border-color:var(--dark);color:#fff}
+    .example-stage{position:relative;padding:16px}
+    .example-slide{display:none;margin:0}
+    .example-slide.is-active{display:grid;grid-template-columns:minmax(0,.68fr) minmax(220px,.32fr);gap:18px;align-items:stretch}
+    .example-slide img{display:block;width:100%;max-height:520px;aspect-ratio:4/5;object-fit:cover;border-radius:18px;background:var(--soft)}
+    .example-copy{display:flex;flex-direction:column;justify-content:center;padding:4px 4px 4px 0}
+    .example-copy small{display:block;margin-bottom:8px;color:var(--accent);font-size:11px;font-weight:900;text-transform:uppercase}
+    .example-copy b{display:block;font-size:22px;line-height:1.25}
+    .example-copy p{margin:10px 0 0;color:var(--muted);font-size:15px}
+    .example-copy ul{margin:14px 0 0;padding-left:18px;color:var(--muted);font-size:14px}
+    .example-nav{position:absolute;top:50%;z-index:2;width:38px;height:38px;padding:0;transform:translateY(-50%);border:1px solid rgba(255,255,255,.6);background:rgba(43,33,24,.82);box-shadow:0 8px 20px rgba(43,33,24,.18)}
+    .example-nav.prev{left:26px}
+    .example-nav.next{right:26px}
+    .example-count{padding:0 16px 16px;color:var(--muted);font-size:13px;text-align:center}
+    .callout{border-radius:18px;background:var(--soft);border:1px solid rgba(123,99,79,.24);padding:18px;color:#5f4d3f}
+    .callout b{display:block;margin-bottom:6px;color:var(--ink)}
+    pre{white-space:pre-wrap;background:#211913;color:#fff;border-radius:18px;padding:18px;overflow:auto;font-size:13px;line-height:1.55}
+    .tag-row{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
+    .tag{border-radius:999px;background:var(--soft);color:var(--accent);padding:7px 10px;font-size:12px;font-weight:900}
+    .print-actions{display:flex;gap:10px;margin-top:18px}
+    button{border:0;border-radius:999px;background:var(--dark);color:#fff;padding:13px 18px;font-weight:900;cursor:pointer}
+    @media(max-width:820px){
+      .wrap{padding:18px 14px 60px}
+      .hero{grid-template-columns:1fr;padding:28px}
+      h1{font-size:34px}
+      section{padding:20px}
+      .grid,.grid.two,.photo-grid,.checklist{grid-template-columns:1fr}
+      .example-slide.is-active{grid-template-columns:1fr}
+      .example-slide img{max-height:none;aspect-ratio:3/4}
+      .example-copy{padding:0 4px 4px}
+      .nav{border-radius:18px}
+    }
+    @media(max-width:520px){
+      .example-stage{padding:12px}
+      .example-tabs{padding:10px}
+      .example-tab{padding:8px 11px;font-size:12px}
+      .example-nav{width:34px;height:34px}
+      .example-nav.prev{left:18px}
+      .example-nav.next{right:18px}
+    }
+    @media print{
+      body{background:#fff}
+      .wrap{max-width:none;padding:0}
+      .hero,.nav,section{box-shadow:none}
+      .nav,.print-actions{display:none}
+      section{break-inside:avoid}
+    }
+  </style>
+</head>
+<body>
+  <main class="wrap">
+    <header class="hero">
+      <div>
+        <p class="eyebrow">Accommodation Guide Production Kit</p>
+        <h1>숙소 모바일 가이드<br>자료 요청서</h1>
+        <p>고객이 이 문서만 따라 하면 숙소 모바일 가이드 제작에 필요한 정보와 사진을 빠짐없이 준비할 수 있습니다.</p>
+        <div class="print-actions"><button type="button" onclick="window.print()">인쇄 / PDF 저장</button></div>
+      </div>
+      <aside class="hero-card">
+        <strong>핵심 원칙</strong>
+        <p>숙소 내부 정보는 고객이 제공하고, 공항 이동/대중교통/맛집/지도 링크는 AI가 초안을 보완한 뒤 고객이 최종 확인합니다.</p>
+      </aside>
+    </header>
+
+    <nav class="nav" aria-label="문서 목차">
+      <a href="#flow">진행 순서</a>
+      <a href="#must">필수 정보</a>
+      <a href="#ai">AI 보완</a>
+      <a href="#photo">사진 촬영</a>
+      <a href="#folder">파일 정리</a>
+      <a href="#form">작성 양식</a>
+      <a href="#qa">최종 검수</a>
+    </nav>
+
+    <section id="flow">
+      <h2>1. 진행 순서</h2>
+      <div class="step-list">
+        <div class="step"><div><h3>기본 정보 작성</h3><p>숙소명, 주소, 체크인/체크아웃, 연락처, 운영 규칙을 먼저 작성합니다.</p></div></div>
+        <div class="step"><div><h3>사진 촬영</h3><p>히어로, 객실, 입구, 도어락, 와이파이, 가전, 쓰레기 위치를 촬영합니다.</p></div></div>
+        <div class="step"><div><h3>기존 자료 전달</h3><p>에어비앤비 메시지, 노션, PDF, 안내문, 주변 맛집 리스트가 있으면 모두 전달합니다.</p></div></div>
+        <div class="step"><div><h3>AI 보완 조사</h3><p>공항 이동, 대중교통, 지도 링크, 주변 맛집, 주차장 후보를 AI가 조사합니다.</p></div></div>
+        <div class="step"><div><h3>고객 확인</h3><p>AI가 보완한 정보와 민감 정보 노출 범위를 고객이 확인합니다.</p></div></div>
+        <div class="step"><div><h3>제작 및 배포</h3><p>동일 템플릿에 내용과 사진만 교체해 모바일 가이드를 제작하고 배포합니다.</p></div></div>
+      </div>
+    </section>
+
+    <section id="must">
+      <h2>2. 고객에게 반드시 받아야 하는 정보</h2>
+      <div class="grid">
+        <div class="card"><small>Basic</small><strong>숙소 기본 정보</strong><p>숙소명, 주소, 층수, 인원, 체크인/아웃, 주차, 엘리베이터</p></div>
+        <div class="card"><small>Contact</small><strong>연락처</strong><p>전화번호, 카카오톡, 긴급 연락 방식, 응대 가능 시간</p></div>
+        <div class="card"><small>Check-in</small><strong>입실 방법</strong><p>도어락, 키번호 발송 시점, 입구 찾는 방법, 문제 발생 시 연락</p></div>
+        <div class="card"><small>Wi-Fi</small><strong>네트워크 정보</strong><p>Wi-Fi 이름, 비밀번호, 공유기 위치, 연결 문제 조치</p></div>
+        <div class="card"><small>Rules</small><strong>숙소 규칙</strong><p>금연, 방문자, 반려동물, 매너타임, 취사, 촬영, 파티</p></div>
+        <div class="card"><small>Facilities</small><strong>시설 사용법</strong><p>TV, 온수, 난방, 세탁, 건조, 주방, 비품, 루프탑, 쓰레기</p></div>
+      </div>
+      <div class="callout" style="margin-top:16px"><b>주의</b>도어락 번호, 공동현관 비밀번호, CCTV 위치처럼 민감한 정보는 고객이 승인한 범위만 노출합니다.</div>
+    </section>
+
+    <section id="ai">
+      <h2>3. AI가 보완할 수 있는 정보</h2>
+      <table>
+        <thead><tr><th>항목</th><th>AI 작업 가능 범위</th><th>고객 확인</th></tr></thead>
+        <tbody>
+          <tr><td>공항 이동</td><td>인천공항/김포공항에서 숙소까지 대중교통, 리무진, 택시 경로 정리</td><td>필수</td></tr>
+          <tr><td>대중교통</td><td>가까운 역, 버스, 도보 구간, 환승 흐름 정리</td><td>필수</td></tr>
+          <tr><td>지도 링크</td><td>네이버 지도, 구글 지도 목적지 링크 생성</td><td>필수</td></tr>
+          <tr><td>주변 맛집</td><td>카테고리별 후보, 대표 메뉴, 지도 링크, 원본 출처 정리</td><td>필수</td></tr>
+          <tr><td>주차장</td><td>주변 유료 공영주차장 후보 조사</td><td>필수</td></tr>
+          <tr><td>FAQ</td><td>기존 메시지와 숙소 정보를 바탕으로 자주 묻는 질문 구성</td><td>필수</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section id="photo">
+      <h2>4. 사진 촬영 가이드</h2>
+      <div class="callout"><b>공통 기준</b>낮 시간 자연광, 원본 사진, 수평 유지, 필터 금지, 개인정보/비밀번호 노출 금지, 세로와 가로 사진 모두 촬영.</div>
+      <h3 style="margin-top:20px">촬영 예시 이미지</h3>
+      <div class="example-viewer" data-example-viewer aria-label="사진 촬영 예시 넘겨보기">
+        <div class="example-tabs" role="tablist" aria-label="촬영 예시 유형">
+          <button type="button" class="example-tab is-active" data-example-tab="0" role="tab" aria-selected="true">히어로</button>
+          <button type="button" class="example-tab" data-example-tab="1" role="tab" aria-selected="false">침실</button>
+          <button type="button" class="example-tab" data-example-tab="2" role="tab" aria-selected="false">주방</button>
+          <button type="button" class="example-tab" data-example-tab="3" role="tab" aria-selected="false">욕실</button>
+          <button type="button" class="example-tab" data-example-tab="4" role="tab" aria-selected="false">창밖/뷰</button>
+          <button type="button" class="example-tab" data-example-tab="5" role="tab" aria-selected="false">체크인</button>
+          <button type="button" class="example-tab" data-example-tab="6" role="tab" aria-selected="false">도어락/가전</button>
+          <button type="button" class="example-tab" data-example-tab="7" role="tab" aria-selected="false">와이파이</button>
+          <button type="button" class="example-tab" data-example-tab="8" role="tab" aria-selected="false">TV/리모컨</button>
+          <button type="button" class="example-tab" data-example-tab="9" role="tab" aria-selected="false">세탁/건조</button>
+          <button type="button" class="example-tab" data-example-tab="10" role="tab" aria-selected="false">쓰레기/비품</button>
+          <button type="button" class="example-tab" data-example-tab="11" role="tab" aria-selected="false">주차/주변</button>
+        </div>
+        <div class="example-stage">
+          <button type="button" class="example-nav prev" data-example-prev aria-label="이전 촬영 예시 보기">&lt;</button>
+          <figure class="example-slide is-active" data-example-slide aria-hidden="false">
+            <img src="assets/photo-guide-hero-room.png" alt="거실 히어로 사진 촬영 예시" loading="lazy">
+            <figcaption class="example-copy">
+              <small>Example 01</small>
+              <b>히어로/거실</b>
+              <p>입구나 코너에서 공간을 넓게 담고, 창문과 조명까지 함께 보이게 촬영합니다.</p>
+              <ul>
+                <li>세로 9:16 사진을 반드시 1장 이상 촬영</li>
+                <li>가구, 조명, 창밖 뷰가 한 프레임에 들어오게 구성</li>
+              </ul>
+            </figcaption>
+          </figure>
+          <figure class="example-slide" data-example-slide aria-hidden="true">
+            <img src="assets/photo-guide-bedroom.png" alt="침실 사진 촬영 예시" loading="lazy">
+            <figcaption class="example-copy">
+              <small>Example 02</small>
+              <b>침실</b>
+              <p>방 입구나 모서리에서 침대 전체, 조명, 수납 위치가 함께 보이도록 촬영합니다.</p>
+              <ul>
+                <li>침구 라인을 정돈하고 베개와 이불이 자연스럽게 보이게 구성</li>
+                <li>콘센트, 협탁, 조명처럼 투숙객이 찾는 요소도 함께 포함</li>
+              </ul>
+            </figcaption>
+          </figure>
+          <figure class="example-slide" data-example-slide aria-hidden="true">
+            <img src="assets/photo-guide-kitchen.png" alt="주방 사진 촬영 예시" loading="lazy">
+            <figcaption class="example-copy">
+              <small>Example 03</small>
+              <b>주방</b>
+              <p>조리대, 싱크대, 인덕션, 식기 위치가 한눈에 들어오도록 넓게 찍습니다.</p>
+              <ul>
+                <li>조리 공간과 세척 공간이 모두 보이게 정면 또는 코너에서 촬영</li>
+                <li>식기, 냄비, 컵 등 제공 비품은 정리된 상태로 별도 컷 추가</li>
+              </ul>
+            </figcaption>
+          </figure>
+          <figure class="example-slide" data-example-slide aria-hidden="true">
+            <img src="assets/photo-guide-bathroom.png" alt="욕실 사진 촬영 예시" loading="lazy">
+            <figcaption class="example-copy">
+              <small>Example 04</small>
+              <b>욕실</b>
+              <p>입구에서 세면대, 샤워공간, 수건과 어메니티가 함께 보이도록 촬영합니다.</p>
+              <ul>
+                <li>거울 반사에 촬영자나 사적 물건이 나오지 않게 주의</li>
+                <li>전체 컷 1장과 세면대/샤워공간 디테일 컷을 함께 준비</li>
+              </ul>
+            </figcaption>
+          </figure>
+          <figure class="example-slide" data-example-slide aria-hidden="true">
+            <img src="assets/photo-guide-window-view.png" alt="창밖 뷰 사진 촬영 예시" loading="lazy">
+            <figcaption class="example-copy">
+              <small>Example 05</small>
+              <b>창밖/뷰</b>
+              <p>실내 프레임과 바깥 풍경을 함께 담아 숙소에서 보이는 실제 분위기를 전달합니다.</p>
+              <ul>
+                <li>창밖이 너무 하얗게 날아가지 않도록 밝기를 낮춰 촬영</li>
+                <li>낮과 저녁 뷰가 다르면 각각 1장씩 추가 촬영</li>
+              </ul>
+            </figcaption>
+          </figure>
+          <figure class="example-slide" data-example-slide aria-hidden="true">
+            <img src="assets/photo-guide-checkin-entrance.png" alt="체크인 동선과 건물 입구 촬영 예시" loading="lazy">
+            <figcaption class="example-copy">
+              <small>Example 06</small>
+              <b>체크인 동선</b>
+              <p>골목 기준점, 건물 외관, 현관문이 한 프레임에 들어오도록 정면에서 찍습니다.</p>
+              <ul>
+                <li>투숙객이 길을 찾을 때 볼 실제 시야 기준</li>
+                <li>입구, 계단, 엘리베이터는 이동 순서대로 추가 촬영</li>
+              </ul>
+            </figcaption>
+          </figure>
+          <figure class="example-slide" data-example-slide aria-hidden="true">
+            <img src="assets/photo-guide-device-closeup.png" alt="도어락과 가전 조작부 근접 촬영 예시" loading="lazy">
+            <figcaption class="example-copy">
+              <small>Example 07</small>
+              <b>도어락/가전</b>
+              <p>조작해야 하는 위치가 선명하게 보이도록 가까이 찍고, 실제 비밀번호는 가립니다.</p>
+              <ul>
+                <li>전체 위치 사진 1장, 버튼 근접 사진 1장 조합</li>
+                <li>비밀번호, 예약자명, 사적 정보는 절대 노출 금지</li>
+              </ul>
+            </figcaption>
+          </figure>
+          <figure class="example-slide" data-example-slide aria-hidden="true">
+            <img src="assets/photo-guide-wifi-router.png" alt="와이파이 공유기 위치 촬영 예시" loading="lazy">
+            <figcaption class="example-copy">
+              <small>Example 08</small>
+              <b>와이파이/공유기</b>
+              <p>공유기를 알려줘야 하는 경우 위치와 주변 기준점이 함께 보이도록 촬영합니다.</p>
+              <ul>
+                <li>비밀번호 스티커, QR 코드, 네트워크 라벨은 보이지 않게 처리</li>
+                <li>콘센트와 전원 위치가 필요하면 같은 프레임에 포함</li>
+              </ul>
+            </figcaption>
+          </figure>
+          <figure class="example-slide" data-example-slide aria-hidden="true">
+            <img src="assets/photo-guide-tv-remote.png" alt="TV와 리모컨 촬영 예시" loading="lazy">
+            <figcaption class="example-copy">
+              <small>Example 09</small>
+              <b>TV/리모컨</b>
+              <p>TV 위치와 리모컨을 한 프레임에 담고, 주요 조작부는 별도로 가까이 찍습니다.</p>
+              <ul>
+                <li>TV 화면에는 개인 계정, 앱 로고, 시청 기록이 보이지 않게 주의</li>
+                <li>리모컨 전체 컷과 자주 쓰는 버튼 근접 컷을 함께 준비</li>
+              </ul>
+            </figcaption>
+          </figure>
+          <figure class="example-slide" data-example-slide aria-hidden="true">
+            <img src="assets/photo-guide-laundry.png" alt="세탁기와 건조기 촬영 예시" loading="lazy">
+            <figcaption class="example-copy">
+              <small>Example 10</small>
+              <b>세탁/건조</b>
+              <p>세탁기나 건조기의 전체 위치, 조작부, 세제 보관 위치가 함께 보이게 촬영합니다.</p>
+              <ul>
+                <li>사용 가능한 세제와 투입구 위치를 별도 컷으로 추가</li>
+                <li>브랜드명보다 실제 버튼과 사용 위치가 보이게 구성</li>
+              </ul>
+            </figcaption>
+          </figure>
+          <figure class="example-slide" data-example-slide aria-hidden="true">
+            <img src="assets/photo-guide-trash-supplies.png" alt="쓰레기 분리수거와 비품 보관 위치 촬영 예시" loading="lazy">
+            <figcaption class="example-copy">
+              <small>Example 11</small>
+              <b>쓰레기/비품</b>
+              <p>투숙객이 바로 찾을 수 있게 보관함, 통, 주변 기준점을 함께 보여줍니다.</p>
+              <ul>
+                <li>일반, 음식물, 재활용 위치가 구분되게 촬영</li>
+                <li>비품 보관함은 내부 구성까지 별도 촬영</li>
+              </ul>
+            </figcaption>
+          </figure>
+          <figure class="example-slide" data-example-slide aria-hidden="true">
+            <img src="assets/photo-guide-parking-nearby.png" alt="주차장과 주변 길 촬영 예시" loading="lazy">
+            <figcaption class="example-copy">
+              <small>Example 12</small>
+              <b>주차/주변길</b>
+              <p>주차장 입구나 숙소까지 오는 길을 실제 보행자 시야 기준으로 촬영합니다.</p>
+              <ul>
+                <li>주변 기준점과 진입 방향이 한눈에 보이도록 세로로 촬영</li>
+                <li>차량 번호판, 사적 주소, 읽을 수 있는 민감 표기는 제외</li>
+              </ul>
+            </figcaption>
+          </figure>
+          <button type="button" class="example-nav next" data-example-next aria-label="다음 촬영 예시 보기">&gt;</button>
+        </div>
+        <div class="example-count" data-example-count>1 / 12</div>
+      </div>
+      <div class="photo-grid" style="margin-top:16px">
+        <div class="photo"><b>히어로</b><span>거실, 침실, 창밖 뷰. 세로 9:16 필수.</span></div>
+        <div class="photo"><b>거실</b><span>입구 방향, 창가 방향, 소파/테이블 디테일.</span></div>
+        <div class="photo"><b>침실</b><span>각 방 침대 전체, 조명, 수납, 콘센트.</span></div>
+        <div class="photo"><b>주방</b><span>전체 구조, 조리 공간, 식기와 비품 위치.</span></div>
+        <div class="photo"><b>욕실</b><span>전체, 세면대, 샤워공간, 어메니티.</span></div>
+        <div class="photo"><b>창밖/뷰</b><span>낮과 저녁 뷰, 커튼과 창틀이 함께 보이는 컷.</span></div>
+        <div class="photo"><b>입구</b><span>골목, 건물 외관, 현관문, 계단/엘리베이터.</span></div>
+        <div class="photo"><b>도어락</b><span>키패드 위치 중심. 실제 번호는 노출 금지.</span></div>
+        <div class="photo"><b>와이파이</b><span>공유기 위치. 비밀번호 스티커와 QR 노출 금지.</span></div>
+        <div class="photo"><b>TV/리모컨</b><span>TV 위치, 리모컨 전체, 주요 버튼 근접 컷.</span></div>
+        <div class="photo"><b>가전</b><span>보일러, 온수, 에어컨 등 조작부 근접 사진.</span></div>
+        <div class="photo"><b>세탁/건조</b><span>기기 전체, 조작부, 세제와 필터 위치.</span></div>
+        <div class="photo"><b>쓰레기</b><span>일반, 음식물, 재활용 위치와 배출 장소.</span></div>
+        <div class="photo"><b>비품</b><span>비품 보관함 위치와 내부. 비밀번호 노출 금지.</span></div>
+        <div class="photo"><b>주차</b><span>주차장 입구, 도보 이동 길, 주변 기준점.</span></div>
+        <div class="photo"><b>주변</b><span>편의점, 골목, 랜드마크, 건물 찾는 기준점.</span></div>
+      </div>
+    </section>
+
+    <section id="folder">
+      <h2>5. 파일 정리 방법</h2>
+      <pre>숙소명_자료/
+  01_기본정보/
+    숙소정보.txt
+    기존안내문.pdf
+    에어비앤비_메시지템플릿.docx
+  02_사진/
+    01_히어로/
+    02_거실/
+    03_침실/
+    04_주방/
+    05_욕실/
+    06_입구_체크인/
+    07_가전_사용법/
+    08_쓰레기_퇴실/
+    09_주변_외부/
+  03_지도_주변정보/
+    추천맛집.txt
+    주변주차장.txt
+    기타메모.txt</pre>
+      <div class="tag-row">
+        <span class="tag">hero_living_vertical_01.jpg</span>
+        <span class="tag">doorlock_keypad_01.jpg</span>
+        <span class="tag">boiler_controller_01.jpg</span>
+        <span class="tag">trash_recycling_01.jpg</span>
+      </div>
+    </section>
+
+    <section id="form">
+      <h2>6. 고객 작성 양식</h2>
+      <pre>[숙소 기본 정보]
+숙소명:
+브랜드명:
+주소:
+층/호수:
+기준 인원:
+최대 인원:
+체크인 시간:
+체크아웃 시간:
+주차 가능 여부:
+엘리베이터 여부:
+
+[연락처]
+호스트 전화번호:
+카카오톡 오픈채팅 링크:
+긴급 연락 방법:
+응대 가능 시간:
+
+[체크인]
+체크인 방식:
+키/도어락 사용법:
+키번호 안내 시점:
+입구 찾는 방법:
+체크인 문제 시 연락 방법:
+
+[와이파이]
+Wi-Fi 이름:
+Wi-Fi 비밀번호:
+연결 문제 시 안내:
+
+[숙소 규칙]
+금연:
+흡연 가능 장소:
+반려동물:
+방문자:
+소음/매너타임:
+취사:
+파티/이벤트:
+상업 촬영:
+
+[시설 사용법]
+TV/OTT:
+온수/보일러:
+에어컨/난방:
+세탁기:
+건조기:
+주방기기:
+비품 보관함:
+루프탑/테라스:
+공용공간:
+
+[쓰레기/퇴실]
+일반 쓰레기:
+음식물 쓰레기:
+재활용:
+퇴실 전 해야 할 일:
+초과 비용:
+
+[주변 정보]
+추천 맛집:
+추천 카페:
+편의점/마트:
+주차장:
+주의할 주변 정보:</pre>
+    </section>
+
+    <section id="qa">
+      <h2>7. 최종 검수 체크리스트</h2>
+      <div class="checklist">
+        <label class="check"><input type="checkbox">숙소명과 주소가 정확하다.</label>
+        <label class="check"><input type="checkbox">네이버/구글 지도 링크가 정확하다.</label>
+        <label class="check"><input type="checkbox">체크인 시간과 체크아웃 시간이 정확하다.</label>
+        <label class="check"><input type="checkbox">도어락 안내가 실제와 맞다.</label>
+        <label class="check"><input type="checkbox">와이파이 ID와 비밀번호가 정확하다.</label>
+        <label class="check"><input type="checkbox">금연/소음/방문자/반려동물 규칙이 정확하다.</label>
+        <label class="check"><input type="checkbox">가전 사용법이 실제 기기와 맞다.</label>
+        <label class="check"><input type="checkbox">쓰레기 배출 안내가 실제 위치와 맞다.</label>
+        <label class="check"><input type="checkbox">공항/대중교통 안내가 이상하지 않다.</label>
+        <label class="check"><input type="checkbox">맛집/주차장 정보가 현재 운영 상황과 맞다.</label>
+        <label class="check"><input type="checkbox">사진에 개인정보나 비밀번호가 없다.</label>
+        <label class="check"><input type="checkbox">모바일에서 글자와 버튼이 잘 보인다.</label>
+      </div>
+    </section>
+  </main>
+  <script>
+    (() => {
+      const viewer = document.querySelector('[data-example-viewer]');
+      if (!viewer) return;
+
+      const slides = Array.from(viewer.querySelectorAll('[data-example-slide]'));
+      const tabs = Array.from(viewer.querySelectorAll('[data-example-tab]'));
+      const count = viewer.querySelector('[data-example-count]');
+      let activeIndex = 0;
+
+      const setActive = (nextIndex) => {
+        activeIndex = (nextIndex + slides.length) % slides.length;
+
+        slides.forEach((slide, index) => {
+          const isActive = index === activeIndex;
+          slide.classList.toggle('is-active', isActive);
+          slide.setAttribute('aria-hidden', String(!isActive));
+        });
+
+        tabs.forEach((tab, index) => {
+          const isActive = index === activeIndex;
+          tab.classList.toggle('is-active', isActive);
+          tab.setAttribute('aria-selected', String(isActive));
+        });
+
+        if (count) count.textContent = `${activeIndex + 1} / ${slides.length}`;
+      };
+
+      tabs.forEach((tab, index) => {
+        tab.addEventListener('click', () => setActive(index));
+      });
+
+      viewer.querySelector('[data-example-prev]')?.addEventListener('click', () => setActive(activeIndex - 1));
+      viewer.querySelector('[data-example-next]')?.addEventListener('click', () => setActive(activeIndex + 1));
+      viewer.addEventListener('keydown', (event) => {
+        if (event.key === 'ArrowLeft') setActive(activeIndex - 1);
+        if (event.key === 'ArrowRight') setActive(activeIndex + 1);
+      });
+    })();
+  </script>
+</body>
+</html>

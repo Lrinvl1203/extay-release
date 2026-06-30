@@ -183,12 +183,28 @@ body:not(.is-home):not(.is-gallery):not(.is-checkin):not(.is-wifi):not(.is-trans
 .wifi-credential b{display:block;color:#221b15;font-size:20px;line-height:1.26;overflow-wrap:anywhere}
 .wifi-credential.wide b{font-size:15px;line-height:1.5;word-break:keep-all}
 .wifi-credential .mini-btn{margin:0;min-width:72px;border:0;border-radius:999px;background:#2b2118;color:#fff;padding:12px 16px;font-size:13px}
-.wifi-steps{counter-reset:wifi;display:grid;gap:12px;margin:0;padding:0;list-style:none}
+.wifi-network-graphic{display:grid;gap:13px;border-radius:20px;background:linear-gradient(180deg,#f7efe4,#fffaf4);border:1px solid rgba(216,198,180,.7);padding:18px}
+.wifi-network-card{display:grid;grid-template-columns:48px 1fr;gap:12px;align-items:center;border-radius:18px;background:#fff;border:1px solid rgba(216,198,180,.66);padding:14px}
+.wifi-network-card.featured{background:#2b2118;color:#fff;border-color:#2b2118}
+.wifi-network-card .mi{width:48px;height:48px;border-radius:50%;display:grid;place-items:center;background:#efe4d6;color:#7b634f;font-size:25px}
+.wifi-network-card.featured .mi{background:#fff;color:#7b634f}
+.wifi-network-card div>span{display:block;margin-bottom:5px;color:#8a7663;font-size:10px;font-weight:900;text-transform:uppercase}
+.wifi-network-card.featured div>span{color:rgba(255,255,255,.68)}
+.wifi-network-card strong{display:block;color:#221b15;font-size:19px;line-height:1.26;overflow-wrap:anywhere}
+.wifi-network-card.featured strong{color:#fff}
+.wifi-network-card .mini-btn{grid-column:2;margin:0;justify-self:start;min-width:68px;border:0;border-radius:999px;background:#2b2118;color:#fff;padding:11px 14px;font-size:12px;font-weight:900}
+.wifi-network-card.featured .mini-btn{background:#fff;color:#2b2118}
+.wifi-visual-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.wifi-visual-card{min-height:120px;border-radius:16px;background:#fff;border:1px solid rgba(216,198,180,.66);padding:14px;display:flex;flex-direction:column;gap:10px}
+.wifi-visual-card .mi{width:34px;height:34px;border-radius:50%;display:grid;place-items:center;background:#efe4d6;color:#7b634f;font-size:20px}
+.wifi-visual-card strong{display:block;color:#221b15;font-size:14px;line-height:1.32}
+.wifi-visual-card span{display:block;color:#665646;font-size:12px;line-height:1.45;word-break:keep-all}
+.wifi-steps{counter-reset:wifi;display:none;gap:12px;margin:0;padding:0;list-style:none}
 .wifi-steps li{counter-increment:wifi;display:grid;grid-template-columns:34px 1fr;gap:12px;align-items:start}
 .wifi-steps li:before{content:counter(wifi);width:34px;height:34px;border-radius:50%;display:grid;place-items:center;background:#2b2118;color:#fff;font-size:13px;font-weight:800}
 .wifi-steps strong{display:block;margin-bottom:4px;font-size:15px;color:#221b15}
 .wifi-steps span{display:block;font-size:13px;line-height:1.55;color:#665646;word-break:keep-all}
-.wifi-list{display:grid;gap:10px;margin:0;padding:0;list-style:none}
+.wifi-list{display:none;gap:10px;margin:0;padding:0;list-style:none}
 .wifi-list li{position:relative;padding-left:24px;font-size:14px;line-height:1.55;color:#665646;word-break:keep-all}
 .wifi-list li:before{content:"";position:absolute;left:0;top:.62em;width:7px;height:7px;border-radius:50%;background:#7b634f}
 .wifi-soft-card{background:#efe4d6;border-color:rgba(123,99,79,.26)}
@@ -209,6 +225,17 @@ body:not(.is-home):not(.is-gallery):not(.is-checkin):not(.is-wifi):not(.is-trans
 .transport-fact{border-radius:16px;background:#f3eadf;padding:15px}
 .transport-fact small{display:block;margin-bottom:6px;color:#8a7663;font-size:11px;font-weight:800;text-transform:uppercase}
 .transport-fact b{display:block;color:#221b15;font-size:15px;line-height:1.42;word-break:keep-all}
+.destination-graphic{position:relative;display:grid;gap:13px;border-radius:20px;background:linear-gradient(180deg,#f7efe4,#fffaf4);border:1px solid rgba(216,198,180,.7);padding:18px;overflow:hidden}
+.destination-graphic:before{content:"";position:absolute;inset:18px;border:1px dashed rgba(123,99,79,.22);border-radius:18px;pointer-events:none}
+.destination-pin{position:relative;z-index:1;display:grid;grid-template-columns:52px 1fr;gap:13px;align-items:center;border-radius:18px;background:#2b2118;color:#fff;padding:16px}
+.destination-pin .mi{width:52px;height:52px;border-radius:50%;display:grid;place-items:center;background:#fff;color:#7b634f;font-size:28px}
+.destination-pin small{display:block;margin-bottom:5px;color:rgba(255,255,255,.72);font-size:11px;font-weight:900;text-transform:uppercase}
+.destination-pin b{display:block;font-size:18px;line-height:1.3}
+.destination-grid{position:relative;z-index:1;display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.destination-chip{min-height:94px;border-radius:16px;background:#fff;border:1px solid rgba(216,198,180,.66);padding:13px;display:flex;flex-direction:column;justify-content:space-between;gap:10px}
+.destination-chip .mi{font-size:23px;color:#7b634f}
+.destination-chip small{display:block;color:#8a7663;font-size:10px;font-weight:900;text-transform:uppercase}
+.destination-chip b{display:block;margin-top:4px;color:#221b15;font-size:13px;line-height:1.35;word-break:keep-all}
 .route-card{display:grid;gap:14px;border-radius:20px;background:#fff;border:1px solid rgba(216,198,180,.66);padding:18px;margin-top:12px}
 .route-card:first-of-type{margin-top:0}
 .route-top{display:flex;align-items:flex-start;justify-content:space-between;gap:12px}
@@ -216,14 +243,40 @@ body:not(.is-home):not(.is-gallery):not(.is-checkin):not(.is-wifi):not(.is-trans
 .route-badge{flex:0 0 auto;border-radius:999px;background:#efe4d6;color:#7b634f;padding:7px 10px;font-size:10px;font-weight:900;letter-spacing:.04em;text-transform:uppercase}
 .route-meta{display:flex;flex-wrap:wrap;gap:7px}
 .route-meta span{border-radius:999px;background:#f3eadf;color:#6b5a4a;padding:7px 10px;font-size:11px;font-weight:800}
-.route-steps{counter-reset:route;display:grid;gap:11px;margin:0;padding:0;list-style:none}
+.route-infographic{position:relative;margin:2px 0 0;border-radius:18px;background:linear-gradient(180deg,#f7efe4,#fffaf4);border:1px solid rgba(216,198,180,.7);overflow:hidden}
+.route-infographic-head{padding:17px 17px 13px;border-bottom:1px solid rgba(216,198,180,.58)}
+.route-infographic-head small{display:block;margin-bottom:6px;color:#8a7663;font-size:11px;font-weight:900;text-transform:uppercase}
+.route-infographic-head strong{display:block;color:#221b15;font-size:19px;line-height:1.22}
+.route-infographic-head span{display:block;margin-top:7px;color:#6b5a4a;font-size:12px;line-height:1.45;word-break:keep-all}
+.route-line-map{display:grid;gap:0;padding:15px 17px 17px}
+.route-line-step{position:relative;display:grid;grid-template-columns:42px 1fr;gap:12px;min-height:74px}
+.route-line-step:not(:last-child):after{content:"";position:absolute;left:20px;top:42px;bottom:0;width:3px;border-radius:999px;background:var(--line-color,#9a7d62)}
+.route-node{position:relative;z-index:1;width:42px;height:42px;border-radius:50%;display:grid;place-items:center;background:#fff;border:3px solid var(--line-color,#9a7d62);box-shadow:0 8px 18px rgba(58,43,30,.1);color:var(--line-color,#9a7d62)}
+.route-node .mi{font-size:21px}
+.route-line-copy{padding-bottom:17px}
+.route-line-step:last-child .route-line-copy{padding-bottom:0}
+.route-line-copy small{display:inline-flex;align-items:center;min-height:24px;margin-bottom:6px;border-radius:999px;background:var(--soft-color,#efe4d6);color:var(--line-color,#7b634f);padding:0 9px;font-size:10px;font-weight:900;text-transform:uppercase}
+.route-line-copy b{display:block;color:#221b15;font-size:15px;line-height:1.32}
+.route-line-copy p{margin:4px 0 0;color:#665646;font-size:12px;line-height:1.46;word-break:keep-all}
+.route-quick-tip{display:grid;grid-template-columns:34px 1fr;gap:10px;align-items:start;margin:0 17px 17px;border-radius:14px;background:#efe4d6;padding:13px;color:#5f4d3f}
+.route-quick-tip .mi{font-size:22px;color:#7b634f}
+.route-quick-tip b{display:block;margin-bottom:3px;color:#221b15;font-size:13px}
+.route-quick-tip p{margin:0;font-size:12px;line-height:1.46;color:#665646}
+.route-infographic.compact .route-infographic-head{padding:15px 16px 12px}
+.route-infographic.compact .route-infographic-head strong{font-size:18px}
+.route-infographic.compact .route-line-map{padding:14px 16px 4px}
+.route-infographic.compact .route-line-step{min-height:66px;grid-template-columns:38px 1fr;gap:11px}
+.route-infographic.compact .route-line-step:not(:last-child):after{left:18px;top:38px;width:3px}
+.route-infographic.compact .route-node{width:38px;height:38px}
+.route-infographic.compact .route-node .mi{font-size:20px}
+.route-steps{counter-reset:route;display:none;gap:11px;margin:0;padding:0;list-style:none}
 .route-steps li{counter-increment:route;display:grid;grid-template-columns:30px 1fr;gap:10px;align-items:start;font-size:13px;line-height:1.55;color:#665646;word-break:keep-all}
 .route-steps li:before{content:counter(route);width:30px;height:30px;border-radius:50%;display:grid;place-items:center;background:#2b2118;color:#fff;font-size:12px;font-weight:800}
 .route-steps b{display:block;margin-bottom:3px;color:#221b15;font-size:14px}
 .transport-note{background:#efe4d6;border-color:rgba(123,99,79,.26)}
-.transport-note ul{display:grid;gap:10px;margin:0;padding:0;list-style:none}
-.transport-note li{position:relative;padding-left:24px;font-size:14px;line-height:1.55;color:#665646;word-break:keep-all}
-.transport-note li:before{content:"";position:absolute;left:0;top:.62em;width:7px;height:7px;border-radius:50%;background:#7b634f}
+.transport-note ul{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:0;padding:0;list-style:none}
+.transport-note li{position:relative;min-height:116px;border-radius:16px;background:#fffaf4;border:1px solid rgba(216,198,180,.66);padding:14px 13px 13px 42px;font-size:13px;line-height:1.48;color:#665646;word-break:keep-all}
+.transport-note li:before{content:"check";font-family:'Material Symbols Outlined';font-weight:300;position:absolute;left:12px;top:13px;width:22px;height:22px;border-radius:50%;display:grid;place-items:center;background:#2b2118;color:#fff;font-size:15px}
 .guidebook-screen{background:#f7f2ec;min-height:calc(100dvh - 72px)}
 .guidebook-head{padding:8px 0 18px}
 .guidebook-head .section-kicker{margin-bottom:10px}
@@ -320,7 +373,30 @@ body:not(.is-home):not(.is-gallery):not(.is-checkin):not(.is-wifi):not(.is-trans
 .checkin-fact{border-radius:16px;background:#f3eadf;padding:15px}
 .checkin-fact small{display:block;margin-bottom:6px;color:#8a7663;font-size:11px;font-weight:800;text-transform:uppercase}
 .checkin-fact b{display:block;color:#221b15;font-size:15px;line-height:1.42;word-break:keep-all}
-.door-steps{counter-reset:door;display:grid;gap:12px;margin:0;padding:0;list-style:none}
+.checkin-summary{display:grid;gap:14px}
+.checkin-summary-hero{display:grid;grid-template-columns:54px 1fr;gap:14px;align-items:center;border-radius:20px;background:#2b2118;color:#fff;padding:18px}
+.checkin-summary-hero .mi{width:54px;height:54px;border-radius:50%;display:grid;place-items:center;background:#fff;color:#7b634f;font-size:30px}
+.checkin-summary-hero small{display:block;margin-bottom:6px;color:rgba(255,255,255,.7);font-size:11px;font-weight:900;text-transform:uppercase}
+.checkin-summary-hero b{display:block;font-size:20px;line-height:1.25}
+.checkin-summary-hero span{display:block;margin-top:5px;color:rgba(255,255,255,.82);font-size:12px;line-height:1.45;word-break:keep-all}
+.checkin-token-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.checkin-token{min-height:100px;border-radius:16px;background:#f3eadf;padding:14px;display:flex;flex-direction:column;justify-content:space-between;gap:12px}
+.checkin-token .mi{font-size:23px;color:#7b634f}
+.checkin-token small{display:block;color:#8a7663;font-size:10px;font-weight:900;text-transform:uppercase}
+.checkin-token b{display:block;margin-top:4px;color:#221b15;font-size:13px;line-height:1.38;word-break:keep-all}
+.keypad-graphic{border-radius:18px;background:#2b2118;color:#fff;padding:18px;display:grid;gap:15px}
+.keypad-display{border-radius:14px;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.16);padding:14px;text-align:center}
+.keypad-display small{display:block;margin-bottom:7px;color:rgba(255,255,255,.66);font-size:10px;font-weight:900;text-transform:uppercase}
+.keypad-display b{display:block;font-size:18px;line-height:1.35}
+.keypad-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.keypad-grid span{height:42px;border-radius:12px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.14);display:grid;place-items:center;font-size:14px;font-weight:900;color:#fff}
+.keypad-grid span:last-child{background:#fff;color:#2b2118}
+.checkin-rule-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.checkin-rule{min-height:122px;border-radius:16px;background:#fff;border:1px solid rgba(216,198,180,.66);padding:14px;display:flex;flex-direction:column;gap:10px}
+.checkin-rule .mi{width:34px;height:34px;border-radius:50%;background:#efe4d6;color:#7b634f;display:grid;place-items:center;font-size:20px}
+.checkin-rule b{display:block;color:#221b15;font-size:14px;line-height:1.32}
+.checkin-rule span{display:block;color:#665646;font-size:12px;line-height:1.45;word-break:keep-all}
+.door-steps{counter-reset:door;display:none;gap:12px;margin:0;padding:0;list-style:none}
 .door-steps li{counter-increment:door;display:grid;grid-template-columns:34px 1fr;gap:12px;align-items:start}
 .door-steps li:before{content:counter(door);width:34px;height:34px;border-radius:50%;display:grid;place-items:center;background:#2b2118;color:#fff;font-size:13px;font-weight:800}
 .door-steps strong{display:block;margin-bottom:4px;font-size:15px;color:#221b15}
@@ -349,7 +425,7 @@ body:not(.is-home) main{padding-top:0}
   .image-card{min-height:130px;padding:15px}
   .menu-panel{right:0;width:88vw}
   .gallery-thumb{flex-basis:76px;width:76px;height:88px}
-  .checkin-grid,.contact-actions{grid-template-columns:1fr}
+  .checkin-grid,.checkin-token-grid,.checkin-rule-grid,.contact-actions{grid-template-columns:1fr}
   .checkin-hero h2{font-size:37px}
   .wifi-hero .page-title{font-size:38px}
   .wifi-credential{grid-template-columns:1fr}
@@ -435,34 +511,108 @@ body:not(.is-home) main{padding-top:0}
         </article>
         <div class="checkin-stack">
           <article class="checkin-card">
-            <h3>체크인 기본 정보</h3>
-            <div class="checkin-grid">
-              <div class="checkin-fact"><small>Address</small><b>서울시 용산구 신흥로 59, 2층</b></div>
-              <div class="checkin-fact"><small>Time</small><b>체크인 16:00<br>체크아웃 11:00</b></div>
-              <div class="checkin-fact"><small>Access</small><b>비대면 셀프 체크인</b></div>
-              <div class="checkin-fact"><small>Parking</small><b>건물 주차 불가<br>주변 유료 공영주차장 이용</b></div>
+            <h3>체크인 한눈에 보기</h3>
+            <div class="checkin-summary">
+              <div class="checkin-summary-hero">
+                <span class="mi">door_open</span>
+                <div><small>Self Check-in</small><b>16:00부터 입실 가능</b><span>개인 키번호는 체크인 당일 12시쯤 호스트 메시지로 안내됩니다.</span></div>
+              </div>
+              <div class="checkin-token-grid">
+                <div class="checkin-token"><span class="mi">pin_drop</span><div><small>Address</small><b>서울시 용산구 신흥로 59, 2층</b></div></div>
+                <div class="checkin-token"><span class="mi">schedule</span><div><small>Time</small><b>체크인 16:00<br>체크아웃 11:00</b></div></div>
+                <div class="checkin-token"><span class="mi">key</span><div><small>Access</small><b>비대면 셀프 체크인</b></div></div>
+                <div class="checkin-token"><span class="mi">local_parking</span><div><small>Parking</small><b>건물 주차 불가<br>주변 유료 공영주차장 이용</b></div></div>
+              </div>
+              <div class="route-infographic compact" aria-label="체크인 타임라인">
+                <div class="route-infographic-head">
+                  <small>Arrival Timeline</small>
+                  <strong>전날 안내 → 키번호 → 입실 → 퇴실</strong>
+                  <span>체크인 전날 위치와 이용방법을 확인하고, 당일 안내받은 키번호로 입실합니다.</span>
+                </div>
+                <div class="route-line-map">
+                  <div class="route-line-step" style="--line-color:#7b634f;--soft-color:#efe4d6">
+                    <div class="route-node"><span class="mi">mark_email_read</span></div>
+                    <div class="route-line-copy"><small>D-1</small><b>상세 안내 확인</b><p>주소, 이용 규칙, 주변 안내 링크를 미리 확인합니다.</p></div>
+                  </div>
+                  <div class="route-line-step" style="--line-color:#7b634f;--soft-color:#efe4d6">
+                    <div class="route-node"><span class="mi">password</span></div>
+                    <div class="route-line-copy"><small>12:00</small><b>개인 키번호 수신</b><p>체크인 당일 12시쯤 호스트 메시지로 안내됩니다.</p></div>
+                  </div>
+                  <div class="route-line-step" style="--line-color:#2b2118;--soft-color:#eee6dc">
+                    <div class="route-node"><span class="mi">door_open</span></div>
+                    <div class="route-line-copy"><small>16:00</small><b>비대면 입실</b><p>도어락에 안내받은 번호와 * 버튼을 입력합니다.</p></div>
+                  </div>
+                  <div class="route-line-step" style="--line-color:#9b6a33;--soft-color:#f2e6d8">
+                    <div class="route-node"><span class="mi">logout</span></div>
+                    <div class="route-line-copy"><small>11:00</small><b>체크아웃</b><p>10분 초과 시 10분당 10,000원의 비용이 발생할 수 있습니다.</p></div>
+                  </div>
+                </div>
+              </div>
             </div>
-            <p style="margin-top:14px">개인 키번호는 체크인 당일 12시쯤 호스트 메시지로 안내됩니다. 체크아웃 시간을 10분 초과하면 10분당 10,000원의 비용이 발생할 수 있습니다.</p>
           </article>
 
           <article class="checkin-card">
             <h3>현관 도어락 사용 방법</h3>
+            <div class="keypad-graphic" aria-label="도어락 입력 예시">
+              <div class="keypad-display"><small>Doorlock Formula</small><b>안내받은 개인 키번호 + *</b></div>
+              <div class="keypad-grid" aria-hidden="true">
+                <span>1</span><span>2</span><span>3</span>
+                <span>4</span><span>5</span><span>6</span>
+                <span>7</span><span>8</span><span>9</span>
+                <span>↺</span><span>0</span><span>*</span>
+              </div>
+            </div>
+            <div class="route-infographic compact" aria-label="현관 도어락 사용 순서">
+              <div class="route-infographic-head">
+                <small>Doorlock Steps</small>
+                <strong>터치 → 번호 입력 → * 버튼</strong>
+                <span>도어락 화면을 켠 뒤 호스트가 안내한 형식 그대로 입력합니다.</span>
+              </div>
+              <div class="route-line-map">
+                <div class="route-line-step" style="--line-color:#7b634f;--soft-color:#efe4d6">
+                  <div class="route-node"><span class="mi">touch_app</span></div>
+                  <div class="route-line-copy"><small>Step 1</small><b>키패드 살짝 터치</b><p>현관 도어락 화면을 가볍게 터치해 숫자 키패드를 켭니다.</p></div>
+                </div>
+                <div class="route-line-step" style="--line-color:#2b2118;--soft-color:#eee6dc">
+                  <div class="route-node"><span class="mi">pin</span></div>
+                  <div class="route-line-copy"><small>Step 2</small><b>개인 키번호 입력</b><p>예약자별로 안내받은 번호를 그대로 입력합니다.</p></div>
+                </div>
+                <div class="route-line-step" style="--line-color:#9b6a33;--soft-color:#f2e6d8">
+                  <div class="route-node"><span class="mi">asterisk</span></div>
+                  <div class="route-line-copy"><small>Step 3</small><b>* 버튼 누르기</b><p>마지막에 * 버튼을 누르면 잠금이 해제됩니다.</p></div>
+                </div>
+              </div>
+            </div>
             <ol class="door-steps">
               <li><div><strong>키패드를 살짝 터치</strong><span>현관 도어락 화면을 가볍게 터치해 숫자 키패드를 켜주세요.</span></div></li>
               <li><div><strong>개별 안내받은 번호 입력</strong><span>호스트 메시지에 안내된 형식대로 입력한 뒤 마지막에 <b>*</b> 버튼을 누릅니다.</span></div></li>
             </ol>
-            <div class="code-card"><small>입력 예시</small><b>게스트 이름 기준 휴대폰 뒷 4자리 + *</b></div>
-            <p style="margin-top:14px">예: 영희님으로 안내받았다면 메시지에 적힌 기준에 맞춰 입력합니다. 이 페이지에는 실제 예약자별 키번호를 저장하거나 노출하지 않습니다.</p>
+            <p style="margin-top:14px">이 페이지에는 실제 예약자별 키번호를 저장하거나 노출하지 않습니다.</p>
           </article>
 
           <article class="checkin-card">
             <h3>오시는 길</h3>
-            <ul class="check-list">
-              <li>세븐일레븐과 베제투스 레스토랑 사이 골목으로 들어오세요.</li>
-              <li>숙소는 베제투스 레스토랑 2층 단독 건물입니다.</li>
-              <li>녹사평역 2번 출구에서 해방촌 입구 방향으로 올라오면 도보 약 15분입니다.</li>
-              <li>마을버스를 이용하면 약 10분 정도 소요됩니다.</li>
-            </ul>
+            <div class="route-infographic compact" aria-label="녹사평역에서 숙소까지 오는 길">
+              <div class="route-infographic-head">
+                <small>Last Mile</small>
+                <strong>녹사평역 2번 출구 → EXTAY</strong>
+                <span>해방촌 입구 방향으로 올라와 세븐일레븐과 베제투스 레스토랑 사이 골목으로 들어오세요.</span>
+              </div>
+              <div class="route-line-map">
+                <div class="route-line-step" style="--line-color:#9b6a33;--soft-color:#f2e6d8">
+                  <div class="route-node"><span class="mi">subway</span></div>
+                  <div class="route-line-copy"><small>Station</small><b>녹사평역 2번 출구</b><p>출구에서 해방촌 입구 방향으로 올라옵니다.</p></div>
+                </div>
+                <div class="route-line-step" style="--line-color:#7b634f;--soft-color:#efe4d6">
+                  <div class="route-node"><span class="mi">storefront</span></div>
+                  <div class="route-line-copy"><small>Landmark</small><b>세븐일레븐 · 베제투스 사이 골목</b><p>두 매장 사이 골목으로 들어오면 됩니다.</p></div>
+                </div>
+                <div class="route-line-step" style="--line-color:#2b2118;--soft-color:#eee6dc">
+                  <div class="route-node"><span class="mi">stairs</span></div>
+                  <div class="route-line-copy"><small>Arrival</small><b>베제투스 레스토랑 2층</b><p>숙소는 2층 단독 건물입니다. 도보 약 15분, 마을버스 약 10분입니다.</p></div>
+                </div>
+              </div>
+            </div>
             <div class="contact-actions">
               <a class="hotel-btn primary" href="https://map.naver.com/p/search/%EC%84%9C%EC%9A%B8%EC%8B%9C%20%EC%9A%A9%EC%82%B0%EA%B5%AC%20%EC%8B%A0%ED%9D%A5%EB%A1%9C%2059%202%EC%B8%B5" target="_blank" rel="noopener"><span class="mi">location_on</span>네이버 지도</a>
               <a class="hotel-btn" href="https://www.google.com/maps/search/?api=1&query=%EC%84%9C%EC%9A%B8%EC%8B%9C%20%EC%9A%A9%EC%82%B0%EA%B5%AC%20%EC%8B%A0%ED%9D%A5%EB%A1%9C%2059%202%EC%B8%B5" target="_blank" rel="noopener"><span class="mi">map</span>구글 지도</a>
@@ -471,20 +621,37 @@ body:not(.is-home) main{padding-top:0}
 
           <article class="checkin-card notice-card">
             <h3>보안과 프라이버시</h3>
-            <ul class="check-list">
-              <li>안전과 보안을 위해 CCTV는 현관 입구에만 설치되어 있습니다.</li>
-              <li>객실 안에 머무는 중 모르는 사람이 벨을 누르면 응답하지 마세요.</li>
-              <li>숙소 오시는 길이나 체크인 중 문제가 생기면 바로 연락 주세요.</li>
-            </ul>
+            <div class="checkin-rule-grid">
+              <div class="checkin-rule"><span class="mi">videocam</span><div><b>CCTV 위치</b><span>안전과 보안을 위해 CCTV는 현관 입구에만 설치되어 있습니다.</span></div></div>
+              <div class="checkin-rule"><span class="mi">do_not_disturb_on</span><div><b>낯선 방문자</b><span>객실 안에 머무는 중 모르는 사람이 벨을 누르면 응답하지 마세요.</span></div></div>
+              <div class="checkin-rule"><span class="mi">support_agent</span><div><b>문제 발생 시</b><span>오시는 길이나 체크인 중 문제가 생기면 바로 연락 주세요.</span></div></div>
+              <div class="checkin-rule"><span class="mi">lock</span><div><b>키번호 보안</b><span>개인 키번호는 예약자에게만 안내되며 페이지에 저장하지 않습니다.</span></div></div>
+            </div>
           </article>
 
           <article class="checkin-card">
             <h3>입실 후 확인</h3>
-            <ul class="check-list">
-              <li>체크인 후 룸 상태를 확인하고 불편한 점은 바로 메시지로 알려주세요.</li>
-              <li>주변 맛집과 배달 정보는 전날 안내 링크에서 확인할 수 있습니다.</li>
-              <li>필요한 것이 있으면 언제든 메시지를 남겨주시고, 급한 경우 전화로 연락 주세요.</li>
-            </ul>
+            <div class="route-infographic compact" aria-label="입실 후 확인 순서">
+              <div class="route-infographic-head">
+                <small>After Arrival</small>
+                <strong>룸 확인 → 주변 정보 → 문의</strong>
+                <span>입실 후 바로 확인하면 숙박 중 필요한 안내를 빠르게 찾을 수 있습니다.</span>
+              </div>
+              <div class="route-line-map">
+                <div class="route-line-step" style="--line-color:#7b634f;--soft-color:#efe4d6">
+                  <div class="route-node"><span class="mi">fact_check</span></div>
+                  <div class="route-line-copy"><small>Room</small><b>룸 상태 확인</b><p>불편한 점이 있으면 바로 메시지로 알려주세요.</p></div>
+                </div>
+                <div class="route-line-step" style="--line-color:#9b6a33;--soft-color:#f2e6d8">
+                  <div class="route-node"><span class="mi">restaurant</span></div>
+                  <div class="route-line-copy"><small>Food</small><b>맛집과 배달 정보</b><p>주변 맛집과 배달 정보는 전날 안내 링크에서 확인할 수 있습니다.</p></div>
+                </div>
+                <div class="route-line-step" style="--line-color:#2b2118;--soft-color:#eee6dc">
+                  <div class="route-node"><span class="mi">call</span></div>
+                  <div class="route-line-copy"><small>Contact</small><b>필요 시 연락</b><p>필요한 것이 있으면 메시지를 남기고, 급한 경우 전화로 연락 주세요.</p></div>
+                </div>
+              </div>
+            </div>
             <div class="contact-actions single">
               <a class="hotel-btn primary" href="https://juas.notion.site/HBC-BLUES-stay-65690275250d4509ae3149965c0f5a48?pvs=4" target="_blank" rel="noopener"><span class="mi">menu_book</span>전날 안내 링크 보기</a>
             </div>
@@ -492,14 +659,14 @@ body:not(.is-home) main{padding-top:0}
 
           <article class="checkin-card">
             <h3>꼭 지켜주세요</h3>
-            <ul class="check-list">
-              <li>객실 내부, 베란다, 현관 입구, 계단은 모두 금연 구역입니다.</li>
-              <li>흡연은 1층 지정 장소에서만 가능하며 담배꽁초는 지정된 통에 버려주세요.</li>
-              <li>반려동물 동반과 기준 인원 외 방문자 입실은 불가합니다.</li>
-              <li>저녁 9시 이후에는 매너타임입니다. 늦은 시간에는 소리를 낮춰주세요.</li>
-              <li>실내에서는 간단한 취사만 가능하며 냄새가 강한 음식은 피해주세요.</li>
-              <li>인원수에 맞춰 일회용 칫솔과 수건이 제공됩니다.</li>
-            </ul>
+            <div class="checkin-rule-grid">
+              <div class="checkin-rule"><span class="mi">smoke_free</span><div><b>실내 금연</b><span>객실 내부, 베란다, 현관 입구, 계단은 모두 금연 구역입니다.</span></div></div>
+              <div class="checkin-rule"><span class="mi">outdoor_grill</span><div><b>흡연 장소</b><span>흡연은 1층 지정 장소에서만 가능하며 담배꽁초는 지정된 통에 버려주세요.</span></div></div>
+              <div class="checkin-rule"><span class="mi">pets</span><div><b>반려동물 불가</b><span>반려동물 동반과 기준 인원 외 방문자 입실은 불가합니다.</span></div></div>
+              <div class="checkin-rule"><span class="mi">volume_down</span><div><b>매너타임</b><span>저녁 9시 이후에는 늦은 시간 소리를 낮춰주세요.</span></div></div>
+              <div class="checkin-rule"><span class="mi">restaurant_menu</span><div><b>간단 취사</b><span>냄새가 강한 음식은 피하고 실내에서는 간단한 취사만 부탁드립니다.</span></div></div>
+              <div class="checkin-rule"><span class="mi">dry_cleaning</span><div><b>기본 비품</b><span>인원수에 맞춰 일회용 칫솔과 수건이 제공됩니다.</span></div></div>
+            </div>
           </article>
         </div>
       </section>
@@ -513,11 +680,17 @@ body:not(.is-home) main{padding-top:0}
         <div class="transport-stack">
           <article class="transport-card">
             <h3>목적지 정보</h3>
-            <div class="transport-facts">
-              <div class="transport-fact"><small>Address</small><b>서울시 용산구 신흥로 59, 2층</b></div>
-              <div class="transport-fact"><small>Landmark</small><b>세븐일레븐과 베제투스 레스토랑 사이 골목</b></div>
-              <div class="transport-fact"><small>Nearest Station</small><b>녹사평역 2번 출구</b></div>
-              <div class="transport-fact"><small>Last Mile</small><b>도보 약 15분<br>마을버스 약 10분</b></div>
+            <div class="destination-graphic">
+              <div class="destination-pin">
+                <span class="mi">location_on</span>
+                <div><small>Destination</small><b>EXTAY Mansion Haebangchon</b></div>
+              </div>
+              <div class="destination-grid">
+                <div class="destination-chip"><span class="mi">pin_drop</span><div><small>Address</small><b>서울시 용산구 신흥로 59, 2층</b></div></div>
+                <div class="destination-chip"><span class="mi">storefront</span><div><small>Landmark</small><b>세븐일레븐과 베제투스 레스토랑 사이 골목</b></div></div>
+                <div class="destination-chip"><span class="mi">subway</span><div><small>Nearest Station</small><b>녹사평역 2번 출구</b></div></div>
+                <div class="destination-chip"><span class="mi">directions_walk</span><div><small>Last Mile</small><b>도보 약 15분<br>마을버스 약 10분</b></div></div>
+              </div>
             </div>
             <div class="transport-actions">
               <a class="hotel-btn primary" href="https://map.naver.com/p/search/%EC%84%9C%EC%9A%B8%EC%8B%9C%20%EC%9A%A9%EC%82%B0%EA%B5%AC%20%EC%8B%A0%ED%9D%A5%EB%A1%9C%2059%202%EC%B8%B5" target="_blank" rel="noopener"><span class="mi">location_on</span>네이버 지도</a>
@@ -530,6 +703,51 @@ body:not(.is-home) main{padding-top:0}
             <div class="route-card">
               <div class="route-top"><h4>공항철도 + 지하철</h4><span class="route-badge">추천</span></div>
               <div class="route-meta"><span>가성비 좋음</span><span>환승 1회</span><span>약 80~95분</span></div>
+              <div class="route-infographic" aria-label="인천공항에서 EXTAY까지 공항철도와 6호선 경로">
+                <div class="route-infographic-head">
+                  <small>Recommended Route</small>
+                  <strong>ICN Airport → EXTAY</strong>
+                  <span>공항철도 일반열차로 공덕까지 이동한 뒤, 6호선으로 녹사평역까지 오는 경로입니다.</span>
+                </div>
+                <div class="route-line-map">
+                  <div class="route-line-step" style="--line-color:#1479b8;--soft-color:#e5f2f8">
+                    <div class="route-node"><span class="mi">flight_land</span></div>
+                    <div class="route-line-copy">
+                      <small>AREX</small>
+                      <b>인천공항 T1 / T2</b>
+                      <p>공항철도 일반열차 탑승. 서울역행 방향으로 이동합니다.</p>
+                    </div>
+                  </div>
+                  <div class="route-line-step" style="--line-color:#1479b8;--soft-color:#e5f2f8">
+                    <div class="route-node"><span class="mi">train</span></div>
+                    <div class="route-line-copy">
+                      <small>Transfer</small>
+                      <b>공덕역 하차 · 6호선 환승</b>
+                      <p>환승 표지판을 따라 6호선 플랫폼으로 이동합니다.</p>
+                    </div>
+                  </div>
+                  <div class="route-line-step" style="--line-color:#9b6a33;--soft-color:#f2e6d8">
+                    <div class="route-node"><span class="mi">subway</span></div>
+                    <div class="route-line-copy">
+                      <small>Line 6</small>
+                      <b>공덕 → 녹사평</b>
+                      <p>6호선 녹사평역에서 하차 후 2번 출구로 나옵니다.</p>
+                    </div>
+                  </div>
+                  <div class="route-line-step" style="--line-color:#7b634f;--soft-color:#efe4d6">
+                    <div class="route-node"><span class="mi">home_pin</span></div>
+                    <div class="route-line-copy">
+                      <small>Last Mile</small>
+                      <b>녹사평역 2번 출구 → EXTAY</b>
+                      <p>도보 약 15분. 캐리어가 크면 역 앞에서 택시 이용을 권장합니다.</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="route-quick-tip">
+                  <span class="mi">luggage</span>
+                  <div><b>짐이 많다면</b><p>공항철도와 6호선으로 녹사평까지 온 뒤, 마지막 언덕 구간만 택시를 타는 방식이 편합니다.</p></div>
+                </div>
+              </div>
               <ol class="route-steps">
                 <li><div><b>공항철도 탑승</b>인천공항 1터미널 또는 2터미널역에서 공항철도 일반열차를 탑니다.</div></li>
                 <li><div><b>공덕역 환승</b>공덕역에서 6호선으로 갈아타고 녹사평역 방향으로 이동합니다.</div></li>
@@ -540,6 +758,27 @@ body:not(.is-home) main{padding-top:0}
             <div class="route-card">
               <div class="route-top"><h4>공항 리무진 + 짧은 택시</h4><span class="route-badge">짐 많을 때</span></div>
               <div class="route-meta"><span>환승 부담 적음</span><span>도로 상황 영향</span><span>약 90~120분</span></div>
+              <div class="route-infographic compact" aria-label="인천공항에서 공항 리무진과 택시로 EXTAY까지 오는 경로">
+                <div class="route-infographic-head">
+                  <small>Luggage Friendly</small>
+                  <strong>ICN → Limousine → Taxi</strong>
+                  <span>큰 캐리어가 있거나 지하철 환승이 부담될 때 선택하기 좋은 경로입니다.</span>
+                </div>
+                <div class="route-line-map">
+                  <div class="route-line-step" style="--line-color:#6f5f50;--soft-color:#efe4d6">
+                    <div class="route-node"><span class="mi">flight_land</span></div>
+                    <div class="route-line-copy"><small>Airport</small><b>인천공항 리무진 승차장</b><p>남산·이태원 방면 리무진 노선을 확인합니다.</p></div>
+                  </div>
+                  <div class="route-line-step" style="--line-color:#6f5f50;--soft-color:#efe4d6">
+                    <div class="route-node"><span class="mi">airport_shuttle</span></div>
+                    <div class="route-line-copy"><small>Bus</small><b>남산 / 이태원 인근 하차</b><p>그랜드 하얏트 서울 또는 이태원 인근 정류장 하차 동선을 우선 확인하세요.</p></div>
+                  </div>
+                  <div class="route-line-step" style="--line-color:#2b2118;--soft-color:#eee6dc">
+                    <div class="route-node"><span class="mi">local_taxi</span></div>
+                    <div class="route-line-copy"><small>Taxi</small><b>하차 지점 → EXTAY</b><p>마지막 언덕 구간은 택시로 이동하면 짐이 있어도 편합니다.</p></div>
+                  </div>
+                </div>
+              </div>
               <ol class="route-steps">
                 <li><div><b>6702 노선 확인</b>K Airport Limousine 6702 노선의 남산·이태원 인근 정류장을 확인합니다.</div></li>
                 <li><div><b>남산/이태원 인근 하차</b>그랜드 하얏트 서울 또는 이태원 인근 정류장에서 내리는 동선을 우선 확인하세요.</div></li>
@@ -549,6 +788,27 @@ body:not(.is-home) main{padding-top:0}
             <div class="route-card">
               <div class="route-top"><h4>공항 택시</h4><span class="route-badge">가장 편함</span></div>
               <div class="route-meta"><span>직행</span><span>심야 가능</span><span>약 70~100분</span></div>
+              <div class="route-infographic compact" aria-label="인천공항에서 택시로 EXTAY까지 오는 경로">
+                <div class="route-infographic-head">
+                  <small>Direct Route</small>
+                  <strong>ICN Airport → EXTAY</strong>
+                  <span>심야 도착이거나 일행과 짐이 많을 때 가장 단순한 이동 방식입니다.</span>
+                </div>
+                <div class="route-line-map">
+                  <div class="route-line-step" style="--line-color:#2b2118;--soft-color:#eee6dc">
+                    <div class="route-node"><span class="mi">local_taxi</span></div>
+                    <div class="route-line-copy"><small>Taxi Stand</small><b>공항 택시 승차장</b><p>목적지는 “용산구 신흥로 59, 해방촌 베제투스 레스토랑 건물”로 전달합니다.</p></div>
+                  </div>
+                  <div class="route-line-step" style="--line-color:#7b634f;--soft-color:#efe4d6">
+                    <div class="route-node"><span class="mi">traffic</span></div>
+                    <div class="route-line-copy"><small>Traffic</small><b>도로 상황 확인</b><p>출퇴근 시간, 주말, 심야 할증에는 시간과 요금 변동이 큽니다.</p></div>
+                  </div>
+                  <div class="route-line-step" style="--line-color:#7b634f;--soft-color:#efe4d6">
+                    <div class="route-node"><span class="mi">home_pin</span></div>
+                    <div class="route-line-copy"><small>Drop-off</small><b>세븐일레븐 옆 골목</b><p>차량이 골목 앞에 정차하면 베제투스 레스토랑 2층으로 올라오세요.</p></div>
+                  </div>
+                </div>
+              </div>
               <ol class="route-steps">
                 <li><div><b>목적지 제시</b>기사님께 “용산구 신흥로 59, 2층, 해방촌 베제투스 레스토랑 건물”로 안내하세요.</div></li>
                 <li><div><b>교통상황 확인</b>출퇴근 시간과 심야 할증 시간에는 요금과 시간이 크게 달라질 수 있습니다.</div></li>
@@ -561,6 +821,31 @@ body:not(.is-home) main{padding-top:0}
             <div class="route-card">
               <div class="route-top"><h4>공항철도 + 6호선</h4><span class="route-badge">추천</span></div>
               <div class="route-meta"><span>빠른 편</span><span>환승 1회</span><span>약 45~60분</span></div>
+              <div class="route-infographic compact" aria-label="김포공항에서 EXTAY까지 공항철도와 6호선 경로">
+                <div class="route-infographic-head">
+                  <small>Fast Route</small>
+                  <strong>GMP Airport → EXTAY</strong>
+                  <span>김포공항에서는 공항철도로 공덕까지 이동한 뒤 6호선으로 한 번만 환승합니다.</span>
+                </div>
+                <div class="route-line-map">
+                  <div class="route-line-step" style="--line-color:#1479b8;--soft-color:#e5f2f8">
+                    <div class="route-node"><span class="mi">flight_land</span></div>
+                    <div class="route-line-copy"><small>AREX</small><b>김포공항역</b><p>공항철도를 타고 공덕역 방향으로 이동합니다.</p></div>
+                  </div>
+                  <div class="route-line-step" style="--line-color:#1479b8;--soft-color:#e5f2f8">
+                    <div class="route-node"><span class="mi">train</span></div>
+                    <div class="route-line-copy"><small>Transfer</small><b>공덕역 하차 · 6호선 환승</b><p>6호선 녹사평역 방향 플랫폼으로 갈아탑니다.</p></div>
+                  </div>
+                  <div class="route-line-step" style="--line-color:#9b6a33;--soft-color:#f2e6d8">
+                    <div class="route-node"><span class="mi">subway</span></div>
+                    <div class="route-line-copy"><small>Line 6</small><b>공덕 → 녹사평</b><p>녹사평역에서 2번 출구로 나옵니다.</p></div>
+                  </div>
+                  <div class="route-line-step" style="--line-color:#7b634f;--soft-color:#efe4d6">
+                    <div class="route-node"><span class="mi">directions_walk</span></div>
+                    <div class="route-line-copy"><small>Walk</small><b>녹사평역 → EXTAY</b><p>도보 약 15분 또는 마을버스·택시를 이용하세요.</p></div>
+                  </div>
+                </div>
+              </div>
               <ol class="route-steps">
                 <li><div><b>공항철도 탑승</b>김포공항역에서 공항철도를 타고 공덕역으로 이동합니다.</div></li>
                 <li><div><b>6호선 환승</b>공덕역에서 6호선 녹사평역 방향으로 갈아탑니다.</div></li>
@@ -571,6 +856,23 @@ body:not(.is-home) main{padding-top:0}
             <div class="route-card">
               <div class="route-top"><h4>택시</h4><span class="route-badge">간편</span></div>
               <div class="route-meta"><span>직행</span><span>짐 많을 때</span><span>약 35~60분</span></div>
+              <div class="route-infographic compact" aria-label="김포공항에서 택시로 EXTAY까지 오는 경로">
+                <div class="route-infographic-head">
+                  <small>Simple Route</small>
+                  <strong>GMP Airport → EXTAY</strong>
+                  <span>도심 교통이 막히지 않는 시간대라면 가장 편하게 도착할 수 있습니다.</span>
+                </div>
+                <div class="route-line-map">
+                  <div class="route-line-step" style="--line-color:#2b2118;--soft-color:#eee6dc">
+                    <div class="route-node"><span class="mi">local_taxi</span></div>
+                    <div class="route-line-copy"><small>Taxi Stand</small><b>김포공항 택시 승차장</b><p>지도 앱 또는 기사님께 용산구 신흥로 59를 목적지로 전달합니다.</p></div>
+                  </div>
+                  <div class="route-line-step" style="--line-color:#7b634f;--soft-color:#efe4d6">
+                    <div class="route-node"><span class="mi">storefront</span></div>
+                    <div class="route-line-copy"><small>Landmark</small><b>세븐일레븐 · 베제투스 사이 골목</b><p>골목 입구에서 내려 베제투스 레스토랑 2층 건물로 올라오면 됩니다.</p></div>
+                  </div>
+                </div>
+              </div>
               <ol class="route-steps">
                 <li><div><b>택시 승차장 이동</b>공항 택시 승차장에서 용산구 신흥로 59를 목적지로 설정합니다.</div></li>
                 <li><div><b>골목 진입 안내</b>세븐일레븐과 베제투스 레스토랑 사이 골목, 베제투스 레스토랑 2층 건물이라고 설명하면 쉽습니다.</div></li>
@@ -788,23 +1090,51 @@ body:not(.is-home) main{padding-top:0}
         <div class="wifi-stack">
           <article class="wifi-card">
             <h3>네트워크 정보</h3>
-            <div class="wifi-credentials">
-              <div class="wifi-credential">
-                <div><small>ID</small><b>U+Net46F0_5G</b></div>
+            <div class="wifi-network-graphic" aria-label="와이파이 네트워크 정보">
+              <div class="wifi-network-card">
+                <span class="mi">router</span>
+                <div><span>Network ID</span><strong>U+Net46F0_5G</strong></div>
                 <button class="mini-btn" data-copy="U+Net46F0_5G">복사</button>
               </div>
-              <div class="wifi-credential">
-                <div><small>Password</small><b>8H3#22E97B</b></div>
+              <div class="wifi-network-card featured">
+                <span class="mi">vpn_key</span>
+                <div><span>Password</span><strong>8H3#22E97B</strong></div>
                 <button class="mini-btn" data-copy="8H3#22E97B">복사</button>
               </div>
-              <div class="wifi-credential wide">
-                <div><small>연결 안내</small><b>연결이 안 되면 Wi-Fi를 껐다 켠 뒤 다시 선택해 주세요.</b></div>
+              <div class="wifi-visual-grid">
+                <div class="wifi-visual-card"><span class="mi">signal_wifi_4_bar</span><div><strong>5G 네트워크 선택</strong><span>숙소 내부에서는 5G 네트워크를 우선 선택해 주세요.</span></div></div>
+                <div class="wifi-visual-card"><span class="mi">password</span><div><strong>문자 그대로 입력</strong><span>대소문자, 숫자, 특수문자 #까지 그대로 입력합니다.</span></div></div>
               </div>
             </div>
           </article>
 
           <article class="wifi-card">
             <h3>연결 순서</h3>
+            <div class="route-infographic compact" aria-label="와이파이 연결 순서">
+              <div class="route-infographic-head">
+                <small>Connection Flow</small>
+                <strong>설정 열기 → 네트워크 선택 → 비밀번호 입력</strong>
+                <span>복사 버튼을 사용하면 오타를 줄일 수 있습니다. 붙여넣은 뒤 앞뒤 공백이 없는지만 확인해 주세요.</span>
+              </div>
+              <div class="route-line-map">
+                <div class="route-line-step" style="--line-color:#1479b8;--soft-color:#e5f2f8">
+                  <div class="route-node"><span class="mi">settings</span></div>
+                  <div class="route-line-copy"><small>Step 1</small><b>Wi-Fi 설정 열기</b><p>휴대폰 또는 노트북의 Wi-Fi 설정 화면을 엽니다.</p></div>
+                </div>
+                <div class="route-line-step" style="--line-color:#1479b8;--soft-color:#e5f2f8">
+                  <div class="route-node"><span class="mi">wifi</span></div>
+                  <div class="route-line-copy"><small>Step 2</small><b>U+Net46F0_5G 선택</b><p>네트워크 목록에서 숙소 Wi-Fi ID를 선택합니다.</p></div>
+                </div>
+                <div class="route-line-step" style="--line-color:#2b2118;--soft-color:#eee6dc">
+                  <div class="route-node"><span class="mi">key</span></div>
+                  <div class="route-line-copy"><small>Step 3</small><b>비밀번호 입력</b><p>8H3#22E97B를 입력하고 연결을 누릅니다.</p></div>
+                </div>
+                <div class="route-line-step" style="--line-color:#7b634f;--soft-color:#efe4d6">
+                  <div class="route-node"><span class="mi">check_circle</span></div>
+                  <div class="route-line-copy"><small>Done</small><b>연결 상태 확인</b><p>인터넷 연결이 확인되면 바로 이용할 수 있습니다.</p></div>
+                </div>
+              </div>
+            </div>
             <ol class="wifi-steps">
               <li><div><strong>Wi-Fi 설정 열기</strong><span>휴대폰 또는 노트북의 Wi-Fi 설정 화면을 열어주세요.</span></div></li>
               <li><div><strong>네트워크 선택</strong><span><em>U+Net46F0_5G</em>를 선택한 뒤 비밀번호를 입력합니다.</span></div></li>
@@ -814,6 +1144,12 @@ body:not(.is-home) main{padding-top:0}
 
           <article class="wifi-card wifi-soft-card">
             <h3>연결이 불안정할 때</h3>
+            <div class="wifi-visual-grid">
+              <div class="wifi-visual-card"><span class="mi">wifi_off</span><div><strong>Wi-Fi 다시 켜기</strong><span>기기 Wi-Fi를 껐다가 다시 켠 뒤 네트워크를 재선택합니다.</span></div></div>
+              <div class="wifi-visual-card"><span class="mi">content_paste_search</span><div><strong>공백 확인</strong><span>비밀번호를 복사했다면 앞뒤 공백이 함께 들어가지 않았는지 확인합니다.</span></div></div>
+              <div class="wifi-visual-card"><span class="mi">restart_alt</span><div><strong>기기 재시도</strong><span>다른 기기에서도 같은 문제가 있는지 확인하면 원인 파악이 쉽습니다.</span></div></div>
+              <div class="wifi-visual-card"><span class="mi">support_agent</span><div><strong>호스트 문의</strong><span>계속 연결되지 않으면 아래 버튼으로 바로 알려주세요.</span></div></div>
+            </div>
             <ul class="wifi-list">
               <li>기기 Wi-Fi를 껐다가 다시 켠 뒤 네트워크를 다시 선택해 주세요.</li>
               <li>비밀번호를 복사한 경우 앞뒤 공백이 함께 들어가지 않았는지 확인해 주세요.</li>
@@ -948,7 +1284,7 @@ body:not(.is-home) main{padding-top:0}
       const homeInfo=q('.home-info-card'); if(homeInfo){text(homeInfo.querySelector('.section-title'),tr.home.infoTitle); eachText(qa('.home-info-card small'),tr.home.labels); eachText(qa('.home-info-card b'),tr.home.values); eachText(qa('.home-info-card .mini-btn'),[tr.home.view]);}
       const homeGuide=q('.home-guide-card'); if(homeGuide&&tr.homeGuide){text(homeGuide.querySelector('h3'),tr.homeGuide.title); eachText([...homeGuide.querySelectorAll('.guide-item span')],tr.homeGuide.items);}
       const homeRules=q('.home-rules-card'); if(homeRules&&tr.rules){text(homeRules.querySelector('h3'),tr.rules.title); eachText([...homeRules.querySelectorAll('.guide-item span')],tr.rules.items);}
-      const wifiScreen=q('[data-screen="wifi"]'); if(wifiScreen){text(wifiScreen.querySelector('.page-title'),tr.wifi.title); text(wifiScreen.querySelector('.page-sub'),tr.wifi.sub); eachText([...wifiScreen.querySelectorAll('small')],tr.wifi.labels); eachText([...wifiScreen.querySelectorAll('b')],tr.wifi.values); eachText([...wifiScreen.querySelectorAll('.mini-btn')],[tr.wifi.copy,tr.wifi.copy]);}
+      const wifiScreen=q('[data-screen="wifi"]'); if(wifiScreen){text(wifiScreen.querySelector('.page-title'),tr.wifi.title); text(wifiScreen.querySelector('.page-sub'),tr.wifi.sub); eachText([...wifiScreen.querySelectorAll('.wifi-credential small')],tr.wifi.labels); eachText([...wifiScreen.querySelectorAll('.wifi-credential b')],tr.wifi.values); eachText([...wifiScreen.querySelectorAll('.mini-btn')],[tr.wifi.copy,tr.wifi.copy]);}
       text(q('[data-screen="appliances"] .page-title'),tr.appliances.title); text(q('[data-screen="appliances"] .page-sub'),tr.appliances.sub);
       const devices=qa('[data-screen="appliances"] details.device');
       if(devices[0]){html(devices[0].querySelector('h3'),`${tr.appliances.tv.title} <span class="badge">${tr.appliances.frequent}</span>`);text(devices[0].querySelector('small'),tr.appliances.tv.small);eachText([...devices[0].querySelectorAll('.steps li')],tr.appliances.tv.steps)}
