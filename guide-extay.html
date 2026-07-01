@@ -26,6 +26,7 @@
 body{background:var(--bg);color:var(--ink)}
 .top{display:grid;grid-template-columns:36px minmax(0,1fr) auto;align-items:center;gap:6px}
 .top h1{text-align:center;white-space:nowrap;font-size:clamp(18px,5.2vw,24px);line-height:1.1}
+.brand-home{border:0;background:transparent;color:inherit;font:inherit;line-height:1;padding:8px 10px;border-radius:999px;cursor:pointer}
 .top-actions{display:flex;justify-content:flex-end;gap:0}.top .icon-btn{width:36px;height:40px}.lang-toggle{position:relative;font-size:11px;font-weight:900;letter-spacing:0}.lang-toggle .mi{font-size:23px}.lang-toggle span:last-child{position:absolute;right:0;bottom:2px;background:var(--ink);color:#fff;border-radius:999px;min-width:20px;height:15px;display:grid;place-items:center;font-size:9px;line-height:1}
 .top{background:rgba(248,243,235,.94);border-bottom-color:rgba(216,198,180,.7)}
 .card,.device,.contact-card{background:var(--card);border-color:rgba(216,198,180,.78);border-radius:22px;box-shadow:var(--shadow)}
@@ -70,14 +71,14 @@ body *{letter-spacing:0}
 [data-screen="home"].screen{padding:0;background:#f7f2ec}
 .bottom{display:none}
 .top{width:min(480px,100%);height:72px;left:50%;transform:translateX(-50%);padding:0 28px;z-index:60;border:0;box-shadow:none}
-.top h1{font-family:'Playfair Display',Georgia,serif;font-size:22px;font-weight:700;text-align:left;line-height:1;color:inherit}
+.top h1{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);z-index:1;margin:0;font-family:'Playfair Display',Georgia,serif;font-size:22px;font-weight:700;text-align:center;line-height:1;color:inherit}
 .top .icon-btn{width:38px;height:38px;border-radius:999px}
 body.is-home .top{position:fixed;top:0;background:transparent;color:#fff;grid-template-columns:1fr auto}
 body.is-home .top h1{order:1;text-shadow:0 2px 18px rgba(0,0,0,.34)}
 body.is-home .top #menuTop{order:2;background:rgba(0,0,0,.08);color:#fff}
 body.is-home .top .top-actions{display:none}
 body.is-gallery .top,body.is-checkin .top,body.is-wifi .top,body.is-transport .top,body.is-guidebook .top,body.is-restaurants .top,body.is-faq .top,body.is-appliances .top,body.is-laundry .top,body.is-trash .top{position:sticky;top:0;left:auto;transform:none;width:100%;background:rgba(247,242,236,.94);color:#221b15;grid-template-columns:1fr auto;border-bottom:1px solid rgba(216,198,180,.72);backdrop-filter:blur(18px)}
-body.is-gallery .top h1,body.is-checkin .top h1,body.is-wifi .top h1,body.is-transport .top h1,body.is-guidebook .top h1,body.is-restaurants .top h1,body.is-faq .top h1,body.is-appliances .top h1,body.is-laundry .top h1,body.is-trash .top h1{order:1;text-align:left;text-shadow:none}
+body.is-gallery .top h1,body.is-checkin .top h1,body.is-wifi .top h1,body.is-transport .top h1,body.is-guidebook .top h1,body.is-restaurants .top h1,body.is-faq .top h1,body.is-appliances .top h1,body.is-laundry .top h1,body.is-trash .top h1{order:1;text-align:center;text-shadow:none}
 body.is-gallery .top #menuTop,body.is-checkin .top #menuTop,body.is-wifi .top #menuTop,body.is-transport .top #menuTop,body.is-guidebook .top #menuTop,body.is-restaurants .top #menuTop,body.is-faq .top #menuTop,body.is-appliances .top #menuTop,body.is-laundry .top #menuTop,body.is-trash .top #menuTop{order:2;background:rgba(123,99,79,.1);color:#221b15}
 body.is-gallery .top .top-actions,body.is-checkin .top .top-actions,body.is-wifi .top .top-actions,body.is-transport .top .top-actions,body.is-guidebook .top .top-actions,body.is-restaurants .top .top-actions,body.is-faq .top .top-actions,body.is-appliances .top .top-actions,body.is-laundry .top .top-actions,body.is-trash .top .top-actions{display:none}
 body:not(.is-home):not(.is-gallery):not(.is-checkin):not(.is-wifi):not(.is-transport):not(.is-guidebook):not(.is-restaurants):not(.is-faq):not(.is-appliances):not(.is-laundry):not(.is-trash) .top{position:sticky;top:0;left:auto;transform:none;width:100%;background:rgba(247,242,236,.94);color:#221b15;border-bottom:1px solid rgba(216,198,180,.72);backdrop-filter:blur(18px)}
@@ -509,7 +510,7 @@ body:not(.is-home) main{padding-top:0}
 </head>
 <body class="is-home">
   <div class="app">
-    <header class="top"><button class="icon-btn" aria-label="메뉴" id="menuTop"><span class="mi">menu</span></button><h1>익스테이</h1><div class="top-actions"><a class="icon-btn" href="assets/guidebook/Extay_Mansion_Haebangchon_Guide_KO_no_NotebookLM.pdf" target="_blank" rel="noopener" aria-label="가이드북 열기" id="openGuidebookTop"><span class="mi">menu_book</span></a><button class="icon-btn lang-toggle" aria-label="Switch to English" id="langToggle" type="button"><span class="mi">translate</span><span id="langToggleText">EN</span></button><button class="icon-btn" aria-label="안내 도우미" id="openChatTop"><span class="mi">smart_toy</span></button></div></header>
+    <header class="top"><button class="icon-btn" aria-label="메뉴" id="menuTop"><span class="mi">menu</span></button><h1><button class="brand-home" id="brandHome" type="button" data-go="home" aria-label="홈으로 이동">EXTAY</button></h1><div class="top-actions"><a class="icon-btn" href="assets/guidebook/Extay_Mansion_Haebangchon_Guide_KO_no_NotebookLM.pdf" target="_blank" rel="noopener" aria-label="가이드북 열기" id="openGuidebookTop"><span class="mi">menu_book</span></a><button class="icon-btn lang-toggle" aria-label="Switch to English" id="langToggle" type="button"><span class="mi">translate</span><span id="langToggleText">EN</span></button><button class="icon-btn" aria-label="안내 도우미" id="openChatTop"><span class="mi">smart_toy</span></button></div></header>
 
     <main>
       <section class="screen active" data-screen="home">
@@ -1343,7 +1344,7 @@ body:not(.is-home) main{padding-top:0}
       document.documentElement.lang=currentLang;
       document.title=tr.docTitle;
       const meta=q('meta[name="description"]'); if(meta)meta.setAttribute('content',tr.docDesc);
-      text(q('.top h1'),tr.headerTitle); text(q('.hero .label'),tr.heroSub); text(q('#langToggleText'),tr.langButton);
+      text(q('#brandHome'),tr.headerTitle); q('#brandHome')?.setAttribute('aria-label',currentLang==='en'?'Go home':'홈으로 이동'); text(q('.hero .label'),tr.heroSub); text(q('#langToggleText'),tr.langButton);
       const menu=q('#menuTop'), guide=q('#openGuidebookTop'), chatTop=q('#openChatTop'), chatFab=q('#openChatFab'), close=q('#closeChat'), langBtn=q('#langToggle');
       if(menu)menu.setAttribute('aria-label',tr.menuAria); if(guide){guide.setAttribute('aria-label',tr.guideAria);guide.href=GUIDEBOOK_PDFS[currentLang==='en'?'en':'ko']} if(chatTop)chatTop.setAttribute('aria-label',tr.chatAria); if(chatFab)chatFab.setAttribute('aria-label',tr.chatFabAria); if(close)close.setAttribute('aria-label',tr.chat.close); if(langBtn)langBtn.setAttribute('aria-label',tr.langAria);
       eachText(qa('.bottom .tab span:not(.mi)'),tr.bottom);
