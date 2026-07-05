@@ -95,10 +95,10 @@ const LOCAL_ANSWERS = [
   },
   {
     keys: ['trash', 'garbage', 'recycling', 'food waste', '쓰레기', '재활용', '음식물', 'ゴミ', 'ごみ', 'リサイクル', '垃圾', '回收', '廚餘', '厨余'],
-    ko: '음식물 쓰레기는 부엌 싱크대 위 음식물 통에, 재활용은 베란다 재활용 통에, 일반 쓰레기는 식탁 아래 또는 베란다 쓰레기통에 종량제 봉투로 버려 주세요. 장기 숙박 중 음식물 냄새가 나면 1층 입구 주황색 통을 이용해 주세요.',
-    en: 'Put food waste in the bin above the kitchen sink, recycling in the balcony recycling bin, and general trash in the standard trash bag under the dining table or on the balcony. For longer stays, use the orange bin near the 1st-floor entrance if food waste starts to smell.',
-    ja: '食品ゴミはキッチンシンク上の食品ゴミ箱へ、リサイクルはバルコニーのリサイクル箱へ、一般ゴミはダイニングテーブル下またはバルコニーのゴミ箱で指定袋を使用してください。長期滞在で食品ゴミの臭いが気になる場合は1階入口のオレンジ色の箱をご利用ください。',
-    zh: '厨余垃圾请放入厨房水槽上方的厨余桶；可回收物放入阳台回收桶；一般垃圾请使用标准垃圾袋，放在餐桌下或阳台垃圾桶。长住时如厨余有异味，请使用 1 楼入口附近的橙色桶。'
+    ko: '음식물 쓰레기는 부엌 싱크대 위 음식물 쓰레기통에 버려 주세요. 일반 쓰레기 및 재활용은 모두 베란다에 비치된 쓰레기통에 넣어주세요. 장기 숙박 중 음식물 냄새가 나면 1층 입구 주황색 통을 이용해 주세요.',
+    en: 'Put food waste in the food-waste bin above the kitchen sink. Put both general trash and recycling into the trash bins placed on the balcony. For longer stays, use the orange bin near the 1st-floor entrance if food waste starts to smell.',
+    ja: '食品ゴミはキッチンシンク上の食品ゴミ箱に入れてください。一般ゴミとリサイクル品はどちらもバルコニーに置かれたゴミ箱に入れてください。長期滞在で食品ゴミの臭いが気になる場合は、1階入口のオレンジ色の箱をご利用ください。',
+    zh: '厨余垃圾请放入厨房水槽上方的厨余桶。一般垃圾和可回收物都请放入阳台上的垃圾桶。长住时如厨余有异味，请使用 1 楼入口附近的橙色桶。'
   }
 ];
 
