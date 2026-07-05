@@ -112,10 +112,16 @@ body:not(.is-home):not(.is-gallery):not(.is-checkin):not(.is-wifi):not(.is-trans
 .image-card span,.image-card small{position:relative;z-index:1}
 .image-card span{font-size:17px;font-weight:800;line-height:1.25}
 .image-card small{margin-top:7px;font-size:12px;line-height:1.38;color:rgba(255,255,255,.9)}
-.concierge-banner{position:relative;overflow:hidden;border-radius:16px;min-height:174px;padding:28px 28px 26px;color:#fff;background:linear-gradient(90deg,rgba(70,54,41,.82),rgba(70,54,41,.46)),url('assets/extay/smart-card/stay-day.png') center/cover no-repeat;box-shadow:0 16px 38px rgba(58,43,30,.13)}
-.concierge-banner .section-kicker{color:rgba(255,255,255,.82)}
-.concierge-banner h2{margin:0 0 8px;font-size:22px;line-height:1.25;color:#fff}
-.concierge-banner p{margin:0 0 18px;font-size:13px;line-height:1.5;color:rgba(255,255,255,.88)}
+#aiConcierge{padding:0}
+body.is-home #aiConcierge{position:absolute;top:84px;right:24px;z-index:15;width:112px}
+.concierge-banner{position:relative;width:112px;aspect-ratio:1;border:1px solid rgba(255,255,255,.34);border-radius:22px;overflow:hidden;padding:13px;color:#fff;background:linear-gradient(145deg,rgba(43,33,24,.3),rgba(123,99,79,.18));box-shadow:0 16px 34px rgba(28,22,17,.16);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);display:flex;flex-direction:column;align-items:flex-start;justify-content:space-between;text-align:left;cursor:pointer}
+.concierge-banner:before{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(255,255,255,.2),rgba(255,255,255,.05));pointer-events:none}
+.concierge-banner>*{position:relative;z-index:1}
+.concierge-banner .section-kicker{margin:0;color:rgba(255,255,255,.8);font-size:8px;line-height:1.1}
+.concierge-icon{width:34px;height:34px;border-radius:50%;background:rgba(255,255,255,.22);display:grid;place-items:center;color:#fff}
+.concierge-icon.mi{font-size:20px}
+.concierge-title{display:block;color:#fff;font-size:15px;font-weight:800;line-height:1.12}
+.concierge-sub{display:block;margin-top:3px;color:rgba(255,255,255,.78);font-size:10px;font-weight:700;line-height:1.2}
 .contact-heading{display:flex;align-items:center;gap:10px}
 .contact-heading .section-kicker{margin:0}
 .contact-mini-actions{display:flex;align-items:center;gap:6px}
@@ -577,12 +583,11 @@ body *:not(.mi){font-family:var(--font-main)!important;letter-spacing:0!importan
         </section>
 
         <section class="hotel-section" id="aiConcierge" aria-labelledby="aiTitle">
-          <article class="concierge-banner">
-            <p class="section-kicker">AI CONCIERGE</p>
-            <h2 id="aiTitle">궁금한 내용을 바로 물어보세요</h2>
-            <p>AI가 24시간 친절하게 답변해드려요.</p>
-            <button class="hotel-btn primary compact" type="button" id="openChatCard"><span class="mi">smart_toy</span>AI 챗봇 상담하기</button>
-          </article>
+          <button class="concierge-banner" type="button" id="openChatCard" aria-label="AI Concierge 열기">
+            <span class="section-kicker">AI CONCIERGE</span>
+            <span class="concierge-icon mi" aria-hidden="true">smart_toy</span>
+            <span><span class="concierge-title" id="aiTitle">AI 챗봇</span><span class="concierge-sub">바로 문의</span></span>
+          </button>
         </section>
 
         <section class="hotel-section location-section" id="locationContact" aria-label="Contact">
