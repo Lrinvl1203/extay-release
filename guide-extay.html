@@ -114,14 +114,13 @@ body:not(.is-home):not(.is-gallery):not(.is-checkin):not(.is-wifi):not(.is-trans
 .image-card small{margin-top:7px;font-size:12px;line-height:1.38;color:rgba(255,255,255,.9)}
 #aiConcierge{padding:0}
 body.is-home #aiConcierge{position:absolute;top:84px;right:24px;z-index:15;width:112px}
-.concierge-banner{position:relative;width:112px;aspect-ratio:1;border:1px solid rgba(255,255,255,.34);border-radius:22px;overflow:hidden;padding:13px;color:#fff;background:linear-gradient(145deg,rgba(43,33,24,.3),rgba(123,99,79,.18));box-shadow:0 16px 34px rgba(28,22,17,.16);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);display:flex;flex-direction:column;align-items:flex-start;justify-content:space-between;text-align:left;cursor:pointer}
-.concierge-banner:before{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(255,255,255,.2),rgba(255,255,255,.05));pointer-events:none}
+.concierge-banner{position:relative;width:112px;aspect-ratio:1;border:0;border-radius:22px;overflow:hidden;padding:12px;color:#fff;background:linear-gradient(145deg,rgba(43,33,24,.14),rgba(255,255,255,.07));box-shadow:0 16px 34px rgba(28,22,17,.12);backdrop-filter:blur(8px) saturate(130%);-webkit-backdrop-filter:blur(8px) saturate(130%);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:5px;cursor:pointer}
+.concierge-banner:before{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(255,255,255,.1),rgba(255,255,255,.02));pointer-events:none}
 .concierge-banner>*{position:relative;z-index:1}
-.concierge-banner .section-kicker{margin:0;color:rgba(255,255,255,.8);font-size:8px;line-height:1.1}
-.concierge-icon{width:34px;height:34px;border-radius:50%;background:rgba(255,255,255,.22);display:grid;place-items:center;color:#fff}
-.concierge-icon.mi{font-size:20px}
-.concierge-title{display:block;color:#fff;font-size:15px;font-weight:800;line-height:1.12}
-.concierge-sub{display:block;margin-top:3px;color:rgba(255,255,255,.78);font-size:10px;font-weight:700;line-height:1.2}
+.concierge-icon{width:auto;height:auto;border-radius:0;background:transparent;display:block;color:#fff;text-shadow:0 8px 24px rgba(0,0,0,.18)}
+.concierge-icon.mi{font-size:60px;line-height:.9}
+.concierge-title{display:block;color:#fff;font-size:14px;font-weight:800;line-height:1.12;text-shadow:0 2px 14px rgba(0,0,0,.22)}
+.concierge-sub{display:block;margin-top:2px;color:rgba(255,255,255,.82);font-size:10px;font-weight:700;line-height:1.2;text-shadow:0 2px 12px rgba(0,0,0,.2)}
 .contact-heading{display:flex;align-items:center;gap:10px}
 .contact-heading .section-kicker{margin:0}
 .contact-mini-actions{display:flex;align-items:center;gap:6px}
@@ -584,7 +583,6 @@ body *:not(.mi){font-family:var(--font-main)!important;letter-spacing:0!importan
 
         <section class="hotel-section" id="aiConcierge" aria-labelledby="aiTitle">
           <button class="concierge-banner" type="button" id="openChatCard" aria-label="AI Concierge 열기">
-            <span class="section-kicker">AI CONCIERGE</span>
             <span class="concierge-icon mi" aria-hidden="true">smart_toy</span>
             <span><span class="concierge-title" id="aiTitle">AI 챗봇</span><span class="concierge-sub">바로 문의</span></span>
           </button>
