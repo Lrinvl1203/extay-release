@@ -586,7 +586,7 @@ body *:not(.mi){font-family:var(--font-main)!important;letter-spacing:0!importan
           <p class="section-kicker">QUICK ACCESS</p>
           <h2 class="hotel-heading" id="quickTitle">빠르게 찾는 정보</h2>
           <div class="quick-access-grid">
-            <button class="quick-tile" type="button" data-go="checkin"><span class="mi">calendar_month</span><b>체크인 안내</b><small>입실 방법 확인</small></button>
+            <button class="quick-tile" type="button" data-go="checkin"><span class="mi">calendar_month</span><b>체크인/아웃 안내</b><small>입실·퇴실 방법 확인</small></button>
             <button class="quick-tile" type="button" data-go="wifi"><span class="mi">wifi</span><b>와이파이</b><small>네트워크 정보</small></button>
             <button class="quick-tile" type="button" data-go="transport"><span class="mi">directions_car</span><b>교통 안내</b><small>공항·지하철·버스</small></button>
           </div>
@@ -624,9 +624,9 @@ body *:not(.mi){font-family:var(--font-main)!important;letter-spacing:0!importan
 
       <section class="screen" data-screen="checkin">
         <article class="checkin-hero">
-          <p class="section-kicker">SELF CHECK-IN</p>
-          <h2>Check-in Guide</h2>
-          <p>입실 전 꼭 필요한 도어락, 위치, 보안, 숙소 규칙만 정리했습니다.</p>
+          <p class="section-kicker">SELF CHECK-IN / OUT</p>
+          <h2>Check in/out Guide</h2>
+          <p>입실과 퇴실, 도어락, 보안, 숙소 규칙, 짐보관 안내를 정리했습니다.</p>
         </article>
         <div class="checkin-stack">
           <article class="checkin-card">
@@ -709,35 +709,6 @@ body *:not(.mi){font-family:var(--font-main)!important;letter-spacing:0!importan
             <p style="margin-top:14px">이 페이지에는 실제 예약자별 키번호를 저장하거나 노출하지 않습니다.</p>
           </article>
 
-          <article class="checkin-card">
-            <h3>오시는 길</h3>
-            <div class="route-infographic compact" aria-label="녹사평역에서 숙소까지 오는 길">
-              <div class="route-infographic-head">
-                <small>Last Mile</small>
-                <strong>녹사평역 2번 출구 → EXTAY</strong>
-                <span>해방촌 입구 방향으로 올라와 세븐일레븐과 베제투스 레스토랑 사이 골목으로 들어오세요.</span>
-              </div>
-              <div class="route-line-map">
-                <div class="route-line-step" style="--line-color:#9b6a33;--soft-color:#f2e6d8">
-                  <div class="route-node"><span class="mi">subway</span></div>
-                  <div class="route-line-copy"><small>Station</small><b>녹사평역 2번 출구</b><p>출구에서 해방촌 입구 방향으로 올라옵니다.</p></div>
-                </div>
-                <div class="route-line-step" style="--line-color:#7b634f;--soft-color:#efe4d6">
-                  <div class="route-node"><span class="mi">storefront</span></div>
-                  <div class="route-line-copy"><small>Landmark</small><b>세븐일레븐 · 베제투스 사이 골목</b><p>두 매장 사이 골목으로 들어오면 됩니다.</p></div>
-                </div>
-                <div class="route-line-step" style="--line-color:#2b2118;--soft-color:#eee6dc">
-                  <div class="route-node"><span class="mi">stairs</span></div>
-                  <div class="route-line-copy"><small>Arrival</small><b>베제투스 레스토랑 2층</b><p>숙소는 2층 단독 건물입니다. 도보 약 15분, 마을버스 약 10분입니다.</p></div>
-                </div>
-              </div>
-            </div>
-            <div class="contact-actions">
-              <a class="hotel-btn primary" href="https://map.naver.com/p/search/%EC%84%9C%EC%9A%B8%EC%8B%9C%20%EC%9A%A9%EC%82%B0%EA%B5%AC%20%EC%8B%A0%ED%9D%A5%EB%A1%9C%2059%202%EC%B8%B5" target="_blank" rel="noopener"><span class="mi">location_on</span>네이버 지도</a>
-              <a class="hotel-btn" href="https://www.google.com/maps/search/?api=1&query=%EC%84%9C%EC%9A%B8%EC%8B%9C%20%EC%9A%A9%EC%82%B0%EA%B5%AC%20%EC%8B%A0%ED%9D%A5%EB%A1%9C%2059%202%EC%B8%B5" target="_blank" rel="noopener"><span class="mi">map</span>구글 지도</a>
-            </div>
-          </article>
-
           <article class="checkin-card notice-card">
             <h3>보안과 프라이버시</h3>
             <div class="checkin-rule-grid">
@@ -787,6 +758,40 @@ body *:not(.mi){font-family:var(--font-main)!important;letter-spacing:0!importan
               <div class="checkin-rule"><span class="mi">dry_cleaning</span><div><b>기본 비품</b><span>인원수에 맞춰 일회용 칫솔과 수건이 제공됩니다.</span></div></div>
             </div>
           </article>
+
+          <article class="checkin-card">
+            <h3>녹사평역 코인락커 안내</h3>
+            <div class="route-infographic compact" aria-label="녹사평역 물품보관함 이용 안내">
+              <div class="route-infographic-head">
+                <small>Luggage Storage</small>
+                <strong>녹사평역 B1층 엘리베이터(E/V) 주변</strong>
+                <span>체크인 전 도착했거나 체크아웃 후 짐을 잠시 맡겨야 할 때 이용하기 좋습니다.</span>
+              </div>
+              <div class="route-line-map">
+                <div class="route-line-step" style="--line-color:#9b6a33;--soft-color:#f2e6d8">
+                  <div class="route-node"><span class="mi">subway</span></div>
+                  <div class="route-line-copy"><small>Location</small><b>녹사평역 B1층 엘리베이터(E/V) 주변</b><p>공개 위치 정보 기준으로 편의점 7-ELEVEN 주변에 물품보관함이 있습니다.</p></div>
+                </div>
+                <div class="route-line-step" style="--line-color:#7b634f;--soft-color:#efe4d6">
+                  <div class="route-node"><span class="mi">luggage</span></div>
+                  <div class="route-line-copy"><small>Locker</small><b>소형 15 · 중형 2 · 대형 4</b><p>공개 데이터 기준 수량입니다. 실제 잔여함은 현장 또는 앱에서 다시 확인하세요.</p></div>
+                </div>
+                <div class="route-line-step" style="--line-color:#2b2118;--soft-color:#eee6dc">
+                  <div class="route-node"><span class="mi">app_shortcut</span></div>
+                  <div class="route-line-copy"><small>App</small><b>T locker 또타라커 이용 권장</b><p>앱에서 주변 물품보관함을 검색하고, 역사별 사용 가능 여부를 확인한 뒤 예약·결제할 수 있습니다.</p></div>
+                </div>
+              </div>
+            </div>
+            <div class="checkin-rule-grid">
+              <div class="checkin-rule"><span class="mi">payments</span><div><b>유료 서비스</b><span>요금과 이용 가능 시간은 보관함 크기와 앱/현장 정책에 따라 달라질 수 있습니다.</span></div></div>
+              <div class="checkin-rule"><span class="mi">schedule</span><div><b>체크인 전후 활용</b><span>16시 전 도착했거나 11시 체크아웃 후 주변을 둘러볼 때 먼저 보관 가능 여부를 확인하세요.</span></div></div>
+            </div>
+            <p style="margin-top:14px">위치 정보는 서울교통공사 물품보관함 공개 데이터를 기준으로 정리했습니다. 실제 운영 여부와 빈 보관함은 또타라커 앱 또는 현장에서 다시 확인해 주세요.</p>
+            <div class="contact-actions">
+              <a class="hotel-btn primary" href="https://play.google.com/store/apps/details?id=io.mobinity.locker&hl=ko" target="_blank" rel="noopener"><span class="mi">android</span>Google Play</a>
+              <a class="hotel-btn" href="https://apps.apple.com/us/app/t-locker-%EB%98%90%ED%83%80%EB%9D%BC%EC%BB%A4-%EC%A7%80%ED%95%98%EC%B2%A0-%EB%AC%BC%ED%92%88-%EB%B3%B4%EA%B4%80-%EC%A0%84%EB%8B%AC%ED%95%A8/id1503291383" target="_blank" rel="noopener"><span class="mi">phone_iphone</span>App Store</a>
+            </div>
+          </article>
         </div>
       </section>
 
@@ -814,6 +819,35 @@ body *:not(.mi){font-family:var(--font-main)!important;letter-spacing:0!importan
             <div class="transport-actions">
               <a class="hotel-btn primary" href="https://map.naver.com/p/search/%EC%84%9C%EC%9A%B8%EC%8B%9C%20%EC%9A%A9%EC%82%B0%EA%B5%AC%20%EC%8B%A0%ED%9D%A5%EB%A1%9C%2059%202%EC%B8%B5" target="_blank" rel="noopener"><span class="mi">location_on</span>네이버 지도</a>
               <a class="hotel-btn" href="https://www.google.com/maps/dir/?api=1&destination=%EC%84%9C%EC%9A%B8%EC%8B%9C%20%EC%9A%A9%EC%82%B0%EA%B5%AC%20%EC%8B%A0%ED%9D%A5%EB%A1%9C%2059%202%EC%B8%B5" target="_blank" rel="noopener"><span class="mi">map</span>구글 지도</a>
+            </div>
+          </article>
+
+          <article class="transport-card">
+            <h3>녹사평역에서 숙소까지</h3>
+            <div class="route-infographic compact" aria-label="녹사평역에서 숙소까지 오는 길">
+              <div class="route-infographic-head">
+                <small>Last Mile</small>
+                <strong>녹사평역 2번 출구 → EXTAY</strong>
+                <span>해방촌 입구 방향으로 올라와 세븐일레븐과 베제투스 레스토랑 사이 골목으로 들어오세요.</span>
+              </div>
+              <div class="route-line-map">
+                <div class="route-line-step" style="--line-color:#9b6a33;--soft-color:#f2e6d8">
+                  <div class="route-node"><span class="mi">subway</span></div>
+                  <div class="route-line-copy"><small>Station</small><b>녹사평역 2번 출구</b><p>출구에서 해방촌 입구 방향으로 올라옵니다.</p></div>
+                </div>
+                <div class="route-line-step" style="--line-color:#7b634f;--soft-color:#efe4d6">
+                  <div class="route-node"><span class="mi">storefront</span></div>
+                  <div class="route-line-copy"><small>Landmark</small><b>세븐일레븐 · 베제투스 사이 골목</b><p>두 매장 사이 골목으로 들어오면 됩니다.</p></div>
+                </div>
+                <div class="route-line-step" style="--line-color:#2b2118;--soft-color:#eee6dc">
+                  <div class="route-node"><span class="mi">stairs</span></div>
+                  <div class="route-line-copy"><small>Arrival</small><b>베제투스 레스토랑 2층</b><p>숙소는 2층 단독 건물입니다. 도보 약 15분, 마을버스 약 10분입니다.</p></div>
+                </div>
+              </div>
+            </div>
+            <div class="transport-actions">
+              <a class="hotel-btn primary" href="https://map.naver.com/p/search/%EC%84%9C%EC%9A%B8%EC%8B%9C%20%EC%9A%A9%EC%82%B0%EA%B5%AC%20%EC%8B%A0%ED%9D%A5%EB%A1%9C%2059%202%EC%B8%B5" target="_blank" rel="noopener"><span class="mi">location_on</span>네이버 지도</a>
+              <a class="hotel-btn" href="https://www.google.com/maps/search/?api=1&query=%EC%84%9C%EC%9A%B8%EC%8B%9C%20%EC%9A%A9%EC%82%B0%EA%B5%AC%20%EC%8B%A0%ED%9D%A5%EB%A1%9C%2059%202%EC%B8%B5" target="_blank" rel="noopener"><span class="mi">map</span>구글 지도</a>
             </div>
           </article>
 
@@ -1045,14 +1079,14 @@ body *:not(.mi){font-family:var(--font-main)!important;letter-spacing:0!importan
                 <summary>체크인은 몇 시이고 도어락 번호는 어디서 확인하나요?</summary>
                 <div class="faq-answer">
                   <p>체크인은 오후 4시부터입니다. 비대면 셀프 체크인이며 개인 키번호는 체크인 당일 12시쯤 Airbnb 또는 호스트 메시지로 안내됩니다. 현관 도어락 키패드를 살짝 터치한 뒤 안내받은 번호를 입력하고 마지막에 <b>*</b> 버튼을 누르세요.</p>
-                  <div class="faq-actions"><button class="hotel-btn primary" type="button" data-go="checkin"><span class="mi">calendar_month</span>체크인 안내</button><button class="hotel-btn" type="button" data-go="guidebook"><span class="mi">menu_book</span>이용 안내</button></div>
+                  <div class="faq-actions"><button class="hotel-btn primary" type="button" data-go="checkin"><span class="mi">calendar_month</span>체크인/아웃 안내</button><button class="hotel-btn" type="button" data-go="guidebook"><span class="mi">menu_book</span>이용 안내</button></div>
                 </div>
               </details>
               <details class="faq-item">
                 <summary>숙소 주소와 찾아오는 방법은 어떻게 되나요?</summary>
                 <div class="faq-answer">
                   <p>주소는 서울시 용산구 신흥로 59, 2층입니다. 세븐일레븐과 베제투스 레스토랑 사이 골목으로 들어오면 되고, 숙소는 베제투스 레스토랑 2층 단독 건물입니다. 녹사평역 2번 출구에서 도보 약 15분, 마을버스 이용 시 약 10분입니다.</p>
-                  <div class="faq-actions"><button class="hotel-btn primary" type="button" data-go="transport"><span class="mi">directions_car</span>교통 안내</button><button class="hotel-btn" type="button" data-go="checkin"><span class="mi">location_on</span>오시는 길</button></div>
+                  <div class="faq-actions"><button class="hotel-btn primary" type="button" data-go="transport"><span class="mi">directions_car</span>교통 안내</button><button class="hotel-btn" type="button" data-go="transport"><span class="mi">location_on</span>오시는 길</button></div>
                 </div>
               </details>
               <details class="faq-item">
@@ -1306,7 +1340,7 @@ body *:not(.mi){font-family:var(--font-main)!important;letter-spacing:0!importan
     <button class="menu-link" type="button" data-go="restaurants"><span>Restaurants</span><small>도보 10분 맛집 리스트</small></button>
     <button class="menu-link" type="button" data-go="faq"><span>FAQ</span><small>자주 묻는 질문</small></button>
     <button class="menu-link" type="button" data-go="gallery"><span>Room Gallery</span><small>숙소 사진 보기</small></button>
-    <button class="menu-link" type="button" data-go="checkin"><span>Check-in Guide</span><small>입실 방법과 도어락 안내</small></button>
+    <button class="menu-link" type="button" data-go="checkin"><span>Check in/out Guide</span><small>입실·퇴실 방법과 도어락 안내</small></button>
     <button class="menu-link" type="button" data-go="transport"><span>Transportation</span><small>공항에서 숙소까지</small></button>
     <button class="menu-link" type="button" data-go="wifi"><span>Wi-Fi</span><small>네트워크 정보</small></button>
     <button class="menu-link" type="button" data-go="appliances"><span>Stay Guide</span><small>TV · 온수 · 옥상</small></button>
@@ -1565,7 +1599,7 @@ body *:not(.mi){font-family:var(--font-main)!important;letter-spacing:0!importan
     document.querySelectorAll('.suggestion').forEach(b=>b.addEventListener('click',()=>{chatInput.value=b.textContent; chatForm.requestSubmit()}));
     function escapeHtml(text){return String(text).replace(/[&<>"']/g,ch=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[ch]))}
     const SEARCH_ITEMS=[
-      {icon:'calendar_month',screen:'checkin',popular:true,ko:['체크인 안내','입실 시간, 도어락, 셀프 체크인'],en:['Check-in Guide','Arrival time, door lock, self check-in'],keys:['체크인','입실','도어락','키번호','비밀번호','셀프체크인','checkin','check-in','door','arrival']},
+      {icon:'calendar_month',screen:'checkin',popular:true,ko:['체크인/아웃 안내','입실·퇴실 시간, 도어락, 짐보관'],en:['Check in/out Guide','Arrival, checkout, door lock, luggage storage'],keys:['체크인','체크아웃','입실','퇴실','도어락','키번호','비밀번호','셀프체크인','짐보관','코인락커','물품보관함','또타라커','t locker','checkin','check-in','checkout','check-out','door','arrival','locker','luggage']},
       {icon:'wifi',screen:'wifi',popular:true,ko:['와이파이','Wi-Fi ID와 비밀번호'],en:['Wi-Fi','Network ID and password'],keys:['와이파이','wifi','wi-fi','인터넷','비번','비밀번호','네트워크','network','password']},
       {icon:'directions_subway',screen:'transport',popular:true,ko:['교통 안내','공항, 지하철, 택시로 오는 방법'],en:['Transportation','Airport, subway, and taxi directions'],keys:['교통','공항','인천공항','김포공항','지하철','공항철도','택시','버스','오는길','오시는길','transport','airport','subway','taxi','bus','direction']},
       {icon:'photo_library',screen:'gallery',popular:true,ko:['객실 둘러보기','숙소 사진과 공간 확인'],en:['Room Gallery','Photos of the stay and rooms'],keys:['객실','사진','숙소사진','둘러보기','갤러리','방','gallery','photo','room','image']},

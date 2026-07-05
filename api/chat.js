@@ -44,6 +44,11 @@ const LOCAL_ANSWERS = [
     en: 'Checkout is at 11:00. Before leaving, please wash dishes, sort trash, turn off the living room and bedroom AC, close the windows, and make sure the front door is closed. A late checkout fee may apply after a 10-minute grace period.'
   },
   {
+    keys: ['luggage', 'locker', 'coin locker', 'storage', 't locker', '짐보관', '짐 보관', '코인락커', '물품보관함', '또타라커'],
+    ko: '녹사평역에는 공개 데이터 기준 B1층 엘리베이터(E/V) 주변, 7-ELEVEN 주변에 물품보관함이 있습니다. 소형 15개, 중형 2개, 대형 4개 기준으로 안내되지만 실제 잔여함은 T locker 또타라커 앱 또는 현장에서 확인해 주세요.',
+    en: 'Public locker data lists luggage lockers near the B1 elevator and 7-ELEVEN area inside Noksapyeong Station. The listed capacity is 15 small, 2 medium, and 4 large lockers, but please check real-time availability in the T locker app or at the station.'
+  },
+  {
     keys: ['address', 'location', 'directions', 'noksapyeong', 'haebangchon', '주소', '위치', '오는 길', '오시는 길', '녹사평', '해방촌'],
     ko: '숙소는 서울시 용산구 신흥로 59, 2층입니다. 녹사평역 2번 출구에서 도보 약 15분, 마을버스 이용 시 약 10분입니다. 세븐일레븐과 베제투스 레스토랑 사이 골목으로 들어와 2층으로 올라오세요.',
     en: 'The stay is on the 2nd floor, 59 Sinheung-ro, Yongsan-gu, Seoul. It is about 15 minutes on foot from Noksapyeong Station Exit 2, or about 10 minutes by village bus. Enter the alley between Seven Eleven and Vegetus restaurant, then go up to the 2nd floor.'
