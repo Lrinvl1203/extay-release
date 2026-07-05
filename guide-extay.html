@@ -71,10 +71,13 @@ body *{letter-spacing:0}
 .top{width:min(480px,100%);height:72px;left:50%;transform:translateX(-50%);padding:0 28px;z-index:60;border:0;box-shadow:none}
 .top h1{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);z-index:1;margin:0;font-family:var(--font-main);font-size:22px;font-weight:700;text-align:center;line-height:1;color:inherit}
 .top .icon-btn{width:38px;height:38px;border-radius:999px}
-body.is-home .top{position:fixed;top:0;background:transparent;color:#fff;grid-template-columns:1fr auto}
+body.is-home .top{position:fixed;top:0;background:transparent;color:#fff;grid-template-columns:38px minmax(0,1fr) auto}
 body.is-home .top h1{order:1;text-shadow:0 2px 18px rgba(0,0,0,.34)}
-body.is-home .top #menuTop{order:2;background:rgba(0,0,0,.08);color:#fff}
+body.is-home .top #menuTop{order:1;background:rgba(0,0,0,.08);color:#fff}
 body.is-home .top .top-actions{display:none}
+.home-search-btn{display:none;border:1px solid rgba(255,255,255,.38);border-radius:999px;background:rgba(0,0,0,.1);color:#fff;backdrop-filter:blur(12px);align-items:center;justify-content:center;gap:4px;min-height:38px;padding:0 13px 0 11px;font-size:13px;font-weight:800;line-height:1;cursor:pointer;white-space:nowrap;box-shadow:0 10px 26px rgba(0,0,0,.08)}
+.home-search-btn .mi{font-size:19px}
+body.is-home .home-search-btn{display:flex;order:3;justify-self:end}
 body.is-gallery .top,body.is-checkin .top,body.is-wifi .top,body.is-transport .top,body.is-guidebook .top,body.is-restaurants .top,body.is-faq .top,body.is-appliances .top,body.is-laundry .top,body.is-trash .top{position:sticky;top:0;left:auto;transform:none;width:100%;background:rgba(247,242,236,.94);color:#221b15;grid-template-columns:1fr auto;border-bottom:1px solid rgba(216,198,180,.72);backdrop-filter:blur(18px)}
 body.is-gallery .top h1,body.is-checkin .top h1,body.is-wifi .top h1,body.is-transport .top h1,body.is-guidebook .top h1,body.is-restaurants .top h1,body.is-faq .top h1,body.is-appliances .top h1,body.is-laundry .top h1,body.is-trash .top h1{order:1;text-align:center;text-shadow:none}
 body.is-gallery .top #menuTop,body.is-checkin .top #menuTop,body.is-wifi .top #menuTop,body.is-transport .top #menuTop,body.is-guidebook .top #menuTop,body.is-restaurants .top #menuTop,body.is-faq .top #menuTop,body.is-appliances .top #menuTop,body.is-laundry .top #menuTop,body.is-trash .top #menuTop{order:2;background:rgba(123,99,79,.1);color:#221b15}
@@ -140,6 +143,29 @@ body:not(.is-home):not(.is-gallery):not(.is-checkin):not(.is-wifi):not(.is-trans
 .contact-modal-actions .hotel-btn.primary{background:#2b2118;color:#fff;border-color:#2b2118}
 .contact-modal-note{margin:13px 0 0;color:#8a7663;font-size:11px;line-height:1.45;word-break:keep-all}
 .contact-modal-note:empty{display:none}
+.search-backdrop{position:fixed;inset:0;background:rgba(28,22,17,.34);backdrop-filter:blur(5px);z-index:95;opacity:0;pointer-events:none;transition:opacity .22s ease}
+.search-backdrop.open{opacity:1;pointer-events:auto}
+.search-modal{position:fixed;left:50%;top:52%;width:min(420px,calc(100% - 34px));max-height:min(680px,82dvh);z-index:100;background:#fffaf4;border:1px solid rgba(216,198,180,.76);border-radius:24px;box-shadow:0 24px 70px rgba(44,34,25,.24);padding:18px;transform:translate(-50%,-45%) scale(.96);opacity:0;pointer-events:none;transition:opacity .22s ease,transform .22s ease;display:flex;flex-direction:column;overflow:hidden}
+.search-modal.open{opacity:1;pointer-events:auto;transform:translate(-50%,-50%) scale(1)}
+.search-modal-head{display:flex;align-items:flex-start;justify-content:space-between;gap:14px;margin-bottom:14px}
+.search-modal-head h2{margin:0;font-size:23px;line-height:1.2;color:#221b15}
+.search-modal-head p{margin:7px 0 0;font-size:13px;line-height:1.5;color:#7d6d5e;word-break:keep-all}
+.search-close{width:38px;height:38px;border:0;border-radius:50%;background:#efe4d6;color:#221b15;display:grid;place-items:center;cursor:pointer;flex:0 0 auto}
+.search-close .mi{font-size:22px}
+.search-field{display:grid;grid-template-columns:24px 1fr;gap:10px;align-items:center;border:1px solid rgba(123,99,79,.22);border-radius:18px;background:#fff;padding:0 15px;min-height:54px;margin-bottom:12px}
+.search-field .mi{font-size:22px;color:#7b634f}
+.search-field input{width:100%;border:0;outline:0;background:transparent;color:#221b15;font-size:16px;font-weight:700}
+.search-field input::placeholder{color:#a08c79;font-weight:500}
+.search-results{display:grid;gap:8px;overflow:auto;padding:2px 2px 0;overscroll-behavior:contain}
+.search-result{width:100%;border:1px solid rgba(216,198,180,.68);border-radius:16px;background:#fff;display:grid;grid-template-columns:42px 1fr 22px;gap:12px;align-items:center;text-align:left;padding:13px 12px;color:#221b15;cursor:pointer}
+.search-result .result-icon{width:42px;height:42px;border-radius:50%;background:#efe4d6;color:#7b634f;display:grid;place-items:center}
+.search-result .result-icon .mi{font-size:22px}
+.search-result .result-copy{display:block;min-width:0}
+.search-result strong{display:block;font-size:15px;line-height:1.28}
+.search-result .result-desc{display:block;margin-top:4px;font-size:12px;line-height:1.4;color:#7d6d5e;word-break:keep-all}
+.search-result>.mi{font-size:20px;color:#9a8674}
+.search-empty{display:none;border-radius:16px;background:#efe4d6;color:#665646;padding:18px;font-size:13px;line-height:1.55;word-break:keep-all}
+.search-empty.show{display:block}
 .menu-backdrop{position:fixed;inset:0;background:rgba(28,22,17,.28);backdrop-filter:blur(4px);z-index:75;opacity:0;pointer-events:none;transition:opacity .22s ease}
 .menu-backdrop.open{opacity:1;pointer-events:auto}
 .menu-panel{position:fixed;top:0;right:calc(50% - min(240px,50vw));width:min(360px,92vw);max-height:100dvh;overflow:auto;z-index:80;background:#fffaf4;color:#221b15;border-left:1px solid rgba(216,198,180,.74);box-shadow:-18px 0 54px rgba(44,34,25,.18);padding:22px 22px calc(22px + var(--safe));transform:translateX(105%);transition:transform .25s ease}
@@ -513,7 +539,7 @@ body *:not(.mi){font-family:var(--font-main)!important;letter-spacing:0!importan
 </head>
 <body class="is-home">
   <div class="app">
-    <header class="top"><button class="icon-btn" aria-label="메뉴" id="menuTop"><span class="mi">menu</span></button><h1><button class="brand-home" id="brandHome" type="button" data-go="home" aria-label="홈으로 이동">EXTAY</button></h1><div class="top-actions"><a class="icon-btn" href="assets/guidebook/Extay_Mansion_Haebangchon_Guide_KO_no_NotebookLM.pdf" target="_blank" rel="noopener" aria-label="가이드북 열기" id="openGuidebookTop"><span class="mi">menu_book</span></a><button class="icon-btn lang-toggle" aria-label="Switch to English" id="langToggle" type="button"><span class="mi">translate</span><span id="langToggleText">EN</span></button><button class="icon-btn" aria-label="안내 도우미" id="openChatTop"><span class="mi">smart_toy</span></button></div></header>
+    <header class="top"><button class="icon-btn" aria-label="메뉴" id="menuTop"><span class="mi">menu</span></button><h1><button class="brand-home" id="brandHome" type="button" data-go="home" aria-label="홈으로 이동">EXTAY</button></h1><button class="home-search-btn" type="button" id="openSearchTop" aria-label="검색 열기"><span class="mi">search</span><span id="homeSearchLabel">검색</span></button><div class="top-actions"><a class="icon-btn" href="assets/guidebook/Extay_Mansion_Haebangchon_Guide_KO_no_NotebookLM.pdf" target="_blank" rel="noopener" aria-label="가이드북 열기" id="openGuidebookTop"><span class="mi">menu_book</span></a><button class="icon-btn lang-toggle" aria-label="Switch to English" id="langToggle" type="button"><span class="mi">translate</span><span id="langToggleText">EN</span></button><button class="icon-btn" aria-label="안내 도우미" id="openChatTop"><span class="mi">smart_toy</span></button></div></header>
 
     <main>
       <section class="screen active" data-screen="home">
@@ -1280,6 +1306,22 @@ body *:not(.mi){font-family:var(--font-main)!important;letter-spacing:0!importan
     </div>
     <p class="contact-modal-note" id="contactModalNote"></p>
   </section>
+  <div class="search-backdrop" id="searchBackdrop"></div>
+  <section class="search-modal" id="searchModal" aria-label="가이드 검색" aria-modal="true" role="dialog">
+    <div class="search-modal-head">
+      <div>
+        <h2 id="searchTitle">검색</h2>
+        <p id="searchDesc">필요한 정보를 입력하면 관련 안내로 바로 이동합니다.</p>
+      </div>
+      <button class="search-close" type="button" id="closeSearchModal" aria-label="검색 닫기"><span class="mi">close</span></button>
+    </div>
+    <label class="search-field" for="guideSearchInput">
+      <span class="mi">search</span>
+      <input id="guideSearchInput" type="search" autocomplete="off" placeholder="예: 와이파이, 체크인, 맛집" />
+    </label>
+    <div class="search-results" id="searchResults"></div>
+    <p class="search-empty" id="searchEmpty">검색 결과가 없습니다. 다른 단어로 검색해 주세요.</p>
+  </section>
   <button class="chat-fab" id="openChatFab" aria-label="안내 도우미 열기"><span class="mi">smart_toy</span></button>
   <div class="chat-backdrop" id="chatBackdrop"></div>
   <section class="chat-panel" id="chatPanel" aria-label="익스테이 안내 도우미">
@@ -1299,6 +1341,7 @@ body *:not(.mi){font-family:var(--font-main)!important;letter-spacing:0!importan
       ko:{
         docTitle:'익스테이 맨션 해방촌 모바일 가이드',docDesc:'익스테이 맨션 해방촌 숙박 안내 모바일 가이드',
         headerTitle:'EXTAY',menuAria:'메뉴',guideAria:'가이드북 열기',chatAria:'안내 도우미',chatFabAria:'안내 도우미 열기',langAria:'Switch to English',langButton:'EN',
+        search:{button:'검색',openAria:'검색 열기',closeAria:'검색 닫기',title:'검색',desc:'필요한 정보를 입력하면 관련 안내로 바로 이동합니다.',placeholder:'예: 와이파이, 체크인, 맛집',empty:'검색 결과가 없습니다. 다른 단어로 검색해 주세요.'},
         heroSub:'your cozy home in Seoul.',copied:'복사했습니다',
         bottom:['홈','와이파이','사용법','세탁','쓰레기'],
         quick:['와이파이','TV · OTT','온수 · 난방','세탁'],
@@ -1319,6 +1362,7 @@ body *:not(.mi){font-family:var(--font-main)!important;letter-spacing:0!importan
       en:{
         docTitle:'Extay Mansion Haebangchon Mobile Guide',docDesc:'A mobile guest guide for Extay Mansion Haebangchon',
         headerTitle:'EXTAY',menuAria:'Menu',guideAria:'Open guidebook',chatAria:'Guide assistant',chatFabAria:'Open guide assistant',langAria:'한국어로 전환',langButton:'KO',
+        search:{button:'Search',openAria:'Open search',closeAria:'Close search',title:'Search',desc:'Search what you need and jump directly to the guide.',placeholder:'Try Wi-Fi, check-in, restaurants',empty:'No results. Try another keyword.'},
         heroSub:'your cozy home in Seoul.',copied:'Copied',
         bottom:['Home','Wi-Fi','Guide','Laundry','Trash'],
         quick:['Wi-Fi','TV · OTT','Hot Water','Laundry'],
@@ -1347,9 +1391,10 @@ body *:not(.mi){font-family:var(--font-main)!important;letter-spacing:0!importan
       document.documentElement.lang=currentLang;
       document.title=tr.docTitle;
       const meta=q('meta[name="description"]'); if(meta)meta.setAttribute('content',tr.docDesc);
-      text(q('#brandHome'),tr.headerTitle); q('#brandHome')?.setAttribute('aria-label',currentLang==='en'?'Go home':'홈으로 이동'); text(q('.hero .label'),tr.heroSub); text(q('#langToggleText'),tr.langButton);
-      const menu=q('#menuTop'), guide=q('#openGuidebookTop'), chatTop=q('#openChatTop'), chatFab=q('#openChatFab'), close=q('#closeChat'), langBtn=q('#langToggle');
+      text(q('#brandHome'),tr.headerTitle); q('#brandHome')?.setAttribute('aria-label',currentLang==='en'?'Go home':'홈으로 이동'); text(q('.hero .label'),tr.heroSub); text(q('#langToggleText'),tr.langButton); text(q('#homeSearchLabel'),tr.search.button);
+      const menu=q('#menuTop'), guide=q('#openGuidebookTop'), chatTop=q('#openChatTop'), chatFab=q('#openChatFab'), close=q('#closeChat'), langBtn=q('#langToggle'), searchBtn=q('#openSearchTop'), closeSearch=q('#closeSearchModal');
       if(menu)menu.setAttribute('aria-label',tr.menuAria); if(guide){guide.setAttribute('aria-label',tr.guideAria);guide.href=GUIDEBOOK_PDFS[currentLang==='en'?'en':'ko']} if(chatTop)chatTop.setAttribute('aria-label',tr.chatAria); if(chatFab)chatFab.setAttribute('aria-label',tr.chatFabAria); if(close)close.setAttribute('aria-label',tr.chat.close); if(langBtn)langBtn.setAttribute('aria-label',tr.langAria);
+      if(searchBtn)searchBtn.setAttribute('aria-label',tr.search.openAria); if(closeSearch)closeSearch.setAttribute('aria-label',tr.search.closeAria); text(q('#searchTitle'),tr.search.title); text(q('#searchDesc'),tr.search.desc); text(q('#searchEmpty'),tr.search.empty); const searchInput=q('#guideSearchInput'); if(searchInput)searchInput.placeholder=tr.search.placeholder;
       eachText(qa('.bottom .tab span:not(.mi)'),tr.bottom);
       qa('.quick button>span').forEach((el,i)=>html(el,iconLabel(['wifi_password','tv','thermostat','local_laundry_service'][i],tr.quick[i])));
       const homeInfo=q('.home-info-card'); if(homeInfo){text(homeInfo.querySelector('.section-title'),tr.home.infoTitle); eachText(qa('.home-info-card small'),tr.home.labels); eachText(qa('.home-info-card b'),tr.home.values); eachText(qa('.home-info-card .mini-btn'),[tr.home.view]);}
@@ -1451,7 +1496,7 @@ body *:not(.mi){font-family:var(--font-main)!important;letter-spacing:0!importan
     const extaySmartModes={trash:{bg:'assets/extay/smart-card/trash-evening.png',ko:{badge:'저녁 정리',title:'쓰레기 배출 확인',copy:'음식물, 재활용, 일반 쓰레기 위치가 다릅니다. 장기 숙박 시 냄새가 나지 않도록 먼저 확인해 주세요.',actions:[['trash','쓰레기 보기','delete'],['appliances','비품 위치','inventory_2']],suggestions:['쓰레기 어디에 버려?','음식물 쓰레기는 어디야?','재활용은 어디야?','비품 보관함 비밀번호 알려줘']},en:{badge:'Evening cleanup',title:'Check Trash Disposal',copy:'Food waste, recycling, and general trash have different locations. Check the guide first to prevent odor during longer stays.',actions:[['trash','Trash Guide','delete'],['appliances','Supply Cabinet','inventory_2']],suggestions:['Where do I throw away trash?','Where does food waste go?','Where is recycling?','What is the supply cabinet password?']}},ready:{bg:'assets/extay/smart-card/ready-morning.jpg',ko:{badge:'입실 준비',title:'먼저 확인하면 좋은 정보',copy:'와이파이 ID와 비밀번호, 체크인 시간, TV·OTT 사용법, 온수 버튼을 먼저 확인해 주세요.',actions:[['wifi','와이파이 확인','wifi_password'],['appliances','사용법 보기','robot_2']],suggestions:['와이파이 비밀번호 알려줘','체크인은 몇 시야?','TV OTT 어떻게 봐?','온수 어떻게 켜?']},en:{badge:'Check-in ready',title:'Good Things to Check First',copy:'Check the Wi-Fi ID/password, check-in time, TV/OTT steps, and hot-water button first.',actions:[['wifi','Wi-Fi Info','wifi_password'],['appliances','How to Use','robot_2']],suggestions:['What is the Wi-Fi password?','What time is check-in?','How do I use TV OTT?','How do I turn on hot water?']}},stay:{bg:'assets/extay/smart-card/stay-day.png',ko:{badge:'숙박 중 안내',title:'자주 찾는 정보',copy:'TV·OTT, 온수·난방, 세탁기·건조기, 비품 보관함, 옥상 정보를 바로 확인할 수 있습니다.',actions:[['appliances','사용법 보기','robot_2'],['laundry','세탁 안내','local_laundry_service']],suggestions:['OTT 어떻게 봐?','온수가 안 나와','세탁기 어떻게 써?','옥상 이용 가능해?']},en:{badge:'During your stay',title:'Frequently Needed Info',copy:'Quickly check TV/OTT, hot water and heating, washer/dryer, the supply cabinet, and rooftop information.',actions:[['appliances','How to Use','robot_2'],['laundry','Laundry','local_laundry_service']],suggestions:['How do I use OTT?','Hot water is not working','How do I use the washer?','Can I use the rooftop?']}},night:{bg:'assets/extay/smart-card/night.jpg',ko:{badge:'야간 안내',title:'밤 시간 이용 안내',copy:'21시 이후에는 매너타임입니다. 세탁기·건조기 진동, 옥상 소음, 흡연 구역에 유의해 주세요.',actions:[['appliances','사용법 보기','thermostat'],['trash','쓰레기 안내','delete']],suggestions:['온수 어떻게 켜?','공용 화장실 비밀번호 알려줘','OTT가 안 켜져','주차는 어디에 해?']},en:{badge:'Night guide',title:'Night-Time Guide',copy:'Quiet hours start after 21:00. Please be mindful of washer/dryer vibration, rooftop noise, and smoking rules.',actions:[['appliances','How to Use','thermostat'],['trash','Trash Guide','delete']],suggestions:['How do I turn on hot water?','What is the shared restroom password?','OTT is not working','Where can I park?']}}};
     function pickSmartMode(){const h=new Date().getHours(); if(h>=6&&h<12)return 'ready'; if(h>=12&&h<17)return 'stay'; if(h>=17&&h<22)return 'trash'; return 'night'}
     function renderSmartGuide(){const key=pickSmartMode(),m=extaySmartModes[key],copyText=m[currentLang]||m.ko; const pad=n=>String(n).padStart(2,'0'); const now=new Date(); const card=document.getElementById('smartCard'); if(card&&m.bg)card.style.setProperty('--smart-bg',`url('${m.bg}')`); const clk=document.getElementById('smartClock'); if(clk) clk.textContent=`${pad(now.getHours())}:${pad(now.getMinutes())}`; const badge=document.getElementById('smartBadge'), title=document.getElementById('smartTitle'), copy=document.getElementById('smartCopy'), actions=document.getElementById('smartActions'); if(!badge||!title||!copy||!actions)return; badge.textContent=copyText.badge; title.textContent=copyText.title; copy.textContent=copyText.copy; actions.innerHTML=copyText.actions.map((a,i)=>`<button class="btn ${i===0?'primary':''}" data-go="${a[0]}"><span class="mi">${a[2]}</span>${a[1]}</button>`).join(''); document.querySelectorAll('.suggestion').forEach((b,i)=>{if(copyText.suggestions[i])b.textContent=copyText.suggestions[i]});}
-    document.getElementById('langToggle')?.addEventListener('click',()=>{currentLang=currentLang==='ko'?'en':'ko';localStorage.setItem(LANG_KEY,currentLang);applyStaticLanguage();renderSmartGuide();if(document.body.classList.contains('is-guidebook'))loadGuidebook(currentLang==='en'?'en':'ko',true)});
+    document.getElementById('langToggle')?.addEventListener('click',()=>{currentLang=currentLang==='ko'?'en':'ko';localStorage.setItem(LANG_KEY,currentLang);applyStaticLanguage();renderSmartGuide();if(searchModal?.classList.contains('open'))renderSearchResults(searchInput?.value||'');if(document.body.classList.contains('is-guidebook'))loadGuidebook(currentLang==='en'?'en':'ko',true)});
     applyStaticLanguage(); renderSmartGuide(); setInterval(renderSmartGuide,60000);
     const guideAnswers={ko:[],en:[]};
     const extayGuideAnswers={
@@ -1461,6 +1506,7 @@ body *:not(.mi){font-family:var(--font-main)!important;letter-spacing:0!importan
     const chatPanel=document.getElementById('chatPanel'), chatBackdrop=document.getElementById('chatBackdrop'), chatLog=document.getElementById('chatLog'), chatInput=document.getElementById('chatInput'), chatForm=document.getElementById('chatForm');
     const menuPanel=document.getElementById('menuPanel'), menuBackdropEl=document.getElementById('menuBackdrop');
     const contactModal=document.getElementById('contactModal'), contactBackdrop=document.getElementById('contactBackdrop');
+    const searchModal=document.getElementById('searchModal'), searchBackdrop=document.getElementById('searchBackdrop'), searchInput=document.getElementById('guideSearchInput'), searchResults=document.getElementById('searchResults'), searchEmpty=document.getElementById('searchEmpty');
     const CONTACT_DETAILS={
       phone:{title:'전화번호',desc:'필요할 때 아래 번호를 복사해 사용해 주세요.',label:'Phone',value:'010-000-0000',copy:'번호 복사',note:''},
       kakao:{title:'카카오톡 오픈채팅',desc:'아래 임시 오픈채팅 URL을 복사해 사용해 주세요.',label:'Open chat URL',value:'https://open.kakao.com/o/sExtayTemp',copy:'URL 복사',note:'카카오톡 링크는 현재 임시 링크입니다.'}
@@ -1479,11 +1525,41 @@ body *:not(.mi){font-family:var(--font-main)!important;letter-spacing:0!importan
     menuBackdropEl?.addEventListener('click',closeMenuPanel);
     document.getElementById('closeContactModal')?.addEventListener('click',closeContactModal);
     contactBackdrop?.addEventListener('click',closeContactModal);
-    document.addEventListener('keydown',e=>{if(e.key==='Escape')closeContactModal()});
+    document.addEventListener('keydown',e=>{if(e.key==='Escape'){closeContactModal();closeSearchModal()}});
     document.addEventListener('click',e=>{if(e.target.closest('.menu-link'))closeMenuPanel()});
     document.getElementById('closeChat').addEventListener('click',closeChat); chatBackdrop.addEventListener('click',closeChat);
     document.querySelectorAll('.suggestion').forEach(b=>b.addEventListener('click',()=>{chatInput.value=b.textContent; chatForm.requestSubmit()}));
     function escapeHtml(text){return String(text).replace(/[&<>"']/g,ch=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[ch]))}
+    const SEARCH_ITEMS=[
+      {icon:'calendar_month',screen:'checkin',popular:true,ko:['체크인 안내','입실 시간, 도어락, 셀프 체크인'],en:['Check-in Guide','Arrival time, door lock, self check-in'],keys:['체크인','입실','도어락','키번호','비밀번호','셀프체크인','checkin','check-in','door','arrival']},
+      {icon:'wifi',screen:'wifi',popular:true,ko:['와이파이','Wi-Fi ID와 비밀번호'],en:['Wi-Fi','Network ID and password'],keys:['와이파이','wifi','wi-fi','인터넷','비번','비밀번호','네트워크','network','password']},
+      {icon:'directions_subway',screen:'transport',popular:true,ko:['교통 안내','공항, 지하철, 택시로 오는 방법'],en:['Transportation','Airport, subway, and taxi directions'],keys:['교통','공항','인천공항','김포공항','지하철','공항철도','택시','버스','오는길','오시는길','transport','airport','subway','taxi','bus','direction']},
+      {icon:'photo_library',screen:'gallery',popular:true,ko:['객실 둘러보기','숙소 사진과 공간 확인'],en:['Room Gallery','Photos of the stay and rooms'],keys:['객실','사진','숙소사진','둘러보기','갤러리','방','gallery','photo','room','image']},
+      {icon:'menu_book',screen:'guidebook',popular:true,ko:['이용 안내 PDF','한글·영문 가이드북 보기'],en:['Guidebook PDF','View Korean and English guidebooks'],keys:['이용안내','가이드북','가이드','pdf','한글가이드','영문가이드','guidebook','manual']},
+      {icon:'restaurant',screen:'restaurants',popular:true,ko:['주변 맛집','해방촌 추천 식당 리스트'],en:['Restaurants','Recommended places near Haebangchon'],keys:['맛집','식당','음식','레스토랑','카페','브런치','술집','restaurants','food','cafe','bar']},
+      {icon:'help',screen:'faq',popular:true,ko:['FAQ','자주 묻는 질문'],en:['FAQ','Frequently asked questions'],keys:['faq','질문','자주묻는','궁금','문의','question']},
+      {icon:'tv',screen:'appliances',open:'tv',ko:['TV · OTT','TV 리모컨과 OTT 사용법'],en:['TV · OTT','TV remote and OTT instructions'],keys:['tv','티비','텔레비전','ott','넷플릭스','유튜브','nsm','remote','netflix','youtube']},
+      {icon:'thermostat',screen:'appliances',open:'boiler',ko:['온수 · 난방','Rinnai 온수 버튼과 난방 조절'],en:['Hot Water · Heating','Rinnai hot-water and heating control'],keys:['온수','난방','보일러','뜨거운물','히터','hot water','heating','boiler']},
+      {icon:'inventory_2',screen:'appliances',open:'air',ko:['비품 보관함','수건, 휴지, 쓰레기 봉투 위치'],en:['Supply Cabinet','Towels, toilet paper, trash bags'],keys:['비품','수건','휴지','쓰레기봉투','보관함','007','towel','supplies','cabinet','toilet paper']},
+      {icon:'roofing',screen:'appliances',open:'induction',ko:['공용 화장실 · 옥상','비밀 화장실과 루프탑 안내'],en:['Shared Restroom · Rooftop','Secret restroom and rooftop guide'],keys:['화장실','공용화장실','비밀화장실','옥상','루프탑','남산','7003','restroom','toilet','bathroom','rooftop']},
+      {icon:'local_laundry_service',screen:'laundry',ko:['세탁 안내','세탁기와 건조기 사용법'],en:['Laundry Guide','Washer and dryer instructions'],keys:['세탁','세탁기','건조기','빨래','laundry','washer','dryer']},
+      {icon:'delete',screen:'trash',ko:['쓰레기 배출','음식물, 재활용, 일반 쓰레기'],en:['Trash Disposal','Food waste, recycling, general trash'],keys:['쓰레기','분리수거','재활용','음식물','일반쓰레기','trash','garbage','recycling','food waste']},
+      {icon:'call',screen:'home',anchor:'#locationContact',ko:['호스트 연락처','전화번호와 카카오톡 오픈채팅'],en:['Host Contact','Phone number and Kakao open chat'],keys:['연락처','전화','문의','호스트','카카오','카톡','contact','phone','kakao','host']},
+      {icon:'smart_toy',screen:'home',anchor:'#aiConcierge',ko:['AI Concierge','AI 챗봇으로 바로 문의'],en:['AI Concierge','Ask the guide assistant'],keys:['ai','챗봇','컨시어지','도우미','상담','assistant','concierge','chatbot']}
+    ];
+    function searchText(item){const copy=item[currentLang]||item.ko;return `${copy[0]} ${copy[1]} ${(item.keys||[]).join(' ')}`.toLowerCase()}
+    function normalizeSearch(value){return String(value||'').toLowerCase().replace(/\s+/g,'').trim()}
+    function searchMatches(item,query){if(!query)return item.popular;const needle=normalizeSearch(query),hay=searchText(item),compact=normalizeSearch(hay);return hay.includes(String(query).toLowerCase().trim())||compact.includes(needle)}
+    function searchScore(item,query){if(!query)return item.popular?10:0;const needle=normalizeSearch(query),title=normalizeSearch((item[currentLang]||item.ko)[0]);if(title===needle)return 30;if(title.startsWith(needle))return 25;if(title.includes(needle))return 20;return 10}
+    function renderSearchResults(query=''){if(!searchResults||!searchEmpty)return;const hits=SEARCH_ITEMS.map((item,index)=>({item,index})).filter(({item})=>searchMatches(item,query)).sort((a,b)=>searchScore(b.item,query)-searchScore(a.item,query)).slice(0,9);searchResults.innerHTML=hits.map(({item,index})=>{const copy=item[currentLang]||item.ko;return `<button class="search-result" type="button" data-search-index="${index}"><span class="result-icon"><span class="mi">${item.icon}</span></span><span class="result-copy"><strong>${escapeHtml(copy[0])}</strong><span class="result-desc">${escapeHtml(copy[1])}</span></span><span class="mi">chevron_right</span></button>`}).join('');searchEmpty.classList.toggle('show',!hits.length)}
+    function openSearchModal(){closeMenuPanel();searchModal?.classList.add('open');searchBackdrop?.classList.add('open');renderSearchResults(searchInput?.value||'');setTimeout(()=>searchInput?.focus(),80)}
+    function closeSearchModal(){searchModal?.classList.remove('open');searchBackdrop?.classList.remove('open')}
+    function goSearchResult(item){if(!item)return;closeSearchModal();show(item.screen||'home',item.open||'');if(item.anchor){setTimeout(()=>document.querySelector(item.anchor)?.scrollIntoView({behavior:'smooth',block:'start'}),140)}}
+    document.getElementById('openSearchTop')?.addEventListener('click',openSearchModal);
+    document.getElementById('closeSearchModal')?.addEventListener('click',closeSearchModal);
+    searchBackdrop?.addEventListener('click',closeSearchModal);
+    searchInput?.addEventListener('input',e=>renderSearchResults(e.target.value));
+    searchResults?.addEventListener('click',e=>{const result=e.target.closest('[data-search-index]');if(result)goSearchResult(SEARCH_ITEMS[Number(result.dataset.searchIndex)])});
     function renderBotText(text){return escapeHtml(text).replace(/`([^`\n]+)`/g,'<code>$1</code>').replace(/\*\*([^*\n][^*]*?)\*\*/g,'<strong>$1</strong>')}
     function setMsgText(div,role,text){if(role==='user'){div.textContent=text;return}div.innerHTML=renderBotText(text)}
     function addMsg(role,text,extra=''){const div=document.createElement('div');div.className='msg '+(role==='user'?'user':'bot')+(extra?' '+extra:'');setMsgText(div,role,text);chatLog.appendChild(div);chatLog.scrollTop=chatLog.scrollHeight;return div}
