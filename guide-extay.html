@@ -248,6 +248,20 @@ body.is-home #aiConcierge{position:absolute;top:84px;right:24px;z-index:15;width
 .transport-card{background:#fffaf4;border:1px solid rgba(216,198,180,.72);border-radius:22px;box-shadow:0 12px 32px rgba(58,43,30,.08);padding:22px}
 .transport-card h3{margin:0 0 14px;font-size:21px;line-height:1.25;color:#221b15}
 .transport-card p{margin:0;color:#665646;font-size:14px;line-height:1.62;word-break:keep-all}
+.airport-card{padding:0;overflow:hidden}
+.airport-summary{list-style:none;display:grid;grid-template-columns:54px 1fr 30px;gap:13px;align-items:center;padding:18px;cursor:pointer}
+.airport-summary::-webkit-details-marker{display:none}
+.airport-card[open] .airport-summary{border-bottom:1px solid rgba(216,198,180,.62)}
+.airport-icon{width:54px;height:54px;border-radius:18px;background:#2b2118;color:#fff;display:grid;place-items:center}
+.airport-icon .mi{font-size:28px}
+.airport-copy small{display:block;margin-bottom:5px;color:#8a7663;font-size:10px;font-weight:900;text-transform:uppercase}
+.airport-copy b{display:block;color:#221b15;font-size:19px;line-height:1.22}
+.airport-copy span{display:block;margin-top:5px;color:#665646;font-size:12px;line-height:1.42;word-break:keep-all}
+.airport-chevron{font-size:26px;color:#7b634f;transition:transform .2s ease}
+.airport-card[open] .airport-chevron{transform:rotate(180deg)}
+.airport-card-body{display:grid;gap:12px;padding:18px}
+.airport-card:not([open]) .airport-card-body{display:none}
+.airport-card-body .route-card{margin-top:0}
 .transport-actions{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:16px}
 .transport-actions .hotel-btn{color:#221b15;border-color:rgba(123,99,79,.28);background:#fff}
 .transport-actions .hotel-btn.primary{background:#2b2118;color:#fff;border-color:#2b2118}
@@ -303,10 +317,6 @@ body.is-home #aiConcierge{position:absolute;top:84px;right:24px;z-index:15;width
 .route-steps li{counter-increment:route;display:grid;grid-template-columns:30px 1fr;gap:10px;align-items:start;font-size:13px;line-height:1.55;color:#665646;word-break:keep-all}
 .route-steps li:before{content:counter(route);width:30px;height:30px;border-radius:50%;display:grid;place-items:center;background:#2b2118;color:#fff;font-size:12px;font-weight:800}
 .route-steps b{display:block;margin-bottom:3px;color:#221b15;font-size:14px}
-.transport-note{background:#efe4d6;border-color:rgba(123,99,79,.26)}
-.transport-note ul{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:0;padding:0;list-style:none}
-.transport-note li{position:relative;min-height:116px;border-radius:16px;background:#fffaf4;border:1px solid rgba(216,198,180,.66);padding:14px 13px 13px 42px;font-size:13px;line-height:1.48;color:#665646;word-break:keep-all}
-.transport-note li:before{content:"check";font-family:'Material Symbols Outlined';font-weight:300;position:absolute;left:12px;top:13px;width:22px;height:22px;border-radius:50%;display:grid;place-items:center;background:#2b2118;color:#fff;font-size:15px}
 .guidebook-screen{background:#f7f2ec;min-height:calc(100dvh - 72px)}
 .guidebook-head{padding:8px 0 18px}
 .guidebook-head .section-kicker{margin-bottom:10px}
@@ -795,8 +805,13 @@ body *:not(.mi){font-family:var(--font-main)!important;letter-spacing:0!importan
             </div>
           </article>
 
-          <article class="transport-card">
-            <h3>인천공항에서</h3>
+          <details class="transport-card airport-card">
+            <summary class="airport-summary">
+              <span class="airport-icon"><span class="mi">flight_land</span></span>
+              <span class="airport-copy"><small>Airport Route</small><b>인천공항 -> EXTAY</b><span>공항철도, 리무진, 택시 경로 보기</span></span>
+              <span class="airport-chevron mi">expand_more</span>
+            </summary>
+            <div class="airport-card-body">
             <div class="route-card">
               <div class="route-top"><h4>공항철도 + 지하철</h4><span class="route-badge">추천</span></div>
               <div class="route-meta"><span>가성비 좋음</span><span>환승 1회</span><span>약 80~95분</span></div>
@@ -911,10 +926,16 @@ body *:not(.mi){font-family:var(--font-main)!important;letter-spacing:0!importan
                 <li><div><b>교통상황 확인</b>출퇴근 시간과 심야 할증 시간에는 요금과 시간이 크게 달라질 수 있습니다.</div></li>
               </ol>
             </div>
-          </article>
+            </div>
+          </details>
 
-          <article class="transport-card">
-            <h3>김포공항에서</h3>
+          <details class="transport-card airport-card">
+            <summary class="airport-summary">
+              <span class="airport-icon"><span class="mi">flight_land</span></span>
+              <span class="airport-copy"><small>Airport Route</small><b>김포공항 -> EXTAY</b><span>공항철도, 택시 경로 보기</span></span>
+              <span class="airport-chevron mi">expand_more</span>
+            </summary>
+            <div class="airport-card-body">
             <div class="route-card">
               <div class="route-top"><h4>공항철도 + 6호선</h4><span class="route-badge">추천</span></div>
               <div class="route-meta"><span>빠른 편</span><span>환승 1회</span><span>약 45~60분</span></div>
@@ -975,17 +996,7 @@ body *:not(.mi){font-family:var(--font-main)!important;letter-spacing:0!importan
                 <li><div><b>골목 진입 안내</b>세븐일레븐과 베제투스 레스토랑 사이 골목, 베제투스 레스토랑 2층 건물이라고 설명하면 쉽습니다.</div></li>
               </ol>
             </div>
-          </article>
-
-          <article class="transport-card transport-note">
-            <h3>이용 팁</h3>
-            <ul>
-              <li>공항철도와 지하철은 정시성이 좋아 낮 시간대에 가장 무난합니다.</li>
-              <li>큰 캐리어가 있거나 비가 오는 날은 녹사평역에서 마지막 구간만 택시를 권장합니다.</li>
-              <li>심야 도착은 대중교통 막차 시간을 먼저 확인하고, 불확실하면 택시를 이용하세요.</li>
-              <li>지도 앱에서 “서울시 용산구 신흥로 59, 2층”을 목적지로 설정하면 됩니다.</li>
-            </ul>
-          </article>
+          </details>
         </div>
       </section>
 
