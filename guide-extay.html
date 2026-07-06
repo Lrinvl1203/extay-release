@@ -249,12 +249,14 @@ body.image-lightbox-open{overflow:hidden;touch-action:none}
 .wifi-soft-card{background:#efe4d6;border-color:rgba(123,99,79,.26)}
 .wifi-chat{margin-top:16px;color:#fff;background:#2b2118;border-color:#2b2118}
 .wifi-accordion{padding:0;overflow:hidden}
-.wifi-accordion-summary{list-style:none;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:22px;cursor:pointer}
+.wifi-accordion-summary{list-style:none;display:grid;grid-template-columns:46px minmax(0,1fr) 28px;gap:12px;align-items:center;padding:22px;cursor:pointer}
 .wifi-accordion-summary::-webkit-details-marker{display:none}
 .wifi-accordion-summary h3{margin:0}
-.wifi-accordion-summary .mi{font-size:26px;color:#7b634f;transition:transform .2s ease}
+.wifi-accordion-icon{width:46px;height:46px;border-radius:16px;background:#2b2118;color:#fff;display:grid;place-items:center}
+.wifi-accordion-icon .mi{font-size:25px;color:inherit}
+.wifi-accordion-summary .accordion-chevron{font-size:26px;color:#7b634f;transition:transform .2s ease}
 .wifi-accordion[open] .wifi-accordion-summary{border-bottom:1px solid rgba(123,99,79,.22)}
-.wifi-accordion[open] .wifi-accordion-summary .mi{transform:rotate(180deg)}
+.wifi-accordion[open] .wifi-accordion-summary .accordion-chevron{transform:rotate(180deg)}
 .wifi-accordion-body{padding:18px 22px 22px}
 .transport-screen{background:#f7f2ec;min-height:calc(100dvh - 72px)}
 .transport-hero{position:relative;overflow:hidden;border-radius:26px;min-height:246px;padding:28px 24px;display:flex;flex-direction:column;justify-content:flex-end;color:#fff;background:linear-gradient(180deg,rgba(35,26,18,.16),rgba(35,26,18,.84)),url('assets/transportation-hero.jpg') center/cover no-repeat;box-shadow:0 18px 44px rgba(58,43,30,.16);margin-bottom:20px}
@@ -531,12 +533,14 @@ body.guidebook-fullscreen-open{overflow:hidden;touch-action:none}
 .route-infographic.checkin-inline-route .route-infographic-head{padding:0 0 12px;border-bottom:0}
 .route-infographic.checkin-inline-route .route-line-map{padding:0}
 .checkin-section-accordion{padding:0;overflow:hidden}
-.checkin-section-summary{list-style:none;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:22px;cursor:pointer}
+.checkin-section-summary{list-style:none;display:grid;grid-template-columns:46px minmax(0,1fr) 28px;gap:12px;align-items:center;padding:22px;cursor:pointer}
 .checkin-section-summary::-webkit-details-marker{display:none}
 .checkin-section-summary h3{margin:0}
-.checkin-section-summary .mi{font-size:26px;color:#7b634f;transition:transform .2s ease}
+.checkin-section-icon{width:46px;height:46px;border-radius:16px;background:#2b2118;color:#fff;display:grid;place-items:center}
+.checkin-section-icon .mi{font-size:25px;color:inherit}
+.checkin-section-summary .accordion-chevron{font-size:26px;color:#7b634f;transition:transform .2s ease}
 .checkin-section-accordion[open] .checkin-section-summary{border-bottom:1px solid rgba(216,198,180,.62)}
-.checkin-section-accordion[open] .checkin-section-summary .mi{transform:rotate(180deg)}
+.checkin-section-accordion[open] .checkin-section-summary .accordion-chevron{transform:rotate(180deg)}
 .checkin-section-accordion .checkin-rule-grid{padding:18px 22px 22px}
 .door-steps{counter-reset:door;display:none;gap:12px;margin:0;padding:0;list-style:none}
 .door-steps li{counter-increment:door;display:grid;grid-template-columns:34px 1fr;gap:12px;align-items:start}
@@ -733,17 +737,17 @@ body *:not(.mi){font-family:var(--font-main)!important;letter-spacing:0!importan
           </article>
 
           <details class="checkin-card checkin-section-accordion notice-card">
-            <summary class="checkin-section-summary"><h3>보안과 프라이버시</h3><span class="mi">expand_more</span></summary>
+            <summary class="checkin-section-summary"><span class="checkin-section-icon"><span class="mi">privacy_tip</span></span><h3>보안과 프라이버시</h3><span class="accordion-chevron mi">expand_more</span></summary>
             <div class="checkin-rule-grid">
               <div class="checkin-rule"><span class="mi">videocam</span><div><b>CCTV 위치</b><span>안전과 보안을 위해 CCTV는 현관 입구에만 설치되어 있습니다.</span></div></div>
               <div class="checkin-rule"><span class="mi">do_not_disturb_on</span><div><b>낯선 방문자</b><span>객실 안에 머무는 중 모르는 사람이 벨을 누르면 응답하지 마세요.</span></div></div>
               <div class="checkin-rule"><span class="mi">support_agent</span><div><b>문제 발생 시</b><span>오시는 길이나 체크인 중 문제가 생기면 바로 연락 주세요.</span></div></div>
-              <div class="checkin-rule"><span class="mi">lock</span><div><b>키번호 보안</b><span>개인 키번호는 예약자에게만 안내되며 페이지에 저장하지 않습니다.</span></div></div>
+              <div class="checkin-rule"><span class="mi">lock</span><div><b>키번호 보안</b><span>키 번호는 에어비앤비 메시지를 통해 전송됩니다.</span></div></div>
             </div>
           </details>
 
           <details class="checkin-card checkin-section-accordion">
-            <summary class="checkin-section-summary"><h3>꼭 지켜주세요</h3><span class="mi">expand_more</span></summary>
+            <summary class="checkin-section-summary"><span class="checkin-section-icon"><span class="mi">verified_user</span></span><h3>꼭 지켜주세요</h3><span class="accordion-chevron mi">expand_more</span></summary>
             <div class="checkin-rule-grid">
               <div class="checkin-rule"><span class="mi">smoke_free</span><div><b>실내 금연</b><span>객실 내부, 베란다, 현관 입구, 계단은 모두 금연 구역입니다.</span></div></div>
               <div class="checkin-rule"><span class="mi">outdoor_grill</span><div><b>흡연 장소</b><span>흡연은 1층 지정 장소에서만 가능하며 담배꽁초는 지정된 통에 버려주세요.</span></div></div>
@@ -1259,7 +1263,7 @@ body *:not(.mi){font-family:var(--font-main)!important;letter-spacing:0!importan
           </article>
 
           <details class="wifi-card wifi-soft-card wifi-accordion">
-            <summary class="wifi-accordion-summary"><h3>연결이 불안정 할 때</h3><span class="mi">expand_more</span></summary>
+            <summary class="wifi-accordion-summary"><span class="wifi-accordion-icon"><span class="mi">wifi_off</span></span><h3>연결이 불안정 할 때</h3><span class="accordion-chevron mi">expand_more</span></summary>
             <div class="wifi-accordion-body">
             <div class="wifi-visual-grid">
               <div class="wifi-visual-card"><span class="mi">wifi_off</span><div><strong>Wi-Fi 다시 켜기</strong><span>기기 Wi-Fi를 껐다가 다시 켠 뒤 네트워크를 재선택합니다.</span></div></div>
