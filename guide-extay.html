@@ -771,16 +771,21 @@ body *:not(.mi){font-family:var(--font-main)!important;letter-spacing:0!importan
             </div>
             <div class="transport-actions">
               <a class="hotel-btn primary" href="https://map.naver.com/p/search/%EC%84%9C%EC%9A%B8%EC%8B%9C%20%EC%9A%A9%EC%82%B0%EA%B5%AC%20%EC%8B%A0%ED%9D%A5%EB%A1%9C%2059%202%EC%B8%B5" target="_blank" rel="noopener"><span class="mi">location_on</span>네이버 지도</a>
-              <a class="hotel-btn" href="https://www.google.com/maps/dir/?api=1&destination=%EC%84%9C%EC%9A%B8%EC%8B%9C%20%EC%9A%A9%EC%82%B0%EA%B5%AC%20%EC%8B%A0%ED%9D%A5%EB%A1%9C%2059%202%EC%B8%B5" target="_blank" rel="noopener"><span class="mi">map</span>구글 지도</a>
+              <a class="hotel-btn" href="https://www.google.com/maps/search/?api=1&query=%EC%84%9C%EC%9A%B8%EC%8B%9C%20%EC%9A%A9%EC%82%B0%EA%B5%AC%20%EC%8B%A0%ED%9D%A5%EB%A1%9C%2059" target="_blank" rel="noopener"><span class="mi">map</span>구글 지도</a>
             </div>
           </article>
 
-          <article class="transport-card">
-            <h3>녹사평역에서 숙소까지</h3>
-            <div class="route-infographic compact" aria-label="녹사평역에서 숙소까지 오는 길">
+          <details class="transport-card airport-card">
+            <summary class="airport-summary">
+              <span class="airport-icon"><span class="mi">directions_walk</span></span>
+              <span class="airport-copy"><small>Last Mile</small><b>녹사평역 → EXTAY</b><span>도보, 마을버스, 택시 이동 안내</span></span>
+              <span class="airport-chevron mi">expand_more</span>
+            </summary>
+            <div class="airport-card-body">
+            <div class="route-infographic compact" aria-label="녹사평역에서 EXTAY까지 오는 길">
               <div class="route-infographic-head">
                 <small>Last Mile</small>
-                <strong>녹사평역 2번 출구 → EXTAY</strong>
+                <strong>녹사평역 → EXTAY</strong>
                 <span>해방촌 입구 방향으로 올라와 세븐일레븐과 베제투스 레스토랑 사이 골목으로 들어오세요.</span>
               </div>
               <div class="route-line-map">
@@ -798,16 +803,13 @@ body *:not(.mi){font-family:var(--font-main)!important;letter-spacing:0!importan
                 </div>
               </div>
             </div>
-            <div class="transport-actions">
-              <a class="hotel-btn primary" href="https://map.naver.com/p/search/%EC%84%9C%EC%9A%B8%EC%8B%9C%20%EC%9A%A9%EC%82%B0%EA%B5%AC%20%EC%8B%A0%ED%9D%A5%EB%A1%9C%2059%202%EC%B8%B5" target="_blank" rel="noopener"><span class="mi">location_on</span>네이버 지도</a>
-              <a class="hotel-btn" href="https://www.google.com/maps/search/?api=1&query=%EC%84%9C%EC%9A%B8%EC%8B%9C%20%EC%9A%A9%EC%82%B0%EA%B5%AC%20%EC%8B%A0%ED%9D%A5%EB%A1%9C%2059%202%EC%B8%B5" target="_blank" rel="noopener"><span class="mi">map</span>구글 지도</a>
             </div>
-          </article>
+          </details>
 
           <details class="transport-card airport-card">
             <summary class="airport-summary">
               <span class="airport-icon"><span class="mi">flight_land</span></span>
-              <span class="airport-copy"><small>Airport Route</small><b>인천공항 -> EXTAY</b><span>공항철도, 리무진, 택시 경로 보기</span></span>
+              <span class="airport-copy"><small>Airport Route</small><b>인천공항 → EXTAY</b><span>공항철도, 리무진, 택시 경로 보기</span></span>
               <span class="airport-chevron mi">expand_more</span>
             </summary>
             <div class="airport-card-body">
@@ -931,7 +933,7 @@ body *:not(.mi){font-family:var(--font-main)!important;letter-spacing:0!importan
           <details class="transport-card airport-card">
             <summary class="airport-summary">
               <span class="airport-icon"><span class="mi">flight_land</span></span>
-              <span class="airport-copy"><small>Airport Route</small><b>김포공항 -> EXTAY</b><span>공항철도, 택시 경로 보기</span></span>
+              <span class="airport-copy"><small>Airport Route</small><b>김포공항 → EXTAY</b><span>공항철도, 택시 경로 보기</span></span>
               <span class="airport-chevron mi">expand_more</span>
             </summary>
             <div class="airport-card-body">
