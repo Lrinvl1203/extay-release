@@ -113,14 +113,16 @@ body:not(.is-home):not(.is-gallery):not(.is-checkin):not(.is-wifi):not(.is-trans
 .image-card span{font-size:17px;font-weight:800;line-height:1.25}
 .image-card small{margin-top:7px;font-size:12px;line-height:1.38;color:rgba(255,255,255,.9)}
 #aiConcierge{padding:0}
-body.is-home #aiConcierge{position:absolute;top:84px;right:24px;z-index:15;width:112px}
-.concierge-banner{position:relative;width:112px;aspect-ratio:1;border:0;border-radius:22px;overflow:hidden;padding:12px;color:#fff;background:linear-gradient(145deg,rgba(43,33,24,.14),rgba(255,255,255,.07));box-shadow:0 16px 34px rgba(28,22,17,.12);backdrop-filter:blur(8px) saturate(130%);-webkit-backdrop-filter:blur(8px) saturate(130%);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:5px;cursor:pointer}
-.concierge-banner:before{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(255,255,255,.1),rgba(255,255,255,.02));pointer-events:none}
+body.is-home #aiConcierge{position:absolute;top:84px;right:20px;z-index:15;width:178px}
+.concierge-banner{position:relative;width:100%;min-height:72px;border:0;border-radius:18px;overflow:hidden;padding:9px 12px 9px 9px;color:#fff;background:rgba(255,255,255,.3);box-shadow:0 16px 34px rgba(28,22,17,.1);backdrop-filter:blur(10px) saturate(135%);-webkit-backdrop-filter:blur(10px) saturate(135%);display:flex;align-items:center;justify-content:center;text-align:left;gap:8px;cursor:pointer}
+.concierge-banner:before{content:"";position:absolute;inset:0;background:linear-gradient(135deg,rgba(255,255,255,.16),rgba(255,255,255,.03));pointer-events:none}
 .concierge-banner>*{position:relative;z-index:1}
 .concierge-icon{width:auto;height:auto;border-radius:0;background:transparent;display:block;color:#fff;text-shadow:0 8px 24px rgba(0,0,0,.18)}
 .concierge-icon.mi{font-size:60px;line-height:.9}
-.concierge-title{display:block;color:#fff;font-size:14px;font-weight:800;line-height:1.12;text-shadow:0 2px 14px rgba(0,0,0,.22)}
-.concierge-sub{display:block;margin-top:2px;color:rgba(255,255,255,.82);font-size:10px;font-weight:700;line-height:1.2;text-shadow:0 2px 12px rgba(0,0,0,.2)}
+.concierge-character{width:58px;height:58px;object-fit:contain;flex:0 0 auto;filter:drop-shadow(0 8px 14px rgba(28,22,17,.16))}
+.concierge-copy{display:block;min-width:0}
+.concierge-title{display:block;color:#fff;font-size:13px;font-weight:800;line-height:1.15;word-break:keep-all;text-shadow:0 2px 14px rgba(0,0,0,.24)}
+.concierge-sub{display:block;margin-top:3px;color:rgba(255,255,255,.84);font-size:10px;font-weight:700;line-height:1.2;text-shadow:0 2px 12px rgba(0,0,0,.22)}
 .contact-heading{display:flex;align-items:center;gap:10px}
 .contact-heading .section-kicker{margin:0}
 .contact-mini-actions{display:flex;align-items:center;gap:6px}
@@ -604,9 +606,9 @@ body *:not(.mi){font-family:var(--font-main)!important;letter-spacing:0!importan
         </section>
 
         <section class="hotel-section" id="aiConcierge" aria-labelledby="aiTitle">
-          <button class="concierge-banner" type="button" id="openChatCard" aria-label="AI Concierge 열기">
-            <span class="concierge-icon mi" aria-hidden="true">smart_toy</span>
-            <span><span class="concierge-title" id="aiTitle">AI 챗봇</span><span class="concierge-sub">바로 문의</span></span>
+          <button class="concierge-banner" type="button" id="openChatCard" aria-label="AI 숙소 매니저 열기">
+            <img class="concierge-character" src="assets/extay/ai-stay-manager.png" alt="" aria-hidden="true">
+            <span class="concierge-copy"><span class="concierge-title" id="aiTitle">AI 숙소 매니저</span><span class="concierge-sub">바로 문의</span></span>
           </button>
         </section>
 
@@ -1624,7 +1626,7 @@ body *:not(.mi){font-family:var(--font-main)!important;letter-spacing:0!importan
       {icon:'local_laundry_service',screen:'laundry',ko:['세탁 안내','세탁기와 건조기 사용법'],en:['Laundry Guide','Washer and dryer instructions'],keys:['세탁','세탁기','건조기','빨래','laundry','washer','dryer']},
       {icon:'delete',screen:'trash',ko:['쓰레기 배출','음식물, 재활용, 일반 쓰레기'],en:['Trash Disposal','Food waste, recycling, general trash'],keys:['쓰레기','분리수거','재활용','음식물','일반쓰레기','trash','garbage','recycling','food waste']},
       {icon:'call',screen:'home',anchor:'#locationContact',ko:['호스트 연락처','전화번호와 카카오톡 오픈채팅'],en:['Host Contact','Phone number and Kakao open chat'],keys:['연락처','전화','문의','호스트','카카오','카톡','contact','phone','kakao','host']},
-      {icon:'smart_toy',screen:'home',anchor:'#aiConcierge',ko:['AI Concierge','AI 챗봇으로 바로 문의'],en:['AI Concierge','Ask the guide assistant'],keys:['ai','챗봇','컨시어지','도우미','상담','assistant','concierge','chatbot']}
+      {icon:'smart_toy',screen:'home',anchor:'#aiConcierge',ko:['AI 숙소 매니저','AI 숙소 매니저에게 바로 문의'],en:['AI Stay Manager','Ask the AI stay manager'],keys:['ai','챗봇','컨시어지','숙소매니저','도우미','상담','assistant','concierge','chatbot','manager']}
     ];
     function searchText(item){const copy=item[currentLang]||item.ko;return `${copy[0]} ${copy[1]} ${(item.keys||[]).join(' ')}`.toLowerCase()}
     function normalizeSearch(value){return String(value||'').toLowerCase().replace(/\s+/g,'').trim()}
