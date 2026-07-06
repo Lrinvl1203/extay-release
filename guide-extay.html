@@ -102,10 +102,9 @@ body:not(.is-home):not(.is-gallery):not(.is-checkin):not(.is-wifi):not(.is-trans
 .section-kicker{color:#77685a}
 .hotel-heading{margin:0 0 22px;font-size:24px;line-height:1.18;font-weight:700;color:#221b15}
 .quick-access-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;width:100%}
-.quick-tile{width:100%;min-width:0;min-inline-size:0;max-width:100%;overflow:hidden;min-height:112px;border:1px solid rgba(216,198,180,.62);border-radius:14px;background:rgba(255,255,255,.82);box-shadow:0 12px 32px rgba(58,43,30,.08);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;padding:10px 5px;text-align:center;color:#221b15;cursor:pointer}
-.quick-tile .mi{font-size:27px;color:#7b634f}
-.quick-tile b{display:block;max-width:100%;font-size:11px;line-height:1.2;font-weight:800;white-space:normal;overflow-wrap:anywhere}
-.quick-tile small{display:block;max-width:100%;font-size:9px;line-height:1.3;color:#7d6d5e;white-space:normal;overflow-wrap:anywhere}
+.quick-tile{width:100%;min-width:0;min-inline-size:0;max-width:100%;overflow:hidden;min-height:120px;border:1px solid rgba(216,198,180,.62);border-radius:14px;background:rgba(255,255,255,.82);box-shadow:0 12px 32px rgba(58,43,30,.08);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;padding:12px 5px;text-align:center;color:#221b15;cursor:pointer}
+.quick-tile .mi,.quick-icon-img{width:46px;height:46px;font-size:46px;color:#7b634f;object-fit:contain}
+.quick-tile b{display:block;max-width:100%;font-size:19px;line-height:1.12;font-weight:900;white-space:normal;word-break:keep-all;overflow-wrap:anywhere}
 .stay-card-grid{display:grid;grid-template-columns:1fr 1fr;gap:9px}
 .image-card{position:relative;min-height:142px;border:0;border-radius:13px;overflow:hidden;background:linear-gradient(180deg,rgba(26,19,14,.06),rgba(26,19,14,.68)),var(--card-img) center/cover no-repeat;color:#fff;box-shadow:0 12px 28px rgba(58,43,30,.12);display:flex;flex-direction:column;justify-content:flex-end;align-items:flex-start;text-align:left;padding:18px;cursor:pointer}
 .image-card:before{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.02) 20%,rgba(0,0,0,.64) 100%);pointer-events:none}
@@ -535,9 +534,9 @@ body:not(.is-home) main{padding-top:0}
   .hero-copy{font-size:15px}
   .hotel-section{padding-left:20px;padding-right:20px}
   .quick-access-grid{gap:7px}
-  .quick-tile{min-height:104px;padding:9px 5px}
-  .quick-tile b{font-size:10px}
-  .quick-tile small{font-size:9px}
+  .quick-tile{min-height:112px;padding:10px 4px;gap:9px}
+  .quick-tile .mi,.quick-icon-img{width:42px;height:42px;font-size:42px}
+  .quick-tile b{font-size:17px}
   .image-card{min-height:130px;padding:15px}
   .menu-panel{right:0;width:88vw}
   .gallery-thumb{flex-basis:76px;width:76px;height:88px}
@@ -588,9 +587,9 @@ body *:not(.mi){font-family:var(--font-main)!important;letter-spacing:0!importan
           <p class="section-kicker">QUICK ACCESS</p>
           <h2 class="hotel-heading" id="quickTitle">빠르게 찾는 정보</h2>
           <div class="quick-access-grid">
-            <button class="quick-tile" type="button" data-go="checkin"><span class="mi">calendar_month</span><b>체크인/아웃 안내</b><small>입실·퇴실 방법 확인</small></button>
-            <button class="quick-tile" type="button" data-go="wifi"><span class="mi">wifi</span><b>와이파이</b><small>네트워크 정보</small></button>
-            <button class="quick-tile" type="button" data-go="transport"><span class="mi">directions_car</span><b>교통 안내</b><small>공항·지하철·버스</small></button>
+            <button class="quick-tile" type="button" data-go="checkin"><img class="quick-icon-img" src="assets/extay/checkin-bell.svg" alt="" aria-hidden="true"><b>체크인/아웃 안내</b></button>
+            <button class="quick-tile" type="button" data-go="wifi"><span class="mi">wifi</span><b>와이파이</b></button>
+            <button class="quick-tile" type="button" data-go="transport"><span class="mi">directions_car</span><b>교통 안내</b></button>
           </div>
         </section>
 
