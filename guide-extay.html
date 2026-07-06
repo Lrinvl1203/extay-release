@@ -478,12 +478,17 @@ body.guidebook-fullscreen-open{overflow:hidden;touch-action:none}
 .faq-source-note{margin:14px 0 0;color:#7b634f;font-size:12px;line-height:1.55;word-break:keep-all}
 .checkin-hero{position:relative;overflow:hidden;border-radius:26px;min-height:230px;padding:28px 24px;display:flex;flex-direction:column;justify-content:flex-end;color:#fff;background:linear-gradient(180deg,rgba(35,26,18,.18),rgba(35,26,18,.82)),url('assets/checkinout-hero.jpg') center/cover no-repeat;box-shadow:0 18px 44px rgba(58,43,30,.16);margin-bottom:24px}
 .checkin-hero .section-kicker{color:rgba(255,255,255,.82)}
-.checkin-hero h2{margin:0;font-family:var(--font-main);font-size:42px;line-height:.95;color:#fff}
-.checkin-hero p{margin:14px 0 0;font-size:14px;line-height:1.62;color:rgba(255,255,255,.9);word-break:keep-all}
+.checkin-hero h2{margin:0;font-family:var(--font-main);font-size:40px;line-height:1.12;font-weight:600;color:#fff;text-shadow:0 2px 24px rgba(0,0,0,.28)}
+.checkin-hero p:last-child{margin:14px 0 0;font-size:14px;line-height:1.62;color:rgba(255,255,255,.9);word-break:keep-all;text-shadow:0 2px 18px rgba(0,0,0,.28)}
 .checkin-stack{display:grid;gap:14px}
 .checkin-card{background:#fffaf4;border:1px solid rgba(216,198,180,.72);border-radius:22px;box-shadow:0 12px 32px rgba(58,43,30,.08);padding:22px}
 .checkin-card h3{margin:0 0 14px;font-size:21px;line-height:1.25;color:#221b15}
 .checkin-card p{margin:0;color:#665646;font-size:14px;line-height:1.62}
+.checkin-accordion{padding:0;overflow:hidden}
+.checkin-accordion .airport-summary{grid-template-columns:54px minmax(0,1fr) 30px}
+.checkin-accordion[open] .airport-summary{border-bottom:1px solid rgba(216,198,180,.62)}
+.checkin-accordion[open] .airport-chevron{transform:rotate(180deg)}
+.checkin-accordion .airport-card-body{padding:18px}
 .checkin-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
 .checkin-fact{border-radius:16px;background:#f3eadf;padding:15px}
 .checkin-fact small{display:block;margin-bottom:6px;color:#8a7663;font-size:11px;font-weight:800;text-transform:uppercase}
@@ -541,7 +546,7 @@ body:not(.is-home) main{padding-top:0}
   .menu-panel{right:0;width:88vw}
   .gallery-thumb{flex-basis:76px;width:76px;height:88px}
   .checkin-grid,.checkin-token-grid,.checkin-rule-grid,.contact-actions{grid-template-columns:1fr}
-  .checkin-hero h2{font-size:37px}
+  .checkin-hero h2{font-size:35px}
   .wifi-hero .page-title{font-size:38px}
   .wifi-credential{grid-template-columns:1fr}
   .wifi-credential .mini-btn{width:100%}
@@ -670,45 +675,6 @@ body *:not(.mi){font-family:var(--font-main)!important;letter-spacing:0!importan
             </div>
           </article>
 
-          <article class="checkin-card">
-            <h3>현관 도어락 사용 방법</h3>
-            <div class="keypad-graphic" aria-label="도어락 입력 예시">
-              <div class="keypad-display"><small>Doorlock Formula</small><b>안내받은 개인 키번호 + *</b></div>
-              <div class="keypad-grid" aria-hidden="true">
-                <span>1</span><span>2</span><span>3</span>
-                <span>4</span><span>5</span><span>6</span>
-                <span>7</span><span>8</span><span>9</span>
-                <span>↺</span><span>0</span><span>*</span>
-              </div>
-            </div>
-            <div class="route-infographic compact" aria-label="현관 도어락 사용 순서">
-              <div class="route-infographic-head">
-                <small>Doorlock Steps</small>
-                <strong>터치 → 번호 입력 → * 버튼</strong>
-                <span>도어락 화면을 켠 뒤 호스트가 안내한 형식 그대로 입력합니다.</span>
-              </div>
-              <div class="route-line-map">
-                <div class="route-line-step" style="--line-color:#7b634f;--soft-color:#efe4d6">
-                  <div class="route-node"><span class="mi">touch_app</span></div>
-                  <div class="route-line-copy"><small>Step 1</small><b>키패드 살짝 터치</b><p>현관 도어락 화면을 가볍게 터치해 숫자 키패드를 켭니다.</p></div>
-                </div>
-                <div class="route-line-step" style="--line-color:#2b2118;--soft-color:#eee6dc">
-                  <div class="route-node"><span class="mi">pin</span></div>
-                  <div class="route-line-copy"><small>Step 2</small><b>개인 키번호 입력</b><p>예약자별로 안내받은 번호를 그대로 입력합니다.</p></div>
-                </div>
-                <div class="route-line-step" style="--line-color:#9b6a33;--soft-color:#f2e6d8">
-                  <div class="route-node"><span class="mi">asterisk</span></div>
-                  <div class="route-line-copy"><small>Step 3</small><b>* 버튼 누르기</b><p>마지막에 * 버튼을 누르면 잠금이 해제됩니다.</p></div>
-                </div>
-              </div>
-            </div>
-            <ol class="door-steps">
-              <li><div><strong>키패드를 살짝 터치</strong><span>현관 도어락 화면을 가볍게 터치해 숫자 키패드를 켜주세요.</span></div></li>
-              <li><div><strong>개별 안내받은 번호 입력</strong><span>호스트 메시지에 안내된 형식대로 입력한 뒤 마지막에 <b>*</b> 버튼을 누릅니다.</span></div></li>
-            </ol>
-            <p style="margin-top:14px">이 페이지에는 실제 예약자별 키번호를 저장하거나 노출하지 않습니다.</p>
-          </article>
-
           <article class="checkin-card notice-card">
             <h3>보안과 프라이버시</h3>
             <div class="checkin-rule-grid">
@@ -716,34 +682,6 @@ body *:not(.mi){font-family:var(--font-main)!important;letter-spacing:0!importan
               <div class="checkin-rule"><span class="mi">do_not_disturb_on</span><div><b>낯선 방문자</b><span>객실 안에 머무는 중 모르는 사람이 벨을 누르면 응답하지 마세요.</span></div></div>
               <div class="checkin-rule"><span class="mi">support_agent</span><div><b>문제 발생 시</b><span>오시는 길이나 체크인 중 문제가 생기면 바로 연락 주세요.</span></div></div>
               <div class="checkin-rule"><span class="mi">lock</span><div><b>키번호 보안</b><span>개인 키번호는 예약자에게만 안내되며 페이지에 저장하지 않습니다.</span></div></div>
-            </div>
-          </article>
-
-          <article class="checkin-card">
-            <h3>입실 후 확인</h3>
-            <div class="route-infographic compact" aria-label="입실 후 확인 순서">
-              <div class="route-infographic-head">
-                <small>After Arrival</small>
-                <strong>룸 확인 → 주변 정보 → 문의</strong>
-                <span>입실 후 바로 확인하면 숙박 중 필요한 안내를 빠르게 찾을 수 있습니다.</span>
-              </div>
-              <div class="route-line-map">
-                <div class="route-line-step" style="--line-color:#7b634f;--soft-color:#efe4d6">
-                  <div class="route-node"><span class="mi">fact_check</span></div>
-                  <div class="route-line-copy"><small>Room</small><b>룸 상태 확인</b><p>불편한 점이 있으면 바로 메시지로 알려주세요.</p></div>
-                </div>
-                <div class="route-line-step" style="--line-color:#9b6a33;--soft-color:#f2e6d8">
-                  <div class="route-node"><span class="mi">restaurant</span></div>
-                  <div class="route-line-copy"><small>Food</small><b>맛집과 배달 정보</b><p>주변 맛집과 배달 정보는 전날 안내 링크에서 확인할 수 있습니다.</p></div>
-                </div>
-                <div class="route-line-step" style="--line-color:#2b2118;--soft-color:#eee6dc">
-                  <div class="route-node"><span class="mi">call</span></div>
-                  <div class="route-line-copy"><small>Contact</small><b>필요 시 연락</b><p>필요한 것이 있으면 메시지를 남기고, 급한 경우 전화로 연락 주세요.</p></div>
-                </div>
-              </div>
-            </div>
-            <div class="contact-actions single">
-              <a class="hotel-btn primary" href="https://juas.notion.site/HBC-BLUES-stay-65690275250d4509ae3149965c0f5a48?pvs=4" target="_blank" rel="noopener"><span class="mi">menu_book</span>전날 안내 링크 보기</a>
             </div>
           </article>
 
@@ -759,8 +697,13 @@ body *:not(.mi){font-family:var(--font-main)!important;letter-spacing:0!importan
             </div>
           </article>
 
-          <article class="checkin-card">
-            <h3>녹사평역 코인락커 안내</h3>
+          <details class="checkin-card checkin-accordion">
+            <summary class="airport-summary">
+              <span class="airport-icon"><span class="mi">luggage</span></span>
+              <span class="airport-copy"><small>Luggage Storage</small><b>녹사평역 코인락커 안내</b><span>짐 보관 위치와 또타라커 앱 바로가기</span></span>
+              <span class="airport-chevron mi">expand_more</span>
+            </summary>
+            <div class="airport-card-body">
             <div class="route-infographic compact" aria-label="녹사평역 물품보관함 이용 안내">
               <div class="route-infographic-head">
                 <small>Luggage Storage</small>
@@ -782,16 +725,12 @@ body *:not(.mi){font-family:var(--font-main)!important;letter-spacing:0!importan
                 </div>
               </div>
             </div>
-            <div class="checkin-rule-grid">
-              <div class="checkin-rule"><span class="mi">payments</span><div><b>유료 서비스</b><span>요금과 이용 가능 시간은 보관함 크기와 앱/현장 정책에 따라 달라질 수 있습니다.</span></div></div>
-              <div class="checkin-rule"><span class="mi">schedule</span><div><b>체크인 전후 활용</b><span>16시 전 도착했거나 11시 체크아웃 후 주변을 둘러볼 때 먼저 보관 가능 여부를 확인하세요.</span></div></div>
-            </div>
-            <p style="margin-top:14px">위치 정보는 서울교통공사 물품보관함 공개 데이터를 기준으로 정리했습니다. 실제 운영 여부와 빈 보관함은 또타라커 앱 또는 현장에서 다시 확인해 주세요.</p>
             <div class="contact-actions">
               <a class="hotel-btn primary" href="https://play.google.com/store/apps/details?id=io.mobinity.locker&hl=ko" target="_blank" rel="noopener"><span class="mi">android</span>Google Play</a>
               <a class="hotel-btn" href="https://apps.apple.com/us/app/t-locker-%EB%98%90%ED%83%80%EB%9D%BC%EC%BB%A4-%EC%A7%80%ED%95%98%EC%B2%A0-%EB%AC%BC%ED%92%88-%EB%B3%B4%EA%B4%80-%EC%A0%84%EB%8B%AC%ED%95%A8/id1503291383" target="_blank" rel="noopener"><span class="mi">phone_iphone</span>App Store</a>
             </div>
-          </article>
+            </div>
+          </details>
         </div>
       </section>
 
