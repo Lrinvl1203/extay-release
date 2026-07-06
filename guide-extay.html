@@ -484,7 +484,7 @@ body.guidebook-fullscreen-open{overflow:hidden;touch-action:none}
 .checkin-card{background:#fffaf4;border:1px solid rgba(216,198,180,.72);border-radius:22px;box-shadow:0 12px 32px rgba(58,43,30,.08);padding:22px}
 .checkin-card h3{margin:0 0 14px;font-size:21px;line-height:1.25;color:#221b15}
 .checkin-card p{margin:0;color:#665646;font-size:14px;line-height:1.62}
-.checkin-accordion{padding:0;overflow:hidden}
+.checkin-accordion{background:#fffaf4;border:1px solid rgba(216,198,180,.72);border-radius:22px;box-shadow:0 12px 32px rgba(58,43,30,.08);padding:0;overflow:hidden}
 .checkin-accordion .airport-summary{grid-template-columns:54px minmax(0,1fr) 30px}
 .checkin-accordion[open] .airport-summary{border-bottom:1px solid rgba(216,198,180,.62)}
 .checkin-accordion[open] .airport-chevron{transform:rotate(180deg)}
@@ -495,6 +495,8 @@ body.guidebook-fullscreen-open{overflow:hidden;touch-action:none}
 .checkin-fact b{display:block;color:#221b15;font-size:15px;line-height:1.42;word-break:keep-all}
 .checkin-summary{display:grid;gap:14px}
 .checkin-summary-hero{display:grid;grid-template-columns:54px 1fr;gap:14px;align-items:center;border-radius:20px;background:#2b2118;color:#fff;padding:18px}
+.checkin-summary-hero.checkin-luggage-notice{background:#7b634f}
+.checkin-summary-hero.checkin-luggage-notice .mi{background:#fffaf4;color:#7b634f}
 .checkin-summary-hero .mi{width:54px;height:54px;border-radius:50%;display:grid;place-items:center;background:#fff;color:#7b634f;font-size:30px}
 .checkin-summary-hero small{display:block;margin-bottom:6px;color:rgba(255,255,255,.7);font-size:11px;font-weight:900;text-transform:uppercase}
 .checkin-summary-hero b{display:block;font-size:20px;line-height:1.25}
@@ -633,7 +635,7 @@ body *:not(.mi){font-family:var(--font-main)!important;letter-spacing:0!importan
         </article>
         <div class="checkin-stack">
           <article class="checkin-card">
-            <h3>체크인 한눈에 보기</h3>
+            <h3>체크인 한 눈에 보기</h3>
             <div class="checkin-summary">
               <div class="checkin-summary-hero">
                 <span class="mi">door_open</span>
@@ -645,6 +647,44 @@ body *:not(.mi){font-family:var(--font-main)!important;letter-spacing:0!importan
                 <div class="checkin-token"><span class="mi">key</span><div><small>Access</small><b>비대면 셀프 체크인</b></div></div>
                 <div class="checkin-token"><span class="mi">local_parking</span><div><small>Parking</small><b>건물 주차 불가<br>주변 유료 공영주차장 이용</b></div></div>
               </div>
+              <div class="checkin-summary-hero checkin-luggage-notice">
+                <span class="mi">luggage</span>
+                <div><b>체크인 전, 체크아웃 후 짐 보관은 불가</b></div>
+              </div>
+              <details class="checkin-accordion">
+                <summary class="airport-summary">
+                  <span class="airport-icon"><span class="mi">luggage</span></span>
+                  <span class="airport-copy"><small>Luggage Storage</small><b>녹사평역 코인락커 안내</b><span>짐 보관 위치와 또타라커 앱 바로가기</span></span>
+                  <span class="airport-chevron mi">expand_more</span>
+                </summary>
+                <div class="airport-card-body">
+                <div class="route-infographic compact" aria-label="녹사평역 물품보관함 이용 안내">
+                  <div class="route-infographic-head">
+                    <small>Luggage Storage</small>
+                    <strong>녹사평역 B1층 엘리베이터(E/V) 주변</strong>
+                    <span>체크인 전 도착했거나 체크아웃 후 짐을 잠시 맡겨야 할 때 이용하기 좋습니다.</span>
+                  </div>
+                  <div class="route-line-map">
+                    <div class="route-line-step" style="--line-color:#9b6a33;--soft-color:#f2e6d8">
+                      <div class="route-node"><span class="mi">subway</span></div>
+                      <div class="route-line-copy"><small>Location</small><b>녹사평역 B1층 엘리베이터(E/V) 주변</b><p>공개 위치 정보 기준으로 편의점 7-ELEVEN 주변에 물품보관함이 있습니다.</p></div>
+                    </div>
+                    <div class="route-line-step" style="--line-color:#7b634f;--soft-color:#efe4d6">
+                      <div class="route-node"><span class="mi">luggage</span></div>
+                      <div class="route-line-copy"><small>Locker</small><b>소형 15 · 중형 2 · 대형 4</b><p>공개 데이터 기준 수량입니다. 실제 잔여함은 현장 또는 앱에서 다시 확인하세요.</p></div>
+                    </div>
+                    <div class="route-line-step" style="--line-color:#2b2118;--soft-color:#eee6dc">
+                      <div class="route-node"><span class="mi">app_shortcut</span></div>
+                      <div class="route-line-copy"><small>App</small><b>T locker 또타라커 이용 권장</b><p>앱에서 주변 물품보관함을 검색하고, 역사별 사용 가능 여부를 확인한 뒤 예약·결제할 수 있습니다.</p></div>
+                    </div>
+                  </div>
+                </div>
+                <div class="contact-actions">
+                  <a class="hotel-btn primary" href="https://play.google.com/store/apps/details?id=io.mobinity.locker&hl=ko" target="_blank" rel="noopener"><span class="mi">android</span>Google Play</a>
+                  <a class="hotel-btn" href="https://apps.apple.com/us/app/t-locker-%EB%98%90%ED%83%80%EB%9D%BC%EC%BB%A4-%EC%A7%80%ED%95%98%EC%B2%A0-%EB%AC%BC%ED%92%88-%EB%B3%B4%EA%B4%80-%EC%A0%84%EB%8B%AC%ED%95%A8/id1503291383" target="_blank" rel="noopener"><span class="mi">phone_iphone</span>App Store</a>
+                </div>
+                </div>
+              </details>
               <div class="route-infographic compact" aria-label="체크인 타임라인">
                 <div class="route-infographic-head">
                   <small>Arrival Timeline</small>
@@ -695,40 +735,6 @@ body *:not(.mi){font-family:var(--font-main)!important;letter-spacing:0!importan
             </div>
           </article>
 
-          <details class="checkin-card checkin-accordion">
-            <summary class="airport-summary">
-              <span class="airport-icon"><span class="mi">luggage</span></span>
-              <span class="airport-copy"><small>Luggage Storage</small><b>녹사평역 코인락커 안내</b><span>짐 보관 위치와 또타라커 앱 바로가기</span></span>
-              <span class="airport-chevron mi">expand_more</span>
-            </summary>
-            <div class="airport-card-body">
-            <div class="route-infographic compact" aria-label="녹사평역 물품보관함 이용 안내">
-              <div class="route-infographic-head">
-                <small>Luggage Storage</small>
-                <strong>녹사평역 B1층 엘리베이터(E/V) 주변</strong>
-                <span>체크인 전 도착했거나 체크아웃 후 짐을 잠시 맡겨야 할 때 이용하기 좋습니다.</span>
-              </div>
-              <div class="route-line-map">
-                <div class="route-line-step" style="--line-color:#9b6a33;--soft-color:#f2e6d8">
-                  <div class="route-node"><span class="mi">subway</span></div>
-                  <div class="route-line-copy"><small>Location</small><b>녹사평역 B1층 엘리베이터(E/V) 주변</b><p>공개 위치 정보 기준으로 편의점 7-ELEVEN 주변에 물품보관함이 있습니다.</p></div>
-                </div>
-                <div class="route-line-step" style="--line-color:#7b634f;--soft-color:#efe4d6">
-                  <div class="route-node"><span class="mi">luggage</span></div>
-                  <div class="route-line-copy"><small>Locker</small><b>소형 15 · 중형 2 · 대형 4</b><p>공개 데이터 기준 수량입니다. 실제 잔여함은 현장 또는 앱에서 다시 확인하세요.</p></div>
-                </div>
-                <div class="route-line-step" style="--line-color:#2b2118;--soft-color:#eee6dc">
-                  <div class="route-node"><span class="mi">app_shortcut</span></div>
-                  <div class="route-line-copy"><small>App</small><b>T locker 또타라커 이용 권장</b><p>앱에서 주변 물품보관함을 검색하고, 역사별 사용 가능 여부를 확인한 뒤 예약·결제할 수 있습니다.</p></div>
-                </div>
-              </div>
-            </div>
-            <div class="contact-actions">
-              <a class="hotel-btn primary" href="https://play.google.com/store/apps/details?id=io.mobinity.locker&hl=ko" target="_blank" rel="noopener"><span class="mi">android</span>Google Play</a>
-              <a class="hotel-btn" href="https://apps.apple.com/us/app/t-locker-%EB%98%90%ED%83%80%EB%9D%BC%EC%BB%A4-%EC%A7%80%ED%95%98%EC%B2%A0-%EB%AC%BC%ED%92%88-%EB%B3%B4%EA%B4%80-%EC%A0%84%EB%8B%AC%ED%95%A8/id1503291383" target="_blank" rel="noopener"><span class="mi">phone_iphone</span>App Store</a>
-            </div>
-            </div>
-          </details>
         </div>
       </section>
 
