@@ -95,7 +95,7 @@ body:not(.is-home):not(.is-gallery):not(.is-checkin):not(.is-wifi):not(.is-trans
 .hotel-btn .mi{font-size:20px}
 .hotel-btn.primary{border-color:#fff;background:#fff;color:#241d17;box-shadow:0 10px 30px rgba(0,0,0,.16)}
 .hotel-btn.ghost{color:#fff}
-.hotel-btn.compact{width:auto;min-height:42px;padding:0 18px;font-size:13px}.hero-lang-toggle{width:66px;height:66px;padding:0;border-radius:50%;justify-content:center;position:relative;background:linear-gradient(145deg,rgba(255,255,255,.18),rgba(255,255,255,.08));border-color:rgba(255,255,255,.5);box-shadow:0 18px 34px rgba(0,0,0,.18),inset 0 1px 0 rgba(255,255,255,.45);backdrop-filter:blur(14px)}.hero-lang-toggle:before{content:"";position:absolute;inset:7px;border-radius:50%;border:1px solid rgba(255,255,255,.28);pointer-events:none}.hero-lang-toggle .mi{font-size:24px}.hero-lang-toggle span:last-child{position:absolute;right:6px;bottom:6px;width:22px;height:22px;border-radius:50%;display:grid;place-items:center;background:var(--ink);color:#fff;font-size:10px;font-weight:900;line-height:1;box-shadow:0 6px 12px rgba(0,0,0,.16)}
+.hotel-btn.compact{width:auto;min-height:42px;padding:0 18px;font-size:13px}.hero-lang-toggle{width:72px;height:72px;padding:0;border-radius:18px;justify-content:center;position:relative;background:linear-gradient(145deg,rgba(255,255,255,.2),rgba(255,255,255,.1));border-color:rgba(255,255,255,.58);box-shadow:0 18px 34px rgba(0,0,0,.18),inset 0 1px 0 rgba(255,255,255,.45);backdrop-filter:blur(14px)}.hero-lang-toggle:before{content:"";position:absolute;inset:8px;border-radius:14px;border:1px solid rgba(255,255,255,.24);pointer-events:none}.hero-lang-toggle .mi{font-size:26px}.hero-lang-toggle span:last-child{position:absolute;right:7px;bottom:7px;width:22px;height:22px;border-radius:999px;display:grid;place-items:center;background:var(--ink);color:#fff;font-size:10px;font-weight:900;line-height:1;box-shadow:0 6px 12px rgba(0,0,0,.16)}
 .scroll-cue{margin-top:36px;border:0;background:transparent;color:#fff;display:inline-grid;gap:2px;padding:0;font-size:11px;font-weight:700;line-height:1.2;cursor:pointer}
 .scroll-cue .mi{font-size:22px}
 .hotel-section{padding:36px 31px 0}
@@ -1434,8 +1434,46 @@ body *:not(.mi){font-family:var(--font-main)!important;letter-spacing:0!importan
         chat:{title:'Guide Assistant',sub:'Answers based on the guide',close:'Close',hello:'Hello. I am the Extay Mansion Haebangchon guide assistant. Ask me about Wi-Fi, check-in/out, location, parking, house rules, TV/OTT, hot water, laundry, or trash disposal.',note:'For your personal door code or urgent issues, please check Airbnb/host messages.',placeholder:'Type your question',typing:'Answering...'}
       }
     });
-    uiText.zh=uiText.ko;
-    uiText.ja=uiText.ko;
+    uiText.zh={
+      docTitle:'EXTAY 海放村民宿移动指南',docDesc:'EXTAY 海放村住宿指南移动版',
+      headerTitle:'EXTAY',menuAria:'菜单',guideAria:'打开指南书',chatAria:'指南助手',chatFabAria:'打开指南助手',langAria:'切换语言',langButton:'中',
+      search:{button:'搜索',openAria:'打开搜索',closeAria:'关闭搜索',title:'搜索',desc:'输入需要的信息后可直接跳转到相关指南。',placeholder:'例如：Wi‑Fi、入住、美食',empty:'没有搜索结果。请换一个关键词。'},
+      heroSub:'首尔温馨住处。',copied:'已复制',
+      bottom:['首页','Wi‑Fi','使用说明','洗衣','垃圾'],
+      quick:['Wi‑Fi','TV · OTT','热水 · 供暖','洗衣'],
+      home:{infoTitle:'基本信息',labels:['住宿','地址','入住 · 退房','Wi‑Fi','TV · OTT','停车'],values:['EXTAY 海放村','首尔特别市龙山区新兴路59号，2楼','16:00 · 11:00','U+Net46F0_5G','NSM OTT / HDMI 输入','楼内无法停车 · 请使用附近收费公共停车场'],view:'查看'},
+      wifi:{title:'Wi‑Fi',sub:'这是住宿的 Wi‑Fi ID 和密码。请按原样输入大小写和特殊符号。',labels:['ID','Password','连接提示'],values:['U+Net46F0_5G','8H3#22E97B','连接失败时，请先关闭再打开 Wi‑Fi，然后重新选择网络。'],copy:'复制'},
+      homeGuide:{title:'入住 · 位置指南',items:['这是非接触式自助入住，个人门锁密码会在入住当天中午左右通知。','从绿色平和站2号出口步行约15分钟，搭乘村巴约10分钟。','从 7-Eleven 和 Vegetus 餐厅之间的小巷进入，走到2楼。','退房时请确认洗碗、垃圾分类、空调电源、窗户和玄关门。']},
+      rules:{title:'停车 · 住宿规则',items:['楼内不提供停车位。请使用 모두의주차장 App 或附近收费公共停车场。','预约人数外访客、携带宠物、商业拍摄均不允许。','房间、卫生间、阳台、玄关和楼梯均为禁烟区域。','室内仅可进行简单烹饪，请避免气味或烟雾较重的食物。21点后为安静时间。']},
+      appliances:{title:'TV · Heating · Rooftop',sub:'',frequent:'常用',
+        tv:{title:'TV · OTT 遥控器',small:'',steps:['需要选择外部输入时请使用电视遥控器。','在 OTT 遥控器上选择想要的 OTT 后按确认键。','弹出窗口时请选择立即运行。若无法使用，请长按电源键3秒以上或断开机顶盒电源10秒后再连接。']},
+        boiler:{title:'热水 · 供暖',small:'',steps:['供暖调节器在客厅立式空调后方。','使用热水时请按热水按钮。','屏幕显示 60 度时表示热水正常工作。离开时请按外出按钮或电源按钮。'],captions:['热水调节器','房屋平面图']},
+        induction:{title:'公共卫生间 · 屋顶',small:'',steps:['同行人数较多、卫生间不够用时，可使用 1 层餐厅后方的公共卫生间。','密码是 *7003*。','屋顶可以看到南山塔景观。深夜请注意噪音。']}
+      },
+      laundry:{title:'洗衣指南',sub:'请查看洗衣机和烘干机的使用方法。',washerTitle:'洗衣机',dryerTitle:'烘干机',washerSteps:['洗衣机请先按电源按钮，再选择需要的程序。','选择程序后按开始/暂停按钮开始洗衣。','洗衣前请确认口袋里的物品。','使用后请稍微打开门，让内部晾干。','夜间请注意振动和噪音。'],dryerSteps:['按下烘干机电源按钮后，选择想要的程序。','选择程序后按开始/暂停按钮开始烘干。','烘干前请确认口袋里的物品。','夜间请注意振动和噪音。'],captions:['洗衣机','烘干机']},
+      trash:{title:'垃圾投放',sub:'厨余、回收和一般垃圾的位置不同。长住时请依照说明投放，以免产生异味。',basis:'分类标准',types:'2种',items:['一般垃圾和回收请一起投入阳台上的垃圾桶。','厨余请投入厨房水槽上方的厨余桶。','长住期间若厨余开始有异味，请投放到1层入口的橙色桶。'],captions:['当前垃圾桶'],cards:[]},
+      chat:{title:'指南助手',sub:'根据指南内容回答',close:'关闭',hello:'您好。这里是 EXTAY 海放村民宿指南助手。您可以询问 Wi‑Fi、入住/退房、位置、停车、住宿规则、TV·OTT、热水·供暖、洗衣、垃圾投放等内容。',note:'个人门锁密码和紧急情况请查看 Airbnb/房东消息。',placeholder:'请输入问题',typing:'回答中...'}
+    };
+    uiText.ja={
+      docTitle:'EXTAY 海放村モバイルガイド',docDesc:'EXTAY 海放村 宿泊案内モバイル版',
+      headerTitle:'EXTAY',menuAria:'メニュー',guideAria:'ガイドブックを開く',chatAria:'ガイドアシスタント',chatFabAria:'ガイドアシスタントを開く',langAria:'言語を切り替え',langButton:'日',
+      search:{button:'検索',openAria:'検索を開く',closeAria:'検索を閉じる',title:'検索',desc:'必要な情報を入力すると関連ガイドへすぐ移動できます。',placeholder:'例: Wi‑Fi、チェックイン、レストラン',empty:'検索結果がありません。別のキーワードを試してください。'},
+      heroSub:'ソウルのくつろぎの宿。',copied:'コピーしました',
+      bottom:['ホーム','Wi‑Fi','案内','ランドリー','ゴミ'],
+      quick:['Wi‑Fi','TV · OTT','給湯 · 暖房','ランドリー'],
+      home:{infoTitle:'基本情報',labels:['宿泊先','住所','チェックイン · チェックアウト','Wi‑Fi','TV · OTT','駐車'],values:['EXTAY 海放村','ソウル特別市龍山区新興路59、2階','16:00 · 11:00','U+Net46F0_5G','NSM OTT / HDMI 入力','建物内駐車不可 · 近隣の有料公共駐車場をご利用ください'],view:'見る'},
+      wifi:{title:'Wi‑Fi',sub:'宿泊先の Wi‑Fi ID とパスワードです。大文字・小文字・記号をそのまま入力してください。',labels:['ID','Password','接続のヒント'],values:['U+Net46F0_5G','8H3#22E97B','接続できない場合は、Wi‑Fi を一度オフにしてから再度選択してください。'],copy:'コピー'},
+      homeGuide:{title:'チェックイン · 位置案内',items:['非対面のセルフチェックインです。個人用ドアコードはチェックイン当日の昼頃に案内されます。','緑平和駅2番出口から徒歩約15分、村バスで約10分です。','セブンイレブンと Vegetus レストランの間の路地から入り、2階へ上がってください。','チェックアウト時は食器洗い、ゴミ分別、エアコン電源、窓と玄関ドアの確認をお願いします。']},
+      rules:{title:'駐車 · 宿泊ルール',items:['建物内に駐車場はありません。Modu Parking アプリまたは近隣の有料公共駐車場をご利用ください。','予約人数外の入室、ペット同伴、商業撮影は禁止です。','部屋、トイレ、ベランダ、玄関、階段はすべて禁煙です。','室内での調理は簡単なものに限り、煙やにおいの強い料理はご遠慮ください。21時以降は静音時間です。']},
+      appliances:{title:'TV · Heating · Rooftop',sub:'',frequent:'よく使うもの',
+        tv:{title:'TV · OTT リモコン',small:'',steps:['外部入力の選択が必要なときにテレビリモコンを使ってください。','OTT リモコンで見たい OTT を選び、確認ボタンを押してください。','ポップアップが出たらすぐに実行を選んでください。動かない場合は電源ボタンを3秒以上押すか、セットトップの電源を10秒外して再接続してください。']},
+        boiler:{title:'給湯 · 暖房',small:'',steps:['暖房調節器はリビングのスタンドエアコンの後ろにあります。','給湯を使うときは給湯ボタンを押してください。','画面に60度と表示されれば給湯は正常です。外出時は外出ボタンまたは電源ボタンを押してください。'],captions:['給湯調節器','間取り図']},
+        induction:{title:'共用トイレ · 屋上',small:'',steps:['人数が多くてトイレが足りない場合は、1階レストラン奥の共用トイレをご利用いただけます。','パスワードは *7003* です。','屋上からは南山タワーの景色が見えます。夜遅くは騒音にご注意ください。']}
+      },
+      laundry:{title:'ランドリー案内',sub:'洗濯機と乾燥機の使い方をご確認ください。',washerTitle:'洗濯機',dryerTitle:'乾燥機',washerSteps:['洗濯機は電源ボタンを押してから、使いたいコースを選んでください。','コースを選んだら開始/一時停止ボタンを押して洗濯を始めてください。','洗濯前にポケットの中身をご確認ください。','使用後はドアを少し開けて内部を乾かしてください。','夜間は振動と騒音にご注意ください。'],dryerSteps:['乾燥機の電源ボタンを押してから、使いたいコースを選んでください。','コースを選んだら開始/一時停止ボタンを押して乾燥を始めてください。','乾燥前にポケットの中身をご確認ください。','夜間は振動と騒音にご注意ください。'],captions:['洗濯機','乾燥機']},
+      trash:{title:'ゴミ出し',sub:'生ゴミ、リサイクル、一般ゴミの場所は異なります。長期滞在ではにおいが出ないよう案内に従ってください。',basis:'分別基準',types:'2種類',items:['一般ゴミとリサイクルはベランダにあるゴミ箱へまとめて入れてください。','生ゴミはキッチンシンク上の生ゴミ箱に捨ててください。','長期滞在中に生ゴミのにおいが出たら、1階入口のオレンジ色の箱をご利用ください。'],captions:['現在のゴミ箱'],cards:[]},
+      chat:{title:'ガイドアシスタント',sub:'ガイド内容に基づいて回答します',close:'閉じる',hello:'こんにちは。EXTAY 海放村民宿のガイドアシスタントです。Wi‑Fi、チェックイン/チェックアウト、場所、駐車、宿泊ルール、TV·OTT、給湯·暖房、ランドリー、ゴミ出しについてお尋ねください。',note:'個人用ドアコードや緊急時は Airbnb / ホストのメッセージをご確認ください。',placeholder:'質問を入力してください',typing:'回答中...'}
+    };
     const q=s=>document.querySelector(s), qa=s=>[...document.querySelectorAll(s)];
     const reduceMotion=window.matchMedia?.('(prefers-reduced-motion: reduce)')?.matches||false;
     let revealObserver=null,pageTransitionTimer=0,parallaxTick=false;
@@ -1603,9 +1641,13 @@ body *:not(.mi){font-family:var(--font-main)!important;letter-spacing:0!importan
     window.addEventListener('popstate',e=>{const state=e.state||{},name=state.screen&&routeExists(state.screen)?state.screen:routeFromHash();show(name,state.openDevice||'',{history:'none',smooth:false})});
     const smartModes={};
     const extaySmartModes={trash:{bg:'assets/extay/smart-card/trash-evening.png',ko:{badge:'저녁 정리',title:'쓰레기 배출 확인',copy:'음식물, 재활용, 일반 쓰레기 위치가 다릅니다. 장기 숙박 시 냄새가 나지 않도록 먼저 확인해 주세요.',actions:[['trash','쓰레기 보기','delete'],['appliances','사용법 보기','robot_2']],suggestions:['쓰레기 어디에 버려?','음식물 쓰레기는 어디야?','재활용은 어디야?','세탁기 어떻게 써?']},en:{badge:'Evening cleanup',title:'Check Trash Disposal',copy:'Food waste, recycling, and general trash have different locations. Check the guide first to prevent odor during longer stays.',actions:[['trash','Trash Guide','delete'],['appliances','How to Use','robot_2']],suggestions:['Where do I throw away trash?','Where does food waste go?','Where is recycling?','How do I use the washer?']}},ready:{bg:'assets/extay/smart-card/ready-morning.jpg',ko:{badge:'입실 준비',title:'먼저 확인하면 좋은 정보',copy:'와이파이 ID와 비밀번호, 체크인 시간, TV·OTT 사용법, 온수 버튼을 먼저 확인해 주세요.',actions:[['wifi','와이파이 확인','wifi_password'],['appliances','사용법 보기','robot_2']],suggestions:['와이파이 비밀번호 알려줘','체크인은 몇 시야?','TV OTT 어떻게 봐?','온수 어떻게 켜?']},en:{badge:'Check-in ready',title:'Good Things to Check First',copy:'Check the Wi-Fi ID/password, check-in time, TV/OTT steps, and hot-water button first.',actions:[['wifi','Wi-Fi Info','wifi_password'],['appliances','How to Use','robot_2']],suggestions:['What is the Wi-Fi password?','What time is check-in?','How do I use TV OTT?','How do I turn on hot water?']}},stay:{bg:'assets/extay/smart-card/stay-day.png',ko:{badge:'숙박 중 안내',title:'자주 찾는 정보',copy:'TV·OTT, 온수·난방, 세탁기·건조기, 옥상 정보를 바로 확인할 수 있습니다.',actions:[['appliances','사용법 보기','robot_2'],['laundry','세탁 안내','local_laundry_service']],suggestions:['OTT 어떻게 봐?','온수가 안 나와','세탁기 어떻게 써?','옥상 이용 가능해?']},en:{badge:'During your stay',title:'Frequently Needed Info',copy:'Quickly check TV/OTT, hot water and heating, washer/dryer, and rooftop information.',actions:[['appliances','How to Use','robot_2'],['laundry','Laundry','local_laundry_service']],suggestions:['How do I use OTT?','Hot water is not working','How do I use the washer?','Can I use the rooftop?']}},night:{bg:'assets/extay/smart-card/night.jpg',ko:{badge:'야간 안내',title:'밤 시간 이용 안내',copy:'21시 이후에는 매너타임입니다. 세탁기·건조기 진동, 옥상 소음, 흡연 구역에 유의해 주세요.',actions:[['appliances','사용법 보기','thermostat'],['trash','쓰레기 안내','delete']],suggestions:['온수 어떻게 켜?','공용 화장실 비밀번호 알려줘','OTT가 안 켜져','주차는 어디에 해?']},en:{badge:'Night guide',title:'Night-Time Guide',copy:'Quiet hours start after 21:00. Please be mindful of washer/dryer vibration, rooftop noise, and smoking rules.',actions:[['appliances','How to Use','thermostat'],['trash','Trash Guide','delete']],suggestions:['How do I turn on hot water?','What is the shared restroom password?','OTT is not working','Where can I park?']}}};
+    Object.assign(extaySmartModes.trash,{zh:{badge:'夜间整理',title:'确认垃圾投放',copy:'厨余、回收和一般垃圾的位置不同。长住时请先确认，以免产生异味。',actions:[['trash','查看垃圾','delete'],['appliances','查看说明','robot_2']],suggestions:['垃圾丢哪里？','厨余在哪里？','回收在哪里？','洗衣机怎么用？']},ja:{badge:'夜の片付け',title:'ゴミ出し確認',copy:'生ゴミ、リサイクル、一般ゴミの場所が異なります。長期滞在ではまずご確認ください。',actions:[['trash','ゴミ案内','delete'],['appliances','使い方を見る','robot_2']],suggestions:['ゴミはどこに捨てる？','生ゴミはどこ？','リサイクルはどこ？','洗濯機の使い方は？']}});
+    Object.assign(extaySmartModes.ready,{zh:{badge:'入住准备',title:'先确认这些信息',copy:'请先确认 Wi‑Fi ID 和密码、入住时间、TV·OTT 使用方法以及热水按钮。',actions:[['wifi','确认 Wi‑Fi','wifi_password'],['appliances','查看说明','robot_2']],suggestions:['告诉我 Wi‑Fi 密码','几点入住？','TV OTT 怎么看？','热水怎么开？']},ja:{badge:'入室準備',title:'先に確認するとよい情報',copy:'Wi‑Fi のIDとパスワード、チェックイン時間、TV・OTTの使い方、給湯ボタンを先に確認してください。',actions:[['wifi','Wi‑Fi確認','wifi_password'],['appliances','使い方を見る','robot_2']],suggestions:['Wi‑Fiのパスワードは？','チェックインは何時？','TV OTTの見方は？','給湯のつけ方は？']}});
+    Object.assign(extaySmartModes.stay,{zh:{badge:'入住中指南',title:'常用信息',copy:'可以立即查看 TV·OTT、热水·供暖、洗衣机·烘干机和屋顶信息。',actions:[['appliances','查看说明','robot_2'],['laundry','洗衣指南','local_laundry_service']],suggestions:['OTT 怎么看？','热水不出来','洗衣机怎么用？','屋顶可以去吗？']},ja:{badge:'滞在中の案内',title:'よく使う情報',copy:'TV・OTT、給湯・暖房、洗濯機・乾燥機、屋上の情報をすぐ確認できます。',actions:[['appliances','使い方を見る','robot_2'],['laundry','ランドリー','local_laundry_service']],suggestions:['OTTの見方は？','お湯が出ない','洗濯機の使い方は？','屋上は使える？']}});
+    Object.assign(extaySmartModes.night,{zh:{badge:'夜间指南',title:'夜间使用说明',copy:'21 点后为安静时间。请注意洗衣机·烘干机振动、屋顶噪音和吸烟区域。',actions:[['appliances','查看说明','thermostat'],['trash','查看垃圾','delete']],suggestions:['热水怎么开？','公共卫生间密码是多少？','OTT 没反应','哪里可以停车？']},ja:{badge:'夜間案内',title:'夜間のご案内',copy:'21時以降は静音時間です。洗濯機・乾燥機の振動、屋上の騒音、喫煙エリアにご注意ください。',actions:[['appliances','使い方を見る','thermostat'],['trash','ゴミ案内','delete']],suggestions:['給湯のつけ方は？','共用トイレのパスワードは？','OTTがつかない','どこに駐車する？']}});
     function pickSmartMode(){const h=new Date().getHours(); if(h>=6&&h<12)return 'ready'; if(h>=12&&h<17)return 'stay'; if(h>=17&&h<22)return 'trash'; return 'night'}
     function renderSmartGuide(){const key=pickSmartMode(),m=extaySmartModes[key],copyText=m[currentLang]||m.ko; const pad=n=>String(n).padStart(2,'0'); const now=new Date(); const card=document.getElementById('smartCard'); if(card&&m.bg)card.style.setProperty('--smart-bg',`url('${m.bg}')`); const clk=document.getElementById('smartClock'); if(clk) clk.textContent=`${pad(now.getHours())}:${pad(now.getMinutes())}`; const badge=document.getElementById('smartBadge'), title=document.getElementById('smartTitle'), copy=document.getElementById('smartCopy'), actions=document.getElementById('smartActions'); if(!badge||!title||!copy||!actions)return; badge.textContent=copyText.badge; title.textContent=copyText.title; copy.textContent=copyText.copy; actions.innerHTML=copyText.actions.map((a,i)=>`<button class="btn ${i===0?'primary':''}" data-go="${a[0]}"><span class="mi">${a[2]}</span>${a[1]}</button>`).join(''); document.querySelectorAll('.suggestion').forEach((b,i)=>{if(copyText.suggestions[i])b.textContent=copyText.suggestions[i]});}
-    document.getElementById('langToggle')?.addEventListener('click',()=>{currentLang=currentLang==='ko'?'en':'ko';localStorage.setItem(LANG_KEY,currentLang);applyStaticLanguage();renderSmartGuide();if(searchModal?.classList.contains('open'))renderSearchResults(searchInput?.value||'');if(document.body.classList.contains('is-guidebook'))loadGuidebook(currentLang==='en'?'en':'ko',true)});
+    document.getElementById('langToggle')?.addEventListener('click',cycleLanguage);
     applyStaticLanguage(); renderSmartGuide(); setInterval(renderSmartGuide,60000);
     const guideAnswers={ko:[],en:[]};
     const extayGuideAnswers={
@@ -1630,7 +1672,6 @@ body *:not(.mi){font-family:var(--font-main)!important;letter-spacing:0!importan
     document.querySelectorAll('[data-open-chat]').forEach(el=>el.addEventListener('click',()=>{openChat();const question=el.dataset.question;if(question){setTimeout(()=>{chatInput.value=question;chatForm.requestSubmit()},180)}}));
     document.querySelectorAll('[data-open-contact]').forEach(el=>el.addEventListener('click',()=>openContactModal(el.dataset.openContact)));
     document.getElementById('menuTop')?.addEventListener('click',openMenu);
-    document.getElementById('langToggle')?.addEventListener('click',cycleLanguage);
     document.getElementById('heroLangToggle')?.addEventListener('click',cycleLanguage);
     document.getElementById('closeMenu')?.addEventListener('click',closeMenuPanel);
     menuBackdropEl?.addEventListener('click',closeMenuPanel);
