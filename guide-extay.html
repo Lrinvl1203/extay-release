@@ -407,6 +407,7 @@ body.guidebook-fullscreen-open{overflow:hidden;touch-action:none}
 .guide-detail-screen .photo-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:0 20px 20px}
 .guide-detail-screen .photo-grid figure{border-radius:16px;border:1px solid rgba(216,198,180,.66);background:#efe4d6;box-shadow:0 8px 20px rgba(58,43,30,.07)}
 .guide-detail-screen .photo-grid img{height:132px;object-fit:cover}
+.guide-detail-screen .photo-grid img,.guide-detail-screen .figure img,.restaurant-photo img,#galleryMain{cursor:zoom-in}
 .guide-detail-screen .photo-grid .image-zoom{display:block;width:100%;padding:0;border:0;background:transparent;cursor:zoom-in}
 .guide-detail-screen .photo-grid .image-zoom img{display:block;width:100%}
 .guide-detail-screen .photo-grid.single{grid-template-columns:1fr}
@@ -663,7 +664,7 @@ body *:not(.mi){font-family:var(--font-main)!important;letter-spacing:0!importan
             <div class="checkin-summary">
               <div class="checkin-summary-hero">
                 <span class="mi">door_open</span>
-                <div><small>Self Check-in</small><b>16:00부터 입실 가능</b><span>개인 키번호는 체크인 당일 12시쯤 호스트 메시지로 안내됩니다.</span></div>
+                <div><small>Self Check-in</small><b>16:00부터 입실 가능</b><span>개인 키 번호는 체크인 당일 12시쯤 호스트 메시지로 안내됩니다.</span></div>
               </div>
               <div class="checkin-token-grid">
                 <div class="checkin-token"><span class="mi">pin_drop</span><div><small>Address</small><b>서울시 용산구 신흥로 59, 2층</b></div></div>
@@ -711,8 +712,8 @@ body *:not(.mi){font-family:var(--font-main)!important;letter-spacing:0!importan
               <div class="route-infographic compact checkin-inline-route" aria-label="체크인 타임라인">
                 <div class="route-infographic-head">
                   <small>Arrival Timeline</small>
-                  <strong>전날 안내 → 키번호 → 입실 → 퇴실</strong>
-                  <span>체크인 전날 위치와 이용방법을 확인하고, 당일 안내받은 키번호로 입실합니다.</span>
+                  <strong>전날 안내 → 키 번호 → 입실 → 퇴실</strong>
+                  <span>체크인 전날 위치와 이용 방법을 확인하고, 당일 안내받은 키 번호로 입실합니다.</span>
                 </div>
                 <div class="route-line-map">
                   <div class="route-line-step" style="--line-color:#7b634f;--soft-color:#efe4d6">
@@ -721,7 +722,7 @@ body *:not(.mi){font-family:var(--font-main)!important;letter-spacing:0!importan
                   </div>
                   <div class="route-line-step" style="--line-color:#7b634f;--soft-color:#efe4d6">
                     <div class="route-node"><span class="mi">password</span></div>
-                    <div class="route-line-copy"><small>12:00</small><b>개인 키번호 수신</b><p>체크인 당일 12시쯤 호스트 메시지로 안내됩니다.</p></div>
+                    <div class="route-line-copy"><small>12:00</small><b>개인 키 번호 수신</b><p>체크인 당일 12시쯤 호스트 메시지로 안내됩니다.</p></div>
                   </div>
                   <div class="route-line-step" style="--line-color:#2b2118;--soft-color:#eee6dc">
                     <div class="route-node"><span class="mi">door_open</span></div>
@@ -742,7 +743,7 @@ body *:not(.mi){font-family:var(--font-main)!important;letter-spacing:0!importan
               <div class="checkin-rule"><span class="mi">videocam</span><div><b>CCTV 위치</b><span>안전과 보안을 위해 CCTV는 현관 입구에만 설치되어 있습니다.</span></div></div>
               <div class="checkin-rule"><span class="mi">do_not_disturb_on</span><div><b>낯선 방문자</b><span>객실 안에 머무는 중 모르는 사람이 벨을 누르면 응답하지 마세요.</span></div></div>
               <div class="checkin-rule"><span class="mi">support_agent</span><div><b>문제 발생 시</b><span>오시는 길이나 체크인 중 문제가 생기면 바로 연락 주세요.</span></div></div>
-              <div class="checkin-rule"><span class="mi">lock</span><div><b>키번호 보안</b><span>키 번호는 에어비앤비 메시지를 통해 전송됩니다.</span></div></div>
+              <div class="checkin-rule"><span class="mi">lock</span><div><b>키 번호 보안</b><span>키 번호는 에어비앤비 메시지를 통해 전송됩니다.</span></div></div>
             </div>
           </details>
 
@@ -750,11 +751,11 @@ body *:not(.mi){font-family:var(--font-main)!important;letter-spacing:0!importan
             <summary class="checkin-section-summary"><span class="checkin-section-icon"><span class="mi">verified_user</span></span><h3>꼭 지켜주세요</h3><span class="accordion-chevron mi">expand_more</span></summary>
             <div class="checkin-rule-grid">
               <div class="checkin-rule"><span class="mi">smoke_free</span><div><b>실내 금연</b><span>객실 내부, 베란다, 현관 입구, 계단은 모두 금연 구역입니다.</span></div></div>
-              <div class="checkin-rule"><span class="mi">outdoor_grill</span><div><b>흡연 장소</b><span>흡연은 1층 지정 장소에서만 가능하며 담배꽁초는 지정된 통에 버려주세요.</span></div></div>
+              <div class="checkin-rule"><span class="mi">outdoor_grill</span><div><b>흡연 장소</b><span>흡연은 1층 지정 장소에서만 가능하며 담배꽁초는 지정된 통에 버려 주세요.</span></div></div>
               <div class="checkin-rule"><span class="mi">pets</span><div><b>반려동물 불가</b><span>반려동물 동반과 기준 인원 외 방문자 입실은 불가합니다.</span></div></div>
-              <div class="checkin-rule"><span class="mi">volume_down</span><div><b>매너타임</b><span>저녁 9시 이후에는 늦은 시간 소리를 낮춰주세요.</span></div></div>
+              <div class="checkin-rule"><span class="mi">volume_down</span><div><b>매너타임</b><span>저녁 9시 이후에는 늦은 시간 소리를 낮춰 주세요.</span></div></div>
               <div class="checkin-rule"><span class="mi">restaurant_menu</span><div><b>간단 취사</b><span>냄새가 강한 음식은 피하고 실내에서는 간단한 취사만 부탁드립니다.</span></div></div>
-              <div class="checkin-rule"><span class="mi">dry_cleaning</span><div><b>기본 비품</b><span>인원수에 맞춰 일회용 칫솔과 수건이 제공됩니다.</span></div></div>
+              <div class="checkin-rule"><span class="mi">dry_cleaning</span><div><b>기본 비품</b><span>인원 수에 맞춰 일회용 칫솔과 수건이 제공됩니다.</span></div></div>
             </div>
           </details>
 
@@ -1043,7 +1044,7 @@ body *:not(.mi){font-family:var(--font-main)!important;letter-spacing:0!importan
               <details class="faq-item" open>
                 <summary>체크인은 몇 시이고 도어락 번호는 어디서 확인하나요?</summary>
                 <div class="faq-answer">
-                  <p>체크인은 오후 4시부터입니다. 비대면 셀프 체크인이며 개인 키번호는 체크인 당일 12시쯤 Airbnb 또는 호스트 메시지로 안내됩니다. 현관 도어락 키패드를 살짝 터치한 뒤 안내받은 번호를 입력하고 마지막에 <b>*</b> 버튼을 누르세요.</p>
+                  <p>체크인은 오후 4시부터입니다. 비대면 셀프 체크인이며 개인 키 번호는 체크인 당일 12시쯤 Airbnb 또는 호스트 메시지로 안내됩니다. 현관 도어락 키패드를 살짝 터치한 뒤 안내받은 번호를 입력하고 마지막에 <b>*</b> 버튼을 누르세요.</p>
                   <div class="faq-actions"><button class="hotel-btn primary" type="button" data-go="checkin"><span class="mi">calendar_month</span>체크인/아웃 안내</button><button class="hotel-btn" type="button" data-go="guidebook"><span class="mi">menu_book</span>이용 안내</button></div>
                 </div>
               </details>
@@ -1057,14 +1058,14 @@ body *:not(.mi){font-family:var(--font-main)!important;letter-spacing:0!importan
               <details class="faq-item">
                 <summary>주차가 가능한가요?</summary>
                 <div class="faq-answer">
-                  <p>건물 주차는 불가합니다. 모두의주차장 앱에서 실시간 가능 여부를 확인하거나, 용산2가동 기계식 공용주차장, 용산2가 주민센터 공용주차장, 해방촌공영주차장 같은 주변 유료 공영주차장을 이용해 주세요. 주말 점심과 저녁 피크 시간에는 자리가 부족할 수 있습니다.</p>
+                  <p>건물 주차는 불가합니다. 모두의주차장 앱에서 실시간 가능 여부를 확인하거나, 용산2가동 기계식 공용주차장, 용산2가 주민센터 공용주차장, 해방촌 공영주차장 같은 주변 유료 공영주차장을 이용해 주세요. 주말 점심과 저녁 피크 시간에는 자리가 부족할 수 있습니다.</p>
                   <div class="faq-actions"><button class="hotel-btn primary" type="button" data-go="transport"><span class="mi">local_parking</span>주차 안내</button></div>
                 </div>
               </details>
               <details class="faq-item">
                 <summary>와이파이 ID와 비밀번호는 무엇인가요?</summary>
                 <div class="faq-answer">
-                  <p>Wi-Fi ID는 <b>U+Net46F0_5G</b>, 비밀번호는 <b>8H3#22E97B</b> 입니다. 대소문자와 특수문자를 그대로 입력해 주세요. 연결이 안 되면 Wi-Fi를 껐다 켠 뒤 네트워크를 다시 선택하세요.</p>
+                  <p>Wi-Fi ID는 <b>U+Net46F0_5G</b>, 비밀번호는 <b>8H3#22E97B</b>입니다. 대소문자와 특수문자를 그대로 입력해 주세요. 연결이 안 되면 Wi-Fi를 껐다 켠 뒤 네트워크를 다시 선택하세요.</p>
                   <div class="faq-actions"><button class="hotel-btn primary" type="button" data-go="wifi"><span class="mi">wifi</span>와이파이 보기</button></div>
                 </div>
               </details>
@@ -1076,15 +1077,11 @@ body *:not(.mi){font-family:var(--font-main)!important;letter-spacing:0!importan
             <div class="faq-list">
               <details class="faq-item">
                 <summary>TV나 OTT는 어떻게 보나요?</summary>
-                <div class="faq-answer"><p>TV 리모컨은 외부입력 선택이 필요할 때 사용하고, OTT 전용 리모컨에서 원하는 OTT 서비스를 선택한 뒤 확인 버튼을 누르세요. 화면에 팝업이 뜨면 바로 실행을 선택하면 됩니다. 작동이 안 되면 전원 버튼을 3초 이상 누르거나 셋탑 전원을 10초간 분리 후 재연결하세요.</p><div class="faq-actions"><button class="hotel-btn primary" type="button" data-go="appliances" data-open="tv"><span class="mi">tv</span>TV 안내</button></div></div>
+                <div class="faq-answer"><p>TV 리모컨은 외부 입력 선택이 필요할 때 사용하고, OTT 전용 리모컨에서 원하는 OTT 서비스를 선택한 뒤 확인 버튼을 누르세요. 화면에 팝업이 뜨면 바로 실행을 선택하면 됩니다. 작동이 안 되면 전원 버튼을 3초 이상 누르거나 셋톱 전원을 10초간 분리 후 재연결하세요.</p><div class="faq-actions"><button class="hotel-btn primary" type="button" data-go="appliances" data-open="tv"><span class="mi">tv</span>TV 안내</button></div></div>
               </details>
               <details class="faq-item">
                 <summary>온수나 난방은 어떻게 켜나요?</summary>
-                <div class="faq-answer"><p>거실 스탠드 에어컨 뒤쪽의 Rinnai 조절기를 확인하세요. 온수를 사용할 때는 온수 버튼을 누르고, 화면에 60도가 표시되면 정상 작동 중입니다. 외출 시에는 외출 버튼 또는 전원 버튼을 눌러주세요.</p><div class="faq-actions"><button class="hotel-btn primary" type="button" data-go="appliances" data-open="boiler"><span class="mi">thermostat</span>온수 안내</button></div></div>
-              </details>
-              <details class="faq-item">
-                <summary>수건, 휴지, 쓰레기 봉투 같은 여분 비품은 어디에 있나요?</summary>
-                <div class="faq-answer"><p>여분 비품은 비밀 보관함에서 확인할 수 있고 비밀번호는 <b>007</b>입니다. 만약 2번 방이 열리지 않으면 싱크대 인덕션 아래도 확인해 주세요. 기본 일회용 칫솔과 수건은 인원수에 맞춰 제공됩니다.</p></div>
+                <div class="faq-answer"><p>거실 스탠드 에어컨 뒤쪽의 Rinnai 조절기를 확인하세요. 온수를 사용할 때는 온수 버튼을 누르고, 화면에 60도가 표시되면 정상 작동 중입니다. 외출 시에는 외출 버튼 또는 전원 버튼을 눌러 주세요.</p><div class="faq-actions"><button class="hotel-btn primary" type="button" data-go="appliances" data-open="boiler"><span class="mi">thermostat</span>온수 안내</button></div></div>
               </details>
               <details class="faq-item">
                 <summary>세탁기와 건조기를 사용할 수 있나요?</summary>
@@ -1092,7 +1089,7 @@ body *:not(.mi){font-family:var(--font-main)!important;letter-spacing:0!importan
               </details>
               <details class="faq-item">
                 <summary>공용 화장실이나 옥상은 이용할 수 있나요?</summary>
-                <div class="faq-answer"><p>일행이 많아 화장실이 부족할 때는 1층 레스토랑 뒤편 공용 화장실을 이용할 수 있습니다. 비밀번호는 <b>*7003*</b> 입니다. 옥상에서는 남산타워 뷰를 볼 수 있지만 늦은 시간에는 소음에 유의해 주세요.</p><div class="faq-actions"><button class="hotel-btn primary" type="button" data-go="appliances" data-open="induction"><span class="mi">roofing</span>공용 공간</button></div></div>
+                <div class="faq-answer"><p>일행이 많아 화장실이 부족할 때는 1층 레스토랑 뒤편 공용 화장실을 이용할 수 있습니다. 비밀번호는 <b>*7003*</b>입니다. 옥상에서는 남산타워 뷰를 볼 수 있지만 늦은 시간에는 소음에 유의해 주세요.</p><div class="faq-actions"><button class="hotel-btn primary" type="button" data-go="appliances" data-open="induction"><span class="mi">roofing</span>공용 공간</button></div></div>
               </details>
               <details class="faq-item">
                 <summary>주변 맛집이나 배달 맛집은 어디서 보나요?</summary>
@@ -1110,7 +1107,7 @@ body *:not(.mi){font-family:var(--font-main)!important;letter-spacing:0!importan
               </details>
               <details class="faq-item">
                 <summary>쓰레기는 어떻게 분리해서 버리나요?</summary>
-                <div class="faq-answer"><ul><li>음식물 쓰레기는 부엌 싱크대 위 음식물 쓰레기통에 넣어 주세요.</li><li>일반 쓰레기 및 재활용 모두 베란다에 비치된 쓰레기통에 넣어주세요.</li><li>장기 숙박 중 음식물 냄새가 나면 1층 입구 주황색 통을 이용해 주세요.</li></ul><div class="faq-actions"><button class="hotel-btn primary" type="button" data-go="trash"><span class="mi">delete</span>쓰레기 안내</button></div></div>
+                <div class="faq-answer"><ul><li>음식물 쓰레기는 부엌 싱크대 위 음식물 쓰레기통에 넣어 주세요.</li><li>일반 쓰레기 및 재활용 모두 베란다에 비치된 쓰레기통에 넣어 주세요.</li><li>장기 숙박 중 음식물 냄새가 나면 1층 입구 주황색 통을 이용해 주세요.</li></ul><div class="faq-actions"><button class="hotel-btn primary" type="button" data-go="trash"><span class="mi">delete</span>쓰레기 안내</button></div></div>
               </details>
               <details class="faq-item">
                 <summary>흡연은 어디서 가능한가요?</summary>
@@ -1122,7 +1119,7 @@ body *:not(.mi){font-family:var(--font-main)!important;letter-spacing:0!importan
               </details>
               <details class="faq-item">
                 <summary>실내 취사는 어디까지 가능한가요?</summary>
-                <div class="faq-answer"><p>간단한 취사 정도만 가능합니다. 생선, 고기구이처럼 냄새나 연기가 많이 나는 음식은 실내 반입과 조리를 피해주세요.</p></div>
+                <div class="faq-answer"><p>간단한 취사 정도만 가능합니다. 생선, 고기구이처럼 냄새나 연기가 많이 나는 음식은 실내 반입과 조리를 피해 주세요.</p></div>
               </details>
               <details class="faq-item">
                 <summary>밤에는 어떤 점을 조심해야 하나요?</summary>
@@ -1136,7 +1133,7 @@ body *:not(.mi){font-family:var(--font-main)!important;letter-spacing:0!importan
             <div class="faq-list">
               <details class="faq-item">
                 <summary>체크인 중 문제가 생기면 어떻게 하나요?</summary>
-                <div class="faq-answer"><p>숙소 오시는 길이나 도어락 입력 중 문제가 생기면 바로 호스트에게 연락해 주세요. 개인 키번호와 긴급 상황은 이 페이지에 저장하지 않으며, Airbnb 또는 호스트 메시지를 기준으로 확인해야 합니다.</p></div>
+                <div class="faq-answer"><p>숙소 오시는 길이나 도어락 입력 중 문제가 생기면 바로 호스트에게 연락해 주세요. 개인 키 번호와 긴급 상황은 이 페이지에 저장하지 않으며, Airbnb 또는 호스트 메시지를 기준으로 확인해야 합니다.</p></div>
               </details>
               <details class="faq-item">
                 <summary>모르는 사람이 벨을 누르면 응답해야 하나요?</summary>
@@ -1263,7 +1260,7 @@ body *:not(.mi){font-family:var(--font-main)!important;letter-spacing:0!importan
           </article>
 
           <details class="wifi-card wifi-soft-card wifi-accordion">
-            <summary class="wifi-accordion-summary"><span class="wifi-accordion-icon"><span class="mi">wifi_off</span></span><h3>연결이 불안정 할 때</h3><span class="accordion-chevron mi">expand_more</span></summary>
+            <summary class="wifi-accordion-summary"><span class="wifi-accordion-icon"><span class="mi">wifi_off</span></span><h3>연결이 불안정할 때</h3><span class="accordion-chevron mi">expand_more</span></summary>
             <div class="wifi-accordion-body">
             <div class="wifi-visual-grid">
               <div class="wifi-visual-card"><span class="mi">wifi_off</span><div><strong>Wi-Fi 다시 켜기</strong><span>기기 Wi-Fi를 껐다가 다시 켠 뒤 네트워크를 재선택합니다.</span></div></div>
@@ -1282,17 +1279,17 @@ body *:not(.mi){font-family:var(--font-main)!important;letter-spacing:0!importan
       </section>
 
       <section class="screen guide-detail-screen" data-screen="appliances"><article class="guide-detail-hero appliances-hero"><p class="section-kicker">TV · Heating · Rooftop</p><h2 class="page-title">TV · Heating · Rooftop</h2></article>
-        <details class="device" data-device="tv"><summary><span class="circle"><span class="mi">tv</span></span><div><h3>TV · OTT 리모컨</h3></div><span class="mi">expand_more</span></summary><div class="device-body"><ol class="steps"><li>TV 리모컨은 외부입력 선택이 필요할 때 사용하세요.</li><li>OTT 전용 리모컨에서 원하는 OTT를 선택한 뒤 확인 버튼을 누르세요.</li><li>화면 팝업이 뜨면 바로 실행을 선택하세요. 작동이 안 되면 전원 버튼을 3초 이상 누르거나 셋탑 전원을 10초간 분리 후 재연결하세요.</li></ol><figure class="figure"><img src="assets/extay/crops/nsm-guide.png" alt="NSM OTT 사용법"></figure></div></details>
-        <details class="device" data-device="boiler"><summary><span class="circle"><span class="mi">thermostat</span></span><div><h3>온수 · 난방</h3></div><span class="mi">expand_more</span></summary><div class="device-body"><ol class="steps"><li>거실 스탠드 에어컨 뒤쪽의 난방 조절기를 확인하세요.</li><li>온수를 사용할 때는 온수 버튼을 눌러주세요.</li><li>화면에 60도가 표시되면 온수가 정상적으로 작동합니다. 외출 시에는 외출 버튼 또는 전원 버튼을 눌러주세요.</li></ol><div class="photo-grid"><figure><button class="image-zoom" type="button" data-fullscreen-image="assets/extay/crops/hot-water-guide.jpg" data-fullscreen-title="온수 조절기"><img src="assets/extay/crops/hot-water-guide.jpg" alt="온수 조절기 안내"></button><figcaption>온수 조절기</figcaption></figure><figure><button class="image-zoom" type="button" data-fullscreen-image="assets/extay/crops/floorplan.jpg" data-fullscreen-title="숙소 도면"><img src="assets/extay/crops/floorplan.jpg" alt="숙소 도면"></button><figcaption>숙소 도면</figcaption></figure></div></div></details>
-        <details class="device" data-device="induction"><summary><span class="circle"><span class="mi">roofing</span></span><div><h3>공용 화장실 · 옥상</h3></div><span class="mi">expand_more</span></summary><div class="device-body"><ol class="steps"><li>일행이 많아 화장실이 부족할 때는 1층 레스토랑 뒷편 공용 화장실을 이용할 수 있습니다.</li><li>비밀번호는 *7003* 입니다.</li><li>옥상에서는 남산타워 뷰를 볼 수 있습니다. 늦은 시간에는 소음에 유의해 주세요.</li></ol><div class="photo-grid"><figure><img src="assets/extay/crops/secret-restroom-guide.jpg" alt="비밀 화장실 안내"><figcaption>공용 화장실</figcaption></figure><figure><img src="assets/extay/crops/rooftop-namsan.jpg" alt="옥상 남산타워 뷰"><figcaption>남산타워 뷰</figcaption></figure><figure><img src="assets/extay/crops/rooftop.jpg" alt="옥상"><figcaption>옥상</figcaption></figure></div></div></details>
+        <details class="device" data-device="tv"><summary><span class="circle"><span class="mi">tv</span></span><div><h3>TV · OTT 리모컨</h3></div><span class="mi">expand_more</span></summary><div class="device-body"><ol class="steps"><li>TV 리모컨은 외부 입력 선택이 필요할 때 사용하세요.</li><li>OTT 전용 리모컨에서 원하는 OTT를 선택한 뒤 확인 버튼을 누르세요.</li><li>화면 팝업이 뜨면 바로 실행을 선택하세요. 작동이 안 되면 전원 버튼을 3초 이상 누르거나 셋톱 전원을 10초간 분리 후 재연결하세요.</li></ol><figure class="figure"><img src="assets/extay/crops/nsm-guide.png" alt="NSM OTT 사용법"></figure></div></details>
+        <details class="device" data-device="boiler"><summary><span class="circle"><span class="mi">thermostat</span></span><div><h3>온수 · 난방</h3></div><span class="mi">expand_more</span></summary><div class="device-body"><ol class="steps"><li>거실 스탠드 에어컨 뒤쪽의 난방 조절기를 확인하세요.</li><li>온수를 사용할 때는 온수 버튼을 눌러 주세요.</li><li>화면에 60도가 표시되면 온수가 정상적으로 작동합니다. 외출 시에는 외출 버튼 또는 전원 버튼을 눌러 주세요.</li></ol><div class="photo-grid"><figure><button class="image-zoom" type="button" data-fullscreen-image="assets/extay/crops/hot-water-guide.jpg" data-fullscreen-title="온수 조절기"><img src="assets/extay/crops/hot-water-guide.jpg" alt="온수 조절기 안내"></button><figcaption>온수 조절기</figcaption></figure><figure><button class="image-zoom" type="button" data-fullscreen-image="assets/extay/crops/floorplan.jpg" data-fullscreen-title="숙소 도면"><img src="assets/extay/crops/floorplan.jpg" alt="숙소 도면"></button><figcaption>숙소 도면</figcaption></figure></div></div></details>
+        <details class="device" data-device="induction"><summary><span class="circle"><span class="mi">roofing</span></span><div><h3>공용 화장실 · 옥상</h3></div><span class="mi">expand_more</span></summary><div class="device-body"><ol class="steps"><li>일행이 많아 화장실이 부족할 때는 1층 레스토랑 뒤편 공용 화장실을 이용할 수 있습니다.</li><li>비밀번호는 *7003*입니다.</li><li>옥상에서는 남산타워 뷰를 볼 수 있습니다. 늦은 시간에는 소음에 유의해 주세요.</li></ol><div class="photo-grid"><figure><img src="assets/extay/crops/rooftop-namsan.jpg" alt="옥상 남산타워 뷰"><figcaption>남산타워 뷰</figcaption></figure><figure><img src="assets/extay/crops/rooftop.jpg" alt="옥상"><figcaption>옥상</figcaption></figure><figure><img src="assets/extay/crops/secret-restroom-guide.jpg" alt="비밀 화장실 안내"><figcaption>공용 화장실</figcaption></figure></div></div></details>
       </section>
 
       <section class="screen guide-detail-screen" data-screen="laundry"><article class="guide-detail-hero laundry-hero"><p class="section-kicker">LAUNDRY GUIDE</p><h2 class="page-title">세탁 안내</h2></article>
         <details class="device" data-device="washer"><summary><span class="circle"><span class="mi">local_laundry_service</span></span><div><h3>세탁기</h3></div><span class="mi">expand_more</span></summary><div class="device-body"><ol class="steps"><li>세탁기는 전원 버튼을 누른 뒤 원하는 코스를 선택하세요.</li><li>코스 선택 후 시작/일시정지 버튼을 눌러 세탁을 시작하세요.</li><li>세탁 전 주머니 속 물건을 확인해 주세요.</li></ol><div class="photo-grid single"><figure><button class="image-zoom" type="button" data-fullscreen-image="assets/extay/crops/washer-guide.png" data-fullscreen-title="세탁기"><img src="assets/extay/crops/washer-guide.png" alt="세탁기 사용법"></button><figcaption>세탁기</figcaption></figure></div></div></details>
-        <details class="device" data-device="dryer"><summary><span class="circle"><span class="mi">dry_cleaning</span></span><div><h3>건조기</h3></div><span class="mi">expand_more</span></summary><div class="device-body"><ol class="steps"><li>건조기는 전원을 켜고 건조 코스를 선택한 뒤 시작 버튼을 눌러주세요.</li><li>사용 후에는 문을 살짝 열어 내부를 말려주세요.</li><li>밤 시간에는 진동과 소음에 유의해 주세요.</li></ol><div class="photo-grid single"><figure><button class="image-zoom" type="button" data-fullscreen-image="assets/extay/crops/dryer-guide.png" data-fullscreen-title="건조기"><img src="assets/extay/crops/dryer-guide.png" alt="건조기 사용법"></button><figcaption>건조기</figcaption></figure></div></div></details>
+        <details class="device" data-device="dryer"><summary><span class="circle"><span class="mi">dry_cleaning</span></span><div><h3>건조기</h3></div><span class="mi">expand_more</span></summary><div class="device-body"><ol class="steps"><li>건조기는 전원을 켜고 건조 코스를 선택한 뒤 시작 버튼을 눌러 주세요.</li><li>사용 후에는 문을 살짝 열어 내부를 말려 주세요.</li><li>밤 시간에는 진동과 소음에 유의해 주세요.</li></ol><div class="photo-grid single"><figure><button class="image-zoom" type="button" data-fullscreen-image="assets/extay/crops/dryer-guide.png" data-fullscreen-title="건조기"><img src="assets/extay/crops/dryer-guide.png" alt="건조기 사용법"></button><figcaption>건조기</figcaption></figure></div></div></details>
       </section>
 
-      <section class="screen guide-detail-screen" data-screen="trash"><article class="guide-detail-hero trash-hero"><p class="section-kicker">TRASH GUIDE</p><h2 class="page-title">쓰레기 배출</h2></article><article class="card contact-card"><div style="display:flex;align-items:center;justify-content:space-between"><h3 style="margin:0">분리 기준</h3><span class="mini-btn">2종류</span></div><div class="guide-list"><div class="guide-item"><b>1</b><span>일반 쓰레기 및 재활용 모두 베란다에 비치된 쓰레기통에 넣어주세요.</span></div><div class="guide-item"><b>2</b><span>음식물 쓰레기는 부엌 싱크대 위 음식물 쓰레기통에 버려 주세요.</span></div><div class="guide-item"><b>+</b><span>장기 숙박 중 음식물 냄새가 나면 1층 입구 주황색 통에 음식물을 배출해 주세요.</span></div></div><div class="photo-grid single"><figure><img src="assets/extay/crops/trash-current.jpg" alt="현재 쓰레기통 사진"><figcaption>현재 쓰레기통</figcaption></figure></div></article></section>
+      <section class="screen guide-detail-screen" data-screen="trash"><article class="guide-detail-hero trash-hero"><p class="section-kicker">TRASH GUIDE</p><h2 class="page-title">쓰레기 배출</h2></article><article class="card contact-card"><div style="display:flex;align-items:center;justify-content:space-between"><h3 style="margin:0">분리 기준</h3><span class="mini-btn">2종류</span></div><div class="guide-list"><div class="guide-item"><b>1</b><span>일반 쓰레기 및 재활용 모두 베란다에 비치된 쓰레기통에 넣어 주세요.</span></div><div class="guide-item"><b>2</b><span>음식물 쓰레기는 부엌 싱크대 위 음식물 쓰레기통에 버려 주세요.</span></div><div class="guide-item"><b>+</b><span>장기 숙박 중 음식물 냄새가 나면 1층 입구 주황색 통에 음식물을 배출해 주세요.</span></div></div><div class="photo-grid single"><figure><img src="assets/extay/crops/trash-current.jpg" alt="현재 쓰레기통 사진"><figcaption>현재 쓰레기통</figcaption></figure></div></article></section>
     </main>
 
     <nav class="bottom"><button class="tab active" data-go="home"><span class="mi">home</span><span>홈</span></button><button class="tab" data-go="wifi"><span class="mi">wifi</span><span>와이파이</span></button><button class="tab" data-go="appliances"><span class="mi">robot_2</span><span>사용법</span></button><button class="tab" data-go="laundry"><span class="mi">local_laundry_service</span><span>세탁</span></button><button class="tab" data-go="trash"><span class="mi">delete</span><span>쓰레기</span></button></nav>
@@ -1377,16 +1374,16 @@ body *:not(.mi){font-family:var(--font-main)!important;letter-spacing:0!importan
         quick:['와이파이','TV · OTT','온수 · 난방','세탁'],
         home:{infoTitle:'기본 정보',labels:['숙소','주소','체크인 · 체크아웃','와이파이','TV · OTT','주차'],values:['익스테이 맨션 해방촌','서울시 용산구 신흥로 59, 2층','16:00 · 11:00','U+Net46F0_5G','NSM OTT / HDMI 입력','건물 주차 불가 · 주변 유료 공영주차장'],view:'보기'},
         wifi:{title:'와이파이',sub:'숙소 Wi-Fi ID와 비밀번호입니다. 대소문자와 특수문자를 그대로 입력해 주세요.',labels:['ID','Password','연결 안내'],values:['U+Net46F0_5G','8H3#22E97B','연결이 안 되면 Wi-Fi를 껐다 켠 뒤 다시 선택해 주세요.'],copy:'복사'},
-        homeGuide:{title:'체크인 · 위치 안내',items:['비대면 셀프 체크인이며, 개인 키번호는 체크인 당일 12시쯤 안내됩니다.','녹사평역 2번 출구에서 도보 약 15분, 마을버스 이용 시 약 10분입니다.','세븐일레븐과 베제투스 레스토랑 사이 골목으로 들어와 2층으로 올라오세요.','퇴실 시 설거지, 쓰레기 분리수거, 에어컨 전원, 창문과 현관문을 확인해 주세요.']},
-        rules:{title:'주차 · 숙소 규칙',items:['건물 주차는 불가합니다. 모두의주차장 앱 또는 주변 유료 공영주차장을 이용해 주세요.','예약 인원 외 방문자 입실, 반려동물 동반, 상업적 촬영은 불가합니다.','객실, 화장실, 베란다, 현관입구, 계단은 모두 금연 구역입니다.','실내에서는 간단한 취사만 가능하며, 냄새나 연기가 많은 음식은 피해주세요. 21시 이후에는 매너타임입니다.']},
+        homeGuide:{title:'체크인 · 위치 안내',items:['비대면 셀프 체크인이며, 개인 키 번호는 체크인 당일 12시쯤 안내됩니다.','녹사평역 2번 출구에서 도보 약 15분, 마을버스 이용 시 약 10분입니다.','세븐일레븐과 베제투스 레스토랑 사이 골목으로 들어와 2층으로 올라오세요.','퇴실 시 설거지, 쓰레기 분리수거, 에어컨 전원, 창문과 현관문을 확인해 주세요.']},
+        rules:{title:'주차 · 숙소 규칙',items:['건물 주차는 불가합니다. 모두의주차장 앱 또는 주변 유료 공영주차장을 이용해 주세요.','예약 인원 외 방문자 입실, 반려동물 동반, 상업적 촬영은 불가합니다.','객실, 화장실, 베란다, 현관 입구, 계단은 모두 금연 구역입니다.','실내에서는 간단한 취사만 가능하며, 냄새나 연기가 많은 음식은 피해 주세요. 21시 이후에는 매너타임입니다.']},
         appliances:{title:'TV · Heating · Rooftop',sub:'',frequent:'자주 사용',
-          tv:{title:'TV · OTT 리모컨',small:'',steps:['TV 리모컨은 외부입력 선택이 필요할 때 사용하세요.','OTT 전용 리모컨에서 원하는 OTT를 선택한 뒤 확인 버튼을 누르세요.','화면 팝업이 뜨면 바로 실행을 선택하세요. 작동이 안 되면 전원 버튼을 3초 이상 누르거나 셋탑 전원을 10초간 분리 후 재연결하세요.']},
-          boiler:{title:'온수 · 난방',small:'',steps:['거실 스탠드 에어컨 뒤쪽의 난방 조절기를 확인하세요.','온수를 사용할 때는 온수 버튼을 눌러주세요.','화면에 60도가 표시되면 온수가 정상적으로 작동합니다. 외출 시에는 외출 버튼 또는 전원 버튼을 눌러주세요.'],captions:['온수 조절기','숙소 도면']},
-          induction:{title:'공용 화장실 · 옥상',small:'',steps:['일행이 많아 화장실이 부족할 때는 1층 레스토랑 뒷편 공용 화장실을 이용할 수 있습니다.','비밀번호는 *7003* 입니다.','옥상에서는 남산타워 뷰를 볼 수 있습니다. 늦은 시간에는 소음에 유의해 주세요.']}
+          tv:{title:'TV · OTT 리모컨',small:'',steps:['TV 리모컨은 외부 입력 선택이 필요할 때 사용하세요.','OTT 전용 리모컨에서 원하는 OTT를 선택한 뒤 확인 버튼을 누르세요.','화면 팝업이 뜨면 바로 실행을 선택하세요. 작동이 안 되면 전원 버튼을 3초 이상 누르거나 셋톱 전원을 10초간 분리 후 재연결하세요.']},
+          boiler:{title:'온수 · 난방',small:'',steps:['거실 스탠드 에어컨 뒤쪽의 난방 조절기를 확인하세요.','온수를 사용할 때는 온수 버튼을 눌러 주세요.','화면에 60도가 표시되면 온수가 정상적으로 작동합니다. 외출 시에는 외출 버튼 또는 전원 버튼을 눌러 주세요.'],captions:['온수 조절기','숙소 도면']},
+          induction:{title:'공용 화장실 · 옥상',small:'',steps:['일행이 많아 화장실이 부족할 때는 1층 레스토랑 뒤편 공용 화장실을 이용할 수 있습니다.','비밀번호는 *7003*입니다.','옥상에서는 남산타워 뷰를 볼 수 있습니다. 늦은 시간에는 소음에 유의해 주세요.']}
         },
-        laundry:{title:'세탁 안내',sub:'세탁기와 건조기 사용법을 확인하세요.',washerTitle:'세탁기',dryerTitle:'건조기',washerSteps:['세탁기는 전원 버튼을 누른 뒤 원하는 코스를 선택하세요.','코스 선택 후 시작/일시정지 버튼을 눌러 세탁을 시작하세요.','세탁 전 주머니 속 물건을 확인해 주세요.'],dryerSteps:['건조기는 전원을 켜고 건조 코스를 선택한 뒤 시작 버튼을 눌러주세요.','사용 후에는 문을 살짝 열어 내부를 말려주세요.','밤 시간에는 진동과 소음에 유의해 주세요.'],captions:['세탁기','건조기']},
-        trash:{title:'쓰레기 배출',sub:'음식물, 재활용, 일반 쓰레기 위치가 다릅니다. 장기 숙박 시 냄새가 나지 않도록 안내에 따라 배출해 주세요.',basis:'분리 기준',types:'2종류',items:['일반 쓰레기 및 재활용 모두 베란다에 비치된 쓰레기통에 넣어주세요.','음식물 쓰레기는 부엌 싱크대 위 음식물 쓰레기통에 버려 주세요.','장기 숙박 중 음식물 냄새가 나면 1층 입구 주황색 통에 음식물을 배출해 주세요.'],captions:['현재 쓰레기통'],cards:[]},
-        chat:{title:'안내 도우미',sub:'가이드 내용 기준으로 답변합니다',close:'닫기',hello:'안녕하세요. 익스테이 맨션 해방촌 안내 도우미입니다. 와이파이, 체크인·체크아웃, 위치, 주차, 숙소 규칙, TV·OTT, 온수·난방, 세탁, 쓰레기 배출 방법을 물어보세요.',note:'도어락 개인 키번호와 긴급 상황은 Airbnb/호스트 메시지를 확인해 주세요.',placeholder:'질문을 입력하세요',typing:'답변 중...'}
+        laundry:{title:'세탁 안내',sub:'세탁기와 건조기 사용법을 확인하세요.',washerTitle:'세탁기',dryerTitle:'건조기',washerSteps:['세탁기는 전원 버튼을 누른 뒤 원하는 코스를 선택하세요.','코스 선택 후 시작/일시정지 버튼을 눌러 세탁을 시작하세요.','세탁 전 주머니 속 물건을 확인해 주세요.'],dryerSteps:['건조기는 전원을 켜고 건조 코스를 선택한 뒤 시작 버튼을 눌러 주세요.','사용 후에는 문을 살짝 열어 내부를 말려 주세요.','밤 시간에는 진동과 소음에 유의해 주세요.'],captions:['세탁기','건조기']},
+        trash:{title:'쓰레기 배출',sub:'음식물, 재활용, 일반 쓰레기 위치가 다릅니다. 장기 숙박 시 냄새가 나지 않도록 안내에 따라 배출해 주세요.',basis:'분리 기준',types:'2종류',items:['일반 쓰레기 및 재활용 모두 베란다에 비치된 쓰레기통에 넣어 주세요.','음식물 쓰레기는 부엌 싱크대 위 음식물 쓰레기통에 버려 주세요.','장기 숙박 중 음식물 냄새가 나면 1층 입구 주황색 통에 음식물을 배출해 주세요.'],captions:['현재 쓰레기통'],cards:[]},
+        chat:{title:'안내 도우미',sub:'가이드 내용 기준으로 답변합니다',close:'닫기',hello:'안녕하세요. 익스테이 맨션 해방촌 안내 도우미입니다. 와이파이, 체크인·체크아웃, 위치, 주차, 숙소 규칙, TV·OTT, 온수·난방, 세탁, 쓰레기 배출 방법을 물어보세요.',note:'도어락 개인 키 번호와 긴급 상황은 Airbnb/호스트 메시지를 확인해 주세요.',placeholder:'질문을 입력하세요',typing:'답변 중...'}
       },
       en:{
         docTitle:'Extay Mansion Haebangchon Mobile Guide',docDesc:'A mobile guest guide for Extay Mansion Haebangchon',
@@ -1450,7 +1447,7 @@ body *:not(.mi){font-family:var(--font-main)!important;letter-spacing:0!importan
       {name:'성광대도',cat:'asian',label:'중식',tags:['중식','해방촌'],note:'해방촌에서 중식이 당길 때 확인하기 좋은 선택지입니다.',href:'https://juas.notion.site/b1bb8f0006e44e6685a024537ba91559?pvs=25'},
       {name:'자코비 버거',cat:'burger',label:'버거',tags:['수제버거','캐주얼'],note:'이태원·해방촌권에서 유명한 버거집입니다.',href:'https://juas.notion.site/bdd0957f72f14ff6a742f4d31422fa57?pvs=25'},
       {name:'잠수교 삼겹살',cat:'korean',label:'삼겹살',tags:['삼겹살','고기'],note:'고기 식사를 원할 때 선택하기 좋은 삼겹살집입니다.',href:'https://juas.notion.site/Pork-belly-c99ae21b876a496f9cf0ec7e04513f1d?pvs=25'},
-      {name:'Ori (해방촌 오리)',cat:'korean',label:'오리',tags:['오리','한식'],note:'오리 요리를 찾는다면 확인해볼 만한 곳입니다.',href:'https://juas.notion.site/Ori-ab16e4503e004f26b1e3f79a308d20ac?pvs=25'},
+      {name:'Ori (해방촌 오리)',cat:'korean',label:'오리',tags:['오리','한식'],note:'오리 요리를 찾는다면 확인해 볼 만한 곳입니다.',href:'https://juas.notion.site/Ori-ab16e4503e004f26b1e3f79a308d20ac?pvs=25'},
       {name:'OPATO (오파토)',cat:'brunch',label:'브런치',tags:['브런치','오전 8시'],note:'오전 8시부터 이용 가능한 브런치 선택지입니다.',href:'https://juas.notion.site/OPATO-am-8-00-71dd6e4886374878b9d86caad544fb33?pvs=25'},
       {name:'산솔',cat:'bar',label:'한식주점',tags:['한식주점','저녁'],note:'저녁 시간에 한식 안주와 술을 즐기기 좋은 곳입니다.',href:'https://juas.notion.site/a-Korean-restaurant-81cb8fe3009c4e3c99afd13cdc620a69?pvs=25'},
       {name:'소월솥밥',cat:'korean',label:'솥밥',tags:['솥밥','한식'],note:'따뜻한 한식 한 끼가 필요할 때 좋은 솥밥집입니다.',href:'https://juas.notion.site/906cea07e63a4c7f9fe3a5ce3abb1a23?pvs=25'},
@@ -1503,9 +1500,9 @@ body *:not(.mi){font-family:var(--font-main)!important;letter-spacing:0!importan
     function syncDeviceIcon(device){const icon=device?.querySelector('summary>.mi:last-child');if(icon)icon.textContent=device.open?'expand_less':'expand_more'}
     function show(name, openDevice='', options={}){if(!routeExists(name))name='home';openDevice=openDevice||'';const previousScreen=activeScreen,previousOpenDevice=activeOpenDevice,historyMode=options.history||'push';if(name!=='guidebook')setGuidebookFullscreen(false);document.body.classList.toggle('is-home',name==='home');document.body.classList.toggle('is-gallery',name==='gallery');document.body.classList.toggle('is-checkin',name==='checkin');document.body.classList.toggle('is-wifi',name==='wifi');document.body.classList.toggle('is-transport',name==='transport');document.body.classList.toggle('is-guidebook',name==='guidebook');document.body.classList.toggle('is-restaurants',name==='restaurants');document.body.classList.toggle('is-faq',name==='faq');document.body.classList.toggle('is-appliances',name==='appliances');document.body.classList.toggle('is-laundry',name==='laundry');document.body.classList.toggle('is-trash',name==='trash');screens.forEach(s=>s.classList.toggle('active',s.dataset.screen===name));tabs.forEach(t=>t.classList.toggle('active',t.dataset.go===name));if(name==='guidebook')setTimeout(initGuidebook,60);if(name==='restaurants')setTimeout(renderRestaurants,0);if(openDevice){document.querySelectorAll('details.device').forEach(d=>{d.open=d.dataset.device===openDevice;syncDeviceIcon(d)});const target=document.querySelector(`details.device[data-device="${openDevice}"]`);if(target)setTimeout(()=>target.scrollIntoView({behavior:'smooth',block:'start'}),80)}else if(name==='appliances'){document.querySelectorAll('[data-screen="appliances"] details.device').forEach(d=>{d.open=false;syncDeviceIcon(d)})}else if(name==='laundry'){document.querySelectorAll('[data-screen="laundry"] details.device').forEach(d=>{d.open=false;syncDeviceIcon(d)})}activeScreen=name;activeOpenDevice=openDevice;if(options.scroll!==false)scrollTo({top:0,behavior:options.smooth===false?'auto':'smooth'});if(historyMode!=='none'&&(previousScreen!==name||previousOpenDevice!==openDevice))writeRoute(name,openDevice,historyMode)}
     const imageLightbox=q('#imageLightbox'),imageLightboxBackdrop=q('#imageLightboxBackdrop'),imageLightboxImg=q('#imageLightboxImg'),imageLightboxCaption=q('#imageLightboxCaption');
-    function openImageLightbox(trigger){if(!imageLightbox||!imageLightboxImg)return;const img=trigger.querySelector('img'),src=trigger.dataset.fullscreenImage||img?.src,title=trigger.closest('figure')?.querySelector('figcaption')?.textContent.trim()||trigger.dataset.fullscreenTitle||img?.alt||'';if(!src)return;imageLightboxImg.src=src;imageLightboxImg.alt=img?.alt||title; if(imageLightboxCaption)imageLightboxCaption.textContent=title;imageLightbox.classList.add('open');imageLightboxBackdrop?.classList.add('open');document.body.classList.add('image-lightbox-open');if(imageLightbox.requestFullscreen&&!document.fullscreenElement)imageLightbox.requestFullscreen().catch(()=>{})}
+    function openImageLightbox(trigger){if(!imageLightbox||!imageLightboxImg)return;const img=trigger.matches?.('img')?trigger:trigger.querySelector('img'),src=trigger.dataset.fullscreenImage||img?.currentSrc||img?.src,title=trigger.closest('figure')?.querySelector('figcaption')?.textContent.trim()||trigger.dataset.fullscreenTitle||img?.alt||'';if(!src)return;imageLightboxImg.src=src;imageLightboxImg.alt=img?.alt||title; if(imageLightboxCaption)imageLightboxCaption.textContent=title;imageLightbox.classList.add('open');imageLightboxBackdrop?.classList.add('open');document.body.classList.add('image-lightbox-open');if(imageLightbox.requestFullscreen&&!document.fullscreenElement)imageLightbox.requestFullscreen().catch(()=>{})}
     function closeImageLightbox(){if(!imageLightbox)return;imageLightbox.classList.remove('open');imageLightboxBackdrop?.classList.remove('open');document.body.classList.remove('image-lightbox-open');if(document.fullscreenElement===imageLightbox&&document.exitFullscreen)document.exitFullscreen().catch(()=>{})}
-    document.addEventListener('click',e=>{const trigger=e.target.closest('[data-fullscreen-image]');if(!trigger)return;e.preventDefault();openImageLightbox(trigger)});
+    document.addEventListener('click',e=>{const trigger=e.target.closest('[data-fullscreen-image]');if(trigger){e.preventDefault();openImageLightbox(trigger);return}const img=e.target.closest('.guide-detail-screen .photo-grid img,.guide-detail-screen .figure img,.restaurant-photo img,#galleryMain');if(img&&!img.closest('button,a')){e.preventDefault();openImageLightbox(img)}});
     imageLightboxBackdrop?.addEventListener('click',closeImageLightbox);
     q('#closeImageLightbox')?.addEventListener('click',closeImageLightbox);
     document.addEventListener('click',e=>{const g=e.target.closest('[data-go]'); if(g){show(g.dataset.go,g.dataset.open||'')}});
@@ -1533,7 +1530,7 @@ body *:not(.mi){font-family:var(--font-main)!important;letter-spacing:0!importan
     applyStaticLanguage(); renderSmartGuide(); setInterval(renderSmartGuide,60000);
     const guideAnswers={ko:[],en:[]};
     const extayGuideAnswers={
-      ko:[[['wifi','wi-fi','와이파이'],'와이파이 ID는 `U+Net46F0_5G`, 비밀번호는 `8H3#22E97B` 입니다. 대소문자와 특수문자를 그대로 입력해 주세요.'],[['체크인','입실','도어락','키번호','check-in','checkin','door code','door lock'],'체크인은 오후 4시부터입니다. 비대면 셀프 체크인이며 개인 키번호는 체크인 당일 12시쯤 Airbnb/호스트 메시지로 안내됩니다. 키패드를 살짝 터치한 뒤 안내받은 번호와 * 버튼을 누르면 됩니다.'],[['체크아웃','퇴실','checkout','check-out'],'체크아웃은 오전 11시입니다. 퇴실 전 설거지, 쓰레기 분리수거, 거실과 침실 에어컨 끄기, 창문 닫기, 현관문 닫기를 확인해 주세요. 체크아웃 시간을 10분 초과하면 10분당 10,000원의 비용이 발생할 수 있습니다.'],[['주소','위치','오는 길','오시는 길','녹사평','해방촌'],'숙소는 서울시 용산구 신흥로 59, 2층입니다. 녹사평역 2번 출구에서 도보 약 15분, 마을버스 이용 시 약 10분입니다. 세븐일레븐과 베제투스 레스토랑 사이 골목으로 들어와 2층으로 올라오세요.'],[['주차','parking','차'],'건물 주차는 불가합니다. 모두의주차장 앱에서 실시간 주차 가능 여부를 확인하거나 용산2가동 기계식 공용주차장, 용산2가 주민센터 공용주차장, 해방촌공영주차장 같은 주변 유료 공영주차장을 이용해 주세요.'],[['규칙','금연','흡연','반려동물','방문자','소음','매너타임','취사','촬영'],'예약 인원 외 방문자 입실, 반려동물 동반, 상업적 촬영은 불가합니다. 객실, 화장실, 베란다, 현관입구, 계단은 모두 금연 구역입니다. 실내에서는 간단한 취사만 가능하며 냄새나 연기가 많은 음식은 피해주세요. 21시 이후에는 매너타임입니다.'],[['tv','티비','텔레비전','ott','넷플릭스','유튜브','nsm'],'TV 리모컨은 외부입력 선택이 필요할 때 사용하고, OTT 전용 리모컨에서 원하는 OTT를 선택한 뒤 확인 버튼을 누르세요. 팝업이 뜨면 바로 실행을 선택하면 됩니다.'],[['온수','난방','보일러','뜨거운 물'],'거실 스탠드 에어컨 뒤쪽의 Rinnai 조절기에서 온수 버튼을 누르세요. 화면에 60도가 표시되면 온수가 정상 작동합니다.'],[['비품','수건','휴지','쓰레기 봉투','보관함'],'수건, 휴지, 쓰레기 봉투 등 여분 비품은 비밀 보관함에 있습니다. 비밀번호는 007입니다. 2번 방이 열리지 않으면 싱크대 인덕션 아래도 확인해 주세요.'],[['세탁','세탁기','건조기','빨래'],'세탁기는 전원 버튼을 누르고 코스를 선택한 뒤 시작/일시정지를 누르세요. 건조기는 전원과 건조 코스를 선택한 뒤 시작 버튼을 누르면 됩니다. 밤에는 진동과 소음에 유의해 주세요.'],[['화장실','공용 화장실','비밀 화장실','7003'],'일행이 많아 화장실이 부족할 때는 1층 레스토랑 뒷편 공용 화장실을 이용할 수 있습니다. 비밀번호는 *7003* 입니다.'],[['옥상','루프탑','남산'],'옥상에서는 남산타워 뷰를 볼 수 있습니다. 늦은 시간에는 소음에 유의해 주세요.'],[['쓰레기','재활용','음식물','일반 쓰레기'],'음식물 쓰레기는 부엌 싱크대 위 음식물 통에 버리고, 일반 쓰레기 및 재활용은 모두 베란다에 비치된 쓰레기통에 넣어주세요. 장기 숙박 중 음식물 냄새가 나면 1층 입구 주황색 통을 이용해 주세요.']],
+      ko:[[['wifi','wi-fi','와이파이'],'와이파이 ID는 `U+Net46F0_5G`, 비밀번호는 `8H3#22E97B`입니다. 대소문자와 특수문자를 그대로 입력해 주세요.'],[['체크인','입실','도어락','키번호','check-in','checkin','door code','door lock'],'체크인은 오후 4시부터입니다. 비대면 셀프 체크인이며 개인 키 번호는 체크인 당일 12시쯤 Airbnb/호스트 메시지로 안내됩니다. 키패드를 살짝 터치한 뒤 안내받은 번호와 * 버튼을 누르면 됩니다.'],[['체크아웃','퇴실','checkout','check-out'],'체크아웃은 오전 11시입니다. 퇴실 전 설거지, 쓰레기 분리수거, 거실과 침실 에어컨 끄기, 창문 닫기, 현관문 닫기를 확인해 주세요. 체크아웃 시간을 10분 초과하면 10분당 10,000원의 비용이 발생할 수 있습니다.'],[['주소','위치','오는 길','오시는 길','녹사평','해방촌'],'숙소는 서울시 용산구 신흥로 59, 2층입니다. 녹사평역 2번 출구에서 도보 약 15분, 마을버스 이용 시 약 10분입니다. 세븐일레븐과 베제투스 레스토랑 사이 골목으로 들어와 2층으로 올라오세요.'],[['주차','parking','차'],'건물 주차는 불가합니다. 모두의주차장 앱에서 실시간 주차 가능 여부를 확인하거나 용산2가동 기계식 공용주차장, 용산2가 주민센터 공용주차장, 해방촌 공영주차장 같은 주변 유료 공영주차장을 이용해 주세요.'],[['규칙','금연','흡연','반려동물','방문자','소음','매너타임','취사','촬영'],'예약 인원 외 방문자 입실, 반려동물 동반, 상업적 촬영은 불가합니다. 객실, 화장실, 베란다, 현관 입구, 계단은 모두 금연 구역입니다. 실내에서는 간단한 취사만 가능하며 냄새나 연기가 많은 음식은 피해 주세요. 21시 이후에는 매너타임입니다.'],[['tv','티비','텔레비전','ott','넷플릭스','유튜브','nsm'],'TV 리모컨은 외부 입력 선택이 필요할 때 사용하고, OTT 전용 리모컨에서 원하는 OTT를 선택한 뒤 확인 버튼을 누르세요. 팝업이 뜨면 바로 실행을 선택하면 됩니다.'],[['온수','난방','보일러','뜨거운 물'],'거실 스탠드 에어컨 뒤쪽의 Rinnai 조절기에서 온수 버튼을 누르세요. 화면에 60도가 표시되면 온수가 정상 작동합니다.'],[['비품','수건','휴지','쓰레기 봉투','보관함'],'수건, 휴지, 쓰레기 봉투 등 여분 비품은 비밀 보관함에 있습니다. 비밀번호는 007입니다. 2번 방이 열리지 않으면 싱크대 인덕션 아래도 확인해 주세요.'],[['세탁','세탁기','건조기','빨래'],'세탁기는 전원 버튼을 누르고 코스를 선택한 뒤 시작/일시정지를 누르세요. 건조기는 전원과 건조 코스를 선택한 뒤 시작 버튼을 누르면 됩니다. 밤에는 진동과 소음에 유의해 주세요.'],[['화장실','공용 화장실','비밀 화장실','7003'],'일행이 많아 화장실이 부족할 때는 1층 레스토랑 뒤편 공용 화장실을 이용할 수 있습니다. 비밀번호는 *7003*입니다.'],[['옥상','루프탑','남산'],'옥상에서는 남산타워 뷰를 볼 수 있습니다. 늦은 시간에는 소음에 유의해 주세요.'],[['쓰레기','재활용','음식물','일반 쓰레기'],'음식물 쓰레기는 부엌 싱크대 위 음식물 통에 버리고, 일반 쓰레기 및 재활용은 모두 베란다에 비치된 쓰레기통에 넣어 주세요. 장기 숙박 중 음식물 냄새가 나면 1층 입구 주황색 통을 이용해 주세요.']],
       en:[[['wifi','wi-fi'],'The Wi-Fi ID is `U+Net46F0_5G` and the password is `8H3#22E97B`. Please enter uppercase/lowercase letters and symbols exactly as shown.'],[['check-in','checkin','check in','arrival','door code','door lock'],'Check-in starts at 16:00. This is self check-in. Your personal door code is sent through Airbnb/host messages around noon on check-in day. Touch the keypad, then enter the code you received followed by the * button.'],[['checkout','check-out','check out','leave'],'Checkout is at 11:00. Before leaving, please wash dishes, sort trash, turn off the living room and bedroom AC, close the windows, and make sure the front door is closed. A late checkout fee may apply after a 10-minute grace period.'],[['address','location','directions','noksapyeong','haebangchon'],'The stay is on the 2nd floor, 59 Sinheung-ro, Yongsan-gu, Seoul. It is about 15 minutes on foot from Noksapyeong Station Exit 2, or about 10 minutes by village bus. Enter the alley between Seven Eleven and Vegetus restaurant, then go up to the 2nd floor.'],[['parking','car'],'There is no on-site parking. Please check real-time availability with the Modu Parking app or use nearby paid public parking such as Yongsan 2-ga mechanical public parking, Yongsan 2-ga Community Center public parking, or Haebangchon public parking.'],[['rule','rules','smoking','pet','visitor','noise','quiet','cooking','filming'],'Extra visitors, pets, and commercial filming are not allowed. The room, bathroom, balcony, entrance, and stairs are all non-smoking areas. Please keep indoor cooking simple and avoid food with strong smoke or odor. Quiet hours start after 21:00.'],[['tv','television','ott','netflix','youtube','nsm'],'Use the TV remote when selecting an external input. On the OTT remote, choose the OTT service you want and press confirm. If a pop-up appears, select run now.'],[['hot water','heating','boiler'],'Use the Rinnai controller behind the standing AC in the living room. Press the hot-water button. If 60 degrees appears on the screen, hot water is working normally.'],[['supplies','towel','toilet paper','trash bag','cabinet'],'Extra towels, toilet paper, trash bags, and supplies are in the secret supply cabinet. The password is 007. If room 2 does not open, also check under the induction cooktop.'],[['washer','dryer','laundry'],'Turn on the washer, choose a course, and press start/pause. For the dryer, turn it on, choose a drying course, and press start. At night, please be mindful of vibration and noise.'],[['restroom','toilet','bathroom','7003'],'If your group needs another restroom, use the shared restroom behind the 1st-floor restaurant. The password is *7003*.'],[['rooftop','namsan'],'The rooftop has a Namsan Tower view. Please keep noise low late at night.'],[['trash','recycling','food waste','garbage'],'Put food waste in the bin above the kitchen sink. Put both general trash and recycling into the trash bins on the balcony. For longer stays, use the orange bin near the 1st-floor entrance if food waste starts to smell.']]
     };
     const chatPanel=document.getElementById('chatPanel'), chatBackdrop=document.getElementById('chatBackdrop'), chatLog=document.getElementById('chatLog'), chatInput=document.getElementById('chatInput'), chatForm=document.getElementById('chatForm');
@@ -1564,7 +1561,7 @@ body *:not(.mi){font-family:var(--font-main)!important;letter-spacing:0!importan
     document.querySelectorAll('.suggestion').forEach(b=>b.addEventListener('click',()=>{chatInput.value=b.textContent; chatForm.requestSubmit()}));
     function escapeHtml(text){return String(text).replace(/[&<>"']/g,ch=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[ch]))}
     const SEARCH_ITEMS=[
-      {icon:'calendar_month',screen:'checkin',popular:true,ko:['체크인/아웃 안내','입실·퇴실 시간, 도어락, 짐보관'],en:['Check in/out Guide','Arrival, checkout, door lock, luggage storage'],keys:['체크인','체크아웃','입실','퇴실','도어락','키번호','비밀번호','셀프체크인','짐보관','코인락커','물품보관함','또타라커','t locker','checkin','check-in','checkout','check-out','door','arrival','locker','luggage']},
+      {icon:'calendar_month',screen:'checkin',popular:true,ko:['체크인/아웃 안내','입실·퇴실 시간, 도어락, 짐 보관'],en:['Check in/out Guide','Arrival, checkout, door lock, luggage storage'],keys:['체크인','체크아웃','입실','퇴실','도어락','키번호','비밀번호','셀프체크인','짐보관','짐 보관','코인락커','물품보관함','또타라커','t locker','checkin','check-in','checkout','check-out','door','arrival','locker','luggage']},
       {icon:'wifi',screen:'wifi',popular:true,ko:['와이파이','Wi-Fi ID와 비밀번호'],en:['Wi-Fi','Network ID and password'],keys:['와이파이','wifi','wi-fi','인터넷','비번','비밀번호','네트워크','network','password']},
       {icon:'directions_subway',screen:'transport',popular:true,ko:['교통 안내','공항, 지하철, 택시로 오는 방법'],en:['Transportation','Airport, subway, and taxi directions'],keys:['교통','공항','인천공항','김포공항','지하철','공항철도','택시','버스','오는길','오시는길','transport','airport','subway','taxi','bus','direction']},
       {icon:'photo_library',screen:'gallery',popular:true,ko:['객실 둘러보기','숙소 사진과 공간 확인'],en:['Room Gallery','Photos of the stay and rooms'],keys:['객실','사진','숙소사진','둘러보기','갤러리','방','gallery','photo','room','image']},
@@ -1599,7 +1596,7 @@ body *:not(.mi){font-family:var(--font-main)!important;letter-spacing:0!importan
     function getLocalAnswer(question){
       const lang=detectLocalLanguage(question), lower=String(question||'').toLowerCase(), source=extayGuideAnswers[lang]||extayGuideAnswers.ko;
       const hit=source.find(([keys])=>keys.some(k=>lower.includes(String(k).toLowerCase())));
-      return hit?hit[1]:(lang==='en'?'I can help with Wi-Fi, check-in/out, location, parking, house rules, TV/OTT, hot water and heating, supplies, washer/dryer, shared restroom, rooftop, and trash disposal. For your personal door code or urgent issues, please check Airbnb/host messages.':'와이파이, 체크인·체크아웃, 위치, 주차, 숙소 규칙, TV·OTT, 온수·난방, 비품 보관함, 세탁기·건조기, 공용 화장실, 옥상, 쓰레기 배출 방법을 확인할 수 있습니다. 개인 도어락 키번호나 긴급 상황은 Airbnb/호스트 메시지를 확인해 주세요.');
+      return hit?hit[1]:(lang==='en'?'I can help with Wi-Fi, check-in/out, location, parking, house rules, TV/OTT, hot water and heating, supplies, washer/dryer, shared restroom, rooftop, and trash disposal. For your personal door code or urgent issues, please check Airbnb/host messages.':'와이파이, 체크인·체크아웃, 위치, 주차, 숙소 규칙, TV·OTT, 온수·난방, 비품 보관함, 세탁기·건조기, 공용 화장실, 옥상, 쓰레기 배출 방법을 확인할 수 있습니다. 개인 도어락 키 번호나 긴급 상황은 Airbnb/호스트 메시지를 확인해 주세요.');
     }
     let chatHistory=[];
     chatForm.addEventListener('submit',async e=>{
