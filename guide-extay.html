@@ -560,6 +560,31 @@ body.guidebook-fullscreen-open{overflow:hidden;touch-action:none}
 .contact-actions .hotel-btn{color:#221b15;border-color:rgba(123,99,79,.28);background:#fff}
 .contact-actions .hotel-btn.primary{background:#2b2118;color:#fff;border-color:#2b2118}
 body:not(.is-home) main{padding-top:0}
+.screen.active{position:relative;z-index:1;animation:screenCrossIn .34s ease both}
+.screen.is-exiting{display:block;position:absolute;inset:0;width:100%;pointer-events:none;z-index:0;animation:screenCrossOut .24s ease both}
+main{position:relative}
+.landing-hero{opacity:0;transform:scale(1.08);transform-origin:center top;transition:opacity .9s ease,transform 1.05s cubic-bezier(.16,1,.3,1);will-change:opacity,transform}
+body.motion-ready .landing-hero{opacity:1;transform:scale(1.05)}
+body.hero-scrolled .landing-hero{transform:scale(1)}
+.hero-panel .eyebrow,.hero-panel .hero-title,.hero-panel .hero-actions,.hero-panel .scroll-cue{opacity:0;transform:translateY(12px)}
+body.motion-ready .hero-panel .eyebrow{animation:heroTextIn .92s ease .24s both}
+body.motion-ready .hero-panel .hero-title{animation:heroTextIn 1.05s ease .34s both}
+body.motion-ready .hero-panel .hero-actions{animation:heroTextIn 1.05s ease .48s both}
+body.motion-ready .hero-panel .scroll-cue{animation:heroTextIn 1.05s ease .62s both}
+.motion-item{opacity:0;transform:translateY(22px);transition:opacity .58s ease,transform .58s cubic-bezier(.16,1,.3,1);transition-delay:var(--stagger,0ms);will-change:opacity,transform}
+.motion-item.is-visible{opacity:1;transform:translateY(0)}
+.gallery-main-wrap,.gallery-thumb{overflow:hidden}
+#galleryMain,.gallery-thumb img{transform:translate3d(0,var(--parallax-y,0px),0) scale(1.025);will-change:transform;transition:transform .08s linear}
+.hotel-btn,.btn,.quick-tile,.image-card,.tab,.icon-btn,.menu-link,.gallery-thumb,.restaurant-actions a,.guidebook-open,.guidebook-fullscreen-toggle,.mini-btn,.suggestion,.send-btn,.chip{transition:transform .18s ease,box-shadow .18s ease,background-color .18s ease,border-color .18s ease,color .18s ease}
+.hotel-btn:active,.btn:active,.quick-tile:active,.image-card:active,.tab:active,.icon-btn:active,.menu-link:active,.gallery-thumb:active,.restaurant-actions a:active,.guidebook-open:active,.guidebook-fullscreen-toggle:active,.mini-btn:active,.suggestion:active,.send-btn:active,.chip:active{transform:scale(.965)}
+@media (hover:hover){.hotel-btn:hover,.btn:hover,.quick-tile:hover,.image-card:hover,.menu-link:hover,.gallery-thumb:hover,.restaurant-actions a:hover,.guidebook-open:hover,.guidebook-fullscreen-toggle:hover,.mini-btn:hover,.send-btn:hover{transform:scale(1.018)}}
+@keyframes screenCrossIn{from{opacity:0}to{opacity:1}}
+@keyframes screenCrossOut{from{opacity:1}to{opacity:0}}
+@keyframes heroTextIn{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:translateY(0)}}
+@media (prefers-reduced-motion:reduce){
+  .landing-hero,.hero-panel .eyebrow,.hero-panel .hero-title,.hero-panel .hero-actions,.hero-panel .scroll-cue,.motion-item,.screen.active,.screen.is-exiting,#galleryMain,.gallery-thumb img{animation:none!important;transition:none!important;transform:none!important;opacity:1!important}
+  .screen.is-exiting{display:none!important}
+}
 @media (max-width:380px){
   .hero-panel{padding:0 24px 34px}
   .landing-hero .hero-title{font-size:50px}
@@ -627,9 +652,9 @@ body *:not(.mi){font-family:var(--font-main)!important;letter-spacing:0!importan
         <section class="hotel-section" id="stayGuide" aria-label="STAY GUIDE">
           <p class="section-kicker">STAY GUIDE</p>
           <div class="stay-card-grid">
-            <button class="image-card large" type="button" data-go="guidebook" style="--card-img:url('assets/extay/crops/main-living-logo.png')"><span>가이드북</span></button>
+            <button class="image-card large" type="button" data-go="transport" style="--card-img:url('assets/transportation-hero.jpg')"><span>교통 안내</span></button>
             <button class="image-card" type="button" data-go="restaurants" style="--card-img:url('assets/restaurants-hero.jpg')"><span>주변 맛집</span></button>
-            <button class="image-card" type="button" data-go="transport" style="--card-img:url('assets/transportation-hero.jpg')"><span>교통 안내</span></button>
+            <button class="image-card" type="button" data-go="guidebook" style="--card-img:url('assets/extay/crops/main-living-logo.png')"><span>가이드북</span></button>
             <button class="image-card" type="button" data-go="faq" style="--card-img:url('assets/extay/smart-card/stay-day.png')"><span>FAQ</span></button>
           </div>
         </section>
@@ -1407,6 +1432,17 @@ body *:not(.mi){font-family:var(--font-main)!important;letter-spacing:0!importan
       }
     });
     const q=s=>document.querySelector(s), qa=s=>[...document.querySelectorAll(s)];
+    const reduceMotion=window.matchMedia?.('(prefers-reduced-motion: reduce)')?.matches||false;
+    let revealObserver=null,pageTransitionTimer=0,parallaxTick=false;
+    const motionSelector='.hotel-section,.quick-tile,.image-card,.concierge-banner,.gallery-head,.gallery-thumb,.gallery-viewer,.transport-hero,.transport-card,.wifi-hero,.wifi-card,.guidebook-head,.guidebook-viewer,.restaurants-hero,.restaurant-card,.faq-hero,.faq-card,.guide-detail-hero,.device,.contact-card,.checkin-hero,.checkin-card,.menu-link';
+    const staggerGroups=['.quick-access-grid','.stay-card-grid','.gallery-thumbs','.transport-stack','.wifi-stack','.faq-stack','.restaurants-list','.checkin-stack','.guide-detail-screen','.menu-panel'];
+    function updateHeroMotion(){document.body.classList.toggle('hero-scrolled',document.body.classList.contains('is-home')&&window.scrollY>10)}
+    function updateGalleryParallax(){if(reduceMotion)return;const vh=window.innerHeight||document.documentElement.clientHeight||720;qa('.gallery-thumb img,#galleryMain').forEach(img=>{const rect=img.getBoundingClientRect();if(rect.bottom<0||rect.top>vh)return;const center=rect.top+rect.height/2,offset=(center-vh/2)/vh,y=Math.max(-14,Math.min(14,-offset*24));img.style.setProperty('--parallax-y',`${y.toFixed(1)}px`)})}
+    function requestGalleryParallax(){if(parallaxTick)return;parallaxTick=true;requestAnimationFrame(()=>{parallaxTick=false;updateGalleryParallax()})}
+    function observeMotionTargets(root=document){if(reduceMotion)return;staggerGroups.forEach(selector=>{const groups=[...(root.matches?.(selector)?[root]:[]),...root.querySelectorAll(selector)];groups.forEach(group=>[...group.children].forEach((el,i)=>el.style.setProperty('--stagger',`${Math.min(i,8)*45}ms`)))});const targets=[...(root.matches?.(motionSelector)?[root]:[]),...root.querySelectorAll(motionSelector)];targets.forEach(el=>{if(el.dataset.motionObserved)return;el.dataset.motionObserved='true';el.classList.add('motion-item');revealObserver?.observe(el)})}
+    function markScreenExiting(previousName,nextName){if(reduceMotion||previousName===nextName)return;document.querySelectorAll('.screen.is-exiting').forEach(el=>el.classList.remove('is-exiting'));const previous=q(`.screen.active[data-screen="${previousName}"]`);if(!previous)return;previous.classList.add('is-exiting');clearTimeout(pageTransitionTimer);pageTransitionTimer=setTimeout(()=>previous.classList.remove('is-exiting'),260)}
+    function refreshMotionForScreen(name){observeMotionTargets(q(`[data-screen="${name}"]`)||document);setTimeout(()=>{updateHeroMotion();requestGalleryParallax()},80)}
+    function initMotion(){if(reduceMotion){document.body.classList.add('motion-ready','hero-scrolled');return}if(!('IntersectionObserver'in window)){document.body.classList.add('motion-ready');return}revealObserver=new IntersectionObserver(entries=>entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add('is-visible');revealObserver.unobserve(entry.target)}}),{threshold:.12,rootMargin:'0px 0px -8% 0px'});observeMotionTargets();requestAnimationFrame(()=>document.body.classList.add('motion-ready'));updateHeroMotion();requestGalleryParallax();window.addEventListener('scroll',()=>{updateHeroMotion();requestGalleryParallax()},{passive:true});window.addEventListener('resize',requestGalleryParallax)}
     function text(el,value){if(el&&value!==undefined)el.textContent=value}
     function html(el,value){if(el&&value!==undefined)el.innerHTML=value}
     function eachText(nodes,values){nodes.forEach((el,i)=>text(el,values[i]))}
@@ -1479,7 +1515,7 @@ body *:not(.mi){font-family:var(--font-main)!important;letter-spacing:0!importan
     function restaurantImageUrl(r){const idx=RESTAURANTS.indexOf(r);return idx<0?'assets/extay/crops/rooftop-namsan.jpg':`assets/restaurants/restaurant-${String(idx+1).padStart(2,'0')}.jpg`}
     function restaurantMapUrl(name,type){const query=encodeURIComponent(`${name.replace(/\([^)]*\)/g,'').trim()} 해방촌`);return type==='naver'?`https://map.naver.com/p/search/${query}`:`https://www.google.com/maps/search/?api=1&query=${query}`}
     function renderRestaurantFilters(){const wrap=q('#restaurantFilters');if(!wrap)return;wrap.innerHTML=RESTAURANT_CATEGORIES.map(([key,label])=>`<button class="restaurant-chip ${key===restaurantCategory?'active':''}" type="button" data-restaurant-filter="${key}">${label}</button>`).join('')}
-    function renderRestaurants(){const list=q('#restaurantList'),count=q('#restaurantCount'),empty=q('#restaurantEmpty');if(!list)return;renderRestaurantFilters();const needle=restaurantSearch.trim().toLowerCase();const filtered=RESTAURANTS.filter(r=>(restaurantCategory==='all'||r.cat===restaurantCategory)&&(!needle||[r.name,r.label,r.note,...r.tags].join(' ').toLowerCase().includes(needle)));if(count)count.textContent=`${filtered.length}곳`;if(empty)empty.style.display=filtered.length?'none':'block';list.innerHTML=filtered.map(r=>{const name=escRestaurant(r.name);return `<article class="restaurant-card"><figure class="restaurant-photo"><img src="${restaurantImageUrl(r)}" alt="${name}" loading="lazy"></figure><div class="restaurant-body"><div class="restaurant-top"><h3 class="restaurant-name">${name}</h3><span class="restaurant-badge">${escRestaurant(r.label)}</span></div><p class="restaurant-note">${escRestaurant(r.note)}</p><div class="restaurant-tags">${r.tags.map(t=>`<span>${escRestaurant(t)}</span>`).join('')}</div><div class="restaurant-actions"><a class="primary" href="${restaurantMapUrl(r.name,'naver')}" target="_blank" rel="noopener"><span class="mi">location_on</span>네이버</a><a href="${restaurantMapUrl(r.name,'google')}" target="_blank" rel="noopener"><span class="mi">map</span>구글</a><a href="${r.href}" target="_blank" rel="noopener"><span class="mi">open_in_new</span>상세</a></div></div></article>`}).join('')}
+    function renderRestaurants(){const list=q('#restaurantList'),count=q('#restaurantCount'),empty=q('#restaurantEmpty');if(!list)return;renderRestaurantFilters();const needle=restaurantSearch.trim().toLowerCase();const filtered=RESTAURANTS.filter(r=>(restaurantCategory==='all'||r.cat===restaurantCategory)&&(!needle||[r.name,r.label,r.note,...r.tags].join(' ').toLowerCase().includes(needle)));if(count)count.textContent=`${filtered.length}곳`;if(empty)empty.style.display=filtered.length?'none':'block';list.innerHTML=filtered.map(r=>{const name=escRestaurant(r.name);return `<article class="restaurant-card"><figure class="restaurant-photo"><img src="${restaurantImageUrl(r)}" alt="${name}" loading="lazy"></figure><div class="restaurant-body"><div class="restaurant-top"><h3 class="restaurant-name">${name}</h3><span class="restaurant-badge">${escRestaurant(r.label)}</span></div><p class="restaurant-note">${escRestaurant(r.note)}</p><div class="restaurant-tags">${r.tags.map(t=>`<span>${escRestaurant(t)}</span>`).join('')}</div><div class="restaurant-actions"><a class="primary" href="${restaurantMapUrl(r.name,'naver')}" target="_blank" rel="noopener"><span class="mi">location_on</span>네이버</a><a href="${restaurantMapUrl(r.name,'google')}" target="_blank" rel="noopener"><span class="mi">map</span>구글</a><a href="${r.href}" target="_blank" rel="noopener"><span class="mi">open_in_new</span>상세</a></div></div></article>`}).join('');observeMotionTargets(list)}
     const GUIDEBOOK_PDFS={ko:'assets/guidebook/Extay_Mansion_Haebangchon_Guide_KO_no_NotebookLM.pdf',en:'assets/guidebook/Extay_Mansion_Haebangchon_Guide_EN_no_NotebookLM.pdf'};
     const PDFJS_SRC='https://cdn.jsdelivr.net/npm/pdfjs-dist@4.10.38/build/pdf.min.mjs';
     const PDFJS_WORKER='https://cdn.jsdelivr.net/npm/pdfjs-dist@4.10.38/build/pdf.worker.min.mjs';
@@ -1498,7 +1534,42 @@ body *:not(.mi){font-family:var(--font-main)!important;letter-spacing:0!importan
     function writeRoute(name,openDevice='',mode='push'){const state={screen:name,openDevice:openDevice||''},url=routeUrl(name);if(mode==='replace')history.replaceState(state,'',url);else history.pushState(state,'',url)}
     let activeScreen=routeFromHash(),activeOpenDevice='';
     function syncDeviceIcon(device){const icon=device?.querySelector('summary>.mi:last-child');if(icon)icon.textContent=device.open?'expand_less':'expand_more'}
-    function show(name, openDevice='', options={}){if(!routeExists(name))name='home';openDevice=openDevice||'';const previousScreen=activeScreen,previousOpenDevice=activeOpenDevice,historyMode=options.history||'push';if(name!=='guidebook')setGuidebookFullscreen(false);document.body.classList.toggle('is-home',name==='home');document.body.classList.toggle('is-gallery',name==='gallery');document.body.classList.toggle('is-checkin',name==='checkin');document.body.classList.toggle('is-wifi',name==='wifi');document.body.classList.toggle('is-transport',name==='transport');document.body.classList.toggle('is-guidebook',name==='guidebook');document.body.classList.toggle('is-restaurants',name==='restaurants');document.body.classList.toggle('is-faq',name==='faq');document.body.classList.toggle('is-appliances',name==='appliances');document.body.classList.toggle('is-laundry',name==='laundry');document.body.classList.toggle('is-trash',name==='trash');screens.forEach(s=>s.classList.toggle('active',s.dataset.screen===name));tabs.forEach(t=>t.classList.toggle('active',t.dataset.go===name));if(name==='guidebook')setTimeout(initGuidebook,60);if(name==='restaurants')setTimeout(renderRestaurants,0);if(openDevice){document.querySelectorAll('details.device').forEach(d=>{d.open=d.dataset.device===openDevice;syncDeviceIcon(d)});const target=document.querySelector(`details.device[data-device="${openDevice}"]`);if(target)setTimeout(()=>target.scrollIntoView({behavior:'smooth',block:'start'}),80)}else if(name==='appliances'){document.querySelectorAll('[data-screen="appliances"] details.device').forEach(d=>{d.open=false;syncDeviceIcon(d)})}else if(name==='laundry'){document.querySelectorAll('[data-screen="laundry"] details.device').forEach(d=>{d.open=false;syncDeviceIcon(d)})}activeScreen=name;activeOpenDevice=openDevice;if(options.scroll!==false)scrollTo({top:0,behavior:options.smooth===false?'auto':'smooth'});if(historyMode!=='none'&&(previousScreen!==name||previousOpenDevice!==openDevice))writeRoute(name,openDevice,historyMode)}
+    function show(name, openDevice='', options={}){
+      if(!routeExists(name))name='home';
+      openDevice=openDevice||'';
+      const previousScreen=activeScreen,previousOpenDevice=activeOpenDevice,historyMode=options.history||'push';
+      markScreenExiting(previousScreen,name);
+      if(name!=='guidebook')setGuidebookFullscreen(false);
+      document.body.classList.toggle('is-home',name==='home');
+      document.body.classList.toggle('is-gallery',name==='gallery');
+      document.body.classList.toggle('is-checkin',name==='checkin');
+      document.body.classList.toggle('is-wifi',name==='wifi');
+      document.body.classList.toggle('is-transport',name==='transport');
+      document.body.classList.toggle('is-guidebook',name==='guidebook');
+      document.body.classList.toggle('is-restaurants',name==='restaurants');
+      document.body.classList.toggle('is-faq',name==='faq');
+      document.body.classList.toggle('is-appliances',name==='appliances');
+      document.body.classList.toggle('is-laundry',name==='laundry');
+      document.body.classList.toggle('is-trash',name==='trash');
+      screens.forEach(s=>s.classList.toggle('active',s.dataset.screen===name));
+      tabs.forEach(t=>t.classList.toggle('active',t.dataset.go===name));
+      if(name==='guidebook')setTimeout(initGuidebook,60);
+      if(name==='restaurants')setTimeout(renderRestaurants,0);
+      if(openDevice){
+        document.querySelectorAll('details.device').forEach(d=>{d.open=d.dataset.device===openDevice;syncDeviceIcon(d)});
+        const target=document.querySelector(`details.device[data-device="${openDevice}"]`);
+        if(target)setTimeout(()=>target.scrollIntoView({behavior:'smooth',block:'start'}),80);
+      }else if(name==='appliances'){
+        document.querySelectorAll('[data-screen="appliances"] details.device').forEach(d=>{d.open=false;syncDeviceIcon(d)});
+      }else if(name==='laundry'){
+        document.querySelectorAll('[data-screen="laundry"] details.device').forEach(d=>{d.open=false;syncDeviceIcon(d)});
+      }
+      activeScreen=name;
+      activeOpenDevice=openDevice;
+      refreshMotionForScreen(name);
+      if(options.scroll!==false)scrollTo({top:0,behavior:options.smooth===false?'auto':'smooth'});
+      if(historyMode!=='none'&&(previousScreen!==name||previousOpenDevice!==openDevice))writeRoute(name,openDevice,historyMode);
+    }
     const imageLightbox=q('#imageLightbox'),imageLightboxBackdrop=q('#imageLightboxBackdrop'),imageLightboxImg=q('#imageLightboxImg'),imageLightboxCaption=q('#imageLightboxCaption');
     function openImageLightbox(trigger){if(!imageLightbox||!imageLightboxImg)return;const img=trigger.matches?.('img')?trigger:trigger.querySelector('img'),src=trigger.dataset.fullscreenImage||img?.currentSrc||img?.src,title=trigger.closest('figure')?.querySelector('figcaption')?.textContent.trim()||trigger.dataset.fullscreenTitle||img?.alt||'';if(!src)return;imageLightboxImg.src=src;imageLightboxImg.alt=img?.alt||title; if(imageLightboxCaption)imageLightboxCaption.textContent=title;imageLightbox.classList.add('open');imageLightboxBackdrop?.classList.add('open');document.body.classList.add('image-lightbox-open');if(imageLightbox.requestFullscreen&&!document.fullscreenElement)imageLightbox.requestFullscreen().catch(()=>{})}
     function closeImageLightbox(){if(!imageLightbox)return;imageLightbox.classList.remove('open');imageLightboxBackdrop?.classList.remove('open');document.body.classList.remove('image-lightbox-open');if(document.fullscreenElement===imageLightbox&&document.exitFullscreen)document.exitFullscreen().catch(()=>{})}
@@ -1520,7 +1591,8 @@ body *:not(.mi){font-family:var(--font-main)!important;letter-spacing:0!importan
     document.addEventListener('click',e=>{const thumb=e.target.closest('.gallery-thumb'); if(thumb)selectGalleryImage(thumb)});
     document.addEventListener('click',async e=>{const c=e.target.closest('[data-copy]'); if(!c)return; try{await navigator.clipboard.writeText(c.dataset.copy); toast(uiText[currentLang].copied)}catch(_){toast(c.dataset.copy)}});
     function toast(t){const el=document.getElementById('toast');el.textContent=t;el.classList.add('show');clearTimeout(window.__t);window.__t=setTimeout(()=>el.classList.remove('show'),1500)}
-    const initial=routeFromHash();writeRoute(initial,'','replace');if(initial!=='home')show(initial,'',{history:'none',scroll:false});
+    initMotion();
+    const initial=routeFromHash();writeRoute(initial,'','replace');if(initial!=='home')show(initial,'',{history:'none',scroll:false});else refreshMotionForScreen('home');
     window.addEventListener('popstate',e=>{const state=e.state||{},name=state.screen&&routeExists(state.screen)?state.screen:routeFromHash();show(name,state.openDevice||'',{history:'none',smooth:false})});
     const smartModes={};
     const extaySmartModes={trash:{bg:'assets/extay/smart-card/trash-evening.png',ko:{badge:'저녁 정리',title:'쓰레기 배출 확인',copy:'음식물, 재활용, 일반 쓰레기 위치가 다릅니다. 장기 숙박 시 냄새가 나지 않도록 먼저 확인해 주세요.',actions:[['trash','쓰레기 보기','delete'],['appliances','사용법 보기','robot_2']],suggestions:['쓰레기 어디에 버려?','음식물 쓰레기는 어디야?','재활용은 어디야?','세탁기 어떻게 써?']},en:{badge:'Evening cleanup',title:'Check Trash Disposal',copy:'Food waste, recycling, and general trash have different locations. Check the guide first to prevent odor during longer stays.',actions:[['trash','Trash Guide','delete'],['appliances','How to Use','robot_2']],suggestions:['Where do I throw away trash?','Where does food waste go?','Where is recycling?','How do I use the washer?']}},ready:{bg:'assets/extay/smart-card/ready-morning.jpg',ko:{badge:'입실 준비',title:'먼저 확인하면 좋은 정보',copy:'와이파이 ID와 비밀번호, 체크인 시간, TV·OTT 사용법, 온수 버튼을 먼저 확인해 주세요.',actions:[['wifi','와이파이 확인','wifi_password'],['appliances','사용법 보기','robot_2']],suggestions:['와이파이 비밀번호 알려줘','체크인은 몇 시야?','TV OTT 어떻게 봐?','온수 어떻게 켜?']},en:{badge:'Check-in ready',title:'Good Things to Check First',copy:'Check the Wi-Fi ID/password, check-in time, TV/OTT steps, and hot-water button first.',actions:[['wifi','Wi-Fi Info','wifi_password'],['appliances','How to Use','robot_2']],suggestions:['What is the Wi-Fi password?','What time is check-in?','How do I use TV OTT?','How do I turn on hot water?']}},stay:{bg:'assets/extay/smart-card/stay-day.png',ko:{badge:'숙박 중 안내',title:'자주 찾는 정보',copy:'TV·OTT, 온수·난방, 세탁기·건조기, 옥상 정보를 바로 확인할 수 있습니다.',actions:[['appliances','사용법 보기','robot_2'],['laundry','세탁 안내','local_laundry_service']],suggestions:['OTT 어떻게 봐?','온수가 안 나와','세탁기 어떻게 써?','옥상 이용 가능해?']},en:{badge:'During your stay',title:'Frequently Needed Info',copy:'Quickly check TV/OTT, hot water and heating, washer/dryer, and rooftop information.',actions:[['appliances','How to Use','robot_2'],['laundry','Laundry','local_laundry_service']],suggestions:['How do I use OTT?','Hot water is not working','How do I use the washer?','Can I use the rooftop?']}},night:{bg:'assets/extay/smart-card/night.jpg',ko:{badge:'야간 안내',title:'밤 시간 이용 안내',copy:'21시 이후에는 매너타임입니다. 세탁기·건조기 진동, 옥상 소음, 흡연 구역에 유의해 주세요.',actions:[['appliances','사용법 보기','thermostat'],['trash','쓰레기 안내','delete']],suggestions:['온수 어떻게 켜?','공용 화장실 비밀번호 알려줘','OTT가 안 켜져','주차는 어디에 해?']},en:{badge:'Night guide',title:'Night-Time Guide',copy:'Quiet hours start after 21:00. Please be mindful of washer/dryer vibration, rooftop noise, and smoking rules.',actions:[['appliances','How to Use','thermostat'],['trash','Trash Guide','delete']],suggestions:['How do I turn on hot water?','What is the shared restroom password?','OTT is not working','Where can I park?']}}};
