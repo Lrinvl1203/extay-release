@@ -779,7 +779,8 @@ body.motion-ready .hero-panel .scroll-cue{animation:heroTextIn 1.5s cubic-bezier
 .wifi-stack{gap:14px}
 .wifi-network-section,.wifi-help-section{margin:0;padding:18px 17px;background:#fffaf4;border:1px solid rgba(216,198,180,.72);border-radius:12px;box-shadow:none}
 .wifi-network-section>h3{margin-bottom:10px}
-.wifi-network-graphic{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;border:0;border-radius:0;background:transparent;padding:0}
+.wifi-network-graphic{position:relative;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;border:0;border-radius:0;background:transparent;padding:0}
+.wifi-network-graphic:after{content:"";position:absolute;z-index:2;left:50%;top:0;bottom:0;width:1px;background:rgba(216,198,180,.8);transform:translateX(-.5px);pointer-events:none}
 .wifi-network-tips{display:contents}
 .wifi-network-card,.wifi-network-card.featured{grid-template-columns:28px minmax(0,1fr);grid-template-areas:"icon copy" "button button";gap:7px 8px;min-width:0;min-height:126px;border:0;border-radius:8px;background:#7b634f;color:#fff;padding:13px 11px;align-items:start}
 .wifi-network-card>.mi,.wifi-network-card.featured>.mi{grid-area:icon;width:28px;height:28px;background:#fffaf4;color:#7b634f;font-size:18px}
@@ -791,7 +792,7 @@ body .wifi-network-card strong,body .wifi-network-card strong *{font-weight:800!
 .wifi-network-card strong,.wifi-network-card.featured strong{color:#fff;font-size:13px;line-height:1.25;white-space:nowrap}
 .wifi-network-card .mini-btn,.wifi-network-card.featured .mini-btn{grid-area:button;margin:0;min-width:0;width:100%;justify-self:stretch;align-self:end;border-radius:8px;background:#fffaf4;color:#2b2118;padding:7px 9px;white-space:nowrap;font-size:11px}
 .wifi-network-tips .wifi-visual-card{min-height:126px;border:0;border-top:1px solid rgba(216,198,180,.8);border-radius:0;background:transparent;padding:13px 8px;display:grid;grid-template-columns:30px minmax(0,1fr);align-items:start}
-.wifi-network-tips .wifi-visual-card:first-child{border-right:1px solid rgba(216,198,180,.8);padding-right:12px}
+.wifi-network-tips .wifi-visual-card:first-child{padding-right:12px}
 .wifi-network-tips .wifi-visual-card:last-child{padding-left:12px}
 .wifi-network-tips .wifi-visual-card .mi{width:30px;height:30px;border-radius:8px;font-size:18px}
 .wifi-help-grid .wifi-visual-card{min-height:0;border:0;border-bottom:1px solid rgba(216,198,180,.64);border-radius:0;background:transparent;padding:13px 0;display:grid;grid-template-columns:34px minmax(0,1fr);align-items:start}
