@@ -145,13 +145,27 @@ body:not(.is-home):not(.is-gallery):not(.is-checkin):not(.is-wifi):not(.is-trans
 .home-gallery-head{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:15px}
 .home-gallery-head h2{margin:0;color:#221b15;font-size:24px;line-height:1.2;font-weight:800}
 .home-gallery-all{border:0;background:transparent;color:#6d5d4e;padding:5px 0;font-size:12px;font-weight:800;cursor:pointer;white-space:nowrap}
-.home-gallery-main,.home-gallery-card{display:block;width:100%;border:0;padding:0;overflow:hidden;background:#e8ded2;cursor:pointer}
-.home-gallery-main{height:238px;border-radius:14px}
+.home-gallery-main,.home-gallery-card{width:100%;border:0;padding:0;overflow:hidden;background:#e8ded2;cursor:pointer}
+.home-gallery-main{height:238px;border-radius:14px;display:grid;grid-template-columns:2fr 1fr;text-align:left}
+.home-gallery-photo{display:block;min-width:0;overflow:hidden}
 .home-gallery-main img,.home-gallery-card img{width:100%;height:100%;display:block;object-fit:cover;transition:transform .35s ease}
 .home-gallery-main img{object-position:center 48%}
+.home-gallery-copy{min-width:0;background:#26382f;color:#f5ead8;padding:20px 13px 16px;display:flex;flex-direction:column;align-items:flex-start;justify-content:flex-end}
+.home-gallery-count{margin:0 0 auto;color:#cdbb9f;font-size:9px;font-weight:900;line-height:1.2;letter-spacing:.08em!important}
+.home-gallery-copy strong{display:block;color:#fff8eb;font-size:15px;line-height:1.25;font-weight:800;word-break:keep-all}
+.home-gallery-copy small{display:block;margin-top:9px;color:#d8ccb9;font-size:10px;line-height:1.45;font-weight:600;word-break:keep-all}
 .home-gallery-cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:7px;margin-top:7px}
 .home-gallery-card{height:104px;border-radius:11px}
 @media (hover:hover){.home-gallery-main:hover img,.home-gallery-card:hover img{transform:scale(1.035)}}
+.getting-kicker{margin:0 0 9px;color:#7b6b5c;font-size:10px;font-weight:900;line-height:1.2;letter-spacing:.12em!important}
+.getting-title{margin:0 0 18px;color:#221b15;font-size:26px;line-height:1.2;font-weight:800}
+.getting-card{overflow:hidden;border:1px solid #cdbb9f;border-radius:14px;background:#26382f;color:#f5ead8;padding:24px 20px 19px;box-shadow:0 18px 42px rgba(31,48,40,.16)}
+.getting-card h3{margin:0;color:#fff8eb;font-size:24px;line-height:1.18;font-weight:800;word-break:keep-all}
+.getting-address{margin:10px 0 0;color:#d8ccb9;font-size:12px;line-height:1.45;font-weight:600;word-break:keep-all}
+.getting-actions{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:20px}
+.getting-actions a{min-height:44px;border:1px solid rgba(205,187,159,.72);border-radius:11px;background:transparent;color:#f5ead8;display:flex;align-items:center;justify-content:center;gap:6px;padding:0 9px;font-size:11px;font-weight:800;text-align:center}
+.getting-actions a:first-child{background:#f5ead8;color:#26382f;border-color:#f5ead8}
+.getting-actions .mi{font-size:17px}
 .stay-card-grid{display:grid;grid-template-columns:1fr 1fr;gap:9px}
 .image-card{position:relative;min-height:142px;border:0;border-radius:13px;overflow:hidden;background:linear-gradient(180deg,rgba(26,19,14,.06),rgba(26,19,14,.68)),var(--card-img) center/cover no-repeat;color:#fff;box-shadow:0 12px 28px rgba(58,43,30,.12);display:flex;flex-direction:column;justify-content:flex-end;align-items:flex-start;text-align:left;padding:18px;cursor:pointer}
 .image-card:before{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.02) 20%,rgba(0,0,0,.64) 100%);pointer-events:none}
@@ -627,6 +641,11 @@ body.motion-ready .hero-panel .scroll-cue{animation:heroTextIn .98s cubic-bezier
   .essential-copy strong{font-size:12.5px}
   .home-gallery-main{height:214px}
   .home-gallery-card{height:92px}
+  .home-gallery-copy{padding:16px 10px 13px}
+  .home-gallery-copy strong{font-size:13px}
+  .home-gallery-copy small{font-size:9px;line-height:1.4}
+  .getting-title{font-size:23px}
+  .getting-card h3{font-size:21px}
   .image-card{min-height:130px;padding:15px}
   .menu-panel{right:0;width:88vw}
   .gallery-thumb{flex-basis:76px;width:76px;height:88px}
@@ -714,11 +733,27 @@ body *:not(.mi){font-family:var(--font-main)!important;letter-spacing:0!importan
             <h2 id="homeGalleryTitle">객실 둘러보기</h2>
             <button class="home-gallery-all" type="button" data-go="gallery">전체보기 →</button>
           </div>
-          <button class="home-gallery-main" type="button" data-go="gallery" aria-label="거실 라운지 사진 전체보기"><img src="assets/extay/crops/main-living-logo.png" alt="익스테이 거실 라운지" loading="lazy"></button>
+          <button class="home-gallery-main" type="button" data-go="gallery" aria-label="거실 라운지 사진 전체보기">
+            <span class="home-gallery-photo"><img src="assets/extay/crops/main-living-logo.png" alt="익스테이 거실 라운지" loading="lazy"></span>
+            <span class="home-gallery-copy"><span class="home-gallery-count">01/04</span><strong>거실 라운지</strong><small>따뜻한 조명과 편안한 소파가 있는 메인 거실 공간입니다.</small></span>
+          </button>
           <div class="home-gallery-cards">
             <button class="home-gallery-card" type="button" data-go="gallery" aria-label="다이닝과 키친 사진 전체보기"><img src="assets/extay/crops/hero-extay.jpg" alt="익스테이 다이닝과 키친" loading="lazy"></button>
             <button class="home-gallery-card" type="button" data-go="gallery" aria-label="침실 사진 전체보기"><img src="assets/extay/bedroom-thumbs/bedroom1-01.webp" alt="익스테이 침실" loading="lazy"></button>
             <button class="home-gallery-card" type="button" data-go="gallery" aria-label="다른 침실 사진 전체보기"><img src="assets/extay/bedroom-thumbs/bedroom3-01.webp" alt="익스테이 다른 침실" loading="lazy"></button>
+          </div>
+        </section>
+
+        <section class="hotel-section getting-section" aria-labelledby="gettingTitle">
+          <p class="getting-kicker" id="gettingKicker">GETTING HERE</p>
+          <h2 class="getting-title" id="gettingTitle">위치와 교통</h2>
+          <div class="getting-card">
+            <h3 id="gettingName">EXTAY Mansion Haebangchon</h3>
+            <p class="getting-address" id="gettingAddress">서울시 용산구 신흥로 59, 2층</p>
+            <div class="getting-actions">
+              <a href="https://map.naver.com/p/search/%EC%84%9C%EC%9A%B8%EC%8B%9C%20%EC%9A%A9%EC%82%B0%EA%B5%AC%20%EC%8B%A0%ED%9D%A5%EB%A1%9C%2059%202%EC%B8%B5" target="_blank" rel="noopener"><span class="mi">location_on</span><span id="gettingNaver">네이버 지도</span></a>
+              <a href="https://www.google.com/maps/search/?api=1&amp;query=%EC%84%9C%EC%9A%B8%EC%8B%9C%20%EC%9A%A9%EC%82%B0%EA%B5%AC%20%EC%8B%A0%ED%9D%A5%EB%A1%9C%2059" target="_blank" rel="noopener"><span class="mi">map</span><span id="gettingGoogle">Google Maps</span></a>
+            </div>
           </div>
         </section>
 
@@ -1532,6 +1567,10 @@ body *:not(.mi){font-family:var(--font-main)!important;letter-spacing:0!importan
       trash:{title:'ゴミ出し',sub:'生ゴミ、リサイクル、一般ゴミの場所は異なります。長期滞在ではにおいが出ないよう案内に従ってください。',basis:'分別基準',types:'2種類',items:['一般ゴミとリサイクルはベランダにあるゴミ箱へまとめて入れてください。','生ゴミはキッチンシンク上の生ゴミ箱に捨ててください。','長期滞在中に生ゴミのにおいが出たら、1階入口のオレンジ色の箱をご利用ください。'],captions:['現在のゴミ箱'],cards:[]},
       chat:{title:'ガイドアシスタント',sub:'ガイド内容に基づいて回答します',close:'閉じる',hello:'こんにちは。EXTAY 海放村民宿のガイドアシスタントです。Wi‑Fi、チェックイン/チェックアウト、場所、駐車、宿泊ルール、TV·OTT、給湯·暖房、ランドリー、ゴミ出しについてお尋ねください。',note:'個人用ドアコードや緊急時は Airbnb / ホストのメッセージをご確認ください。',placeholder:'質問を入力してください',typing:'回答中...'}
     };
+    Object.assign(uiText.ko,{homeGalleryFeature:{count:'01/04',title:'거실 라운지',desc:'따뜻한 조명과 편안한 소파가 있는 메인 거실 공간입니다.'},getting:{kicker:'GETTING HERE',title:'위치와 교통',name:'EXTAY Mansion Haebangchon',address:'서울시 용산구 신흥로 59, 2층',naver:'네이버 지도',google:'Google Maps'}});
+    Object.assign(uiText.en,{homeGalleryFeature:{count:'01/04',title:'Living Lounge',desc:'The main living space with warm lighting and a comfortable sofa.'},getting:{kicker:'GETTING HERE',title:'Location & Transportation',name:'EXTAY Mansion Haebangchon',address:'2F, 59 Sinheung-ro, Yongsan-gu, Seoul',naver:'Naver Map',google:'Google Maps'}});
+    Object.assign(uiText.zh,{homeGalleryFeature:{count:'01/04',title:'客厅休息区',desc:'配有温暖灯光和舒适沙发的主客厅空间。'},getting:{kicker:'GETTING HERE',title:'位置与交通',name:'EXTAY Mansion Haebangchon',address:'首尔特别市龙山区新兴路59号 2楼',naver:'Naver 地图',google:'Google Maps'}});
+    Object.assign(uiText.ja,{homeGalleryFeature:{count:'01/04',title:'リビングラウンジ',desc:'温かな照明と快適なソファのあるメインリビングです。'},getting:{kicker:'GETTING HERE',title:'アクセス・交通',name:'EXTAY Mansion Haebangchon',address:'ソウル特別市龍山区新興路59、2階',naver:'Naver マップ',google:'Google Maps'}});
     const q=s=>document.querySelector(s), qa=s=>[...document.querySelectorAll(s)];
     const reduceMotion=window.matchMedia?.('(prefers-reduced-motion: reduce)')?.matches||false;
     let revealObserver=null,pageTransitionTimer=0,parallaxTick=false;
@@ -1559,6 +1598,8 @@ body *:not(.mi){font-family:var(--font-main)!important;letter-spacing:0!importan
       const meta=q('meta[name="description"]'); if(meta)meta.setAttribute('content',tr.docDesc);
       text(q('#brandHome'),tr.headerTitle); q('#brandHome')?.setAttribute('aria-label',currentLang==='en'?'Go home':'홈으로 이동'); text(q('.hero .label'),tr.heroSub); text(q('.landing-hero .eyebrow'),tr.homeHeroEyebrow); text(q('#stayGuide .section-kicker'),tr.stayGuideKicker); text(q('#conciergeKicker'),tr.conciergeKicker); text(q('#aiTitle'),tr.aiTitle); const conciergeInput=q('#conciergeAskInput'); if(conciergeInput)conciergeInput.placeholder=tr.conciergePlaceholder; text(q('#locationContact .section-kicker'),tr.contactKicker); text(q('.hotel-footer span'),tr.footerCopy); const badge=LANG_BADGE[currentLang]||LANG_BADGE.ko; text(q('#langToggleText'),badge); text(q('#homeLangText'),badge); qa('.home-language-option').forEach(option=>option.setAttribute('aria-checked',String(option.dataset.language===currentLang)));
       if(tr.essentials){text(q('#essentialsKicker'),tr.essentials.kicker);text(q('#essentialsTitle'),tr.essentials.title);text(q('#essentialsSub'),tr.essentials.sub);eachText(qa('.essential-copy small'),tr.essentials.labels);eachText(qa('.essential-copy strong'),tr.essentials.values);eachText(qa('.essentials-link>span:first-child'),tr.essentials.links);text(q('#homeGalleryTitle'),tr.essentials.galleryTitle);text(q('.home-gallery-all'),tr.essentials.galleryAll)}
+      if(tr.homeGalleryFeature){text(q('.home-gallery-count'),tr.homeGalleryFeature.count);text(q('.home-gallery-copy strong'),tr.homeGalleryFeature.title);text(q('.home-gallery-copy small'),tr.homeGalleryFeature.desc)}
+      if(tr.getting){text(q('#gettingKicker'),tr.getting.kicker);text(q('#gettingTitle'),tr.getting.title);text(q('#gettingName'),tr.getting.name);text(q('#gettingAddress'),tr.getting.address);text(q('#gettingNaver'),tr.getting.naver);text(q('#gettingGoogle'),tr.getting.google)}
       const menu=q('#menuTop'), guide=q('#openGuidebookTop'), chatTop=q('#openChatTop'), chatFab=q('#openChatFab'), close=q('#closeChat'), langBtn=q('#langToggle'), homeLangBtn=q('#homeLangToggle');
       if(menu)menu.setAttribute('aria-label',tr.menuAria); if(guide){guide.setAttribute('aria-label',tr.guideAria);guide.href=GUIDEBOOK_PDFS[currentLang==='en'?'en':'ko']} if(chatTop)chatTop.setAttribute('aria-label',tr.chatAria); if(chatFab)chatFab.setAttribute('aria-label',tr.chatFabAria); if(close)close.setAttribute('aria-label',tr.chat.close); if(langBtn)langBtn.setAttribute('aria-label',currentLang==='en'?'Switch language':'언어 전환'); if(homeLangBtn)homeLangBtn.setAttribute('aria-label',currentLang==='en'?'Choose language':'언어 선택');
       eachText(qa('.bottom .tab span:not(.mi)'),tr.bottom);
