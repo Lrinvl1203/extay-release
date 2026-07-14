@@ -75,9 +75,17 @@ body.is-home .top{position:fixed;top:0;background:transparent;color:#fff;grid-te
 body.is-home .top h1{order:1;text-shadow:0 2px 18px rgba(0,0,0,.34)}
 body.is-home .top #menuTop{order:1;background:rgba(0,0,0,.08);color:#fff}
 body.is-home .top .top-actions{display:none}
-.home-search-btn{display:none;border:1px solid rgba(255,255,255,.38);border-radius:999px;background:rgba(0,0,0,.1);color:#fff;backdrop-filter:blur(12px);align-items:center;justify-content:center;gap:4px;min-height:38px;padding:0 13px 0 11px;font-size:13px;font-weight:800;line-height:1;cursor:pointer;white-space:nowrap;box-shadow:0 10px 26px rgba(0,0,0,.08)}
-.home-search-btn .mi{font-size:19px}
-body.is-home .home-search-btn{display:flex;order:3;justify-self:end}
+.home-language{display:none;position:relative;order:3;justify-self:end}
+body.is-home .home-language{display:block}
+.home-language-btn{min-width:50px;height:38px;border:1px solid rgba(255,255,255,.42);border-radius:999px;background:rgba(0,0,0,.1);color:#fff;backdrop-filter:blur(12px);display:flex;align-items:center;justify-content:center;gap:3px;padding:0 9px 0 12px;font-size:13px;font-weight:900;line-height:1;cursor:pointer;box-shadow:0 10px 26px rgba(0,0,0,.08)}
+.home-language-btn .mi{font-size:18px;transition:transform .18s ease}
+.home-language.open .home-language-btn .mi{transform:rotate(180deg)}
+.home-language-menu{position:absolute;top:46px;right:0;width:132px;padding:6px;border:1px solid rgba(216,198,180,.82);border-radius:15px;background:rgba(255,250,244,.98);box-shadow:0 18px 44px rgba(28,22,17,.22);display:grid;gap:2px;opacity:0;visibility:hidden;transform:translateY(-6px) scale(.97);transform-origin:top right;transition:opacity .16s ease,transform .16s ease,visibility .16s;z-index:75}
+.home-language.open .home-language-menu{opacity:1;visibility:visible;transform:translateY(0) scale(1)}
+.home-language-option{width:100%;min-height:38px;border:0;border-radius:10px;background:transparent;color:#221b15;display:flex;align-items:center;justify-content:space-between;padding:0 10px;font-size:13px;font-weight:700;cursor:pointer;text-align:left}
+.home-language-option:hover,.home-language-option:focus-visible{background:#efe4d6;outline:none}
+.home-language-option[aria-checked="true"]{background:#2b2118;color:#fff}
+.home-language-option small{color:inherit;font-size:10px;font-weight:900;opacity:.68}
 body.is-gallery .top,body.is-checkin .top,body.is-wifi .top,body.is-transport .top,body.is-guidebook .top,body.is-restaurants .top,body.is-faq .top,body.is-appliances .top,body.is-laundry .top,body.is-trash .top{position:sticky;top:0;left:auto;transform:none;width:100%;background:rgba(247,242,236,.94);color:#221b15;grid-template-columns:1fr auto;border-bottom:1px solid rgba(216,198,180,.72);backdrop-filter:blur(18px)}
 body.is-gallery .top h1,body.is-checkin .top h1,body.is-wifi .top h1,body.is-transport .top h1,body.is-guidebook .top h1,body.is-restaurants .top h1,body.is-faq .top h1,body.is-appliances .top h1,body.is-laundry .top h1,body.is-trash .top h1{order:1;text-align:center;text-shadow:none}
 body.is-gallery .top #menuTop,body.is-checkin .top #menuTop,body.is-wifi .top #menuTop,body.is-transport .top #menuTop,body.is-guidebook .top #menuTop,body.is-restaurants .top #menuTop,body.is-faq .top #menuTop,body.is-appliances .top #menuTop,body.is-laundry .top #menuTop,body.is-trash .top #menuTop{order:2;background:rgba(123,99,79,.1);color:#221b15}
@@ -95,7 +103,7 @@ body:not(.is-home):not(.is-gallery):not(.is-checkin):not(.is-wifi):not(.is-trans
 .hotel-btn .mi{font-size:20px}
 .hotel-btn.primary{border-color:#fff;background:#fff;color:#241d17;box-shadow:0 10px 30px rgba(0,0,0,.16)}
 .hotel-btn.ghost{color:#fff}
-.hotel-btn.compact{width:auto;min-height:42px;padding:0 18px;font-size:13px}.hero-lang-toggle{width:58px;height:58px;padding:0;border-radius:16px;justify-content:center;position:relative;background:linear-gradient(145deg,rgba(255,255,255,.2),rgba(255,255,255,.1));border-color:rgba(255,255,255,.58);box-shadow:0 18px 34px rgba(0,0,0,.18),inset 0 1px 0 rgba(255,255,255,.45);backdrop-filter:blur(14px)}.hero-lang-toggle:before{content:"";position:absolute;inset:6px;border-radius:12px;border:1px solid rgba(255,255,255,.24);pointer-events:none}.hero-lang-toggle .mi{font-size:20px}.hero-lang-toggle span:last-child{position:absolute;right:5px;bottom:5px;width:18px;height:18px;border-radius:999px;display:grid;place-items:center;background:var(--ink);color:#fff;font-size:9px;font-weight:900;line-height:1;box-shadow:0 6px 12px rgba(0,0,0,.16)}
+.hotel-btn.compact{width:auto;min-height:42px;padding:0 18px;font-size:13px}
 .scroll-cue{margin-top:36px;border:0;background:transparent;color:#fff;display:inline-grid;gap:2px;padding:0;font-size:11px;font-weight:700;line-height:1.2;cursor:pointer}
 .scroll-cue .mi{font-size:22px}
 .hotel-section{padding:36px 31px 0}
@@ -157,29 +165,6 @@ body.is-home #aiConcierge{position:absolute;top:84px;right:20px;z-index:15;width
 .image-lightbox img{align-self:center;justify-self:center;max-width:100%;max-height:100%;object-fit:contain;border-radius:14px;background:#fffaf4;box-shadow:0 18px 70px rgba(0,0,0,.35)}
 .image-lightbox-caption{margin:0;text-align:center;color:rgba(255,250,244,.88);font-size:13px;font-weight:800}
 body.image-lightbox-open{overflow:hidden;touch-action:none}
-.search-backdrop{position:fixed;inset:0;background:rgba(28,22,17,.34);backdrop-filter:blur(5px);z-index:95;opacity:0;pointer-events:none;transition:opacity .22s ease}
-.search-backdrop.open{opacity:1;pointer-events:auto}
-.search-modal{position:fixed;left:50%;top:52%;width:min(420px,calc(100% - 34px));max-height:min(680px,82dvh);z-index:100;background:#fffaf4;border:1px solid rgba(216,198,180,.76);border-radius:24px;box-shadow:0 24px 70px rgba(44,34,25,.24);padding:18px;transform:translate(-50%,-45%) scale(.96);opacity:0;pointer-events:none;transition:opacity .22s ease,transform .22s ease;display:flex;flex-direction:column;overflow:hidden}
-.search-modal.open{opacity:1;pointer-events:auto;transform:translate(-50%,-50%) scale(1)}
-.search-modal-head{display:flex;align-items:flex-start;justify-content:space-between;gap:14px;margin-bottom:14px}
-.search-modal-head h2{margin:0;font-size:23px;line-height:1.2;color:#221b15}
-.search-modal-head p{margin:7px 0 0;font-size:13px;line-height:1.5;color:#7d6d5e;word-break:keep-all}
-.search-close{width:38px;height:38px;border:0;border-radius:50%;background:#efe4d6;color:#221b15;display:grid;place-items:center;cursor:pointer;flex:0 0 auto}
-.search-close .mi{font-size:22px}
-.search-field{display:grid;grid-template-columns:24px 1fr;gap:10px;align-items:center;border:1px solid rgba(123,99,79,.22);border-radius:18px;background:#fff;padding:0 15px;min-height:54px;margin-bottom:12px}
-.search-field .mi{font-size:22px;color:#7b634f}
-.search-field input{width:100%;border:0;outline:0;background:transparent;color:#221b15;font-size:16px;font-weight:700}
-.search-field input::placeholder{color:#a08c79;font-weight:500}
-.search-results{display:grid;gap:8px;overflow:auto;padding:2px 2px 0;overscroll-behavior:contain}
-.search-result{width:100%;border:1px solid rgba(216,198,180,.68);border-radius:16px;background:#fff;display:grid;grid-template-columns:42px 1fr 22px;gap:12px;align-items:center;text-align:left;padding:13px 12px;color:#221b15;cursor:pointer}
-.search-result .result-icon{width:42px;height:42px;border-radius:50%;background:#efe4d6;color:#7b634f;display:grid;place-items:center}
-.search-result .result-icon .mi{font-size:22px}
-.search-result .result-copy{display:block;min-width:0}
-.search-result strong{display:block;font-size:15px;line-height:1.28}
-.search-result .result-desc{display:block;margin-top:4px;font-size:12px;line-height:1.4;color:#7d6d5e;word-break:keep-all}
-.search-result>.mi{font-size:20px;color:#9a8674}
-.search-empty{display:none;border-radius:16px;background:#efe4d6;color:#665646;padding:18px;font-size:13px;line-height:1.55;word-break:keep-all}
-.search-empty.show{display:block}
 .menu-backdrop{position:fixed;inset:0;background:rgba(28,22,17,.28);backdrop-filter:blur(4px);z-index:75;opacity:0;pointer-events:none;transition:opacity .22s ease}
 .menu-backdrop.open{opacity:1;pointer-events:auto}
 .menu-panel{position:fixed;top:0;right:calc(50% - min(240px,50vw));width:min(360px,92vw);max-height:100dvh;overflow:auto;z-index:80;background:#fffaf4;color:#221b15;border-left:1px solid rgba(216,198,180,.74);box-shadow:-18px 0 54px rgba(44,34,25,.18);padding:22px 22px calc(22px + var(--safe));transform:translateX(105%);transition:transform .25s ease}
@@ -634,7 +619,7 @@ body *:not(.mi){font-family:var(--font-main)!important;letter-spacing:0!importan
 </head>
 <body class="is-home">
   <div class="app">
-    <header class="top"><button class="icon-btn" aria-label="메뉴" id="menuTop"><span class="mi">menu</span></button><h1><button class="brand-home" id="brandHome" type="button" data-go="home" aria-label="홈으로 이동">EXTAY</button></h1><button class="home-search-btn" type="button" id="openSearchTop" aria-label="검색 열기"><span class="mi">search</span><span id="homeSearchLabel">검색</span></button><div class="top-actions"><a class="icon-btn" href="assets/guidebook/Extay_Mansion_Haebangchon_Guide_KO_no_NotebookLM.pdf" target="_blank" rel="noopener" aria-label="가이드북 열기" id="openGuidebookTop"><span class="mi">menu_book</span></a><button class="icon-btn lang-toggle" aria-label="Switch to English" id="langToggle" type="button"><span class="mi">translate</span><span id="langToggleText">EN</span></button><button class="icon-btn" aria-label="안내 도우미" id="openChatTop"><span class="mi">smart_toy</span></button></div></header>
+    <header class="top"><button class="icon-btn" aria-label="메뉴" id="menuTop"><span class="mi">menu</span></button><h1><button class="brand-home" id="brandHome" type="button" data-go="home" aria-label="홈으로 이동">EXTAY</button></h1><div class="home-language" id="homeLanguage"><button class="home-language-btn" type="button" id="homeLangToggle" aria-label="언어 선택" aria-haspopup="true" aria-expanded="false"><span id="homeLangText">KR</span><span class="mi">expand_more</span></button><div class="home-language-menu" id="homeLangMenu" role="menu" aria-label="언어 선택"><button class="home-language-option" type="button" role="menuitemradio" aria-checked="true" data-language="ko"><span>한국어</span><small>KR</small></button><button class="home-language-option" type="button" role="menuitemradio" aria-checked="false" data-language="en"><span>English</span><small>EN</small></button><button class="home-language-option" type="button" role="menuitemradio" aria-checked="false" data-language="zh"><span>中文</span><small>CN</small></button><button class="home-language-option" type="button" role="menuitemradio" aria-checked="false" data-language="ja"><span>日本語</span><small>JP</small></button></div></div><div class="top-actions"><a class="icon-btn" href="assets/guidebook/Extay_Mansion_Haebangchon_Guide_KO_no_NotebookLM.pdf" target="_blank" rel="noopener" aria-label="가이드북 열기" id="openGuidebookTop"><span class="mi">menu_book</span></a><button class="icon-btn lang-toggle" aria-label="Switch to English" id="langToggle" type="button"><span class="mi">translate</span><span id="langToggleText">EN</span></button><button class="icon-btn" aria-label="안내 도우미" id="openChatTop"><span class="mi">smart_toy</span></button></div></header>
 
     <main>
     <section class="screen active" data-screen="home">
@@ -671,7 +656,6 @@ body *:not(.mi){font-family:var(--font-main)!important;letter-spacing:0!importan
             <img class="concierge-character" src="assets/extay/ai-stay-manager-face.png" alt="" aria-hidden="true">
             <span class="concierge-copy"><span class="concierge-title" id="aiTitle">AI 숙소 매니저</span><span class="concierge-sub">바로 문의</span></span>
           </button>
-          <button class="hotel-btn ghost hero-lang-toggle" type="button" id="heroLangToggle" aria-label="언어 전환"><span class="mi">translate</span><span id="heroLangText">한</span></button>
         </section>
 
         <section class="hotel-section location-section" id="locationContact" aria-label="Contact">
@@ -1366,22 +1350,6 @@ body *:not(.mi){font-family:var(--font-main)!important;letter-spacing:0!importan
     <img id="imageLightboxImg" src="" alt="" />
     <p class="image-lightbox-caption" id="imageLightboxCaption"></p>
   </section>
-  <div class="search-backdrop" id="searchBackdrop"></div>
-  <section class="search-modal" id="searchModal" aria-label="가이드 검색" aria-modal="true" role="dialog">
-    <div class="search-modal-head">
-      <div>
-        <h2 id="searchTitle">검색</h2>
-        <p id="searchDesc">필요한 정보를 입력하면 관련 안내로 바로 이동합니다.</p>
-      </div>
-      <button class="search-close" type="button" id="closeSearchModal" aria-label="검색 닫기"><span class="mi">close</span></button>
-    </div>
-    <label class="search-field" for="guideSearchInput">
-      <span class="mi">search</span>
-      <input id="guideSearchInput" type="search" autocomplete="off" placeholder="예: 와이파이, 체크인, 맛집" />
-    </label>
-    <div class="search-results" id="searchResults"></div>
-    <p class="search-empty" id="searchEmpty">검색 결과가 없습니다. 다른 단어로 검색해 주세요.</p>
-  </section>
   <button class="chat-fab" id="openChatFab" aria-label="안내 도우미 열기"><span class="mi">smart_toy</span></button>
   <div class="chat-backdrop" id="chatBackdrop"></div>
   <section class="chat-panel" id="chatPanel" aria-label="익스테이 안내 도우미">
@@ -1397,8 +1365,10 @@ body *:not(.mi){font-family:var(--font-main)!important;letter-spacing:0!importan
     const screens=[...document.querySelectorAll('.screen')], tabs=[...document.querySelectorAll('.tab')];
     const LANG_KEY='extayGuideLang';
     const LANG_ORDER=['ko','en','zh','ja'];
-    const LANG_BADGE={ko:'한',en:'EN',zh:'中',ja:'日'};
-    let currentLang=LANG_ORDER.includes(localStorage.getItem(LANG_KEY))?localStorage.getItem(LANG_KEY):'ko';
+    const LANG_BADGE={ko:'KR',en:'EN',zh:'CN',ja:'JP'};
+    function detectBrowserLanguage(){const languages=navigator.languages?.length?navigator.languages:[navigator.language];for(const language of languages){const code=String(language||'').toLowerCase().split('-')[0];if(LANG_ORDER.includes(code))return code}return 'ko'}
+    const savedLanguage=localStorage.getItem(LANG_KEY);
+    let currentLang=LANG_ORDER.includes(savedLanguage)?savedLanguage:detectBrowserLanguage();
     const uiText={ko:{},en:{},zh:{},ja:{}};
     Object.assign(uiText,{
       ko:{
@@ -1504,17 +1474,18 @@ body *:not(.mi){font-family:var(--font-main)!important;letter-spacing:0!importan
     function html(el,value){if(el&&value!==undefined)el.innerHTML=value}
     function eachText(nodes,values){nodes.forEach((el,i)=>text(el,values[i]))}
     function iconLabel(icon,label){return `<span class="mi">${icon}</span><br>${label}`}
-    function setLanguage(nextLang){const next=LANG_ORDER.includes(nextLang)?nextLang:'ko';currentLang=next;localStorage.setItem(LANG_KEY,next);applyStaticLanguage();renderSmartGuide();if(searchModal?.classList.contains('open'))renderSearchResults(searchInput?.value||'');if(chatAutocomplete)renderChatAutocomplete(chatInput?.value||'');if(document.body.classList.contains('is-guidebook'))loadGuidebook(next==='ko'?'ko':'en',true)}
+    function closeLanguageMenu(){q('#homeLanguage')?.classList.remove('open');q('#homeLangToggle')?.setAttribute('aria-expanded','false')}
+    function toggleLanguageMenu(){const control=q('#homeLanguage'),button=q('#homeLangToggle');if(!control||!button)return;const willOpen=!control.classList.contains('open');control.classList.toggle('open',willOpen);button.setAttribute('aria-expanded',String(willOpen));if(willOpen)setTimeout(()=>q(`.home-language-option[data-language="${currentLang}"]`)?.focus(),0)}
+    function setLanguage(nextLang){const next=LANG_ORDER.includes(nextLang)?nextLang:'ko';currentLang=next;localStorage.setItem(LANG_KEY,next);closeLanguageMenu();applyStaticLanguage();renderSmartGuide();if(chatAutocomplete)renderChatAutocomplete(chatInput?.value||'');if(document.body.classList.contains('is-guidebook'))loadGuidebook(next==='ko'?'ko':'en',true)}
     function cycleLanguage(){const index=LANG_ORDER.indexOf(currentLang);setLanguage(LANG_ORDER[(index+1)%LANG_ORDER.length])}
     function applyStaticLanguage(){
       const tr=uiText[currentLang];
       document.documentElement.lang=currentLang;
       document.title=tr.docTitle;
       const meta=q('meta[name="description"]'); if(meta)meta.setAttribute('content',tr.docDesc);
-      text(q('#brandHome'),tr.headerTitle); q('#brandHome')?.setAttribute('aria-label',currentLang==='en'?'Go home':'홈으로 이동'); text(q('.hero .label'),tr.heroSub); text(q('.landing-hero .eyebrow'),tr.homeHeroEyebrow); text(q('#quickTitle'),tr.quickTitle); text(q('#stayGuide .section-kicker'),tr.stayGuideKicker); text(q('#aiTitle'),tr.aiTitle); text(q('.concierge-sub'),tr.aiSub); const aiBox=q('#aiConcierge'); if(aiBox) aiBox.dataset.lang=currentLang; text(q('#locationContact .section-kicker'),tr.contactKicker); text(q('.hotel-footer span'),tr.footerCopy); const badge=LANG_BADGE[currentLang]||LANG_BADGE.ko; text(q('#langToggleText'),badge); text(q('#heroLangText'),badge); text(q('#homeSearchLabel'),tr.search.button);
-      const menu=q('#menuTop'), guide=q('#openGuidebookTop'), chatTop=q('#openChatTop'), chatFab=q('#openChatFab'), close=q('#closeChat'), langBtn=q('#langToggle'), heroLangBtn=q('#heroLangToggle'), searchBtn=q('#openSearchTop'), closeSearch=q('#closeSearchModal');
-      if(menu)menu.setAttribute('aria-label',tr.menuAria); if(guide){guide.setAttribute('aria-label',tr.guideAria);guide.href=GUIDEBOOK_PDFS[currentLang==='en'?'en':'ko']} if(chatTop)chatTop.setAttribute('aria-label',tr.chatAria); if(chatFab)chatFab.setAttribute('aria-label',tr.chatFabAria); if(close)close.setAttribute('aria-label',tr.chat.close); if(langBtn)langBtn.setAttribute('aria-label',currentLang==='en'?'Switch language':'언어 전환'); if(heroLangBtn)heroLangBtn.setAttribute('aria-label',currentLang==='en'?'Switch language':'언어 전환');
-      if(searchBtn)searchBtn.setAttribute('aria-label',tr.search.openAria); if(closeSearch)closeSearch.setAttribute('aria-label',tr.search.closeAria); text(q('#searchTitle'),tr.search.title); text(q('#searchDesc'),tr.search.desc); text(q('#searchEmpty'),tr.search.empty); const searchInput=q('#guideSearchInput'); if(searchInput)searchInput.placeholder=tr.search.placeholder;
+      text(q('#brandHome'),tr.headerTitle); q('#brandHome')?.setAttribute('aria-label',currentLang==='en'?'Go home':'홈으로 이동'); text(q('.hero .label'),tr.heroSub); text(q('.landing-hero .eyebrow'),tr.homeHeroEyebrow); text(q('#quickTitle'),tr.quickTitle); text(q('#stayGuide .section-kicker'),tr.stayGuideKicker); text(q('#aiTitle'),tr.aiTitle); text(q('.concierge-sub'),tr.aiSub); const aiBox=q('#aiConcierge'); if(aiBox) aiBox.dataset.lang=currentLang; text(q('#locationContact .section-kicker'),tr.contactKicker); text(q('.hotel-footer span'),tr.footerCopy); const badge=LANG_BADGE[currentLang]||LANG_BADGE.ko; text(q('#langToggleText'),badge); text(q('#homeLangText'),badge); qa('.home-language-option').forEach(option=>option.setAttribute('aria-checked',String(option.dataset.language===currentLang)));
+      const menu=q('#menuTop'), guide=q('#openGuidebookTop'), chatTop=q('#openChatTop'), chatFab=q('#openChatFab'), close=q('#closeChat'), langBtn=q('#langToggle'), homeLangBtn=q('#homeLangToggle');
+      if(menu)menu.setAttribute('aria-label',tr.menuAria); if(guide){guide.setAttribute('aria-label',tr.guideAria);guide.href=GUIDEBOOK_PDFS[currentLang==='en'?'en':'ko']} if(chatTop)chatTop.setAttribute('aria-label',tr.chatAria); if(chatFab)chatFab.setAttribute('aria-label',tr.chatFabAria); if(close)close.setAttribute('aria-label',tr.chat.close); if(langBtn)langBtn.setAttribute('aria-label',currentLang==='en'?'Switch language':'언어 전환'); if(homeLangBtn)homeLangBtn.setAttribute('aria-label',currentLang==='en'?'Choose language':'언어 선택');
       eachText(qa('.bottom .tab span:not(.mi)'),tr.bottom);
       qa('.quick button>span').forEach((el,i)=>html(el,iconLabel(['wifi_password','tv','thermostat','local_laundry_service'][i],tr.quick[i])));
       eachText(qa('.quick-access-grid .quick-tile b'),tr.homeQuick||[]);
@@ -1678,7 +1649,6 @@ body *:not(.mi){font-family:var(--font-main)!important;letter-spacing:0!importan
     const chatPanel=document.getElementById('chatPanel'), chatBackdrop=document.getElementById('chatBackdrop'), chatLog=document.getElementById('chatLog'), chatInput=document.getElementById('chatInput'), chatForm=document.getElementById('chatForm'), chatAutocomplete=document.getElementById('chatAutocomplete');
     const menuPanel=document.getElementById('menuPanel'), menuBackdropEl=document.getElementById('menuBackdrop');
     const contactModal=document.getElementById('contactModal'), contactBackdrop=document.getElementById('contactBackdrop');
-    const searchModal=document.getElementById('searchModal'), searchBackdrop=document.getElementById('searchBackdrop'), searchInput=document.getElementById('guideSearchInput'), searchResults=document.getElementById('searchResults'), searchEmpty=document.getElementById('searchEmpty');
     const CONTACT_DETAILS={
       phone:{title:'전화번호',desc:'필요할 때 아래 번호를 복사해 사용해 주세요.',label:'Phone',value:'010-000-0000',copy:'번호 복사',note:''},
       kakao:{title:'카카오톡 오픈채팅',desc:'아래 임시 오픈채팅 URL을 복사해 사용해 주세요.',label:'Open chat URL',value:'https://open.kakao.com/o/sExtayTemp',copy:'URL 복사',note:'카카오톡 링크는 현재 임시 링크입니다.'}
@@ -1693,13 +1663,14 @@ body *:not(.mi){font-family:var(--font-main)!important;letter-spacing:0!importan
     document.querySelectorAll('[data-open-chat]').forEach(el=>el.addEventListener('click',()=>{openChat();const question=el.dataset.question;if(question){setTimeout(()=>{chatInput.value=question;chatForm.requestSubmit()},180)}}));
     document.querySelectorAll('[data-open-contact]').forEach(el=>el.addEventListener('click',()=>openContactModal(el.dataset.openContact)));
     document.getElementById('menuTop')?.addEventListener('click',openMenu);
-    document.getElementById('heroLangToggle')?.addEventListener('click',cycleLanguage);
+    document.getElementById('homeLangToggle')?.addEventListener('click',toggleLanguageMenu);
+    document.querySelectorAll('.home-language-option').forEach(option=>option.addEventListener('click',()=>setLanguage(option.dataset.language)));
     document.getElementById('closeMenu')?.addEventListener('click',closeMenuPanel);
     menuBackdropEl?.addEventListener('click',closeMenuPanel);
     document.getElementById('closeContactModal')?.addEventListener('click',closeContactModal);
     contactBackdrop?.addEventListener('click',closeContactModal);
-    document.addEventListener('keydown',e=>{if(e.key==='Escape'){closeContactModal();closeSearchModal()}});
-    document.addEventListener('click',e=>{if(e.target.closest('.menu-link'))closeMenuPanel()});
+    document.addEventListener('keydown',e=>{if(e.key==='Escape'){closeContactModal();closeLanguageMenu()}});
+    document.addEventListener('click',e=>{if(e.target.closest('.menu-link'))closeMenuPanel();if(!e.target.closest('#homeLanguage'))closeLanguageMenu()});
     document.getElementById('closeChat').addEventListener('click',closeChat); chatBackdrop.addEventListener('click',closeChat);
     document.querySelectorAll('.suggestion').forEach(b=>b.addEventListener('click',()=>{chatInput.value=b.textContent; chatForm.requestSubmit()}));
     function escapeHtml(text){return String(text).replace(/[&<>"']/g,ch=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[ch]))}
@@ -1724,18 +1695,10 @@ body *:not(.mi){font-family:var(--font-main)!important;letter-spacing:0!importan
     function searchMatches(item,query){if(!query)return item.popular;const needle=normalizeSearch(query),hay=searchText(item),compact=normalizeSearch(hay);return hay.includes(String(query).toLowerCase().trim())||compact.includes(needle)}
     function searchScore(item,query){if(!query)return item.popular?10:0;const needle=normalizeSearch(query),title=normalizeSearch((item[currentLang]||item.ko)[0]);if(title===needle)return 30;if(title.startsWith(needle))return 25;if(title.includes(needle))return 20;const keyHit=(item.keys||[]).some(k=>normalizeSearch(k).includes(needle)||needle.includes(normalizeSearch(k)));return keyHit?18:10}
     function getSearchHits(query=''){return SEARCH_ITEMS.map((item,index)=>({item,index})).filter(({item})=>searchMatches(item,query)).sort((a,b)=>searchScore(b.item,query)-searchScore(a.item,query)).slice(0,9)}
-    function renderSearchResults(query=''){if(!searchResults||!searchEmpty)return;const hits=getSearchHits(query);searchResults.innerHTML=hits.map(({item,index})=>{const copy=item[currentLang]||item.ko;return `<button class="search-result" type="button" data-search-index="${index}"><span class="result-icon"><span class="mi">${item.icon}</span></span><span class="result-copy"><strong>${escapeHtml(copy[0])}</strong><span class="result-desc">${escapeHtml(copy[1])}</span></span><span class="mi">chevron_right</span></button>`}).join('');searchEmpty.classList.toggle('show',!hits.length)}
-    function openSearchModal(){closeMenuPanel();searchModal?.classList.add('open');searchBackdrop?.classList.add('open');renderSearchResults(searchInput?.value||'');setTimeout(()=>searchInput?.focus(),80)}
-    function closeSearchModal(){searchModal?.classList.remove('open');searchBackdrop?.classList.remove('open')}
-    function goSearchResult(item){if(!item)return;closeSearchModal();show(item.screen||'home',item.open||'');if(item.anchor){setTimeout(()=>document.querySelector(item.anchor)?.scrollIntoView({behavior:'smooth',block:'start'}),140)}}
+    function goSearchResult(item){if(!item)return;show(item.screen||'home',item.open||'');if(item.anchor){setTimeout(()=>document.querySelector(item.anchor)?.scrollIntoView({behavior:'smooth',block:'start'}),140)}}
     function renderChatAutocomplete(query=''){if(!chatAutocomplete)return;const hits=query.trim()?getSearchHits(query).slice(0,4):[];chatAutocomplete.innerHTML=hits.map(({item,index})=>{const copy=item[currentLang]||item.ko;return `<button class="chat-result" type="button" data-chat-search-index="${index}"><span class="mi">${item.icon}</span><span><strong>${escapeHtml(copy[0])}</strong><small>${escapeHtml(copy[1])}</small></span></button>`}).join('');chatAutocomplete.style.display=hits.length?'flex':'none'}
     function resolveChatSearch(query){const hits=getSearchHits(query);return hits[0]||null}
     function shouldNavigateFromChat(query){const normalized=normalizeSearch(query);return normalized.length>0&&!/[?.!]/.test(query)&&!/\s/.test(normalized)&&normalized.length<=12}
-    document.getElementById('openSearchTop')?.addEventListener('click',openSearchModal);
-    document.getElementById('closeSearchModal')?.addEventListener('click',closeSearchModal);
-    searchBackdrop?.addEventListener('click',closeSearchModal);
-    searchInput?.addEventListener('input',e=>renderSearchResults(e.target.value));
-    searchResults?.addEventListener('click',e=>{const result=e.target.closest('[data-search-index]');if(result)goSearchResult(SEARCH_ITEMS[Number(result.dataset.searchIndex)])});
     chatAutocomplete?.addEventListener('click',e=>{const result=e.target.closest('[data-chat-search-index]');if(result)goSearchResult(SEARCH_ITEMS[Number(result.dataset.chatSearchIndex)])});
     function renderBotText(text){return escapeHtml(text).replace(/`([^`\n]+)`/g,'<code>$1</code>').replace(/\*\*([^*\n][^*]*?)\*\*/g,'<strong>$1</strong>')}
     function setMsgText(div,role,text){if(role==='user'){div.textContent=text;return}div.innerHTML=renderBotText(text)}
