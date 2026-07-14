@@ -370,6 +370,13 @@ body.image-lightbox-open{overflow:hidden;touch-action:none}
 .destination-chip .mi{font-size:23px;color:#7b634f}
 .destination-chip small{display:block;color:#8a7663;font-size:10px;font-weight:900;text-transform:uppercase}
 .destination-chip b{display:block;margin-top:4px;color:#221b15;font-size:13px;line-height:1.35;word-break:keep-all}
+.transport-destination-card .destination-graphic{gap:0;border:0;border-radius:0;background:transparent;padding:0;overflow:visible}
+.transport-destination-card .destination-graphic:before{display:none}
+.transport-destination-card .destination-pin{border-radius:8px;background:#7b634f}
+.transport-destination-card .destination-grid{gap:0;margin-top:10px;border-top:1px solid rgba(216,198,180,.72)}
+.transport-destination-card .destination-chip{min-height:88px;border:0;border-bottom:1px solid rgba(216,198,180,.72);border-radius:0;background:transparent;padding:13px 10px}
+.transport-destination-card .destination-chip:nth-child(odd){border-right:1px solid rgba(216,198,180,.72)}
+.transport-destination-card .transport-actions .hotel-btn.primary{background:#7b634f;border-color:#7b634f}
 .route-card{display:grid;gap:14px;border-radius:20px;background:#fff;border:1px solid rgba(216,198,180,.66);padding:18px;margin-top:12px}
 .route-card:first-of-type{margin-top:0}
 .route-top{display:flex;align-items:flex-start;justify-content:space-between;gap:12px}
@@ -572,6 +579,18 @@ body.guidebook-fullscreen-open{overflow:hidden;touch-action:none}
 .checkin-info-row>small{height:34px;color:#8a7663;font-size:11px;font-weight:700;line-height:1.45;text-transform:uppercase;display:flex;align-items:center}
 .checkin-info-row strong{display:block;color:#221b15;font-size:15px;line-height:1.45;word-break:keep-all}
 .checkin-info-row p{margin:5px 0 0;color:#665646;font-size:13px;line-height:1.58;word-break:keep-all}
+.checkin-overview .checkin-info-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));border-top:0}
+.checkin-overview .checkin-info-row{min-width:0;grid-template-columns:30px minmax(0,1fr);grid-template-areas:"icon label" "icon copy";gap:3px 9px;padding:14px 10px;align-items:start}
+.checkin-overview .checkin-info-row:first-child{grid-column:1/-1;grid-template-columns:34px minmax(0,1fr);grid-template-areas:"icon label" "icon copy";gap:3px 12px;padding:15px 10px;align-items:start}
+.checkin-overview .checkin-info-row:nth-child(2),.checkin-overview .checkin-info-row:nth-child(4){border-right:1px solid rgba(216,198,180,.76)}
+.checkin-overview .checkin-info-row:nth-child(4),.checkin-overview .checkin-info-row:nth-child(5){border-bottom:0}
+.checkin-overview .checkin-row-icon{grid-area:icon;width:30px;height:30px}
+.checkin-overview .checkin-info-row:first-child .checkin-row-icon{width:34px;height:34px}
+.checkin-overview .checkin-info-row>small{grid-area:label;height:auto;min-width:0;align-self:center;font-size:10px}
+.checkin-overview .checkin-info-row>div{grid-area:copy;min-width:0}
+.checkin-overview .checkin-info-row strong{font-size:13px;line-height:1.45;overflow-wrap:anywhere}
+.checkin-overview .checkin-info-row:first-child strong{font-size:15px}
+.checkin-overview .checkin-info-row p{font-size:11px;line-height:1.5}
 .checkin-card{background:#fffaf4;border:1px solid rgba(216,198,180,.72);border-radius:22px;box-shadow:0 12px 32px rgba(58,43,30,.08);padding:22px}
 .checkin-card h3{margin:0 0 14px;font-size:21px;line-height:1.25;color:#221b15}
 .checkin-card p{margin:0;color:#665646;font-size:14px;line-height:1.62}
@@ -716,6 +735,10 @@ body.motion-ready .hero-panel .scroll-cue{animation:heroTextIn 1.5s cubic-bezier
   .checkin-info-row{grid-template-columns:32px 70px minmax(0,1fr);gap:10px}
   .checkin-row-icon{width:32px;height:32px}
   .checkin-info-row>small{height:32px}
+  .checkin-overview .checkin-info-row{grid-template-columns:28px minmax(0,1fr);grid-template-areas:"icon label" "icon copy";gap:3px 7px;padding:13px 7px}
+  .checkin-overview .checkin-info-row:first-child{grid-template-columns:32px minmax(0,1fr);grid-template-areas:"icon label" "icon copy";gap:3px 9px;padding:14px 7px}
+  .checkin-overview .checkin-row-icon{width:28px;height:28px}
+  .checkin-overview .checkin-info-row:first-child .checkin-row-icon{width:32px;height:32px}
   .quick-access-grid{gap:5px}
   .quick-tile{min-height:66px;padding:8px 2px;gap:6px}
   .quick-tile .mi{font-size:21px}
@@ -920,7 +943,7 @@ body .numeric-font{font-family:var(--font-ko)!important;font-variant-numeric:tab
           <h2>체크인 · 체크아웃 안내</h2>
         </article>
         <div class="checkin-stack">
-          <section class="checkin-text-section" aria-labelledby="checkinKeyTitle">
+          <section class="checkin-text-section checkin-overview" aria-labelledby="checkinKeyTitle">
             <h3 id="checkinKeyTitle">입퇴실 안내</h3>
             <div class="checkin-info-list">
               <div class="checkin-info-row"><span class="checkin-row-icon"><span class="mi">schedule</span></span><small>이용 시간</small><div><strong>체크인 16:00 · 체크아웃 11:00</strong><p>개인 키 번호는 체크인 당일 12시쯤 호스트 메시지로 안내됩니다.</p></div></div>
@@ -994,7 +1017,7 @@ body .numeric-font{font-family:var(--font-ko)!important;font-variant-numeric:tab
           <h2>교통 안내</h2>
         </article>
         <div class="transport-stack">
-          <article class="transport-card">
+          <article class="transport-card transport-destination-card">
             <h3>목적지 정보</h3>
             <div class="destination-graphic">
               <div class="destination-pin">
