@@ -629,6 +629,43 @@ body.guidebook-fullscreen-open{overflow:hidden;touch-action:none}
 .contact-actions.single{grid-template-columns:1fr}
 .contact-actions .hotel-btn{color:#221b15;border-color:rgba(123,99,79,.28);background:#fff}
 .contact-actions .hotel-btn.primary{background:#2b2118;color:#fff;border-color:#2b2118}
+/* Non-home layout system: restrained radii and row-based accordions */
+.screen:not([data-screen="home"]) :is(.wifi-hero,.transport-hero,.restaurants-hero,.faq-hero,.guidebook-hero,.checkin-hero,.guide-detail-hero,.gallery-viewer,.guide-detail-screen .figure,.guide-detail-screen .photo-grid figure){border-radius:14px}
+.screen:not([data-screen="home"]) :is(button,input,textarea,.hotel-btn,.restaurant-actions a,.guidebook-open,.guidebook-fullscreen-toggle,.gallery-thumb,.gallery-thumb img,.restaurant-search){border-radius:8px;box-shadow:none}
+.screen:not([data-screen="home"]) :is(.restaurant-chip,.restaurant-badge,.restaurant-tags span,.route-badge,.route-meta span,.route-line-copy small,.faq-section-title>span,.guide-detail-screen .badge,.guide-detail-screen .contact-card .mini-btn){border-radius:999px}
+.screen:not([data-screen="home"]) :is(.wifi-card:not(details),.transport-card:not(details),.faq-card,.checkin-card:not(details),.restaurant-card,.contact-card){border-radius:12px;box-shadow:none}
+.screen:not([data-screen="home"]) :is(.checkin-accordion,.airport-card,.wifi-accordion,.checkin-section-accordion){border-radius:12px;box-shadow:none}
+.device-accordion-group{overflow:hidden;border:1px solid rgba(216,198,180,.72);border-radius:12px;background:#fffaf4}
+.guide-detail-screen .device-accordion-group>.device{margin:0;border:0;border-radius:0;box-shadow:none;background:transparent}
+.guide-detail-screen .device-accordion-group>.device:not(:last-child){border-bottom:1px solid rgba(216,198,180,.72)}
+.guide-detail-screen .device-accordion-group>.device summary{padding:17px 18px;grid-template-columns:42px minmax(0,1fr) 24px;gap:12px}
+.guide-detail-screen .device-accordion-group>.device .circle{width:42px;height:42px;border-radius:8px}
+.guide-detail-screen .device-accordion-group>.device h3{font-size:18px}
+.guide-detail-screen .device-accordion-group>.device[open] summary{border-bottom-color:rgba(216,198,180,.72)}
+.guide-detail-screen .device-accordion-group .device-body{background:transparent}
+.guide-detail-screen .device-accordion-group .steps{padding:0 18px}
+.guide-detail-screen .device-accordion-group .steps li{min-height:0;grid-template-columns:28px minmax(0,1fr);gap:11px;padding:14px 0;border-bottom:1px solid rgba(216,198,180,.58)}
+.guide-detail-screen .device-accordion-group .steps li:last-child{min-height:0;padding:14px 0;border-bottom:0}
+.guide-detail-screen .device-accordion-group .steps li:after{display:none}
+.guide-detail-screen .device-accordion-group .steps li:before{width:26px;height:26px;border-width:1px;border-radius:8px}
+.checkin-section-accordion .checkin-rule-grid{grid-template-columns:1fr;gap:0;padding:0 18px}
+.checkin-section-accordion .checkin-rule{min-height:0;border:0;border-bottom:1px solid rgba(216,198,180,.62);border-radius:0;background:transparent;padding:15px 0;display:grid;grid-template-columns:34px minmax(0,1fr);align-items:start}
+.checkin-section-accordion .checkin-rule:last-child{border-bottom:0}
+.checkin-section-accordion .checkin-rule .mi{border-radius:8px}
+.wifi-accordion .wifi-accordion-body{padding:0 18px}
+.wifi-accordion .wifi-visual-grid{grid-template-columns:1fr;gap:0}
+.wifi-accordion .wifi-visual-card{min-height:0;border:0;border-bottom:1px solid rgba(123,99,79,.22);border-radius:0;background:transparent;padding:15px 0;display:grid;grid-template-columns:34px minmax(0,1fr);align-items:start}
+.wifi-accordion .wifi-visual-card:last-child{border-bottom:0}
+.wifi-accordion .wifi-visual-card .mi{border-radius:8px}
+.faq-list{gap:0;overflow:hidden;border:1px solid rgba(216,198,180,.72);border-radius:12px;background:#fff}
+.faq-item{border:0;border-bottom:1px solid rgba(216,198,180,.72);border-radius:0;background:transparent}
+.faq-item:last-child{border-bottom:0}
+.faq-item summary:after{border-radius:8px}
+.faq-answer{border-top:1px solid rgba(216,198,180,.45);padding:14px 16px 17px}
+.airport-card-body{gap:0;padding:0 18px}
+.airport-card-body>.route-card{margin:0;border:0;border-bottom:1px solid rgba(216,198,180,.72);border-radius:0;background:transparent;padding:18px 0}
+.airport-card-body>.route-card:last-child{border-bottom:0}
+.airport-card-body>.route-card>.route-infographic{border-radius:12px;box-shadow:none}
 body:not(.is-home) main{padding-top:0}
 .screen.active{position:relative;z-index:1;animation:screenCrossIn .34s ease both}
 .screen.is-exiting{display:block;position:absolute;inset:0;width:100%;pointer-events:none;z-index:0;animation:screenCrossOut .24s ease both}
@@ -1455,14 +1492,18 @@ body *:not(.mi){font-family:var(--font-main)!important;letter-spacing:0!importan
       </section>
 
       <section class="screen guide-detail-screen" data-screen="appliances"><article class="guide-detail-hero appliances-hero"><p class="section-kicker">TV · Heating · Rooftop</p><h2 class="page-title">TV · Heating · Rooftop</h2></article>
+        <div class="device-accordion-group">
         <details class="device" data-device="tv"><summary><span class="circle"><span class="mi">tv</span></span><div><h3>TV · OTT 리모컨</h3></div><span class="mi">expand_more</span></summary><div class="device-body"><ol class="steps"><li>TV 리모컨은 외부 입력 선택이 필요할 때 사용하세요.</li><li>OTT 전용 리모컨에서 원하는 OTT를 선택한 뒤 확인 버튼을 누르세요.</li><li>화면 팝업이 뜨면 바로 실행을 선택하세요. 작동이 안 되면 전원 버튼을 3초 이상 누르거나 셋톱 전원을 10초간 분리 후 재연결하세요.</li></ol><figure class="figure"><img src="assets/extay/crops/nsm-guide.png" alt="NSM OTT 사용법"></figure></div></details>
         <details class="device" data-device="boiler"><summary><span class="circle"><span class="mi">thermostat</span></span><div><h3>온수 · 난방</h3></div><span class="mi">expand_more</span></summary><div class="device-body"><ol class="steps"><li>거실 스탠드 에어컨 뒤쪽의 난방 조절기를 확인하세요.</li><li>온수를 사용할 때는 온수 버튼을 눌러 주세요.</li><li>화면에 60도가 표시되면 온수가 정상적으로 작동합니다. 외출 시에는 외출 버튼 또는 전원 버튼을 눌러 주세요.</li></ol><div class="photo-grid"><figure><button class="image-zoom" type="button" data-fullscreen-image="assets/extay/crops/hot-water-guide.jpg" data-fullscreen-title="온수 조절기"><img src="assets/extay/crops/hot-water-guide.jpg" alt="온수 조절기 안내"></button><figcaption>온수 조절기</figcaption></figure><figure><button class="image-zoom" type="button" data-fullscreen-image="assets/extay/crops/floorplan.jpg" data-fullscreen-title="숙소 도면"><img src="assets/extay/crops/floorplan.jpg" alt="숙소 도면"></button><figcaption>숙소 도면</figcaption></figure></div></div></details>
         <details class="device" data-device="induction"><summary><span class="circle"><span class="mi">roofing</span></span><div><h3>공용 화장실 · 옥상</h3></div><span class="mi">expand_more</span></summary><div class="device-body"><ol class="steps"><li>일행이 많아 화장실이 부족할 때는 1층 레스토랑 뒤편 공용 화장실을 이용할 수 있습니다.</li><li>비밀번호는 *7003*입니다.</li><li>옥상에서는 남산타워 뷰를 볼 수 있습니다. 늦은 시간에는 소음에 유의해 주세요.</li></ol><div class="photo-grid"><figure><img src="assets/extay/crops/rooftop-namsan.jpg" alt="옥상 남산타워 뷰"><figcaption>남산타워 뷰</figcaption></figure><figure><img src="assets/extay/crops/rooftop.jpg" alt="옥상"><figcaption>옥상</figcaption></figure><figure><img src="assets/extay/crops/secret-restroom-guide.jpg" alt="비밀 화장실 안내"><figcaption>공용 화장실</figcaption></figure></div></div></details>
+        </div>
       </section>
 
       <section class="screen guide-detail-screen" data-screen="laundry"><article class="guide-detail-hero laundry-hero"><p class="section-kicker">LAUNDRY GUIDE</p><h2 class="page-title">세탁 안내</h2></article>
+        <div class="device-accordion-group">
         <details class="device" data-device="washer"><summary><span class="circle"><span class="mi">local_laundry_service</span></span><div><h3>세탁기</h3></div><span class="mi">expand_more</span></summary><div class="device-body"><ol class="steps"><li>세탁기는 전원 버튼을 누른 뒤 원하는 코스를 선택하세요.</li><li>코스 선택 후 시작/일시정지 버튼을 눌러 세탁을 시작하세요.</li><li>세탁 전 주머니 속 물건을 확인해 주세요.</li><li>사용 후에는 문을 살짝 열어 내부를 말려 주세요.</li><li>밤 시간에는 진동과 소음에 유의해 주세요.</li></ol><div class="photo-grid single"><figure><button class="image-zoom" type="button" data-fullscreen-image="assets/extay/crops/washer-guide.png" data-fullscreen-title="세탁기"><img src="assets/extay/crops/washer-guide.png" alt="세탁기 사용법"></button><figcaption>세탁기</figcaption></figure></div></div></details>
         <details class="device" data-device="dryer"><summary><span class="circle"><span class="mi">dry_cleaning</span></span><div><h3>건조기</h3></div><span class="mi">expand_more</span></summary><div class="device-body"><ol class="steps"><li>건조기 전원 버튼을 누른 뒤 원하는 코스를 선택하세요.</li><li>코스 선택 후 시작/일시정지 버튼을 눌러 건조를 시작하세요.</li><li>건조 전 주머니 속 물건을 확인해 주세요.</li><li>밤 시간에는 진동과 소음에 유의해 주세요.</li></ol><div class="photo-grid single"><figure><button class="image-zoom" type="button" data-fullscreen-image="assets/extay/crops/dryer-guide.png" data-fullscreen-title="건조기"><img src="assets/extay/crops/dryer-guide.png" alt="건조기 사용법"></button><figcaption>건조기</figcaption></figure></div></div></details>
+        </div>
       </section>
 
       <section class="screen guide-detail-screen" data-screen="trash"><article class="guide-detail-hero trash-hero"><p class="section-kicker">TRASH GUIDE</p><h2 class="page-title">쓰레기 배출</h2></article><article class="card contact-card"><div style="display:flex;align-items:center;justify-content:space-between"><h3 style="margin:0">분리 기준</h3><span class="mini-btn">2종류</span></div><div class="guide-list"><div class="guide-item"><b>1</b><span>일반 쓰레기 및 재활용 모두 베란다에 비치된 쓰레기통에 넣어 주세요.</span></div><div class="guide-item"><b>2</b><span>음식물 쓰레기는 부엌 싱크대 위 음식물 쓰레기통에 버려 주세요.</span></div><div class="guide-item"><b>+</b><span>장기 숙박 중 음식물 냄새가 나면 1층 입구 주황색 통에 음식물을 배출해 주세요.</span></div></div><div class="photo-grid single"><figure><img src="assets/extay/crops/trash-current.jpg" alt="현재 쓰레기통 사진"><figcaption>현재 쓰레기통</figcaption></figure></div></article></section>
