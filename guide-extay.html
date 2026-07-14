@@ -125,6 +125,19 @@ body:not(.is-home):not(.is-gallery):not(.is-checkin):not(.is-wifi):not(.is-trans
 .quick-tile{width:100%;min-width:0;min-inline-size:0;min-height:70px;border:1px solid rgba(205,187,159,.46);border-radius:10px;background:rgba(245,234,216,.06);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:7px;padding:9px 3px;text-align:center;color:#f5ead8;cursor:pointer}
 .quick-tile .mi{font-size:23px;color:#d9c9ae}
 .quick-tile b{display:block;max-width:100%;font-size:11px;line-height:1.2;font-weight:800;white-space:normal;word-break:keep-all;overflow-wrap:anywhere}
+.essentials-head{margin-bottom:20px}
+.essentials-kicker{margin:0 0 9px;color:#7b6b5c;font-size:10px;font-weight:900;line-height:1.2;letter-spacing:.12em!important;text-transform:uppercase}
+.essentials-title{margin:0;color:#221b15;font-size:26px;line-height:1.2;font-weight:800;word-break:keep-all}
+.essentials-sub{margin:10px 0 0;color:#7d6d5e;font-size:14px;line-height:1.55;font-weight:600;word-break:keep-all}
+.essentials-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));overflow:hidden;border:1px solid rgba(123,99,79,.36);border-radius:14px;background:rgba(255,253,252,.58)}
+.essential-item{min-width:0;min-height:92px;display:grid;grid-template-columns:34px minmax(0,1fr);gap:10px;align-items:center;padding:16px 13px}
+.essential-item:nth-child(odd){border-right:1px solid rgba(123,99,79,.28)}
+.essential-item:nth-child(-n+2){border-bottom:1px solid rgba(123,99,79,.28)}
+.essential-icon{width:34px;height:34px;border:1px solid rgba(123,99,79,.22);border-radius:50%;background:#efe4d6;color:#6d5643;display:grid;place-items:center}
+.essential-icon .mi{font-size:18px}
+.essential-copy{display:block;min-width:0}
+.essential-copy small{display:block;margin-bottom:5px;color:#8a7663;font-size:9px;font-weight:900;line-height:1.15;letter-spacing:.08em!important}
+.essential-copy strong{display:block;color:#2b2118;font-size:14px;font-weight:800;line-height:1.32;word-break:keep-all;overflow-wrap:anywhere}
 .stay-card-grid{display:grid;grid-template-columns:1fr 1fr;gap:9px}
 .image-card{position:relative;min-height:142px;border:0;border-radius:13px;overflow:hidden;background:linear-gradient(180deg,rgba(26,19,14,.06),rgba(26,19,14,.68)),var(--card-img) center/cover no-repeat;color:#fff;box-shadow:0 12px 28px rgba(58,43,30,.12);display:flex;flex-direction:column;justify-content:flex-end;align-items:flex-start;text-align:left;padding:18px;cursor:pointer}
 .image-card:before{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.02) 20%,rgba(0,0,0,.64) 100%);pointer-events:none}
@@ -594,6 +607,10 @@ body.motion-ready .hero-panel .scroll-cue{animation:heroTextIn .98s cubic-bezier
   .quick-tile{min-height:66px;padding:8px 2px;gap:6px}
   .quick-tile .mi{font-size:21px}
   .quick-tile b{font-size:10px}
+  .essentials-title{font-size:23px}
+  .essential-item{grid-template-columns:30px minmax(0,1fr);gap:8px;padding:14px 10px}
+  .essential-icon{width:30px;height:30px}
+  .essential-copy strong{font-size:12.5px}
   .image-card{min-height:130px;padding:15px}
   .menu-panel{right:0;width:88vw}
   .gallery-thumb{flex-basis:76px;width:76px;height:88px}
@@ -655,6 +672,20 @@ body *:not(.mi){font-family:var(--font-main)!important;letter-spacing:0!importan
               <button class="quick-tile" type="button" data-go="wifi"><span class="mi">wifi</span><b>Wi-Fi</b></button>
               <button class="quick-tile" type="button" data-go="appliances"><span class="mi">room_service</span><b>시설 이용</b></button>
             </div>
+          </div>
+        </section>
+
+        <section class="hotel-section stay-essentials" id="stayEssentials" aria-labelledby="essentialsTitle">
+          <div class="essentials-head">
+            <p class="essentials-kicker" id="essentialsKicker">STAY ESSENTIALS</p>
+            <h2 class="essentials-title" id="essentialsTitle">숙소 정보 한 눈에 보기</h2>
+            <p class="essentials-sub" id="essentialsSub">도착 전 꼭 필요한 정보만 모았습니다.</p>
+          </div>
+          <div class="essentials-grid">
+            <div class="essential-item"><span class="essential-icon" aria-hidden="true"><span class="mi">login</span></span><span class="essential-copy"><small>CHECK-IN</small><strong>16:00</strong></span></div>
+            <div class="essential-item"><span class="essential-icon" aria-hidden="true"><span class="mi">logout</span></span><span class="essential-copy"><small>CHECK-OUT</small><strong>11:00</strong></span></div>
+            <div class="essential-item"><span class="essential-icon" aria-hidden="true"><span class="mi">key</span></span><span class="essential-copy"><small>ENTRY</small><strong>비대면 셀프 체크인</strong></span></div>
+            <div class="essential-item"><span class="essential-icon" aria-hidden="true"><span class="mi">location_on</span></span><span class="essential-copy"><small>LOCATION</small><strong>녹사평역 도보 15분</strong></span></div>
           </div>
         </section>
 
@@ -1385,7 +1416,7 @@ body *:not(.mi){font-family:var(--font-main)!important;letter-spacing:0!importan
         docTitle:'익스테이 맨션 해방촌 모바일 가이드',docDesc:'익스테이 맨션 해방촌 숙박 안내 모바일 가이드',
         headerTitle:'EXTAY',menuAria:'메뉴',guideAria:'가이드북 열기',chatAria:'안내 도우미',chatFabAria:'안내 도우미 열기',langAria:'Switch to English',langButton:'EN',
         search:{button:'검색',openAria:'검색 열기',closeAria:'검색 닫기',title:'검색',desc:'필요한 정보를 입력하면 관련 안내로 바로 이동합니다.',placeholder:'예: 와이파이, 체크인, 맛집',empty:'검색 결과가 없습니다. 다른 단어로 검색해 주세요.'},
-        heroSub:'your cozy home in Seoul.',copied:'복사했습니다',homeHeroEyebrow:'SEOUL PRIVATE STAY',quickTitle:'빠르게 찾는 정보',homeQuick:['체크인','오는 길','Wi-Fi','시설 이용'],menuTitles:['홈','객실 둘러보기','체크인/아웃 안내','교통 안내','와이파이','주변 맛집','TV · 난방 · 옥상','세탁 안내','쓰레기 배출 안내','이용 안내','FAQ'],menuSubs:['처음 화면','객실 사진','입퇴실 안내','숙소까지 가는 방법','와이파이 연결 안내','도보 10분 맛집 리스트','TV · 난방 · 옥상 사용 안내','세탁기 · 건조기 사용법','분리수거 안내','한글 · 영문 PDF 보기','자주 묻는 질문'],chatExamples:['와이파이 비밀번호 알려줘','텔레비전 어떻게 봐?','세탁기 어떻게 써?','쓰레기 어디에 버려?'],stayGuideKicker:'STAY GUIDE',conciergeKicker:'EXTAY CONCIERGE',aiTitle:'무엇을 도와드릴까요?',conciergePlaceholder:'AI 챗봇에게 질문해 보세요',contactKicker:'CONTACT',footerCopy:'Extay Mansion Haebangchon.',stayCards:['교통 안내','주변 맛집','가이드북','FAQ'],
+        heroSub:'your cozy home in Seoul.',copied:'복사했습니다',homeHeroEyebrow:'SEOUL PRIVATE STAY',quickTitle:'빠르게 찾는 정보',homeQuick:['체크인','오는 길','Wi-Fi','시설 이용'],menuTitles:['홈','객실 둘러보기','체크인/아웃 안내','교통 안내','와이파이','주변 맛집','TV · 난방 · 옥상','세탁 안내','쓰레기 배출 안내','이용 안내','FAQ'],menuSubs:['처음 화면','객실 사진','입퇴실 안내','숙소까지 가는 방법','와이파이 연결 안내','도보 10분 맛집 리스트','TV · 난방 · 옥상 사용 안내','세탁기 · 건조기 사용법','분리수거 안내','한글 · 영문 PDF 보기','자주 묻는 질문'],chatExamples:['와이파이 비밀번호 알려줘','텔레비전 어떻게 봐?','세탁기 어떻게 써?','쓰레기 어디에 버려?'],stayGuideKicker:'STAY GUIDE',conciergeKicker:'EXTAY CONCIERGE',aiTitle:'무엇을 도와드릴까요?',conciergePlaceholder:'AI 챗봇에게 질문해 보세요',essentials:{kicker:'STAY ESSENTIALS',title:'숙소 정보 한 눈에 보기',sub:'도착 전 꼭 필요한 정보만 모았습니다.',labels:['CHECK-IN','CHECK-OUT','ENTRY','LOCATION'],values:['16:00','11:00','비대면 셀프 체크인','녹사평역 도보 15분']},contactKicker:'CONTACT',footerCopy:'Extay Mansion Haebangchon.',stayCards:['교통 안내','주변 맛집','가이드북','FAQ'],
         bottom:['홈','와이파이','사용법','세탁','쓰레기'],
         quick:['와이파이','TV · OTT','온수 · 난방','세탁'],
         home:{infoTitle:'기본 정보',labels:['숙소','주소','체크인 · 체크아웃','와이파이','TV · OTT','주차'],values:['익스테이 맨션 해방촌','서울시 용산구 신흥로 59, 2층','16:00 · 11:00','U+Net46F0_5G','NSM OTT / HDMI 입력','건물 주차 불가 · 주변 유료 공영주차장'],view:'보기'},
@@ -1405,7 +1436,7 @@ body *:not(.mi){font-family:var(--font-main)!important;letter-spacing:0!importan
         docTitle:'Extay Mansion Haebangchon Mobile Guide',docDesc:'A mobile guest guide for Extay Mansion Haebangchon',
         headerTitle:'EXTAY',menuAria:'Menu',guideAria:'Open guidebook',chatAria:'Guide assistant',chatFabAria:'Open guide assistant',langAria:'한국어로 전환',langButton:'KO',
         search:{button:'Search',openAria:'Open search',closeAria:'Close search',title:'Search',desc:'Search what you need and jump directly to the guide.',placeholder:'Try Wi-Fi, check-in, restaurants',empty:'No results. Try another keyword.'},
-        heroSub:'your cozy home in Seoul.',copied:'Copied',homeHeroEyebrow:'SEOUL PRIVATE STAY',quickTitle:'Quick Access',homeQuick:['Check-in','Directions','Wi‑Fi','Amenities'],menuTitles:['Home','Room Gallery','Check in/out Guide','Transportation','Wi‑Fi','Restaurants','TV · Heating · Rooftop','Laundry','Trash','Guidebook','FAQ'],menuSubs:['Opening screen','Room photos','Check-in and checkout guide','How to get to the stay','Wi‑Fi connection guide','Restaurants within a 10-minute walk','TV · heating · rooftop usage guide','Washer and dryer instructions','Trash sorting guide','Korean and English PDFs','Frequently asked questions'],chatExamples:['What is the Wi‑Fi password?','How do I watch TV?','How do I use the washer?','Where do I throw away trash?'],stayGuideKicker:'STAY GUIDE',conciergeKicker:'EXTAY CONCIERGE',aiTitle:'How can we help?',conciergePlaceholder:'Ask the AI chatbot',contactKicker:'CONTACT',footerCopy:'Extay Mansion Haebangchon.',stayCards:['Transportation','Nearby Food','Guidebook','FAQ'],
+        heroSub:'your cozy home in Seoul.',copied:'Copied',homeHeroEyebrow:'SEOUL PRIVATE STAY',quickTitle:'Quick Access',homeQuick:['Check-in','Directions','Wi‑Fi','Amenities'],menuTitles:['Home','Room Gallery','Check in/out Guide','Transportation','Wi‑Fi','Restaurants','TV · Heating · Rooftop','Laundry','Trash','Guidebook','FAQ'],menuSubs:['Opening screen','Room photos','Check-in and checkout guide','How to get to the stay','Wi‑Fi connection guide','Restaurants within a 10-minute walk','TV · heating · rooftop usage guide','Washer and dryer instructions','Trash sorting guide','Korean and English PDFs','Frequently asked questions'],chatExamples:['What is the Wi‑Fi password?','How do I watch TV?','How do I use the washer?','Where do I throw away trash?'],stayGuideKicker:'STAY GUIDE',conciergeKicker:'EXTAY CONCIERGE',aiTitle:'How can we help?',conciergePlaceholder:'Ask the AI chatbot',essentials:{kicker:'STAY ESSENTIALS',title:'Stay information at a glance',sub:'Everything you need before arrival.',labels:['CHECK-IN','CHECK-OUT','ENTRY','LOCATION'],values:['16:00','11:00','Contactless self check-in','15 min walk from Noksapyeong Station']},contactKicker:'CONTACT',footerCopy:'Extay Mansion Haebangchon.',stayCards:['Transportation','Nearby Food','Guidebook','FAQ'],
         bottom:['Home','Wi-Fi','Guide','Laundry','Trash'],
         quick:['Wi-Fi','TV · OTT','Hot Water','Laundry'],
         home:{infoTitle:'Basic Info',labels:['Stay','Address','Check-in · Checkout','Wi-Fi','TV · OTT','Parking'],values:['Extay Mansion Haebangchon','2F, 59 Sinheung-ro, Yongsan-gu, Seoul','16:00 · 11:00','U+Net46F0_5G','NSM OTT / HDMI input','No on-site parking · use nearby paid public parking'],view:'View'},
@@ -1429,7 +1460,7 @@ body *:not(.mi){font-family:var(--font-main)!important;letter-spacing:0!importan
       menuTitles:['首页','客房浏览','入住/退房指南','交通指南','Wi‑Fi','周边美食','TV · 供暖 · 屋顶','洗衣指南','垃圾投放指南','指南书','FAQ'],
       menuSubs:['首页画面','客房照片','入住退房指南','前往住宿的方法','Wi‑Fi 连接指南','步行10分钟内的餐厅列表','TV · 供暖 · 屋顶使用指南','洗衣机和烘干机使用方法','分类投放指南','韩文与英文 PDF','常见问题'],
       chatExamples:['Wi‑Fi 密码是什么？','怎么用电视？','洗衣机怎么用？','垃圾丢到哪里？'],
-      heroSub:'首尔温馨住处。',copied:'已复制',homeHeroEyebrow:'首尔私人住宿',quickTitle:'快速查看信息',homeQuick:['入住','路线','Wi‑Fi','设施使用'],stayGuideKicker:'住宿指南',conciergeKicker:'EXTAY CONCIERGE',aiTitle:'有什么可以帮您？',conciergePlaceholder:'向 AI 聊天机器人提问',contactKicker:'联系方式',footerCopy:'Extay Mansion Haebangchon。',stayCards:['交通指南','周边美食','指南书','FAQ'],
+      heroSub:'首尔温馨住处。',copied:'已复制',homeHeroEyebrow:'首尔私人住宿',quickTitle:'快速查看信息',homeQuick:['入住','路线','Wi‑Fi','设施使用'],stayGuideKicker:'住宿指南',conciergeKicker:'EXTAY CONCIERGE',aiTitle:'有什么可以帮您？',conciergePlaceholder:'向 AI 聊天机器人提问',essentials:{kicker:'STAY ESSENTIALS',title:'住宿信息一览',sub:'为您汇总到达前必需的信息。',labels:['CHECK-IN','CHECK-OUT','ENTRY','LOCATION'],values:['16:00','11:00','无接触自助入住','绿莎坪站步行 15 分钟']},contactKicker:'联系方式',footerCopy:'Extay Mansion Haebangchon。',stayCards:['交通指南','周边美食','指南书','FAQ'],
       bottom:['首页','Wi‑Fi','使用说明','洗衣','垃圾'],
       quick:['Wi‑Fi','TV · OTT','热水 · 供暖','洗衣'],
       home:{infoTitle:'基本信息',labels:['住宿','地址','入住 · 退房','Wi‑Fi','TV · OTT','停车'],values:['EXTAY 海放村','首尔特别市龙山区新兴路59号，2楼','16:00 · 11:00','U+Net46F0_5G','NSM OTT / HDMI 输入','楼内无法停车 · 请使用附近收费公共停车场'],view:'查看'},
@@ -1452,7 +1483,7 @@ body *:not(.mi){font-family:var(--font-main)!important;letter-spacing:0!importan
       menuTitles:['ホーム','客室めぐり','チェックイン/アウト案内','交通案内','Wi‑Fi','近くのレストラン','TV · 暖房 · 屋上','ランドリー','ゴミ出し案内','ガイドブック','FAQ'],
       menuSubs:['ホーム画面','客室写真','チェックイン・チェックアウト案内','宿泊先までの行き方','Wi‑Fi接続案内','徒歩10分以内のレストラン一覧','TV · 暖房 · 屋上の案内','洗濯機と乾燥機の使い方','分別案内','韓国語と英語のPDF','よくある質問'],
       chatExamples:['Wi‑Fi のパスワードは？','テレビの見方は？','洗濯機の使い方は？','ゴミはどこに捨てる？'],
-      heroSub:'ソウルのくつろぎの宿。',copied:'コピーしました',homeHeroEyebrow:'ソウルのプライベートステイ',quickTitle:'すぐ見つかる情報',homeQuick:['チェックイン','行き方','Wi‑Fi','施設利用'],stayGuideKicker:'滞在ガイド',conciergeKicker:'EXTAY CONCIERGE',aiTitle:'何をお手伝いしましょうか？',conciergePlaceholder:'AI チャットボットに質問',contactKicker:'連絡先',footerCopy:'Extay Mansion Haebangchon.',stayCards:['交通案内','周辺グルメ','ガイドブック','FAQ'],
+      heroSub:'ソウルのくつろぎの宿。',copied:'コピーしました',homeHeroEyebrow:'ソウルのプライベートステイ',quickTitle:'すぐ見つかる情報',homeQuick:['チェックイン','行き方','Wi‑Fi','施設利用'],stayGuideKicker:'滞在ガイド',conciergeKicker:'EXTAY CONCIERGE',aiTitle:'何をお手伝いしましょうか？',conciergePlaceholder:'AI チャットボットに質問',essentials:{kicker:'STAY ESSENTIALS',title:'宿泊情報をひと目で',sub:'到着前に必要な情報をまとめました。',labels:['CHECK-IN','CHECK-OUT','ENTRY','LOCATION'],values:['16:00','11:00','非対面セルフチェックイン','緑莎坪駅から徒歩 15 分']},contactKicker:'連絡先',footerCopy:'Extay Mansion Haebangchon.',stayCards:['交通案内','周辺グルメ','ガイドブック','FAQ'],
       bottom:['ホーム','Wi‑Fi','案内','ランドリー','ゴミ'],
       quick:['Wi‑Fi','TV · OTT','給湯 · 暖房','ランドリー'],
       home:{infoTitle:'基本情報',labels:['宿泊先','住所','チェックイン · チェックアウト','Wi‑Fi','TV · OTT','駐車'],values:['EXTAY 海放村','ソウル特別市龍山区新興路59、2階','16:00 · 11:00','U+Net46F0_5G','NSM OTT / HDMI 入力','建物内駐車不可 · 近隣の有料公共駐車場をご利用ください'],view:'見る'},
@@ -1494,6 +1525,7 @@ body *:not(.mi){font-family:var(--font-main)!important;letter-spacing:0!importan
       document.title=tr.docTitle;
       const meta=q('meta[name="description"]'); if(meta)meta.setAttribute('content',tr.docDesc);
       text(q('#brandHome'),tr.headerTitle); q('#brandHome')?.setAttribute('aria-label',currentLang==='en'?'Go home':'홈으로 이동'); text(q('.hero .label'),tr.heroSub); text(q('.landing-hero .eyebrow'),tr.homeHeroEyebrow); text(q('#stayGuide .section-kicker'),tr.stayGuideKicker); text(q('#conciergeKicker'),tr.conciergeKicker); text(q('#aiTitle'),tr.aiTitle); const conciergeInput=q('#conciergeAskInput'); if(conciergeInput)conciergeInput.placeholder=tr.conciergePlaceholder; text(q('#locationContact .section-kicker'),tr.contactKicker); text(q('.hotel-footer span'),tr.footerCopy); const badge=LANG_BADGE[currentLang]||LANG_BADGE.ko; text(q('#langToggleText'),badge); text(q('#homeLangText'),badge); qa('.home-language-option').forEach(option=>option.setAttribute('aria-checked',String(option.dataset.language===currentLang)));
+      if(tr.essentials){text(q('#essentialsKicker'),tr.essentials.kicker);text(q('#essentialsTitle'),tr.essentials.title);text(q('#essentialsSub'),tr.essentials.sub);eachText(qa('.essential-copy small'),tr.essentials.labels);eachText(qa('.essential-copy strong'),tr.essentials.values)}
       const menu=q('#menuTop'), guide=q('#openGuidebookTop'), chatTop=q('#openChatTop'), chatFab=q('#openChatFab'), close=q('#closeChat'), langBtn=q('#langToggle'), homeLangBtn=q('#homeLangToggle');
       if(menu)menu.setAttribute('aria-label',tr.menuAria); if(guide){guide.setAttribute('aria-label',tr.guideAria);guide.href=GUIDEBOOK_PDFS[currentLang==='en'?'en':'ko']} if(chatTop)chatTop.setAttribute('aria-label',tr.chatAria); if(chatFab)chatFab.setAttribute('aria-label',tr.chatFabAria); if(close)close.setAttribute('aria-label',tr.chat.close); if(langBtn)langBtn.setAttribute('aria-label',currentLang==='en'?'Switch language':'언어 전환'); if(homeLangBtn)homeLangBtn.setAttribute('aria-label',currentLang==='en'?'Choose language':'언어 선택');
       eachText(qa('.bottom .tab span:not(.mi)'),tr.bottom);
