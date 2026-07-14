@@ -183,13 +183,22 @@ body:not(.is-home):not(.is-gallery):not(.is-checkin):not(.is-wifi):not(.is-trans
 .nearby-kicker{margin:0 0 9px;color:#7b6b5c}
 .nearby-title{margin:0 0 16px;color:#221b15;font-size:26px;line-height:1.2;font-weight:800}
 .nearby-list{display:grid;gap:9px}
-.nearby-card{position:relative;min-height:106px;border:1px solid #dfd2c1;border-radius:14px;background:#fffaf4;color:#221b15;padding:17px 48px 18px 17px;display:flex;flex-direction:column;align-items:flex-start;text-align:left}
+.nearby-card{position:relative;min-height:142px;border:1px solid #dfd2c1;border-radius:14px;overflow:hidden;background:#fffaf4;color:#221b15;display:grid;grid-template-columns:1fr 1fr;text-align:left}
+.nearby-card-media{min-width:0;overflow:hidden;background:#e7ddd0}
+.nearby-card-media img{width:100%;height:100%;display:block;object-fit:cover;transition:transform .35s ease}
+.nearby-card-copy{position:relative;min-width:0;padding:16px 36px 17px 14px;display:flex;flex-direction:column;align-items:flex-start;justify-content:center}
 .nearby-card-label{color:#7b6b5c;font-size:10px;font-weight:800;line-height:1.2;letter-spacing:.05em!important}
 .nearby-card strong{margin-top:7px;font-size:16px;line-height:1.3;font-weight:800;word-break:keep-all}
 .nearby-card p{margin:6px 0 0;color:#75685b;font-size:11px;line-height:1.45;font-weight:600;word-break:keep-all}
-.nearby-card>.mi{position:absolute;right:14px;bottom:14px;color:#6d5d4e;font-size:19px}
+.nearby-card .mi{position:absolute;right:13px;bottom:13px;color:#6d5d4e;font-size:19px}
+@media (hover:hover){.nearby-card:hover .nearby-card-media img{transform:scale(1.04)}}
 .nearby-all{width:100%;margin-top:10px;border:0;border-bottom:1px solid #cdbb9f;background:transparent;color:#40362d;padding:13px 1px 11px;display:flex;align-items:center;justify-content:space-between;font-size:12px;font-weight:800;text-align:left;cursor:pointer}
 .nearby-all .mi{font-size:18px}
+.stay-guide-title{margin:0 0 18px;color:#221b15;font-size:26px;line-height:1.2;font-weight:800;word-break:keep-all}
+.stay-info-links{border-top:1px solid #d9cbbb}
+.stay-info-link{width:100%;min-height:62px;border:0;border-bottom:1px solid #d9cbbb;background:transparent;color:#332b24;padding:0 2px;display:flex;align-items:center;gap:13px;text-align:left;cursor:pointer}
+.stay-info-link .mi{width:28px;flex:none;color:#54675d;font-size:22px;text-align:center}
+.stay-info-link span:last-child{font-size:14px;line-height:1.4;font-weight:750;word-break:keep-all}
 .stay-card-grid{display:grid;grid-template-columns:1fr 1fr;gap:9px}
 .image-card{position:relative;min-height:142px;border:0;border-radius:13px;overflow:hidden;background:linear-gradient(180deg,rgba(26,19,14,.06),rgba(26,19,14,.68)),var(--card-img) center/cover no-repeat;color:#fff;box-shadow:0 12px 28px rgba(58,43,30,.12);display:flex;flex-direction:column;justify-content:flex-end;align-items:flex-start;text-align:left;padding:18px;cursor:pointer}
 .image-card:before{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.02) 20%,rgba(0,0,0,.64) 100%);pointer-events:none}
@@ -787,23 +796,24 @@ body *:not(.mi){font-family:var(--font-main)!important;letter-spacing:0!importan
             <h2 class="nearby-title" id="nearbyPreviewTitle">주변 맛집</h2>
             <div class="nearby-list">
               <a class="nearby-card" href="https://juas.notion.site/semolina-club-1c920d6eecb14bfcb012d1141caac8a9?pvs=25" target="_blank" rel="noopener">
-                <span class="nearby-card-label">양식 · 파스타</span><strong>semolina club (세몰리나 클럽)</strong><p>해방촌 도보권의 캐주얼 양식 맛집입니다.</p><span class="mi" aria-hidden="true">arrow_forward</span>
+                <span class="nearby-card-media"><img src="assets/restaurants/restaurant-01.jpg" alt="semolina club 매장" loading="lazy"></span>
+                <span class="nearby-card-copy"><span class="nearby-card-label">양식 · 파스타</span><strong>semolina club (세몰리나 클럽)</strong><p>해방촌 도보권의 캐주얼 양식 맛집입니다.</p><span class="mi" aria-hidden="true">arrow_forward</span></span>
               </a>
               <a class="nearby-card" href="https://juas.notion.site/Vegetus-8c75c27831a74ec08a2a39b314de2b9d?pvs=25" target="_blank" rel="noopener">
-                <span class="nearby-card-label">비건 · 가까움</span><strong>Vegetus (베제투스)</strong><p>숙소 근처 비건 식당. 가볍게 식사하기 좋습니다.</p><span class="mi" aria-hidden="true">arrow_forward</span>
+                <span class="nearby-card-media"><img src="assets/restaurants/restaurant-02.jpg" alt="Vegetus 매장" loading="lazy"></span>
+                <span class="nearby-card-copy"><span class="nearby-card-label">비건 · 가까움</span><strong>Vegetus (베제투스)</strong><p>숙소 근처 비건 식당. 가볍게 식사하기 좋습니다.</p><span class="mi" aria-hidden="true">arrow_forward</span></span>
               </a>
             </div>
             <button class="nearby-all" type="button" data-go="restaurants"><span id="nearbyPreviewAll">호스트 추천 맛집 35곳 보기</span><span class="mi" aria-hidden="true">arrow_forward</span></button>
           </div>
         </section>
 
-        <section class="hotel-section" id="stayGuide" aria-label="STAY GUIDE">
-          <p class="section-kicker">STAY GUIDE</p>
-          <div class="stay-card-grid">
-            <button class="image-card large" type="button" data-go="transport" style="--card-img:url('assets/transportation-hero.jpg')"><span>교통 안내</span></button>
-            <button class="image-card" type="button" data-go="restaurants" style="--card-img:url('assets/restaurants-hero.jpg')"><span>주변 맛집</span></button>
-            <button class="image-card" type="button" data-go="guidebook" style="--card-img:url('assets/extay/crops/main-living-logo.png')"><span>가이드북</span></button>
-            <button class="image-card" type="button" data-go="faq" style="--card-img:url('assets/extay/smart-card/stay-day.png')"><span>FAQ</span></button>
+        <section class="hotel-section" id="stayGuide" aria-labelledby="stayResidentTitle">
+          <h2 class="stay-guide-title" id="stayResidentTitle">투숙 중 자주 찾는 정보</h2>
+          <div class="stay-info-links">
+            <button class="stay-info-link" type="button" data-go="appliances"><span class="mi" aria-hidden="true">tv</span><span>TV · 난방 · 옥상 사용 안내</span></button>
+            <button class="stay-info-link" type="button" data-go="laundry"><span class="mi" aria-hidden="true">local_laundry_service</span><span>세탁기 · 건조기 사용법</span></button>
+            <button class="stay-info-link" type="button" data-go="trash"><span class="mi" aria-hidden="true">delete_outline</span><span>쓰레기 배출 안내</span></button>
           </div>
         </section>
 
@@ -1611,6 +1621,10 @@ body *:not(.mi){font-family:var(--font-main)!important;letter-spacing:0!importan
     Object.assign(uiText.en,{homeGalleryFeature:{count:'01/04',title:'Living Lounge',desc:'The main living space with warm lighting and a comfortable sofa.'},getting:{kicker:'GETTING HERE',title:'Location & Transportation',name:'EXTAY Mansion Haebangchon',address:'2F, 59 Sinheung-ro, Yongsan-gu, Seoul',transit:'Noksapyeong Station Exit 2, about 15 minutes on foot',naver:'Naver Map',google:'Google Maps',airportKicker:'AIRPORT ACCESS',airportTitle:'From the airport to EXTAY',restaurantKicker:'NEARBY RESTAURANTS',restaurantTitle:'Nearby Restaurants',restaurantAll:'View 35 host-recommended restaurants',restaurants:[['Western · Pasta','semolina club','A casual Western restaurant within walking distance in Haebangchon.'],['Vegan · Nearby','Vegetus','A nearby vegan restaurant that is great for a light meal.']]}});
     Object.assign(uiText.zh,{homeGalleryFeature:{count:'01/04',title:'客厅休息区',desc:'配有温暖灯光和舒适沙发的主客厅空间。'},getting:{kicker:'GETTING HERE',title:'位置与交通',name:'EXTAY Mansion Haebangchon',address:'首尔特别市龙山区新兴路59号 2楼',transit:'绿莎坪站2号出口，步行约15分钟',naver:'Naver 地图',google:'Google Maps',airportKicker:'AIRPORT ACCESS',airportTitle:'从机场前往 EXTAY',restaurantKicker:'NEARBY RESTAURANTS',restaurantTitle:'周边美食',restaurantAll:'查看房东推荐的35家餐厅',restaurants:[['西餐 · 意面','semolina club','位于解放村步行范围内的休闲西餐厅。'],['纯素 · 附近','Vegetus','住宿附近的纯素餐厅，适合轻松用餐。']]}});
     Object.assign(uiText.ja,{homeGalleryFeature:{count:'01/04',title:'リビングラウンジ',desc:'温かな照明と快適なソファのあるメインリビングです。'},getting:{kicker:'GETTING HERE',title:'アクセス・交通',name:'EXTAY Mansion Haebangchon',address:'ソウル特別市龍山区新興路59、2階',transit:'緑莎坪駅2番出口から徒歩約15分',naver:'Naver マップ',google:'Google Maps',airportKicker:'AIRPORT ACCESS',airportTitle:'空港からEXTAYまで',restaurantKicker:'NEARBY RESTAURANTS',restaurantTitle:'周辺グルメ',restaurantAll:'ホストおすすめの35店を見る',restaurants:[['洋食 · パスタ','semolina club','解放村の徒歩圏内にあるカジュアルな洋食店です。'],['ヴィーガン · 近隣','Vegetus','宿の近くにある、軽い食事にもおすすめのヴィーガン店です。']]}});
+    Object.assign(uiText.ko,{stayResident:{title:'투숙 중 자주 찾는 정보',items:['TV · 난방 · 옥상 사용 안내','세탁기 · 건조기 사용법','쓰레기 배출 안내']}});
+    Object.assign(uiText.en,{stayResident:{title:'Frequently Used During Your Stay',items:['TV · heating · rooftop guide','Washer · dryer instructions','Trash disposal guide']}});
+    Object.assign(uiText.zh,{stayResident:{title:'入住期间常用信息',items:['电视 · 暖气 · 屋顶使用指南','洗衣机 · 烘干机使用方法','垃圾投放指南']}});
+    Object.assign(uiText.ja,{stayResident:{title:'滞在中によく使う情報',items:['TV・暖房・屋上の利用案内','洗濯機・乾燥機の使い方','ゴミ出し案内']}});
     const q=s=>document.querySelector(s), qa=s=>[...document.querySelectorAll(s)];
     const reduceMotion=window.matchMedia?.('(prefers-reduced-motion: reduce)')?.matches||false;
     let revealObserver=null,pageTransitionTimer=0,parallaxTick=false;
@@ -1636,16 +1650,16 @@ body *:not(.mi){font-family:var(--font-main)!important;letter-spacing:0!importan
       document.documentElement.lang=currentLang;
       document.title=tr.docTitle;
       const meta=q('meta[name="description"]'); if(meta)meta.setAttribute('content',tr.docDesc);
-      text(q('#brandHome'),tr.headerTitle); q('#brandHome')?.setAttribute('aria-label',currentLang==='en'?'Go home':'홈으로 이동'); text(q('.hero .label'),tr.heroSub); text(q('.landing-hero .eyebrow'),tr.homeHeroEyebrow); text(q('#stayGuide .section-kicker'),tr.stayGuideKicker); text(q('#conciergeKicker'),tr.conciergeKicker); text(q('#aiTitle'),tr.aiTitle); const conciergeInput=q('#conciergeAskInput'); if(conciergeInput)conciergeInput.placeholder=tr.conciergePlaceholder; text(q('#locationContact .section-kicker'),tr.contactKicker); text(q('.hotel-footer span'),tr.footerCopy); const badge=LANG_BADGE[currentLang]||LANG_BADGE.ko; text(q('#langToggleText'),badge); text(q('#homeLangText'),badge); qa('.home-language-option').forEach(option=>option.setAttribute('aria-checked',String(option.dataset.language===currentLang)));
+      text(q('#brandHome'),tr.headerTitle); q('#brandHome')?.setAttribute('aria-label',currentLang==='en'?'Go home':'홈으로 이동'); text(q('.hero .label'),tr.heroSub); text(q('.landing-hero .eyebrow'),tr.homeHeroEyebrow); text(q('#conciergeKicker'),tr.conciergeKicker); text(q('#aiTitle'),tr.aiTitle); const conciergeInput=q('#conciergeAskInput'); if(conciergeInput)conciergeInput.placeholder=tr.conciergePlaceholder; text(q('#locationContact .section-kicker'),tr.contactKicker); text(q('.hotel-footer span'),tr.footerCopy); const badge=LANG_BADGE[currentLang]||LANG_BADGE.ko; text(q('#langToggleText'),badge); text(q('#homeLangText'),badge); qa('.home-language-option').forEach(option=>option.setAttribute('aria-checked',String(option.dataset.language===currentLang)));
       if(tr.essentials){text(q('#essentialsKicker'),tr.essentials.kicker);text(q('#essentialsTitle'),tr.essentials.title);text(q('#essentialsSub'),tr.essentials.sub);eachText(qa('.essential-copy small'),tr.essentials.labels);eachText(qa('.essential-copy strong'),tr.essentials.values);eachText(qa('.essentials-link>span:first-child'),tr.essentials.links);text(q('#homeGalleryTitle'),tr.essentials.galleryTitle);text(q('.home-gallery-all'),tr.essentials.galleryAll)}
       if(tr.homeGalleryFeature){text(q('.home-gallery-count'),tr.homeGalleryFeature.count);text(q('.home-gallery-copy strong'),tr.homeGalleryFeature.title);text(q('.home-gallery-copy small'),tr.homeGalleryFeature.desc)}
       if(tr.getting){text(q('#gettingKicker'),tr.getting.kicker);text(q('#gettingTitle'),tr.getting.title);text(q('#gettingName'),tr.getting.name);text(q('#gettingAddress'),tr.getting.address);text(q('#gettingTransit'),tr.getting.transit);text(q('#gettingNaver'),tr.getting.naver);text(q('#gettingGoogle'),tr.getting.google);text(q('#airportAccessKicker'),tr.getting.airportKicker);text(q('#airportAccessTitle'),tr.getting.airportTitle);text(q('#nearbyPreviewKicker'),tr.getting.restaurantKicker);text(q('#nearbyPreviewTitle'),tr.getting.restaurantTitle);text(q('#nearbyPreviewAll'),tr.getting.restaurantAll);qa('.nearby-card').forEach((card,i)=>{const item=tr.getting.restaurants?.[i];if(item){text(card.querySelector('.nearby-card-label'),item[0]);text(card.querySelector('strong'),item[1]);text(card.querySelector('p'),item[2])}})}
+      if(tr.stayResident){text(q('#stayResidentTitle'),tr.stayResident.title);eachText(qa('.stay-info-link span:last-child'),tr.stayResident.items)}
       const menu=q('#menuTop'), guide=q('#openGuidebookTop'), chatTop=q('#openChatTop'), chatFab=q('#openChatFab'), close=q('#closeChat'), langBtn=q('#langToggle'), homeLangBtn=q('#homeLangToggle');
       if(menu)menu.setAttribute('aria-label',tr.menuAria); if(guide){guide.setAttribute('aria-label',tr.guideAria);guide.href=GUIDEBOOK_PDFS[currentLang==='en'?'en':'ko']} if(chatTop)chatTop.setAttribute('aria-label',tr.chatAria); if(chatFab)chatFab.setAttribute('aria-label',tr.chatFabAria); if(close)close.setAttribute('aria-label',tr.chat.close); if(langBtn)langBtn.setAttribute('aria-label',currentLang==='en'?'Switch language':'언어 전환'); if(homeLangBtn)homeLangBtn.setAttribute('aria-label',currentLang==='en'?'Choose language':'언어 선택');
       eachText(qa('.bottom .tab span:not(.mi)'),tr.bottom);
       qa('.quick button>span').forEach((el,i)=>html(el,iconLabel(['wifi_password','tv','thermostat','local_laundry_service'][i],tr.quick[i])));
       eachText(qa('.quick-access-grid .quick-tile b'),tr.homeQuick||[]);
-      eachText(qa('.stay-card-grid .image-card span'),tr.stayCards);
       const menuLinks=qa('.menu-link');
       eachText(menuLinks.map(el=>el.querySelector('span')),tr.menuTitles||[]);
       eachText(menuLinks.map(el=>el.querySelector('small')),tr.menuSubs||[]);
