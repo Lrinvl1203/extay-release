@@ -109,27 +109,28 @@ body:not(.is-home):not(.is-gallery):not(.is-checkin):not(.is-wifi):not(.is-trans
 .hotel-section{padding:36px 31px 0}
 .section-kicker{color:#77685a}
 .hotel-heading{margin:0 0 22px;font-size:24px;line-height:1.18;font-weight:700;color:#221b15}
-.quick-access-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;width:100%}
-.quick-tile{width:100%;min-width:0;min-inline-size:0;max-width:100%;overflow:hidden;min-height:120px;border:1px solid rgba(216,198,180,.62);border-radius:14px;background:rgba(255,255,255,.82);box-shadow:0 12px 32px rgba(58,43,30,.08);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;padding:12px 5px;text-align:center;color:#221b15;cursor:pointer}
-.quick-tile .mi,.quick-icon-img{width:46px;height:46px;font-size:46px;color:#7b634f;object-fit:contain}
-.quick-tile b{display:block;max-width:100%;font-size:15.2px;line-height:1.12;font-weight:900;white-space:normal;word-break:keep-all;overflow-wrap:anywhere}
+.concierge-hub{position:relative;overflow:hidden;border:1px solid #cdbb9f;border-radius:14px;background:#26382f;color:#f5ead8;padding:23px 20px 18px;box-shadow:0 18px 42px rgba(31,48,40,.2)}
+.concierge-hub:before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 88% 4%,rgba(205,187,159,.14),transparent 30%),linear-gradient(145deg,rgba(255,255,255,.025),transparent 52%);pointer-events:none}
+.concierge-hub>*{position:relative;z-index:1}
+.concierge-intro{display:grid;grid-template-columns:minmax(0,1fr) 72px;gap:12px;align-items:center;margin-bottom:18px}
+.concierge-kicker{margin:0 0 7px;color:#d2c3aa;font-size:10px;font-weight:800;line-height:1.2;letter-spacing:.12em!important;text-transform:uppercase}
+.concierge-heading{margin:0;color:#fff8eb;font-size:25px;line-height:1.2;font-weight:800;word-break:keep-all}
+.concierge-character{width:72px;height:72px;object-fit:contain;justify-self:end;filter:drop-shadow(0 9px 17px rgba(0,0,0,.2))}
+.concierge-ask{display:grid;grid-template-columns:minmax(0,1fr) 42px;gap:8px;padding:5px 5px 5px 15px;border:1px solid rgba(205,187,159,.7);border-radius:12px;background:#f5ead8;box-shadow:inset 0 1px 0 rgba(255,255,255,.55)}
+.concierge-ask input{min-width:0;border:0;outline:0;background:transparent;color:#26382f;font-size:14px;font-weight:700}
+.concierge-ask input::placeholder{color:#7c7669;font-weight:500}
+.concierge-ask button{width:42px;height:42px;border:0;border-radius:10px;background:#26382f;color:#f5ead8;display:grid;place-items:center;cursor:pointer}
+.concierge-ask button .mi{font-size:20px}
+.quick-access-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:6px;width:100%;margin-top:14px}
+.quick-tile{width:100%;min-width:0;min-inline-size:0;min-height:70px;border:1px solid rgba(205,187,159,.46);border-radius:10px;background:rgba(245,234,216,.06);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:7px;padding:9px 3px;text-align:center;color:#f5ead8;cursor:pointer}
+.quick-tile .mi{font-size:23px;color:#d9c9ae}
+.quick-tile b{display:block;max-width:100%;font-size:11px;line-height:1.2;font-weight:800;white-space:normal;word-break:keep-all;overflow-wrap:anywhere}
 .stay-card-grid{display:grid;grid-template-columns:1fr 1fr;gap:9px}
 .image-card{position:relative;min-height:142px;border:0;border-radius:13px;overflow:hidden;background:linear-gradient(180deg,rgba(26,19,14,.06),rgba(26,19,14,.68)),var(--card-img) center/cover no-repeat;color:#fff;box-shadow:0 12px 28px rgba(58,43,30,.12);display:flex;flex-direction:column;justify-content:flex-end;align-items:flex-start;text-align:left;padding:18px;cursor:pointer}
 .image-card:before{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.02) 20%,rgba(0,0,0,.64) 100%);pointer-events:none}
 .image-card span,.image-card small{position:relative;z-index:1}
 .image-card span{font-size:17px;font-weight:800;line-height:1.25}
 .image-card small{margin-top:7px;font-size:12px;line-height:1.38;color:rgba(255,255,255,.9)}
-#aiConcierge{padding:0;display:flex;flex-direction:column;align-items:flex-end;gap:8px}
-body.is-home #aiConcierge{position:absolute;top:84px;right:20px;z-index:15;width:134px}
-.concierge-banner{position:relative;width:100%;min-height:72px;border:0;border-radius:18px;overflow:hidden;padding:9px 10px 9px 8px;color:#fff;background:rgba(255,255,255,.2);box-shadow:0 14px 30px rgba(28,22,17,.08);backdrop-filter:blur(10px) saturate(135%);-webkit-backdrop-filter:blur(10px) saturate(135%);display:flex;align-items:center;justify-content:center;text-align:left;gap:7px;cursor:pointer}
-.concierge-banner:before{content:"";position:absolute;inset:0;background:linear-gradient(135deg,rgba(255,255,255,.08),rgba(255,255,255,.01));pointer-events:none}
-.concierge-banner>*{position:relative;z-index:1}
-.concierge-icon{width:auto;height:auto;border-radius:0;background:transparent;display:block;color:#fff;text-shadow:0 8px 24px rgba(0,0,0,.18)}
-.concierge-icon.mi{font-size:60px;line-height:.9}
-.concierge-character{width:54px;height:54px;object-fit:contain;flex:0 0 auto;filter:drop-shadow(0 8px 14px rgba(28,22,17,.16))}
-.concierge-copy{display:block;min-width:0}
-.concierge-title{display:block;color:#fff;font-size:13px;font-weight:800;line-height:1.15;word-break:keep-all;overflow-wrap:anywhere;text-shadow:0 2px 14px rgba(0,0,0,.24)}
-.concierge-sub{display:block;margin-top:3px;color:rgba(255,255,255,.84);font-size:10px;font-weight:700;line-height:1.2;word-break:keep-all;overflow-wrap:anywhere;text-shadow:0 2px 12px rgba(0,0,0,.22)}body.is-home #aiConcierge[data-lang="ja"],body.is-home #aiConcierge[data-lang="zh"]{width:148px}body.is-home #aiConcierge[data-lang="ja"] .concierge-banner,body.is-home #aiConcierge[data-lang="zh"] .concierge-banner{min-height:78px;padding:10px 11px 10px 9px}body.is-home #aiConcierge[data-lang="ja"] .concierge-title,body.is-home #aiConcierge[data-lang="zh"] .concierge-title{font-size:12px;line-height:1.2}body.is-home #aiConcierge[data-lang="ja"] .concierge-sub,body.is-home #aiConcierge[data-lang="zh"] .concierge-sub{font-size:9px;line-height:1.25}body.is-home #aiConcierge[data-lang="ja"] .concierge-copy,body.is-home #aiConcierge[data-lang="zh"] .concierge-copy{max-width:100%}
 .contact-heading{display:flex;align-items:center;gap:10px}
 .contact-heading .section-kicker{margin:0}
 .contact-mini-actions{display:flex;align-items:center;gap:6px}
@@ -585,10 +586,14 @@ body.motion-ready .hero-panel .scroll-cue{animation:heroTextIn .98s cubic-bezier
   .landing-hero .hero-title{font-size:50px}
   .hero-copy{font-size:15px}
   .hotel-section{padding-left:20px;padding-right:20px}
-  .quick-access-grid{gap:7px}
-  .quick-tile{min-height:112px;padding:10px 4px;gap:9px}
-  .quick-tile .mi,.quick-icon-img{width:42px;height:42px;font-size:42px}
-  .quick-tile b{font-size:13.6px}
+  .concierge-hub{padding:21px 16px 16px}
+  .concierge-intro{grid-template-columns:minmax(0,1fr) 62px}
+  .concierge-heading{font-size:22px}
+  .concierge-character{width:62px;height:62px}
+  .quick-access-grid{gap:5px}
+  .quick-tile{min-height:66px;padding:8px 2px;gap:6px}
+  .quick-tile .mi{font-size:21px}
+  .quick-tile b{font-size:10px}
   .image-card{min-height:130px;padding:15px}
   .menu-panel{right:0;width:88vw}
   .gallery-thumb{flex-basis:76px;width:76px;height:88px}
@@ -631,13 +636,25 @@ body *:not(.mi){font-family:var(--font-main)!important;letter-spacing:0!importan
           </div>
         </section>
 
-        <section class="hotel-section" id="quickAccess" aria-labelledby="quickTitle">
-          <p class="section-kicker">QUICK ACCESS</p>
-          <h2 class="hotel-heading" id="quickTitle">빠르게 찾는 정보</h2>
-          <div class="quick-access-grid">
-            <button class="quick-tile" type="button" data-go="checkin"><img class="quick-icon-img" src="assets/extay/checkin-bell.svg" alt="" aria-hidden="true"><b>체크인/아웃 안내</b></button>
-            <button class="quick-tile" type="button" data-go="wifi"><span class="mi">wifi</span><b>와이파이</b></button>
-            <button class="quick-tile" type="button" data-go="transport"><span class="mi">directions_car</span><b>교통 안내</b></button>
+        <section class="hotel-section" id="quickAccess" aria-labelledby="aiTitle">
+          <div class="concierge-hub" id="aiConcierge">
+            <div class="concierge-intro">
+              <div>
+                <p class="concierge-kicker" id="conciergeKicker">EXTAY CONCIERGE</p>
+                <h2 class="concierge-heading" id="aiTitle">무엇을 도와드릴까요?</h2>
+              </div>
+              <img class="concierge-character" src="assets/extay/ai-stay-manager-face.png" alt="" aria-hidden="true">
+            </div>
+            <form class="concierge-ask" id="conciergeAskForm">
+              <input id="conciergeAskInput" type="text" autocomplete="off" placeholder="AI 챗봇에게 질문해 보세요" aria-label="AI 챗봇에게 질문">
+              <button type="submit" aria-label="질문 보내기"><span class="mi">arrow_upward</span></button>
+            </form>
+            <div class="quick-access-grid" aria-label="빠르게 찾는 정보">
+              <button class="quick-tile" type="button" data-go="checkin"><span class="mi">event_available</span><b>체크인</b></button>
+              <button class="quick-tile" type="button" data-go="transport"><span class="mi">near_me</span><b>오는 길</b></button>
+              <button class="quick-tile" type="button" data-go="wifi"><span class="mi">wifi</span><b>Wi-Fi</b></button>
+              <button class="quick-tile" type="button" data-go="appliances"><span class="mi">room_service</span><b>시설 이용</b></button>
+            </div>
           </div>
         </section>
 
@@ -649,13 +666,6 @@ body *:not(.mi){font-family:var(--font-main)!important;letter-spacing:0!importan
             <button class="image-card" type="button" data-go="guidebook" style="--card-img:url('assets/extay/crops/main-living-logo.png')"><span>가이드북</span></button>
             <button class="image-card" type="button" data-go="faq" style="--card-img:url('assets/extay/smart-card/stay-day.png')"><span>FAQ</span></button>
           </div>
-        </section>
-
-        <section class="hotel-section" id="aiConcierge" aria-labelledby="aiTitle">
-          <button class="concierge-banner" type="button" id="openChatCard" aria-label="AI 숙소 매니저 열기">
-            <img class="concierge-character" src="assets/extay/ai-stay-manager-face.png" alt="" aria-hidden="true">
-            <span class="concierge-copy"><span class="concierge-title" id="aiTitle">AI 숙소 매니저</span><span class="concierge-sub">바로 문의</span></span>
-          </button>
         </section>
 
         <section class="hotel-section location-section" id="locationContact" aria-label="Contact">
@@ -1375,7 +1385,7 @@ body *:not(.mi){font-family:var(--font-main)!important;letter-spacing:0!importan
         docTitle:'익스테이 맨션 해방촌 모바일 가이드',docDesc:'익스테이 맨션 해방촌 숙박 안내 모바일 가이드',
         headerTitle:'EXTAY',menuAria:'메뉴',guideAria:'가이드북 열기',chatAria:'안내 도우미',chatFabAria:'안내 도우미 열기',langAria:'Switch to English',langButton:'EN',
         search:{button:'검색',openAria:'검색 열기',closeAria:'검색 닫기',title:'검색',desc:'필요한 정보를 입력하면 관련 안내로 바로 이동합니다.',placeholder:'예: 와이파이, 체크인, 맛집',empty:'검색 결과가 없습니다. 다른 단어로 검색해 주세요.'},
-        heroSub:'your cozy home in Seoul.',copied:'복사했습니다',homeHeroEyebrow:'SEOUL PRIVATE STAY',quickTitle:'빠르게 찾는 정보',homeQuick:['체크인/아웃 안내','와이파이','교통 안내'],menuTitles:['홈','객실 둘러보기','체크인/아웃 안내','교통 안내','와이파이','주변 맛집','TV · 난방 · 옥상','세탁 안내','쓰레기 배출 안내','이용 안내','FAQ'],menuSubs:['처음 화면','객실 사진','입퇴실 안내','숙소까지 가는 방법','와이파이 연결 안내','도보 10분 맛집 리스트','TV · 난방 · 옥상 사용 안내','세탁기 · 건조기 사용법','분리수거 안내','한글 · 영문 PDF 보기','자주 묻는 질문'],chatExamples:['와이파이 비밀번호 알려줘','텔레비전 어떻게 봐?','세탁기 어떻게 써?','쓰레기 어디에 버려?'],stayGuideKicker:'STAY GUIDE',aiTitle:'AI 숙소 매니저',aiSub:'바로 문의',contactKicker:'CONTACT',footerCopy:'Extay Mansion Haebangchon.',stayCards:['교통 안내','주변 맛집','가이드북','FAQ'],
+        heroSub:'your cozy home in Seoul.',copied:'복사했습니다',homeHeroEyebrow:'SEOUL PRIVATE STAY',quickTitle:'빠르게 찾는 정보',homeQuick:['체크인','오는 길','Wi-Fi','시설 이용'],menuTitles:['홈','객실 둘러보기','체크인/아웃 안내','교통 안내','와이파이','주변 맛집','TV · 난방 · 옥상','세탁 안내','쓰레기 배출 안내','이용 안내','FAQ'],menuSubs:['처음 화면','객실 사진','입퇴실 안내','숙소까지 가는 방법','와이파이 연결 안내','도보 10분 맛집 리스트','TV · 난방 · 옥상 사용 안내','세탁기 · 건조기 사용법','분리수거 안내','한글 · 영문 PDF 보기','자주 묻는 질문'],chatExamples:['와이파이 비밀번호 알려줘','텔레비전 어떻게 봐?','세탁기 어떻게 써?','쓰레기 어디에 버려?'],stayGuideKicker:'STAY GUIDE',conciergeKicker:'EXTAY CONCIERGE',aiTitle:'무엇을 도와드릴까요?',conciergePlaceholder:'AI 챗봇에게 질문해 보세요',contactKicker:'CONTACT',footerCopy:'Extay Mansion Haebangchon.',stayCards:['교통 안내','주변 맛집','가이드북','FAQ'],
         bottom:['홈','와이파이','사용법','세탁','쓰레기'],
         quick:['와이파이','TV · OTT','온수 · 난방','세탁'],
         home:{infoTitle:'기본 정보',labels:['숙소','주소','체크인 · 체크아웃','와이파이','TV · OTT','주차'],values:['익스테이 맨션 해방촌','서울시 용산구 신흥로 59, 2층','16:00 · 11:00','U+Net46F0_5G','NSM OTT / HDMI 입력','건물 주차 불가 · 주변 유료 공영주차장'],view:'보기'},
@@ -1395,7 +1405,7 @@ body *:not(.mi){font-family:var(--font-main)!important;letter-spacing:0!importan
         docTitle:'Extay Mansion Haebangchon Mobile Guide',docDesc:'A mobile guest guide for Extay Mansion Haebangchon',
         headerTitle:'EXTAY',menuAria:'Menu',guideAria:'Open guidebook',chatAria:'Guide assistant',chatFabAria:'Open guide assistant',langAria:'한국어로 전환',langButton:'KO',
         search:{button:'Search',openAria:'Open search',closeAria:'Close search',title:'Search',desc:'Search what you need and jump directly to the guide.',placeholder:'Try Wi-Fi, check-in, restaurants',empty:'No results. Try another keyword.'},
-        heroSub:'your cozy home in Seoul.',copied:'Copied',homeHeroEyebrow:'SEOUL PRIVATE STAY',quickTitle:'Quick Access',homeQuick:['Check in/out Guide','Wi‑Fi','Transportation'],menuTitles:['Home','Room Gallery','Check in/out Guide','Transportation','Wi‑Fi','Restaurants','TV · Heating · Rooftop','Laundry','Trash','Guidebook','FAQ'],menuSubs:['Opening screen','Room photos','Check-in and checkout guide','How to get to the stay','Wi‑Fi connection guide','Restaurants within a 10-minute walk','TV · heating · rooftop usage guide','Washer and dryer instructions','Trash sorting guide','Korean and English PDFs','Frequently asked questions'],chatExamples:['What is the Wi‑Fi password?','How do I watch TV?','How do I use the washer?','Where do I throw away trash?'],stayGuideKicker:'STAY GUIDE',aiTitle:'AI Stay Manager',aiSub:'Ask now',contactKicker:'CONTACT',footerCopy:'Extay Mansion Haebangchon.',stayCards:['Transportation','Nearby Food','Guidebook','FAQ'],
+        heroSub:'your cozy home in Seoul.',copied:'Copied',homeHeroEyebrow:'SEOUL PRIVATE STAY',quickTitle:'Quick Access',homeQuick:['Check-in','Directions','Wi‑Fi','Amenities'],menuTitles:['Home','Room Gallery','Check in/out Guide','Transportation','Wi‑Fi','Restaurants','TV · Heating · Rooftop','Laundry','Trash','Guidebook','FAQ'],menuSubs:['Opening screen','Room photos','Check-in and checkout guide','How to get to the stay','Wi‑Fi connection guide','Restaurants within a 10-minute walk','TV · heating · rooftop usage guide','Washer and dryer instructions','Trash sorting guide','Korean and English PDFs','Frequently asked questions'],chatExamples:['What is the Wi‑Fi password?','How do I watch TV?','How do I use the washer?','Where do I throw away trash?'],stayGuideKicker:'STAY GUIDE',conciergeKicker:'EXTAY CONCIERGE',aiTitle:'How can we help?',conciergePlaceholder:'Ask the AI chatbot',contactKicker:'CONTACT',footerCopy:'Extay Mansion Haebangchon.',stayCards:['Transportation','Nearby Food','Guidebook','FAQ'],
         bottom:['Home','Wi-Fi','Guide','Laundry','Trash'],
         quick:['Wi-Fi','TV · OTT','Hot Water','Laundry'],
         home:{infoTitle:'Basic Info',labels:['Stay','Address','Check-in · Checkout','Wi-Fi','TV · OTT','Parking'],values:['Extay Mansion Haebangchon','2F, 59 Sinheung-ro, Yongsan-gu, Seoul','16:00 · 11:00','U+Net46F0_5G','NSM OTT / HDMI input','No on-site parking · use nearby paid public parking'],view:'View'},
@@ -1419,7 +1429,7 @@ body *:not(.mi){font-family:var(--font-main)!important;letter-spacing:0!importan
       menuTitles:['首页','客房浏览','入住/退房指南','交通指南','Wi‑Fi','周边美食','TV · 供暖 · 屋顶','洗衣指南','垃圾投放指南','指南书','FAQ'],
       menuSubs:['首页画面','客房照片','入住退房指南','前往住宿的方法','Wi‑Fi 连接指南','步行10分钟内的餐厅列表','TV · 供暖 · 屋顶使用指南','洗衣机和烘干机使用方法','分类投放指南','韩文与英文 PDF','常见问题'],
       chatExamples:['Wi‑Fi 密码是什么？','怎么用电视？','洗衣机怎么用？','垃圾丢到哪里？'],
-      heroSub:'首尔温馨住处。',copied:'已复制',homeHeroEyebrow:'首尔私人住宿',quickTitle:'快速查看信息',homeQuick:['入住/退房指南','Wi‑Fi','交通指南'],stayGuideKicker:'住宿指南',aiTitle:'AI 宿所管理员',aiSub:'立即咨询',contactKicker:'联系方式',footerCopy:'Extay Mansion Haebangchon。',stayCards:['交通指南','周边美食','指南书','FAQ'],
+      heroSub:'首尔温馨住处。',copied:'已复制',homeHeroEyebrow:'首尔私人住宿',quickTitle:'快速查看信息',homeQuick:['入住','路线','Wi‑Fi','设施使用'],stayGuideKicker:'住宿指南',conciergeKicker:'EXTAY CONCIERGE',aiTitle:'有什么可以帮您？',conciergePlaceholder:'向 AI 聊天机器人提问',contactKicker:'联系方式',footerCopy:'Extay Mansion Haebangchon。',stayCards:['交通指南','周边美食','指南书','FAQ'],
       bottom:['首页','Wi‑Fi','使用说明','洗衣','垃圾'],
       quick:['Wi‑Fi','TV · OTT','热水 · 供暖','洗衣'],
       home:{infoTitle:'基本信息',labels:['住宿','地址','入住 · 退房','Wi‑Fi','TV · OTT','停车'],values:['EXTAY 海放村','首尔特别市龙山区新兴路59号，2楼','16:00 · 11:00','U+Net46F0_5G','NSM OTT / HDMI 输入','楼内无法停车 · 请使用附近收费公共停车场'],view:'查看'},
@@ -1442,7 +1452,7 @@ body *:not(.mi){font-family:var(--font-main)!important;letter-spacing:0!importan
       menuTitles:['ホーム','客室めぐり','チェックイン/アウト案内','交通案内','Wi‑Fi','近くのレストラン','TV · 暖房 · 屋上','ランドリー','ゴミ出し案内','ガイドブック','FAQ'],
       menuSubs:['ホーム画面','客室写真','チェックイン・チェックアウト案内','宿泊先までの行き方','Wi‑Fi接続案内','徒歩10分以内のレストラン一覧','TV · 暖房 · 屋上の案内','洗濯機と乾燥機の使い方','分別案内','韓国語と英語のPDF','よくある質問'],
       chatExamples:['Wi‑Fi のパスワードは？','テレビの見方は？','洗濯機の使い方は？','ゴミはどこに捨てる？'],
-      heroSub:'ソウルのくつろぎの宿。',copied:'コピーしました',homeHeroEyebrow:'ソウルのプライベートステイ',quickTitle:'すぐ見つかる情報',homeQuick:['チェックイン/アウト案内','Wi‑Fi','交通案内'],stayGuideKicker:'滞在ガイド',aiTitle:'AI 宿泊マネージャー',aiSub:'すぐ相談',contactKicker:'連絡先',footerCopy:'Extay Mansion Haebangchon.',stayCards:['交通案内','周辺グルメ','ガイドブック','FAQ'],
+      heroSub:'ソウルのくつろぎの宿。',copied:'コピーしました',homeHeroEyebrow:'ソウルのプライベートステイ',quickTitle:'すぐ見つかる情報',homeQuick:['チェックイン','行き方','Wi‑Fi','施設利用'],stayGuideKicker:'滞在ガイド',conciergeKicker:'EXTAY CONCIERGE',aiTitle:'何をお手伝いしましょうか？',conciergePlaceholder:'AI チャットボットに質問',contactKicker:'連絡先',footerCopy:'Extay Mansion Haebangchon.',stayCards:['交通案内','周辺グルメ','ガイドブック','FAQ'],
       bottom:['ホーム','Wi‑Fi','案内','ランドリー','ゴミ'],
       quick:['Wi‑Fi','TV · OTT','給湯 · 暖房','ランドリー'],
       home:{infoTitle:'基本情報',labels:['宿泊先','住所','チェックイン · チェックアウト','Wi‑Fi','TV · OTT','駐車'],values:['EXTAY 海放村','ソウル特別市龍山区新興路59、2階','16:00 · 11:00','U+Net46F0_5G','NSM OTT / HDMI 入力','建物内駐車不可 · 近隣の有料公共駐車場をご利用ください'],view:'見る'},
@@ -1461,7 +1471,7 @@ body *:not(.mi){font-family:var(--font-main)!important;letter-spacing:0!importan
     const q=s=>document.querySelector(s), qa=s=>[...document.querySelectorAll(s)];
     const reduceMotion=window.matchMedia?.('(prefers-reduced-motion: reduce)')?.matches||false;
     let revealObserver=null,pageTransitionTimer=0,parallaxTick=false;
-    const motionSelector='.hotel-section,.quick-tile,.image-card,.concierge-banner,.gallery-head,.gallery-thumb,.gallery-viewer,.transport-hero,.transport-card,.wifi-hero,.wifi-card,.guidebook-head,.guidebook-viewer,.restaurants-hero,.restaurant-card,.faq-hero,.faq-card,.guide-detail-hero,.device,.contact-card,.checkin-hero,.checkin-card,.menu-link';
+    const motionSelector='.hotel-section,.quick-tile,.image-card,.concierge-hub,.gallery-head,.gallery-thumb,.gallery-viewer,.transport-hero,.transport-card,.wifi-hero,.wifi-card,.guidebook-head,.guidebook-viewer,.restaurants-hero,.restaurant-card,.faq-hero,.faq-card,.guide-detail-hero,.device,.contact-card,.checkin-hero,.checkin-card,.menu-link';
     const staggerGroups=['.quick-access-grid','.stay-card-grid','.gallery-thumbs','.transport-stack','.wifi-stack','.faq-stack','.restaurants-list','.checkin-stack','.guide-detail-screen','.menu-panel'];
     function updateHeroMotion(){document.body.classList.toggle('hero-scrolled',document.body.classList.contains('is-home')&&window.scrollY>10)}
     function updateGalleryParallax(){if(reduceMotion)return;const vh=window.innerHeight||document.documentElement.clientHeight||720;qa('.gallery-thumb img,#galleryMain').forEach(img=>{const rect=img.getBoundingClientRect();if(rect.bottom<0||rect.top>vh)return;const center=rect.top+rect.height/2,offset=(center-vh/2)/vh,y=Math.max(-14,Math.min(14,-offset*24));img.style.setProperty('--parallax-y',`${y.toFixed(1)}px`)})}
@@ -1483,7 +1493,7 @@ body *:not(.mi){font-family:var(--font-main)!important;letter-spacing:0!importan
       document.documentElement.lang=currentLang;
       document.title=tr.docTitle;
       const meta=q('meta[name="description"]'); if(meta)meta.setAttribute('content',tr.docDesc);
-      text(q('#brandHome'),tr.headerTitle); q('#brandHome')?.setAttribute('aria-label',currentLang==='en'?'Go home':'홈으로 이동'); text(q('.hero .label'),tr.heroSub); text(q('.landing-hero .eyebrow'),tr.homeHeroEyebrow); text(q('#quickTitle'),tr.quickTitle); text(q('#stayGuide .section-kicker'),tr.stayGuideKicker); text(q('#aiTitle'),tr.aiTitle); text(q('.concierge-sub'),tr.aiSub); const aiBox=q('#aiConcierge'); if(aiBox) aiBox.dataset.lang=currentLang; text(q('#locationContact .section-kicker'),tr.contactKicker); text(q('.hotel-footer span'),tr.footerCopy); const badge=LANG_BADGE[currentLang]||LANG_BADGE.ko; text(q('#langToggleText'),badge); text(q('#homeLangText'),badge); qa('.home-language-option').forEach(option=>option.setAttribute('aria-checked',String(option.dataset.language===currentLang)));
+      text(q('#brandHome'),tr.headerTitle); q('#brandHome')?.setAttribute('aria-label',currentLang==='en'?'Go home':'홈으로 이동'); text(q('.hero .label'),tr.heroSub); text(q('.landing-hero .eyebrow'),tr.homeHeroEyebrow); text(q('#stayGuide .section-kicker'),tr.stayGuideKicker); text(q('#conciergeKicker'),tr.conciergeKicker); text(q('#aiTitle'),tr.aiTitle); const conciergeInput=q('#conciergeAskInput'); if(conciergeInput)conciergeInput.placeholder=tr.conciergePlaceholder; text(q('#locationContact .section-kicker'),tr.contactKicker); text(q('.hotel-footer span'),tr.footerCopy); const badge=LANG_BADGE[currentLang]||LANG_BADGE.ko; text(q('#langToggleText'),badge); text(q('#homeLangText'),badge); qa('.home-language-option').forEach(option=>option.setAttribute('aria-checked',String(option.dataset.language===currentLang)));
       const menu=q('#menuTop'), guide=q('#openGuidebookTop'), chatTop=q('#openChatTop'), chatFab=q('#openChatFab'), close=q('#closeChat'), langBtn=q('#langToggle'), homeLangBtn=q('#homeLangToggle');
       if(menu)menu.setAttribute('aria-label',tr.menuAria); if(guide){guide.setAttribute('aria-label',tr.guideAria);guide.href=GUIDEBOOK_PDFS[currentLang==='en'?'en':'ko']} if(chatTop)chatTop.setAttribute('aria-label',tr.chatAria); if(chatFab)chatFab.setAttribute('aria-label',tr.chatFabAria); if(close)close.setAttribute('aria-label',tr.chat.close); if(langBtn)langBtn.setAttribute('aria-label',currentLang==='en'?'Switch language':'언어 전환'); if(homeLangBtn)homeLangBtn.setAttribute('aria-label',currentLang==='en'?'Choose language':'언어 선택');
       eachText(qa('.bottom .tab span:not(.mi)'),tr.bottom);
@@ -1659,7 +1669,8 @@ body *:not(.mi){font-family:var(--font-main)!important;letter-spacing:0!importan
     function closeMenuPanel(){menuPanel?.classList.remove('open');menuBackdropEl?.classList.remove('open');document.getElementById('menuTop')?.setAttribute('aria-expanded','false')}
     function openContactModal(kind='phone'){const data=CONTACT_DETAILS[kind]||CONTACT_DETAILS.phone;text(q('#contactModalTitle'),data.title);text(q('#contactModalDesc'),data.desc);text(q('#contactValueLabel'),data.label);text(q('#contactValueText'),data.value);text(q('#contactCopyButton'),data.copy);q('#contactCopyButton')?.setAttribute('data-copy',data.value);text(q('#contactModalNote'),data.note);q('#contactValueCard')?.classList.toggle('link',kind==='kakao');contactModal?.classList.add('open');contactBackdrop?.classList.add('open');setTimeout(()=>document.getElementById('closeContactModal')?.focus(),80)}
     function closeContactModal(){contactModal?.classList.remove('open');contactBackdrop?.classList.remove('open')}
-    ['openChatFab','openChatTop','openChatCard'].forEach(id=>{const el=document.getElementById(id); if(el) el.addEventListener('click',openChat)});
+    ['openChatFab','openChatTop'].forEach(id=>{const el=document.getElementById(id); if(el) el.addEventListener('click',openChat)});
+    document.getElementById('conciergeAskForm')?.addEventListener('submit',e=>{e.preventDefault();const input=document.getElementById('conciergeAskInput'),question=input?.value.trim()||'';openChat();if(!question)return;input.value='';setTimeout(()=>{chatInput.value=question;chatForm.requestSubmit()},140)});
     document.querySelectorAll('[data-open-chat]').forEach(el=>el.addEventListener('click',()=>{openChat();const question=el.dataset.question;if(question){setTimeout(()=>{chatInput.value=question;chatForm.requestSubmit()},180)}}));
     document.querySelectorAll('[data-open-contact]').forEach(el=>el.addEventListener('click',()=>openContactModal(el.dataset.openContact)));
     document.getElementById('menuTop')?.addEventListener('click',openMenu);
