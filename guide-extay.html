@@ -775,31 +775,35 @@ body.motion-ready .hero-panel .scroll-cue{animation:heroTextIn 1.5s cubic-bezier
   .faq-actions{grid-template-columns:1fr}
 }
 
-/* Wi-Fi page: one ivory layer with compact, divider-based rows. */
-.wifi-stack{gap:0}
-.wifi-single-card{padding:18px 17px;background:#fffaf4;border:1px solid rgba(216,198,180,.72);border-radius:12px}
-.wifi-single-card>.wifi-card{margin:0;padding:0;border:0;border-radius:0;background:transparent;box-shadow:none}
-.wifi-network-section>h3{margin-bottom:8px}
-.wifi-network-graphic{gap:0;border:0;border-radius:0;background:transparent;padding:0}
-.wifi-network-card,.wifi-network-card.featured{grid-template-columns:34px minmax(0,1fr) auto;gap:10px;min-height:58px;border:0;border-bottom:1px solid rgba(216,198,180,.72);border-radius:0;background:transparent;color:#221b15;padding:9px 0}
-.wifi-network-card .mi,.wifi-network-card.featured .mi{width:34px;height:34px;background:#efe4d6;color:#7b634f;font-size:20px}
-.wifi-network-card div>span,.wifi-network-card.featured div>span{margin-bottom:2px;color:#8a7663;font-size:10px}
-.wifi-network-card strong,.wifi-network-card.featured strong{color:#221b15;font-size:17px;line-height:1.2;white-space:nowrap}
-.wifi-network-card .mini-btn,.wifi-network-card.featured .mini-btn{grid-column:3;grid-row:1;margin:0;min-width:0;width:auto;justify-self:end;align-self:center;border-radius:8px;background:#2b2118;color:#fff;padding:8px 11px;white-space:nowrap;font-size:11px}
-.wifi-network-tips{grid-template-columns:1fr;gap:0}
-.wifi-network-tips .wifi-visual-card,.wifi-help-grid .wifi-visual-card{min-height:0;border:0;border-bottom:1px solid rgba(216,198,180,.64);border-radius:0;background:transparent;padding:13px 0;display:grid;grid-template-columns:34px minmax(0,1fr);align-items:start}
-.wifi-network-tips .wifi-visual-card:last-child,.wifi-help-grid .wifi-visual-card:last-child{border-bottom:0}
-.wifi-network-tips .wifi-visual-card .mi,.wifi-help-grid .wifi-visual-card .mi{border-radius:8px}
-.wifi-help-section{margin-top:18px;padding-top:18px;border-top:1px solid rgba(123,99,79,.3)}
+/* Wi-Fi page: two top-level cards and a four-part network grid. */
+.wifi-stack{gap:14px}
+.wifi-network-section,.wifi-help-section{margin:0;padding:18px 17px;background:#fffaf4;border:1px solid rgba(216,198,180,.72);border-radius:12px;box-shadow:none}
+.wifi-network-section>h3{margin-bottom:10px}
+.wifi-network-graphic{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;border:0;border-radius:0;background:transparent;padding:0}
+.wifi-network-tips{display:contents}
+.wifi-network-card,.wifi-network-card.featured{grid-template-columns:28px minmax(0,1fr);grid-template-areas:"icon copy" "button button";gap:7px 8px;min-width:0;min-height:126px;border:0;border-radius:8px;background:#7b634f;color:#fff;padding:13px 11px;align-items:start}
+.wifi-network-card>.mi,.wifi-network-card.featured>.mi{grid-area:icon;width:28px;height:28px;background:#fffaf4;color:#7b634f;font-size:18px}
+.wifi-network-card>div{grid-area:copy;min-width:0;font-family:var(--font-ko)!important}
+.wifi-network-card>div *{font-family:var(--font-ko)!important}
+.wifi-network-card>div .latin-font,.wifi-network-card>div .numeric-font{font-family:var(--font-ko)!important}
+.wifi-network-card div>span,.wifi-network-card.featured div>span{margin-bottom:3px;color:rgba(255,255,255,.72);font-size:9px}
+.wifi-network-card strong,.wifi-network-card.featured strong{color:#fff;font-size:13px;line-height:1.25;white-space:nowrap}
+.wifi-network-card .mini-btn,.wifi-network-card.featured .mini-btn{grid-area:button;margin:0;min-width:0;width:100%;justify-self:stretch;align-self:end;border-radius:8px;background:#fffaf4;color:#2b2118;padding:7px 9px;white-space:nowrap;font-size:11px}
+.wifi-network-tips .wifi-visual-card{min-height:126px;border:0;border-top:1px solid rgba(216,198,180,.8);border-radius:0;background:transparent;padding:13px 8px;display:grid;grid-template-columns:30px minmax(0,1fr);align-items:start}
+.wifi-network-tips .wifi-visual-card .mi{width:30px;height:30px;border-radius:8px;font-size:18px}
+.wifi-help-grid .wifi-visual-card{min-height:0;border:0;border-bottom:1px solid rgba(216,198,180,.64);border-radius:0;background:transparent;padding:13px 0;display:grid;grid-template-columns:34px minmax(0,1fr);align-items:start}
+.wifi-help-grid .wifi-visual-card:last-child{border-bottom:0}
+.wifi-help-grid .wifi-visual-card .mi{border-radius:8px}
+.wifi-help-section{margin-top:0}
 .wifi-help-title{display:grid;grid-template-columns:40px minmax(0,1fr);gap:11px;align-items:center;margin-bottom:3px}
 .wifi-help-title .wifi-accordion-icon{width:40px;height:40px;border-radius:8px}
 .wifi-help-title h3{margin:0;font-size:19px;line-height:1.3}
 .wifi-help-grid{grid-template-columns:1fr;gap:0}
 @media (max-width:380px){
-  .wifi-network-card,.wifi-network-card.featured{grid-template-columns:32px minmax(0,1fr) auto;gap:8px}
-  .wifi-network-card .mi,.wifi-network-card.featured .mi{width:32px;height:32px}
-  .wifi-network-card strong,.wifi-network-card.featured strong{font-size:15px}
-  .wifi-network-card .mini-btn,.wifi-network-card.featured .mini-btn{width:auto;padding:8px 9px}
+  .wifi-network-section,.wifi-help-section{padding:17px 14px}
+  .wifi-network-graphic{gap:6px}
+  .wifi-network-card,.wifi-network-card.featured{padding:12px 9px;gap:6px;min-height:122px}
+  .wifi-network-card strong,.wifi-network-card.featured strong{font-size:12px}
 }
 
 /* Typography wrappers stay inline inside appliance instruction rows. */
@@ -1453,7 +1457,7 @@ body .numeric-font{font-family:var(--font-ko)!important;font-variant-numeric:tab
           <p class="section-kicker">IN-ROOM WI-FI</p>
           <h2 class="page-title">와이파이</h2>
         </article>
-        <div class="wifi-stack wifi-single-card">
+        <div class="wifi-stack">
           <article class="wifi-card wifi-network-section">
             <h3>네트워크 정보</h3>
             <div class="wifi-network-graphic" aria-label="와이파이 네트워크 정보">
