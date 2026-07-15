@@ -711,19 +711,19 @@ body.guidebook-fullscreen-open{overflow:hidden;touch-action:none}
 .screen:not([data-screen="home"]) :is(.restaurant-chip,.restaurant-badge,.restaurant-tags>span,.route-badge,.route-meta>span,.route-line-copy small,.faq-section-title>span,.guide-detail-screen .badge,.guide-detail-screen .contact-card .mini-btn){border-radius:999px}
 .screen:not([data-screen="home"]) :is(.wifi-card:not(details),.transport-card:not(details),.faq-card,.checkin-card:not(details),.restaurant-card,.contact-card){border-radius:12px;box-shadow:none}
 .screen:not([data-screen="home"]) :is(.checkin-accordion,.airport-card,.wifi-accordion,.checkin-section-accordion){border-radius:12px;box-shadow:none}
-.device-accordion-group{overflow:hidden;border:1px solid rgba(216,198,180,.72);border-radius:12px;background:#fffaf4}
-.guide-detail-screen .device-accordion-group>.device{margin:0;border:0;border-radius:0;box-shadow:none;background:transparent}
-.guide-detail-screen .device-accordion-group>.device:not(:last-child){border-bottom:1px solid rgba(216,198,180,.72)}
-.guide-detail-screen .device-accordion-group>.device summary{padding:17px 18px;grid-template-columns:42px minmax(0,1fr) 24px;gap:12px}
-.guide-detail-screen .device-accordion-group>.device .circle{width:42px;height:42px;border-radius:8px}
-.guide-detail-screen .device-accordion-group>.device h3{font-size:18px}
-.guide-detail-screen .device-accordion-group>.device[open] summary{border-bottom-color:rgba(216,198,180,.72)}
-.guide-detail-screen .device-accordion-group .device-body{background:transparent}
-.guide-detail-screen .device-accordion-group .steps{padding:0 18px}
-.guide-detail-screen .device-accordion-group .steps li{min-height:0;grid-template-columns:28px minmax(0,1fr);gap:11px;padding:14px 0;border-bottom:1px solid rgba(216,198,180,.58)}
-.guide-detail-screen .device-accordion-group .steps li:last-child{min-height:0;padding:14px 0;border-bottom:0}
-.guide-detail-screen .device-accordion-group .steps li:after{display:none}
-.guide-detail-screen .device-accordion-group .steps li:before{width:26px;height:26px;border-width:1px;border-radius:8px}
+.device-card-stack{display:grid;gap:14px}
+.guide-detail-screen .device-card-stack>.device{margin:0;border:1px solid rgba(216,198,180,.72);border-radius:12px;box-shadow:none;background:#fffaf4;overflow:hidden}
+.guide-detail-screen .device-card-stack .device-header{display:grid;grid-template-columns:42px minmax(0,1fr);gap:12px;align-items:center;padding:17px 18px;border-bottom:1px solid rgba(216,198,180,.72)}
+.guide-detail-screen .device-card-stack>.device .circle{width:42px;height:42px;border-radius:8px}
+.guide-detail-screen .device-card-stack>.device h3{margin:0;font-size:18px}
+.guide-detail-screen .device-card-stack .device-body{display:block;padding:0;background:transparent}
+.guide-detail-screen .device-card-stack .steps{padding:0 18px}
+.guide-detail-screen .device-card-stack .steps li{min-height:0;grid-template-columns:28px minmax(0,1fr);gap:11px;padding:14px 0;border-bottom:1px solid rgba(216,198,180,.58)}
+.guide-detail-screen .device-card-stack .steps li:last-child{min-height:0;padding:14px 0;border-bottom:0}
+.guide-detail-screen .device-card-stack .steps li:after{display:none}
+.guide-detail-screen .device-card-stack .steps li:before{width:26px;height:26px;border-width:1px;border-radius:8px}
+.checkout-checklist-card.static-info-card .airport-summary{cursor:default;grid-template-columns:44px minmax(0,1fr);border-bottom:1px solid rgba(255,255,255,.24)}
+.checkout-checklist-card.static-info-card .airport-card-body{display:grid}
 .checkin-section-accordion .checkin-rule-grid{grid-template-columns:1fr;gap:0;padding:0 18px}
 .checkin-section-accordion .checkin-rule{min-height:0;border:0;border-bottom:1px solid rgba(216,198,180,.62);border-radius:0;background:transparent;padding:15px 0;display:grid;grid-template-columns:34px minmax(0,1fr);align-items:start}
 .checkin-section-accordion .checkin-rule:last-child{border-bottom:0}
@@ -855,9 +855,9 @@ body .wifi-network-card strong,body .wifi-network-card strong *{font-weight:800!
 }
 
 /* Typography wrappers stay inline inside appliance instruction rows. */
-.guide-detail-screen .device-accordion-group .steps li{display:block;position:relative;padding:14px 0 14px 39px;overflow-wrap:anywhere;word-break:keep-all}
-.guide-detail-screen .device-accordion-group .steps li:last-child{padding:14px 0 14px 39px}
-.guide-detail-screen .device-accordion-group .steps li:before{position:absolute;left:0;top:14px}
+.guide-detail-screen .device-card-stack .steps li{display:block;position:relative;padding:14px 0 14px 39px;overflow-wrap:anywhere;word-break:keep-all}
+.guide-detail-screen .device-card-stack .steps li:last-child{padding:14px 0 14px 39px}
+.guide-detail-screen .device-card-stack .steps li:before{position:absolute;left:0;top:14px}
 
 /* Font lock: Latin uses Oxanium, Korean falls back to Noto Sans KR, and numeric runs are explicitly Noto Sans KR. */
 body,button,input,textarea,select{font-family:var(--font-main)!important;font-synthesis-weight:none;letter-spacing:0!important}
@@ -1056,12 +1056,11 @@ body .numeric-font{font-family:var(--font-ko)!important;font-variant-numeric:tab
                 </div>
               </details>
 
-              <details class="checkin-accordion checkin-locker-card checkin-compact-accordion checkout-checklist-card" open>
-                <summary class="airport-summary">
+              <article class="checkin-accordion checkin-locker-card checkin-compact-accordion checkout-checklist-card static-info-card">
+                <div class="airport-summary">
                   <span class="airport-icon"><span class="mi">checklist</span></span>
                   <span class="airport-copy"><small>Before Check-out</small><b>퇴실 전 체크리스트</b></span>
-                  <span class="airport-chevron mi">expand_more</span>
-                </summary>
+                </div>
                 <div class="airport-card-body">
                   <div class="checkout-message">
                     <p>아쉬운 점은 에어비앤비 호스트 메시지로 알려주시면 귀담아듣겠습니다.</p>
@@ -1076,7 +1075,7 @@ body .numeric-font{font-family:var(--font-ko)!important;font-variant-numeric:tab
                     <div class="checkout-row"><span class="checkout-row-icon" aria-hidden="true"><span class="mi">door_front</span></span><p>창문과 현관문을 꼭 닫아주세요.</p></div>
                   </div>
                 </div>
-              </details>
+              </article>
 
           <section class="checkin-text-section" aria-labelledby="checkinSecurityTitle">
             <h3 id="checkinSecurityTitle">보안과 프라이버시</h3>
@@ -1372,123 +1371,6 @@ body .numeric-font{font-family:var(--font-ko)!important;font-variant-numeric:tab
         <p class="restaurants-note">영업시간, 휴무, 대기 여부는 방문 전 지도 앱이나 원본 리스트에서 한 번 더 확인해 주세요.</p>
       </section>
 
-      <section class="screen faq-screen" data-screen="faq">
-        <article class="faq-hero">
-          <p class="section-kicker">FREQUENTLY ASKED</p>
-          <h2>FAQ</h2>
-        </article>
-        <div class="faq-stack">
-          <article class="faq-card highlight">
-            <div class="faq-section-title"><h3>먼저 많이 물어봐요</h3><span>TOP 4</span></div>
-            <div class="faq-list">
-              <details class="faq-item" open>
-                <summary>체크인은 몇 시이고 도어락 번호는 어디서 확인하나요?</summary>
-                <div class="faq-answer">
-                  <p>체크인은 오후 4시부터입니다. 비대면 셀프 체크인이며 개인 키 번호는 체크인 당일 12시쯤 Airbnb 또는 호스트 메시지로 안내됩니다. 현관 도어락 키패드를 살짝 터치한 뒤 안내받은 번호를 입력하고 마지막에 <b>*</b> 버튼을 누르세요.</p>
-                  <div class="faq-actions"><button class="hotel-btn primary" type="button" data-go="checkin"><span class="mi">calendar_month</span>체크인 · 체크아웃 안내</button><button class="hotel-btn" type="button" data-go="guidebook"><span class="mi">menu_book</span>이용 안내</button></div>
-                </div>
-              </details>
-              <details class="faq-item">
-                <summary>숙소 주소와 찾아오는 방법은 어떻게 되나요?</summary>
-                <div class="faq-answer">
-                  <p>주소는 서울시 용산구 신흥로 59, 2층입니다. 세븐일레븐과 베제투스 레스토랑 사이 골목으로 들어오면 되고, 숙소는 베제투스 레스토랑 2층 단독 건물입니다. 녹사평역 2번 출구에서 도보 약 15분, 마을버스 이용 시 약 10분입니다.</p>
-                  <div class="faq-actions"><button class="hotel-btn primary" type="button" data-go="transport"><span class="mi">directions_car</span>교통 안내</button><button class="hotel-btn" type="button" data-go="transport"><span class="mi">location_on</span>오시는 길</button></div>
-                </div>
-              </details>
-              <details class="faq-item">
-                <summary>주차가 가능한가요?</summary>
-                <div class="faq-answer">
-                  <p>건물 주차는 불가합니다. 모두의주차장 앱에서 실시간 가능 여부를 확인하거나, 용산2가동 기계식 공용주차장, 용산2가 주민센터 공용주차장, 해방촌 공영주차장 같은 주변 유료 공영주차장을 이용해 주세요. 주말 점심과 저녁 피크 시간에는 자리가 부족할 수 있습니다.</p>
-                  <div class="faq-actions"><button class="hotel-btn primary" type="button" data-go="transport"><span class="mi">local_parking</span>주차 안내</button></div>
-                </div>
-              </details>
-              <details class="faq-item">
-                <summary>와이파이 ID와 비밀번호는 무엇인가요?</summary>
-                <div class="faq-answer">
-                  <p>Wi-Fi ID는 <b>U+Net46F0_5G</b>, 비밀번호는 <b>8H3#22E97B</b>입니다. 대소문자와 특수문자를 그대로 입력해 주세요. 연결이 안 되면 Wi-Fi를 껐다 켠 뒤 네트워크를 다시 선택하세요.</p>
-                  <div class="faq-actions"><button class="hotel-btn primary" type="button" data-go="wifi"><span class="mi">wifi</span>와이파이 보기</button></div>
-                </div>
-              </details>
-            </div>
-          </article>
-
-          <article class="faq-card">
-            <div class="faq-section-title"><h3>숙박 중 이용</h3><span>STAY</span></div>
-            <div class="faq-list">
-              <details class="faq-item">
-                <summary>TV나 OTT는 어떻게 보나요?</summary>
-                <div class="faq-answer"><p>TV 리모컨은 외부 입력 선택이 필요할 때 사용하고, OTT 전용 리모컨에서 원하는 OTT 서비스를 선택한 뒤 확인 버튼을 누르세요. 화면에 팝업이 뜨면 바로 실행을 선택하면 됩니다. 작동이 안 되면 전원 버튼을 3초 이상 누르거나 셋톱 전원을 10초간 분리 후 재연결하세요.</p><div class="faq-actions"><button class="hotel-btn primary" type="button" data-go="appliances" data-open="tv"><span class="mi">tv</span>TV 안내</button></div></div>
-              </details>
-              <details class="faq-item">
-                <summary>온수나 난방은 어떻게 켜나요?</summary>
-                <div class="faq-answer"><p>거실 스탠드 에어컨 뒤쪽의 Rinnai 조절기를 확인하세요. 온수를 사용할 때는 온수 버튼을 누르고, 화면에 60도가 표시되면 정상 작동 중입니다. 외출 시에는 외출 버튼 또는 전원 버튼을 눌러 주세요.</p><div class="faq-actions"><button class="hotel-btn primary" type="button" data-go="appliances" data-open="boiler"><span class="mi">thermostat</span>온수 안내</button></div></div>
-              </details>
-              <details class="faq-item">
-                <summary>세탁기와 건조기를 사용할 수 있나요?</summary>
-                <div class="faq-answer"><p>사용 가능합니다. 세탁기는 전원 버튼을 누르고 코스를 선택한 뒤 시작/일시정지를 누르세요. 건조기는 전원 버튼을 누른 뒤 원하는 코스를 선택하고, 시작/일시정지 버튼을 눌러 건조를 시작하세요. 건조 전 주머니 속 물건을 확인해 주시고, 밤 시간에는 진동과 소음에 유의해 주세요.</p><div class="faq-actions"><button class="hotel-btn primary" type="button" data-go="laundry"><span class="mi">local_laundry_service</span>세탁 안내</button></div></div>
-              </details>
-              <details class="faq-item">
-                <summary>공용 화장실이나 루프탑은 이용할 수 있나요?</summary>
-                <div class="faq-answer"><p>일행이 많아 화장실이 부족할 때는 1층 레스토랑 뒤편 공용 화장실을 이용할 수 있습니다. 비밀번호는 <b>*7003*</b>입니다. 루프탑에서는 남산타워 뷰를 볼 수 있지만 늦은 시간에는 소음에 유의해 주세요.</p><div class="faq-actions"><button class="hotel-btn primary" type="button" data-go="appliances" data-open="induction"><span class="mi">roofing</span>공용 공간</button></div></div>
-              </details>
-              <details class="faq-item">
-                <summary>주변 맛집이나 배달 맛집은 어디서 보나요?</summary>
-                <div class="faq-answer"><p>해방촌 주변 맛집은 별도 주변 맛집 페이지에 정리했습니다. 카테고리별로 보고 네이버 지도, 구글 지도, 원본 상세 링크를 바로 열 수 있습니다. 배달 맛집과 주변 맛집은 체크인 전날 안내 링크에도 포함되어 있습니다.</p><div class="faq-actions"><button class="hotel-btn primary" type="button" data-go="restaurants"><span class="mi">restaurant</span>주변 맛집</button></div></div>
-              </details>
-            </div>
-          </article>
-
-          <article class="faq-card">
-            <div class="faq-section-title"><h3>규칙과 퇴실</h3><span>RULES</span></div>
-            <div class="faq-list">
-              <details class="faq-item">
-                <summary>체크아웃은 몇 시이고 늦으면 어떻게 되나요?</summary>
-                <div class="faq-answer"><p>체크아웃은 오전 11시입니다. 체크아웃 시간을 10분 초과하면 10분당 10,000원의 비용이 발생할 수 있습니다. 퇴실 전 설거지, 쓰레기 분리수거, 거실과 침실 에어컨 끄기, 창문 닫기, 현관문 닫기를 확인해 주세요.</p><div class="faq-actions"><button class="hotel-btn primary" type="button" data-go="guidebook"><span class="mi">checklist</span>퇴실 안내</button></div></div>
-              </details>
-              <details class="faq-item">
-                <summary>쓰레기는 어떻게 분리해서 버리나요?</summary>
-                <div class="faq-answer"><ul><li>음식물 쓰레기는 부엌 싱크대 위 음식물 쓰레기통에 넣어 주세요.</li><li>일반 쓰레기 및 재활용 모두 베란다에 비치된 쓰레기통에 넣어 주세요.</li><li>장기 숙박 중 음식물 냄새가 나면 1층 입구 주황색 통을 이용해 주세요.</li></ul><div class="faq-actions"><button class="hotel-btn primary" type="button" data-go="trash"><span class="mi">delete</span>쓰레기 안내</button></div></div>
-              </details>
-              <details class="faq-item">
-                <summary>흡연은 어디서 가능한가요?</summary>
-                <div class="faq-answer"><p>객실 내부, 화장실, 베란다, 현관 입구, 계단은 모두 금연 구역입니다. 흡연은 1층 지정 장소에서만 가능하며 담배꽁초는 지정된 통에 버려 주세요.</p></div>
-              </details>
-              <details class="faq-item">
-                <summary>방문자, 반려동물, 촬영은 가능한가요?</summary>
-                <div class="faq-answer"><p>예약 인원 외 추가 인원이나 방문자 입실은 불가합니다. 반려동물 동반 숙박과 상업적 촬영도 불가합니다.</p></div>
-              </details>
-              <details class="faq-item">
-                <summary>실내 취사는 어디까지 가능한가요?</summary>
-                <div class="faq-answer"><p>간단한 취사 정도만 가능합니다. 생선, 고기구이처럼 냄새나 연기가 많이 나는 음식은 실내 반입과 조리를 피해 주세요.</p></div>
-              </details>
-              <details class="faq-item">
-                <summary>밤에는 어떤 점을 조심해야 하나요?</summary>
-                <div class="faq-answer"><p>저녁 9시 이후에는 매너타임입니다. 늦은 시간에는 대화 소리, 세탁기와 건조기 진동, 루프탑 이용 소음을 낮춰 주세요. 이웃 주민 민원이 발생할 수 있습니다.</p></div>
-              </details>
-            </div>
-          </article>
-
-          <article class="faq-card">
-            <div class="faq-section-title"><h3>문제 상황</h3><span>HELP</span></div>
-            <div class="faq-list">
-              <details class="faq-item">
-                <summary>체크인 중 문제가 생기면 어떻게 하나요?</summary>
-                <div class="faq-answer"><p>숙소 오시는 길이나 도어락 입력 중 문제가 생기면 바로 호스트에게 연락해 주세요. 개인 키 번호와 긴급 상황은 이 페이지에 저장하지 않으며, Airbnb 또는 호스트 메시지를 기준으로 확인해야 합니다.</p></div>
-              </details>
-              <details class="faq-item">
-                <summary>모르는 사람이 벨을 누르면 응답해야 하나요?</summary>
-                <div class="faq-answer"><p>응답하지 마세요. 안전과 보안을 위해 CCTV는 현관 입구에만 설치되어 있으며, 객실 안에 머무는 중 모르는 사람이 벨을 누를 경우 대응하지 않는 것을 권장합니다.</p></div>
-              </details>
-              <details class="faq-item">
-                <summary>물건을 두고 나온 것 같으면 어떻게 하나요?</summary>
-                <div class="faq-answer"><p>퇴실 전 놓고 가는 물건이 없는지 한 번 더 확인해 주세요. 이미 퇴실한 뒤 분실물이 생각나면 가능한 빨리 호스트에게 메시지로 문의해 주세요.</p></div>
-              </details>
-            </div>
-            <p class="faq-source-note">FAQ는 HBC BLUES stay 안내 페이지, Airbnb 메시지 템플릿, 현재 모바일 가이드의 체크인·와이파이·교통·이용안내 내용을 기준으로 구성했습니다.</p>
-          </article>
-        </div>
-      </section>
-
       <section class="screen guidebook-screen" data-screen="guidebook">
         <article class="guidebook-hero">
           <p class="section-kicker">STAY GUIDEBOOK</p>
@@ -1577,18 +1459,18 @@ body .numeric-font{font-family:var(--font-ko)!important;font-variant-numeric:tab
         </div>
       </section>
 
-      <section class="screen guide-detail-screen" data-screen="appliances"><article class="guide-detail-hero appliances-hero"><p class="section-kicker">TV · HEATING · ROOFTOP</p><h2 class="page-title">TV 난방 루프탑 안내</h2></article>
-        <div class="device-accordion-group">
-        <details class="device" data-device="tv"><summary><span class="circle"><span class="mi">tv</span></span><div><h3>TV · OTT 리모컨</h3></div><span class="mi">expand_more</span></summary><div class="device-body"><ol class="steps"><li>TV 리모컨은 외부 입력 선택이 필요할 때 사용하세요.</li><li>OTT 전용 리모컨에서 원하는 OTT를 선택한 뒤 확인 버튼을 누르세요.</li><li>화면 팝업이 뜨면 바로 실행을 선택하세요. 작동이 안 되면 전원 버튼을 3초 이상 누르거나 셋톱 전원을 10초간 분리 후 재연결하세요.</li></ol><figure class="figure"><img src="assets/extay/crops/nsm-guide.png" alt="NSM OTT 사용법"></figure></div></details>
-        <details class="device" data-device="boiler"><summary><span class="circle"><span class="mi">thermostat</span></span><div><h3>온수 · 난방</h3></div><span class="mi">expand_more</span></summary><div class="device-body"><ol class="steps"><li>거실 스탠드 에어컨 뒤쪽의 난방 조절기를 확인하세요.</li><li>온수를 사용할 때는 온수 버튼을 눌러 주세요.</li><li>화면에 60도가 표시되면 온수가 정상적으로 작동합니다. 외출 시에는 외출 버튼 또는 전원 버튼을 눌러 주세요.</li></ol><div class="photo-grid"><figure><button class="image-zoom" type="button" data-fullscreen-image="assets/extay/crops/hot-water-guide.jpg" data-fullscreen-title="온수 조절기"><img src="assets/extay/crops/hot-water-guide.jpg" alt="온수 조절기 안내"></button><figcaption>온수 조절기</figcaption></figure><figure><button class="image-zoom" type="button" data-fullscreen-image="assets/extay/crops/floorplan.jpg" data-fullscreen-title="숙소 도면"><img src="assets/extay/crops/floorplan.jpg" alt="숙소 도면"></button><figcaption>숙소 도면</figcaption></figure></div></div></details>
-        <details class="device" data-device="induction"><summary><span class="circle"><span class="mi">roofing</span></span><div><h3>공용 화장실 · 루프탑</h3></div><span class="mi">expand_more</span></summary><div class="device-body"><ol class="steps"><li>일행이 많아 화장실이 부족할 때는 1층 레스토랑 뒤편 공용 화장실을 이용할 수 있습니다.</li><li>비밀번호는 *7003*입니다.</li><li>루프탑에서는 남산타워 뷰를 볼 수 있습니다. 늦은 시간에는 소음에 유의해 주세요.</li></ol><div class="photo-grid"><figure><img src="assets/extay/crops/rooftop-namsan.jpg" alt="루프탑 남산타워 뷰"><figcaption>남산타워 뷰</figcaption></figure><figure><img src="assets/extay/crops/rooftop.jpg" alt="루프탑"><figcaption>루프탑</figcaption></figure><figure><img src="assets/extay/crops/secret-restroom-guide.jpg" alt="비밀 화장실 안내"><figcaption>공용 화장실</figcaption></figure></div></div></details>
+      <section class="screen guide-detail-screen" data-screen="appliances"><article class="guide-detail-hero appliances-hero"><p class="section-kicker">TV · HEATING · ROOFTOP</p><h2 class="page-title">TV · 난방 · 루프탑 안내</h2></article>
+        <div class="device-card-stack">
+        <article class="device" data-device="tv"><div class="device-header"><span class="circle"><span class="mi">tv</span></span><div><h3>TV · OTT 리모컨</h3></div></div><div class="device-body"><ol class="steps"><li>TV 리모컨은 외부 입력 선택이 필요할 때 사용하세요.</li><li>OTT 전용 리모컨에서 원하는 OTT를 선택한 뒤 확인 버튼을 누르세요.</li><li>화면 팝업이 뜨면 바로 실행을 선택하세요. 작동이 안 되면 전원 버튼을 3초 이상 누르거나 셋톱 전원을 10초간 분리 후 재연결하세요.</li></ol><figure class="figure"><img src="assets/extay/crops/nsm-guide.png" alt="NSM OTT 사용법"></figure></div></article>
+        <article class="device" data-device="boiler"><div class="device-header"><span class="circle"><span class="mi">thermostat</span></span><div><h3>온수 · 난방</h3></div></div><div class="device-body"><ol class="steps"><li>거실 스탠드 에어컨 뒤쪽의 난방 조절기를 확인하세요.</li><li>온수를 사용할 때는 온수 버튼을 눌러 주세요.</li><li>화면에 60도가 표시되면 온수가 정상적으로 작동합니다. 외출 시에는 외출 버튼 또는 전원 버튼을 눌러 주세요.</li></ol><div class="photo-grid"><figure><button class="image-zoom" type="button" data-fullscreen-image="assets/extay/crops/hot-water-guide.jpg" data-fullscreen-title="온수 조절기"><img src="assets/extay/crops/hot-water-guide.jpg" alt="온수 조절기 안내"></button><figcaption>온수 조절기</figcaption></figure><figure><button class="image-zoom" type="button" data-fullscreen-image="assets/extay/crops/floorplan.jpg" data-fullscreen-title="숙소 도면"><img src="assets/extay/crops/floorplan.jpg" alt="숙소 도면"></button><figcaption>숙소 도면</figcaption></figure></div></div></article>
+        <article class="device" data-device="induction"><div class="device-header"><span class="circle"><span class="mi">roofing</span></span><div><h3>공용 화장실 · 루프탑</h3></div></div><div class="device-body"><ol class="steps"><li>일행이 많아 화장실이 부족할 때는 1층 레스토랑 뒤편 공용 화장실을 이용할 수 있습니다.</li><li>비밀번호는 *7003*입니다.</li><li>루프탑에서는 남산타워 뷰를 볼 수 있습니다. 늦은 시간에는 소음에 유의해 주세요.</li></ol><div class="photo-grid"><figure><img src="assets/extay/crops/rooftop-namsan.jpg" alt="루프탑 남산타워 뷰"><figcaption>남산타워 뷰</figcaption></figure><figure><img src="assets/extay/crops/rooftop.jpg" alt="루프탑"><figcaption>루프탑</figcaption></figure><figure><img src="assets/extay/crops/secret-restroom-guide.jpg" alt="비밀 화장실 안내"><figcaption>공용 화장실</figcaption></figure></div></div></article>
         </div>
       </section>
 
       <section class="screen guide-detail-screen" data-screen="laundry"><article class="guide-detail-hero laundry-hero"><p class="section-kicker">LAUNDRY GUIDE</p><h2 class="page-title">세탁 안내</h2></article>
-        <div class="device-accordion-group">
-        <details class="device" data-device="washer"><summary><span class="circle"><span class="mi">local_laundry_service</span></span><div><h3>세탁기</h3></div><span class="mi">expand_more</span></summary><div class="device-body"><ol class="steps"><li>세탁기는 전원 버튼을 누른 뒤 원하는 코스를 선택하세요.</li><li>코스 선택 후 시작/일시정지 버튼을 눌러 세탁을 시작하세요.</li><li>세탁 전 주머니 속 물건을 확인해 주세요.</li><li>사용 후에는 문을 살짝 열어 내부를 말려 주세요.</li><li>밤 시간에는 진동과 소음에 유의해 주세요.</li></ol><div class="photo-grid single"><figure><button class="image-zoom" type="button" data-fullscreen-image="assets/extay/crops/washer-guide.png" data-fullscreen-title="세탁기"><img src="assets/extay/crops/washer-guide.png" alt="세탁기 사용법"></button><figcaption>세탁기</figcaption></figure></div></div></details>
-        <details class="device" data-device="dryer"><summary><span class="circle"><span class="mi">dry_cleaning</span></span><div><h3>건조기</h3></div><span class="mi">expand_more</span></summary><div class="device-body"><ol class="steps"><li>건조기 전원 버튼을 누른 뒤 원하는 코스를 선택하세요.</li><li>코스 선택 후 시작/일시정지 버튼을 눌러 건조를 시작하세요.</li><li>건조 전 주머니 속 물건을 확인해 주세요.</li><li>밤 시간에는 진동과 소음에 유의해 주세요.</li></ol><div class="photo-grid single"><figure><button class="image-zoom" type="button" data-fullscreen-image="assets/extay/crops/dryer-guide.png" data-fullscreen-title="건조기"><img src="assets/extay/crops/dryer-guide.png" alt="건조기 사용법"></button><figcaption>건조기</figcaption></figure></div></div></details>
+        <div class="device-card-stack">
+        <article class="device" data-device="washer"><div class="device-header"><span class="circle"><span class="mi">local_laundry_service</span></span><div><h3>세탁기</h3></div></div><div class="device-body"><ol class="steps"><li>세탁기는 전원 버튼을 누른 뒤 원하는 코스를 선택하세요.</li><li>코스 선택 후 시작/일시정지 버튼을 눌러 세탁을 시작하세요.</li><li>세탁 전 주머니 속 물건을 확인해 주세요.</li><li>사용 후에는 문을 살짝 열어 내부를 말려 주세요.</li><li>밤 시간에는 진동과 소음에 유의해 주세요.</li></ol><div class="photo-grid single"><figure><button class="image-zoom" type="button" data-fullscreen-image="assets/extay/crops/washer-guide.png" data-fullscreen-title="세탁기"><img src="assets/extay/crops/washer-guide.png" alt="세탁기 사용법"></button><figcaption>세탁기</figcaption></figure></div></div></article>
+        <article class="device" data-device="dryer"><div class="device-header"><span class="circle"><span class="mi">dry_cleaning</span></span><div><h3>건조기</h3></div></div><div class="device-body"><ol class="steps"><li>건조기 전원 버튼을 누른 뒤 원하는 코스를 선택하세요.</li><li>코스 선택 후 시작/일시정지 버튼을 눌러 건조를 시작하세요.</li><li>건조 전 주머니 속 물건을 확인해 주세요.</li><li>밤 시간에는 진동과 소음에 유의해 주세요.</li></ol><div class="photo-grid single"><figure><button class="image-zoom" type="button" data-fullscreen-image="assets/extay/crops/dryer-guide.png" data-fullscreen-title="건조기"><img src="assets/extay/crops/dryer-guide.png" alt="건조기 사용법"></button><figcaption>건조기</figcaption></figure></div></div></article>
         </div>
       </section>
 
@@ -1606,11 +1488,10 @@ body .numeric-font{font-family:var(--font-ko)!important;font-variant-numeric:tab
     <button class="menu-link" type="button" data-go="transport"><span>Transportation</span><small>공항에서 숙소까지</small></button>
     <button class="menu-link" type="button" data-go="wifi"><span>Wi-Fi</span><small>네트워크 정보</small></button>
     <button class="menu-link" type="button" data-go="restaurants"><span>Restaurants</span><small>도보 10분 맛집 리스트</small></button>
-    <button class="menu-link" type="button" data-go="appliances"><span>TV 난방 루프탑 안내</span><small>TV · 온수 · 루프탑</small></button>
+    <button class="menu-link" type="button" data-go="appliances"><span>TV · 난방 · 루프탑 안내</span><small>TV · 온수 · 루프탑</small></button>
     <button class="menu-link" type="button" data-go="laundry"><span>Laundry</span><small>세탁기 · 건조기 사용법</small></button>
     <button class="menu-link" type="button" data-go="trash"><span>Trash</span><small>분리수거와 배출 안내</small></button>
     <button class="menu-link" type="button" data-go="guidebook"><span>Guidebook</span><small>한글 · 영문 PDF 보기</small></button>
-    <button class="menu-link" type="button" data-go="faq"><span>FAQ</span><small>자주 묻는 질문</small></button>
   </aside>
   <div class="contact-backdrop" id="contactBackdrop"></div>
   <section class="contact-modal" id="contactModal" aria-label="호스트 연락처" aria-modal="true" role="dialog">
@@ -1661,14 +1542,14 @@ body .numeric-font{font-family:var(--font-ko)!important;font-variant-numeric:tab
         docTitle:'익스테이 맨션 해방촌 모바일 가이드',docDesc:'익스테이 맨션 해방촌 숙박 안내 모바일 가이드',
         headerTitle:'EXTAY',menuAria:'메뉴',guideAria:'가이드북 열기',chatAria:'AI 컨시어지',chatFabAria:'AI 컨시어지 열기',langAria:'Switch to English',langButton:'EN',
         search:{button:'검색',openAria:'검색 열기',closeAria:'검색 닫기',title:'검색',desc:'필요한 정보를 입력하면 관련 안내로 바로 이동합니다.',placeholder:'예: 와이파이, 체크인, 맛집',empty:'검색 결과가 없습니다. 다른 단어로 검색해 주세요.'},
-        heroSub:'your cozy home in Seoul.',copied:'복사했습니다',homeHeroEyebrow:'SEOUL PRIVATE STAY',quickTitle:'빠르게 찾는 정보',homeQuick:['체크인','오는 길','Wi-Fi','시설 이용'],menuTitles:['홈','객실 둘러보기','체크인 · 체크아웃 안내','교통 안내','와이파이','주변 맛집','TV 난방 루프탑 안내','세탁 안내','쓰레기 배출 안내','이용 안내','FAQ'],menuSubs:['처음 화면','객실 사진','입퇴실 안내','숙소까지 가는 방법','와이파이 연결 안내','도보 10분 맛집 리스트','TV · 난방 · 루프탑 사용 안내','세탁기 · 건조기 사용법','분리수거 안내','한글 · 영문 PDF 보기','자주 묻는 질문'],chatExamples:['와이파이 비밀번호 알려줘','텔레비전 어떻게 봐?','세탁기 어떻게 써?','쓰레기 어디에 버려?'],stayGuideKicker:'STAY GUIDE',conciergeKicker:'EXTAY CONCIERGE',aiTitle:'무엇을 도와드릴까요?',conciergePlaceholder:'AI 챗봇에게 질문해 보세요',essentials:{kicker:'STAY ESSENTIALS',title:'숙소 정보 한 눈에 보기',sub:'도착 전 꼭 필요한 정보만 모았습니다.',labels:['CHECK-IN','CHECK-OUT','ENTRY','LOCATION'],values:['16:00','11:00','비대면 셀프 체크인','녹사평역 도보 15분'],links:['체크인 전 꼭 확인해주세요','숙소 주소 지도 바로 보기'],galleryTitle:'객실 둘러보기',galleryAll:'전체보기 →'},contactKicker:'CONTACT',footerCopy:'Extay Mansion Haebangchon.',stayCards:['교통 안내','주변 맛집','가이드북','FAQ'],
+        heroSub:'your cozy home in Seoul.',copied:'복사했습니다',homeHeroEyebrow:'SEOUL PRIVATE STAY',quickTitle:'빠르게 찾는 정보',homeQuick:['체크인','오는 길','Wi-Fi','시설 이용'],menuTitles:['홈','객실 둘러보기','체크인 · 체크아웃 안내','교통 안내','와이파이','주변 맛집','TV · 난방 · 루프탑 안내','세탁 안내','쓰레기 배출 안내','이용 안내'],menuSubs:['처음 화면','객실 사진','입퇴실 안내','숙소까지 가는 방법','와이파이 연결 안내','도보 10분 맛집 리스트','TV · 난방 · 루프탑 사용 안내','세탁기 · 건조기 사용법','분리수거 안내','한글 · 영문 PDF 보기'],chatExamples:['와이파이 비밀번호 알려줘','텔레비전 어떻게 봐?','세탁기 어떻게 써?','쓰레기 어디에 버려?'],stayGuideKicker:'STAY GUIDE',conciergeKicker:'EXTAY CONCIERGE',aiTitle:'무엇을 도와드릴까요?',conciergePlaceholder:'AI 챗봇에게 질문해 보세요',essentials:{kicker:'STAY ESSENTIALS',title:'숙소 정보 한 눈에 보기',sub:'도착 전 꼭 필요한 정보만 모았습니다.',labels:['CHECK-IN','CHECK-OUT','ENTRY','LOCATION'],values:['16:00','11:00','비대면 셀프 체크인','녹사평역 도보 15분'],links:['체크인 전 꼭 확인해주세요','숙소 주소 지도 바로 보기'],galleryTitle:'객실 둘러보기',galleryAll:'전체보기 →'},contactKicker:'CONTACT',footerCopy:'Extay Mansion Haebangchon.',stayCards:['교통 안내','주변 맛집','가이드북'],
         bottom:['홈','와이파이','사용법','세탁','쓰레기'],
         quick:['와이파이','TV · OTT','온수 · 난방','세탁'],
         home:{infoTitle:'기본 정보',labels:['숙소','주소','체크인 · 체크아웃','와이파이','TV · OTT','주차'],values:['익스테이 맨션 해방촌','서울시 용산구 신흥로 59, 2층','16:00 · 11:00','U+Net46F0_5G','NSM OTT / HDMI 입력','건물 주차 불가 · 주변 유료 공영주차장'],view:'보기'},
         wifi:{title:'와이파이',sub:'숙소 Wi-Fi ID와 비밀번호입니다. 대소문자와 특수문자를 그대로 입력해 주세요.',labels:['ID','Password','연결 안내'],values:['U+Net46F0_5G','8H3#22E97B','연결이 안 되면 Wi-Fi를 껐다 켠 뒤 다시 선택해 주세요.'],copy:'복사'},
         homeGuide:{title:'체크인 · 위치 안내',items:['비대면 셀프 체크인이며, 개인 키 번호는 체크인 당일 12시쯤 안내됩니다.','녹사평역 2번 출구에서 도보 약 15분, 마을버스 이용 시 약 10분입니다.','세븐일레븐과 베제투스 레스토랑 사이 골목으로 들어와 2층으로 올라오세요.','퇴실 시 설거지, 쓰레기 분리수거, 에어컨 전원, 창문과 현관문을 확인해 주세요.']},
         rules:{title:'주차 · 숙소 규칙',items:['건물 주차는 불가합니다. 모두의주차장 앱 또는 주변 유료 공영주차장을 이용해 주세요.','예약 인원 외 방문자 입실, 반려동물 동반, 상업적 촬영은 불가합니다.','객실, 화장실, 베란다, 현관 입구, 계단은 모두 금연 구역입니다.','실내에서는 간단한 취사만 가능하며, 냄새나 연기가 많은 음식은 피해 주세요. 21시 이후에는 매너타임입니다.']},
-        appliances:{title:'TV 난방 루프탑 안내',sub:'',frequent:'자주 사용',
+        appliances:{title:'TV · 난방 · 루프탑 안내',sub:'',frequent:'자주 사용',
           tv:{title:'TV · OTT 리모컨',small:'',steps:['TV 리모컨은 외부 입력 선택이 필요할 때 사용하세요.','OTT 전용 리모컨에서 원하는 OTT를 선택한 뒤 확인 버튼을 누르세요.','화면 팝업이 뜨면 바로 실행을 선택하세요. 작동이 안 되면 전원 버튼을 3초 이상 누르거나 셋톱 전원을 10초간 분리 후 재연결하세요.']},
           boiler:{title:'온수 · 난방',small:'',steps:['거실 스탠드 에어컨 뒤쪽의 난방 조절기를 확인하세요.','온수를 사용할 때는 온수 버튼을 눌러 주세요.','화면에 60도가 표시되면 온수가 정상적으로 작동합니다. 외출 시에는 외출 버튼 또는 전원 버튼을 눌러 주세요.'],captions:['온수 조절기','숙소 도면']},
           induction:{title:'공용 화장실 · 루프탑',small:'',steps:['일행이 많아 화장실이 부족할 때는 1층 레스토랑 뒤편 공용 화장실을 이용할 수 있습니다.','비밀번호는 *7003*입니다.','루프탑에서는 남산타워 뷰를 볼 수 있습니다. 늦은 시간에는 소음에 유의해 주세요.']}
@@ -1681,7 +1562,7 @@ body .numeric-font{font-family:var(--font-ko)!important;font-variant-numeric:tab
         docTitle:'Extay Mansion Haebangchon Mobile Guide',docDesc:'A mobile guest guide for Extay Mansion Haebangchon',
         headerTitle:'EXTAY',menuAria:'Menu',guideAria:'Open guidebook',chatAria:'AI Concierge',chatFabAria:'Open AI Concierge',langAria:'한국어로 전환',langButton:'KO',
         search:{button:'Search',openAria:'Open search',closeAria:'Close search',title:'Search',desc:'Search what you need and jump directly to the guide.',placeholder:'Try Wi-Fi, check-in, restaurants',empty:'No results. Try another keyword.'},
-        heroSub:'your cozy home in Seoul.',copied:'Copied',homeHeroEyebrow:'SEOUL PRIVATE STAY',quickTitle:'Quick Access',homeQuick:['Check-in','Directions','Wi‑Fi','Amenities'],menuTitles:['Home','Room Gallery','Check in/out Guide','Transportation','Wi‑Fi','Restaurants','TV · Heating · Rooftop','Laundry','Trash','Guidebook','FAQ'],menuSubs:['Opening screen','Room photos','Check-in and checkout guide','How to get to the stay','Wi‑Fi connection guide','Restaurants within a 10-minute walk','TV · heating · rooftop usage guide','Washer and dryer instructions','Trash sorting guide','Korean and English PDFs','Frequently asked questions'],chatExamples:['What is the Wi‑Fi password?','How do I watch TV?','How do I use the washer?','Where do I throw away trash?'],stayGuideKicker:'STAY GUIDE',conciergeKicker:'EXTAY CONCIERGE',aiTitle:'How can we help?',conciergePlaceholder:'Ask the AI chatbot',essentials:{kicker:'STAY ESSENTIALS',title:'Stay information at a glance',sub:'Everything you need before arrival.',labels:['CHECK-IN','CHECK-OUT','ENTRY','LOCATION'],values:['16:00','11:00','Contactless self check-in','15 min walk from Noksapyeong Station'],links:['Check before you arrive','View the stay address on the map'],galleryTitle:'Room Gallery',galleryAll:'View all →'},contactKicker:'CONTACT',footerCopy:'Extay Mansion Haebangchon.',stayCards:['Transportation','Nearby Food','Guidebook','FAQ'],
+        heroSub:'your cozy home in Seoul.',copied:'Copied',homeHeroEyebrow:'SEOUL PRIVATE STAY',quickTitle:'Quick Access',homeQuick:['Check-in','Directions','Wi‑Fi','Amenities'],menuTitles:['Home','Room Gallery','Check in/out Guide','Transportation','Wi‑Fi','Restaurants','TV · Heating · Rooftop','Laundry','Trash','Guidebook'],menuSubs:['Opening screen','Room photos','Check-in and checkout guide','How to get to the stay','Wi‑Fi connection guide','Restaurants within a 10-minute walk','TV · heating · rooftop usage guide','Washer and dryer instructions','Trash sorting guide','Korean and English PDFs'],chatExamples:['What is the Wi‑Fi password?','How do I watch TV?','How do I use the washer?','Where do I throw away trash?'],stayGuideKicker:'STAY GUIDE',conciergeKicker:'EXTAY CONCIERGE',aiTitle:'How can we help?',conciergePlaceholder:'Ask the AI chatbot',essentials:{kicker:'STAY ESSENTIALS',title:'Stay information at a glance',sub:'Everything you need before arrival.',labels:['CHECK-IN','CHECK-OUT','ENTRY','LOCATION'],values:['16:00','11:00','Contactless self check-in','15 min walk from Noksapyeong Station'],links:['Check before you arrive','View the stay address on the map'],galleryTitle:'Room Gallery',galleryAll:'View all →'},contactKicker:'CONTACT',footerCopy:'Extay Mansion Haebangchon.',stayCards:['Transportation','Nearby Food','Guidebook'],
         bottom:['Home','Wi-Fi','Guide','Laundry','Trash'],
         quick:['Wi-Fi','TV · OTT','Hot Water','Laundry'],
         home:{infoTitle:'Basic Info',labels:['Stay','Address','Check-in · Checkout','Wi-Fi','TV · OTT','Parking'],values:['Extay Mansion Haebangchon','2F, 59 Sinheung-ro, Yongsan-gu, Seoul','16:00 · 11:00','U+Net46F0_5G','NSM OTT / HDMI input','No on-site parking · use nearby paid public parking'],view:'View'},
@@ -1702,10 +1583,10 @@ body .numeric-font{font-family:var(--font-ko)!important;font-variant-numeric:tab
       docTitle:'EXTAY 海放村民宿移动指南',docDesc:'EXTAY 海放村住宿指南移动版',
       headerTitle:'EXTAY',menuAria:'菜单',guideAria:'打开指南书',chatAria:'AI 礼宾',chatFabAria:'打开 AI 礼宾',langAria:'切换语言',langButton:'中',
       search:{button:'搜索',openAria:'打开搜索',closeAria:'关闭搜索',title:'搜索',desc:'输入需要的信息后可直接跳转到相关指南。',placeholder:'例如：Wi‑Fi、入住、美食',empty:'没有搜索结果。请换一个关键词。'},
-      menuTitles:['首页','客房浏览','入住/退房指南','交通指南','Wi‑Fi','周边美食','TV · 供暖 · 屋顶','洗衣指南','垃圾投放指南','指南书','FAQ'],
-      menuSubs:['首页画面','客房照片','入住退房指南','前往住宿的方法','Wi‑Fi 连接指南','步行10分钟内的餐厅列表','TV · 供暖 · 屋顶使用指南','洗衣机和烘干机使用方法','分类投放指南','韩文与英文 PDF','常见问题'],
+      menuTitles:['首页','客房浏览','入住/退房指南','交通指南','Wi‑Fi','周边美食','TV · 供暖 · 屋顶','洗衣指南','垃圾投放指南','指南书'],
+      menuSubs:['首页画面','客房照片','入住退房指南','前往住宿的方法','Wi‑Fi 连接指南','步行10分钟内的餐厅列表','TV · 供暖 · 屋顶使用指南','洗衣机和烘干机使用方法','分类投放指南','韩文与英文 PDF'],
       chatExamples:['Wi‑Fi 密码是什么？','怎么用电视？','洗衣机怎么用？','垃圾丢到哪里？'],
-      heroSub:'首尔温馨住处。',copied:'已复制',homeHeroEyebrow:'首尔私人住宿',quickTitle:'快速查看信息',homeQuick:['入住','路线','Wi‑Fi','设施使用'],stayGuideKicker:'住宿指南',conciergeKicker:'EXTAY CONCIERGE',aiTitle:'有什么可以帮您？',conciergePlaceholder:'向 AI 聊天机器人提问',essentials:{kicker:'STAY ESSENTIALS',title:'住宿信息一览',sub:'为您汇总到达前必需的信息。',labels:['CHECK-IN','CHECK-OUT','ENTRY','LOCATION'],values:['16:00','11:00','无接触自助入住','绿莎坪站步行 15 分钟'],links:['入住前请务必确认','在地图上查看住宿地址'],galleryTitle:'客房浏览',galleryAll:'查看全部 →'},contactKicker:'联系方式',footerCopy:'Extay Mansion Haebangchon。',stayCards:['交通指南','周边美食','指南书','FAQ'],
+      heroSub:'首尔温馨住处。',copied:'已复制',homeHeroEyebrow:'首尔私人住宿',quickTitle:'快速查看信息',homeQuick:['入住','路线','Wi‑Fi','设施使用'],stayGuideKicker:'住宿指南',conciergeKicker:'EXTAY CONCIERGE',aiTitle:'有什么可以帮您？',conciergePlaceholder:'向 AI 聊天机器人提问',essentials:{kicker:'STAY ESSENTIALS',title:'住宿信息一览',sub:'为您汇总到达前必需的信息。',labels:['CHECK-IN','CHECK-OUT','ENTRY','LOCATION'],values:['16:00','11:00','无接触自助入住','绿莎坪站步行 15 分钟'],links:['入住前请务必确认','在地图上查看住宿地址'],galleryTitle:'客房浏览',galleryAll:'查看全部 →'},contactKicker:'联系方式',footerCopy:'Extay Mansion Haebangchon。',stayCards:['交通指南','周边美食','指南书'],
       bottom:['首页','Wi‑Fi','使用说明','洗衣','垃圾'],
       quick:['Wi‑Fi','TV · OTT','热水 · 供暖','洗衣'],
       home:{infoTitle:'基本信息',labels:['住宿','地址','入住 · 退房','Wi‑Fi','TV · OTT','停车'],values:['EXTAY 海放村','首尔特别市龙山区新兴路59号，2楼','16:00 · 11:00','U+Net46F0_5G','NSM OTT / HDMI 输入','楼内无法停车 · 请使用附近收费公共停车场'],view:'查看'},
@@ -1725,10 +1606,10 @@ body .numeric-font{font-family:var(--font-ko)!important;font-variant-numeric:tab
       docTitle:'EXTAY 海放村モバイルガイド',docDesc:'EXTAY 海放村 宿泊案内モバイル版',
       headerTitle:'EXTAY',menuAria:'メニュー',guideAria:'ガイドブックを開く',chatAria:'AIコンシェルジュ',chatFabAria:'AIコンシェルジュを開く',langAria:'言語を切り替え',langButton:'日',
       search:{button:'検索',openAria:'検索を開く',closeAria:'検索を閉じる',title:'検索',desc:'必要な情報を入力すると関連ガイドへすぐ移動できます。',placeholder:'例: Wi‑Fi、チェックイン、レストラン',empty:'検索結果がありません。別のキーワードを試してください。'},
-      menuTitles:['ホーム','客室めぐり','チェックイン/アウト案内','交通案内','Wi‑Fi','近くのレストラン','TV · 暖房 · 屋上','ランドリー','ゴミ出し案内','ガイドブック','FAQ'],
-      menuSubs:['ホーム画面','客室写真','チェックイン・チェックアウト案内','宿泊先までの行き方','Wi‑Fi接続案内','徒歩10分以内のレストラン一覧','TV · 暖房 · 屋上の案内','洗濯機と乾燥機の使い方','分別案内','韓国語と英語のPDF','よくある質問'],
+      menuTitles:['ホーム','客室めぐり','チェックイン/アウト案内','交通案内','Wi‑Fi','近くのレストラン','TV · 暖房 · 屋上','ランドリー','ゴミ出し案内','ガイドブック'],
+      menuSubs:['ホーム画面','客室写真','チェックイン・チェックアウト案内','宿泊先までの行き方','Wi‑Fi接続案内','徒歩10分以内のレストラン一覧','TV · 暖房 · 屋上の案内','洗濯機と乾燥機の使い方','分別案内','韓国語と英語のPDF'],
       chatExamples:['Wi‑Fi のパスワードは？','テレビの見方は？','洗濯機の使い方は？','ゴミはどこに捨てる？'],
-      heroSub:'ソウルのくつろぎの宿。',copied:'コピーしました',homeHeroEyebrow:'ソウルのプライベートステイ',quickTitle:'すぐ見つかる情報',homeQuick:['チェックイン','行き方','Wi‑Fi','施設利用'],stayGuideKicker:'滞在ガイド',conciergeKicker:'EXTAY CONCIERGE',aiTitle:'何をお手伝いしましょうか？',conciergePlaceholder:'AI チャットボットに質問',essentials:{kicker:'STAY ESSENTIALS',title:'宿泊情報をひと目で',sub:'到着前に必要な情報をまとめました。',labels:['CHECK-IN','CHECK-OUT','ENTRY','LOCATION'],values:['16:00','11:00','非対面セルフチェックイン','緑莎坪駅から徒歩 15 分'],links:['チェックイン前に必ずご確認ください','宿泊先の住所を地図で見る'],galleryTitle:'客室を見る',galleryAll:'すべて見る →'},contactKicker:'連絡先',footerCopy:'Extay Mansion Haebangchon.',stayCards:['交通案内','周辺グルメ','ガイドブック','FAQ'],
+      heroSub:'ソウルのくつろぎの宿。',copied:'コピーしました',homeHeroEyebrow:'ソウルのプライベートステイ',quickTitle:'すぐ見つかる情報',homeQuick:['チェックイン','行き方','Wi‑Fi','施設利用'],stayGuideKicker:'滞在ガイド',conciergeKicker:'EXTAY CONCIERGE',aiTitle:'何をお手伝いしましょうか？',conciergePlaceholder:'AI チャットボットに質問',essentials:{kicker:'STAY ESSENTIALS',title:'宿泊情報をひと目で',sub:'到着前に必要な情報をまとめました。',labels:['CHECK-IN','CHECK-OUT','ENTRY','LOCATION'],values:['16:00','11:00','非対面セルフチェックイン','緑莎坪駅から徒歩 15 分'],links:['チェックイン前に必ずご確認ください','宿泊先の住所を地図で見る'],galleryTitle:'客室を見る',galleryAll:'すべて見る →'},contactKicker:'連絡先',footerCopy:'Extay Mansion Haebangchon.',stayCards:['交通案内','周辺グルメ','ガイドブック'],
       bottom:['ホーム','Wi‑Fi','案内','ランドリー','ゴミ'],
       quick:['Wi‑Fi','TV · OTT','給湯 · 暖房','ランドリー'],
       home:{infoTitle:'基本情報',labels:['宿泊先','住所','チェックイン · チェックアウト','Wi‑Fi','TV · OTT','駐車'],values:['EXTAY 海放村','ソウル特別市龍山区新興路59、2階','16:00 · 11:00','U+Net46F0_5G','NSM OTT / HDMI 入力','建物内駐車不可 · 近隣の有料公共駐車場をご利用ください'],view:'見る'},
@@ -1831,11 +1712,11 @@ body .numeric-font{font-family:var(--font-ko)!important;font-variant-numeric:tab
       const homeRules=q('.home-rules-card'); if(homeRules&&tr.rules){text(homeRules.querySelector('h3'),tr.rules.title); eachText([...homeRules.querySelectorAll('.guide-item span')],tr.rules.items);}
       const wifiScreen=q('[data-screen="wifi"]'); if(wifiScreen){wifiScreen.dataset.lang=currentLang;text(wifiScreen.querySelector('.page-title'),tr.wifi.title); text(wifiScreen.querySelector('.page-sub'),tr.wifi.sub); eachText([...wifiScreen.querySelectorAll('.wifi-credential small')],tr.wifi.labels); eachText([...wifiScreen.querySelectorAll('.wifi-credential b')],tr.wifi.values); eachText([...wifiScreen.querySelectorAll('.mini-btn')],[tr.wifi.copy,tr.wifi.copy]); const wifiHelp={ko:{title:'연결이 불안정할 때',cards:[['Wi-Fi 다시 켜기','기기 Wi-Fi를 껐다가 다시 켠 뒤 네트워크를 재선택합니다.'],['공백 확인','비밀번호를 복사했다면 앞뒤 공백이 함께 들어가지 않았는지 확인합니다.'],['기기 재시도','다른 기기에서도 같은 문제가 있는지 확인하면 원인 파악이 쉽습니다.'],['호스트 문의','셋톱 박스의 전원을 껐다가 켜보세요. 그래도 연결되지 않으면 호스트에게 문의하세요.']],bullets:['기기 Wi-Fi를 껐다가 다시 켠 뒤 네트워크를 다시 선택해 주세요.','비밀번호를 복사했다면 앞뒤 공백이 함께 들어가지 않았는지 확인해 주세요.','계속 연결되지 않으면 호스트에게 문의해 주세요.']},en:{title:'When the connection is unstable',cards:[['Turn Wi-Fi Back On','Turn the device Wi‑Fi off and on again, then reselect the network.'],['Check for Spaces','If you copied the password, make sure no spaces were added before or after it.'],['Try Another Device','Checking another device helps identify whether the issue is device-specific.'],['Contact the Host','Turn the set-top box off and on again. If it still does not connect, contact the host.']],bullets:['Turn the device Wi‑Fi off and on again, then reselect the network.','Make sure no spaces were added before or after the copied password.','If it still does not connect, contact the host.']},zh:{title:'连接不稳定时',cards:[['重新打开 Wi‑Fi','先关闭设备 Wi‑Fi，再重新打开并重新选择网络。'],['检查空格','如果是复制的密码，请确认前后没有多余空格。'],['重试设备','请在其他设备上也确认是否有同样问题。'],['联系房东','请先把机顶盒电源关掉再打开。如果还是无法连接，请联系房东。']],bullets:['先关闭设备 Wi‑Fi，再重新打开并重新选择网络。','如果是复制的密码，请确认前后没有多余空格。','如果还是无法连接，请联系房东。']},ja:{title:'接続が不安定なとき',cards:[['Wi‑Fi を再度オン','端末の Wi‑Fi を一度オフにしてから再度オンにし、ネットワークを選び直してください。'],['空白を確認','パスワードをコピーした場合は、前後に空白が入っていないか確認してください。'],['別端末で再試行','別の端末でも同じ症状が出るか確認すると原因を切り分けやすいです。'],['ホストへ連絡','セットトップボックスの電源を一度切って入れ直してください。それでもつながらない場合はホストへ連絡してください。']],bullets:['端末の Wi‑Fi を一度オフにしてから再度オンにし、ネットワークを選び直してください。','パスワードをコピーした場合は、前後に空白が入っていないか確認してください。','それでもつながらない場合はホストへ連絡してください。']}}[currentLang]||wifiHelp.ko; text(wifiScreen.querySelector('.wifi-help-title h3'),wifiHelp.title); const wifiCards=[...wifiScreen.querySelectorAll('.wifi-help-grid .wifi-visual-card')]; wifiCards.forEach((card,i)=>{if(wifiHelp.cards[i]){text(card.querySelector('strong'),wifiHelp.cards[i][0]);text(card.querySelector(':scope > div > span'),wifiHelp.cards[i][1]);}});}
       text(q('[data-screen="appliances"] .page-title'),tr.appliances.title); text(q('[data-screen="appliances"] .page-sub'),tr.appliances.sub);
-      const devices=qa('[data-screen="appliances"] details.device');
+      const devices=qa('[data-screen="appliances"] .device');
       if(devices[0]){text(devices[0].querySelector('h3'),tr.appliances.tv.title);text(devices[0].querySelector('small'),tr.appliances.tv.small);eachText([...devices[0].querySelectorAll('.steps li')],tr.appliances.tv.steps)}
       if(devices[1]){text(devices[1].querySelector('h3'),tr.appliances.boiler.title);text(devices[1].querySelector('small'),tr.appliances.boiler.small);eachText([...devices[1].querySelectorAll('.steps li')],tr.appliances.boiler.steps);eachText([...devices[1].querySelectorAll('figcaption')],tr.appliances.boiler.captions)}
       if(devices[2]){text(devices[2].querySelector('h3'),tr.appliances.induction.title);text(devices[2].querySelector('small'),tr.appliances.induction.small);eachText([...devices[2].querySelectorAll('.steps li')],tr.appliances.induction.steps)}
-      text(q('[data-screen="laundry"] .page-title'),tr.laundry.title); text(q('[data-screen="laundry"] .page-sub'),tr.laundry.sub); const laundryDevices=qa('[data-screen="laundry"] details.device'); if(laundryDevices[0]){text(laundryDevices[0].querySelector('h3'),tr.laundry.washerTitle);eachText([...laundryDevices[0].querySelectorAll('.steps li')],tr.laundry.washerSteps);eachText([...laundryDevices[0].querySelectorAll('figcaption')],[tr.laundry.captions[0]])} if(laundryDevices[1]){text(laundryDevices[1].querySelector('h3'),tr.laundry.dryerTitle);eachText([...laundryDevices[1].querySelectorAll('.steps li')],tr.laundry.dryerSteps);eachText([...laundryDevices[1].querySelectorAll('figcaption')],[tr.laundry.captions[1]])}
+      text(q('[data-screen="laundry"] .page-title'),tr.laundry.title); text(q('[data-screen="laundry"] .page-sub'),tr.laundry.sub); const laundryDevices=qa('[data-screen="laundry"] .device'); if(laundryDevices[0]){text(laundryDevices[0].querySelector('h3'),tr.laundry.washerTitle);eachText([...laundryDevices[0].querySelectorAll('.steps li')],tr.laundry.washerSteps);eachText([...laundryDevices[0].querySelectorAll('figcaption')],[tr.laundry.captions[0]])} if(laundryDevices[1]){text(laundryDevices[1].querySelector('h3'),tr.laundry.dryerTitle);eachText([...laundryDevices[1].querySelectorAll('.steps li')],tr.laundry.dryerSteps);eachText([...laundryDevices[1].querySelectorAll('figcaption')],[tr.laundry.captions[1]])}
       text(q('[data-screen="trash"] .page-title'),tr.trash.title); text(q('[data-screen="trash"] .page-sub'),tr.trash.sub); const trashCards=qa('[data-screen="trash"] article.card'); if(trashCards[0]){text(trashCards[0].querySelector('h3'),tr.trash.basis);text(trashCards[0].querySelector('.mini-btn'),tr.trash.types);eachText([...trashCards[0].querySelectorAll('.guide-item span')],tr.trash.items);eachText([...trashCards[0].querySelectorAll('figcaption')],tr.trash.captions)}; [1,2,3].forEach((idx,i)=>{const card=trashCards[idx],data=tr.trash.cards[i];if(card&&data){text(card.querySelector('h3'),data[0]);text(card.querySelector('p'),data[1]);eachText([...card.querySelectorAll('figcaption')],data[2])}});
       text(q('.chat-head h2'),tr.chat.title); const firstBot=q('.chat-log .msg.bot:first-child'); if(firstBot&&!q('.chat-log .msg.user'))text(firstBot,tr.chat.hello); text(q('.chat-note'),tr.chat.note); const input=q('#chatInput'); if(input)input.placeholder=tr.chat.placeholder; text(q('#toast'),tr.copied);
     }
@@ -1901,7 +1782,6 @@ body .numeric-font{font-family:var(--font-ko)!important;font-variant-numeric:tab
     function routeUrl(name){return name==='home'?location.pathname+location.search:'#'+name}
     function writeRoute(name,openDevice='',mode='push'){const state={screen:name,openDevice:openDevice||''},url=routeUrl(name);if(mode==='replace')history.replaceState(state,'',url);else history.pushState(state,'',url)}
     let activeScreen=routeFromHash(),activeOpenDevice='';
-    function syncDeviceIcon(device){const icon=device?.querySelector('summary>.mi:last-child');if(icon)icon.textContent=device.open?'expand_less':'expand_more'}
     function show(name, openDevice='', options={}){
       if(!routeExists(name))name='home';
       openDevice=openDevice||'';
@@ -1924,13 +1804,8 @@ body .numeric-font{font-family:var(--font-ko)!important;font-variant-numeric:tab
       if(name==='guidebook')setTimeout(initGuidebook,60);
       if(name==='restaurants')setTimeout(renderRestaurants,0);
       if(openDevice){
-        document.querySelectorAll('details.device').forEach(d=>{d.open=d.dataset.device===openDevice;syncDeviceIcon(d)});
-        const target=document.querySelector(`details.device[data-device="${openDevice}"]`);
+        const target=document.querySelector(`.device[data-device="${openDevice}"]`);
         if(target)setTimeout(()=>target.scrollIntoView({behavior:'smooth',block:'start'}),80);
-      }else if(name==='appliances'){
-        document.querySelectorAll('[data-screen="appliances"] details.device').forEach(d=>{d.open=false;syncDeviceIcon(d)});
-      }else if(name==='laundry'){
-        document.querySelectorAll('[data-screen="laundry"] details.device').forEach(d=>{d.open=false;syncDeviceIcon(d)});
       }
       activeScreen=name;
       activeOpenDevice=openDevice;
@@ -1946,7 +1821,6 @@ body .numeric-font{font-family:var(--font-ko)!important;font-variant-numeric:tab
     imageLightboxBackdrop?.addEventListener('click',closeImageLightbox);
     q('#closeImageLightbox')?.addEventListener('click',closeImageLightbox);
     document.addEventListener('click',e=>{const g=e.target.closest('[data-go]'); if(g){show(g.dataset.go,g.dataset.open||'')}});
-    document.addEventListener('toggle',e=>{if(e.target.matches?.('details.device'))syncDeviceIcon(e.target)},true);
     document.addEventListener('click',e=>{const f=e.target.closest('[data-restaurant-filter]');if(!f)return;restaurantCategory=f.dataset.restaurantFilter;renderRestaurants()});
     document.getElementById('restaurantSearch')?.addEventListener('input',e=>{restaurantSearch=e.target.value;renderRestaurants()});
     document.addEventListener('click',e=>{const fullscreen=e.target.closest('[data-guide-fullscreen]');if(fullscreen){const els=guidebookElements();setGuidebookFullscreen(!els.viewer?.classList.contains('fullscreen'));return}const lang=e.target.closest('[data-guide-lang]');if(lang){loadGuidebook(lang.dataset.guideLang,true);return}const nav=e.target.closest('[data-guide-nav]');if(nav&&guidebookDoc){renderGuidebookPage(guidebookPage+(nav.dataset.guideNav==='next'?1:-1))}});
@@ -2018,7 +1892,6 @@ body .numeric-font{font-family:var(--font-ko)!important;font-variant-numeric:tab
       {icon:'photo_library',screen:'gallery',popular:true,ko:['객실 둘러보기','숙소 사진과 공간 확인'],en:['Room Gallery','Photos of the stay and rooms'],keys:['객실','사진','숙소사진','둘러보기','갤러리','방','gallery','photo','room','image']},
       {icon:'menu_book',screen:'guidebook',popular:true,ko:['이용 안내 PDF','한글·영문 가이드북 보기'],en:['Guidebook PDF','View Korean and English guidebooks'],keys:['이용안내','가이드북','가이드','pdf','한글가이드','영문가이드','guidebook','manual']},
       {icon:'restaurant',screen:'restaurants',popular:true,ko:['주변 맛집','해방촌 추천 식당 리스트'],en:['Restaurants','Recommended places near Haebangchon'],keys:['맛집','식당','음식','레스토랑','카페','브런치','술집','restaurants','food','cafe','bar']},
-      {icon:'help',screen:'faq',popular:true,ko:['FAQ','자주 묻는 질문'],en:['FAQ','Frequently asked questions'],keys:['faq','질문','자주묻는','궁금','문의','question']},
       {icon:'tv',screen:'appliances',open:'tv',ko:['TV · OTT','TV 리모컨과 OTT 사용법'],en:['TV · OTT','TV remote and OTT instructions'],keys:['tv','티비','텔레비전','ott','넷플릭스','유튜브','nsm','remote','netflix','youtube']},
       {icon:'thermostat',screen:'appliances',open:'boiler',ko:['온수 · 난방','Rinnai 온수 버튼과 난방 조절'],en:['Hot Water · Heating','Rinnai hot-water and heating control'],keys:['온수','난방','보일러','뜨거운물','히터','hot water','heating','boiler']},
       {icon:'roofing',screen:'appliances',open:'induction',ko:['공용 화장실 · 루프탑','비밀 화장실과 루프탑 안내'],en:['Shared Restroom · Rooftop','Secret restroom and rooftop guide'],keys:['화장실','공용화장실','비밀화장실','루프탑','남산','7003','restroom','toilet','bathroom','rooftop']},
