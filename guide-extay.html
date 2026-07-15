@@ -713,9 +713,9 @@ body.guidebook-fullscreen-open{overflow:hidden;touch-action:none}
 .screen:not([data-screen="home"]) :is(.checkin-accordion,.airport-card,.wifi-accordion,.checkin-section-accordion){border-radius:12px;box-shadow:none}
 .device-card-stack{display:grid;gap:14px}
 .guide-detail-screen .device-card-stack>.device{margin:0;border:1px solid rgba(216,198,180,.72);border-radius:12px;box-shadow:none;background:#fffaf4;overflow:hidden}
-.guide-detail-screen .device-card-stack .device-header{display:grid;grid-template-columns:42px minmax(0,1fr);gap:12px;align-items:center;padding:17px 18px;border-bottom:1px solid rgba(216,198,180,.72)}
-.guide-detail-screen .device-card-stack>.device .circle{width:42px;height:42px;border-radius:8px}
-.guide-detail-screen .device-card-stack>.device h3{margin:0;font-size:18px}
+.guide-detail-screen .device-card-stack .device-header{display:grid;grid-template-columns:42px minmax(0,1fr);gap:12px;align-items:center;padding:17px 18px;border-bottom:1px solid rgba(216,198,180,.72);background:#7b634f;color:#fff}
+.guide-detail-screen .device-card-stack>.device .circle{width:42px;height:42px;border-radius:8px;background:#fffaf4;color:#7b634f}
+.guide-detail-screen .device-card-stack>.device h3{margin:0;color:#fff;font-size:18px}
 .guide-detail-screen .device-card-stack .device-body{display:block;padding:0;background:transparent}
 .guide-detail-screen .device-card-stack .steps{padding:0 18px}
 .guide-detail-screen .device-card-stack .steps li{min-height:0;grid-template-columns:28px minmax(0,1fr);gap:11px;padding:14px 0;border-bottom:1px solid rgba(216,198,180,.58)}
@@ -843,7 +843,7 @@ body .wifi-network-card strong,body .wifi-network-card strong *{font-weight:800!
 .wifi-help-grid .wifi-visual-card:last-child{border-bottom:0}
 .wifi-help-grid .wifi-visual-card .mi{border-radius:8px}
 .wifi-help-section{margin-top:0}
-.wifi-help-title{display:grid;grid-template-columns:40px minmax(0,1fr);gap:11px;align-items:center;margin-bottom:3px}
+.wifi-help-title{display:grid;grid-template-columns:40px minmax(0,1fr);gap:11px;align-items:center;margin-bottom:0;padding-bottom:14px;border-bottom:1px solid rgba(216,198,180,.72)}
 .wifi-help-title .wifi-accordion-icon{width:40px;height:40px;border-radius:8px}
 .wifi-help-title h3{margin:0;font-size:19px;line-height:1.3}
 .wifi-help-grid{grid-template-columns:1fr;gap:0}
@@ -1474,7 +1474,7 @@ body .numeric-font{font-family:var(--font-ko)!important;font-variant-numeric:tab
         </div>
       </section>
 
-      <section class="screen guide-detail-screen" data-screen="trash"><article class="guide-detail-hero trash-hero"><p class="section-kicker">TRASH GUIDE</p><h2 class="page-title">쓰레기 배출</h2></article><article class="card contact-card"><div style="display:flex;align-items:center;justify-content:space-between"><h3 style="margin:0">분리 기준</h3><span class="mini-btn">2종류</span></div><div class="guide-list"><div class="guide-item"><b>1</b><span>일반 쓰레기 및 재활용 모두 베란다에 비치된 쓰레기통에 넣어 주세요.</span></div><div class="guide-item"><b>2</b><span>음식물 쓰레기는 부엌 싱크대 위 음식물 쓰레기통에 버려 주세요.</span></div><div class="guide-item"><b>+</b><span>장기 숙박 중 음식물 냄새가 나면 1층 입구 주황색 통에 음식물을 배출해 주세요.</span></div></div><div class="photo-grid single"><figure><img src="assets/extay/crops/trash-current.jpg" alt="현재 쓰레기통 사진"><figcaption>현재 쓰레기통</figcaption></figure></div></article></section>
+      <section class="screen guide-detail-screen" data-screen="trash"><article class="guide-detail-hero trash-hero"><p class="section-kicker">TRASH GUIDE</p><h2 class="page-title">쓰레기 배출</h2></article><div class="device-card-stack"><article class="device trash-guide-card"><div class="device-header"><span class="circle"><span class="mi">delete_sweep</span></span><div><h3>분리수거 안내</h3></div></div><div class="device-body"><ol class="steps"><li>일반 쓰레기 및 재활용 모두 베란다에 비치된 쓰레기통에 넣어 주세요.</li><li>음식물 쓰레기는 부엌 싱크대 위 음식물 쓰레기통에 버려 주세요.</li><li>장기 숙박 중 음식물 냄새가 나면 1층 입구 주황색 통에 음식물을 배출해 주세요.</li></ol><div class="photo-grid single"><figure><img src="assets/extay/crops/trash-current.jpg" alt="현재 쓰레기통 사진"><figcaption>현재 쓰레기통</figcaption></figure></div></div></article></div></section>
     </main>
 
     <nav class="bottom"><button class="tab active" data-go="home"><span class="mi">home</span><span>홈</span></button><button class="tab" data-go="wifi"><span class="mi">wifi</span><span>와이파이</span></button><button class="tab" data-go="appliances"><span class="mi">robot_2</span><span>사용법</span></button><button class="tab" data-go="laundry"><span class="mi">local_laundry_service</span><span>세탁</span></button><button class="tab" data-go="trash"><span class="mi">delete</span><span>쓰레기</span></button></nav>
@@ -1555,7 +1555,7 @@ body .numeric-font{font-family:var(--font-ko)!important;font-variant-numeric:tab
           induction:{title:'공용 화장실 · 루프탑',small:'',steps:['일행이 많아 화장실이 부족할 때는 1층 레스토랑 뒤편 공용 화장실을 이용할 수 있습니다.','비밀번호는 *7003*입니다.','루프탑에서는 남산타워 뷰를 볼 수 있습니다. 늦은 시간에는 소음에 유의해 주세요.']}
         },
         laundry:{title:'세탁 안내',sub:'세탁기와 건조기 사용법을 확인하세요.',washerTitle:'세탁기',dryerTitle:'건조기',washerSteps:['세탁기는 전원 버튼을 누른 뒤 원하는 코스를 선택하세요.','코스 선택 후 시작/일시정지 버튼을 눌러 세탁을 시작하세요.','세탁 전 주머니 속 물건을 확인해 주세요.','사용 후에는 문을 살짝 열어 내부를 말려 주세요.','밤 시간에는 진동과 소음에 유의해 주세요.'],dryerSteps:['건조기 전원 버튼을 누른 뒤 원하는 코스를 선택하세요.','코스 선택 후 시작/일시정지 버튼을 눌러 건조를 시작하세요.','건조 전 주머니 속 물건을 확인해 주세요.','밤 시간에는 진동과 소음에 유의해 주세요.'],captions:['세탁기','건조기']},
-        trash:{title:'쓰레기 배출',sub:'음식물, 재활용, 일반 쓰레기 위치가 다릅니다. 장기 숙박 시 냄새가 나지 않도록 안내에 따라 배출해 주세요.',basis:'분리 기준',types:'2종류',items:['일반 쓰레기 및 재활용 모두 베란다에 비치된 쓰레기통에 넣어 주세요.','음식물 쓰레기는 부엌 싱크대 위 음식물 쓰레기통에 버려 주세요.','장기 숙박 중 음식물 냄새가 나면 1층 입구 주황색 통에 음식물을 배출해 주세요.'],captions:['현재 쓰레기통'],cards:[]},
+        trash:{title:'쓰레기 배출',sub:'음식물, 재활용, 일반 쓰레기 위치가 다릅니다. 장기 숙박 시 냄새가 나지 않도록 안내에 따라 배출해 주세요.',basis:'분리수거 안내',types:'2종류',items:['일반 쓰레기 및 재활용 모두 베란다에 비치된 쓰레기통에 넣어 주세요.','음식물 쓰레기는 부엌 싱크대 위 음식물 쓰레기통에 버려 주세요.','장기 숙박 중 음식물 냄새가 나면 1층 입구 주황색 통에 음식물을 배출해 주세요.'],captions:['현재 쓰레기통'],cards:[]},
         chat:{title:'AI 컨시어지',close:'닫기',hello:'안녕하세요. 익스테이 맨션 해방촌 AI 컨시어지입니다. 와이파이, 체크인·체크아웃, 위치, 주차, 숙소 규칙, TV·OTT, 온수·난방, 세탁, 쓰레기 배출 방법을 물어보세요.',note:'도어락 개인 키 번호와 긴급 상황은 Airbnb/호스트 메시지를 확인해 주세요.',placeholder:'질문을 입력하세요',typing:'답변 중...'}
       },
       en:{
@@ -1717,7 +1717,7 @@ body .numeric-font{font-family:var(--font-ko)!important;font-variant-numeric:tab
       if(devices[1]){text(devices[1].querySelector('h3'),tr.appliances.boiler.title);text(devices[1].querySelector('small'),tr.appliances.boiler.small);eachText([...devices[1].querySelectorAll('.steps li')],tr.appliances.boiler.steps);eachText([...devices[1].querySelectorAll('figcaption')],tr.appliances.boiler.captions)}
       if(devices[2]){text(devices[2].querySelector('h3'),tr.appliances.induction.title);text(devices[2].querySelector('small'),tr.appliances.induction.small);eachText([...devices[2].querySelectorAll('.steps li')],tr.appliances.induction.steps)}
       text(q('[data-screen="laundry"] .page-title'),tr.laundry.title); text(q('[data-screen="laundry"] .page-sub'),tr.laundry.sub); const laundryDevices=qa('[data-screen="laundry"] .device'); if(laundryDevices[0]){text(laundryDevices[0].querySelector('h3'),tr.laundry.washerTitle);eachText([...laundryDevices[0].querySelectorAll('.steps li')],tr.laundry.washerSteps);eachText([...laundryDevices[0].querySelectorAll('figcaption')],[tr.laundry.captions[0]])} if(laundryDevices[1]){text(laundryDevices[1].querySelector('h3'),tr.laundry.dryerTitle);eachText([...laundryDevices[1].querySelectorAll('.steps li')],tr.laundry.dryerSteps);eachText([...laundryDevices[1].querySelectorAll('figcaption')],[tr.laundry.captions[1]])}
-      text(q('[data-screen="trash"] .page-title'),tr.trash.title); text(q('[data-screen="trash"] .page-sub'),tr.trash.sub); const trashCards=qa('[data-screen="trash"] article.card'); if(trashCards[0]){text(trashCards[0].querySelector('h3'),tr.trash.basis);text(trashCards[0].querySelector('.mini-btn'),tr.trash.types);eachText([...trashCards[0].querySelectorAll('.guide-item span')],tr.trash.items);eachText([...trashCards[0].querySelectorAll('figcaption')],tr.trash.captions)}; [1,2,3].forEach((idx,i)=>{const card=trashCards[idx],data=tr.trash.cards[i];if(card&&data){text(card.querySelector('h3'),data[0]);text(card.querySelector('p'),data[1]);eachText([...card.querySelectorAll('figcaption')],data[2])}});
+      text(q('[data-screen="trash"] .page-title'),tr.trash.title); text(q('[data-screen="trash"] .page-sub'),tr.trash.sub); const trashCard=q('[data-screen="trash"] .trash-guide-card'); if(trashCard){text(trashCard.querySelector('h3'),tr.trash.basis);eachText([...trashCard.querySelectorAll('.steps li')],tr.trash.items);eachText([...trashCard.querySelectorAll('figcaption')],tr.trash.captions)};
       text(q('.chat-head h2'),tr.chat.title); const firstBot=q('.chat-log .msg.bot:first-child'); if(firstBot&&!q('.chat-log .msg.user'))text(firstBot,tr.chat.hello); text(q('.chat-note'),tr.chat.note); const input=q('#chatInput'); if(input)input.placeholder=tr.chat.placeholder; text(q('#toast'),tr.copied);
     }
     const RESTAURANT_SOURCE='https://juas.notion.site/4091068d724948cdaa4a1d63e36a898a?v=7696891d8c864357b976582f859d9cfd';
