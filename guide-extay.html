@@ -602,6 +602,14 @@ body.guidebook-fullscreen-open{overflow:hidden;touch-action:none}
 .checkin-accordion[open] .airport-summary{border-bottom:1px solid rgba(216,198,180,.62)}
 .checkin-accordion[open] .airport-chevron{transform:rotate(180deg)}
 .checkin-accordion .airport-card-body{padding:18px}
+.checkin-locker-card{background:#7b634f;border-color:#7b634f}
+.checkin-locker-card .airport-summary{background:#7b634f;color:#fff}
+.checkin-locker-card .airport-icon{background:#fffaf4;color:#7b634f}
+.checkin-locker-card .airport-copy small{color:rgba(255,255,255,.72)}
+.checkin-locker-card .airport-copy b{color:#fff}
+.checkin-locker-card .airport-chevron{color:#fff}
+.checkin-locker-card[open] .airport-summary{border-bottom-color:rgba(255,255,255,.24)}
+.checkin-locker-card .airport-card-body{background:#fffaf4}
 .checkin-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
 .checkin-fact{border-radius:16px;background:#f3eadf;padding:15px}
 .checkin-fact small{display:block;margin-bottom:6px;color:#8a7663;font-size:11px;font-weight:800;text-transform:uppercase}
@@ -962,7 +970,7 @@ body .numeric-font{font-family:var(--font-ko)!important;font-variant-numeric:tab
             </div>
           </section>
 
-              <details class="checkin-accordion">
+              <details class="checkin-accordion checkin-locker-card">
                 <summary class="airport-summary">
                   <span class="airport-icon"><span class="mi">luggage</span></span>
                   <span class="airport-copy"><small>Luggage Storage</small><b>녹사평역 코인락커 안내</b></span>
