@@ -525,6 +525,8 @@ body.guidebook-fullscreen-open{overflow:hidden;touch-action:none}
 .restaurant-search input{width:100%;border:0;background:transparent;outline:0;font:inherit;font-size:15px;color:#221b15}
 .restaurant-summary{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:14px;color:#6f5f50;font-size:13px}
 .restaurant-summary b{font-size:15px;color:#221b15}
+.restaurant-pick-intro{margin:0 0 14px;padding:15px 16px;border-left:3px solid #7b634f;background:#efe4d6;color:#5f4f41;font-size:12px;line-height:1.6;word-break:keep-all}
+.restaurant-pick-intro small{display:block;margin-bottom:4px;color:#7b634f;font-size:9px;font-weight:900;text-transform:uppercase}
 .restaurant-source{font-weight:900;color:#7b634f}
 .restaurants-list{display:grid;gap:12px}
 .restaurant-card{overflow:hidden;background:#fffaf4;border:1px solid rgba(216,198,180,.72);border-radius:22px;box-shadow:0 12px 32px rgba(58,43,30,.08)}
@@ -535,6 +537,8 @@ body.guidebook-fullscreen-open{overflow:hidden;touch-action:none}
 .restaurant-name{margin:0;font-size:19px;line-height:1.28;color:#221b15}
 .restaurant-badge{flex:0 0 auto;border-radius:999px;background:#efe4d6;color:#7b634f;padding:7px 10px;font-size:10px;font-weight:900;white-space:nowrap}
 .restaurant-note{margin:0 0 12px;color:#665646;font-size:13px;line-height:1.55;word-break:keep-all}
+.restaurant-review{display:flex;align-items:center;gap:6px;margin:-2px 0 12px;color:#7b634f;font-size:11px;font-weight:800;line-height:1.45}
+.restaurant-review .mi{font-size:16px}
 .restaurant-tags{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:14px}
 .restaurant-tags>span{border-radius:999px;background:#f3eadf;color:#6b5a4a;padding:6px 9px;font-size:11px;font-weight:800}
 .restaurant-actions{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
@@ -860,6 +864,7 @@ body .wifi-network-card strong,body .wifi-network-card strong *{font-weight:800!
 .guide-detail-screen .device-card-stack .steps li{display:block;position:relative;padding:14px 0 14px 39px;overflow-wrap:anywhere;word-break:keep-all}
 .guide-detail-screen .device-card-stack .steps li:last-child{padding:14px 0 14px 39px}
 .guide-detail-screen .device-card-stack .steps li:before{position:absolute;left:0;top:14px}
+.trash-bin-crop{width:100%;height:220px;background:url('assets/extay/crops/trash-current.jpg') center 32%/cover no-repeat}
 
 /* Font lock: Latin uses Oxanium, Korean falls back to Noto Sans KR, and numeric runs are explicitly Noto Sans KR. */
 body,button,input,textarea,select{font-family:var(--font-main)!important;font-synthesis-weight:none;letter-spacing:0!important}
@@ -969,7 +974,7 @@ body .numeric-font{font-family:var(--font-ko)!important;font-variant-numeric:tab
                 <span class="nearby-card-copy"><span class="nearby-card-label">비건 · 가까움</span><strong>Vegetus (베제투스)</strong><p>숙소 근처 비건 식당. 가볍게 식사하기 좋습니다.</p><span class="mi" aria-hidden="true">arrow_forward</span></span>
               </a>
             </div>
-            <button class="nearby-all" type="button" data-go="restaurants"><span id="nearbyPreviewAll">호스트 추천 맛집 35곳 보기</span><span class="mi" aria-hidden="true">arrow_forward</span></button>
+            <button class="nearby-all" type="button" data-go="restaurants"><span id="nearbyPreviewAll">Host's Pick 7곳 보기</span><span class="mi" aria-hidden="true">arrow_forward</span></button>
           </div>
         </section>
 
@@ -1004,7 +1009,7 @@ body .numeric-font{font-family:var(--font-ko)!important;font-variant-numeric:tab
               <div class="checkin-info-row"><span class="checkin-row-icon"><span class="mi">location_on</span></span><small>주소</small><div><strong>서울시 용산구 신흥로 59, 2층</strong></div></div>
               <div class="checkin-info-row"><span class="checkin-row-icon"><span class="mi">key</span></span><small>입실 방식</small><div><strong>비대면 셀프 체크인</strong></div></div>
               <div class="checkin-info-row"><span class="checkin-row-icon"><span class="mi">local_parking</span></span><small>주차</small><div><strong>건물 주차 불가</strong><p>주변 유료 공영주차장을 이용해 주세요.</p></div></div>
-              <div class="checkin-info-row"><span class="checkin-row-icon"><span class="mi">luggage</span></span><small>짐 보관</small><div><strong>체크인 전 · 체크아웃 후 짐 보관 불가</strong></div></div>
+              <div class="checkin-info-row"><span class="checkin-row-icon"><span class="mi">no_luggage</span></span><small>짐 보관</small><div><strong>체크인 전 · 체크아웃 후 짐 보관 불가</strong></div></div>
             </div>
           </section>
 
@@ -1065,8 +1070,8 @@ body .numeric-font{font-family:var(--font-ko)!important;font-variant-numeric:tab
                 </div>
                 <div class="airport-card-body">
                   <div class="checkout-message">
-                    <p>아쉬운 점은 에어비앤비 호스트 메시지로 알려주시면 귀담아듣겠습니다.</p>
                     <p><strong>별 5개와 추천 리뷰</strong>를 남겨주시면 호스트에게 큰 힘이 됩니다.</p>
+                    <p>아쉬운 점은 에어비앤비 호스트 메시지로 알려주시면 귀담아 듣겠습니다.</p>
                   </div>
                   <div class="checkout-list">
                     <div class="checkout-row"><span class="checkout-row-icon" aria-hidden="true"><span class="mi">countertops</span></span><p>설거지 및 쓰레기 분리수거를 해주세요.</p></div>
@@ -1360,13 +1365,14 @@ body .numeric-font{font-family:var(--font-ko)!important;font-variant-numeric:tab
           <p class="section-kicker">NEARBY RESTAURANTS</p>
           <h2>주변 맛집</h2>
         </article>
+        <p class="restaurant-pick-intro"><small>HOST'S PICK · 7</small>네이버 지도에서 확인되는 평점과 방문자·블로그 리뷰량, 후기 반응을 함께 비교해 숙소 주변 추천 식당만 간결하게 추렸습니다.</p>
         <div class="restaurants-controls">
           <div class="restaurants-filter" id="restaurantFilters" aria-label="맛집 카테고리"></div>
           <label class="restaurant-search"><span class="mi">search</span><input id="restaurantSearch" type="search" placeholder="이름, 메뉴, 카테고리 검색"></label>
         </div>
         <div class="restaurant-summary">
           <b id="restaurantCount">0곳</b>
-          <a class="restaurant-source" href="https://juas.notion.site/4091068d724948cdaa4a1d63e36a898a?v=7696891d8c864357b976582f859d9cfd" target="_blank" rel="noopener">원본 리스트</a>
+          <span>카테고리별 보기</span>
         </div>
         <div class="restaurants-list" id="restaurantList"></div>
         <div class="restaurants-empty" id="restaurantEmpty">조건에 맞는 맛집이 없습니다. 카테고리나 검색어를 다시 선택해 주세요.</div>
@@ -1476,7 +1482,7 @@ body .numeric-font{font-family:var(--font-ko)!important;font-variant-numeric:tab
         </div>
       </section>
 
-      <section class="screen guide-detail-screen" data-screen="trash"><article class="guide-detail-hero trash-hero"><p class="section-kicker">TRASH GUIDE</p><h2 class="page-title">쓰레기 배출</h2></article><div class="device-card-stack"><article class="device trash-guide-card"><div class="device-header"><span class="circle"><span class="mi">delete_sweep</span></span><div><h3>분리수거 안내</h3></div></div><div class="device-body"><ol class="steps"><li>일반 쓰레기 및 재활용 모두 베란다에 비치된 쓰레기통에 넣어 주세요.</li><li>음식물 쓰레기는 부엌 싱크대 위 음식물 쓰레기통에 버려 주세요.</li><li>장기 숙박 중 음식물 냄새가 나면 1층 입구 주황색 통에 음식물을 배출해 주세요.</li></ol><div class="photo-grid single"><figure><img src="assets/extay/crops/trash-current.jpg" alt="현재 쓰레기통 사진"><figcaption>현재 쓰레기통</figcaption></figure></div></div></article></div></section>
+      <section class="screen guide-detail-screen" data-screen="trash"><article class="guide-detail-hero trash-hero"><p class="section-kicker">TRASH GUIDE</p><h2 class="page-title">쓰레기 배출</h2></article><div class="device-card-stack"><article class="device trash-guide-card"><div class="device-header"><span class="circle"><span class="mi">delete_sweep</span></span><div><h3>분리수거 안내</h3></div></div><div class="device-body"><ol class="steps"><li>일반 쓰레기 및 재활용 모두 베란다에 비치된 쓰레기통에 넣어 주세요.</li><li>음식물 쓰레기는 부엌 싱크대 위 음식물 쓰레기통에 버려 주세요.</li><li>장기 숙박 중 음식물 냄새가 나면 1층 입구 주황색 통에 음식물을 배출해 주세요.</li></ol><div class="photo-grid single"><figure class="trash-bin-photo"><div class="trash-bin-crop" role="img" aria-label="베란다 쓰레기통"></div><figcaption>베란다 쓰레기통</figcaption></figure></div></div></article></div></section>
     </main>
 
     <nav class="bottom"><button class="tab active" data-go="home"><span class="mi">home</span><span>홈</span></button><button class="tab" data-go="wifi"><span class="mi">wifi</span><span>와이파이</span></button><button class="tab" data-go="appliances"><span class="mi">robot_2</span><span>사용법</span></button><button class="tab" data-go="laundry"><span class="mi">local_laundry_service</span><span>세탁</span></button><button class="tab" data-go="trash"><span class="mi">delete</span><span>쓰레기</span></button></nav>
@@ -1557,7 +1563,7 @@ body .numeric-font{font-family:var(--font-ko)!important;font-variant-numeric:tab
           induction:{title:'공용 화장실 · 루프탑',small:'',steps:['일행이 많아 화장실이 부족할 때는 1층 레스토랑 뒤편 공용 화장실을 이용할 수 있습니다.','비밀번호는 *7003*입니다.','루프탑에서는 남산타워 뷰를 볼 수 있습니다. 늦은 시간에는 소음에 유의해 주세요.']}
         },
         laundry:{title:'세탁 안내',sub:'세탁기와 건조기 사용법을 확인하세요.',washerTitle:'세탁기',dryerTitle:'건조기',washerSteps:['세탁기는 전원 버튼을 누른 뒤 원하는 코스를 선택하세요.','코스 선택 후 시작/일시정지 버튼을 눌러 세탁을 시작하세요.','세탁 전 주머니 속 물건을 확인해 주세요.','사용 후에는 문을 살짝 열어 내부를 말려 주세요.','밤 시간에는 진동과 소음에 유의해 주세요.'],dryerSteps:['건조기 전원 버튼을 누른 뒤 원하는 코스를 선택하세요.','코스 선택 후 시작/일시정지 버튼을 눌러 건조를 시작하세요.','건조 전 주머니 속 물건을 확인해 주세요.','밤 시간에는 진동과 소음에 유의해 주세요.'],captions:['세탁기','건조기']},
-        trash:{title:'쓰레기 배출',sub:'음식물, 재활용, 일반 쓰레기 위치가 다릅니다. 장기 숙박 시 냄새가 나지 않도록 안내에 따라 배출해 주세요.',basis:'분리수거 안내',types:'2종류',items:['일반 쓰레기 및 재활용 모두 베란다에 비치된 쓰레기통에 넣어 주세요.','음식물 쓰레기는 부엌 싱크대 위 음식물 쓰레기통에 버려 주세요.','장기 숙박 중 음식물 냄새가 나면 1층 입구 주황색 통에 음식물을 배출해 주세요.'],captions:['현재 쓰레기통'],cards:[]},
+        trash:{title:'쓰레기 배출',sub:'음식물, 재활용, 일반 쓰레기 위치가 다릅니다. 장기 숙박 시 냄새가 나지 않도록 안내에 따라 배출해 주세요.',basis:'분리수거 안내',types:'2종류',items:['일반 쓰레기 및 재활용 모두 베란다에 비치된 쓰레기통에 넣어 주세요.','음식물 쓰레기는 부엌 싱크대 위 음식물 쓰레기통에 버려 주세요.','장기 숙박 중 음식물 냄새가 나면 1층 입구 주황색 통에 음식물을 배출해 주세요.'],captions:['베란다 쓰레기통'],cards:[]},
         chat:{title:'AI 컨시어지',close:'닫기',hello:'안녕하세요. 익스테이 맨션 해방촌 AI 컨시어지입니다. 와이파이, 체크인·체크아웃, 위치, 주차, 숙소 규칙, TV·OTT, 온수·난방, 세탁, 쓰레기 배출 방법을 물어보세요.',note:'도어락 개인 키 번호와 긴급 상황은 Airbnb/호스트 메시지를 확인해 주세요.',placeholder:'질문을 입력하세요',typing:'답변 중...'}
       },
       en:{
@@ -1627,10 +1633,10 @@ body .numeric-font{font-family:var(--font-ko)!important;font-variant-numeric:tab
       trash:{title:'ゴミ出し',sub:'生ゴミ、リサイクル、一般ゴミの場所は異なります。長期滞在ではにおいが出ないよう案内に従ってください。',basis:'分別基準',types:'2種類',items:['一般ゴミとリサイクルはベランダにあるゴミ箱へまとめて入れてください。','生ゴミはキッチンシンク上の生ゴミ箱に捨ててください。','長期滞在中に生ゴミのにおいが出たら、1階入口のオレンジ色の箱をご利用ください。'],captions:['現在のゴミ箱'],cards:[]},
       chat:{title:'AIコンシェルジュ',close:'閉じる',hello:'こんにちは。EXTAY 海放村民宿のAIコンシェルジュです。Wi‑Fi、チェックイン/チェックアウト、場所、駐車、宿泊ルール、TV·OTT、給湯·暖房、ランドリー、ゴミ出しについてお尋ねください。',note:'個人用ドアコードや緊急時は Airbnb / ホストのメッセージをご確認ください。',placeholder:'質問を入力してください',typing:'回答中...'}
     };
-    Object.assign(uiText.ko,{homeGalleryFeature:{count:'01/04',title:'거실 라운지',desc:'따뜻한 조명과 편안한 소파가 있는 메인 거실 공간입니다.'},getting:{kicker:'GETTING HERE',title:'위치와 교통',name:'EXTAY Mansion Haebangchon',address:'서울시 용산구 신흥로 59, 2층',transit:'녹사평역 2번 출구, 도보 약 15분',naver:'네이버 지도',google:'Google Maps',airportKicker:'AIRPORT ACCESS',airportTitle:'공항에서 EXTAY까지',restaurantKicker:'NEARBY RESTAURANTS',restaurantTitle:'주변 맛집',restaurantAll:'호스트 추천 맛집 35곳 보기',restaurants:[['양식 · 파스타','semolina club (세몰리나 클럽)','해방촌 도보권의 캐주얼 양식 맛집입니다.'],['비건 · 가까움','Vegetus (베제투스)','숙소 근처 비건 식당. 가볍게 식사하기 좋습니다.']]}});
-    Object.assign(uiText.en,{homeGalleryFeature:{count:'01/04',title:'Living Lounge',desc:'The main living space with warm lighting and a comfortable sofa.'},getting:{kicker:'GETTING HERE',title:'Location & Transportation',name:'EXTAY Mansion Haebangchon',address:'2F, 59 Sinheung-ro, Yongsan-gu, Seoul',transit:'Noksapyeong Station Exit 2, about 15 minutes on foot',naver:'Naver Map',google:'Google Maps',airportKicker:'AIRPORT ACCESS',airportTitle:'From the airport to EXTAY',restaurantKicker:'NEARBY RESTAURANTS',restaurantTitle:'Nearby Restaurants',restaurantAll:'View 35 host-recommended restaurants',restaurants:[['Western · Pasta','semolina club','A casual Western restaurant within walking distance in Haebangchon.'],['Vegan · Nearby','Vegetus','A nearby vegan restaurant that is great for a light meal.']]}});
-    Object.assign(uiText.zh,{homeGalleryFeature:{count:'01/04',title:'客厅休息区',desc:'配有温暖灯光和舒适沙发的主客厅空间。'},getting:{kicker:'GETTING HERE',title:'位置与交通',name:'EXTAY Mansion Haebangchon',address:'首尔特别市龙山区新兴路59号 2楼',transit:'绿莎坪站2号出口，步行约15分钟',naver:'Naver 地图',google:'Google Maps',airportKicker:'AIRPORT ACCESS',airportTitle:'从机场前往 EXTAY',restaurantKicker:'NEARBY RESTAURANTS',restaurantTitle:'周边美食',restaurantAll:'查看房东推荐的35家餐厅',restaurants:[['西餐 · 意面','semolina club','位于解放村步行范围内的休闲西餐厅。'],['纯素 · 附近','Vegetus','住宿附近的纯素餐厅，适合轻松用餐。']]}});
-    Object.assign(uiText.ja,{homeGalleryFeature:{count:'01/04',title:'リビングラウンジ',desc:'温かな照明と快適なソファのあるメインリビングです。'},getting:{kicker:'GETTING HERE',title:'アクセス・交通',name:'EXTAY Mansion Haebangchon',address:'ソウル特別市龍山区新興路59、2階',transit:'緑莎坪駅2番出口から徒歩約15分',naver:'Naver マップ',google:'Google Maps',airportKicker:'AIRPORT ACCESS',airportTitle:'空港からEXTAYまで',restaurantKicker:'NEARBY RESTAURANTS',restaurantTitle:'周辺グルメ',restaurantAll:'ホストおすすめの35店を見る',restaurants:[['洋食 · パスタ','semolina club','解放村の徒歩圏内にあるカジュアルな洋食店です。'],['ヴィーガン · 近隣','Vegetus','宿の近くにある、軽い食事にもおすすめのヴィーガン店です。']]}});
+    Object.assign(uiText.ko,{homeGalleryFeature:{count:'01/04',title:'거실 라운지',desc:'따뜻한 조명과 편안한 소파가 있는 메인 거실 공간입니다.'},getting:{kicker:'GETTING HERE',title:'위치와 교통',name:'EXTAY Mansion Haebangchon',address:'서울시 용산구 신흥로 59, 2층',transit:'녹사평역 2번 출구, 도보 약 15분',naver:'네이버 지도',google:'Google Maps',airportKicker:'AIRPORT ACCESS',airportTitle:'공항에서 EXTAY까지',restaurantKicker:'NEARBY RESTAURANTS',restaurantTitle:'주변 맛집',restaurantAll:"Host's Pick 7곳 보기",restaurants:[['양식 · 파스타','semolina club (세몰리나 클럽)','해방촌 도보권의 캐주얼 양식 맛집입니다.'],['비건 · 가까움','Vegetus (베제투스)','숙소 근처 비건 식당. 가볍게 식사하기 좋습니다.']]}});
+    Object.assign(uiText.en,{homeGalleryFeature:{count:'01/04',title:'Living Lounge',desc:'The main living space with warm lighting and a comfortable sofa.'},getting:{kicker:'GETTING HERE',title:'Location & Transportation',name:'EXTAY Mansion Haebangchon',address:'2F, 59 Sinheung-ro, Yongsan-gu, Seoul',transit:'Noksapyeong Station Exit 2, about 15 minutes on foot',naver:'Naver Map',google:'Google Maps',airportKicker:'AIRPORT ACCESS',airportTitle:'From the airport to EXTAY',restaurantKicker:'NEARBY RESTAURANTS',restaurantTitle:'Nearby Restaurants',restaurantAll:"View Host's Pick 7",restaurants:[['Western · Pasta','semolina club','A casual Western restaurant within walking distance in Haebangchon.'],['Vegan · Nearby','Vegetus','A nearby vegan restaurant that is great for a light meal.']]}});
+    Object.assign(uiText.zh,{homeGalleryFeature:{count:'01/04',title:'客厅休息区',desc:'配有温暖灯光和舒适沙发的主客厅空间。'},getting:{kicker:'GETTING HERE',title:'位置与交通',name:'EXTAY Mansion Haebangchon',address:'首尔特别市龙山区新兴路59号 2楼',transit:'绿莎坪站2号出口，步行约15分钟',naver:'Naver 地图',google:'Google Maps',airportKicker:'AIRPORT ACCESS',airportTitle:'从机场前往 EXTAY',restaurantKicker:'NEARBY RESTAURANTS',restaurantTitle:'周边美食',restaurantAll:'查看房东精选7家餐厅',restaurants:[['西餐 · 意面','semolina club','位于解放村步行范围内的休闲西餐厅。'],['纯素 · 附近','Vegetus','住宿附近的纯素餐厅，适合轻松用餐。']]}});
+    Object.assign(uiText.ja,{homeGalleryFeature:{count:'01/04',title:'リビングラウンジ',desc:'温かな照明と快適なソファのあるメインリビングです。'},getting:{kicker:'GETTING HERE',title:'アクセス・交通',name:'EXTAY Mansion Haebangchon',address:'ソウル特別市龍山区新興路59、2階',transit:'緑莎坪駅2番出口から徒歩約15分',naver:'Naver マップ',google:'Google Maps',airportKicker:'AIRPORT ACCESS',airportTitle:'空港からEXTAYまで',restaurantKicker:'NEARBY RESTAURANTS',restaurantTitle:'周辺グルメ',restaurantAll:'ホスト厳選7店を見る',restaurants:[['洋食 · パスタ','semolina club','解放村の徒歩圏内にあるカジュアルな洋食店です。'],['ヴィーガン · 近隣','Vegetus','宿の近くにある、軽い食事にもおすすめのヴィーガン店です。']]}});
     Object.assign(uiText.ko,{stayResident:{title:'투숙 중 자주 찾는 정보',items:['TV · 난방 · 루프탑 사용 안내','세탁기 · 건조기 사용법','쓰레기 배출 안내'],contact:'호스트에게 연락하기'}});
     Object.assign(uiText.en,{stayResident:{title:'Frequently Used During Your Stay',items:['TV · heating · rooftop guide','Washer · dryer instructions','Trash disposal guide'],contact:'Contact the host'}});
     Object.assign(uiText.zh,{stayResident:{title:'入住期间常用信息',items:['电视 · 暖气 · 屋顶使用指南','洗衣机 · 烘干机使用方法','垃圾投放指南'],contact:'联系房东'}});
@@ -1723,50 +1729,22 @@ body .numeric-font{font-family:var(--font-ko)!important;font-variant-numeric:tab
       text(q('.chat-head h2'),tr.chat.title); const firstBot=q('.chat-log .msg.bot:first-child'); if(firstBot&&!q('.chat-log .msg.user'))text(firstBot,tr.chat.hello); text(q('.chat-note'),tr.chat.note); const input=q('#chatInput'); if(input)input.placeholder=tr.chat.placeholder; text(q('#toast'),tr.copied);
     }
     const RESTAURANT_SOURCE='https://juas.notion.site/4091068d724948cdaa4a1d63e36a898a?v=7696891d8c864357b976582f859d9cfd';
-    const RESTAURANT_CATEGORIES=[['all','전체'],['korean','한식'],['western','양식'],['burger','버거·타코'],['brunch','브런치'],['cafe','카페'],['dessert','디저트'],['bar','술집'],['asian','아시안'],['vegan','비건']];
+    const RESTAURANT_CATEGORIES=[['all','전체'],['morning','아침·브런치'],['korean','한식'],['casual','캐주얼'],['dining','특별한 식사'],['dessert','디저트']];
     const RESTAURANTS=[
-      {name:'semolina club (세몰리나 클럽)',cat:'western',label:'양식',tags:['파스타','캐주얼'],note:'해방촌 도보권의 캐주얼 양식 맛집입니다.',href:'https://juas.notion.site/semolina-club-1c920d6eecb14bfcb012d1141caac8a9?pvs=25'},
-      {name:'Vegetus (베제투스)',cat:'vegan',label:'비건',tags:['비건식당','가까움'],note:'숙소 근처 비건 식당. 가볍게 식사하기 좋습니다.',href:'https://juas.notion.site/Vegetus-8c75c27831a74ec08a2a39b314de2b9d?pvs=25'},
-      {name:'aeil (애일)',cat:'western',label:'다이닝',tags:['해방촌','분위기'],note:'조용한 분위기의 동네 다이닝으로 보기 좋은 곳입니다.',href:'https://juas.notion.site/aeil-7b7227e17ed24e42871273fca66cb35a?pvs=25'},
-      {name:'NOSTRESSBURGER (노스트레스버거)',cat:'burger',label:'버거',tags:['버거','캐주얼'],note:'부담 없이 빠르게 먹기 좋은 버거집입니다.',href:'https://juas.notion.site/NOSTRESSBURGER-e5c98aa175bb4c3bbc2ab3440d01dc8a?pvs=25'},
-      {name:'COMME MOA 꼼모아',cat:'western',label:'프렌치',tags:['미쉐린가이드2023','프렌치'],note:'미쉐린 가이드 2023에 소개된 프렌치 레스토랑입니다.',href:'https://juas.notion.site/COMME-MOA-2023-284d3aa5f948459fa6c9b40d74d6770f?pvs=25'},
-      {name:'코타티',cat:'dessert',label:'젤라또',tags:['아이스크림','디저트'],note:'식사 후 들르기 좋은 젤라또 매장입니다.',href:'https://juas.notion.site/icecream-73e91c6707644be08b69a6aa92eec828?pvs=25'},
-      {name:'성광대도',cat:'asian',label:'중식',tags:['중식','해방촌'],note:'해방촌에서 중식이 당길 때 확인하기 좋은 선택지입니다.',href:'https://juas.notion.site/b1bb8f0006e44e6685a024537ba91559?pvs=25'},
-      {name:'자코비 버거',cat:'burger',label:'버거',tags:['수제버거','캐주얼'],note:'이태원·해방촌권에서 유명한 버거집입니다.',href:'https://juas.notion.site/bdd0957f72f14ff6a742f4d31422fa57?pvs=25'},
-      {name:'잠수교 삼겹살',cat:'korean',label:'삼겹살',tags:['삼겹살','고기'],note:'고기 식사를 원할 때 선택하기 좋은 삼겹살집입니다.',href:'https://juas.notion.site/Pork-belly-c99ae21b876a496f9cf0ec7e04513f1d?pvs=25'},
-      {name:'Ori (해방촌 오리)',cat:'korean',label:'오리',tags:['오리','한식'],note:'오리 요리를 찾는다면 확인해 볼 만한 곳입니다.',href:'https://juas.notion.site/Ori-ab16e4503e004f26b1e3f79a308d20ac?pvs=25'},
-      {name:'OPATO (오파토)',cat:'brunch',label:'브런치',tags:['브런치','오전 8시'],note:'오전 8시부터 이용 가능한 브런치 선택지입니다.',href:'https://juas.notion.site/OPATO-am-8-00-71dd6e4886374878b9d86caad544fb33?pvs=25'},
-      {name:'산솔',cat:'bar',label:'한식주점',tags:['한식주점','저녁'],note:'저녁 시간에 한식 안주와 술을 즐기기 좋은 곳입니다.',href:'https://juas.notion.site/a-Korean-restaurant-81cb8fe3009c4e3c99afd13cdc620a69?pvs=25'},
-      {name:'소월솥밥',cat:'korean',label:'솥밥',tags:['솥밥','한식'],note:'따뜻한 한식 한 끼가 필요할 때 좋은 솥밥집입니다.',href:'https://juas.notion.site/906cea07e63a4c7f9fe3a5ce3abb1a23?pvs=25'},
-      {name:'해방식당',cat:'korean',label:'한식',tags:['한식','식사'],note:'동네 식당 느낌의 한식 메뉴를 찾을 때 좋습니다.',href:'https://juas.notion.site/64a090a4da9247ac9269e44f12ac3174?pvs=25'},
-      {name:'나무솥밥경리단',cat:'korean',label:'솥밥',tags:['솥밥','경리단'],note:'경리단길 방향의 솥밥 식당입니다.',href:'https://juas.notion.site/008065b48d534518a39879205e673605?pvs=25'},
-      {name:'명동교자 이태원점',cat:'korean',label:'칼국수',tags:['칼국수','만두'],note:'칼국수와 만두가 생각날 때 안정적인 선택지입니다.',href:'https://juas.notion.site/d5e46b1a53f3479189c21764b7ae2bf1?pvs=25'},
-      {name:'걸구네',cat:'korean',label:'고기',tags:['삼겹살','막창'],note:'삼겹살과 막창을 먹기 좋은 고기집입니다.',href:'https://juas.notion.site/cb4f9b6d3dea431fb85f5c2bf1986c73?pvs=25'},
-      {name:'남매국밥',cat:'korean',label:'국밥',tags:['국밥','든든함'],note:'든든한 국밥 한 그릇이 필요할 때 추천됩니다.',href:'https://juas.notion.site/0f91e8fd076e44caa4f4c398db42731a?pvs=25'},
-      {name:'마루',cat:'korean',label:'한식세트',tags:['한식세트','정식'],note:'깔끔한 한식 세트 메뉴를 찾을 때 좋습니다.',href:'https://juas.notion.site/05f94fed691947ee9477f7b97c122a5d?pvs=25'},
-      {name:'보마',cat:'korean',label:'수육',tags:['수육','편육'],note:'수육과 편육 메뉴를 찾는 게스트에게 맞는 곳입니다.',href:'https://juas.notion.site/cd68ac40d98d468395bded3b57442962?pvs=25'},
-      {name:'아담스타코',cat:'burger',label:'타코',tags:['타코','멕시칸'],note:'가볍고 캐주얼한 타코 메뉴를 즐길 수 있습니다.',href:'https://juas.notion.site/2052bb90866744fbb182007343ee0910?pvs=25'},
-      {name:'노이이탈리안하우스',cat:'western',label:'이탈리안',tags:['이탈리안','양식'],note:'이탈리안 메뉴를 원할 때 보기 좋은 양식집입니다.',href:'https://juas.notion.site/4102217890fe442db9a4ce867b55c2a2?pvs=25'},
-      {name:'hmmmarket (흠마켓)',cat:'brunch',label:'브런치',tags:['브런치','카페'],note:'브런치와 가벼운 카페 메뉴를 함께 보기 좋은 곳입니다.',href:'https://juas.notion.site/hmmmarket-_-303ec5a0b5764ec8bbe38fa4cfc914bb?pvs=25'},
-      {name:'차경',cat:'bar',label:'와인',tags:['와인집','저녁'],note:'와인과 함께 조용한 저녁을 보내기 좋은 선택지입니다.',href:'https://juas.notion.site/ac83dac5cb5b4715a2d5c7cbbf52cfbe?pvs=25'},
-      {name:'심야식당기억',cat:'bar',label:'이자카야',tags:['이자카야','심야'],note:'늦은 시간 가볍게 술과 안주를 찾을 때 좋습니다.',href:'https://juas.notion.site/c27368401a2d469ba690dbd304b87357?pvs=25'},
-      {name:'팟카파우',cat:'asian',label:'태국음식',tags:['태국음식','아시안'],note:'태국음식이 당길 때 확인하기 좋은 곳입니다.',href:'https://juas.notion.site/3ea1530c3a06422b8461ae9268285cc6?pvs=25'},
-      {name:'테이블뷰',cat:'western',label:'양식',tags:['양식','다이닝'],note:'양식 메뉴와 분위기 있는 식사를 찾을 때 좋습니다.',href:'https://juas.notion.site/d7a3394309c24e188b136262fbd9343f?pvs=25'},
-      {name:'한남소관',cat:'asian',label:'홍콩식포차',tags:['홍콩식','포차'],note:'홍콩식 포차 분위기의 아시안 메뉴를 즐길 수 있습니다.',href:'https://juas.notion.site/a842a8369b384c7fb1c063c4db13dfc6?pvs=25'},
-      {name:'야상해',cat:'asian',label:'딤섬',tags:['딤섬','중식'],note:'딤섬이 생각날 때 확인하기 좋은 곳입니다.',href:'https://juas.notion.site/4cc1b8416d6e462ea1fe9a370ac68fc8?pvs=25'},
-      {name:'토터스',cat:'dessert',label:'디저트',tags:['디저트','카페'],note:'디저트를 즐기기 좋은 카페형 매장입니다.',href:'https://juas.notion.site/9ccd72f87b504452851f0a8e44284b77?pvs=25'},
-      {name:'오잇',cat:'dessert',label:'디저트',tags:['디저트','카페'],note:'달콤한 디저트가 필요할 때 들르기 좋습니다.',href:'https://juas.notion.site/46b0d4267b5b4f80b83f53eb8827e8bb?pvs=25'},
-      {name:'쉘터해방',cat:'dessert',label:'디저트',tags:['디저트','해방촌'],note:'해방촌에서 디저트를 찾을 때 좋은 선택지입니다.',href:'https://juas.notion.site/29810e7230194871b98e705f224cf51f?pvs=25'},
-      {name:'에이티익스프레스 해방촌점',cat:'cafe',label:'카페',tags:['레몬에이드','카페'],note:'레몬에이드 등 가볍게 마실 메뉴를 찾을 때 좋습니다.',href:'https://juas.notion.site/2c0417cbfeb14f469c91aebecfde15e9?pvs=25'},
-      {name:'카페올리버 해방촌',cat:'cafe',label:'커피',tags:['커피맛집','카페'],note:'커피 맛집으로 적어둔 카페입니다.',href:'https://juas.notion.site/e2d247b44bb64b5d9c8a306f0aa526a4?pvs=25'},
-      {name:'미니마이즈',cat:'dessert',label:'디저트',tags:['쌀푸딩','디저트'],note:'쌀푸딩 등 디저트 메뉴가 있는 곳입니다.',href:'https://juas.notion.site/647ca52d2f26405fafb70a9b1fe25481?pvs=25'}
+      {name:'OPATO (오파토)',cat:'morning',label:'브런치',tags:['아침 8시','브런치'],review:'네이버 리뷰 상위 · 아침 식사 추천',note:'아침부터 이용할 수 있어 체크아웃 전 브런치로 좋은 해방촌 인기 매장입니다.',img:'restaurant-11.jpg',href:'https://juas.notion.site/OPATO-am-8-00-71dd6e4886374878b9d86caad544fb33?pvs=25'},
+      {name:'잠수교 삼겹살',cat:'korean',label:'삼겹살',tags:['냉삼','한식'],review:'네이버 리뷰 다수 · 웨이팅 인기',note:'레트로한 분위기에서 냉동 삼겹살과 한식 반찬을 즐기기 좋은 곳입니다.',img:'restaurant-09.jpg',href:'https://juas.notion.site/Pork-belly-c99ae21b876a496f9cf0ec7e04513f1d?pvs=25'},
+      {name:'NOSTRESSBURGER (노스트레스버거)',cat:'casual',label:'버거',tags:['치즈버거','캐주얼'],review:'네이버 리뷰 다수 · 대표 메뉴 인기',note:'메뉴가 간결하고 회전이 빨라 부담 없이 들르기 좋은 해방촌 버거집입니다.',img:'restaurant-04.jpg',href:'https://juas.notion.site/NOSTRESSBURGER-e5c98aa175bb4c3bbc2ab3440d01dc8a?pvs=25'},
+      {name:'Vegetus (베제투스)',cat:'casual',label:'비건',tags:['숙소 바로 옆','비건'],review:'네이버 후기 호평 · 접근성 최상',note:'숙소 건물에 있어 가장 가깝고, 비건 버거와 브리또 볼을 편하게 즐길 수 있습니다.',img:'restaurant-02.jpg',href:'https://juas.notion.site/Vegetus-8c75c27831a74ec08a2a39b314de2b9d?pvs=25'},
+      {name:'COMME MOA (꼼모아)',cat:'dining',label:'프렌치',tags:['프렌치','특별한 저녁'],review:'네이버 후기 호평 · 미쉐린 가이드 이력',note:'조용한 분위기에서 특별한 저녁 식사를 즐기고 싶을 때 추천하는 프렌치 레스토랑입니다.',img:'restaurant-05.jpg',href:'https://juas.notion.site/COMME-MOA-2023-284d3aa5f948459fa6c9b40d74d6770f?pvs=25'},
+      {name:'semolina club (세몰리나 클럽)',cat:'dining',label:'파스타',tags:['생면 파스타','다이닝'],review:'네이버 후기 호평 · 재방문 언급',note:'생면 파스타 중심의 캐주얼 다이닝으로 분위기와 식사를 함께 즐기기 좋습니다.',img:'restaurant-01.jpg',href:'https://juas.notion.site/semolina-club-1c920d6eecb14bfcb012d1141caac8a9?pvs=25'},
+      {name:'코타티',cat:'dessert',label:'젤라또',tags:['젤라또','디저트'],review:'네이버 후기 호평 · 디저트 인기',note:'식사 후 산책하며 들르기 좋은 수제 젤라또 매장입니다.',img:'restaurant-06.jpg',href:'https://juas.notion.site/icecream-73e91c6707644be08b69a6aa92eec828?pvs=25'}
     ];
     let restaurantCategory='all',restaurantSearch='';
     function escRestaurant(s){return String(s).replace(/[&<>"']/g,ch=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[ch]))}
-    function restaurantImageUrl(r){const idx=RESTAURANTS.indexOf(r);return idx<0?'assets/extay/crops/rooftop-namsan.jpg':`assets/restaurants/restaurant-${String(idx+1).padStart(2,'0')}.jpg`}
+    function restaurantImageUrl(r){return r?.img?`assets/restaurants/${r.img}`:'assets/extay/crops/rooftop-namsan.jpg'}
     function restaurantMapUrl(name,type){const query=encodeURIComponent(`${name.replace(/\([^)]*\)/g,'').trim()} 해방촌`);return type==='naver'?`https://map.naver.com/p/search/${query}`:`https://www.google.com/maps/search/?api=1&query=${query}`}
     function renderRestaurantFilters(){const wrap=q('#restaurantFilters');if(!wrap)return;wrap.innerHTML=RESTAURANT_CATEGORIES.map(([key,label])=>`<button class="restaurant-chip ${key===restaurantCategory?'active':''}" type="button" data-restaurant-filter="${key}">${label}</button>`).join('')}
-    function renderRestaurants(){const list=q('#restaurantList'),count=q('#restaurantCount'),empty=q('#restaurantEmpty');if(!list)return;renderRestaurantFilters();const needle=restaurantSearch.trim().toLowerCase();const filtered=RESTAURANTS.filter(r=>(restaurantCategory==='all'||r.cat===restaurantCategory)&&(!needle||[r.name,r.label,r.note,...r.tags].join(' ').toLowerCase().includes(needle)));if(count)count.textContent=`${filtered.length}곳`;if(empty)empty.style.display=filtered.length?'none':'block';list.innerHTML=filtered.map(r=>{const name=escRestaurant(r.name);return `<article class="restaurant-card"><figure class="restaurant-photo"><img src="${restaurantImageUrl(r)}" alt="${name}" loading="lazy"></figure><div class="restaurant-body"><div class="restaurant-top"><h3 class="restaurant-name">${name}</h3><span class="restaurant-badge">${escRestaurant(r.label)}</span></div><p class="restaurant-note">${escRestaurant(r.note)}</p><div class="restaurant-tags">${r.tags.map(t=>`<span>${escRestaurant(t)}</span>`).join('')}</div><div class="restaurant-actions"><a class="primary" href="${restaurantMapUrl(r.name,'naver')}" target="_blank" rel="noopener"><span class="mi">location_on</span>네이버</a><a href="${restaurantMapUrl(r.name,'google')}" target="_blank" rel="noopener"><span class="mi">map</span>구글</a><a href="${r.href}" target="_blank" rel="noopener"><span class="mi">open_in_new</span>상세</a></div></div></article>`}).join('');observeMotionTargets(list)}
+    function renderRestaurants(){const list=q('#restaurantList'),count=q('#restaurantCount'),empty=q('#restaurantEmpty');if(!list)return;renderRestaurantFilters();const needle=restaurantSearch.trim().toLowerCase();const filtered=RESTAURANTS.filter(r=>(restaurantCategory==='all'||r.cat===restaurantCategory)&&(!needle||[r.name,r.label,r.note,r.review,...r.tags].join(' ').toLowerCase().includes(needle)));if(count)count.textContent=`${filtered.length}곳`;if(empty)empty.style.display=filtered.length?'none':'block';list.innerHTML=filtered.map(r=>{const name=escRestaurant(r.name);return `<article class="restaurant-card"><figure class="restaurant-photo"><img src="${restaurantImageUrl(r)}" alt="${name}" loading="lazy"></figure><div class="restaurant-body"><div class="restaurant-top"><h3 class="restaurant-name">${name}</h3><span class="restaurant-badge">${escRestaurant(r.label)}</span></div><p class="restaurant-review"><span class="mi">hotel_class</span>${escRestaurant(r.review)}</p><p class="restaurant-note">${escRestaurant(r.note)}</p><div class="restaurant-tags">${r.tags.map(t=>`<span>${escRestaurant(t)}</span>`).join('')}</div><div class="restaurant-actions"><a class="primary" href="${restaurantMapUrl(r.name,'naver')}" target="_blank" rel="noopener"><span class="mi">location_on</span>네이버</a><a href="${restaurantMapUrl(r.name,'google')}" target="_blank" rel="noopener"><span class="mi">map</span>구글</a><a href="${r.href}" target="_blank" rel="noopener"><span class="mi">open_in_new</span>상세</a></div></div></article>`}).join('');observeMotionTargets(list)}
     const GUIDEBOOK_PDFS={ko:'assets/guidebook/Extay_Mansion_Haebangchon_Guide_KO_no_NotebookLM.pdf',en:'assets/guidebook/Extay_Mansion_Haebangchon_Guide_EN_no_NotebookLM.pdf'};
     const PDFJS_SRC='https://cdn.jsdelivr.net/npm/pdfjs-dist@4.10.38/build/pdf.min.mjs';
     const PDFJS_WORKER='https://cdn.jsdelivr.net/npm/pdfjs-dist@4.10.38/build/pdf.worker.min.mjs';
