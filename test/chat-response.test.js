@@ -80,6 +80,10 @@ test('Korean spacing guard corrects common guest-facing forms', () => {
     formatGuestAnswer('개인 키번호는 Airbnb 메시지를 확인해주세요.', 'ko', '체크인 방법'),
     '개인 키 번호는 Airbnb 메시지를 확인해 주세요.'
   );
+  assert.equal(
+    formatGuestAnswer('음식물쓰레기는 전용 통에, 일반쓰레기는 종량제봉투에 넣어주세요.', 'ko', '쓰레기는 어디에 버려?'),
+    '음식물 쓰레기는 전용 통에, 일반 쓰레기는 종량제 봉투에 넣어 주세요.'
+  );
 });
 
 test('API-key fallback returns a concise guest answer', async () => {
