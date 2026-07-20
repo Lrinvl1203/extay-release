@@ -53,6 +53,26 @@ const CHAT_SYSTEM_PROMPT = readChatSystemPrompt();
 
 const DECORATIVE_HEADING_PATTERN = /^(?:와이파이 정보|연결 방법|체크인 시간|체크인 방법|세탁기 사용 방법|건조기 사용 방법|사용 방법|사용 전 꼭 확인해 주세요|꼭 참고해 주세요|도착 팁|추가 팁|참고|Wi-?Fi information|How to connect|Check-in time|Check-in steps|Washer|Dryer|Important|Tips)$/i;
 const TRAILING_INVITATION_PATTERN = /(?:원하시면|궁금한 점|언제든(?:지)?|도와드릴게요|편안한 .*되시|feel free|let me know|happy to help|if you(?:'d| would) like|如需|随时|いつでも|ご希望でしたら)/i;
+const KOREAN_SPACING_REPLACEMENTS = [
+  [/키번호/g, '키 번호'],
+  [/현관입구/g, '현관 입구'],
+  [/뒷편/g, '뒤편'],
+  [/확인해주세요/g, '확인해 주세요'],
+  [/안내해주세요/g, '안내해 주세요'],
+  [/이용해주세요/g, '이용해 주세요'],
+  [/입력해주세요/g, '입력해 주세요'],
+  [/선택해주세요/g, '선택해 주세요'],
+  [/눌러주세요/g, '눌러 주세요'],
+  [/넣어주세요/g, '넣어 주세요'],
+  [/열어주세요/g, '열어 주세요'],
+  [/닫아주세요/g, '닫아 주세요'],
+  [/피해주세요/g, '피해 주세요'],
+  [/알려주세요/g, '알려 주세요']
+];
+
+function normalizeKoreanSpacing(value) {
+  return KOREAN_SPACING_REPLACEMENTS.reduce((answer, [pattern, replacement]) => answer.replace(pattern, replacement), value);
+}
 
 function truncateAtBoundary(value, maxChars) {
   if (value.length <= maxChars) return value;
@@ -67,7 +87,8 @@ function truncateAtBoundary(value, maxChars) {
 }
 
 function formatGuestAnswer(value, languageCode = 'ko', question = '') {
-  const rawLines = normalizeAnswer(value)
+  const normalized = normalizeAnswer(value);
+  const rawLines = (languageCode === 'ko' ? normalizeKoreanSpacing(normalized) : normalized)
     .replace(/^#{1,6}\s*/gm, '')
     .replace(/\*\*([^*\n]+)\*\*/g, '$1')
     .replace(/__([^_\n]+)__/g, '$1')
@@ -293,5 +314,6 @@ module.exports._test = {
   detectQuestionLanguage,
   formatGuestAnswer,
   localAnswer,
-  normalizeAnswer
+  normalizeAnswer,
+  normalizeKoreanSpacing
 };

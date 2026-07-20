@@ -8,7 +8,8 @@ const {
   CHAT_SYSTEM_PROMPT,
   formatGuestAnswer,
   localAnswer,
-  normalizeAnswer
+  normalizeAnswer,
+  normalizeKoreanSpacing
 } = handler._test;
 
 test('prompt asks for short, guest-first mobile answers', () => {
@@ -68,6 +69,17 @@ test('guest answer formatter removes presentation noise and enforces a mobile li
   assert.ok(answer.split('\n').length <= 5);
   assert.match(answer, /U\+Net46F0_5G/);
   assert.match(answer, /8H3#22E97B/);
+});
+
+test('Korean spacing guard corrects common guest-facing forms', () => {
+  assert.equal(
+    normalizeKoreanSpacing('개인 키번호를 확인해주세요. 현관입구에서 번호를 눌러주세요.'),
+    '개인 키 번호를 확인해 주세요. 현관 입구에서 번호를 눌러 주세요.'
+  );
+  assert.equal(
+    formatGuestAnswer('개인 키번호는 Airbnb 메시지를 확인해주세요.', 'ko', '체크인 방법'),
+    '개인 키 번호는 Airbnb 메시지를 확인해 주세요.'
+  );
 });
 
 test('API-key fallback returns a concise guest answer', async () => {
