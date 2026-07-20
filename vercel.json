@@ -1,11 +1,10 @@
 {
   "cleanUrls": true,
   "trailingSlash": false,
-  "redirects": [
+  "rewrites": [
     {
       "source": "/",
-      "destination": "/guide-extay",
-      "permanent": false
+      "destination": "/guide-extay"
     }
   ]
 }
