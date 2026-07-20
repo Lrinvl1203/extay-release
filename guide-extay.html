@@ -922,7 +922,7 @@ body .numeric-font{font-family:var(--font-ko)!important;font-variant-numeric:tab
 .mi{font-family:'Material Symbols Outlined'!important;letter-spacing:normal!important;font-feature-settings:'liga'}
 
 /* In-app browser compatibility: keep a vh/vw fallback before modern dynamic viewport units. */
-:root{color-scheme:light}
+:root{color-scheme:light;--safe-top:env(safe-area-inset-top,0px);--safe-left:env(safe-area-inset-left,0px);--safe-right:env(safe-area-inset-right,0px)}
 .app{min-height:100vh;min-height:100dvh}
 .landing-hero{min-height:96vh;min-height:96svh}
 .chat-panel{height:92vh;height:min(720px,92vh);height:min(720px,92dvh)}
@@ -934,6 +934,15 @@ body .numeric-font{font-family:var(--font-ko)!important;font-variant-numeric:tab
 .image-lightbox img.trash-bin-lightbox{width:min(100%,70vh);width:min(100%,70svh)}
 @media (min-width:760px){.chat-panel{height:92vh;height:min(760px,92vh);height:min(760px,92dvh)}}
 @media (max-width:520px){.chat-panel{height:92vh;height:92dvh}}
+
+/* Safari/WKWebView: protect controls from the notch and support pre-Safari 18 backdrop blur. */
+.top{height:calc(72px + var(--safe-top));padding-top:var(--safe-top);-webkit-backdrop-filter:blur(18px)}
+.menu-panel{padding-top:calc(22px + var(--safe-top))}
+.bottom{-webkit-backdrop-filter:blur(18px)}
+.smart-badge,.smart-actions .btn,.hotel-btn{-webkit-backdrop-filter:blur(12px)}
+.contact-backdrop{-webkit-backdrop-filter:blur(5px)}
+.menu-backdrop{-webkit-backdrop-filter:blur(4px)}
+.gallery-count,.gallery-swipe-hint{-webkit-backdrop-filter:blur(8px)}
 
   </style>
 </head>
@@ -1606,7 +1615,9 @@ body .numeric-font{font-family:var(--font-ko)!important;font-variant-numeric:tab
     const LANG_ORDER=['ko','en','zh','ja'];
     const LANG_BADGE={ko:'KR',en:'EN',zh:'CN',ja:'JP'};
     function detectBrowserLanguage(){const languages=navigator.languages?.length?navigator.languages:[navigator.language];for(const language of languages){const code=String(language||'').toLowerCase().split('-')[0];if(LANG_ORDER.includes(code))return code}return 'ko'}
-    const savedLanguage=localStorage.getItem(LANG_KEY);
+    function readStoredLanguage(){try{return localStorage.getItem(LANG_KEY)}catch(_){return null}}
+    function saveStoredLanguage(value){try{localStorage.setItem(LANG_KEY,value)}catch(_){}}
+    const savedLanguage=readStoredLanguage();
     let currentLang=LANG_ORDER.includes(savedLanguage)?savedLanguage:detectBrowserLanguage();
     const uiText={ko:{},en:{},zh:{},ja:{}};
     Object.assign(uiText,{
@@ -1794,7 +1805,7 @@ body .numeric-font{font-family:var(--font-ko)!important;font-variant-numeric:tab
     function iconLabel(icon,label){return `<span class="mi">${icon}</span><br>${label}`}
     function closeLanguageMenu(){q('#homeLanguage')?.classList.remove('open');q('#homeLangToggle')?.setAttribute('aria-expanded','false')}
     function toggleLanguageMenu(){const control=q('#homeLanguage'),button=q('#homeLangToggle');if(!control||!button)return;const willOpen=!control.classList.contains('open');control.classList.toggle('open',willOpen);button.setAttribute('aria-expanded',String(willOpen));if(willOpen)setTimeout(()=>q(`.home-language-option[data-language="${currentLang}"]`)?.focus(),0)}
-    function setLanguage(nextLang){const next=LANG_ORDER.includes(nextLang)?nextLang:'ko';currentLang=next;localStorage.setItem(LANG_KEY,next);closeLanguageMenu();applyStaticLanguage();renderSmartGuide();if(chatAutocomplete)renderChatAutocomplete(chatInput?.value||'');if(document.body.classList.contains('is-restaurants'))renderRestaurants();if(document.body.classList.contains('is-guidebook'))loadGuidebook(next==='ko'?'ko':'en',true)}
+    function setLanguage(nextLang){const next=LANG_ORDER.includes(nextLang)?nextLang:'ko';currentLang=next;saveStoredLanguage(next);closeLanguageMenu();applyStaticLanguage();renderSmartGuide();if(chatAutocomplete)renderChatAutocomplete(chatInput?.value||'');if(document.body.classList.contains('is-restaurants'))renderRestaurants();if(document.body.classList.contains('is-guidebook'))loadGuidebook(next==='ko'?'ko':'en',true)}
     function cycleLanguage(){const index=LANG_ORDER.indexOf(currentLang);setLanguage(LANG_ORDER[(index+1)%LANG_ORDER.length])}
     function applyStaticLanguage(){
       const tr=uiText[currentLang];
