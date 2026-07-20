@@ -14,6 +14,20 @@ function readGuideKnowledge() {
   return null;
 }
 
+function readChatSystemPrompt() {
+  const candidates = [
+    path.join(process.cwd(), 'data', 'chatbot-system-prompt.txt'),
+    path.join(__dirname, '..', 'data', 'chatbot-system-prompt.txt')
+  ];
+  for (const p of candidates) {
+    try {
+      const prompt = fs.readFileSync(p, 'utf8').trim();
+      if (prompt) return prompt;
+    } catch (_) {}
+  }
+  throw new Error('Missing data/chatbot-system-prompt.txt');
+}
+
 function extractText(output) {
   if (typeof output?.output_text === 'string') return output.output_text;
   const parts = [];
@@ -25,22 +39,75 @@ function extractText(output) {
   return parts.join('\n').trim();
 }
 
+function normalizeAnswer(value) {
+  return String(value || '')
+    .replace(/\r\n?/g, '\n')
+    .split('\n')
+    .map(line => line.replace(/[ \t]+/g, ' ').trim())
+    .join('\n')
+    .replace(/\n{3,}/g, '\n\n')
+    .trim();
+}
+
+const CHAT_SYSTEM_PROMPT = readChatSystemPrompt();
+
+const DECORATIVE_HEADING_PATTERN = /^(?:와이파이 정보|연결 방법|체크인 시간|체크인 방법|세탁기 사용 방법|건조기 사용 방법|사용 방법|사용 전 꼭 확인해 주세요|꼭 참고해 주세요|도착 팁|추가 팁|참고|Wi-?Fi information|How to connect|Check-in time|Check-in steps|Washer|Dryer|Important|Tips)$/i;
+const TRAILING_INVITATION_PATTERN = /(?:원하시면|궁금한 점|언제든(?:지)?|도와드릴게요|편안한 .*되시|feel free|let me know|happy to help|if you(?:'d| would) like|如需|随时|いつでも|ご希望でしたら)/i;
+
+function truncateAtBoundary(value, maxChars) {
+  if (value.length <= maxChars) return value;
+  const slice = value.slice(0, maxChars + 1);
+  const candidates = ['. ', '。', '！', '？', '! ', '? ', '\n'];
+  let cut = -1;
+  for (const marker of candidates) cut = Math.max(cut, slice.lastIndexOf(marker));
+  if (cut < Math.floor(maxChars * 0.55)) cut = Math.max(slice.lastIndexOf(' '), slice.lastIndexOf('·'));
+  if (cut < Math.floor(maxChars * 0.45)) cut = maxChars;
+  const ending = slice.slice(cut, cut + 2).match(/^[.!?。！？]/) ? cut + 1 : cut;
+  return slice.slice(0, ending).trim().replace(/[,:;·\-–—]+$/u, '') + '…';
+}
+
+function formatGuestAnswer(value, languageCode = 'ko', question = '') {
+  const rawLines = normalizeAnswer(value)
+    .replace(/^#{1,6}\s*/gm, '')
+    .replace(/\*\*([^*\n]+)\*\*/g, '$1')
+    .replace(/__([^_\n]+)__/g, '$1')
+    .replace(/\p{Extended_Pictographic}/gu, '')
+    .split('\n')
+    .map(line => line.trim())
+    .filter(Boolean);
+
+  if (rawLines.length > 1 && /^(?:안녕하세요|안녕하십니까|Hello|Hi\b|こんにちは|您好|你好)/i.test(rawLines[0])) rawLines.shift();
+
+  const lines = rawLines.filter((line, index) => {
+    if (DECORATIVE_HEADING_PATTERN.test(line)) return false;
+    const next = rawLines[index + 1] || '';
+    return !(line.length <= 28 && !/[.!?。！？:：]$/.test(line) && /^(?:[-*•]|\d+[.)])\s*/.test(next));
+  });
+
+  while (lines.length > 1 && TRAILING_INVITATION_PATTERN.test(lines[lines.length - 1])) lines.pop();
+
+  const urgent = /(?:화재|불이 났|연기|침수|누수|갇혔|잠겼|응급|긴급|fire|flood|lockout|emergency|火災|緊急|火灾|紧急)/i.test(question);
+  const maxLines = urgent ? 7 : 5;
+  const maxChars = urgent ? (languageCode === 'ko' ? 480 : 700) : (languageCode === 'ko' ? 320 : 520);
+  return truncateAtBoundary(lines.slice(0, maxLines).join('\n'), maxChars);
+}
+
 const LOCAL_ANSWERS = [
   {
     keys: ['wifi', 'wi-fi', '와이파이', '无线', '無線'],
-    ko: '와이파이 ID는 `U+Net46F0_5G`, 비밀번호는 `8H3#22E97B` 입니다. 대소문자와 특수문자를 그대로 입력해 주세요.',
+    ko: '와이파이 이름은 `U+Net46F0_5G`, 비밀번호는 `8H3#22E97B`입니다. 대소문자와 특수문자를 그대로 입력해 주세요.',
     en: 'The Wi-Fi ID is `U+Net46F0_5G` and the password is `8H3#22E97B`. Please enter uppercase/lowercase letters and symbols exactly as shown.',
     ja: 'Wi-Fi IDは `U+Net46F0_5G`、パスワードは `8H3#22E97B` です。大文字・小文字・記号をそのまま入力してください。',
     zh: 'Wi-Fi 名称是 `U+Net46F0_5G`，密码是 `8H3#22E97B`。请按显示内容准确输入大小写和符号。'
   },
   {
     keys: ['check-in', 'checkin', 'check in', 'arrival', 'door code', 'door lock', '체크인', '입실', '도어락', '키번호'],
-    ko: '체크인은 오후 4시부터입니다. 비대면 셀프 체크인이며 개인 키번호는 체크인 당일 12시쯤 Airbnb/호스트 메시지로 안내됩니다. 키패드를 살짝 터치한 뒤 안내받은 번호와 * 버튼을 누르면 됩니다.',
+    ko: '체크인은 오후 4시부터예요. 개인 키 번호는 당일 정오쯤 Airbnb 메시지로 보내드립니다. 키패드 터치 → 번호 입력 → * 버튼 순서로 눌러 주세요.',
     en: 'Check-in starts at 16:00. This is self check-in. Your personal door code is sent through Airbnb/host messages around noon on check-in day. Touch the keypad, then enter the code you received followed by the * button.'
   },
   {
     keys: ['checkout', 'check-out', 'check out', 'leave', '체크아웃', '퇴실'],
-    ko: '체크아웃은 오전 11시입니다. 퇴실 전 설거지, 쓰레기 분리수거, 거실과 침실 에어컨 끄기, 창문 닫기, 현관문 닫기를 확인해 주세요. 체크아웃 시간을 10분 초과하면 10분당 10,000원의 비용이 발생할 수 있습니다.',
+    ko: '체크아웃은 오전 11시예요. 퇴실 전 설거지·분리수거, 에어컨 끄기, 창문과 현관문 닫기를 확인해 주세요. 10분 초과 시 10분당 10,000원이 부과될 수 있어요.',
     en: 'Checkout is at 11:00. Before leaving, please wash dishes, sort trash, turn off the living room and bedroom AC, close the windows, and make sure the front door is closed. A late checkout fee may apply after a 10-minute grace period.'
   },
   {
@@ -60,7 +127,7 @@ const LOCAL_ANSWERS = [
   },
   {
     keys: ['rule', 'rules', 'smoking', 'pet', 'visitor', 'noise', 'quiet', 'cooking', 'filming', '규칙', '금연', '흡연', '반려동물', '방문자', '소음', '매너타임', '취사', '촬영'],
-    ko: '예약 인원 외 방문자 입실, 반려동물 동반, 상업적 촬영은 불가합니다. 객실, 화장실, 베란다, 현관입구, 계단은 모두 금연 구역입니다. 실내에서는 간단한 취사만 가능하며 냄새나 연기가 많은 음식은 피해주세요. 21시 이후에는 매너타임입니다.',
+    ko: '예약 인원 외 방문자 입실, 반려동물 동반, 상업적 촬영은 불가해요. 객실·화장실·베란다·현관 입구·계단은 모두 금연 구역입니다. 냄새나 연기가 많은 요리는 피해 주세요. 밤 9시부터는 소음을 줄여 주세요.',
     en: 'Extra visitors, pets, and commercial filming are not allowed. The room, bathroom, balcony, entrance, and stairs are all non-smoking areas. Please keep indoor cooking simple and avoid food with strong smoke or odor. Quiet hours start after 21:00.'
   },
   {
@@ -93,14 +160,14 @@ const LOCAL_ANSWERS = [
   },
   {
     keys: ['restroom', 'toilet', 'bathroom', '7003', '화장실', '공용 화장실', '비밀 화장실', 'トイレ', '洗手间', '卫生间'],
-    ko: '일행이 많아 화장실이 부족할 때는 1층 레스토랑 뒷편 공용 화장실을 이용할 수 있습니다. 비밀번호는 *7003* 입니다.',
+    ko: '화장실이 부족하면 1층 레스토랑 뒤편 공용 화장실을 이용해 주세요. 비밀번호는 `*7003*`입니다.',
     en: 'If your group needs another restroom, use the shared restroom behind the 1st-floor restaurant. The password is *7003*.',
     ja: '人数が多くトイレが足りない場合は、1階レストラン裏の共用トイレを利用できます。暗証番号は *7003* です。',
     zh: '同行人数较多、卫生间不够用时，可以使用 1 楼餐厅后方的公共卫生间。密码是 *7003*。'
   },
   {
     keys: ['trash', 'garbage', 'recycling', 'food waste', '쓰레기', '재활용', '음식물', 'ゴミ', 'ごみ', 'リサイクル', '垃圾', '回收', '廚餘', '厨余'],
-    ko: '음식물 쓰레기는 부엌 싱크대 위 음식물 쓰레기통에 버려 주세요. 일반 쓰레기 및 재활용은 모두 베란다에 비치된 쓰레기통에 넣어주세요. 장기 숙박 중 음식물 냄새가 나면 1층 입구 주황색 통을 이용해 주세요.',
+    ko: '음식물 쓰레기는 부엌 싱크대 위 전용 통에 버려 주세요. 일반 쓰레기와 재활용품은 베란다 쓰레기통에 넣어 주세요. 냄새가 나면 1층 입구의 주황색 통을 이용해 주세요.',
     en: 'Put food waste in the food-waste bin above the kitchen sink. Put both general trash and recycling into the trash bins placed on the balcony. For longer stays, use the orange bin near the 1st-floor entrance if food waste starts to smell.',
     ja: '食品ゴミはキッチンシンク上の食品ゴミ箱に入れてください。一般ゴミとリサイクル品はどちらもバルコニーに置かれたゴミ箱に入れてください。長期滞在で食品ゴミの臭いが気になる場合は、1階入口のオレンジ色の箱をご利用ください。',
     zh: '厨余垃圾请放入厨房水槽上方的厨余桶。一般垃圾和可回收物都请放入阳台上的垃圾桶。长住时如厨余有异味，请使用 1 楼入口附近的橙色桶。'
@@ -131,7 +198,7 @@ function localAnswer(question) {
   const hit = LOCAL_ANSWERS.find(item => item.keys.some(key => q.includes(key.toLowerCase())));
   if (hit) return hit[lang] || hit.en || hit.ko;
   return {
-    ko: '와이파이, 체크인·체크아웃, 위치, 주차, 숙소 규칙, TV·OTT, 온수·난방, 비품 보관함, 세탁기·건조기, 공용 화장실, 옥상, 쓰레기 배출 방법을 확인할 수 있습니다. 개인 도어락 키번호나 긴급 상황은 Airbnb/호스트 메시지를 확인해 주세요.',
+    ko: '와이파이, 체크인·퇴실, 교통, 주차, 숙소 이용법을 안내해 드릴 수 있어요. 개인 키 번호나 긴급 상황은 Airbnb 메시지로 호스트에게 확인해 주세요.',
     en: 'I can help with Wi-Fi, check-in/out, location, parking, house rules, TV/OTT, hot water and heating, supply cabinet, washer/dryer, shared restroom, rooftop, and trash disposal. For your personal door code or urgent issues, please check Airbnb/host messages.',
     ja: 'Wi-Fi、TV/OTT、お湯・暖房、備品棚、洗濯機・乾燥機、共用トイレ、屋上、ゴミの出し方をご案内できます。予約、ドアロック、緊急時はホストに直接ご確認ください。',
     zh: '我可以帮助查询 Wi-Fi、TV/OTT、热水/暖气、备品柜、洗衣机/烘干机、公共卫生间、屋顶和垃圾处理方法。关于预订、门锁或紧急情况，请直接联系房东确认。'
@@ -175,66 +242,7 @@ module.exports = async function handler(req, res) {
 
     const guide = readGuideKnowledge();
     const model = process.env.OPENAI_MODEL || 'gpt-5.4-mini';
-    const system = `You are the AI guest-communication manager and premium hotel concierge for 익스테이 맨션 해방촌 (Extay Mansion Haebangchon), an Airbnb property. Your goal is not just to answer questions, but to make guests feel "this place has outstanding service."
-
-CORE RULES:
-1. Answer in TARGET_LANGUAGE, based only on the latest guest question. Do not copy the language of GUIDE_KNOWLEDGE or older chat history. Use natural, warm expressions in TARGET_LANGUAGE.
-2. Always use GUIDE_KNOWLEDGE as the primary source. Answer directly and accurately from it first.
-3. For topics NOT in GUIDE_KNOWLEDGE, actively supplement with web search, general knowledge, local info, and travel tips. When doing so, add a TARGET_LANGUAGE equivalent of: "This is not clearly covered in the guide, so additional confirmation or host confirmation may be needed."
-4. Never guess door lock passwords, private access codes, or undisclosed security info. Direct the guest to check Airbnb/host messages.
-5. For urgent issues (fire, flood, lockout), tell the guest to contact the host immediately.
-
-LANGUAGE LOCK:
-- TARGET_LANGUAGE is determined from the latest guest question, not from GUIDE_KNOWLEDGE.
-- Translate guide facts into TARGET_LANGUAGE.
-- Keep the full answer in TARGET_LANGUAGE, including headings, bullets, closing sentence, and host-confirmation notes.
-- If the latest guest question mixes languages, use the dominant language; if unclear, use Korean.
-
-RESPONSE STYLE — Guest WOW Mode:
-- Never give one-line answers. Never make guests search again.
-- Think like a hotel concierge + travel planner + local expert.
-- Proactively include what guests will likely ask next.
-- Consider: actual travel route, difficulty level, first-time visitor perspective, luggage/carrier convenience, foreign traveler tips.
-
-TRANSPORTATION QUESTIONS — always include:
-- Best recommended method / easiest / fastest / cheapest
-- Estimated time and cost
-- Bus number, subway line, transfers, frequency, last train warnings
-- Which exit to use, walking distance, stairs/slopes, carrier convenience
-- Rainy day and late-night options, taxi/app tips, transit card tips
-
-RESTAURANT/NEARBY QUESTIONS — always include:
-- Walking time, popular menu, wait time, peak hours
-- Solo-dining friendly, foreigner-friendly, reservation needed, late-night hours
-- Local favorite vs tourist spot, rainy-day recommendation
-
-SMART CONCIERGE — for each question, proactively add:
-- Airport → also cover check-in time, luggage storage, late-night check-in
-- Restaurants → also recommend nearby cafes, dessert, convenience stores
-- Transport → also cover transit card, taxi apps, translation apps
-
-PROPERTY POLICY RULES — for these topics, NEVER guess if not in GUIDE_KNOWLEDGE:
-Early check-in, late checkout, luggage storage, extra guests, pets, refunds, smoking, parties, extra bedding, parking, check-in method changes.
-Instead use a TARGET_LANGUAGE equivalent of: "The host is currently checking whether this is possible, and I will provide accurate final guidance after confirmation. [Final guidance pending host confirmation]"
-
-UNCERTAIN INFO: If info may be outdated, add a TARGET_LANGUAGE equivalent of: "This is based on the latest information currently available, and some details may vary depending on actual operating conditions."
-
-ONE-MESSAGE COMPLETION RULE (very important):
-- Aim to resolve the guest's need in 1~2 messages total.
-- Do NOT end with "please let me know your departure time / carrier size" type requests.
-- Instead, give a complete answer based on the most common travel scenario.
-- Only ask 1 clarifying question if truly impossible to answer otherwise — put it last, keep it under 10% of the response.
-- Ideal result: guest reads and thinks "OK, I got it. I can follow this right now."
-
-ANSWER STRUCTURE:
-1. Warm greeting / acknowledgment
-2. Core answer to the question
-3. Practical tips and proactive extras
-4. Host confirmation note (if applicable)
-5. Invite further questions
-6. Warm closing
-
-Format for mobile: short paragraphs, bullet points, clear action steps.`;
+    const system = CHAT_SYSTEM_PROMPT;
 
 
     const input = [
@@ -256,7 +264,7 @@ Format for mobile: short paragraphs, bullet points, clear action steps.`;
         tools: [{ type: 'web_search_preview', search_context_size: 'low' }],
         tool_choice: 'auto',
         temperature: 0.2,
-        max_output_tokens: 900
+        max_output_tokens: 240
       })
     });
 
@@ -269,7 +277,7 @@ Format for mobile: short paragraphs, bullet points, clear action steps.`;
       });
     }
 
-    const answer = extractText(data) || '죄송합니다. 답변을 생성하지 못했습니다. 호스트에게 확인해 주세요.';
+    const answer = formatGuestAnswer(extractText(data), targetLanguageCode, question) || '답변을 만들지 못했어요. Airbnb 메시지로 호스트에게 확인해 주세요.';
     return res.status(200).json({ answer, model, searched: JSON.stringify(data).includes('web_search') });
   } catch (err) {
     console.warn('Chat API fallback:', err.message || String(err));
@@ -278,4 +286,12 @@ Format for mobile: short paragraphs, bullet points, clear action steps.`;
       answer: localAnswer(parseBody(req).message)
     });
   }
+};
+
+module.exports._test = {
+  CHAT_SYSTEM_PROMPT,
+  detectQuestionLanguage,
+  formatGuestAnswer,
+  localAnswer,
+  normalizeAnswer
 };

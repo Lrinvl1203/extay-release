@@ -1,1 +1,1 @@
-{"name":"extay-guide","version":"1.0.0","scripts":{"start":"npx serve ."},"devDependencies":{}}
+{"name":"extay-guide","version":"1.0.0","scripts":{"start":"npx serve .","test":"node --test test/chat-response.test.js"},"devDependencies":{}}
