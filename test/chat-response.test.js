@@ -126,3 +126,12 @@ test('browser fallback uses the same concise Korean copy', () => {
   assert.match(html, /white-space:pre-wrap;overflow-wrap:anywhere;word-break:keep-all;text-align:left/);
   assert.doesNotMatch(html, /체크아웃 시간을 10분 초과하면 10분당 10,000원의 비용이 발생할 수 있습니다/);
 });
+
+test('home contact guide points guests to Airbnb messages only', () => {
+  const html = fs.readFileSync(path.join(__dirname, '..', 'guide-extay.html'), 'utf8');
+  assert.match(html, /호스트에게 연락이 필요하시면 에어비앤비 메시지로 보내주세요\./);
+  assert.match(html, /class="airbnb-mark"/);
+  assert.doesNotMatch(html, /data-open-contact=/);
+  assert.doesNotMatch(html, /class="kakao-symbol"/);
+  assert.doesNotMatch(html, /010-000-0000/);
+});

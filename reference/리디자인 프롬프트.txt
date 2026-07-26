@@ -1,0 +1,28 @@
+리디자인 프롬프트
+
+현재 숙소 모바일 가이드 홈페이지를 프리미엄 모바일 호텔 홈페이지 스타일로 리디자인해줘.
+
+목표:
+- 1번 호텔 홈페이지형 구조를 기본으로 하되, 3번 풀스크린 이미지형의 감성적인 히어로 영역을 섞는다.
+- 모바일 우선 디자인.
+- 숙소 사진이 첫 화면의 70~80%를 차지하게 한다.
+- 첫 화면에는 EXTAY, 짧은 설명, 버튼 2개만 둔다.
+- 아래로 스크롤하면 Quick Access, Stay Guide, AI Concierge, Location & Contact 순서로 나온다.
+- 전체 톤은 따뜻한 베이지/화이트/브라운.
+- 카드와 버튼은 둥글고 여백이 넓게.
+- 아이콘은 최소화하고 고급스럽게.
+- 너무 앱처럼 보이지 않게, 호텔 랜딩페이지처럼 보이게.
+
+섹션 구조:
+1. Hero
+2. Quick Access
+3. Stay Guide
+4. AI Concierge
+5. Location & Contact
+
+폰트:
+- 영어 로고/히어로 타이틀: Playfair Display 또는 Cormorant Garamond
+- 한글 본문: Pretendard
+- 한글 제목: Pretendard SemiBold 또는 Noto Serif KR 일부 사용
+
+기존 기능과 링크는 유지하고, 레이아웃과 스타일만 고급스럽게 개선해줘.
