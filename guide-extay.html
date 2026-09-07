@@ -26,7 +26,7 @@
   <meta name="twitter:description" content="익스테이 맨션 해방촌 숙박 안내 모바일 가이드" />
   <meta name="twitter:image" content="https://extay-release.vercel.app/assets/extay/social/extay-mansion-haebangchon-preview-v3.jpg" />
   <meta name="twitter:image:alt" content="초록색 벽과 따뜻한 조명의 익스테이 맨션 해방촌 거실" />
-  <link rel="preload" href="assets/extay/extay-intro-logo.png" as="image" fetchpriority="high" />
+  <link rel="preload" href="assets/extay/extay-logo-lockup.png" as="image" fetchpriority="high" />
   <link rel="preload" href="assets/extay/crops/main-living-logo.png" as="image" fetchpriority="high" />
   <link rel="preload" href="assets/font/oxanium-latin.woff2" as="font" type="font/woff2" crossorigin />
   <link rel="preload" href="assets/font/material-symbols-outlined-extay.woff2" as="font" type="font/woff2" crossorigin />
@@ -51,7 +51,12 @@
 body{background:var(--bg);color:var(--ink)}
 .top{display:grid;grid-template-columns:36px minmax(0,1fr) auto;align-items:center;gap:6px}
 .top h1{text-align:center;white-space:nowrap;font-size:clamp(18px,5.2vw,24px);line-height:1.1}
-.brand-home{border:0;background:transparent;color:inherit;font:inherit;line-height:1;padding:8px 10px;border-radius:999px;cursor:pointer}
+.top h1{position:absolute;left:50%;z-index:0;transform:translateX(-50%)}
+.top-actions,.home-language,#menuTop{position:relative;z-index:1}
+.brand-home{border:0;background:transparent;color:inherit;font:inherit;line-height:1;padding:8px 10px;border-radius:999px;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;gap:7px}
+.header-brand-logo{display:block;width:25px;height:25px;object-fit:contain;flex:none;transition:filter .22s ease}
+.header-brand-text{font-size:clamp(15px,4.4vw,20px);letter-spacing:-.035em}
+body.is-home:not(.hero-scrolled) .header-brand-logo{filter:invert(1)}
 .top-actions{display:flex;justify-content:flex-end;gap:0}.top .icon-btn{width:36px;height:40px}.lang-toggle{position:relative;font-size:11px;font-weight:900;letter-spacing:0}.lang-toggle .mi{font-size:23px}.lang-toggle span:last-child{position:absolute;right:0;bottom:2px;background:var(--ink);color:#fff;border-radius:999px;min-width:20px;height:15px;display:grid;place-items:center;font-size:9px;line-height:1}
 .top{background:rgba(248,243,235,.94);border-bottom-color:rgba(216,198,180,.7)}
 .card,.device,.contact-card{background:var(--card);border-color:rgba(216,198,180,.78);border-radius:22px;box-shadow:var(--shadow)}
@@ -149,7 +154,7 @@ body:not(.is-home):not(.is-gallery):not(.is-checkin):not(.is-wifi):not(.is-trans
 .concierge-intro{display:grid;grid-template-columns:minmax(0,1fr) 65px;gap:12px;align-items:center;margin-bottom:10px}
 .concierge-kicker{margin:0 0 7px;color:#d2c3aa;font-size:10px;font-weight:800;line-height:1.2;letter-spacing:.12em!important;text-transform:uppercase}
 .concierge-heading{margin:0;color:#fff8eb;font-size:25px;line-height:1.2;font-weight:800;word-break:keep-all}
-.concierge-character{width:65px;height:65px;object-fit:contain;justify-self:end;filter:drop-shadow(0 9px 17px rgba(0,0,0,.2))}
+.concierge-character{width:65px;height:65px;padding:11px 8px;object-fit:contain;justify-self:end;border:1px solid rgba(205,187,159,.74);border-radius:50%;background:#f5ead8;filter:drop-shadow(0 9px 17px rgba(0,0,0,.2))}
 .concierge-ask{display:grid;grid-template-columns:minmax(0,1fr) 42px;gap:8px;padding:5px 5px 5px 15px;border:1px solid rgba(205,187,159,.7);border-radius:12px;background:#f5ead8;box-shadow:inset 0 1px 0 rgba(255,255,255,.55)}
 .concierge-ask input{min-width:0;border:0;outline:0;background:transparent;color:#26382f;font-size:14px;font-weight:700}
 .concierge-ask input::placeholder{color:#7c7669;font-weight:500}
@@ -946,11 +951,11 @@ body .numeric-font{font-family:var(--font-ko)!important;font-variant-numeric:tab
 .gallery-count,.gallery-swipe-hint{-webkit-backdrop-filter:blur(8px)}
 
 /* Brand intro and a closed-by-default, icon-led menu matching the shared guide system. */
-.brand-intro{position:fixed;inset:0;z-index:1000;display:grid;place-items:center;overflow:hidden;background:#fff;opacity:1;visibility:visible;pointer-events:auto}
-.brand-intro-mark{position:relative;display:block;width:min(205vw,960px);max-width:none}
+.brand-intro{position:fixed;inset:0;z-index:1000;display:block;overflow:hidden;background:#fff;opacity:1;visibility:visible;pointer-events:auto}
+.brand-intro-mark{position:absolute;left:50%;top:50%;display:block;width:min(80vw,374px);max-width:none;transform:translate(-50%,-50%)}
 .brand-intro-mark img{position:relative;z-index:1;display:block;width:100%;height:auto;opacity:0;transform:translateY(8px) scale(.965);filter:blur(3px);will-change:opacity,transform,filter}
 .brand-intro.is-running .brand-intro-mark img{animation:brandMarkSequence 3.24s cubic-bezier(.4,0,.2,1) both}
-.brand-intro-mark::before,.brand-intro-mark::after{content:"";position:absolute;inset:0;z-index:2;opacity:0;pointer-events:none;-webkit-mask:url('assets/extay/extay-intro-logo.png') center/contain no-repeat;mask:url('assets/extay/extay-intro-logo.png') center/contain no-repeat}
+.brand-intro-mark::before,.brand-intro-mark::after{content:"";position:absolute;inset:0;z-index:2;opacity:0;pointer-events:none;-webkit-mask:url('assets/extay/extay-logo-lockup.png') center/contain no-repeat;mask:url('assets/extay/extay-logo-lockup.png') center/contain no-repeat}
 .brand-intro-mark::before{background:repeating-linear-gradient(0deg,#15110f 0 1px,rgba(255,255,255,.92) 1px 2px,transparent 2px 4px),repeating-linear-gradient(90deg,rgba(166,111,63,.9) 0 2px,rgba(255,255,255,.86) 2px 3px,rgba(43,33,24,.78) 3px 5px,transparent 5px 8px);background-size:100% 7px,13px 100%;mix-blend-mode:multiply}
 .brand-intro-mark::after{background:repeating-linear-gradient(180deg,transparent 0 5%,rgba(255,255,255,.96) 5% 7%,rgba(43,33,24,.92) 7% 10%,transparent 10% 17%);mix-blend-mode:hard-light}
 .brand-intro.is-leaving{opacity:0;visibility:visible;pointer-events:none;transition:opacity .54s cubic-bezier(.4,0,.2,1) .08s}
@@ -970,14 +975,31 @@ body .numeric-font{font-family:var(--font-ko)!important;font-variant-numeric:tab
 .menu-link .menu-icon .mi{font-size:19px}
 .menu-copy{min-width:0}.menu-copy strong{display:block;font-size:16px;font-weight:800;line-height:1.25}.menu-copy small{display:block;margin-top:5px}
 .menu-chevron{place-items:center;color:rgba(111,90,69,.58)}.menu-chevron .mi{font-size:18px}
+.concierge-widget{position:fixed;right:max(16px,calc((100vw - 480px)/2 + 16px));bottom:calc(96px + env(safe-area-inset-bottom,0px));z-index:45;--concierge-caption-space:calc(1.05rem + 12px);padding-bottom:var(--concierge-caption-space);transition:opacity .2s ease,visibility .2s ease}
+.concierge-launcher{position:relative;width:66px;height:66px;padding:10px;border:1px solid rgba(111,90,69,.25);border-radius:50%;background:#fffaf4;box-shadow:0 8px 28px rgba(43,33,24,.22);display:grid;place-items:center;cursor:pointer}
+.concierge-launcher>img{display:block;width:45px;height:34px;object-fit:contain;pointer-events:none}
+.concierge-launcher-caption{position:absolute;top:calc(100% + 6px);left:50%;transform:translateX(-50%);min-width:max-content;padding:4px 8px;border-radius:999px;background:var(--ink);color:#fff;font-size:10px;font-weight:800;line-height:1.05;box-shadow:0 4px 12px rgba(43,33,24,.2)}
+.concierge-launcher-message[hidden]{display:none}
+.concierge-launcher-message{position:absolute;right:78px;bottom:var(--concierge-caption-space);display:grid;width:max-content;max-width:min(230px,calc(100vw - 122px));border:1px solid rgba(111,90,69,.2);border-radius:19px;background:#fffaf4;box-shadow:0 8px 28px rgba(43,33,24,.16);color:var(--ink);text-align:left;white-space:normal;word-break:keep-all;overflow-wrap:anywhere}
+.concierge-launcher-message::after{content:"";position:absolute;right:-6px;bottom:22px;width:10px;height:10px;background:#fffaf4;border-top:1px solid rgba(111,90,69,.2);border-right:1px solid rgba(111,90,69,.2);transform:rotate(45deg)}
+.concierge-greeting-open{display:grid;gap:4px;width:100%;padding:14px 42px 14px 16px;border:0;border-radius:19px;background:transparent;color:inherit;font:inherit;text-align:inherit;cursor:pointer}
+.concierge-greeting-open small{color:var(--bronze);font-size:12px;font-weight:800;line-height:1.4;letter-spacing:.02em}
+.concierge-greeting-open strong{font-size:15px;font-weight:700;line-height:1.5}
+.concierge-greeting-close{position:absolute;right:0;top:0;width:40px;height:40px;display:grid;place-items:center;border:0;border-radius:50%;background:transparent;color:var(--secondary);font:24px/1 sans-serif;cursor:pointer}
+.concierge-launcher:focus-visible,.concierge-greeting-open:focus-visible,.concierge-greeting-close:focus-visible{outline:3px solid var(--bronze);outline-offset:3px}
+body:not(.motion-ready) .concierge-widget,body:has(#brandIntro.is-running,.menu-panel.open,.chat-panel.open,.image-lightbox.open) .concierge-widget{opacity:0;visibility:hidden;pointer-events:none}
+@media(hover:hover){.concierge-launcher:hover{box-shadow:0 12px 34px rgba(43,33,24,.28);transform:translateY(-2px)}}
+@media(min-width:760px){.concierge-widget{bottom:28px}}
+@media(max-width:380px){.header-brand-logo{width:22px;height:22px}.header-brand-text{font-size:14px}.brand-home{gap:5px;padding-inline:5px}}
+@media print{.concierge-widget{display:none!important}}
 @media(prefers-reduced-motion:reduce){.brand-intro{display:none!important}}
 
   </style>
 </head>
 <body class="is-home">
-  <div class="brand-intro" id="brandIntro" aria-hidden="true"><span class="brand-intro-mark"><img src="assets/extay/extay-intro-logo.png" alt=""></span></div>
+  <div class="brand-intro" id="brandIntro" aria-hidden="true"><span class="brand-intro-mark"><img src="assets/extay/extay-logo-lockup.png" alt=""></span></div>
   <div class="app">
-    <header class="top"><button class="icon-btn" aria-label="메뉴" id="menuTop"><svg class="header-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16" /></svg></button><h1><button class="brand-home" id="brandHome" type="button" data-go="home" aria-label="홈으로 이동">EXTAY</button></h1><div class="home-language" id="homeLanguage"><button class="home-language-btn" type="button" id="homeLangToggle" aria-label="언어 선택" aria-haspopup="true" aria-expanded="false"><span id="homeLangText">KR</span><svg class="header-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="m7 10 5 5 5-5" /></svg></button><div class="home-language-menu" id="homeLangMenu" role="menu" aria-label="언어 선택"><button class="home-language-option" type="button" role="menuitemradio" aria-checked="true" data-language="ko"><span>한국어</span><small>KR</small></button><button class="home-language-option" type="button" role="menuitemradio" aria-checked="false" data-language="en"><span>English</span><small>EN</small></button><button class="home-language-option" type="button" role="menuitemradio" aria-checked="false" data-language="zh"><span>中文</span><small>CN</small></button><button class="home-language-option" type="button" role="menuitemradio" aria-checked="false" data-language="ja"><span>日本語</span><small>JP</small></button></div></div><div class="top-actions"><a class="icon-btn" href="assets/guidebook/Extay_Mansion_Haebangchon_Guide_KO_no_NotebookLM.pdf" target="_blank" rel="noopener" aria-label="가이드북 열기" id="openGuidebookTop"><span class="mi">menu_book</span></a><button class="icon-btn lang-toggle" aria-label="Switch to English" id="langToggle" type="button"><span class="mi">translate</span><span id="langToggleText">EN</span></button><button class="icon-btn" aria-label="안내 도우미" id="openChatTop"><span class="mi">smart_toy</span></button></div></header>
+    <header class="top"><button class="icon-btn" aria-label="메뉴" id="menuTop"><svg class="header-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16" /></svg></button><h1><button class="brand-home" id="brandHome" type="button" data-go="home" aria-label="홈으로 이동"><img class="header-brand-logo" src="assets/extay/extay-logo-symbol.png" alt=""><span class="header-brand-text">EXTAY Mansion</span></button></h1><div class="home-language" id="homeLanguage"><button class="home-language-btn" type="button" id="homeLangToggle" aria-label="언어 선택" aria-haspopup="true" aria-expanded="false"><span id="homeLangText">KR</span><svg class="header-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="m7 10 5 5 5-5" /></svg></button><div class="home-language-menu" id="homeLangMenu" role="menu" aria-label="언어 선택"><button class="home-language-option" type="button" role="menuitemradio" aria-checked="true" data-language="ko"><span>한국어</span><small>KR</small></button><button class="home-language-option" type="button" role="menuitemradio" aria-checked="false" data-language="en"><span>English</span><small>EN</small></button><button class="home-language-option" type="button" role="menuitemradio" aria-checked="false" data-language="zh"><span>中文</span><small>CN</small></button><button class="home-language-option" type="button" role="menuitemradio" aria-checked="false" data-language="ja"><span>日本語</span><small>JP</small></button></div></div><div class="top-actions"><a class="icon-btn" href="assets/guidebook/Extay_Mansion_Haebangchon_Guide_KO_no_NotebookLM.pdf" target="_blank" rel="noopener" aria-label="가이드북 열기" id="openGuidebookTop"><span class="mi">menu_book</span></a><button class="icon-btn lang-toggle" aria-label="Switch to English" id="langToggle" type="button"><span class="mi">translate</span><span id="langToggleText">EN</span></button><button class="icon-btn" aria-label="안내 도우미" id="openChatTop"><span class="mi">smart_toy</span></button></div></header>
 
     <main>
     <section class="screen active" data-screen="home">
@@ -996,7 +1018,7 @@ body .numeric-font{font-family:var(--font-ko)!important;font-variant-numeric:tab
                 <p class="concierge-kicker" id="conciergeKicker">EXTAY CONCIERGE</p>
                 <h2 class="concierge-heading" id="aiTitle">무엇을 도와드릴까요?</h2>
               </div>
-              <img class="concierge-character" src="assets/extay/ai-concierge-manager-v2.png" alt="" aria-hidden="true">
+              <img class="concierge-character" src="assets/extay/extay-logo-symbol.png" alt="EXTAY Mansion">
             </div>
             <form class="concierge-ask" id="conciergeAskForm">
               <input id="conciergeAskInput" type="text" autocomplete="off" placeholder="AI 챗봇에게 질문해 보세요" aria-label="AI 챗봇에게 질문">
@@ -1629,7 +1651,13 @@ body .numeric-font{font-family:var(--font-ko)!important;font-variant-numeric:tab
     <img id="imageLightboxImg" src="" alt="" />
     <p class="image-lightbox-caption" id="imageLightboxCaption"></p>
   </section>
-  <button class="chat-fab" id="openChatFab" aria-label="안내 도우미 열기"><span class="mi">smart_toy</span></button>
+  <div class="concierge-widget" id="conciergeWidget">
+    <div class="concierge-launcher-message" id="chatGreeting" hidden>
+      <button class="concierge-greeting-open" id="openChatGreeting" type="button" aria-controls="chatPanel"><small id="chatLauncherLabel">AI 컨시어지</small><strong id="chatLauncherMessage">무엇을 도와드릴까요?</strong></button>
+      <button class="concierge-greeting-close" id="dismissChatGreeting" type="button" aria-label="말풍선 닫기"><span aria-hidden="true">×</span></button>
+    </div>
+    <button class="concierge-launcher" id="openChatFab" type="button" aria-label="안내 도우미 열기" aria-controls="chatPanel" aria-expanded="false" aria-haspopup="dialog"><img src="assets/extay/extay-logo-symbol.png" alt=""><span class="concierge-launcher-caption" id="chatLauncherCompact">AI 상담</span></button>
+  </div>
   <div class="chat-backdrop" id="chatBackdrop"></div>
   <section class="chat-panel" id="chatPanel" aria-label="익스테이 AI 컨시어지">
     <header class="chat-head"><div><h2>AI 컨시어지</h2></div><button class="chat-close" id="closeChat" aria-label="닫기"><span class="mi">close</span></button></header>
@@ -1840,12 +1868,19 @@ body .numeric-font{font-family:var(--font-ko)!important;font-variant-numeric:tab
     function toggleLanguageMenu(){const control=q('#homeLanguage'),button=q('#homeLangToggle');if(!control||!button)return;const willOpen=!control.classList.contains('open');control.classList.toggle('open',willOpen);button.setAttribute('aria-expanded',String(willOpen));if(willOpen)setTimeout(()=>q(`.home-language-option[data-language="${currentLang}"]`)?.focus(),0)}
     function setLanguage(nextLang){const next=LANG_ORDER.includes(nextLang)?nextLang:'ko';currentLang=next;saveStoredLanguage(next);closeLanguageMenu();applyStaticLanguage();renderSmartGuide();if(chatAutocomplete)renderChatAutocomplete(chatInput?.value||'');if(document.body.classList.contains('is-restaurants'))renderRestaurants();if(document.body.classList.contains('is-guidebook'))loadGuidebook(next==='ko'?'ko':'en',true)}
     function cycleLanguage(){const index=LANG_ORDER.indexOf(currentLang);setLanguage(LANG_ORDER[(index+1)%LANG_ORDER.length])}
+    const CHAT_LAUNCHER_COPY={
+      ko:{label:'AI 컨시어지',message:'무엇을 도와드릴까요?',compact:'AI 상담',dismiss:'말풍선 닫기'},
+      en:{label:'AI Concierge',message:'How can I help?',compact:'AI Chat',dismiss:'Close message'},
+      zh:{label:'AI 礼宾',message:'需要什么帮助？',compact:'AI 咨询',dismiss:'关闭消息'},
+      ja:{label:'AIコンシェルジュ',message:'何をお手伝いしますか？',compact:'AI相談',dismiss:'メッセージを閉じる'}
+    };
+    function renderChatLauncher(){const copy=CHAT_LAUNCHER_COPY[currentLang]||CHAT_LAUNCHER_COPY.ko;text(q('#chatLauncherLabel'),copy.label);text(q('#chatLauncherMessage'),copy.message);text(q('#chatLauncherCompact'),copy.compact);q('#dismissChatGreeting')?.setAttribute('aria-label',copy.dismiss)}
     function applyStaticLanguage(){
       const tr=uiText[currentLang];
       document.documentElement.lang=currentLang;
       document.title=tr.docTitle;
       const meta=q('meta[name="description"]'); if(meta)meta.setAttribute('content',tr.docDesc);
-      text(q('#brandHome'),tr.headerTitle); q('#brandHome')?.setAttribute('aria-label',currentLang==='en'?'Go home':'홈으로 이동'); text(q('.hero .label'),tr.heroSub); text(q('.landing-hero .eyebrow'),tr.homeHeroEyebrow); text(q('#conciergeKicker'),tr.conciergeKicker); text(q('#aiTitle'),tr.aiTitle); const conciergeInput=q('#conciergeAskInput'); if(conciergeInput)conciergeInput.placeholder=tr.conciergePlaceholder; text(q('.hotel-footer span'),tr.footerCopy); const badge=LANG_BADGE[currentLang]||LANG_BADGE.ko; text(q('#langToggleText'),badge); text(q('#homeLangText'),badge); qa('.home-language-option').forEach(option=>option.setAttribute('aria-checked',String(option.dataset.language===currentLang)));
+      text(q('#brandHome .header-brand-text'),'EXTAY Mansion'); q('#brandHome')?.setAttribute('aria-label',currentLang==='en'?'Go home':'홈으로 이동'); text(q('.hero .label'),tr.heroSub); text(q('.landing-hero .eyebrow'),tr.homeHeroEyebrow); text(q('#conciergeKicker'),tr.conciergeKicker); text(q('#aiTitle'),tr.aiTitle); const conciergeInput=q('#conciergeAskInput'); if(conciergeInput)conciergeInput.placeholder=tr.conciergePlaceholder; text(q('.hotel-footer span'),tr.footerCopy); const badge=LANG_BADGE[currentLang]||LANG_BADGE.ko; text(q('#langToggleText'),badge); text(q('#homeLangText'),badge); qa('.home-language-option').forEach(option=>option.setAttribute('aria-checked',String(option.dataset.language===currentLang)));renderChatLauncher();
       if(tr.essentials){text(q('#essentialsKicker'),tr.essentials.kicker);text(q('#essentialsTitle'),tr.essentials.title);text(q('#essentialsSub'),tr.essentials.sub);eachText(qa('.essential-copy small'),tr.essentials.labels);eachText(qa('.essential-copy strong'),tr.essentials.values);eachText(qa('.essentials-link>span:first-child'),tr.essentials.links);text(q('#homeGalleryTitle'),tr.essentials.galleryTitle);text(q('.home-gallery-all'),tr.essentials.galleryAll)}
       if(tr.homeGalleryFeature){text(q('.home-gallery-count'),tr.homeGalleryFeature.count);text(q('.home-gallery-copy strong'),tr.homeGalleryFeature.title);text(q('.home-gallery-copy small'),tr.homeGalleryFeature.desc)}
       if(tr.getting){text(q('#gettingKicker'),tr.getting.kicker);text(q('#gettingTitle'),tr.getting.title);text(q('#gettingName'),tr.getting.name);text(q('#gettingAddress'),tr.getting.address);text(q('#gettingTransit'),tr.getting.transit);text(q('#gettingNaver'),tr.getting.naver);text(q('#gettingGoogle'),tr.getting.google);text(q('#airportAccessKicker'),tr.getting.airportKicker);text(q('#airportAccessTitle'),tr.getting.airportTitle);text(q('#nearbyPreviewKicker'),tr.getting.restaurantKicker);text(q('#nearbyPreviewTitle'),tr.getting.restaurantTitle);text(q('#nearbyPreviewAll'),tr.getting.restaurantAll);qa('.nearby-card').forEach((card,i)=>{const item=tr.getting.restaurants?.[i];if(item){text(card.querySelector('.nearby-card-label'),item[0]);text(card.querySelector('strong'),item[1]);text(card.querySelector('p'),item[2])}})}
@@ -2051,20 +2086,27 @@ body .numeric-font{font-family:var(--font-ko)!important;font-variant-numeric:tab
     const chatPanel=document.getElementById('chatPanel'), chatBackdrop=document.getElementById('chatBackdrop'), chatLog=document.getElementById('chatLog'), chatInput=document.getElementById('chatInput'), chatForm=document.getElementById('chatForm'), chatAutocomplete=document.getElementById('chatAutocomplete');
     const menuPanel=document.getElementById('menuPanel'), menuBackdropEl=document.getElementById('menuBackdrop');
     const contactModal=document.getElementById('contactModal'), contactBackdrop=document.getElementById('contactBackdrop');
+    let chatGreetingTimer=null,chatGreetingStartTimer=null,chatGreetingStarted=false;
+    const chatGreetingSessionKey='extay-chat-greeting-v7';
+    function dismissChatGreeting(){clearTimeout(chatGreetingTimer);clearTimeout(chatGreetingStartTimer);chatGreetingStarted=true;const greeting=document.getElementById('chatGreeting');if(!greeting)return;const restoreFocus=greeting.contains(document.activeElement);greeting.hidden=true;if(restoreFocus)document.getElementById('openChatFab')?.focus();try{sessionStorage.setItem(chatGreetingSessionKey,'1')}catch(error){}}
+    function tryShowChatGreeting(){const widget=document.getElementById('conciergeWidget'),greeting=document.getElementById('chatGreeting');if(chatGreetingStarted||!widget||!greeting)return;if(document.visibilityState==='hidden'||getComputedStyle(widget).visibility!=='visible'){clearTimeout(chatGreetingStartTimer);chatGreetingStartTimer=setTimeout(tryShowChatGreeting,150);return}chatGreetingStarted=true;greeting.hidden=false;try{sessionStorage.setItem(chatGreetingSessionKey,'1')}catch(error){}chatGreetingTimer=setTimeout(dismissChatGreeting,5000)}
+    function initChatGreeting(){const greeting=document.getElementById('chatGreeting');if(greeting)greeting.hidden=true;try{if(sessionStorage.getItem(chatGreetingSessionKey)==='1'){chatGreetingStarted=true;return}}catch(error){}tryShowChatGreeting()}
     const CONTACT_DETAILS={
       ko:{phone:{title:'전화번호',desc:'필요할 때 아래 번호를 복사해 사용해 주세요.',label:'Phone',value:'010-000-0000',copy:'번호 복사',note:''},kakao:{title:'카카오톡 오픈채팅',desc:'아래 임시 오픈채팅 URL을 복사해 사용해 주세요.',label:'Open chat URL',value:'https://open.kakao.com/o/sExtayTemp',copy:'URL 복사',note:'카카오톡 링크는 현재 임시 링크입니다.'}},
       en:{phone:{title:'Phone Number',desc:'Copy the number below when you need to contact the host.',label:'Phone',value:'010-000-0000',copy:'Copy number',note:''},kakao:{title:'KakaoTalk Open Chat',desc:'Copy the temporary open-chat URL below.',label:'Open chat URL',value:'https://open.kakao.com/o/sExtayTemp',copy:'Copy URL',note:'This KakaoTalk URL is temporary.'}},
       zh:{phone:{title:'电话号码',desc:'需要联系房东时，请复制下方号码。',label:'电话',value:'010-000-0000',copy:'复制号码',note:''},kakao:{title:'KakaoTalk开放聊天',desc:'请复制下方临时开放聊天链接。',label:'开放聊天链接',value:'https://open.kakao.com/o/sExtayTemp',copy:'复制链接',note:'此KakaoTalk链接为临时链接。'}},
       ja:{phone:{title:'電話番号',desc:'必要な時は下の番号をコピーしてご利用ください。',label:'電話',value:'010-000-0000',copy:'番号をコピー',note:''},kakao:{title:'KakaoTalkオープンチャット',desc:'下の一時オープンチャットURLをコピーしてご利用ください。',label:'オープンチャットURL',value:'https://open.kakao.com/o/sExtayTemp',copy:'URLをコピー',note:'KakaoTalkリンクは現在一時リンクです。'}}
     };
-    function openChat(){chatPanel.classList.add('open');chatBackdrop.classList.add('open');renderChatAutocomplete(chatInput?.value||'');setTimeout(()=>chatInput.focus(),120)}
-    function closeChat(){chatPanel.classList.remove('open');chatBackdrop.classList.remove('open')}
+    function openChat(){dismissChatGreeting();chatPanel.classList.add('open');chatBackdrop.classList.add('open');document.getElementById('openChatFab')?.setAttribute('aria-expanded','true');renderChatAutocomplete(chatInput?.value||'');setTimeout(()=>chatInput.focus(),120)}
+    function closeChat(){chatPanel.classList.remove('open');chatBackdrop.classList.remove('open');document.getElementById('openChatFab')?.setAttribute('aria-expanded','false')}
     function openMenu(){menuPanel?.classList.add('open');menuBackdropEl?.classList.add('open');menuPanel?.setAttribute('aria-hidden','false');document.getElementById('menuTop')?.setAttribute('aria-expanded','true');setTimeout(()=>document.getElementById('closeMenu')?.focus(),80)}
     function closeMenuPanel(){menuPanel?.classList.remove('open');menuBackdropEl?.classList.remove('open');menuPanel?.setAttribute('aria-hidden','true');document.getElementById('menuTop')?.setAttribute('aria-expanded','false')}
     closeMenuPanel();
     function openContactModal(kind='phone'){const group=CONTACT_DETAILS[currentLang]||CONTACT_DETAILS.ko,data=group[kind]||group.phone;text(q('#contactModalTitle'),data.title);text(q('#contactModalDesc'),data.desc);text(q('#contactValueLabel'),data.label);text(q('#contactValueText'),data.value);text(q('#contactCopyButton'),data.copy);q('#contactCopyButton')?.setAttribute('data-copy',data.value);text(q('#contactModalNote'),data.note);q('#contactValueCard')?.classList.toggle('link',kind==='kakao');contactModal?.classList.add('open');contactBackdrop?.classList.add('open');setTimeout(()=>document.getElementById('closeContactModal')?.focus(),80)}
     function closeContactModal(){contactModal?.classList.remove('open');contactBackdrop?.classList.remove('open')}
     ['openChatFab','openChatTop'].forEach(id=>{const el=document.getElementById(id); if(el) el.addEventListener('click',openChat)});
+    document.getElementById('openChatGreeting')?.addEventListener('click',openChat);
+    document.getElementById('dismissChatGreeting')?.addEventListener('click',dismissChatGreeting);
     document.getElementById('conciergeAskForm')?.addEventListener('submit',e=>{e.preventDefault();const input=document.getElementById('conciergeAskInput'),question=input?.value.trim()||'';openChat();if(!question)return;input.value='';setTimeout(()=>submitChatQuestion(question),140)});
     document.querySelectorAll('[data-open-chat]').forEach(el=>el.addEventListener('click',()=>{openChat();const question=el.dataset.question;if(question)setTimeout(()=>submitChatQuestion(question),180)}));
     document.querySelectorAll('[data-open-contact]').forEach(el=>el.addEventListener('click',()=>openContactModal(el.dataset.openContact)));
@@ -2076,6 +2118,7 @@ body .numeric-font{font-family:var(--font-ko)!important;font-variant-numeric:tab
     document.getElementById('closeContactModal')?.addEventListener('click',closeContactModal);
     contactBackdrop?.addEventListener('click',closeContactModal);
     document.addEventListener('keydown',e=>{if(e.key==='Escape'){closeMenuPanel();closeContactModal();closeLanguageMenu()}});
+    initChatGreeting();
     document.addEventListener('click',e=>{if(e.target.closest('.menu-link'))closeMenuPanel();if(!e.target.closest('#homeLanguage'))closeLanguageMenu()});
     document.getElementById('closeChat').addEventListener('click',closeChat); chatBackdrop.addEventListener('click',closeChat);
     document.querySelectorAll('.suggestion').forEach(b=>b.addEventListener('click',()=>{chatInput.value=b.textContent; chatForm.requestSubmit()}));
