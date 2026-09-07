@@ -1668,6 +1668,7 @@ body:not(.motion-ready) .concierge-widget,body:has(#brandIntro.is-running,.menu-
     <form class="chat-form" id="chatForm"><textarea id="chatInput" rows="1" placeholder="질문을 입력하세요"></textarea><button class="send-btn" type="submit"><span class="mi">send</span></button></form>
   </section>
 <div class="toast" id="toast">복사했습니다</div>
+  <script src="assets/chat-fallback.js"></script>
   <script>
     const screens=[...document.querySelectorAll('.screen')], tabs=[...document.querySelectorAll('.tab')];
     const LANG_KEY='extayGuideLang';
@@ -2065,24 +2066,6 @@ body:not(.motion-ready) .concierge-widget,body:has(#brandIntro.is-running,.menu-
     document.getElementById('langToggle')?.addEventListener('click',cycleLanguage);
     initFullTextI18n();initAttributeI18n();applyStaticLanguage(); renderSmartGuide(); initSpecialTypography(); setInterval(renderSmartGuide,60000);
     const guideAnswers={ko:[],en:[]};
-    const extayGuideAnswers={
-      ko:[
-        [['wifi','wi-fi','와이파이'],'와이파이 이름은 `U+Net46F0_5G`, 비밀번호는 `8H3#22E97B`입니다. 대소문자와 특수문자를 그대로 입력해 주세요.'],
-        [['체크인','입실','도어락','키번호','check-in','checkin','door code','door lock'],'체크인은 오후 4시부터예요. 개인 키 번호는 당일 정오쯤 Airbnb 메시지로 보내드립니다. 키패드 터치 → 번호 입력 → * 버튼 순서로 눌러 주세요.'],
-        [['체크아웃','퇴실','checkout','check-out'],'체크아웃은 오전 11시예요. 퇴실 전 설거지·분리수거, 에어컨 끄기, 창문과 현관문 닫기를 확인해 주세요. 10분 초과 시 10분당 10,000원이 부과될 수 있어요.'],
-        [['주소','위치','오는 길','오시는 길','녹사평','해방촌'],'숙소는 서울시 용산구 신흥로 59, 2층이에요. 녹사평역 2번 출구에서 걸어서 약 15분입니다. 세븐일레븐과 베제투스 사이 골목으로 들어와 2층으로 올라오세요.'],
-        [['주차','parking','차'],'건물 내 주차는 불가해요. 모두의주차장 앱에서 주변 유료 공영주차장의 실시간 자리를 확인해 주세요.'],
-        [['규칙','금연','흡연','반려동물','방문자','소음','매너타임','취사','촬영'],'예약 인원 외 방문, 반려동물 동반, 상업적 촬영은 불가해요. 객실·화장실·베란다·현관 입구·계단은 모두 금연 구역입니다. 밤 9시부터는 소음을 줄여 주세요.'],
-        [['tv','티비','텔레비전','ott','넷플릭스','유튜브','nsm'],'OTT 전용 리모컨에서 원하는 서비스를 선택하고 확인 버튼을 눌러 주세요. 팝업이 뜨면 ‘바로 실행’을 선택하면 됩니다.'],
-        [['온수','난방','보일러','뜨거운 물'],'거실 스탠드 에어컨 뒤쪽 Rinnai 조절기에서 온수 버튼을 눌러 주세요. 화면에 60도가 표시되면 정상 작동 중입니다.'],
-        [['비품','수건','휴지','쓰레기 봉투','보관함'],'여분 수건·휴지·쓰레기 봉투는 비품 보관함에 있어요. 비밀번호는 `007`입니다.'],
-        [['세탁','세탁기','건조기','빨래'],'세탁기는 전원 → 코스 선택 → 시작/일시정지 순서로 눌러 주세요. 건조기는 전원 → 건조 코스 → 시작 순서예요. 밤에는 진동과 소음을 줄여 주세요.'],
-        [['화장실','공용 화장실','비밀 화장실','7003'],'화장실이 부족하면 1층 레스토랑 뒤편 공용 화장실을 이용해 주세요. 비밀번호는 `*7003*`입니다.'],
-        [['루프탑','남산'],'루프탑에서 남산타워를 볼 수 있어요. 늦은 시간에는 소음을 줄여 주세요.'],
-        [['쓰레기','재활용','음식물','일반 쓰레기'],'음식물 쓰레기는 부엌 싱크대 위 전용 통에 버려 주세요. 일반 쓰레기와 재활용품은 베란다 쓰레기통에 넣어 주세요.']
-      ],
-      en:[[['wifi','wi-fi'],'The Wi-Fi ID is `U+Net46F0_5G` and the password is `8H3#22E97B`. Please enter uppercase/lowercase letters and symbols exactly as shown.'],[['check-in','checkin','check in','arrival','door code','door lock'],'Check-in starts at 16:00. This is self check-in. Your personal door code is sent through Airbnb/host messages around noon on check-in day. Touch the keypad, then enter the code you received followed by the * button.'],[['checkout','check-out','check out','leave'],'Checkout is at 11:00. Before leaving, please wash dishes, sort trash, turn off the living room and bedroom AC, close the windows, and make sure the front door is closed. A late checkout fee may apply after a 10-minute grace period.'],[['address','location','directions','noksapyeong','haebangchon'],'The stay is on the 2nd floor, 59 Sinheung-ro, Yongsan-gu, Seoul. It is about 15 minutes on foot from Noksapyeong Station Exit 2, or about 10 minutes by village bus. Enter the alley between Seven Eleven and Vegetus restaurant, then go up to the 2nd floor.'],[['parking','car'],'There is no on-site parking. Please check real-time availability with the Modu Parking app or use nearby paid public parking such as Yongsan 2-ga mechanical public parking, Yongsan 2-ga Community Center public parking, or Haebangchon public parking.'],[['rule','rules','smoking','pet','visitor','noise','quiet','cooking','filming'],'Extra visitors, pets, and commercial filming are not allowed. The room, bathroom, balcony, entrance, and stairs are all non-smoking areas. Please keep indoor cooking simple and avoid food with strong smoke or odor. Quiet hours start after 21:00.'],[['tv','television','ott','netflix','youtube','nsm'],'Use the TV remote when selecting an external input. On the OTT remote, choose the OTT service you want and press confirm. If a pop-up appears, select run now.'],[['hot water','heating','boiler'],'Use the Rinnai controller behind the standing AC in the living room. Press the hot-water button. If 60 degrees appears on the screen, hot water is working normally.'],[['supplies','towel','toilet paper','trash bag','cabinet'],'Extra towels, toilet paper, trash bags, and supplies are in the secret supply cabinet. The password is 007. If room 2 does not open, also check under the induction cooktop.'],[['washer','dryer','laundry'],'Turn on the washer, choose a course, and press start/pause. For the dryer, turn it on, choose a drying course, and press start. At night, please be mindful of vibration and noise.'],[['restroom','toilet','bathroom','7003'],'If your group needs another restroom, use the shared restroom behind the 1st-floor restaurant. The password is *7003*.'],[['rooftop','namsan'],'The rooftop has a Namsan Tower view. Please keep noise low late at night.'],[['trash','recycling','food waste','garbage'],'Put food waste in the bin above the kitchen sink. Put both general trash and recycling into the trash bins on the balcony. For longer stays, use the orange bin near the 1st-floor entrance if food waste starts to smell.']]
-    };
     const chatPanel=document.getElementById('chatPanel'), chatBackdrop=document.getElementById('chatBackdrop'), chatLog=document.getElementById('chatLog'), chatInput=document.getElementById('chatInput'), chatForm=document.getElementById('chatForm'), chatAutocomplete=document.getElementById('chatAutocomplete');
     const menuPanel=document.getElementById('menuPanel'), menuBackdropEl=document.getElementById('menuBackdrop');
     const contactModal=document.getElementById('contactModal'), contactBackdrop=document.getElementById('contactBackdrop');
@@ -2151,13 +2134,7 @@ body:not(.motion-ready) .concierge-widget,body:has(#brandIntro.is-running,.menu-
     function renderBotText(text){return escapeHtml(text).replace(/`([^`\n]+)`/g,'<code>$1</code>').replace(/\*\*([^*\n][^*]*?)\*\*/g,'<strong>$1</strong>')}
     function setMsgText(div,role,text){if(role==='user'){div.textContent=text;return}div.innerHTML=renderBotText(text)}
     function addMsg(role,text,extra=''){const div=document.createElement('div');div.className='msg '+(role==='user'?'user':'bot')+(extra?' '+extra:'');setMsgText(div,role,text);chatLog.appendChild(div);chatLog.scrollTop=chatLog.scrollHeight;return div}
-    function detectLocalLanguage(question){const s=String(question||''); if(/[가-힣]/.test(s))return 'ko'; if(/[a-z]/i.test(s))return 'en'; return currentLang}
-    function getLocalAnswer(question){
-      const lang=detectLocalLanguage(question), lower=String(question||'').toLowerCase(), source=extayGuideAnswers[lang]||extayGuideAnswers.ko;
-      const hit=source.find(([keys])=>keys.some(k=>lower.includes(String(k).toLowerCase())));
-      const fallback={ko:'와이파이, 체크인·퇴실, 교통, 주차, 숙소 이용법을 안내해 드릴 수 있어요. 개인 키 번호나 긴급 상황은 Airbnb 메시지로 호스트에게 확인해 주세요.',en:'I can help with Wi-Fi, check-in/out, location, parking, house rules, TV/OTT, hot water and heating, supplies, washer/dryer, shared restroom, rooftop, and trash disposal. For your personal door code or urgent issues, please check Airbnb/host messages.',zh:'我可以帮助您查询 Wi-Fi、入住/退房、位置、停车、住宿规则、TV/OTT、热水与供暖、用品柜、洗衣机/烘干机、公共卫生间、屋顶露台和垃圾投放。个人门锁密码或紧急情况请查看 Airbnb/房东消息。',ja:'Wi-Fi、チェックイン・チェックアウト、場所、駐車、宿泊ルール、TV・OTT、給湯・暖房、備品、洗濯機・乾燥機、共用トイレ、ルーフトップ、ゴミ出しをご案内できます。個人用ドアコードや緊急時はAirbnb／ホストのメッセージをご確認ください。'};
-      return hit?hit[1]:(fallback[lang]||fallback[currentLang]||fallback.ko);
-    }
+    function getLocalAnswer(question){return window.ExtayChatFallback.answer(question,currentLang)}
     let chatHistory=[];
     chatInput?.addEventListener('input',e=>renderChatAutocomplete(e.target.value));
     chatInput?.addEventListener('focus',e=>renderChatAutocomplete(e.target.value));
@@ -2167,11 +2144,12 @@ body:not(.motion-ready) .concierge-widget,body:has(#brandIntro.is-running,.menu-
       chatInput.value='';
       renderChatAutocomplete('');
       addMsg('user',q);
+      const previousHistory=chatHistory.slice(-6);
       chatHistory.push({role:'user',content:q});
       const botDiv=addMsg('bot',uiText[currentLang].chat.typing,'typing');
       chatLog.scrollTop=chatLog.scrollHeight;
       try{
-        const res=await fetch('/api/chat',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({message:q,history:chatHistory.slice(-6)})});
+        const res=await fetch('/api/chat',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({message:q,history:previousHistory})});
         if(!res.ok) throw new Error(`chat api ${res.status}`);
         const data=await res.json();
         const answer=data.answer||getLocalAnswer(q);

@@ -119,10 +119,14 @@ test('API-key fallback returns a concise guest answer', async () => {
 
 test('browser fallback uses the same concise Korean copy', () => {
   const html = fs.readFileSync(path.join(__dirname, '..', 'guide-extay.html'), 'utf8');
-  assert.match(html, /와이파이 이름은 `U\+Net46F0_5G`/);
-  assert.match(html, /개인 키 번호는 당일 정오쯤 Airbnb 메시지로 보내드립니다/);
-  assert.match(html, /밤 9시부터는 소음을 줄여 주세요/);
-  assert.match(html, /건조기는 전원 → 건조 코스 → 시작 순서예요/);
+  const vm = require('node:vm');
+  const browser = {};
+  vm.runInNewContext(fs.readFileSync(path.join(__dirname, '..', 'assets', 'chat-fallback.js'), 'utf8'), browser);
+  assert.match(html, /src="assets\/chat-fallback.js"/);
+  assert.match(html, /ExtayChatFallback.answer\(question,currentLang\)/);
+  assert.doesNotMatch(html, /const extayGuideAnswers=/);
+  for (const question of ['와이파이 비밀번호', '체크인 전 짐 보관', '숙소 CCTV', '체크아웃', '세탁기', '쓰레기', 'Can I leave luggage?', 'チェックアウト', '监控摄像头']) {
+    assert.equal(browser.ExtayChatFallback.answer(question), localAnswer(question));
+  }
   assert.match(html, /white-space:pre-wrap;overflow-wrap:anywhere;word-break:keep-all;text-align:left/);
-  assert.doesNotMatch(html, /체크아웃 시간을 10분 초과하면 10분당 10,000원의 비용이 발생할 수 있습니다/);
 });
