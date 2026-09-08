@@ -206,29 +206,22 @@ body:not(.is-home):not(.is-gallery):not(.is-checkin):not(.is-wifi):not(.is-trans
 .quick-tile{width:100%;min-width:0;min-inline-size:0;min-height:70px;border:1px solid rgba(205,187,159,.46);border-radius:10px;background:rgba(245,234,216,.06);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:7px;padding:9px 3px;text-align:center;color:#f5ead8;cursor:pointer}
 .quick-tile .mi{font-size:23px;color:#d9c9ae}
 .quick-tile b{display:block;max-width:100%;font-size:11px;line-height:1.2;font-weight:800;white-space:normal;word-break:keep-all;overflow-wrap:anywhere}
-.essentials-head{position:relative;margin-bottom:22px;padding-left:16px}
-.essentials-head:before{content:"";position:absolute;left:0;top:2px;bottom:2px;width:3px;border-radius:99px;background:linear-gradient(180deg,var(--signature),#26382f)}
-.essentials-kicker{margin:0 0 9px;color:#9a5c43;font-size:11px;font-weight:900;line-height:1.2;letter-spacing:.12em!important;text-transform:uppercase}
-.essentials-title{margin:0;color:#26382f;font-size:27px;line-height:1.2;font-weight:800;word-break:keep-all}
-.essentials-sub{margin:10px 0 0;color:#6f6257;font-size:14px;line-height:1.55;font-weight:600;word-break:keep-all}
-.essentials-grid{position:relative;display:grid;grid-template-columns:1.08fr .92fr;gap:8px;overflow:hidden;padding:10px;border:0;border-radius:21px;background:#26382f;box-shadow:0 20px 44px rgba(38,56,47,.19)}
-.essentials-grid:after{content:"";position:absolute;right:-45px;bottom:-70px;width:160px;height:160px;border:1px solid rgba(245,234,216,.16);border-radius:50%;pointer-events:none}
-.essential-item{position:relative;z-index:1;min-width:0;min-height:92px;display:grid;grid-template-columns:34px minmax(0,1fr);gap:10px;align-items:center;padding:15px 13px;border:1px solid rgba(245,234,216,.16);border-radius:12px;background:rgba(245,234,216,.07);color:#f5ead8}
-.essential-item:first-child{grid-row:span 2;min-height:192px;display:flex;flex-direction:column;align-items:flex-start;justify-content:flex-end;padding:18px 16px;border:0;background:var(--signature);box-shadow:0 12px 28px rgba(0,0,0,.16)}
-.essential-item:last-child{grid-column:1/-1;min-height:76px;background:#f5ead8;color:#26382f}
-.essential-icon{width:34px;height:34px;border:1px solid rgba(245,234,216,.35);border-radius:50%;background:rgba(245,234,216,.1);color:#f5ead8;display:grid;place-items:center}
-.essential-item:first-child .essential-icon{width:42px;height:42px;background:#f5ead8;color:var(--signature);border:0}
-.essential-item:last-child .essential-icon{background:#26382f;color:#f5ead8;border-color:#26382f}
+.essentials-head{margin-bottom:20px}
+.essentials-kicker{margin:0 0 9px;color:#7b6b5c;font-size:10px;font-weight:900;line-height:1.2;letter-spacing:.12em!important;text-transform:uppercase}
+.essentials-title{margin:0;color:#221b15;font-size:26px;line-height:1.2;font-weight:800;word-break:keep-all}
+.essentials-sub{margin:10px 0 0;color:#7d6d5e;font-size:14px;line-height:1.55;font-weight:600;word-break:keep-all}
+.essentials-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));overflow:hidden;border:1px solid rgba(123,99,79,.36);border-radius:14px;background:rgba(255,253,252,.58)}
+.essential-item{min-width:0;min-height:92px;display:grid;grid-template-columns:34px minmax(0,1fr);gap:10px;align-items:center;padding:16px 13px}
+.essential-item:nth-child(odd){border-right:1px solid rgba(123,99,79,.28)}
+.essential-item:nth-child(-n+2){border-bottom:1px solid rgba(123,99,79,.28)}
+.essential-icon{width:34px;height:34px;border:1px solid rgba(123,99,79,.22);border-radius:50%;background:#efe4d6;color:#6d5643;display:grid;place-items:center}
 .essential-icon .mi{font-size:18px}
 .essential-copy{display:block;min-width:0}
-.essential-copy small{display:block;margin-bottom:6px;color:rgba(245,234,216,.67);font-size:10px;font-weight:900;line-height:1.15;letter-spacing:.09em!important}
-.essential-copy strong{display:block;color:inherit;font-size:14px;font-weight:800;line-height:1.32;word-break:keep-all;overflow-wrap:anywhere}
-.essential-item:first-child .essential-copy strong{font-family:'Oxanium',var(--font-ko);font-size:32px;line-height:1;letter-spacing:-.045em}
-.essential-item:last-child .essential-copy small{color:#9a5c43}
-.essentials-links{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;margin-top:10px;border:0}
-.essentials-link{width:100%;min-height:68px;border:1px solid rgba(117,72,54,.34);border-radius:12px;background:#fffaf4;color:#26382f;display:flex;align-items:center;justify-content:space-between;gap:8px;padding:13px 12px;text-align:left;font-size:13px;font-weight:800;line-height:1.35;cursor:pointer;word-break:keep-all}
-.essentials-link:first-child{border-color:var(--signature-deep);background:var(--signature-deep);color:#fffaf4}
-.essentials-link .mi{flex:0 0 auto;color:inherit;font-size:20px}
+.essential-copy small{display:block;margin-bottom:5px;color:#8a7663;font-size:9px;font-weight:900;line-height:1.15;letter-spacing:.08em!important}
+.essential-copy strong{display:block;color:#2b2118;font-size:14px;font-weight:800;line-height:1.32;word-break:keep-all;overflow-wrap:anywhere}
+.essentials-links{margin-top:18px;border-top:1px solid rgba(123,99,79,.28)}
+.essentials-link{width:100%;min-height:54px;border:0;border-bottom:1px solid rgba(123,99,79,.24);background:transparent;color:#2b2118;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:0 2px;text-align:left;font-size:14px;font-weight:800;cursor:pointer}
+.essentials-link .mi{flex:0 0 auto;color:#7b6b5c;font-size:22px}
 .home-gallery-preview{padding:36px 0 0}
 .home-gallery-head{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:16px;padding:0 var(--home-gutter)}
 .home-gallery-head h2{margin:0;color:#221b15;font-size:24px;line-height:1.2;font-weight:800}
@@ -863,10 +856,48 @@ body.guidebook-fullscreen-open{overflow:hidden;touch-action:none}
 .checkout-list{border-top:1px solid rgba(216,198,180,.82)}
 .checkout-row{padding:13px 0}
 .checkout-row p{font-family:var(--font-ko);font-size:14px;line-height:1.52}
-.security-editorial-title h3{font-family:var(--font-ko);font-size:26px;letter-spacing:-.035em}
+.checkout-review-note:after{content:none}
+.security-editorial-title h3{font-family:var(--font-ko);font-size:25px;letter-spacing:-.035em}
 .security-editorial-text small{font-family:var(--font-ko);font-size:11px}
 .security-editorial-text strong{font-family:var(--font-ko);font-size:14px}
 .security-editorial-text p{font-family:var(--font-ko);font-size:13px}
+[data-screen="checkin"] .checkin-stack{gap:12px}
+[data-screen="checkin"] .checkin-accordion{border-color:rgba(120,91,67,.22);box-shadow:0 8px 22px rgba(60,45,33,.05)}
+[data-screen="checkin"] .checkin-stack .checkin-locker-card,[data-screen="checkin"] .checkin-stack .checkin-locker-card .airport-summary{background:#fffaf4;border-color:rgba(120,91,67,.22)}
+[data-screen="checkin"] .checkin-stack .checkin-locker-card .airport-summary{color:#26382f}
+[data-screen="checkin"] .checkin-stack .checkin-locker-card .airport-icon{background:#efe4d6;color:#754836}
+[data-screen="checkin"] .checkin-stack .checkin-locker-card .airport-copy small{color:#9a654e}
+[data-screen="checkin"] .checkin-stack .checkin-locker-card .airport-copy b{color:#26382f}
+[data-screen="checkin"] .checkin-stack .checkin-locker-card .airport-chevron{color:#8a7663}
+[data-screen="checkin"] .checkin-self-card,[data-screen="checkin"] .checkin-self-card .airport-summary{background:#26382f!important;border-color:#26382f!important}
+[data-screen="checkin"] .checkin-self-card .airport-icon{background:#fffaf4!important;color:#26382f!important}
+[data-screen="checkin"] .checkin-self-card .airport-copy small{color:rgba(255,250,244,.68)!important}
+[data-screen="checkin"] .checkin-self-card .airport-copy b,[data-screen="checkin"] .checkin-self-card .airport-chevron{color:#fffaf4!important}
+[data-screen="checkin"] .checkout-checklist-card .airport-summary{background:#f0e4d7!important;border-bottom:1px solid rgba(117,72,54,.18)!important}
+[data-screen="checkin"] .checkout-checklist-card .airport-icon{background:#b55d3d!important;color:#fffaf4!important}
+[data-screen="checkin"] .checkout-review-note{margin:12px 0 4px;padding:16px 16px 15px;border:1px solid rgba(181,93,61,.25);border-left:4px solid #b55d3d;border-radius:8px;background:#f4e5da;color:#26382f}
+[data-screen="checkin"] .checkout-review-kicker{margin-bottom:7px;color:#9a5c43}
+[data-screen="checkin"] .checkout-stars{margin-bottom:7px;color:#b55d3d;font-size:18px}
+[data-screen="checkin"] .checkout-review-note strong{color:#26382f;font-size:15px}
+[data-screen="checkin"] .checkout-feedback{padding:11px 2px 13px;font-size:13px}
+[data-screen="checkin"] .checkout-row-icon{width:31px;height:31px;border-radius:50%;background:#efe4d6;color:#754836}
+[data-screen="checkin"] .checkout-row-icon .mi{font-size:17px}
+[data-screen="checkin"] .checkout-row{grid-template-columns:31px minmax(0,1fr);gap:11px;padding:12px 0}
+[data-screen="checkin"] .checkout-row p{font-size:13.5px;font-weight:600;line-height:1.5}
+[data-screen="checkin"] .checkin-parking-card .airport-summary,[data-screen="checkin"] .checkin-parking-card+details .airport-summary{min-height:68px;height:68px;padding-top:13px;padding-bottom:13px}
+.checkin-security-editorial{margin-top:10px;padding:28px 22px 10px;border:1px solid rgba(117,72,54,.18);background:#f1e8dc;color:#26382f;box-shadow:none}
+.checkin-security-editorial:before{right:-88px;top:-98px;border-color:rgba(181,93,61,.14)}
+.security-editorial-head{padding-bottom:19px;border-bottom-color:rgba(117,72,54,.22)}
+.security-editorial-title small{color:#a26046}
+.security-editorial-title h3{color:#26382f}
+.security-editorial-mark{color:rgba(117,72,54,.56)}
+.security-editorial-item{padding:18px 0;border-bottom-color:rgba(117,72,54,.18)}
+.security-editorial-number{color:#b55d3d}
+.security-editorial-icon{border-color:rgba(117,72,54,.24);background:#fffaf4;color:#754836}
+.security-editorial-text small{color:#8a7663}
+.security-editorial-text strong{color:#26382f}
+.security-editorial-text p{color:#6d5e51}
+.rules-title-line{display:block}
 .checkin-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
 .checkin-fact{border-radius:16px;background:#f3eadf;padding:15px}
 .checkin-fact small{display:block;margin-bottom:6px;color:#8a7663;font-size:11px;font-weight:800;text-transform:uppercase}
@@ -1025,11 +1056,8 @@ body.motion-ready .hero-panel .scroll-cue{animation:heroTextIn .8s cubic-bezier(
   .quick-tile b{font-size:10px}
   .essentials-title{font-size:23px}
   .essential-item{grid-template-columns:30px minmax(0,1fr);gap:8px;padding:14px 10px}
-  .essential-item:first-child{min-height:184px;padding:17px 14px}
   .essential-icon{width:30px;height:30px}
   .essential-copy strong{font-size:12.5px}
-  .essential-item:first-child .essential-copy strong{font-size:29px}
-  .essentials-link{padding:12px 10px;font-size:12px}
   .home-gallery-main{height:214px}
   .home-gallery-card{height:92px}
   .home-gallery-copy{padding:16px 10px 13px}
@@ -1458,7 +1486,7 @@ body .latin-font{font-family:'Oxanium','Arial Narrow',Arial,sans-serif!important
           <section class="guide-info-card checkin-overview" aria-labelledby="checkinKeyTitle">
             <div class="guide-card-header"><span class="guide-card-icon"><span class="mi">event_available</span></span><span class="guide-card-heading"><small>ARRIVAL &amp; DEPARTURE</small><h3 id="checkinKeyTitle">입퇴실 안내</h3></span></div>
             <div class="guide-card-body"><div class="checkin-info-list">
-              <div class="checkin-info-row"><span class="checkin-row-icon"><span class="mi">schedule</span></span><small>이용 시간</small><div><strong>체크인 16:00 · 체크아웃 11:00</strong><p>개인 키 번호는 체크인 당일 12시쯤 호스트 메시지로 안내됩니다.</p></div></div>
+              <div class="checkin-info-row"><span class="checkin-row-icon"><span class="mi">schedule</span></span><small>이용 시간</small><div><strong>체크인 16:00 · 체크아웃 11:00</strong></div></div>
               <div class="checkin-info-row"><span class="checkin-row-icon"><span class="mi">location_on</span></span><small>주소</small><div><strong>서울시 용산구 신흥로 59, 2층</strong></div></div>
               <div class="checkin-info-row"><span class="checkin-row-icon"><span class="mi">key</span></span><small>입실 방식</small><div><strong>비대면 셀프 체크인</strong></div></div>
               <div class="checkin-info-row"><span class="checkin-row-icon"><span class="mi">local_parking</span></span><small>주차</small><div><strong>건물 주차 불가</strong><p>주변 유료 공영주차장을 이용해 주세요.</p></div></div>
@@ -2248,6 +2276,7 @@ body .latin-font{font-family:'Oxanium','Arial Narrow',Arial,sans-serif!important
     };
     function initFullTextI18n(root=document.body){const walker=document.createTreeWalker(root,NodeFilter.SHOW_TEXT,{acceptNode(node){const parent=node.parentElement,key=(node.nodeValue||'').trim();return parent&&FULL_TEXT_I18N[key]&&!parent.closest('.mi,script,style,textarea')?NodeFilter.FILTER_ACCEPT:NodeFilter.FILTER_REJECT}}),nodes=[];while(walker.nextNode())nodes.push(walker.currentNode);nodes.forEach(node=>{const key=(node.nodeValue||'').trim(),span=document.createElement('span');span.className='full-i18n';span.dataset.i18nKey=key;span.textContent=key;node.parentNode?.replaceChild(span,node)})}
     function applyFullTextLanguage(root=document.body){const index=FULL_TEXT_LANG_INDEX[currentLang];root.querySelectorAll('[data-i18n-key]').forEach(el=>{const key=el.dataset.i18nKey;const value=index===undefined?key:(FULL_TEXT_I18N[key]?.[index]||key);el.textContent=currentLang==='zh-TW'?toTraditionalText(value):value})}
+    function formatRulesHeroTitle(){const title=document.querySelector('[data-screen="rules"] .rules-hero .page-title');if(!title)return;const lines={ko:['모두가 편안한','머무름을 위해'],en:['A Comfortable Stay','for Everyone'],zh:['为了每个人','都能舒适入住'],'zh-TW':['為了每個人','都能舒適入住'],ja:['みんなが心地よく','過ごすために']}[currentLang]||['모두가 편안한','머무름을 위해'];title.replaceChildren(...lines.map(line=>{const span=document.createElement('span');span.className='rules-title-line';span.textContent=line;return span}))}
     const ATTRIBUTE_NAMES=['aria-label','alt','placeholder','title','data-fullscreen-title'];
     function initAttributeI18n(root=document.body){root.querySelectorAll('[aria-label],[alt],[placeholder],[title],[data-fullscreen-title]').forEach(el=>ATTRIBUTE_NAMES.forEach((name,index)=>{const value=el.getAttribute(name);if(value&&ATTRIBUTE_I18N[value])el.dataset[`i18nAttr${index}`]=value}))}
     function applyAttributeLanguage(root=document.body){const index=FULL_TEXT_LANG_INDEX[currentLang];root.querySelectorAll('[data-i18n-attr0],[data-i18n-attr1],[data-i18n-attr2],[data-i18n-attr3],[data-i18n-attr4]').forEach(el=>ATTRIBUTE_NAMES.forEach((name,attrIndex)=>{const key=el.dataset[`i18nAttr${attrIndex}`];if(key){const value=index===undefined?key:(ATTRIBUTE_I18N[key]?.[index]||key);el.setAttribute(name,currentLang==='zh-TW'?toTraditionalText(value):value)}}))}
@@ -2360,7 +2389,7 @@ body .latin-font{font-family:'Oxanium','Arial Narrow',Arial,sans-serif!important
       if(devices[2]){text(devices[2].querySelector('h3'),tr.appliances.induction.title);text(devices[2].querySelector('small'),tr.appliances.induction.small);eachText([...devices[2].querySelectorAll('.steps li')],tr.appliances.induction.steps)}
       text(q('[data-screen="laundry"] .page-title'),tr.laundry.title); text(q('[data-screen="laundry"] .page-sub'),tr.laundry.sub); const laundryDevices=qa('[data-screen="laundry"] .device'); if(laundryDevices[0]){text(laundryDevices[0].querySelector('h3'),tr.laundry.washerTitle);eachText([...laundryDevices[0].querySelectorAll('.steps li')],tr.laundry.washerSteps);eachText([...laundryDevices[0].querySelectorAll('figcaption')],[tr.laundry.captions[0]])} if(laundryDevices[1]){text(laundryDevices[1].querySelector('h3'),tr.laundry.dryerTitle);eachText([...laundryDevices[1].querySelectorAll('.steps li')],tr.laundry.dryerSteps);eachText([...laundryDevices[1].querySelectorAll('figcaption')],[tr.laundry.captions[1]])}
       text(q('[data-screen="trash"] .page-title'),tr.trash.title); text(q('[data-screen="trash"] .page-sub'),tr.trash.sub); const trashCard=q('[data-screen="trash"] .trash-guide-card'); if(trashCard){text(trashCard.querySelector('h3'),tr.trash.basis);eachText([...trashCard.querySelectorAll('.steps li')],tr.trash.items);eachText([...trashCard.querySelectorAll('figcaption')],tr.trash.captions)};
-      text(q('.chat-head h2'),tr.chat.title); const firstBot=q('.chat-log .msg.bot:first-child'); if(firstBot&&!q('.chat-log .msg.user'))text(firstBot,tr.chat.hello); text(q('.chat-note'),tr.chat.note); const input=q('#chatInput'); if(input)input.placeholder=tr.chat.placeholder; text(q('#toast'),tr.copied);applyFullTextLanguage();applyAttributeLanguage();refreshGalleryCopy();window.ExtayTours?.renderTours?.();
+      text(q('.chat-head h2'),tr.chat.title); const firstBot=q('.chat-log .msg.bot:first-child'); if(firstBot&&!q('.chat-log .msg.user'))text(firstBot,tr.chat.hello); text(q('.chat-note'),tr.chat.note); const input=q('#chatInput'); if(input)input.placeholder=tr.chat.placeholder; text(q('#toast'),tr.copied);applyFullTextLanguage();formatRulesHeroTitle();applyAttributeLanguage();refreshGalleryCopy();window.ExtayTours?.renderTours?.();
     }
     const RESTAURANT_SOURCE='https://juas.notion.site/4091068d724948cdaa4a1d63e36a898a?v=7696891d8c864357b976582f859d9cfd';
     const RESTAURANT_CATEGORIES=[['recommended','추천'],['all','전체'],['morning','아침·브런치'],['korean','한식'],['casual','캐주얼'],['dining','특별한 식사'],['cafe','카페'],['dessert','디저트']];
