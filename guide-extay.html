@@ -26,7 +26,7 @@
   <meta name="twitter:description" content="익스테이 맨션 해방촌 숙박 안내 모바일 가이드" />
   <meta name="twitter:image" content="https://extay-release.vercel.app/assets/extay/social/extay-mansion-haebangchon-preview-v3.jpg" />
   <meta name="twitter:image:alt" content="초록색 벽과 따뜻한 조명의 익스테이 맨션 해방촌 거실" />
-  <link rel="preload" href="assets/extay/extay-logo-lockup.png" as="image" fetchpriority="high" />
+  <link rel="preload" href="assets/extay/extay-logo-official.png" as="image" fetchpriority="high" />
   <link rel="preload" href="assets/extay/crops/main-living-logo.png" as="image" fetchpriority="high" />
   <link rel="preload" href="assets/font/oxanium-latin.woff2" as="font" type="font/woff2" crossorigin />
   <link rel="preload" href="assets/font/material-symbols-outlined-extay.woff2" as="font" type="font/woff2" crossorigin />
@@ -53,9 +53,8 @@ body{background:var(--bg);color:var(--ink)}
 .top h1{text-align:center;white-space:nowrap;font-size:clamp(18px,5.2vw,24px);line-height:1.1}
 .top h1{position:absolute;left:50%;z-index:0;transform:translateX(-50%)}
 .top-actions,.home-language,#menuTop{position:relative;z-index:1}
-.brand-home{border:0;background:transparent;color:inherit;font:inherit;line-height:1;padding:8px 10px;border-radius:999px;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;gap:7px}
-.header-brand-logo{display:block;width:25px;height:25px;object-fit:contain;flex:none;transition:filter .22s ease}
-.header-brand-text{font-size:clamp(15px,4.4vw,20px);letter-spacing:-.035em}
+.brand-home{border:0;background:transparent;color:inherit;font:inherit;line-height:1;padding:8px 10px;border-radius:999px;cursor:pointer;display:inline-flex;align-items:center;justify-content:center}
+.header-brand-logo{display:block;width:clamp(112px,32vw,148px);height:28px;object-fit:contain;flex:none;transition:filter .22s ease}
 body.is-home:not(.hero-scrolled) .header-brand-logo{filter:invert(1)}
 .top-actions{display:flex;justify-content:flex-end;gap:0}.top .icon-btn{width:36px;height:40px}.lang-toggle{position:relative;font-size:11px;font-weight:900;letter-spacing:0}.lang-toggle .mi{font-size:23px}.lang-toggle span:last-child{position:absolute;right:0;bottom:2px;background:var(--ink);color:#fff;border-radius:999px;min-width:20px;height:15px;display:grid;place-items:center;font-size:9px;line-height:1}
 .top{background:rgba(248,243,235,.94);border-bottom-color:rgba(216,198,180,.7)}
@@ -128,9 +127,21 @@ body.is-gallery .top #menuTop,body.is-checkin .top #menuTop,body.is-wifi .top #m
 body.is-gallery .top .top-actions,body.is-checkin .top .top-actions,body.is-wifi .top .top-actions,body.is-transport .top .top-actions,body.is-guidebook .top .top-actions,body.is-restaurants .top .top-actions,body.is-faq .top .top-actions,body.is-appliances .top .top-actions,body.is-laundry .top .top-actions,body.is-trash .top .top-actions{display:none}
 body:not(.is-home):not(.is-gallery):not(.is-checkin):not(.is-wifi):not(.is-transport):not(.is-guidebook):not(.is-restaurants):not(.is-faq):not(.is-appliances):not(.is-laundry):not(.is-trash) .top{position:sticky;top:0;left:auto;transform:none;width:100%;background:rgba(247,242,236,.94);color:#221b15;border-bottom:1px solid rgba(216,198,180,.72);backdrop-filter:blur(18px)}
 body:not(.is-home):not(.is-gallery):not(.is-checkin):not(.is-wifi):not(.is-transport):not(.is-guidebook):not(.is-restaurants):not(.is-faq):not(.is-appliances):not(.is-laundry):not(.is-trash) .top h1{text-align:center}
-.landing-hero{position:relative;min-height:96svh;overflow:hidden;background:#241d17;color:#fff;isolation:isolate}
+.landing-hero{position:relative;min-height:96svh;overflow:hidden;background:#241d17;color:#fff;isolation:isolate;touch-action:pan-y}
 .landing-hero:before{content:"";position:absolute;inset:-1px;z-index:0;background:url('assets/extay/crops/main-living-logo.png') center/cover no-repeat;transform:translate3d(0,0,0) scale(1.18);transform-origin:center;backface-visibility:hidden;-webkit-backface-visibility:hidden;will-change:transform}
 .landing-hero:after{content:"";position:absolute;inset:auto 0 0;height:8%;z-index:1;background:linear-gradient(180deg,rgba(247,242,236,0),#f7f2ec);pointer-events:none}
+.hero-photo{position:absolute;inset:-1px;z-index:0;opacity:0;transform:translate3d(0,0,0) scale(1);transform-origin:center;background-position:center;background-size:cover;background-repeat:no-repeat;backface-visibility:hidden;-webkit-backface-visibility:hidden;will-change:opacity,transform;transition:opacity .72s cubic-bezier(.4,0,.2,1)}
+.hero-photo-primary{background-image:url('assets/extay/crops/main-living-logo.png')}
+.hero-photo-secondary{background-image:url('assets/extay/hero/extay-hero-02-dining.webp')}
+.hero-photo-tertiary{background-image:url('assets/extay/hero/extay-hero-03-tree.webp')}
+.hero-photo-quaternary{background-image:url('assets/extay/hero/extay-hero-04-lounge.webp')}
+.hero-swipe-controls{position:absolute;inset:0;z-index:4;pointer-events:none}
+.hero-swipe-arrow{position:absolute;top:50%;width:42px;height:42px;border:1px solid rgba(255,255,255,.45);border-radius:50%;background:rgba(0,0,0,.12);color:#fff;display:grid;place-items:center;opacity:.86;transform:translateY(-50%);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);pointer-events:auto;cursor:pointer;transition:opacity .2s ease,background-color .2s ease}
+.hero-swipe-arrow .mi{font-size:25px}.hero-swipe-prev{left:12px}.hero-swipe-next{right:12px}
+.hero-slide-bars{position:absolute;right:18px;bottom:20px;display:flex;align-items:center;gap:6px;pointer-events:auto}
+.hero-slide-bar{width:17px;height:3px;padding:0;border:0;border-radius:999px;background:rgba(255,255,255,.48);cursor:pointer;transition:width .3s ease,background-color .3s ease}
+.hero-slide-bar.is-active{width:28px;background:#fff}
+@media(hover:hover){.hero-swipe-arrow:hover{opacity:1;background:rgba(0,0,0,.28)}}
 .hero-panel{position:absolute;left:0;right:0;bottom:0;z-index:2;isolation:isolate;padding:0 var(--home-gutter) 50px;display:flex;flex-direction:column;align-items:flex-start}
 .hero-panel:before{content:"";position:absolute;inset:-80px 0 0;z-index:-1;background:linear-gradient(180deg,rgba(0,0,0,0),rgba(0,0,0,.12) 42%,rgba(0,0,0,.2) 100%);pointer-events:none}
 .eyebrow,.section-kicker{margin:0 0 10px;font-size:12px;font-weight:700;line-height:1.2;text-transform:uppercase;color:inherit}
@@ -151,10 +162,10 @@ body:not(.is-home):not(.is-gallery):not(.is-checkin):not(.is-wifi):not(.is-trans
 .concierge-hub{position:relative;overflow:hidden;border:1px solid #cdbb9f;border-radius:14px;background:#26382f;color:#f5ead8;padding:23px 20px 18px;box-shadow:0 18px 42px rgba(31,48,40,.2)}
 .concierge-hub:before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 88% 4%,rgba(205,187,159,.14),transparent 30%),linear-gradient(145deg,rgba(255,255,255,.025),transparent 52%);pointer-events:none}
 .concierge-hub>*{position:relative;z-index:1}
-.concierge-intro{display:grid;grid-template-columns:minmax(0,1fr) 65px;gap:12px;align-items:center;margin-bottom:10px}
+.concierge-intro{display:grid;grid-template-columns:minmax(0,1fr) 108px;gap:12px;align-items:center;margin-bottom:10px}
 .concierge-kicker{margin:0 0 7px;color:#d2c3aa;font-size:10px;font-weight:800;line-height:1.2;letter-spacing:.12em!important;text-transform:uppercase}
 .concierge-heading{margin:0;color:#fff8eb;font-size:25px;line-height:1.2;font-weight:800;word-break:keep-all}
-.concierge-character{width:65px;height:65px;padding:11px 8px;object-fit:contain;justify-self:end;border:1px solid rgba(205,187,159,.74);border-radius:50%;background:#f5ead8;filter:drop-shadow(0 9px 17px rgba(0,0,0,.2))}
+.concierge-character{width:108px;height:50px;padding:10px 9px;object-fit:contain;justify-self:end;border:1px solid rgba(205,187,159,.74);border-radius:14px;background:#f5ead8;filter:drop-shadow(0 9px 17px rgba(0,0,0,.2))}
 .concierge-ask{display:grid;grid-template-columns:minmax(0,1fr) 42px;gap:8px;padding:5px 5px 5px 15px;border:1px solid rgba(205,187,159,.7);border-radius:12px;background:#f5ead8;box-shadow:inset 0 1px 0 rgba(255,255,255,.55)}
 .concierge-ask input{min-width:0;border:0;outline:0;background:transparent;color:#26382f;font-size:14px;font-weight:700}
 .concierge-ask input::placeholder{color:#7c7669;font-weight:500}
@@ -784,8 +795,12 @@ body:not(.is-home) main{padding-top:0}
 .screen.active{position:relative;z-index:1;animation:screenCrossIn .34s ease both}
 .screen.is-exiting{display:block;position:absolute;inset:0;width:100%;pointer-events:none;z-index:0;animation:screenCrossOut .24s ease both}
 main{position:relative}
-body.motion-ready .landing-hero:before{animation:heroZoomOut 3.2s cubic-bezier(.22,1,.36,1) both}
+body.motion-ready:not(.hero-carousel-ready) .landing-hero:before{animation:heroZoomOut 3.2s cubic-bezier(.22,1,.36,1) both}
 body.hero-scrolled .landing-hero:before{animation:none;transform:translate3d(0,0,0) scale(1)}
+body.motion-ready.hero-carousel-ready .landing-hero:before,body.motion-ready.hero-carousel-ready .landing-hero .hero-photo{animation:none;opacity:0;transform:translate3d(0,0,0) scale(1)}
+body.motion-ready.hero-carousel-ready .landing-hero .hero-photo.is-active{opacity:1}
+body.motion-ready.hero-carousel-ready.intro-home-zoom .landing-hero .hero-photo-primary.is-active{animation:heroHomeRevealZoom 3.2s cubic-bezier(.22,1,.36,1) both}
+body.hero-scrolled .landing-hero .hero-photo{animation:none!important;transform:translate3d(0,0,0) scale(1)}
 .hero-panel .eyebrow,.hero-panel .hero-title,.hero-panel .hero-actions,.hero-panel .scroll-cue{opacity:0;transform:translateY(12px)}
 body.motion-ready .hero-panel .eyebrow{animation:heroTextIn .8s cubic-bezier(.22,1,.36,1) .3s both}
 body.motion-ready .hero-panel .hero-title{animation:heroTextIn 1.44s cubic-bezier(.22,1,.36,1) .65s both}
@@ -803,9 +818,11 @@ body.motion-ready .hero-panel .scroll-cue{animation:heroTextIn .8s cubic-bezier(
 @keyframes screenCrossIn{from{opacity:0}to{opacity:1}}
 @keyframes screenCrossOut{from{opacity:1}to{opacity:0}}
 @keyframes heroZoomOut{from{transform:translate3d(0,0,0) scale(1.18)}to{transform:translate3d(0,0,0) scale(1)}}
+@keyframes heroHomeRevealZoom{from{transform:translate3d(0,0,0) scale(1.18)}to{transform:translate3d(0,0,0) scale(1)}}
 @keyframes heroTextIn{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
 @media (prefers-reduced-motion:reduce){
   .landing-hero:before,.hero-panel .eyebrow,.hero-panel .hero-title,.hero-panel .hero-actions,.hero-panel .scroll-cue,.motion-item,.screen.active,.screen.is-exiting,#galleryMain,.gallery-thumb img{animation:none!important;transition:none!important;transform:none!important;opacity:1!important}
+  .hero-photo{animation:none!important;transition:none!important;transform:none!important}.hero-photo:not(.is-active){opacity:0!important}.hero-photo.is-active{opacity:1!important}
   .screen.is-exiting{display:none!important}
 }
 @media (max-width:380px){
@@ -814,9 +831,9 @@ body.motion-ready .hero-panel .scroll-cue{animation:heroTextIn .8s cubic-bezier(
   .landing-hero .hero-title{font-size:50px}
   .hero-copy{font-size:15px}
   .concierge-hub{padding:21px 16px 16px}
-  .concierge-intro{grid-template-columns:minmax(0,1fr) 56px}
+  .concierge-intro{grid-template-columns:minmax(0,1fr) 92px}
   .concierge-heading{font-size:22px}
-  .concierge-character{width:56px;height:56px}
+  .concierge-character{width:92px;height:44px;padding:8px}
   .checkin-text-section{padding:19px 16px}
   .checkin-info-row{grid-template-columns:32px 70px minmax(0,1fr);gap:10px}
   .checkin-row-icon{width:32px;height:32px}
@@ -955,7 +972,7 @@ body .numeric-font{font-family:var(--font-ko)!important;font-variant-numeric:tab
 .brand-intro-mark{position:absolute;left:50%;top:50%;display:block;width:min(80vw,374px);max-width:none;transform:translate(-50%,-50%)}
 .brand-intro-mark img{position:relative;z-index:1;display:block;width:100%;height:auto;opacity:0;transform:translateY(8px) scale(.965);filter:blur(3px);will-change:opacity,transform,filter}
 .brand-intro.is-running .brand-intro-mark img{animation:brandMarkSequence 3.24s cubic-bezier(.4,0,.2,1) both}
-.brand-intro-mark::before,.brand-intro-mark::after{content:"";position:absolute;inset:0;z-index:2;opacity:0;pointer-events:none;-webkit-mask:url('assets/extay/extay-logo-lockup.png') center/contain no-repeat;mask:url('assets/extay/extay-logo-lockup.png') center/contain no-repeat}
+.brand-intro-mark::before,.brand-intro-mark::after{content:"";position:absolute;inset:0;z-index:2;opacity:0;pointer-events:none;-webkit-mask:url('assets/extay/extay-logo-official.png') center/contain no-repeat;mask:url('assets/extay/extay-logo-official.png') center/contain no-repeat}
 .brand-intro-mark::before{background:repeating-linear-gradient(0deg,#15110f 0 1px,rgba(255,255,255,.92) 1px 2px,transparent 2px 4px),repeating-linear-gradient(90deg,rgba(166,111,63,.9) 0 2px,rgba(255,255,255,.86) 2px 3px,rgba(43,33,24,.78) 3px 5px,transparent 5px 8px);background-size:100% 7px,13px 100%;mix-blend-mode:multiply}
 .brand-intro-mark::after{background:repeating-linear-gradient(180deg,transparent 0 5%,rgba(255,255,255,.96) 5% 7%,rgba(43,33,24,.92) 7% 10%,transparent 10% 17%);mix-blend-mode:hard-light}
 .brand-intro.is-leaving{opacity:0;visibility:visible;pointer-events:none;transition:opacity .54s cubic-bezier(.4,0,.2,1) .08s}
@@ -977,7 +994,7 @@ body .numeric-font{font-family:var(--font-ko)!important;font-variant-numeric:tab
 .menu-chevron{place-items:center;color:rgba(111,90,69,.58)}.menu-chevron .mi{font-size:18px}
 .concierge-widget{position:fixed;right:max(16px,calc((100vw - 480px)/2 + 16px));bottom:calc(96px + env(safe-area-inset-bottom,0px));z-index:45;--concierge-caption-space:calc(1.05rem + 12px);padding-bottom:var(--concierge-caption-space);transition:opacity .2s ease,visibility .2s ease}
 .concierge-launcher{position:relative;width:66px;height:66px;padding:10px;border:1px solid rgba(111,90,69,.25);border-radius:50%;background:#fffaf4;box-shadow:0 8px 28px rgba(43,33,24,.22);display:grid;place-items:center;cursor:pointer}
-.concierge-launcher>img{display:block;width:45px;height:34px;object-fit:contain;pointer-events:none}
+.concierge-launcher>img{display:block;width:50px;height:24px;object-fit:contain;pointer-events:none}
 .concierge-launcher-caption{position:absolute;top:calc(100% + 6px);left:50%;transform:translateX(-50%);min-width:max-content;padding:4px 8px;border-radius:999px;background:var(--ink);color:#fff;font-size:10px;font-weight:800;line-height:1.05;box-shadow:0 4px 12px rgba(43,33,24,.2)}
 .concierge-launcher-message[hidden]{display:none}
 .concierge-launcher-message{position:absolute;right:78px;bottom:var(--concierge-caption-space);display:grid;width:max-content;max-width:min(230px,calc(100vw - 122px));border:1px solid rgba(111,90,69,.2);border-radius:19px;background:#fffaf4;box-shadow:0 8px 28px rgba(43,33,24,.16);color:var(--ink);text-align:left;white-space:normal;word-break:keep-all;overflow-wrap:anywhere}
@@ -990,20 +1007,34 @@ body .numeric-font{font-family:var(--font-ko)!important;font-variant-numeric:tab
 body:not(.motion-ready) .concierge-widget,body:has(#brandIntro.is-running,.menu-panel.open,.chat-panel.open,.image-lightbox.open) .concierge-widget{opacity:0;visibility:hidden;pointer-events:none}
 @media(hover:hover){.concierge-launcher:hover{box-shadow:0 12px 34px rgba(43,33,24,.28);transform:translateY(-2px)}}
 @media(min-width:760px){.concierge-widget{bottom:28px}}
-@media(max-width:380px){.header-brand-logo{width:22px;height:22px}.header-brand-text{font-size:14px}.brand-home{gap:5px;padding-inline:5px}}
+@media(max-width:380px){.header-brand-logo{width:106px;height:25px}.brand-home{padding-inline:4px}.hero-swipe-arrow{width:38px;height:38px}.hero-swipe-prev{left:8px}.hero-swipe-next{right:8px}}
 @media print{.concierge-widget{display:none!important}}
 @media(prefers-reduced-motion:reduce){.brand-intro{display:none!important}}
 
   </style>
 </head>
 <body class="is-home">
-  <div class="brand-intro" id="brandIntro" aria-hidden="true"><span class="brand-intro-mark"><img src="assets/extay/extay-logo-lockup.png" alt=""></span></div>
+  <div class="brand-intro" id="brandIntro" aria-hidden="true"><span class="brand-intro-mark"><img src="assets/extay/extay-logo-official.png" alt=""></span></div>
   <div class="app">
-    <header class="top"><button class="icon-btn" aria-label="메뉴" id="menuTop"><svg class="header-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16" /></svg></button><h1><button class="brand-home" id="brandHome" type="button" data-go="home" aria-label="홈으로 이동"><img class="header-brand-logo" src="assets/extay/extay-logo-symbol.png" alt=""><span class="header-brand-text">EXTAY Mansion</span></button></h1><div class="home-language" id="homeLanguage"><button class="home-language-btn" type="button" id="homeLangToggle" aria-label="언어 선택" aria-haspopup="true" aria-expanded="false"><span id="homeLangText">KR</span><svg class="header-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="m7 10 5 5 5-5" /></svg></button><div class="home-language-menu" id="homeLangMenu" role="menu" aria-label="언어 선택"><button class="home-language-option" type="button" role="menuitemradio" aria-checked="true" data-language="ko"><span>한국어</span><small>KR</small></button><button class="home-language-option" type="button" role="menuitemradio" aria-checked="false" data-language="en"><span>English</span><small>EN</small></button><button class="home-language-option" type="button" role="menuitemradio" aria-checked="false" data-language="zh"><span>中文</span><small>CN</small></button><button class="home-language-option" type="button" role="menuitemradio" aria-checked="false" data-language="ja"><span>日本語</span><small>JP</small></button></div></div><div class="top-actions"><a class="icon-btn" href="assets/guidebook/Extay_Mansion_Haebangchon_Guide_KO_no_NotebookLM.pdf" target="_blank" rel="noopener" aria-label="가이드북 열기" id="openGuidebookTop"><span class="mi">menu_book</span></a><button class="icon-btn lang-toggle" aria-label="Switch to English" id="langToggle" type="button"><span class="mi">translate</span><span id="langToggleText">EN</span></button><button class="icon-btn" aria-label="안내 도우미" id="openChatTop"><span class="mi">smart_toy</span></button></div></header>
+    <header class="top"><button class="icon-btn" aria-label="메뉴" id="menuTop"><svg class="header-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16" /></svg></button><h1><button class="brand-home" id="brandHome" type="button" data-go="home" aria-label="홈으로 이동"><img class="header-brand-logo" src="assets/extay/extay-logo-official.png" alt="EXTAY Mansion"></button></h1><div class="home-language" id="homeLanguage"><button class="home-language-btn" type="button" id="homeLangToggle" aria-label="언어 선택" aria-haspopup="true" aria-expanded="false"><span id="homeLangText">KR</span><svg class="header-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="m7 10 5 5 5-5" /></svg></button><div class="home-language-menu" id="homeLangMenu" role="menu" aria-label="언어 선택"><button class="home-language-option" type="button" role="menuitemradio" aria-checked="true" data-language="ko"><span>한국어</span><small>KR</small></button><button class="home-language-option" type="button" role="menuitemradio" aria-checked="false" data-language="en"><span>English</span><small>EN</small></button><button class="home-language-option" type="button" role="menuitemradio" aria-checked="false" data-language="zh"><span>中文</span><small>CN</small></button><button class="home-language-option" type="button" role="menuitemradio" aria-checked="false" data-language="ja"><span>日本語</span><small>JP</small></button></div></div><div class="top-actions"><a class="icon-btn" href="assets/guidebook/Extay_Mansion_Haebangchon_Guide_KO_no_NotebookLM.pdf" target="_blank" rel="noopener" aria-label="가이드북 열기" id="openGuidebookTop"><span class="mi">menu_book</span></a><button class="icon-btn lang-toggle" aria-label="Switch to English" id="langToggle" type="button"><span class="mi">translate</span><span id="langToggleText">EN</span></button><button class="icon-btn" aria-label="안내 도우미" id="openChatTop"><span class="mi">smart_toy</span></button></div></header>
 
     <main>
     <section class="screen active" data-screen="home">
         <section class="landing-hero" aria-labelledby="heroTitle">
+          <span class="hero-photo hero-photo-primary is-active" aria-hidden="true"></span>
+          <span class="hero-photo hero-photo-secondary" aria-hidden="true"></span>
+          <span class="hero-photo hero-photo-tertiary" aria-hidden="true"></span>
+          <span class="hero-photo hero-photo-quaternary" aria-hidden="true"></span>
+          <div class="hero-swipe-controls" aria-label="홈 사진 선택">
+            <button class="hero-swipe-arrow hero-swipe-prev" type="button" aria-label="이전 사진"><span class="mi">chevron_left</span></button>
+            <button class="hero-swipe-arrow hero-swipe-next" type="button" aria-label="다음 사진"><span class="mi">chevron_right</span></button>
+            <div class="hero-slide-bars" role="group" aria-label="홈 사진">
+              <button class="hero-slide-bar is-active" type="button" data-hero-slide="0" aria-label="첫 번째 사진" aria-current="true"></button>
+              <button class="hero-slide-bar" type="button" data-hero-slide="1" aria-label="두 번째 사진" aria-current="false"></button>
+              <button class="hero-slide-bar" type="button" data-hero-slide="2" aria-label="세 번째 사진" aria-current="false"></button>
+              <button class="hero-slide-bar" type="button" data-hero-slide="3" aria-label="네 번째 사진" aria-current="false"></button>
+            </div>
+          </div>
           <div class="hero-panel">
             <p class="eyebrow">SEOUL PRIVATE STAY</p>
             <h2 class="hero-title" id="heroTitle">EXTAY</h2>
@@ -1018,7 +1049,7 @@ body:not(.motion-ready) .concierge-widget,body:has(#brandIntro.is-running,.menu-
                 <p class="concierge-kicker" id="conciergeKicker">EXTAY CONCIERGE</p>
                 <h2 class="concierge-heading" id="aiTitle">무엇을 도와드릴까요?</h2>
               </div>
-              <img class="concierge-character" src="assets/extay/extay-logo-symbol.png" alt="EXTAY Mansion">
+              <img class="concierge-character" src="assets/extay/extay-logo-official.png" alt="EXTAY Mansion">
             </div>
             <form class="concierge-ask" id="conciergeAskForm">
               <input id="conciergeAskInput" type="text" autocomplete="off" placeholder="AI 챗봇에게 질문해 보세요" aria-label="AI 챗봇에게 질문">
@@ -1656,7 +1687,7 @@ body:not(.motion-ready) .concierge-widget,body:has(#brandIntro.is-running,.menu-
       <button class="concierge-greeting-open" id="openChatGreeting" type="button" aria-controls="chatPanel"><small id="chatLauncherLabel">AI 컨시어지</small><strong id="chatLauncherMessage">무엇을 도와드릴까요?</strong></button>
       <button class="concierge-greeting-close" id="dismissChatGreeting" type="button" aria-label="말풍선 닫기"><span aria-hidden="true">×</span></button>
     </div>
-    <button class="concierge-launcher" id="openChatFab" type="button" aria-label="안내 도우미 열기" aria-controls="chatPanel" aria-expanded="false" aria-haspopup="dialog"><img src="assets/extay/extay-logo-symbol.png" alt=""><span class="concierge-launcher-caption" id="chatLauncherCompact">AI 상담</span></button>
+    <button class="concierge-launcher" id="openChatFab" type="button" aria-label="안내 도우미 열기" aria-controls="chatPanel" aria-expanded="false" aria-haspopup="dialog"><img src="assets/extay/extay-logo-official.png" alt=""><span class="concierge-launcher-caption" id="chatLauncherCompact">AI 상담</span></button>
   </div>
   <div class="chat-backdrop" id="chatBackdrop"></div>
   <section class="chat-panel" id="chatPanel" aria-label="익스테이 AI 컨시어지">
@@ -1815,6 +1846,17 @@ body:not(.motion-ready) .concierge-widget,body:has(#brandIntro.is-running,.menu-
     const q=s=>document.querySelector(s), qa=s=>[...document.querySelectorAll(s)];
     const reduceMotion=window.matchMedia?.('(prefers-reduced-motion: reduce)')?.matches||false;
     let revealObserver=null,pageTransitionTimer=0,parallaxTick=false;
+    let heroAutoTimer=0,heroSlideIndex=0,heroAutoComplete=false,heroSwipeStartX=null,heroSwipePointerId=null,heroMotionQueued=false;
+    const heroAutoDelay=2400;
+    const heroSlides=qa('.landing-hero .hero-photo');
+    const heroBars=qa('.hero-slide-bar');
+    const heroSources=['assets/extay/crops/main-living-logo.png','assets/extay/hero/extay-hero-02-dining.webp','assets/extay/hero/extay-hero-03-tree.webp','assets/extay/hero/extay-hero-04-lounge.webp'];
+    function updateHeroSlideState(){heroSlides.forEach((slide,index)=>slide.classList.toggle('is-active',index===heroSlideIndex));heroBars.forEach((bar,index)=>{const active=index===heroSlideIndex;bar.classList.toggle('is-active',active);bar.setAttribute('aria-current',String(active))})}
+    function scheduleHeroAuto(){clearTimeout(heroAutoTimer);if(heroAutoComplete||heroSlideIndex>=heroSlides.length-1||!document.body.classList.contains('hero-carousel-ready')||!document.body.classList.contains('is-home')||document.visibilityState==='hidden')return;heroAutoTimer=setTimeout(()=>{setHeroSlide(heroSlideIndex+1,false);if(heroSlideIndex>=heroSlides.length-1)heroAutoComplete=true;else scheduleHeroAuto()},heroAutoDelay)}
+    function setHeroSlide(index,restartAuto=true){if(!heroSlides.length||!document.body.classList.contains('hero-carousel-ready'))return;heroSlideIndex=(index+heroSlides.length)%heroSlides.length;updateHeroSlideState();if(restartAuto){heroAutoComplete=true;clearTimeout(heroAutoTimer)}}
+    function moveHeroSlide(delta){setHeroSlide(heroSlideIndex+delta,true)}
+    function armHeroCarousel(immediate=false){if(!heroSlides.length)return;if(immediate){heroSlideIndex=0;heroAutoComplete=false}document.body.classList.add('hero-carousel-ready');updateHeroSlideState();scheduleHeroAuto()}
+    function startHeroMotion(){document.body.classList.add('motion-ready','intro-home-zoom');armHeroCarousel(true);setTimeout(()=>document.body.classList.remove('intro-home-zoom'),3250)}
     const motionSelector='.hotel-section,.quick-tile,.image-card,.concierge-hub,.gallery-head,.gallery-thumb,.gallery-viewer,.transport-hero,.transport-card,.wifi-hero,.wifi-card,.guidebook-head,.guidebook-viewer,.restaurants-hero,.restaurant-card,.faq-hero,.faq-card,.guide-detail-hero,.device,.contact-card,.checkin-hero,.checkin-card,.menu-link';
     const staggerGroups=['.quick-access-grid','.stay-card-grid','.gallery-thumbs','.transport-stack','.wifi-stack','.faq-stack','.restaurants-list','.checkin-stack','.guide-detail-screen','.menu-panel'];
     function updateHeroMotion(){const hero=q('.landing-hero'),isHome=document.body.classList.contains('is-home'),trigger=hero?Math.max(10,hero.offsetHeight-72):10;document.body.classList.toggle('hero-scrolled',isHome&&window.scrollY>=trigger)}
@@ -1825,8 +1867,8 @@ body:not(.motion-ready) .concierge-widget,body:has(#brandIntro.is-running,.menu-
     function refreshMotionForScreen(name){observeMotionTargets(q(`[data-screen="${name}"]`)||document);setTimeout(()=>{updateHeroMotion();requestGalleryParallax()},80)}
     function playBrandIntro(){const intro=q('#brandIntro');if(!intro)return Promise.resolve();let seen=false;try{seen=sessionStorage.getItem('extay-brand-intro-v1')==='1'}catch(error){}if(seen){intro.remove();return Promise.resolve()}intro.classList.add('is-running');return new Promise(resolve=>{setTimeout(()=>{intro.classList.add('is-leaving');try{sessionStorage.setItem('extay-brand-intro-v1','1')}catch(error){}resolve();setTimeout(()=>intro.remove(),640)},2916)})}
     function preloadImage(src){return new Promise(resolve=>{const image=new Image();image.decoding='async';image.src=src;const done=()=>{if(image.decode)image.decode().then(resolve,resolve);else resolve()};if(image.complete)done();else{image.addEventListener('load',done,{once:true});image.addEventListener('error',resolve,{once:true})}})}
-    function queueMotionReady(){if(reduceMotion){q('#brandIntro')?.remove();document.body.classList.add('motion-ready');return}const reveal=()=>{const run=()=>setTimeout(()=>requestAnimationFrame(()=>requestAnimationFrame(()=>document.body.classList.add('motion-ready'))),24);if(document.visibilityState==='hidden'){const onVisible=()=>{if(document.visibilityState!=='visible')return;document.removeEventListener('visibilitychange',onVisible);run()};document.addEventListener('visibilitychange',onVisible)}else run()};Promise.all([playBrandIntro(),preloadImage('assets/extay/crops/main-living-logo.png')]).then(reveal,reveal)}
-    function initMotion(){if(reduceMotion){q('#brandIntro')?.remove();document.body.classList.add('motion-ready');updateHeroMotion();window.addEventListener('scroll',updateHeroMotion,{passive:true});window.addEventListener('resize',updateHeroMotion);return}if(!('IntersectionObserver'in window)){q('#brandIntro')?.remove();document.body.classList.add('motion-ready');updateHeroMotion();window.addEventListener('scroll',updateHeroMotion,{passive:true});window.addEventListener('resize',updateHeroMotion);return}revealObserver=new IntersectionObserver(entries=>entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add('is-visible');revealObserver.unobserve(entry.target)}}),{threshold:.12,rootMargin:'0px 0px -8% 0px'});observeMotionTargets();queueMotionReady();updateHeroMotion();requestGalleryParallax();window.addEventListener('scroll',()=>{updateHeroMotion();requestGalleryParallax()},{passive:true});window.addEventListener('resize',()=>{updateHeroMotion();requestGalleryParallax()});window.addEventListener('pageshow',event=>{if(!event.persisted||!document.body.classList.contains('is-home'))return;document.body.classList.remove('motion-ready');queueMotionReady()})}
+    function queueMotionReady(){if(heroMotionQueued)return;heroMotionQueued=true;if(reduceMotion){q('#brandIntro')?.remove();startHeroMotion();heroMotionQueued=false;return}const reveal=()=>{const run=()=>setTimeout(()=>requestAnimationFrame(()=>requestAnimationFrame(()=>{startHeroMotion();heroMotionQueued=false})),24);if(document.visibilityState==='hidden'){const onVisible=()=>{if(document.visibilityState!=='visible')return;document.removeEventListener('visibilitychange',onVisible);run()};document.addEventListener('visibilitychange',onVisible)}else run()};Promise.all([playBrandIntro(),...heroSources.map(preloadImage),preloadImage('assets/extay/extay-logo-official.png')]).then(reveal,reveal)}
+    function initMotion(){if(reduceMotion){q('#brandIntro')?.remove();startHeroMotion();updateHeroMotion();window.addEventListener('scroll',updateHeroMotion,{passive:true});window.addEventListener('resize',updateHeroMotion);return}if(!('IntersectionObserver'in window)){q('#brandIntro')?.remove();startHeroMotion();updateHeroMotion();window.addEventListener('scroll',updateHeroMotion,{passive:true});window.addEventListener('resize',updateHeroMotion);return}revealObserver=new IntersectionObserver(entries=>entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add('is-visible');revealObserver.unobserve(entry.target)}}),{threshold:.12,rootMargin:'0px 0px -8% 0px'});observeMotionTargets();queueMotionReady();updateHeroMotion();requestGalleryParallax();window.addEventListener('scroll',()=>{updateHeroMotion();requestGalleryParallax()},{passive:true});window.addEventListener('resize',()=>{updateHeroMotion();requestGalleryParallax()});window.addEventListener('pageshow',event=>{if(!event.persisted||!document.body.classList.contains('is-home'))return;document.body.classList.remove('motion-ready','hero-carousel-ready','intro-home-zoom');heroMotionQueued=false;queueMotionReady()});document.addEventListener('visibilitychange',()=>{if(document.visibilityState==='visible')scheduleHeroAuto();else clearTimeout(heroAutoTimer)})}
     function text(el,value){if(el&&value!==undefined)el.textContent=value}
     function html(el,value){if(el&&value!==undefined)el.innerHTML=value}
     function eachText(nodes,values){nodes.forEach((el,i)=>text(el,values[i]))}
@@ -1881,7 +1923,7 @@ body:not(.motion-ready) .concierge-widget,body:has(#brandIntro.is-running,.menu-
       document.documentElement.lang=currentLang;
       document.title=tr.docTitle;
       const meta=q('meta[name="description"]'); if(meta)meta.setAttribute('content',tr.docDesc);
-      text(q('#brandHome .header-brand-text'),'EXTAY Mansion'); q('#brandHome')?.setAttribute('aria-label',currentLang==='en'?'Go home':'홈으로 이동'); text(q('.hero .label'),tr.heroSub); text(q('.landing-hero .eyebrow'),tr.homeHeroEyebrow); text(q('#conciergeKicker'),tr.conciergeKicker); text(q('#aiTitle'),tr.aiTitle); const conciergeInput=q('#conciergeAskInput'); if(conciergeInput)conciergeInput.placeholder=tr.conciergePlaceholder; text(q('.hotel-footer span'),tr.footerCopy); const badge=LANG_BADGE[currentLang]||LANG_BADGE.ko; text(q('#langToggleText'),badge); text(q('#homeLangText'),badge); qa('.home-language-option').forEach(option=>option.setAttribute('aria-checked',String(option.dataset.language===currentLang)));renderChatLauncher();
+      q('#brandHome')?.setAttribute('aria-label',currentLang==='en'?'Go home':'홈으로 이동'); text(q('.hero .label'),tr.heroSub); text(q('.landing-hero .eyebrow'),tr.homeHeroEyebrow); text(q('#conciergeKicker'),tr.conciergeKicker); text(q('#aiTitle'),tr.aiTitle); const conciergeInput=q('#conciergeAskInput'); if(conciergeInput)conciergeInput.placeholder=tr.conciergePlaceholder; text(q('.hotel-footer span'),tr.footerCopy); const badge=LANG_BADGE[currentLang]||LANG_BADGE.ko; text(q('#langToggleText'),badge); text(q('#homeLangText'),badge); qa('.home-language-option').forEach(option=>option.setAttribute('aria-checked',String(option.dataset.language===currentLang)));renderChatLauncher();
       if(tr.essentials){text(q('#essentialsKicker'),tr.essentials.kicker);text(q('#essentialsTitle'),tr.essentials.title);text(q('#essentialsSub'),tr.essentials.sub);eachText(qa('.essential-copy small'),tr.essentials.labels);eachText(qa('.essential-copy strong'),tr.essentials.values);eachText(qa('.essentials-link>span:first-child'),tr.essentials.links);text(q('#homeGalleryTitle'),tr.essentials.galleryTitle);text(q('.home-gallery-all'),tr.essentials.galleryAll)}
       if(tr.homeGalleryFeature){text(q('.home-gallery-count'),tr.homeGalleryFeature.count);text(q('.home-gallery-copy strong'),tr.homeGalleryFeature.title);text(q('.home-gallery-copy small'),tr.homeGalleryFeature.desc)}
       if(tr.getting){text(q('#gettingKicker'),tr.getting.kicker);text(q('#gettingTitle'),tr.getting.title);text(q('#gettingName'),tr.getting.name);text(q('#gettingAddress'),tr.getting.address);text(q('#gettingTransit'),tr.getting.transit);text(q('#gettingNaver'),tr.getting.naver);text(q('#gettingGoogle'),tr.getting.google);text(q('#airportAccessKicker'),tr.getting.airportKicker);text(q('#airportAccessTitle'),tr.getting.airportTitle);text(q('#nearbyPreviewKicker'),tr.getting.restaurantKicker);text(q('#nearbyPreviewTitle'),tr.getting.restaurantTitle);text(q('#nearbyPreviewAll'),tr.getting.restaurantAll);qa('.nearby-card').forEach((card,i)=>{const item=tr.getting.restaurants?.[i];if(item){text(card.querySelector('.nearby-card-label'),item[0]);text(card.querySelector('strong'),item[1]);text(card.querySelector('p'),item[2])}})}
@@ -2022,6 +2064,7 @@ body:not(.motion-ready) .concierge-widget,body:has(#brandIntro.is-running,.menu-
       activeScreen=name;
       activeOpenDevice=openDevice;
       refreshMotionForScreen(name);
+      if(name==='home')scheduleHeroAuto();else clearTimeout(heroAutoTimer);
       if(options.scroll!==false)scrollTo({top:0,behavior:options.smooth===false?'auto':'smooth'});
       if(historyMode!=='none'&&(previousScreen!==name||previousOpenDevice!==openDevice))writeRoute(name,openDevice,historyMode);
     }
@@ -2050,6 +2093,13 @@ body:not(.motion-ready) .concierge-widget,body:has(#brandIntro.is-running,.menu-
     gallerySwipeArea?.addEventListener('pointerdown',e=>{if(e.pointerType==='mouse'&&e.button!==0)return;gallerySwipeStartX=e.clientX;gallerySwipePointerId=e.pointerId});
     gallerySwipeArea?.addEventListener('pointerup',e=>{if(e.pointerId!==gallerySwipePointerId)return;const delta=e.clientX-gallerySwipeStartX;gallerySwipePointerId=null;if(Math.abs(delta)<45)return;gallerySwipeUntil=Date.now()+450;const thumbs=qa('.gallery-thumb'),current=Math.max(0,thumbs.findIndex(t=>t.classList.contains('active'))),next=Math.max(0,Math.min(thumbs.length-1,current+(delta<0?1:-1)));if(next!==current)selectGalleryImage(thumbs[next])});
     gallerySwipeArea?.addEventListener('pointercancel',()=>{gallerySwipePointerId=null});
+    q('.hero-swipe-prev')?.addEventListener('click',()=>moveHeroSlide(-1));
+    q('.hero-swipe-next')?.addEventListener('click',()=>moveHeroSlide(1));
+    heroBars.forEach((bar,index)=>bar.addEventListener('click',()=>setHeroSlide(index,true)));
+    const heroSwipeArea=q('.landing-hero');
+    heroSwipeArea?.addEventListener('pointerdown',e=>{if(e.pointerType==='mouse'&&e.button!==0)return;heroSwipeStartX=e.clientX;heroSwipePointerId=e.pointerId});
+    heroSwipeArea?.addEventListener('pointerup',e=>{if(e.pointerId!==heroSwipePointerId||heroSwipeStartX===null)return;const delta=e.clientX-heroSwipeStartX;heroSwipeStartX=null;heroSwipePointerId=null;if(Math.abs(delta)>=45)moveHeroSlide(delta<0?1:-1)});
+    heroSwipeArea?.addEventListener('pointercancel',()=>{heroSwipeStartX=null;heroSwipePointerId=null});
     document.addEventListener('click',async e=>{const c=e.target.closest('[data-copy]'); if(!c)return; try{await navigator.clipboard.writeText(c.dataset.copy); toast(uiText[currentLang].copied)}catch(_){toast(c.dataset.copy)}});
     function toast(t){const el=document.getElementById('toast');el.textContent=t;el.classList.add('show');clearTimeout(window.__t);window.__t=setTimeout(()=>el.classList.remove('show'),1500)}
     initMotion();
