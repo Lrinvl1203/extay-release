@@ -762,6 +762,26 @@ body.guidebook-fullscreen-open{overflow:hidden;touch-action:none}
 .checkin-overview .checkin-info-row strong{font-size:13px;line-height:1.45;overflow-wrap:anywhere}
 .checkin-overview .checkin-info-row:first-child strong{font-size:15px}
 .checkin-overview .checkin-info-row p{font-size:11px;line-height:1.5}
+.checkin-map-actions{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px;padding-top:14px}
+.checkin-map-actions .hotel-btn{min-width:0;justify-content:center;padding:12px 10px;color:#221b15;border-color:rgba(123,99,79,.28);background:#fff;font-size:12px}
+.checkin-map-actions .hotel-btn.primary{color:#fff;border-color:var(--signature-deep);background:var(--signature-deep)}
+.checkin-map-actions .hotel-btn .mi{font-size:18px}
+.checkin-security-editorial{position:relative;isolation:isolate;overflow:hidden;margin-top:8px;padding:30px 22px 12px;background:#26382f;color:#f7f1ea;border-radius:12px}
+.checkin-security-editorial:before{content:"";position:absolute;z-index:-1;right:-76px;top:-90px;width:220px;height:220px;border:1px solid rgba(247,241,234,.13);border-radius:50%}
+.security-editorial-head{display:flex;justify-content:space-between;align-items:flex-end;gap:18px;padding-bottom:22px;border-bottom:1px solid rgba(247,241,234,.24)}
+.security-editorial-title small{display:block;margin-bottom:8px;color:#dda080;font-size:10px;font-weight:800;letter-spacing:.14em}
+.security-editorial-title h3{margin:0;color:#fffaf4;font-family:var(--font-main);font-size:29px;font-weight:800;line-height:1.12;letter-spacing:-.045em;word-break:keep-all}
+.security-editorial-mark{flex:0 0 auto;color:rgba(247,241,234,.52);font-family:var(--font-main);font-size:9px;font-weight:800;line-height:1.45;letter-spacing:.16em;text-align:right}
+.security-editorial-list{display:grid}
+.security-editorial-item{display:grid;grid-template-columns:35px minmax(0,1fr);gap:14px;padding:20px 0;border-bottom:1px solid rgba(247,241,234,.16)}
+.security-editorial-item:last-child{border-bottom:0}
+.security-editorial-number{padding-top:2px;color:#dda080;font-family:var(--font-main);font-size:11px;font-weight:800;letter-spacing:.08em}
+.security-editorial-copy{display:grid;grid-template-columns:34px minmax(0,1fr);gap:11px;align-items:start}
+.security-editorial-icon{width:34px;height:34px;display:grid;place-items:center;border:1px solid rgba(247,241,234,.28);border-radius:50%;color:#f7f1ea}
+.security-editorial-icon .mi{font-size:18px;color:inherit}
+.security-editorial-text small{display:block;margin-bottom:5px;color:rgba(247,241,234,.58);font-size:10px;font-weight:800;line-height:1.4;letter-spacing:.04em}
+.security-editorial-text strong{display:block;color:#fffaf4;font-size:15px;line-height:1.45;word-break:keep-all}
+.security-editorial-text p{margin:6px 0 0;color:rgba(247,241,234,.72);font-size:12px;line-height:1.62;word-break:keep-all}
 .checkin-card{background:#fffaf4;border:1px solid rgba(216,198,180,.72);border-radius:22px;box-shadow:0 12px 32px rgba(58,43,30,.08);padding:22px}
 .checkin-card h3{margin:0 0 14px;font-size:21px;line-height:1.25;color:#221b15}
 .checkin-card p{margin:0;color:#665646;font-size:14px;line-height:1.62}
@@ -1402,7 +1422,12 @@ body .latin-font{font-family:'Oxanium','Arial Narrow',Arial,sans-serif!important
               <div class="checkin-info-row"><span class="checkin-row-icon"><span class="mi">key</span></span><small>입실 방식</small><div><strong>비대면 셀프 체크인</strong></div></div>
               <div class="checkin-info-row"><span class="checkin-row-icon"><span class="mi">local_parking</span></span><small>주차</small><div><strong>건물 주차 불가</strong><p>주변 유료 공영주차장을 이용해 주세요.</p></div></div>
               <div class="checkin-info-row"><span class="checkin-row-icon"><span class="mi">luggage</span></span><small>짐 보관</small><div><strong>체크인 전 · 체크아웃 후 짐 보관 불가</strong></div></div>
-            </div></div>
+            </div>
+            <div class="checkin-map-actions">
+              <a class="hotel-btn primary" href="https://map.naver.com/p/search/%EC%84%9C%EC%9A%B8%EC%8B%9C%20%EC%9A%A9%EC%82%B0%EA%B5%AC%20%EC%8B%A0%ED%9D%A5%EB%A1%9C%2059%202%EC%B8%B5" target="_blank" rel="noopener"><span class="mi">location_on</span>네이버 지도</a>
+              <a class="hotel-btn" href="https://www.google.com/maps/search/?api=1&amp;query=%EC%84%9C%EC%9A%B8%EC%8B%9C%20%EC%9A%A9%EC%82%B0%EA%B5%AC%20%EC%8B%A0%ED%9D%A5%EB%A1%9C%2059" target="_blank" rel="noopener"><span class="mi">map</span>Google Maps</a>
+            </div>
+            </div>
           </section>
 
           <details class="checkin-accordion checkin-locker-card checkin-compact-accordion checkin-self-card" open>
@@ -1420,6 +1445,27 @@ body .latin-font{font-family:'Oxanium','Arial Narrow',Arial,sans-serif!important
               </ol>
             </div>
           </details>
+
+          <article class="checkin-accordion checkin-locker-card checkin-compact-accordion checkout-checklist-card static-info-card">
+            <div class="airport-summary">
+              <span class="airport-icon"><span class="mi">checklist</span></span>
+              <span class="airport-copy"><small>CHECK-OUT GUIDE</small><b>체크아웃 안내</b></span>
+            </div>
+            <div class="airport-card-body">
+              <div class="checkout-message">
+                <p><strong>별 5개와 추천 리뷰</strong>를 남겨주시면 호스트에게 큰 힘이 됩니다.</p>
+                <p>아쉬웠던 점은 호스트에게 에어비앤비 메시지로 살짝 알려주세요. 어떠한 피드백도 귀담아 듣겠습니다.</p>
+              </div>
+              <div class="checkout-list">
+                <div class="checkout-row"><span class="checkout-row-icon" aria-hidden="true"><span class="mi">countertops</span></span><p>설거지 및 쓰레기 분리수거를 해주세요.</p></div>
+                <div class="checkout-row"><span class="checkout-row-icon" aria-hidden="true"><span class="mi">compost</span></span><p>음식물은 부엌 싱크대 위 음식물 쓰레기통에 넣어주세요.</p></div>
+                <div class="checkout-row"><span class="checkout-row-icon" aria-hidden="true"><span class="mi">power_settings_new</span></span><p>냉난방, 조명 전원을 꺼주세요.</p></div>
+                <div class="checkout-row"><span class="checkout-row-icon" aria-hidden="true"><span class="mi">celebration</span></span><p>이벤트를 하셨다면 풍선 및 가랜드를 처리해 주세요.</p></div>
+                <div class="checkout-row"><span class="checkout-row-icon" aria-hidden="true"><span class="mi">inventory_2</span></span><p>놓고 가시는 물건이 없으신지 체크해 주세요.</p></div>
+                <div class="checkout-row"><span class="checkout-row-icon" aria-hidden="true"><span class="mi">door_front</span></span><p>창문과 현관문을 꼭 닫아주세요.</p></div>
+              </div>
+            </div>
+          </article>
 
               <details class="checkin-accordion checkin-locker-card checkin-compact-accordion checkin-parking-card">
                 <summary class="airport-summary">
@@ -1471,34 +1517,25 @@ body .latin-font{font-family:'Oxanium','Arial Narrow',Arial,sans-serif!important
                 </div>
               </details>
 
-              <article class="checkin-accordion checkin-locker-card checkin-compact-accordion checkout-checklist-card static-info-card">
-                <div class="airport-summary">
-                  <span class="airport-icon"><span class="mi">checklist</span></span>
-                  <span class="airport-copy"><small>CHECK-OUT GUIDE</small><b>체크아웃 안내</b></span>
-                </div>
-                <div class="airport-card-body">
-                  <div class="checkout-message">
-                    <p><strong>별 5개와 추천 리뷰</strong>를 남겨주시면 호스트에게 큰 힘이 됩니다.</p>
-                    <p>아쉬웠던 점은 호스트에게 에어비앤비 메시지로 살짝 알려주세요. 어떠한 피드백도 귀담아 듣겠습니다.</p>
-                  </div>
-                  <div class="checkout-list">
-                    <div class="checkout-row"><span class="checkout-row-icon" aria-hidden="true"><span class="mi">countertops</span></span><p>설거지 및 쓰레기 분리수거를 해주세요.</p></div>
-                    <div class="checkout-row"><span class="checkout-row-icon" aria-hidden="true"><span class="mi">compost</span></span><p>음식물은 부엌 싱크대 위 음식물 쓰레기통에 넣어주세요.</p></div>
-                    <div class="checkout-row"><span class="checkout-row-icon" aria-hidden="true"><span class="mi">power_settings_new</span></span><p>냉난방, 조명 전원을 꺼주세요.</p></div>
-                    <div class="checkout-row"><span class="checkout-row-icon" aria-hidden="true"><span class="mi">celebration</span></span><p>이벤트를 하셨다면 풍선 및 가랜드를 처리해 주세요.</p></div>
-                    <div class="checkout-row"><span class="checkout-row-icon" aria-hidden="true"><span class="mi">inventory_2</span></span><p>놓고 가시는 물건이 없으신지 체크해 주세요.</p></div>
-                    <div class="checkout-row"><span class="checkout-row-icon" aria-hidden="true"><span class="mi">door_front</span></span><p>창문과 현관문을 꼭 닫아주세요.</p></div>
-                  </div>
-                </div>
+          <section class="checkin-security-editorial" aria-labelledby="checkinSecurityTitle">
+            <header class="security-editorial-head">
+              <div class="security-editorial-title"><small>SECURITY &amp; PRIVACY</small><h3 id="checkinSecurityTitle">보안과 프라이버시</h3></div>
+              <span class="security-editorial-mark">SAFE<br>PRIVATE<br>STAY</span>
+            </header>
+            <div class="security-editorial-list">
+              <article class="security-editorial-item">
+                <span class="security-editorial-number">01</span>
+                <div class="security-editorial-copy"><span class="security-editorial-icon"><span class="mi">videocam</span></span><div class="security-editorial-text"><small>CCTV 위치</small><strong>현관 입구에만 설치</strong><p>안전과 보안을 위한 카메라이며 객실 내부에는 설치되어 있지 않습니다.</p></div></div>
               </article>
-
-          <section class="guide-info-card checkin-security" aria-labelledby="checkinSecurityTitle">
-            <div class="guide-card-header"><span class="guide-card-icon"><span class="mi">lock</span></span><span class="guide-card-heading"><small>SECURITY &amp; PRIVACY</small><h3 id="checkinSecurityTitle">보안과 프라이버시</h3></span></div>
-            <div class="guide-card-body"><div class="checkin-info-list">
-              <div class="checkin-info-row"><span class="checkin-row-icon"><span class="mi">videocam</span></span><small>CCTV 위치</small><div><strong>현관 입구에만 설치</strong><p>안전과 보안을 위한 카메라이며 객실 내부에는 설치되어 있지 않습니다.</p></div></div>
-              <div class="checkin-info-row"><span class="checkin-row-icon"><span class="mi">lock</span></span><small>키 번호</small><div><strong>에어비앤비 메시지로만 전달</strong><p>외부에 공유하지 말아 주세요.</p></div></div>
-              <div class="checkin-info-row"><span class="checkin-row-icon"><span class="mi">doorbell</span></span><small>방문 벨</small><div><strong>모르는 사람이 벨을 누를 경우 응답하지 마세요.</strong><p>투숙객의 프라이버시 보호를 위한 안내입니다.</p></div></div>
-            </div></div>
+              <article class="security-editorial-item">
+                <span class="security-editorial-number">02</span>
+                <div class="security-editorial-copy"><span class="security-editorial-icon"><span class="mi">lock</span></span><div class="security-editorial-text"><small>키 번호</small><strong>에어비앤비 메시지로만 전달</strong><p>외부에 공유하지 말아 주세요.</p></div></div>
+              </article>
+              <article class="security-editorial-item">
+                <span class="security-editorial-number">03</span>
+                <div class="security-editorial-copy"><span class="security-editorial-icon"><span class="mi">doorbell</span></span><div class="security-editorial-text"><small>방문 벨</small><strong>모르는 사람이 벨을 누를 경우 응답하지 마세요.</strong><p>투숙객의 프라이버시 보호를 위한 안내입니다.</p></div></div>
+              </article>
+            </div>
           </section>
 
         </div>
