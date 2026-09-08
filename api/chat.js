@@ -70,14 +70,23 @@ function buildRequestBody(question, history = [], model = 'gpt-5.4-mini') {
   };
 }
 
-function buildResearchFollowUpBody(question, preliminaryAnswer, model = 'gpt-5.4-mini') {
+function isScheduledTransitQuestion(question) {
+  const q = String(question || '');
+  return /(?:공항|airport|터미널|terminal|심야|새벽|첫차|막차|리무진|버스|train|bus|taxi|late|early|night|空港|机场|深夜|早朝|机场|深夜|巴士)/i.test(q);
+}
+
+function buildResearchFollowUpBody(question, preliminaryAnswer, model = 'gpt-5.4-mini', phase = 'research') {
   const language = languageName(detectQuestionLanguage(question));
+  const audit = phase === 'audit';
+  const phaseInstructions = audit
+    ? 'Use the web search tool again before answering. Audit the candidate answer against primary operator or airport sources and replace it with the corrected concierge answer. For each timetable, verify origin → destination, boarding stop, and requested time. Reject a route whose schedule is for the reverse direction, a different boarding stop, or a different time window. Give the concrete verified plan; if a public detail cannot be verified, identify it and give only the dependable alternative.'
+    : 'Use the web search tool again before answering. Replace the preliminary answer with a complete concierge answer. Fill in the practical details requested by the guest from primary sources: exact route, nearby stop, schedule, fare, operating hours, availability, transfer, or alternative as relevant. Do not repeat vague advice or tell the guest merely to check a website. For a scheduled route, audit every time against the guest\'s direction and boarding stop: never quote a destination-to-origin timetable as an origin-to-destination service. State only details confirmed for the requested time, direction, and location.';
   return {
     model,
     input: [
       { role: 'system', content: CHAT_SYSTEM_PROMPT },
       { role: 'developer', content: GUIDE_CONTEXT },
-      { role: 'user', content: `TARGET_LANGUAGE: ${language}\nLATEST_GUEST_QUESTION:\n${question}\n\nPRELIMINARY_ANSWER:\n${String(preliminaryAnswer || '').slice(0, 6000)}\n\nRESEARCH_FOLLOW_UP:\nUse the web search tool again before answering. Replace the preliminary answer with a complete concierge answer. Fill in the practical details requested by the guest from primary sources: exact route, nearby stop, schedule, fare, operating hours, availability, transfer, or alternative as relevant. Do not repeat vague advice or tell the guest merely to check a website. For a scheduled route, audit every time against the guest's direction and boarding stop: never quote a destination-to-origin timetable as an origin-to-destination service. State only details confirmed for the requested time, direction, and location.` }
+      { role: 'user', content: `TARGET_LANGUAGE: ${language}\nLATEST_GUEST_QUESTION:\n\n${question}\n\nCANDIDATE_ANSWER:\n${String(preliminaryAnswer || '').slice(0, 6000)}\n\n${audit ? 'RESEARCH_AUDIT' : 'RESEARCH_FOLLOW_UP'}:\n${phaseInstructions}` }
     ],
     prompt_cache_key: PROMPT_CACHE_KEY,
     tools: [{ type: 'web_search_preview', search_context_size: 'high' }],
@@ -95,7 +104,7 @@ function mergeUsage(first, second) {
   if (!first && !second) return undefined;
   return {
     input_tokens: (first?.input_tokens || 0) + (second?.input_tokens || 0),
-    cached_tokens: (first?.input_tokens_details?.cached_tokens || 0) + (second?.input_tokens_details?.cached_tokens || 0),
+    cached_tokens: (first?.input_tokens_details?.cached_tokens ?? first?.cached_tokens ?? 0) + (second?.input_tokens_details?.cached_tokens ?? second?.cached_tokens ?? 0),
     output_tokens: (first?.output_tokens || 0) + (second?.output_tokens || 0)
   };
 }
@@ -268,6 +277,24 @@ module.exports = async function handler(req, res) {
         data = researchData;
         searched = searched || hasWebSearchCall(researchData);
         usageData = mergeUsage(initialUsage, researchData.usage);
+        if (isScheduledTransitQuestion(question)) {
+          const auditResponse = await fetch('https://api.openai.com/v1/responses', {
+            method: 'POST',
+            headers: {
+              'Authorization': `Bearer ${apiKey}`,
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(buildResearchFollowUpBody(question, extractText(data), model, 'audit'))
+          });
+          const auditData = await auditResponse.json();
+          if (auditResponse.ok) {
+            data = auditData;
+            searched = searched || hasWebSearchCall(auditData);
+            usageData = mergeUsage(usageData, auditData.usage);
+          } else {
+            console.warn('OpenAI research audit skipped:', auditResponse.status, auditData?.error?.code || auditData?.error?.message || 'unknown');
+          }
+        }
       } else {
         console.warn('OpenAI research follow-up skipped:', researchResponse.status, researchData?.error?.code || researchData?.error?.message || 'unknown');
       }
@@ -300,6 +327,7 @@ module.exports._test = {
   detectQuestionLanguage,
   formatGuestAnswer,
   addPublicSearchDisclosure,
+  isScheduledTransitQuestion,
   localAnswer,
   mergeUsage,
   normalizeAnswer,

@@ -101,10 +101,11 @@ test('public web results keep useful emoji and receive a clear manual-and-host d
     assert.match(payload.answer, /N6701/);
     assert.match(payload.answer, /공개 웹 정보를 참고/);
     assert.match(payload.answer, /호스트에게 한 번 더 확인/);
-    assert.equal(requests.length, 2);
+    assert.equal(requests.length, 3);
     assert.equal(requests[1].tool_choice, 'required');
     assert.match(requests[1].input.at(-1).content, /RESEARCH_FOLLOW_UP/);
     assert.match(requests[1].input.at(-1).content, /guest's direction and boarding stop/);
+    assert.match(requests[2].input.at(-1).content, /RESEARCH_AUDIT/);
   } finally {
     global.fetch = originalFetch;
     console.info = originalInfo;

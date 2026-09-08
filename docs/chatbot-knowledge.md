@@ -49,7 +49,8 @@ or character cap, and with a generous web-search/output budget. Property questio
 the useful operating steps, limits, troubleshooting, and next action. Public
 questions run a second, required web-search pass when the first answer searched;
 that pass replaces broad results with practical details from primary sources.
-Airport routes additionally
+Scheduled transport receives one further required audit search to verify direction,
+boarding stop, and requested-time availability before it is returned. Airport routes additionally
 need route number, useful times, fare when available, terminal note, and one
 alternative. The browser fallback remains a concise, safe backup when the API is
 unavailable.

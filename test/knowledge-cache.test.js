@@ -84,6 +84,9 @@ test('public research follow-up keeps the same cached prefix and requires anothe
   assert.equal(followUp.prompt_cache_key, initial.prompt_cache_key);
   assert.equal(followUp.tool_choice, 'required');
   assert.match(followUp.input.at(-1).content, /RESEARCH_FOLLOW_UP/);
+  const audit = buildResearchFollowUpBody('인천공항 심야버스가 있나요?', '서울 방면 노선이 있습니다.', 'gpt-5.4-mini', 'audit');
+  assert.deepEqual(audit.input.slice(0, 2), initial.input.slice(0, 2));
+  assert.match(audit.input.at(-1).content, /RESEARCH_AUDIT/);
 });
 
 test('API reports actual cache usage and actual web-search calls, not tool configuration', async () => {
