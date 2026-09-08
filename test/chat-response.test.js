@@ -109,6 +109,21 @@ test('guest answer formatter removes complete and truncated web citations', () =
   assert.doesNotMatch(answer, /airport\.kr|https?:\/\/|\(\[/);
 });
 
+test('early-morning airport plans retain a detailed mobile itinerary', () => {
+  const plan = [
+    '🚌 추천 경로: 녹사평역에서 서울역까지 택시를 이용하세요.',
+    '1. 녹사평역 → 서울역: 새벽에는 택시가 편합니다.',
+    '2. 서울역 → 인천공항: N6701 심야 리무진을 이용하세요.',
+    '출발 시각: 검색에서 확인된 가장 가까운 시간을 고르세요.',
+    '요금: 최신 공식 요금을 확인하세요.',
+    'T1/T2 도착 터미널을 먼저 확인하세요.',
+    '대안: 심야버스가 맞지 않으면 공항 택시를 이용하세요.'
+  ].join('\n');
+  const answer = formatGuestAnswer(plan, 'ko', '녹사평역에서 인천공항 새벽에 가려면 어떻게 해야 해? 심야 리무진 있어?');
+  assert.equal(answer.split('\n').length, 7);
+  assert.match(answer, /N6701/);
+});
+
 test('Korean spacing guard corrects common guest-facing forms', () => {
   assert.equal(
     normalizeKoreanSpacing('개인 키번호를 확인해주세요. 현관입구에서 번호를 눌러주세요.'),

@@ -68,6 +68,13 @@ test('current question is not duplicated by older clients and history stays boun
   assert.doesNotThrow(() => buildRequestBody('Hello', [null, {role:'system'}, {content:42}]));
 });
 
+test('early-morning airport transfers receive a detailed search and answer budget', () => {
+  const body = buildRequestBody('녹사평역에서 인천공항 새벽에 가려면 심야 리무진이 있나요?', []);
+  assert.equal(body.tools[0].search_context_size, 'high');
+  assert.equal(body.max_output_tokens, 700);
+  assert.equal(buildRequestBody('CCTV 위치', []).tools[0].search_context_size, 'low');
+});
+
 test('API reports actual cache usage and actual web-search calls, not tool configuration', async () => {
   const originalFetch = global.fetch;
   const originalKey = process.env.OPENAI_API_KEY;

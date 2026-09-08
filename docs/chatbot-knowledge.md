@@ -44,6 +44,12 @@ web-information label and asks the guest to reconfirm with the host. If the API 
 unavailable, the browser fallback cannot search and says so plainly before giving
 the Airbnb host-contact instruction.
 
+Early-morning and late-night airport questions are an exception to the compact
+answer limit. They use a higher web-search context and output budget so the
+concierge can give a practical transfer plan, current route number, useful times,
+fare when available, terminal note, and one alternative. Keep ordinary property
+answers compact.
+
 Before release, verify representative live responses with the actual deployment
 environment, including the earlier missing facts and Korean, English, Japanese
 and Chinese questions. Confirm the current production head before promotion so
