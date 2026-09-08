@@ -206,22 +206,29 @@ body:not(.is-home):not(.is-gallery):not(.is-checkin):not(.is-wifi):not(.is-trans
 .quick-tile{width:100%;min-width:0;min-inline-size:0;min-height:70px;border:1px solid rgba(205,187,159,.46);border-radius:10px;background:rgba(245,234,216,.06);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:7px;padding:9px 3px;text-align:center;color:#f5ead8;cursor:pointer}
 .quick-tile .mi{font-size:23px;color:#d9c9ae}
 .quick-tile b{display:block;max-width:100%;font-size:11px;line-height:1.2;font-weight:800;white-space:normal;word-break:keep-all;overflow-wrap:anywhere}
-.essentials-head{margin-bottom:20px}
-.essentials-kicker{margin:0 0 9px;color:#7b6b5c;font-size:10px;font-weight:900;line-height:1.2;letter-spacing:.12em!important;text-transform:uppercase}
-.essentials-title{margin:0;color:#221b15;font-size:26px;line-height:1.2;font-weight:800;word-break:keep-all}
-.essentials-sub{margin:10px 0 0;color:#7d6d5e;font-size:14px;line-height:1.55;font-weight:600;word-break:keep-all}
-.essentials-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));overflow:hidden;border:1px solid rgba(123,99,79,.36);border-radius:14px;background:rgba(255,253,252,.58)}
-.essential-item{min-width:0;min-height:92px;display:grid;grid-template-columns:34px minmax(0,1fr);gap:10px;align-items:center;padding:16px 13px}
-.essential-item:nth-child(odd){border-right:1px solid rgba(123,99,79,.28)}
-.essential-item:nth-child(-n+2){border-bottom:1px solid rgba(123,99,79,.28)}
-.essential-icon{width:34px;height:34px;border:1px solid rgba(123,99,79,.22);border-radius:50%;background:#efe4d6;color:#6d5643;display:grid;place-items:center}
+.essentials-head{position:relative;margin-bottom:22px;padding-left:16px}
+.essentials-head:before{content:"";position:absolute;left:0;top:2px;bottom:2px;width:3px;border-radius:99px;background:linear-gradient(180deg,var(--signature),#26382f)}
+.essentials-kicker{margin:0 0 9px;color:#9a5c43;font-size:11px;font-weight:900;line-height:1.2;letter-spacing:.12em!important;text-transform:uppercase}
+.essentials-title{margin:0;color:#26382f;font-size:27px;line-height:1.2;font-weight:800;word-break:keep-all}
+.essentials-sub{margin:10px 0 0;color:#6f6257;font-size:14px;line-height:1.55;font-weight:600;word-break:keep-all}
+.essentials-grid{position:relative;display:grid;grid-template-columns:1.08fr .92fr;gap:8px;overflow:hidden;padding:10px;border:0;border-radius:21px;background:#26382f;box-shadow:0 20px 44px rgba(38,56,47,.19)}
+.essentials-grid:after{content:"";position:absolute;right:-45px;bottom:-70px;width:160px;height:160px;border:1px solid rgba(245,234,216,.16);border-radius:50%;pointer-events:none}
+.essential-item{position:relative;z-index:1;min-width:0;min-height:92px;display:grid;grid-template-columns:34px minmax(0,1fr);gap:10px;align-items:center;padding:15px 13px;border:1px solid rgba(245,234,216,.16);border-radius:12px;background:rgba(245,234,216,.07);color:#f5ead8}
+.essential-item:first-child{grid-row:span 2;min-height:192px;display:flex;flex-direction:column;align-items:flex-start;justify-content:flex-end;padding:18px 16px;border:0;background:var(--signature);box-shadow:0 12px 28px rgba(0,0,0,.16)}
+.essential-item:last-child{grid-column:1/-1;min-height:76px;background:#f5ead8;color:#26382f}
+.essential-icon{width:34px;height:34px;border:1px solid rgba(245,234,216,.35);border-radius:50%;background:rgba(245,234,216,.1);color:#f5ead8;display:grid;place-items:center}
+.essential-item:first-child .essential-icon{width:42px;height:42px;background:#f5ead8;color:var(--signature);border:0}
+.essential-item:last-child .essential-icon{background:#26382f;color:#f5ead8;border-color:#26382f}
 .essential-icon .mi{font-size:18px}
 .essential-copy{display:block;min-width:0}
-.essential-copy small{display:block;margin-bottom:5px;color:#8a7663;font-size:9px;font-weight:900;line-height:1.15;letter-spacing:.08em!important}
-.essential-copy strong{display:block;color:#2b2118;font-size:14px;font-weight:800;line-height:1.32;word-break:keep-all;overflow-wrap:anywhere}
-.essentials-links{margin-top:18px;border-top:1px solid rgba(123,99,79,.28)}
-.essentials-link{width:100%;min-height:54px;border:0;border-bottom:1px solid rgba(123,99,79,.24);background:transparent;color:#2b2118;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:0 2px;text-align:left;font-size:14px;font-weight:800;cursor:pointer}
-.essentials-link .mi{flex:0 0 auto;color:#7b6b5c;font-size:22px}
+.essential-copy small{display:block;margin-bottom:6px;color:rgba(245,234,216,.67);font-size:10px;font-weight:900;line-height:1.15;letter-spacing:.09em!important}
+.essential-copy strong{display:block;color:inherit;font-size:14px;font-weight:800;line-height:1.32;word-break:keep-all;overflow-wrap:anywhere}
+.essential-item:first-child .essential-copy strong{font-family:'Oxanium',var(--font-ko);font-size:32px;line-height:1;letter-spacing:-.045em}
+.essential-item:last-child .essential-copy small{color:#9a5c43}
+.essentials-links{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;margin-top:10px;border:0}
+.essentials-link{width:100%;min-height:68px;border:1px solid rgba(117,72,54,.34);border-radius:12px;background:#fffaf4;color:#26382f;display:flex;align-items:center;justify-content:space-between;gap:8px;padding:13px 12px;text-align:left;font-size:13px;font-weight:800;line-height:1.35;cursor:pointer;word-break:keep-all}
+.essentials-link:first-child{border-color:var(--signature-deep);background:var(--signature-deep);color:#fffaf4}
+.essentials-link .mi{flex:0 0 auto;color:inherit;font-size:20px}
 .home-gallery-preview{padding:36px 0 0}
 .home-gallery-head{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:16px;padding:0 var(--home-gutter)}
 .home-gallery-head h2{margin:0;color:#221b15;font-size:24px;line-height:1.2;font-weight:800}
@@ -829,6 +836,37 @@ body.guidebook-fullscreen-open{overflow:hidden;touch-action:none}
 .checkout-row-icon{width:34px;height:34px;border-radius:8px;background:#efe4d6;color:#7b634f;display:grid;place-items:center}
 .checkout-row-icon .mi{font-size:19px}
 .checkout-row p{margin:0;color:#4f4034;font-size:13px;line-height:1.5;word-break:keep-all}
+[data-screen="checkin"]{font-family:var(--font-ko)}
+[data-screen="checkin"] .section-kicker,[data-screen="checkin"] .guide-card-heading small,[data-screen="checkin"] .airport-copy small,[data-screen="checkin"] .security-editorial-title small,[data-screen="checkin"] .security-editorial-mark,[data-screen="checkin"] .security-editorial-number,[data-screen="checkin"] .checkin-flow-copy small,[data-screen="checkin"] .checkout-review-kicker{font-family:'Oxanium',var(--font-ko)}
+[data-screen="checkin"] .checkin-hero h2{font-family:var(--font-ko);font-size:34px;font-weight:800;letter-spacing:-.045em}
+[data-screen="checkin"] .guide-card-heading h3,[data-screen="checkin"] .guide-card-heading b,[data-screen="checkin"] .airport-copy b{font-family:var(--font-ko);font-size:18px;font-weight:800;letter-spacing:-.025em}
+[data-screen="checkin"] .checkin-overview .checkin-info-row>small{font-family:var(--font-ko);font-size:11px}
+[data-screen="checkin"] .checkin-overview .checkin-info-row strong,[data-screen="checkin"] .checkin-overview .checkin-info-row:first-child strong{font-family:var(--font-ko);font-size:14px;font-weight:800}
+[data-screen="checkin"] .checkin-overview .checkin-info-row p{font-family:var(--font-ko);font-size:13px}
+[data-screen="checkin"] .checkin-map-actions .hotel-btn{font-family:var(--font-ko);font-size:13px;font-weight:800}
+.checkin-self-card .airport-card-body{padding:0 18px 4px}
+.checkin-editorial-flow{display:grid}
+.checkin-flow-item{position:relative;display:grid;grid-template-columns:42px minmax(0,1fr);gap:13px;padding:18px 0;border-bottom:1px solid rgba(216,198,180,.7)}
+.checkin-flow-item:last-child{border-bottom:0}
+.checkin-flow-item:not(:last-child):after{content:"";position:absolute;left:20px;top:49px;bottom:-6px;width:1px;background:rgba(181,93,61,.33)}
+.checkin-flow-number{position:relative;z-index:1;width:42px;height:42px;display:grid;place-items:center;border-radius:50%;background:#26382f;color:#fffaf4;font-family:'Oxanium',var(--font-ko);font-size:12px;font-weight:800}
+.checkin-flow-copy small{display:block;margin-bottom:5px;color:#a05f45;font-size:11px;font-weight:800;line-height:1.2;letter-spacing:.1em}
+.checkin-flow-copy strong{display:block;color:#26382f;font-size:15px;font-weight:800;line-height:1.45;word-break:keep-all}
+.checkin-flow-copy p{margin:5px 0 0;color:#6d5e51;font-size:14px;line-height:1.55;word-break:keep-all}
+.checkout-checklist-card .airport-card-body{padding:0 18px 6px}
+.checkout-review-note{position:relative;overflow:hidden;margin:16px 0 5px;padding:20px 18px;border-radius:13px;background:var(--signature);color:#fffaf4}
+.checkout-review-note:after{content:"★★★★★";position:absolute;right:-3px;bottom:-12px;color:rgba(255,250,244,.1);font-family:'Oxanium',var(--font-ko);font-size:40px;letter-spacing:-.12em;white-space:nowrap}
+.checkout-review-kicker{position:relative;z-index:1;display:block;margin-bottom:8px;color:rgba(255,250,244,.7);font-size:10px;font-weight:800;letter-spacing:.13em}
+.checkout-stars{position:relative;z-index:1;display:block;margin-bottom:8px;color:#ffe2a8;font-family:'Oxanium',var(--font-ko);font-size:20px;line-height:1;letter-spacing:.04em}
+.checkout-review-note strong{position:relative;z-index:1;display:block;color:#fffaf4;font-size:16px;font-weight:800;line-height:1.45;word-break:keep-all}
+.checkout-feedback{margin:0;padding:13px 2px 15px;color:#6d5e51;font-size:13px;line-height:1.55;word-break:keep-all}
+.checkout-list{border-top:1px solid rgba(216,198,180,.82)}
+.checkout-row{padding:13px 0}
+.checkout-row p{font-family:var(--font-ko);font-size:14px;line-height:1.52}
+.security-editorial-title h3{font-family:var(--font-ko);font-size:26px;letter-spacing:-.035em}
+.security-editorial-text small{font-family:var(--font-ko);font-size:11px}
+.security-editorial-text strong{font-family:var(--font-ko);font-size:14px}
+.security-editorial-text p{font-family:var(--font-ko);font-size:13px}
 .checkin-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
 .checkin-fact{border-radius:16px;background:#f3eadf;padding:15px}
 .checkin-fact small{display:block;margin-bottom:6px;color:#8a7663;font-size:11px;font-weight:800;text-transform:uppercase}
@@ -987,8 +1025,11 @@ body.motion-ready .hero-panel .scroll-cue{animation:heroTextIn .8s cubic-bezier(
   .quick-tile b{font-size:10px}
   .essentials-title{font-size:23px}
   .essential-item{grid-template-columns:30px minmax(0,1fr);gap:8px;padding:14px 10px}
+  .essential-item:first-child{min-height:184px;padding:17px 14px}
   .essential-icon{width:30px;height:30px}
   .essential-copy strong{font-size:12.5px}
+  .essential-item:first-child .essential-copy strong{font-size:29px}
+  .essentials-link{padding:12px 10px;font-size:12px}
   .home-gallery-main{height:214px}
   .home-gallery-card{height:92px}
   .home-gallery-copy{padding:16px 10px 13px}
@@ -1000,7 +1041,7 @@ body.motion-ready .hero-panel .scroll-cue{animation:heroTextIn .8s cubic-bezier(
   .menu-panel{right:0;width:88vw}
   .gallery-thumb{flex-basis:152px;width:152px;height:176px}
   .checkin-grid,.checkin-token-grid,.checkin-rule-grid,.contact-actions{grid-template-columns:1fr}
-  .checkin-hero h2{font-size:35px}
+  .checkin-hero h2,[data-screen="checkin"] .checkin-hero h2{font-size:31px}
   .wifi-hero .page-title{font-size:38px}
   .wifi-credential{grid-template-columns:1fr}
   .wifi-credential .mini-btn{width:100%}
@@ -1437,12 +1478,11 @@ body .latin-font{font-family:'Oxanium','Arial Narrow',Arial,sans-serif!important
               <span class="airport-chevron mi">expand_more</span>
             </summary>
             <div class="airport-card-body">
-              <ol class="steps">
-                <li>체크인 당일 낮 12시쯤 에어비앤비 메시지로 전송되는 개인 출입 키 번호를 확인해 주세요.</li>
-                <li>체크인은 오후 4시부터 가능합니다. 주소는 서울시 용산구 신흥로 59, 2층입니다.</li>
-                <li>건물 입구에서 안내받은 키 번호를 입력하고 2층 EXTAY Mansion으로 올라와 주세요.</li>
-                <li>입실 후 문이 잠겼는지 확인하고, 키 번호는 예약 인원 외 다른 사람과 공유하지 마세요.</li>
-              </ol>
+              <div class="checkin-editorial-flow">
+                <article class="checkin-flow-item"><span class="checkin-flow-number">01</span><div class="checkin-flow-copy"><small>CODE · 12:00</small><strong>에어비앤비 메시지에서 개인 키 번호를 확인하세요.</strong><p>체크인 당일 낮 12시쯤 도착합니다.</p></div></article>
+                <article class="checkin-flow-item"><span class="checkin-flow-number">02</span><div class="checkin-flow-copy"><small>ARRIVE · 16:00</small><strong>오후 4시부터 EXTAY Mansion 2층으로 입실하세요.</strong><p>서울시 용산구 신흥로 59</p></div></article>
+                <article class="checkin-flow-item"><span class="checkin-flow-number">03</span><div class="checkin-flow-copy"><small>LOCK &amp; RELAX</small><strong>입실 후 문 잠금을 확인하세요.</strong><p>키 번호는 예약 인원 외 공유하지 마세요.</p></div></article>
+              </div>
             </div>
           </details>
 
@@ -1452,17 +1492,17 @@ body .latin-font{font-family:'Oxanium','Arial Narrow',Arial,sans-serif!important
               <span class="airport-copy"><small>CHECK-OUT GUIDE</small><b>체크아웃 안내</b></span>
             </div>
             <div class="airport-card-body">
-              <div class="checkout-message">
-                <p><strong>별 5개와 추천 리뷰</strong>를 남겨주시면 호스트에게 큰 힘이 됩니다.</p>
-                <p>아쉬웠던 점은 호스트에게 에어비앤비 메시지로 살짝 알려주세요. 어떠한 피드백도 귀담아 듣겠습니다.</p>
+              <div class="checkout-review-note">
+                <small class="checkout-review-kicker">SHARE YOUR STAY</small>
+                <span class="checkout-stars" aria-label="별 다섯 개">★★★★★</span>
+                <strong>좋은 머무름이었다면 별 5개와 추천 리뷰를 남겨주세요.</strong>
               </div>
+              <p class="checkout-feedback">불편했던 점은 에어비앤비 메시지로 알려주세요.</p>
               <div class="checkout-list">
-                <div class="checkout-row"><span class="checkout-row-icon" aria-hidden="true"><span class="mi">countertops</span></span><p>설거지 및 쓰레기 분리수거를 해주세요.</p></div>
-                <div class="checkout-row"><span class="checkout-row-icon" aria-hidden="true"><span class="mi">compost</span></span><p>음식물은 부엌 싱크대 위 음식물 쓰레기통에 넣어주세요.</p></div>
-                <div class="checkout-row"><span class="checkout-row-icon" aria-hidden="true"><span class="mi">power_settings_new</span></span><p>냉난방, 조명 전원을 꺼주세요.</p></div>
-                <div class="checkout-row"><span class="checkout-row-icon" aria-hidden="true"><span class="mi">celebration</span></span><p>이벤트를 하셨다면 풍선 및 가랜드를 처리해 주세요.</p></div>
-                <div class="checkout-row"><span class="checkout-row-icon" aria-hidden="true"><span class="mi">inventory_2</span></span><p>놓고 가시는 물건이 없으신지 체크해 주세요.</p></div>
-                <div class="checkout-row"><span class="checkout-row-icon" aria-hidden="true"><span class="mi">door_front</span></span><p>창문과 현관문을 꼭 닫아주세요.</p></div>
+                <div class="checkout-row"><span class="checkout-row-icon" aria-hidden="true"><span class="mi">countertops</span></span><p>설거지와 쓰레기 분리수거를 부탁드려요. 음식물은 싱크대 위 전용 통에 넣어주세요.</p></div>
+                <div class="checkout-row"><span class="checkout-row-icon" aria-hidden="true"><span class="mi">power_settings_new</span></span><p>냉난방과 조명을 모두 꺼주세요.</p></div>
+                <div class="checkout-row"><span class="checkout-row-icon" aria-hidden="true"><span class="mi">celebration</span></span><p>풍선과 가랜드 등 이벤트 장식은 정리해 주세요.</p></div>
+                <div class="checkout-row"><span class="checkout-row-icon" aria-hidden="true"><span class="mi">door_front</span></span><p>놓고 가는 물건을 확인하고 창문과 현관문을 닫아주세요.</p></div>
               </div>
             </div>
           </article>
@@ -2175,6 +2215,7 @@ body .latin-font{font-family:'Oxanium','Arial Narrow',Arial,sans-serif!important
     ['ko','en','zh','zh-TW','ja'].forEach(lang=>{uiText[lang].footerCopy='SEOUL PRIVATE STAY'});
     const FULL_TEXT_I18N={
       '모두가 편안한 머무름을 위해':['A Comfortable Stay for Everyone','为了每个人都能舒适入住','みんなが心地よく過ごすために'],'함께 지키는 숙소 이용 안내':['House guidelines we follow together','共同遵守的住宿使用指南','一緒に守る宿泊ルール'],'찾아오는 길':['Getting Here','前往住宿','アクセス'],'셀프 체크인':['Self Check-in','自助入住','セルフチェックイン'],'체크인 당일 낮 12시쯤 에어비앤비 메시지로 전송되는 개인 출입 키 번호를 확인해 주세요.':['Check the personal door code sent through Airbnb messages around noon on check-in day.','请查看入住当天中午左右通过Airbnb消息发送的个人门锁密码。','チェックイン当日の正午頃にAirbnbメッセージで届く個人用ドアコードをご確認ください。'],'체크인은 오후 4시부터 가능합니다. 주소는 서울시 용산구 신흥로 59, 2층입니다.':['Check-in is available from 4 PM. The address is 2F, 59 Sinheung-ro, Yongsan-gu, Seoul.','入住时间为下午4点起。地址是首尔市龙山区新兴路59号2楼。','チェックインは午後4時からです。住所はソウル市龍山区新興路59、2階です。'],'건물 입구에서 안내받은 키 번호를 입력하고 2층 EXTAY Mansion으로 올라와 주세요.':['Enter the provided door code at the building entrance and come up to EXTAY Mansion on the 2nd floor.','请在建筑入口输入收到的门锁密码，然后前往2楼的EXTAY Mansion。','建物入口で案内されたドアコードを入力し、2階のEXTAY Mansionへお越しください。'],'입실 후 문이 잠겼는지 확인하고, 키 번호는 예약 인원 외 다른 사람과 공유하지 마세요.':['After entering, make sure the door is locked and do not share the code with anyone outside your reservation.','进入后请确认房门已上锁，请勿向预约人员以外的任何人分享门锁密码。','入室後は施錠を確認し、ドアコードを予約者以外に共有しないでください。'],'체크아웃 안내':['Checkout Guide','退房指南','チェックアウト案内'],
+      '에어비앤비 메시지에서 개인 키 번호를 확인하세요.':['Check your personal door code in Airbnb messages.','请在Airbnb消息中查看个人门锁密码。','Airbnbメッセージで個人用ドアコードをご確認ください。'],'체크인 당일 낮 12시쯤 도착합니다.':['It arrives around noon on check-in day.','密码会在入住当天中午左右送达。','チェックイン当日の正午頃に届きます。'],'오후 4시부터 EXTAY Mansion 2층으로 입실하세요.':['Enter EXTAY Mansion on the 2nd floor from 4 PM.','下午4点起可进入2楼的EXTAY Mansion。','午後4時から2階のEXTAY Mansionへご入室ください。'],'서울시 용산구 신흥로 59':['59 Sinheung-ro, Yongsan-gu, Seoul','首尔市龙山区新兴路59号','ソウル市龍山区新興路59'],'입실 후 문 잠금을 확인하세요.':['Make sure the door is locked after entering.','入住后请确认房门已上锁。','入室後はドアの施錠をご確認ください。'],'키 번호는 예약 인원 외 공유하지 마세요.':['Do not share the code outside your reservation.','请勿向预约人员以外的人分享密码。','ドアコードを予約者以外に共有しないでください。'],'좋은 머무름이었다면 별 5개와 추천 리뷰를 남겨주세요.':['If you enjoyed your stay, please leave five stars and a recommendation.','如果您喜欢这次住宿，请留下五星好评与推荐。','快適にお過ごしいただけたら、星5つとおすすめレビューをお願いします。'],'불편했던 점은 에어비앤비 메시지로 알려주세요.':['Please share anything uncomfortable through Airbnb messages.','如有不便之处，请通过Airbnb消息告诉我们。','ご不便な点はAirbnbメッセージでお知らせください。'],'설거지와 쓰레기 분리수거를 부탁드려요. 음식물은 싱크대 위 전용 통에 넣어주세요.':['Please wash dishes and sort the trash. Put food waste in the dedicated bin above the sink.','请清洗餐具并分类垃圾，厨余垃圾请放入水槽上方的专用桶。','食器洗いとゴミの分別をお願いします。生ゴミはシンク上の専用容器へ入れてください。'],'냉난방과 조명을 모두 꺼주세요.':['Turn off all heating, cooling, and lights.','请关闭所有冷暖气和照明。','冷暖房と照明をすべて消してください。'],'풍선과 가랜드 등 이벤트 장식은 정리해 주세요.':['Please remove balloons, garlands, and other event decorations.','请收拾气球、彩带等活动装饰。','風船やガーランドなどの装飾は片付けてください。'],'놓고 가는 물건을 확인하고 창문과 현관문을 닫아주세요.':['Check for belongings, then close the windows and front door.','请确认没有遗留物品，并关好窗户和玄关门。','忘れ物を確認し、窓と玄関ドアを閉めてください。'],
       '객실 둘러보기':['Room Gallery','客房浏览','客室を見る'],'좌우로 밀어 사진 보기':['Swipe left or right','左右滑动查看照片','左右にスワイプして写真を見る'],'거실 라운지':['Living Lounge','客厅休息区','リビングラウンジ'],'따뜻한 조명과 편안한 소파가 있는 메인 거실 공간입니다.':['The main living space with warm lighting and a comfortable sofa.','配有温暖灯光和舒适沙发的主客厅空间。','温かな照明と快適なソファのあるメインリビングです。'],
       '체크인 · 체크아웃 안내':['Check-in · Checkout Guide','入住 · 退房指南','チェックイン · チェックアウト案内'],'입퇴실 안내':['Arrival & Departure','入住与退房','入退室案内'],'이용 시간':['Hours','使用时间','利用時間'],'체크인 16:00 · 체크아웃 11:00':['Check-in 16:00 · Checkout 11:00','入住 16:00 · 退房 11:00','チェックイン 16:00 · チェックアウト 11:00'],'개인 키 번호는 체크인 당일 12시쯤 호스트 메시지로 안내됩니다.':['Your personal door code is sent by the host around noon on check-in day.','个人门锁密码将在入住当天中午左右由房东通过消息发送。','個人用ドアコードはチェックイン当日の正午頃にホストメッセージで届きます。'],'주소':['Address','地址','住所'],'서울시 용산구 신흥로 59, 2층':['2F, 59 Sinheung-ro, Yongsan-gu, Seoul','首尔市龙山区新兴路59号2楼','ソウル市龍山区新興路59、2階'],'입실 방식':['Entry','入住方式','入室方法'],'비대면 셀프 체크인':['Contactless self check-in','无接触自助入住','非対面セルフチェックイン'],'주차':['Parking','停车','駐車'],'건물 주차 불가':['No on-site parking','楼内不可停车','建物内駐車不可'],'주변 유료 공영주차장을 이용해 주세요.':['Please use a nearby paid public parking lot.','请使用附近的收费公共停车场。','近隣の有料公共駐車場をご利用ください。'],'짐 보관':['Luggage','行李寄存','荷物預かり'],'체크인 전 · 체크아웃 후 짐 보관 불가':['No luggage storage before check-in or after checkout','入住前及退房后不可寄存行李','チェックイン前・チェックアウト後の荷物預かり不可'],'주차 안내':['Parking Guide','停车指南','駐車案内'],'주말 점심·저녁 피크 시간에는 자리가 없을 수 있습니다.':['Parking may be full during weekend lunch and dinner peaks.','周末午餐和晚餐高峰时段可能没有空位。','週末の昼食・夕食ピーク時は満車の場合があります。'],'‘모두의주차장’ 앱을 이용하면 실시간으로 근처 유료 주차장을 검색할 수 있습니다.':['Use the Modu Parking app to find nearby paid parking in real time.','可使用“Modu Parking”应用实时搜索附近收费停车场。','「Modu Parking」アプリで近隣の有料駐車場をリアルタイム検索できます。'],'용산2가동 기계식 공용주차장':['Yongsan 2-ga Mechanical Public Parking','龙山2街洞机械式公共停车场','龍山2街洞機械式公共駐車場'],'신흥로2길 74':['74 Sinheung-ro 2-gil','新兴路2街74号','新興路2キル74'],'도보 5분 · 100m · SUV 불가 · 기계식':['5 min walk · 100m · No SUVs · Mechanical','步行5分钟 · 100米 · SUV不可 · 机械式','徒歩5分 · 100m · SUV不可 · 機械式'],'용산2가 주민센터 공용주차장':['Yongsan 2-ga Community Center Parking','龙山2街居民中心公共停车场','龍山2街住民センター公共駐車場'],'신흥로 90':['90 Sinheung-ro','新兴路90号','新興路90'],'도보 10분 · 310m · 지상주차장':['10 min walk · 310m · Outdoor lot','步行10分钟 · 310米 · 地面停车场','徒歩10分 · 310m · 平面駐車場'],'해방촌공영주차장':['Haebangchon Public Parking','解放村公共停车场','解放村公共駐車場'],'소월로20길 56':['56 Sowol-ro 20-gil','素月路20街56号','ソウォル路20キル56'],'도보 6분 · 367m · 지상주차장':['6 min walk · 367m · Outdoor lot','步行6分钟 · 367米 · 地面停车场','徒歩6分 · 367m · 平面駐車場'],'녹사평역 코인락커 안내':['Noksapyeong Station Lockers','绿莎坪站投币储物柜','緑莎坪駅コインロッカー'],'녹사평역 B1층 엘리베이터(E/V) 주변':['Near the elevator (E/V), B1, Noksapyeong Station','绿莎坪站B1层电梯（E/V）附近','緑莎坪駅B1階エレベーター（E/V）付近'],'공개 위치 정보 기준으로 편의점 7-ELEVEN 주변에 물품보관함이 있습니다.':['Public location data shows lockers near the 7-ELEVEN.','根据公开位置信息，7-ELEVEN附近设有储物柜。','公開位置情報では7-ELEVEN付近にロッカーがあります。'],'소형 15 · 중형 2 · 대형 4':['Small 15 · Medium 2 · Large 4','小型15 · 中型2 · 大型4','小型15 · 中型2 · 大型4'],'공개 데이터 기준 수량입니다. 실제 잔여함은 현장 또는 앱에서 다시 확인하세요.':['Counts are based on public data. Check live availability on site or in the app.','数量基于公开数据，请在现场或应用中确认实时余量。','公開データ上の数量です。空き状況は現地またはアプリでご確認ください。'],'T locker 또타라커 이용 권장':['T locker app recommended','推荐使用T locker应用','T lockerアプリ推奨'],'앱에서 주변 물품보관함을 검색하고, 역사별 사용 가능 여부를 확인한 뒤 예약·결제할 수 있습니다.':['Search nearby lockers, check station availability, then reserve and pay in the app.','可在应用中搜索附近储物柜、确认各站可用情况并预约付款。','アプリで周辺ロッカーと駅別の空きを確認し、予約・決済できます。'],
       '퇴실 전 체크리스트':['Before Checkout','退房前检查清单','退室前チェックリスト'],'별 5개와 추천 리뷰를 남겨주시면 호스트에게 큰 힘이 됩니다.':['A 5-star rating and recommendation greatly support the host.','五星评分和推荐评价会给房东很大支持。','星5つとおすすめレビューはホストの大きな励みになります。'],'아쉬웠던 점은 호스트에게 에어비앤비 메시지로 살짝 알려주세요. 어떠한 피드백도 귀담아 듣겠습니다.':['Please share anything we could improve with the host through an Airbnb message. We value every piece of feedback.','如有需要改进之处，请通过Airbnb消息告诉房东。我们会认真听取每一条反馈。','改善してほしい点はAirbnbメッセージでホストへお知らせください。どのようなご意見も大切に伺います。'],'설거지 및 쓰레기 분리수거를 해주세요.':['Please wash dishes and sort the trash.','请清洗餐具并做好垃圾分类。','食器洗いとゴミの分別をお願いします。'],'음식물은 부엌 싱크대 위 음식물 쓰레기통에 넣어주세요.':['Put food waste in the bin above the kitchen sink.','请将厨余垃圾放入厨房水槽上方的厨余桶。','生ゴミはキッチンシンク上の生ゴミ箱へ入れてください。'],'냉난방, 조명 전원을 꺼주세요.':['Turn off heating, cooling, and lights.','请关闭冷暖气和照明。','冷暖房と照明の電源を切ってください。'],'이벤트를 하셨다면 풍선 및 가랜드를 처리해 주세요.':['Remove balloons and garlands after events.','如举办活动，请处理气球和装饰彩带。','イベント後は風船やガーランドを片付けてください。'],'놓고 가시는 물건이 없으신지 체크해 주세요.':['Check that you have not left anything behind.','请确认没有遗留物品。','忘れ物がないかご確認ください。'],'창문과 현관문을 꼭 닫아주세요.':['Close all windows and the front door.','请务必关好窗户和玄关门。','窓と玄関ドアを必ず閉めてください。'],'보안과 프라이버시':['Security & Privacy','安全与隐私','セキュリティとプライバシー'],'CCTV 위치':['CCTV Location','监控位置','CCTV設置場所'],'현관 입구에만 설치':['Installed only at the entrance','仅安装在玄关入口','玄関入口のみに設置'],'안전과 보안을 위한 카메라이며 객실 내부에는 설치되어 있지 않습니다.':['The camera is for safety and security; none are installed inside the rooms.','摄像头仅用于安全保障，客房内部没有安装。','安全・防犯用で、客室内には設置されていません。'],'키 번호':['Door Code','门锁密码','ドアコード'],'에어비앤비 메시지로만 전달':['Sent only through Airbnb messages','仅通过Airbnb消息发送','Airbnbメッセージでのみ送信'],'외부에 공유하지 말아 주세요.':['Do not share it with anyone else.','请勿对外分享。','外部へ共有しないでください。'],'방문 벨':['Doorbell','门铃','呼び鈴'],'모르는 사람이 벨을 누를 경우 응답하지 마세요.':['Do not respond if an unknown person rings the bell.','陌生人按门铃时请不要回应。','知らない人が呼び鈴を押しても応答しないでください。'],'투숙객의 프라이버시 보호를 위한 안내입니다.':['This protects guest privacy.','这是为了保护住客隐私。','ゲストのプライバシー保護のための案内です。'],'꼭 지켜주세요':['House Rules','请务必遵守','必ずお守りください'],'실내 금연':['No Smoking Indoors','室内禁烟','室内禁煙'],'객실, 베란다, 현관 입구와 계단은 모두 금연 구역입니다.':['Rooms, balcony, entrance, and stairs are all non-smoking areas.','客房、阳台、玄关入口和楼梯均为禁烟区。','客室、ベランダ、玄関入口、階段はすべて禁煙です。'],'흡연 장소':['Smoking Area','吸烟区','喫煙場所'],'1층 지정 장소에서만 가능':['Only in the designated area on the 1st floor','仅限1层指定区域','1階の指定場所のみ'],'담배꽁초는 지정된 통에 버려 주세요.':['Dispose of cigarette butts in the designated bin.','请将烟蒂丢入指定垃圾桶。','吸い殻は指定の容器へ捨ててください。'],'방문자':['Visitors','访客','訪問者'],'반려동물 동반과 기준 인원 외 방문자 입실은 불가합니다.':['Pets and unregistered visitors are not allowed.','禁止携带宠物及预约人数以外的访客入内。','ペット同伴および予約人数以外の訪問者の入室は禁止です。'],'매너타임':['Quiet Hours','安静时间','マナータイム'],'저녁 9시 이후에는 소리를 낮춰 주세요.':['Keep noise low after 21:00.','晚上9点后请降低音量。','21時以降は音量を抑えてください。'],'간단 취사':['Light Cooking Only','仅限简单烹饪','簡単な調理のみ'],'냄새가 강한 음식은 피하고 간단한 취사만 부탁드립니다.':['Please avoid strong-smelling food and keep cooking simple.','请避免气味浓烈的食物，仅进行简单烹饪。','匂いの強い料理を避け、簡単な調理のみでお願いします。'],'기본 비품':['Basic Amenities','基本用品','基本アメニティ'],'인원 수에 맞춰 일회용 칫솔과 수건이 제공됩니다.':['Disposable toothbrushes and towels are provided for the number of guests.','按入住人数提供一次性牙刷和毛巾。','人数分の使い捨て歯ブラシとタオルをご用意しています。'],
@@ -2184,7 +2225,7 @@ body .latin-font{font-family:'Oxanium','Arial Narrow',Arial,sans-serif!important
     };
     const FULL_TEXT_LANG_INDEX={en:0,zh:1,'zh-TW':1,ja:2};
     const ATTRIBUTE_I18N={
-      '홈으로 이동':['Go home','返回首页','ホームへ戻る'],'언어 선택':['Choose language','选择语言','言語を選択'],'언어 전환':['Switch language','切换语言','言語を切り替え'],
+      '홈으로 이동':['Go home','返回首页','ホームへ戻る'],'언어 선택':['Choose language','选择语言','言語を選択'],'언어 전환':['Switch language','切换语言','言語を切り替え'],'별 다섯 개':['Five stars','五星','星5つ'],
       'AI 챗봇에게 질문':['Ask the AI concierge','向 AI 礼宾提问','AIコンシェルジュに質問'],'질문 보내기':['Send question','发送问题','質問を送信'],'빠르게 찾는 정보':['Quick access','快速信息','クイックアクセス'],
       '거실 라운지 사진 전체보기':['Open living lounge photo','打开客厅照片','リビングラウンジ写真を開く'],'익스테이 거실 라운지':['EXTAY living lounge','EXTAY 客厅','EXTAY リビングラウンジ'],
       '다이닝과 키친 사진 전체보기':['Open dining and kitchen photo','打开餐厅与厨房照片','ダイニング・キッチン写真を開く'],'익스테이 다이닝과 키친':['EXTAY dining and kitchen','EXTAY 餐厅与厨房','EXTAY ダイニング・キッチン'],
