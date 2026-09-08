@@ -1031,7 +1031,7 @@ body:not(.motion-ready) .concierge-widget,body:has(#brandIntro.is-running,.menu-
 /* Nearby tours: the Anotherhouse route-card system adapted for EXTAY. */
 .tour-home-preview{margin-top:32px;padding-top:30px;border-top:1px solid rgba(216,198,180,.72)}
 .tours-screen{background:#f7f2ec;min-height:calc(100dvh - 72px)}
-.tours-hero{background-image:linear-gradient(180deg,rgba(25,19,16,.08),rgba(25,19,16,.84)),url('assets/extay/crops/rooftop-namsan.jpg')}
+.tours-hero{background-image:linear-gradient(180deg,rgba(25,19,16,.08),rgba(25,19,16,.84)),url('assets/extay/tours/seoul-night-hero-host.png')}
 .tours-hero .tour-hero-summary{margin:10px 0 0;color:rgba(255,255,255,.88);font-size:14px;font-weight:650;line-height:1.6;word-break:keep-all}
 .tour-card-cover{position:relative;min-height:214px;padding:20px;display:flex;flex-direction:column;justify-content:flex-end;color:#fff}
 .tour-card-cover>.mi{position:absolute;right:18px;top:18px;font-size:54px;color:rgba(255,255,255,.5)}
@@ -1109,12 +1109,14 @@ body .latin-font{font-family:'Oxanium','Arial Narrow',Arial,sans-serif!important
 .airbnb-brand{display:inline-flex;width:112px;align-items:center;justify-content:flex-start;gap:7px;color:#ff385c;font-family:Arial,sans-serif!important;font-size:19px;font-weight:800;line-height:1;white-space:nowrap;overflow-wrap:normal!important}
 .airbnb-brand img{width:31px;height:31px}
 
-.hotel-footer{position:relative;isolation:isolate;min-height:156px;width:100%;margin-top:32px;padding:34px 24px;border:1px solid rgba(255,240,222,.18);border-radius:18px;overflow:hidden;background:radial-gradient(circle at 84% 14%,rgba(255,236,212,.2),transparent 33%),linear-gradient(135deg,#38231d 0%,#754836 47%,#B55D3D 100%);color:#fffaf4;box-shadow:0 20px 44px rgba(67,36,27,.2)}
-.hotel-footer:before{content:'';position:absolute;inset:12px;border:1px solid rgba(255,250,244,.13);border-radius:11px;pointer-events:none;z-index:-1}
-.hotel-footer strong{margin:0 0 11px;font-size:34px;font-weight:800;line-height:1;color:#fffaf4}
-.hotel-footer .hotel-footer-tagline{font-size:14px;font-weight:700;line-height:1.4;letter-spacing:.12em!important;color:rgba(255,250,244,.82)}
-.hotel-footer strong .latin-font{font-size:34px!important;line-height:1!important}
-.hotel-footer-tagline .latin-font{font-size:14px!important;line-height:1.4!important}
+.tour-home-card{height:142px;min-height:142px;grid-template-columns:1fr 1fr}
+.tour-home-card .tour-mini{width:auto;min-height:142px}
+.hotel-footer{width:100%;margin-top:32px;padding:34px 0 28px;border:0;border-radius:0;background:#26382f;color:#f7f1ea;text-align:center;display:block;box-shadow:none}
+.hotel-footer:before{display:none}
+.hotel-footer strong{display:block;margin:0 0 8px;font-size:21px;font-weight:700;line-height:1.35;color:#f7f1ea}
+.hotel-footer .hotel-footer-tagline{display:block;font-size:15px;font-weight:700;line-height:1.5;letter-spacing:.08em!important;color:#f7f1ea}
+.hotel-footer strong .latin-font{font-size:21px!important;line-height:1.35!important}
+.hotel-footer-tagline .latin-font{font-size:15px!important;line-height:1.5!important}
 
 .menu-copy strong{font-size:18px;font-weight:800;line-height:1.3}
 .menu-copy small{margin-top:5px;font-size:13px;font-weight:600;line-height:1.45;color:#7d6d5e}
@@ -1241,9 +1243,9 @@ body .latin-font{font-family:'Oxanium','Arial Narrow',Arial,sans-serif!important
           </div>
           <div class="nearby-preview tour-home-preview" aria-labelledby="homeToursTitle">
             <p class="nearby-kicker">NEARBY TOURS</p>
-            <h2 class="nearby-title" id="homeToursTitle">근교 추천 투어</h2>
+            <h2 class="nearby-title" id="homeToursTitle">추천 근교 투어</h2>
             <div class="nearby-list" id="homeTours"></div>
-            <button class="nearby-all" type="button" data-go="tours"><span id="tourBrowseLabel">해방촌에서 시작하는 추천 17곳 보기</span><span class="mi" aria-hidden="true">arrow_forward</span></button>
+            <button class="nearby-all" type="button" data-go="tours"><span id="tourBrowseLabel">추천 근교 투어 17곳 보기</span><span class="mi" aria-hidden="true">arrow_forward</span></button>
           </div>
         </section>
 
@@ -1255,7 +1257,7 @@ body .latin-font{font-family:'Oxanium','Arial Narrow',Arial,sans-serif!important
             <button class="stay-info-link" type="button" data-go="trash"><span class="mi" aria-hidden="true">delete_outline</span><span>쓰레기 배출 안내</span></button>
             <article class="home-support-card">
               <div class="home-support-intro"><span class="home-support-icon" aria-hidden="true"><span class="mi">support_agent</span></span><div><small>NEED HELP?</small><h3 id="homeHelpTitle">도움이 필요할 때</h3></div></div>
-              <div class="home-support-details"><div class="home-help-copy"><span class="airbnb-brand" aria-label="Airbnb"><img src="assets/extay/airbnb-logo.svg" alt=""><span>airbnb</span></span><p id="homeContact">메시지를 이용해주세요.</p></div></div>
+              <div class="home-support-details"><div class="home-help-copy"><span class="airbnb-brand" aria-label="Airbnb"><img src="assets/extay/airbnb-logo.svg" alt=""><span>airbnb</span></span><p id="homeContact">예약하신 에어비앤비 메시지를 통해 호스트에게 연락해 주세요.</p></div></div>
             </article>
           </div>
           <footer class="hotel-footer"><strong>EXTAY Mansion</strong><span class="hotel-footer-tagline">SEOUL PRIVATE STAY</span></footer>
@@ -1650,7 +1652,7 @@ body .latin-font{font-family:'Oxanium','Arial Narrow',Arial,sans-serif!important
       <section class="screen restaurants-screen tours-screen" data-screen="tours">
         <article class="restaurants-hero tours-hero">
           <p class="section-kicker">NEARBY TOURS</p>
-          <h2>근교 추천 투어</h2>
+          <h2>추천 근교 투어</h2>
           <p class="tour-hero-summary">EXTAY 맨션 해방촌에서 시작해 남산, 용산, 이태원과 서울 도심을 만나는 17개의 추천 장소입니다.</p>
         </article>
         <div class="restaurants-content" id="toursContent"></div>
@@ -1777,7 +1779,7 @@ body .latin-font{font-family:'Oxanium','Arial Narrow',Arial,sans-serif!important
       <button class="menu-link" type="button" data-go="laundry"><span class="menu-icon"><span class="mi">local_laundry_service</span></span><span class="menu-copy"><strong>Laundry</strong><small>세탁기 · 건조기 사용법</small></span><span class="menu-chevron"><span class="mi">chevron_right</span></span></button>
       <button class="menu-link" type="button" data-go="trash"><span class="menu-icon"><span class="mi">delete_outline</span></span><span class="menu-copy"><strong>쓰레기 배출</strong><small>분리수거와 배출 안내</small></span><span class="menu-chevron"><span class="mi">chevron_right</span></span></button>
       <button class="menu-link" type="button" data-go="restaurants"><span class="menu-icon"><span class="mi">restaurant</span></span><span class="menu-copy"><strong>주변 맛집</strong><small>EXTAY 맨션 해방촌이 고른 주변 맛집</small></span><span class="menu-chevron"><span class="mi">chevron_right</span></span></button>
-      <button class="menu-link" type="button" data-go="tours"><span class="menu-icon"><span class="mi">near_me</span></span><span class="menu-copy"><strong>근교 추천 투어</strong><small>서울에서 만나는 추천 17곳</small></span><span class="menu-chevron"><span class="mi">chevron_right</span></span></button>
+      <button class="menu-link" type="button" data-go="tours"><span class="menu-icon"><span class="mi">near_me</span></span><span class="menu-copy"><strong>추천 근교 투어</strong><small>서울에서 만나는 추천 17곳</small></span><span class="menu-chevron"><span class="mi">chevron_right</span></span></button>
       <button class="menu-link" type="button" data-go="guidebook"><span class="menu-icon"><span class="mi">menu_book</span></span><span class="menu-copy"><strong>Guidebook</strong><small>한글 · 영문 PDF 보기</small></span><span class="menu-chevron"><span class="mi">chevron_right</span></span></button>
     </nav>
     <div class="menu-footer-note"><span>EXTAY Mansion</span><small>SEOUL PRIVATE STAY</small></div>
@@ -1824,8 +1826,8 @@ body .latin-font{font-family:'Oxanium','Arial Narrow',Arial,sans-serif!important
   </section>
   <div class="toast" id="toast">복사했습니다</div>
   <script src="assets/chat-fallback.js"></script>
-  <script src="assets/extay-tour-data.js?v=20260908-06"></script>
-  <script src="assets/extay-tour-app.js?v=20260908-05"></script>
+  <script src="assets/extay-tour-data.js?v=20260908-07"></script>
+  <script src="assets/extay-tour-app.js?v=20260908-06"></script>
   <script>
     const screens=[...document.querySelectorAll('.screen')], tabs=[...document.querySelectorAll('.tab')];
     const LANG_KEY='extayGuideLang';
@@ -1842,7 +1844,7 @@ body .latin-font{font-family:'Oxanium','Arial Narrow',Arial,sans-serif!important
         docTitle:'익스테이 맨션 해방촌 모바일 가이드',docDesc:'익스테이 맨션 해방촌 숙박 안내 모바일 가이드',
         headerTitle:'EXTAY',menuAria:'메뉴',guideAria:'가이드북 열기',chatAria:'AI 컨시어지',chatFabAria:'AI 컨시어지 열기',langAria:'Switch to English',langButton:'EN',
         search:{button:'검색',openAria:'검색 열기',closeAria:'검색 닫기',title:'검색',desc:'필요한 정보를 입력하면 관련 안내로 바로 이동합니다.',placeholder:'예: 와이파이, 체크인, 맛집',empty:'검색 결과가 없습니다. 다른 단어로 검색해 주세요.'},
-        heroSub:'your cozy home in Seoul.',copied:'복사했습니다',homeHeroEyebrow:'SEOUL PRIVATE STAY',quickTitle:'빠르게 찾는 정보',homeQuick:['체크인','오는 길','Wi-Fi','시설 이용'],menuTitles:['홈','객실 둘러보기','찾아오는 길','체크인 · 체크아웃 안내','Wi-Fi','TV · 난방 · 루프탑 안내','세탁 안내','쓰레기 배출','주변 맛집','근교 추천 투어','이용 안내'],menuSubs:['처음 화면','공용 공간, 객실 사진','공항과 역에서 숙소까지','입실·퇴실 방법과 이용 안내','네트워크 정보와 비밀번호','TV · 난방 · 루프탑 사용 안내','세탁기 · 건조기 사용법','분리수거와 배출 안내','EXTAY 맨션 해방촌이 고른 주변 맛집','서울에서 만나는 추천 17곳','한글 · 영문 PDF 보기'],chatExamples:['와이파이 비밀번호 알려줘','텔레비전 어떻게 봐?','세탁기 어떻게 써?','쓰레기 어디에 버려?'],stayGuideKicker:'STAY GUIDE',conciergeKicker:'EXTAY CONCIERGE',aiTitle:'무엇을 도와드릴까요?',conciergePlaceholder:'AI 챗봇에게 질문해 보세요',essentials:{kicker:'STAY ESSENTIALS',title:'숙소 정보 한 눈에 보기',sub:'도착 전 꼭 필요한 정보만 모았습니다.',labels:['CHECK-IN','CHECK-OUT','ENTRY','LOCATION'],values:['16:00','11:00','비대면 셀프 체크인','녹사평역 도보 15분'],links:['체크인 전 꼭 확인해주세요','숙소 주소 지도 바로 보기'],galleryTitle:'객실 둘러보기',galleryAll:'전체보기 →'},contactKicker:'CONTACT',footerCopy:'Extay Mansion Haebangchon.',stayCards:['찾아오는 길','주변 맛집','가이드북'],
+        heroSub:'your cozy home in Seoul.',copied:'복사했습니다',homeHeroEyebrow:'SEOUL PRIVATE STAY',quickTitle:'빠르게 찾는 정보',homeQuick:['체크인','오는 길','Wi-Fi','시설 이용'],menuTitles:['홈','객실 둘러보기','찾아오는 길','체크인 · 체크아웃 안내','Wi-Fi','TV · 난방 · 루프탑 안내','세탁 안내','쓰레기 배출','주변 맛집','추천 근교 투어','이용 안내'],menuSubs:['처음 화면','공용 공간, 객실 사진','공항과 역에서 숙소까지','입실·퇴실 방법과 이용 안내','네트워크 정보와 비밀번호','TV · 난방 · 루프탑 사용 안내','세탁기 · 건조기 사용법','분리수거와 배출 안내','EXTAY 맨션 해방촌이 고른 주변 맛집','서울에서 만나는 추천 17곳','한글 · 영문 PDF 보기'],chatExamples:['와이파이 비밀번호 알려줘','텔레비전 어떻게 봐?','세탁기 어떻게 써?','쓰레기 어디에 버려?'],stayGuideKicker:'STAY GUIDE',conciergeKicker:'EXTAY CONCIERGE',aiTitle:'무엇을 도와드릴까요?',conciergePlaceholder:'AI 챗봇에게 질문해 보세요',essentials:{kicker:'STAY ESSENTIALS',title:'숙소 정보 한 눈에 보기',sub:'도착 전 꼭 필요한 정보만 모았습니다.',labels:['CHECK-IN','CHECK-OUT','ENTRY','LOCATION'],values:['16:00','11:00','비대면 셀프 체크인','녹사평역 도보 15분'],links:['체크인 전 꼭 확인해주세요','숙소 주소 지도 바로 보기'],galleryTitle:'객실 둘러보기',galleryAll:'전체보기 →'},contactKicker:'CONTACT',footerCopy:'Extay Mansion Haebangchon.',stayCards:['찾아오는 길','주변 맛집','가이드북'],
         bottom:['홈','와이파이','사용법','세탁','쓰레기'],
         quick:['와이파이','TV · OTT','온수 · 난방','세탁'],
         home:{infoTitle:'기본 정보',labels:['숙소','주소','체크인 · 체크아웃','와이파이','TV · OTT','주차'],values:['익스테이 맨션 해방촌','서울시 용산구 신흥로 59, 2층','16:00 · 11:00','U+Net46F0_5G','NSM OTT / HDMI 입력','건물 주차 불가 · 주변 유료 공영주차장'],view:'보기'},
@@ -1929,7 +1931,7 @@ body .latin-font{font-family:'Oxanium','Arial Narrow',Arial,sans-serif!important
     Object.assign(uiText.en,{homeGalleryFeature:{count:'01/04',title:'Living Lounge',desc:'The main living space with warm lighting and a comfortable sofa.'},getting:{kicker:'GETTING HERE',title:'Location & Transportation',name:'EXTAY Mansion Haebangchon',address:'2F, 59 Sinheung-ro, Yongsan-gu, Seoul',transit:'Noksapyeong Station Exit 2, about 15 minutes on foot',naver:'Naver Map',google:'Google Maps',airportKicker:'AIRPORT ACCESS',airportTitle:'From the airport to EXTAY',restaurantKicker:'NEARBY RESTAURANTS',restaurantTitle:'Nearby Restaurants',restaurantAll:"View Host's Pick 7",restaurants:[['Western · Pasta','semolina club','A casual Western restaurant within walking distance in Haebangchon.'],['Vegan · Nearby','Vegetus','A nearby vegan restaurant that is great for a light meal.']]}});
     Object.assign(uiText.zh,{homeGalleryFeature:{count:'01/04',title:'客厅休息区',desc:'配有温暖灯光和舒适沙发的主客厅空间。'},getting:{kicker:'GETTING HERE',title:'位置与交通',name:'EXTAY Mansion Haebangchon',address:'首尔特别市龙山区新兴路59号 2楼',transit:'绿莎坪站2号出口，步行约15分钟',naver:'Naver 地图',google:'Google Maps',airportKicker:'AIRPORT ACCESS',airportTitle:'从机场前往 EXTAY',restaurantKicker:'NEARBY RESTAURANTS',restaurantTitle:'周边美食',restaurantAll:'查看房东精选7家餐厅',restaurants:[['西餐 · 意面','semolina club','位于解放村步行范围内的休闲西餐厅。'],['纯素 · 附近','Vegetus','住宿附近的纯素餐厅，适合轻松用餐。']]}});
     Object.assign(uiText.ja,{homeGalleryFeature:{count:'01/04',title:'リビングラウンジ',desc:'温かな照明と快適なソファのあるメインリビングです。'},getting:{kicker:'GETTING HERE',title:'アクセス・交通',name:'EXTAY Mansion Haebangchon',address:'ソウル特別市龍山区新興路59、2階',transit:'緑莎坪駅2番出口から徒歩約15分',naver:'Naver マップ',google:'Google Maps',airportKicker:'AIRPORT ACCESS',airportTitle:'空港からEXTAYまで',restaurantKicker:'NEARBY RESTAURANTS',restaurantTitle:'周辺グルメ',restaurantAll:'ホスト厳選7店を見る',restaurants:[['洋食 · パスタ','semolina club','解放村の徒歩圏内にあるカジュアルな洋食店です。'],['ヴィーガン · 近隣','Vegetus','宿の近くにある、軽い食事にもおすすめのヴィーガン店です。']]}});
-    Object.assign(uiText.ko,{stayResident:{title:'투숙 중 자주 찾는 정보',items:['TV · 난방 · 루프탑 사용 안내','세탁기 · 건조기 사용법','쓰레기 배출 안내'],helpTitle:'도움이 필요할 때',helpCopy:'메시지를 이용해주세요.'}});
+    Object.assign(uiText.ko,{stayResident:{title:'투숙 중 자주 찾는 정보',items:['TV · 난방 · 루프탑 사용 안내','세탁기 · 건조기 사용법','쓰레기 배출 안내'],helpTitle:'도움이 필요할 때',helpCopy:'예약하신 에어비앤비 메시지를 통해 호스트에게 연락해 주세요.'}});
     Object.assign(uiText.en,{stayResident:{title:'Frequently Used During Your Stay',items:['TV · heating · rooftop guide','Washer · dryer instructions','Trash disposal guide'],helpTitle:'When you need help',helpCopy:'Please send us a message.'}});
     Object.assign(uiText.zh,{stayResident:{title:'入住期间常用信息',items:['电视 · 暖气 · 屋顶使用指南','洗衣机 · 烘干机使用方法','垃圾投放指南'],helpTitle:'需要帮助时',helpCopy:'请给我们发送消息。'}});
     Object.assign(uiText.ja,{stayResident:{title:'滞在中によく使う情報',items:['TV・暖房・屋上の利用案内','洗濯機・乾燥機の使い方','ゴミ出し案内'],helpTitle:'お困りのとき',helpCopy:'メッセージをお送りください。'}});
@@ -2292,7 +2294,7 @@ body .latin-font{font-family:'Oxanium','Arial Narrow',Arial,sans-serif!important
       {icon:'photo_library',screen:'gallery',popular:true,ko:['객실 둘러보기','숙소 사진과 공간 확인'],en:['Room Gallery','Photos of the stay and rooms'],keys:['객실','사진','숙소사진','둘러보기','갤러리','방','gallery','photo','room','image']},
       {icon:'menu_book',screen:'guidebook',popular:true,ko:['이용 안내 PDF','한글·영문 가이드북 보기'],en:['Guidebook PDF','View Korean and English guidebooks'],keys:['이용안내','가이드북','가이드','pdf','한글가이드','영문가이드','guidebook','manual']},
       {icon:'restaurant',screen:'restaurants',popular:true,ko:['주변 맛집','해방촌 추천 식당 리스트'],en:['Restaurants','Recommended places near Haebangchon'],keys:['맛집','식당','음식','레스토랑','카페','브런치','술집','restaurants','food','cafe','bar']},
-      {icon:'near_me',screen:'tours',popular:true,ko:['근교 추천 투어','해방촌에서 시작하는 서울 추천 17곳'],en:['Nearby Tours','17 places from Haebangchon across Seoul'],keys:['근교','투어','관광','명소','해방촌','남산','용산','이태원','신흥시장','108계단','서울타워','박물관','nearby','tour','attraction','sightseeing','namsan','yongsan','itaewon']},
+      {icon:'near_me',screen:'tours',popular:true,ko:['추천 근교 투어','해방촌에서 시작하는 서울 추천 17곳'],en:['Nearby Tours','17 places from Haebangchon across Seoul'],keys:['근교','투어','관광','명소','해방촌','남산','용산','이태원','신흥시장','108계단','서울타워','박물관','nearby','tour','attraction','sightseeing','namsan','yongsan','itaewon']},
       {icon:'tv',screen:'appliances',open:'tv',ko:['TV · OTT','TV 리모컨과 OTT 사용법'],en:['TV · OTT','TV remote and OTT instructions'],keys:['tv','티비','텔레비전','ott','넷플릭스','유튜브','nsm','remote','netflix','youtube']},
       {icon:'thermostat',screen:'appliances',open:'boiler',ko:['온수 · 난방','Rinnai 온수 버튼과 난방 조절'],en:['Hot Water · Heating','Rinnai hot-water and heating control'],keys:['온수','난방','보일러','뜨거운물','히터','hot water','heating','boiler']},
       {icon:'roofing',screen:'appliances',open:'induction',ko:['공용 화장실 · 루프탑','비밀 화장실과 루프탑 안내'],en:['Shared Restroom · Rooftop','Secret restroom and rooftop guide'],keys:['화장실','공용화장실','비밀화장실','루프탑','남산','7003','restroom','toilet','bathroom','rooftop']},

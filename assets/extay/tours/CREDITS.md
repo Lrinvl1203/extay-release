@@ -4,11 +4,12 @@ The tour-card images are resized, cropped and lightly color-adjusted for the web
 
 | Card | Source | Credit | License |
 | --- | --- | --- | --- |
-| Sinheung Market / Haebangchon | [Seoul Yongsan Haebangchon 20250206](https://commons.wikimedia.org/wiki/File:Seoul_Yongsan_Haebangchon_20250206.jpg) | 서울관광재단 | KOGL Type 1 |
+| Tours hero | User-provided photo | Host-provided | — |
+| Sinheung Market / Haebangchon | User-provided photo | Host-provided | — |
 | Haebangchon 108 Stairs | [Haebangchon (55191213112)](https://commons.wikimedia.org/wiki/File:Haebangchon_(55191213112).jpg) | Lee Jeong Woo / Korea.net | CC BY-SA 4.0 |
 | Noksapyeong Yongsan Park Platform | [Noksapyeong Station 20230430 014](https://commons.wikimedia.org/wiki/File:Noksapyeong_Station_(Seoul_Subway_Line_6)_20230430_014.jpg) | Mobius6 | CC BY-SA 4.0 |
-| Namsan Park | [Namsan Afternoon Stroll](https://commons.wikimedia.org/wiki/File:Namsan_Afternoon_Stroll.jpg) | Science Shrestha | CC BY-SA 3.0 |
-| N Seoul Tower | [Seoul tower stands tall against a clear blue sky](https://unsplash.com/photos/seoul-tower-stands-tall-against-a-clear-blue-sky-QoYXYNrYabE) | lee seunghyub | Unsplash License |
+| Namsan Park | User-provided photo | Host-provided | — |
+| N Seoul Tower | User-provided photo | Host-provided | — |
 | Gyeongnidan-gil | [Road in Seoul, KOREA 4](https://commons.wikimedia.org/wiki/File:Road_in_Seoul,_KOREA_4.jpg) | AhmedAlElq | CC BY-SA 4.0 |
 | Itaewon Street | [Itaewon-ro in 2019](https://commons.wikimedia.org/wiki/File:Itaewon-ro_in_2019.jpg) | 서울연구원 | CC BY 4.0 |
 | Huam-dong | [서울 2014 도시형태와 경관](https://data.si.re.kr/photo/05U01006Da2000) | 서울특별시 / 서울연구데이터서비스 | KOGL Type 1 · CC BY 4.0 |
@@ -19,8 +20,8 @@ The tour-card images are resized, cropped and lightly color-adjusted for the web
 | Yongsan Family Park | [Korea Yongsan Family Park 20140421 02](https://commons.wikimedia.org/wiki/File:Korea_Yongsan_Family_Park_20140421_02_(13962901283).jpg) | Korea.net / KOCIS (Jeon Han) | CC BY-SA 2.0 |
 | Nodeul Island | [서울 2020 도시형태와 경관](https://data.si.re.kr/photo/06U01209Ba80000) | 서울특별시 / 서울연구데이터서비스 | KOGL Type 1 · CC BY 4.0 |
 | Seoullo 7017 | [Seoullo 7017 night time city lights](https://commons.wikimedia.org/wiki/File:Seoullo_7017_night_time_city_lights.jpg) | Aatu Dorochenko | CC BY-SA 4.0 |
-| Namdaemun Market | [Namdaemun shopping street 2](https://commons.wikimedia.org/wiki/File:Namdaemun_shopping_street_2.jpg) | Sgroey | CC BY-SA 4.0 |
-| Myeongdong | [Myeongdong night market Seoul 1](https://commons.wikimedia.org/wiki/File:Myeongdong_night_market_seoul_1.jpg) | Sgroey | CC BY-SA 4.0 |
+| Namdaemun Market | User-provided photo | Host-provided | — |
+| Myeongdong | User-provided photo | Host-provided | — |
 
 ## Interface brand asset
 

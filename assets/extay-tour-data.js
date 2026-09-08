@@ -3,11 +3,11 @@
 
   const I = (ko, en, ja = en, zh = en, zhTW = zh) => ({ ko, en, ja, zh, 'zh-TW': zhTW });
   const PHOTO_BY_ID = {
-    'sinheung-market': '/assets/extay/tours/01-sinheung.jpg',
+    'sinheung-market': '/assets/extay/tours/01-sinheung-host.png',
     'haebangchon-108': '/assets/extay/tours/02-108-stairs.jpg',
     'noksapyeong-park': '/assets/extay/tours/03-noksapyeong.jpg',
-    'namsan-park': '/assets/extay/tours/04-namsan.jpg',
-    'n-seoul-tower': '/assets/extay/tours/05-n-seoul-tower.jpg?v=20260908-06',
+    'namsan-park': '/assets/extay/tours/04-namsan-host.png',
+    'n-seoul-tower': '/assets/extay/tours/05-n-seoul-tower-host.png',
     gyeongnidan: '/assets/extay/tours/06-gyeongnidan.jpg',
     itaewon: '/assets/extay/tours/07-itaewon.jpg',
     'huam-dong': '/assets/extay/tours/08-huam.jpg',
@@ -18,15 +18,15 @@
     'yongsan-family-park': '/assets/extay/tours/13-yongsan-family-park.jpg?v=20260908-06',
     'nodeul-island': '/assets/extay/tours/14-nodeul.jpg',
     seoullo: '/assets/extay/tours/15-seoullo.jpg',
-    'namdaemun-market': '/assets/extay/tours/16-namdaemun.jpg',
-    myeongdong: '/assets/extay/tours/17-myeongdong.jpg',
+    'namdaemun-market': '/assets/extay/tours/16-namdaemun-host.png',
+    myeongdong: '/assets/extay/tours/17-myeongdong-host.png',
   };
   const PHOTO_META_BY_ID = {
-    'sinheung-market': { source: 'https://commons.wikimedia.org/wiki/File:Seoul_Yongsan_Haebangchon_20250206.jpg', credit: '서울관광재단', license: 'KOGL Type 1' },
+    'sinheung-market': { source: '', credit: 'Host-provided', license: '' },
     'haebangchon-108': { source: 'https://commons.wikimedia.org/wiki/File:Haebangchon_(55191213112).jpg', credit: 'Lee Jeong Woo / Korea.net', license: 'CC BY-SA 4.0' },
     'noksapyeong-park': { source: 'https://commons.wikimedia.org/wiki/File:Noksapyeong_Station_(Seoul_Subway_Line_6)_20230430_014.jpg', credit: 'Mobius6', license: 'CC BY-SA 4.0' },
-    'namsan-park': { source: 'https://commons.wikimedia.org/wiki/File:Namsan_Afternoon_Stroll.jpg', credit: 'Science Shrestha', license: 'CC BY-SA 3.0' },
-    'n-seoul-tower': { source: 'https://unsplash.com/photos/seoul-tower-stands-tall-against-a-clear-blue-sky-QoYXYNrYabE', credit: 'lee seunghyub', license: 'Unsplash License' },
+    'namsan-park': { source: '', credit: 'Host-provided', license: '' },
+    'n-seoul-tower': { source: '', credit: 'Host-provided', license: '' },
     gyeongnidan: { source: 'https://commons.wikimedia.org/wiki/File:Road_in_Seoul,_KOREA_4.jpg', credit: 'AhmedAlElq', license: 'CC BY-SA 4.0' },
     itaewon: { source: 'https://commons.wikimedia.org/wiki/File:Itaewon-ro_in_2019.jpg', credit: '서울연구원', license: 'CC BY 4.0' },
     'huam-dong': { source: 'https://data.si.re.kr/photo/05U01006Da2000', credit: '서울 2014 도시형태와 경관, 서울특별시 / 서울연구데이터서비스', license: 'KOGL Type 1 · CC BY 4.0' },
@@ -37,8 +37,8 @@
     'yongsan-family-park': { source: 'https://commons.wikimedia.org/wiki/File:Korea_Yongsan_Family_Park_20140421_02_(13962901283).jpg', credit: 'Korea.net / KOCIS (Jeon Han)', license: 'CC BY-SA 2.0' },
     'nodeul-island': { source: 'https://data.si.re.kr/photo/06U01209Ba80000', credit: '서울 2020 도시형태와 경관, 서울특별시 / 서울연구데이터서비스', license: 'KOGL Type 1 · CC BY 4.0' },
     seoullo: { source: 'https://commons.wikimedia.org/wiki/File:Seoullo_7017_night_time_city_lights.jpg', credit: 'Aatu Dorochenko', license: 'CC BY-SA 4.0' },
-    'namdaemun-market': { source: 'https://commons.wikimedia.org/wiki/File:Namdaemun_shopping_street_2.jpg', credit: 'Sgroey', license: 'CC BY-SA 4.0' },
-    myeongdong: { source: 'https://commons.wikimedia.org/wiki/File:Myeongdong_night_market_seoul_1.jpg', credit: 'Sgroey', license: 'CC BY-SA 4.0' },
+    'namdaemun-market': { source: '', credit: 'Host-provided', license: '' },
+    myeongdong: { source: '', credit: 'Host-provided', license: '' },
   };
   const G = (query) => `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(query)}`;
   const N = (query) => `https://map.naver.com/p/search/${encodeURIComponent(query)}`;
@@ -56,9 +56,9 @@
   };
 
   window.EXTAY_TOURS = {
-    hero: '/assets/extay/crops/rooftop-namsan.jpg',
+    hero: '/assets/extay/tours/seoul-night-hero-host.png',
     kicker: 'NEARBY TOURS',
-    title: I('근교 추천 투어', 'Recommended Nearby Tours', '近郊おすすめツアー', '近郊推荐路线', '近郊推薦路線'),
+    title: I('추천 근교 투어', 'Recommended Nearby Tours', '近郊おすすめツアー', '近郊推荐路线', '近郊推薦路線'),
     summary: I(
       'EXTAY 맨션 해방촌에서 시작해 남산, 용산, 이태원과 서울 도심을 만나는 17개의 추천 장소입니다.',
       'Seventeen picks connecting Haebangchon with Namsan, Yongsan, Itaewon and central Seoul.',

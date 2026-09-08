@@ -114,11 +114,11 @@
     if (!root) return;
     const total = DATA.places.length;
     const homeLabels = {
-      ko: ['근교 추천 투어', `해방촌에서 시작하는 추천 ${total}곳 보기`],
+      ko: ['추천 근교 투어', `추천 근교 투어 ${total}곳 보기`],
       en: ['Nearby Tours', `View ${total} nearby tours`],
       ja: ['近郊おすすめツアー', `近郊スポット${total}選を見る`],
       zh: ['附近精选路线', `查看${total}个附近景点`], "zh-TW":["附近精選路線", `檢視${total}個附近景點`],
-    }[lang()] || ['근교 추천 투어', `해방촌에서 시작하는 추천 ${total}곳 보기`];
+    }[lang()] || ['추천 근교 투어', `추천 근교 투어 ${total}곳 보기`];
     const homeTitle = $('#homeToursTitle');
     const browseLabel = $('#tourBrowseLabel');
     if (homeTitle) homeTitle.textContent = homeLabels[0];
