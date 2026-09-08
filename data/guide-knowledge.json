@@ -883,7 +883,7 @@
     "precedence": "PDF의 일반 쓰레기 식탁 아래 안내보다 현재 쓰레기 페이지의 베란다 안내를 우선하세요. PDF의 그림은 실제 객실 구조·비치 물품을 추가로 확정하는 근거로 사용하지 마세요."
   },
   "source": {
-    "version": "2026-09-08-concierge-search-v1",
+    "version": "2026-09-08-concierge-search-v3",
     "primary": "guide-extay.html",
     "screens": [
       "home",

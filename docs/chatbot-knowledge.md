@@ -45,15 +45,12 @@ unavailable, the browser fallback cannot search and says so plainly before givin
 the Airbnb host-contact instruction.
 
 Every API response uses the detailed concierge format without a sentence, line,
-or character cap, and with a generous web-search/output budget. Property questions expand the supplied manual fact into
-the useful operating steps, limits, troubleshooting, and next action. Public
-questions run a second, required web-search pass when the first answer searched;
-that pass replaces broad results with practical details from primary sources.
-Scheduled transport receives one further required audit search to verify direction,
-boarding stop, and requested-time availability before it is returned. Airport routes additionally
-need route number, useful times, fare when available, terminal note, and one
-alternative. The browser fallback remains a concise, safe backup when the API is
-unavailable.
+or character cap, a high web-search context, and the full concierge model. Property
+questions expand the supplied manual fact into useful operating steps, limits,
+troubleshooting, and next action. Public questions use one web-researched response
+that gives a practical plan, including route number, useful times, fare, terminal
+note, and an alternative when those details help. The browser fallback remains a
+concise, safe backup when the API is unavailable.
 
 Before release, verify representative live responses with the actual deployment
 environment, including the earlier missing facts and Korean, English, Japanese

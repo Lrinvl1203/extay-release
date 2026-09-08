@@ -4,7 +4,7 @@ const path = require('node:path');
 const vm = require('node:vm');
 const test = require('node:test');
 const handler = require('../api/chat');
-const { GUIDE_KNOWLEDGE: guide, buildRequestBody, buildResearchFollowUpBody, localAnswer } = handler._test;
+const { GUIDE_KNOWLEDGE: guide, buildRequestBody, localAnswer } = handler._test;
 const html = fs.readFileSync(path.join(__dirname, '..', 'guide-extay.html'), 'utf8');
 
 test('knowledge contains every restaurant and exact host picks from the guest page', () => {
@@ -77,17 +77,6 @@ test('every concierge reply receives a detailed search and answer budget', () =>
   assert.equal(propertyAnswer.max_output_tokens, 1200);
 });
 
-test('public research follow-up keeps the same cached prefix and requires another search', () => {
-  const initial = buildRequestBody('인천공항 심야버스가 있나요?', []);
-  const followUp = buildResearchFollowUpBody('인천공항 심야버스가 있나요?', '서울 방면 노선이 있습니다.');
-  assert.deepEqual(followUp.input.slice(0, 2), initial.input.slice(0, 2));
-  assert.equal(followUp.prompt_cache_key, initial.prompt_cache_key);
-  assert.equal(followUp.tool_choice, 'required');
-  assert.match(followUp.input.at(-1).content, /RESEARCH_FOLLOW_UP/);
-  const audit = buildResearchFollowUpBody('인천공항 심야버스가 있나요?', '서울 방면 노선이 있습니다.', 'gpt-5.4-mini', 'audit');
-  assert.deepEqual(audit.input.slice(0, 2), initial.input.slice(0, 2));
-  assert.match(audit.input.at(-1).content, /RESEARCH_AUDIT/);
-});
 
 test('API reports actual cache usage and actual web-search calls, not tool configuration', async () => {
   const originalFetch = global.fetch;
