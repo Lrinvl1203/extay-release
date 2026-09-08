@@ -31,6 +31,55 @@ function extractText(output) {
   return parts.join('\n').trim();
 }
 
+function safeExternalUrl(value) {
+  try {
+    const url = new URL(String(value || ''));
+    return /^https?:$/.test(url.protocol) ? url.toString() : null;
+  } catch (_) {
+    return null;
+  }
+}
+
+function extractCitedSources(output) {
+  const sources = [];
+  const seen = new Set();
+  for (const item of output?.output || []) {
+    for (const content of item?.content || []) {
+      for (const annotation of content?.annotations || []) {
+        if (annotation?.type !== 'url_citation') continue;
+        const url = safeExternalUrl(annotation.url);
+        if (!url || seen.has(url)) continue;
+        seen.add(url);
+        sources.push({
+          title: String(annotation.title || new URL(url).hostname).trim().slice(0, 120),
+          url
+        });
+        if (sources.length === 3) return sources;
+      }
+    }
+  }
+  return sources;
+}
+
+function extractAddressMapLinks(answer) {
+  const knownAddress = GUIDE_KNOWLEDGE?.property?.address;
+  const addresses = new Set();
+  const normalized = String(answer || '').replace(/\s+/g, '');
+  if (knownAddress && normalized.includes(String(knownAddress).replace(/\s+/g, ''))) addresses.add(knownAddress);
+
+  const koreanAddress = /(?:(?:서울특별시|서울시|서울)\s+)?(?:[가-힣0-9]+(?:시|군|구)\s+){1,3}[가-힣0-9·-]+(?:로|길)\s*\d+(?:-\d+)?(?:\s*,?\s*\d+(?:층|호))?/g;
+  for (const match of String(answer || '').matchAll(koreanAddress)) {
+    addresses.add(match[0].replace(/\s+/g, ' ').trim());
+    if (addresses.size >= 2) break;
+  }
+
+  return [...addresses].slice(0, 2).map(address => ({
+    address,
+    naver: `https://map.naver.com/p/search/${encodeURIComponent(address)}`,
+    google: `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(address)}`
+  }));
+}
+
 function normalizeAnswer(value) {
   return String(value || '')
     .replace(/\r\n?/g, '\n')
@@ -146,6 +195,7 @@ function addPublicSearchDisclosure(answer, languageCode) {
   const normalized = normalizeAnswer(answer);
   const disclosure = publicSearchDisclosure(languageCode);
   if (!normalized) return disclosure;
+  if (!normalized.includes(disclosure)) return `${normalized}\n${disclosure}`;
   if (/(?:공개\s*(?:웹|검색)|public\s*(?:web|search)|公開.*(?:ウェブ|検索)|公开.*(?:网页|网络|搜索))/i.test(normalized)) return normalized;
   return `${normalized}\n${disclosure}`;
 }
@@ -231,13 +281,15 @@ module.exports = async function handler(req, res) {
     const answer = searched
       ? addPublicSearchDisclosure(baseAnswer, targetLanguageCode)
       : (baseAnswer || '답변을 만들지 못했어요. Airbnb 메시지로 호스트에게 확인해 주세요.');
+    const sources = searched ? extractCitedSources(data) : [];
+    const maps = extractAddressMapLinks(answer);
     const usage = data.usage ? {
       input_tokens: data.usage.input_tokens,
       cached_tokens: data.usage.input_tokens_details?.cached_tokens || 0,
       output_tokens: data.usage.output_tokens
     } : undefined;
     console.info('Chat usage:', JSON.stringify({ model, knowledge_version: GUIDE_KNOWLEDGE.source.version, ...usage, searched }));
-    return res.status(200).json({ answer, model, searched, usage });
+    return res.status(200).json({ answer, model, searched, sources, maps, usage });
   } catch (err) {
     console.warn('Chat API fallback:', err.message || String(err));
     return res.status(200).json({
@@ -251,6 +303,8 @@ module.exports._test = {
   CHAT_SYSTEM_PROMPT,
   GUIDE_KNOWLEDGE,
   buildRequestBody,
+  extractAddressMapLinks,
+  extractCitedSources,
   detectQuestionLanguage,
   formatGuestAnswer,
   addPublicSearchDisclosure,

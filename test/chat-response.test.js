@@ -6,6 +6,9 @@ const test = require('node:test');
 const handler = require('../api/chat');
 const {
   CHAT_SYSTEM_PROMPT,
+  addPublicSearchDisclosure,
+  extractAddressMapLinks,
+  extractCitedSources,
   formatGuestAnswer,
   localAnswer,
   normalizeAnswer,
@@ -24,6 +27,7 @@ test('prompt asks for detailed, guest-first concierge answers', () => {
   assert.match(CHAT_SYSTEM_PROMPT, /Match a route to the time/);
   assert.match(CHAT_SYSTEM_PROMPT, /target sentence count or line count/);
   assert.match(CHAT_SYSTEM_PROMPT, /Do not impose a character, line, or sentence limit/);
+  assert.match(CHAT_SYSTEM_PROMPT, /official operator, government, airport, venue, or business pages/);
   assert.doesNotMatch(CHAT_SYSTEM_PROMPT, /250 characters or fewer/);
   assert.doesNotMatch(CHAT_SYSTEM_PROMPT, /Never give one-line answers/);
   assert.doesNotMatch(CHAT_SYSTEM_PROMPT, /Guest WOW Mode/);
@@ -83,7 +87,13 @@ test('public web results keep useful emoji and receive a clear manual-and-host d
   console.info = () => {};
   global.fetch = async () => ({ok:true, json:async()=>({
       output_text: '🚌 심야 공항버스는 공항에서 서울역 방향으로 운행하는 노선을 확인해 보세요.',
-      output:[{type:'web_search_call'}],
+      output:[
+        {type:'web_search_call'},
+        {type:'message',content:[{type:'output_text',annotations:[
+          {type:'url_citation',title:'Incheon Airport official guide',url:'https://www.airport.kr/ap/en/tpt/bus/busList.do'},
+          {type:'url_citation',title:'Incheon Airport official guide',url:'https://www.airport.kr/ap/en/tpt/bus/busList.do'}
+        ]}]}
+      ],
       usage:{input_tokens:12000,input_tokens_details:{cached_tokens:11008},output_tokens:32}
     })});
   let payload;
@@ -94,12 +104,35 @@ test('public web results keep useful emoji and receive a clear manual-and-host d
     assert.match(payload.answer, /^🚌/);
     assert.match(payload.answer, /공개 웹 정보를 참고/);
     assert.match(payload.answer, /호스트에게 한 번 더 확인/);
+    assert.deepEqual(payload.sources, [{title:'Incheon Airport official guide',url:'https://www.airport.kr/ap/en/tpt/bus/busList.do'}]);
   } finally {
     global.fetch = originalFetch;
     console.info = originalInfo;
     if (previousKey === undefined) delete process.env.OPENAI_API_KEY;
     else process.env.OPENAI_API_KEY = previousKey;
   }
+});
+
+test('only safe cited sources and exact addresses become chat links', () => {
+  const sources = extractCitedSources({output:[{content:[{annotations:[
+    {type:'url_citation',title:'Official operator',url:'https://operator.example/route'},
+    {type:'url_citation',title:'Duplicate',url:'https://operator.example/route'},
+    {type:'url_citation',title:'Unsafe',url:'javascript:alert(1)'}
+  ]}]}]});
+  assert.deepEqual(sources, [{title:'Official operator',url:'https://operator.example/route'}]);
+
+  const maps = extractAddressMapLinks('숙소 주소는 서울시 용산구 신흥로 59, 2층입니다.');
+  assert.deepEqual(maps, [{
+    address:'서울시 용산구 신흥로 59, 2층',
+    naver:'https://map.naver.com/p/search/%EC%84%9C%EC%9A%B8%EC%8B%9C%20%EC%9A%A9%EC%82%B0%EA%B5%AC%20%EC%8B%A0%ED%9D%A5%EB%A1%9C%2059%2C%202%EC%B8%B5',
+    google:'https://www.google.com/maps/search/?api=1&query=%EC%84%9C%EC%9A%B8%EC%8B%9C%20%EC%9A%A9%EC%82%B0%EA%B5%AC%20%EC%8B%A0%ED%9D%A5%EB%A1%9C%2059%2C%202%EC%B8%B5'
+  }]);
+});
+
+test('public-search disclosure remains complete when the model already mentions public information', () => {
+  const answer = addPublicSearchDisclosure('This uses public web information.', 'en');
+  assert.match(answer, /This is based on public web information/);
+  assert.match(answer, /reconfirm with the host/);
 });
 
 test('guest answer formatter removes complete and truncated web citations', () => {
@@ -186,4 +219,7 @@ test('browser fallback uses the same concise Korean copy', () => {
   }
   assert.match(browser.ExtayChatFallback.answer('심야버스가 있나요?'), /공개 웹 검색을 연결할 수 없어요/);
   assert.match(html, /white-space:pre-wrap;overflow-wrap:anywhere;word-break:keep-all;text-align:left/);
+  assert.match(html, /function renderChatLinks/);
+  assert.match(html, /target='_blank'/);
+  assert.match(html, /Naver Map/);
 });

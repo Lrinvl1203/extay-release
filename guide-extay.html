@@ -83,6 +83,7 @@ body.is-home:not(.hero-scrolled) .header-brand-logo{filter:invert(1)}
 .msg strong{font-weight:800}
 .msg code{font-family:var(--font-main);background:rgba(0,0,0,.06);border-radius:5px;padding:1px 4px}
 .msg.user code{background:rgba(255,255,255,.18)}
+.chat-links{align-self:flex-start;display:grid;gap:7px;margin:-5px 0 4px;max-width:86%}.chat-links-group{display:flex;flex-wrap:wrap;gap:7px}.chat-links-label{width:100%;font-size:11px;color:var(--muted);font-weight:700}.chat-link{display:inline-flex;align-items:center;gap:4px;max-width:100%;padding:8px 10px;border:1px solid var(--line);border-radius:10px;background:#fff;color:var(--secondary);font-size:12px;line-height:1.25;text-decoration:none;overflow-wrap:anywhere}.chat-link .mi{font-size:15px;color:var(--bronze)}.chat-link.map{background:var(--bronze-soft);color:var(--ink)}
 .toast{background:var(--ink);color:#fff}
 .hero{position:relative;height:360px;background:none;padding:0;isolation:isolate;box-shadow:0 18px 50px rgba(43,33,24,.12)}
 .hero:before{content:"";position:absolute;inset:0;background:var(--hero) center top/cover no-repeat;z-index:0}
@@ -2248,6 +2249,9 @@ body:not(.motion-ready) .concierge-widget,body:has(#brandIntro.is-running,.menu-
     function renderBotText(text){return escapeHtml(text).replace(/`([^`\n]+)`/g,'<code>$1</code>').replace(/\*\*([^*\n][^*]*?)\*\*/g,'<strong>$1</strong>')}
     function setMsgText(div,role,text){if(role==='user'){div.textContent=text;return}div.innerHTML=renderBotText(text)}
     function addMsg(role,text,extra=''){const div=document.createElement('div');div.className='msg '+(role==='user'?'user':'bot')+(extra?' '+extra:'');setMsgText(div,role,text);chatLog.appendChild(div);chatLog.scrollTop=chatLog.scrollHeight;return div}
+    function chatLinkLabel(kind){return ({ko:{sources:'확인한 출처 링크',maps:'지도에서 위치 보기',naver:'네이버지도',google:'Google Maps'},en:{sources:'Source links',maps:'View location on a map',naver:'Naver Map',google:'Google Maps'},ja:{sources:'確認した出典リンク',maps:'地図で場所を確認',naver:'Naver Map',google:'Google Maps'},zh:{sources:'参考来源链接',maps:'在地图中查看位置',naver:'Naver Map',google:'Google Maps'}}[currentLang]||{} )[kind]||kind}
+    function appendChatLink(group,label,url,kind=''){try{const parsed=new URL(url);if(!/^https?:$/.test(parsed.protocol))return;const link=document.createElement('a');link.className='chat-link'+(kind?' '+kind:'');link.href=parsed.toString();link.target='_blank';link.rel='noopener noreferrer';const icon=document.createElement('span');icon.className='mi';icon.textContent='open_in_new';link.append(icon,document.createTextNode(label));group.appendChild(link)}catch(_){}}
+    function renderChatLinks(anchor,data={}){const sources=Array.isArray(data.sources)?data.sources.slice(0,3):[];const maps=Array.isArray(data.maps)?data.maps.slice(0,2):[];if(!sources.length&&!maps.length)return;const wrap=document.createElement('div');wrap.className='chat-links';if(sources.length){const group=document.createElement('div');group.className='chat-links-group';const label=document.createElement('span');label.className='chat-links-label';label.textContent=chatLinkLabel('sources');group.appendChild(label);sources.forEach(source=>appendChatLink(group,String(source.title||source.url||'').slice(0,120),source.url));if(group.querySelector('a'))wrap.appendChild(group)}if(maps.length){const group=document.createElement('div');group.className='chat-links-group';const label=document.createElement('span');label.className='chat-links-label';label.textContent=chatLinkLabel('maps');group.appendChild(label);maps.forEach(map=>{const address=String(map.address||'').trim();appendChatLink(group,`${chatLinkLabel('naver')} · ${address}`,map.naver,'map');appendChatLink(group,`${chatLinkLabel('google')} · ${address}`,map.google,'map')});if(group.querySelector('a'))wrap.appendChild(group)}if(wrap.childElementCount)anchor.after(wrap)}
     function getLocalAnswer(question){return window.ExtayChatFallback.answer(question,currentLang)}
     let chatHistory=[];
     chatInput?.addEventListener('input',e=>renderChatAutocomplete(e.target.value));
@@ -2268,6 +2272,7 @@ body:not(.motion-ready) .concierge-widget,body:has(#brandIntro.is-running,.menu-
         const data=await res.json();
         const answer=data.answer||getLocalAnswer(q);
         setMsgText(botDiv,'bot',answer);
+        renderChatLinks(botDiv,data);
         botDiv.classList.remove('typing');
         chatHistory.push({role:'assistant',content:answer});
       }catch{
