@@ -48,20 +48,12 @@ const GUIDE_CONTEXT = `GUIDE_KNOWLEDGE:\n${JSON.stringify(GUIDE_KNOWLEDGE)}`;
 const PROMPT_CACHE_KEY = 'extay-guide:' + createHash('sha256')
   .update(CHAT_SYSTEM_PROMPT + '\n' + GUIDE_CONTEXT).digest('hex').slice(0, 24);
 
-function isDetailedTransitQuestion(question) {
-  const q = String(question || '');
-  const airportOrFlight = /(?:인천|김포|공항|airport|flight|terminal|空港|机场|機場)/i.test(q);
-  const timeOrRoute = /(?:새벽|심야|야간|밤|첫차|막차|비행|출발|도착|환승|리무진|버스|택시|route|bus|taxi|late|early|night|transfer|リムジン|深夜|早朝|乗換|夜行|深夜|凌晨|深夜|换乘|巴士|出租)/i.test(q);
-  return airportOrFlight && timeOrRoute;
-}
-
 function buildRequestBody(question, history = [], model = 'gpt-5.4-mini') {
   const messages = (Array.isArray(history) ? history : [])
     .filter(m => m && typeof m.content === 'string')
     .map(m => ({ role: m.role === 'assistant' ? 'assistant' : 'user', content: m.content.slice(0, 1200) }));
   // Older pages included the current question at the end of history.
   if (messages.at(-1)?.role === 'user' && messages.at(-1).content.trim() === question) messages.pop();
-  const detailedTransit = isDetailedTransitQuestion(question);
   return {
     model,
     input: [
@@ -71,10 +63,10 @@ function buildRequestBody(question, history = [], model = 'gpt-5.4-mini') {
       { role: 'user', content: `TARGET_LANGUAGE: ${languageName(detectQuestionLanguage(question))}\nLATEST_GUEST_QUESTION:\n${question}` }
     ],
     prompt_cache_key: PROMPT_CACHE_KEY,
-    tools: [{ type: 'web_search_preview', search_context_size: detailedTransit ? 'high' : 'low' }],
+    tools: [{ type: 'web_search_preview', search_context_size: 'high' }],
     tool_choice: 'auto',
     temperature: 0.2,
-    max_output_tokens: detailedTransit ? 700 : 360
+    max_output_tokens: 1200
   };
 }
 
@@ -110,18 +102,6 @@ function normalizeKoreanSpacing(value) {
   return KOREAN_SPACING_REPLACEMENTS.reduce((answer, [pattern, replacement]) => answer.replace(pattern, replacement), value);
 }
 
-function truncateAtBoundary(value, maxChars) {
-  if (value.length <= maxChars) return value;
-  const slice = value.slice(0, maxChars + 1);
-  const candidates = ['. ', '。', '！', '？', '! ', '? ', '\n'];
-  let cut = -1;
-  for (const marker of candidates) cut = Math.max(cut, slice.lastIndexOf(marker));
-  if (cut < Math.floor(maxChars * 0.55)) cut = Math.max(slice.lastIndexOf(' '), slice.lastIndexOf('·'));
-  if (cut < Math.floor(maxChars * 0.45)) cut = maxChars;
-  const ending = slice.slice(cut, cut + 2).match(/^[.!?。！？]/) ? cut + 1 : cut;
-  return slice.slice(0, ending).trim().replace(/[,:;·\-–—]+$/u, '') + '…';
-}
-
 function formatGuestAnswer(value, languageCode = 'ko', question = '') {
   const normalized = normalizeAnswer(value)
     .replace(/\s*\(\[[^\]\n]+\]\([^\)\n]+\)\)?/g, '')
@@ -145,11 +125,7 @@ function formatGuestAnswer(value, languageCode = 'ko', question = '') {
 
   while (lines.length > 1 && TRAILING_INVITATION_PATTERN.test(lines[lines.length - 1])) lines.pop();
 
-  const urgent = /(?:화재|불이 났|연기|침수|누수|갇혔|잠겼|응급|긴급|fire|flood|lockout|emergency|火災|緊急|火灾|紧急)/i.test(question);
-  const detailedTransit = isDetailedTransitQuestion(question);
-  const maxLines = urgent ? 7 : (detailedTransit ? 12 : 5);
-  const maxChars = urgent ? (languageCode === 'ko' ? 480 : 700) : (detailedTransit ? (languageCode === 'ko' ? 1100 : 1500) : (languageCode === 'ko' ? 320 : 520));
-  return truncateAtBoundary(lines.slice(0, maxLines).join('\n'), maxChars);
+  return lines.join('\n');
 }
 
 function publicSearchDisclosure(languageCode) {
@@ -272,7 +248,6 @@ module.exports._test = {
   buildRequestBody,
   detectQuestionLanguage,
   formatGuestAnswer,
-  isDetailedTransitQuestion,
   addPublicSearchDisclosure,
   localAnswer,
   normalizeAnswer,

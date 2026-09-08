@@ -12,15 +12,17 @@ const {
   normalizeKoreanSpacing
 } = handler._test;
 
-test('prompt asks for short, guest-first mobile answers', () => {
+test('prompt asks for detailed, guest-first concierge answers', () => {
   const promptFile = fs.readFileSync(path.join(__dirname, '..', 'data', 'chatbot-system-prompt.txt'), 'utf8').trim();
   assert.equal(CHAT_SYSTEM_PROMPT, promptFile);
   assert.match(CHAT_SYSTEM_PROMPT, /Start with the answer/);
-  assert.match(CHAT_SYSTEM_PROMPT, /1-3 short sentences/);
+  assert.match(CHAT_SYSTEM_PROMPT, /detailed concierge format/);
   assert.match(CHAT_SYSTEM_PROMPT, /correct spacing, particles/);
   assert.match(CHAT_SYSTEM_PROMPT, /Do not use Markdown headings/);
   assert.match(CHAT_SYSTEM_PROMPT, /proactively web-search/);
-  assert.match(CHAT_SYSTEM_PROMPT, /no more than 5 non-empty mobile lines/);
+  assert.match(CHAT_SYSTEM_PROMPT, /additional targeted searches/);
+  assert.match(CHAT_SYSTEM_PROMPT, /Match a route to the time/);
+  assert.match(CHAT_SYSTEM_PROMPT, /target sentence count or line count/);
   assert.doesNotMatch(CHAT_SYSTEM_PROMPT, /Never give one-line answers/);
   assert.doesNotMatch(CHAT_SYSTEM_PROMPT, /Guest WOW Mode/);
 });
@@ -52,7 +54,7 @@ test('answer normalization removes noisy spacing and blank lines', () => {
   );
 });
 
-test('guest answer formatter removes presentation noise and enforces a mobile limit', () => {
+test('guest answer formatter removes presentation noise without truncating useful detail', () => {
   const verbose = `안녕하세요! 와이파이 바로 안내드릴게요 😊
 
 **와이파이 정보**
@@ -66,7 +68,6 @@ test('guest answer formatter removes presentation noise and enforces a mobile li
 원하시면 더 자세히 도와드릴게요.`;
   const answer = formatGuestAnswer(verbose, 'ko', '와이파이 비밀번호 알려줘');
   assert.doesNotMatch(answer, /안녕하세요|와이파이 정보|연결 방법|원하시면|\*\*/);
-  assert.ok(answer.length <= 320);
   assert.ok(answer.split('\n').length <= 5);
   assert.match(answer, /U\+Net46F0_5G/);
   assert.match(answer, /8H3#22E97B/);

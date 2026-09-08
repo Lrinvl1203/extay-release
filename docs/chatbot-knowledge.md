@@ -44,11 +44,13 @@ web-information label and asks the guest to reconfirm with the host. If the API 
 unavailable, the browser fallback cannot search and says so plainly before giving
 the Airbnb host-contact instruction.
 
-Early-morning and late-night airport questions are an exception to the compact
-answer limit. They use a higher web-search context and output budget so the
-concierge can give a practical transfer plan, current route number, useful times,
-fare when available, terminal note, and one alternative. Keep ordinary property
-answers compact.
+Every API response uses the detailed concierge format without a sentence, line,
+or character cap, and with a generous web-search/output budget. Property questions expand the supplied manual fact into
+the useful operating steps, limits, troubleshooting, and next action. Public
+questions expand into a practical researched plan. Airport routes additionally
+need route number, useful times, fare when available, terminal note, and one
+alternative. The browser fallback remains a concise, safe backup when the API is
+unavailable.
 
 Before release, verify representative live responses with the actual deployment
 environment, including the earlier missing facts and Korean, English, Japanese
