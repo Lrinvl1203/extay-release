@@ -19,7 +19,8 @@ test('prompt asks for short, guest-first mobile answers', () => {
   assert.match(CHAT_SYSTEM_PROMPT, /1-3 short sentences/);
   assert.match(CHAT_SYSTEM_PROMPT, /correct spacing, particles/);
   assert.match(CHAT_SYSTEM_PROMPT, /Do not use Markdown headings/);
-  assert.match(CHAT_SYSTEM_PROMPT, /no more than 4 non-empty mobile lines/);
+  assert.match(CHAT_SYSTEM_PROMPT, /proactively web-search/);
+  assert.match(CHAT_SYSTEM_PROMPT, /no more than 5 non-empty mobile lines/);
   assert.doesNotMatch(CHAT_SYSTEM_PROMPT, /Never give one-line answers/);
   assert.doesNotMatch(CHAT_SYSTEM_PROMPT, /Guest WOW Mode/);
 });
@@ -64,11 +65,48 @@ test('guest answer formatter removes presentation noise and enforces a mobile li
 
 원하시면 더 자세히 도와드릴게요.`;
   const answer = formatGuestAnswer(verbose, 'ko', '와이파이 비밀번호 알려줘');
-  assert.doesNotMatch(answer, /안녕하세요|와이파이 정보|연결 방법|원하시면|\*\*|😊/);
+  assert.doesNotMatch(answer, /안녕하세요|와이파이 정보|연결 방법|원하시면|\*\*/);
   assert.ok(answer.length <= 320);
   assert.ok(answer.split('\n').length <= 5);
   assert.match(answer, /U\+Net46F0_5G/);
   assert.match(answer, /8H3#22E97B/);
+});
+
+test('public web results keep useful emoji and receive a clear manual-and-host disclosure', async () => {
+  const previousKey = process.env.OPENAI_API_KEY;
+  const originalFetch = global.fetch;
+  const originalInfo = console.info;
+  process.env.OPENAI_API_KEY = 'test-placeholder';
+  console.info = () => {};
+  global.fetch = async () => ({ok:true, json:async()=>({
+    output_text:'🚌 심야 공항버스는 공항에서 서울역 방향으로 운행하는 노선을 확인해 보세요.',
+    output:[{type:'web_search_call'}],
+    usage:{input_tokens:12000,input_tokens_details:{cached_tokens:11008},output_tokens:32}
+  })});
+  let payload;
+  const res = {setHeader(){}, status(){return this;}, json(body){payload=body;return body;}};
+  try {
+    await handler({method:'POST',body:{message:'인천공항 심야버스가 있나요?',history:[]}}, res);
+    assert.equal(payload.searched, true);
+    assert.match(payload.answer, /^🚌/);
+    assert.match(payload.answer, /공개 웹 정보를 참고/);
+    assert.match(payload.answer, /호스트에게 한 번 더 확인/);
+  } finally {
+    global.fetch = originalFetch;
+    console.info = originalInfo;
+    if (previousKey === undefined) delete process.env.OPENAI_API_KEY;
+    else process.env.OPENAI_API_KEY = previousKey;
+  }
+});
+
+test('guest answer formatter removes complete and truncated web citations', () => {
+  const answer = formatGuestAnswer(
+    '🚌 직행 심야버스는 확인되지 않았습니다. ([airport.kr](https://airport.kr/night))\n택시를 이용하세요. ([airport.kr](https://airport.kr/',
+    'ko',
+    '심야버스가 있나요?'
+  );
+  assert.match(answer, /^🚌/);
+  assert.doesNotMatch(answer, /airport\.kr|https?:\/\/|\(\[/);
 });
 
 test('Korean spacing guard corrects common guest-facing forms', () => {
@@ -128,5 +166,6 @@ test('browser fallback uses the same concise Korean copy', () => {
   for (const question of ['와이파이 비밀번호', '체크인 전 짐 보관', '숙소 CCTV', '체크아웃', '세탁기', '쓰레기', 'Can I leave luggage?', 'チェックアウト', '监控摄像头']) {
     assert.equal(browser.ExtayChatFallback.answer(question), localAnswer(question));
   }
+  assert.match(browser.ExtayChatFallback.answer('심야버스가 있나요?'), /공개 웹 검색을 연결할 수 없어요/);
   assert.match(html, /white-space:pre-wrap;overflow-wrap:anywhere;word-break:keep-all;text-align:left/);
 });

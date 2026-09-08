@@ -37,6 +37,13 @@ in the shared prefix. Cached input is reported as `usage.cached_tokens` in our
 endpoint response and in the `Chat usage` server log, alongside total input/output
 tokens. Do not treat a cache hit as guaranteed or as caching the generated answer.
 
+The concierge answers property-specific facts and policies only from the guide.
+When the guide lacks general public information (for example a current airport
+bus or public transport schedule), it uses web search, then adds a visible public
+web-information label and asks the guest to reconfirm with the host. If the API is
+unavailable, the browser fallback cannot search and says so plainly before giving
+the Airbnb host-contact instruction.
+
 Before release, verify representative live responses with the actual deployment
 environment, including the earlier missing facts and Korean, English, Japanese
 and Chinese questions. Confirm the current production head before promotion so

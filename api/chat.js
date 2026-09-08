@@ -66,7 +66,7 @@ function buildRequestBody(question, history = [], model = 'gpt-5.4-mini') {
     tools: [{ type: 'web_search_preview', search_context_size: 'low' }],
     tool_choice: 'auto',
     temperature: 0.2,
-    max_output_tokens: 240
+    max_output_tokens: 360
   };
 }
 
@@ -115,12 +115,14 @@ function truncateAtBoundary(value, maxChars) {
 }
 
 function formatGuestAnswer(value, languageCode = 'ko', question = '') {
-  const normalized = normalizeAnswer(value);
+  const normalized = normalizeAnswer(value)
+    .replace(/\s*\(\[[^\]\n]+\]\([^\)\n]+\)\)?/g, '')
+    .replace(/\s*\(\[[^\]\n]*\]\([^\n]*$/g, '')
+    .replace(/\s*(?:【[^】\n]+】|cite[^\n]+)/g, '');
   const rawLines = (languageCode === 'ko' ? normalizeKoreanSpacing(normalized) : normalized)
     .replace(/^#{1,6}\s*/gm, '')
     .replace(/\*\*([^*\n]+)\*\*/g, '$1')
     .replace(/__([^_\n]+)__/g, '$1')
-    .replace(/\p{Extended_Pictographic}/gu, '')
     .split('\n')
     .map(line => line.trim())
     .filter(Boolean);
@@ -139,6 +141,23 @@ function formatGuestAnswer(value, languageCode = 'ko', question = '') {
   const maxLines = urgent ? 7 : 5;
   const maxChars = urgent ? (languageCode === 'ko' ? 480 : 700) : (languageCode === 'ko' ? 320 : 520);
   return truncateAtBoundary(lines.slice(0, maxLines).join('\n'), maxChars);
+}
+
+function publicSearchDisclosure(languageCode) {
+  return {
+    ko: '🔎 숙소 매뉴얼에 없는 내용이라 공개 웹 정보를 참고했습니다.\n📌 실제 운행·운영 정보는 달라질 수 있으니 Airbnb 메시지로 호스트에게 한 번 더 확인해 주세요.',
+    en: '🔎 This is based on public web information, not the property manual.\n📌 Service details can change, so please reconfirm with the host through Airbnb messages.',
+    ja: '🔎 宿泊施設のマニュアルにないため、公開ウェブ情報を参考にしています。\n📌 運行・営業状況は変わるため、Airbnbメッセージでホストにもご確認ください。',
+    zh: '🔎 此信息参考公开网页，并非住宿手册内容。\n📌 运营情况可能变化，请通过 Airbnb 消息向房东再次确认。'
+  }[languageCode] || publicSearchDisclosure('ko');
+}
+
+function addPublicSearchDisclosure(answer, languageCode) {
+  const normalized = normalizeAnswer(answer);
+  const disclosure = publicSearchDisclosure(languageCode);
+  if (!normalized) return disclosure;
+  if (/(?:공개\s*(?:웹|검색)|public\s*(?:web|search)|公開.*(?:ウェブ|検索)|公开.*(?:网页|网络|搜索))/i.test(normalized)) return normalized;
+  return `${normalized}\n${disclosure}`;
 }
 
 function detectQuestionLanguage(question) {
@@ -217,13 +236,16 @@ module.exports = async function handler(req, res) {
       });
     }
 
-    const answer = formatGuestAnswer(extractText(data), targetLanguageCode, question) || '답변을 만들지 못했어요. Airbnb 메시지로 호스트에게 확인해 주세요.';
+    const searched = (data.output || []).some(item => item.type === 'web_search_call');
+    const baseAnswer = formatGuestAnswer(extractText(data), targetLanguageCode, question);
+    const answer = searched
+      ? addPublicSearchDisclosure(baseAnswer, targetLanguageCode)
+      : (baseAnswer || '답변을 만들지 못했어요. Airbnb 메시지로 호스트에게 확인해 주세요.');
     const usage = data.usage ? {
       input_tokens: data.usage.input_tokens,
       cached_tokens: data.usage.input_tokens_details?.cached_tokens || 0,
       output_tokens: data.usage.output_tokens
     } : undefined;
-    const searched = (data.output || []).some(item => item.type === 'web_search_call');
     console.info('Chat usage:', JSON.stringify({ model, knowledge_version: GUIDE_KNOWLEDGE.source.version, ...usage, searched }));
     return res.status(200).json({ answer, model, searched, usage });
   } catch (err) {
@@ -241,7 +263,9 @@ module.exports._test = {
   buildRequestBody,
   detectQuestionLanguage,
   formatGuestAnswer,
+  addPublicSearchDisclosure,
   localAnswer,
   normalizeAnswer,
-  normalizeKoreanSpacing
+  normalizeKoreanSpacing,
+  publicSearchDisclosure
 };
