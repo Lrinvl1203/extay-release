@@ -22,12 +22,29 @@
 
   let category = 'host';
   let query = '';
+  const HOST_PICK_ORDER = [
+    'n-seoul-tower',
+    'namsan-park',
+    'gyeongnidan',
+    'itaewon',
+    'sinheung-market',
+    'haebangchon-108',
+    'noksapyeong-park',
+  ];
+  const hostRank = (place) => {
+    const index = HOST_PICK_ORDER.indexOf(place.id);
+    return index < 0 ? Number.MAX_SAFE_INTEGER : index;
+  };
+  const orderedPlaces = () => DATA.places
+    .map((place, index) => ({ place, index }))
+    .sort((a, b) => hostRank(a.place) - hostRank(b.place) || a.index - b.index)
+    .map(({ place }) => place);
 
   const normalized = (place) => [
     t(place.name), t(place.text), t(place.travel), ...(t(place.tags) || []),
   ].join(' ').toLowerCase();
 
-  const filtered = () => DATA.places.filter((place) => {
+  const filtered = () => orderedPlaces().filter((place) => {
     const inCategory = category === 'all'
       || (category === 'host' ? place.host : place.categories.includes(category));
     return inCategory && (!query || normalized(place).includes(query.toLowerCase()));
@@ -37,9 +54,8 @@
     <figure class="${compact ? 'tour-mini' : 'restaurant-photo tour-card-cover'} tour-photo-cover tour-tone-${esc(place.tone)}">
       ${place.image ? `<img src="${esc(place.image)}" alt="${esc(t(place.name))}" loading="${compact ? 'eager' : 'lazy'}">` : ''}
       ${place.image ? '<span class="tour-photo-shade" aria-hidden="true"></span>' : ''}
-      ${!compact && place.photoSource ? `<a class="tour-photo-credit" href="${esc(place.photoSource)}" target="_blank" rel="noopener noreferrer">Photo: ${esc(place.credit)} · ${esc(place.license)}</a>` : ''}
       <span class="mi tour-cover-icon" aria-hidden="true">${esc(place.icon)}</span>
-      <span class="tour-cover-number">${esc(place.number)}</span>
+      <span class="tour-cover-number">${esc(place.host && hostRank(place) < HOST_PICK_ORDER.length ? String(hostRank(place) + 1).padStart(2, '0') : place.number)}</span>
       <span class="tour-cover-kicker">${place.host ? 'HOST’S PICK' : 'LOCAL ROUTE'}</span>
       <strong class="tour-cover-name">${esc(t(place.name))}</strong>
     </figure>`;
@@ -123,7 +139,7 @@
     const browseLabel = $('#tourBrowseLabel');
     if (homeTitle) homeTitle.textContent = homeLabels[0];
     if (browseLabel) browseLabel.textContent = homeLabels[1];
-    root.innerHTML = DATA.places.filter((place) => place.host).slice(0, 2).map((place) => `
+    root.innerHTML = orderedPlaces().filter((place) => place.host).slice(0, 2).map((place) => `
       <button class="nearby-card tour-home-card" type="button" data-go="tours">
         ${cover(place, true)}
         <span class="nearby-card-copy"><small>${esc(t(place.travel))}</small><strong>${esc(t(place.name))}</strong><span>${esc((t(place.tags) || []).slice(0, 2).join(' · '))}</span></span>

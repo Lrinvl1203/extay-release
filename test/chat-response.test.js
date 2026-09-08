@@ -8,6 +8,7 @@ const {
   CHAT_SYSTEM_PROMPT,
   addPublicSearchDisclosure,
   buildRequestBody,
+  detectQuestionLanguage,
   extractAddressMapLinks,
   extractCitedSources,
   formatGuestAnswer,
@@ -15,6 +16,16 @@ const {
   normalizeAnswer,
   normalizeKoreanSpacing
 } = handler._test;
+
+test('Traditional Chinese (Taiwan) is preserved through prompt and fallback paths', () => {
+  assert.equal(detectQuestionLanguage('Wi-Fi 密碼', 'zh-TW'), 'zh-TW');
+  assert.match(buildRequestBody('Wi-Fi 密碼', [], 'gpt-test', 'zh-TW').input.at(-1).content, /TARGET_LANGUAGE: Traditional Chinese \(Taiwan\)/);
+  const answer = localAnswer('Wi-Fi 密碼', 'zh-TW');
+  assert.match(answer, /名稱/);
+  assert.match(answer, /密碼/);
+  assert.match(answer, /請/);
+  assert.doesNotMatch(answer, /名称|密码|请/);
+});
 
 test('prompt asks for detailed, guest-first concierge answers', () => {
   const promptFile = fs.readFileSync(path.join(__dirname, '..', 'data', 'chatbot-system-prompt.txt'), 'utf8').trim();

@@ -7,6 +7,19 @@ const handler = require('../api/chat');
 const { GUIDE_KNOWLEDGE: guide, buildRequestBody, localAnswer } = handler._test;
 const html = fs.readFileSync(path.join(__dirname, '..', 'guide-extay.html'), 'utf8');
 
+test('nearby tour host picks start with the requested seven-place order', () => {
+  assert.deepEqual(guide.tours.hostPicks, [
+    'N서울타워',
+    '남산공원',
+    '경리단길',
+    '이태원 거리',
+    '해방촌 신흥시장',
+    '해방촌 108계단',
+    '녹사평 용산공원 플랫폼'
+  ]);
+  assert.match(html, /data-language="zh-TW"/);
+});
+
 test('knowledge contains every restaurant and exact host picks from the guest page', () => {
   const readArray = name => JSON.parse(JSON.stringify(vm.runInNewContext('(' + html.match(new RegExp(`const ${name}\\s*=\\s*(\\[[\\s\\S]*?\\]);`))[1] + ')')));
   const places = readArray('RESTAURANTS');

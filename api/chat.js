@@ -105,7 +105,7 @@ const GUIDE_CONTEXT = `GUIDE_KNOWLEDGE:\n${JSON.stringify(GUIDE_KNOWLEDGE)}`;
 const PROMPT_CACHE_KEY = 'extay-guide:' + createHash('sha256')
   .update(CHAT_SYSTEM_PROMPT + '\n' + GUIDE_CONTEXT).digest('hex').slice(0, 24);
 
-function buildRequestBody(question, history = [], model = 'gpt-5.4-mini') {
+function buildRequestBody(question, history = [], model = 'gpt-5.4-mini', preferredLanguage = '') {
   const messages = (Array.isArray(history) ? history : [])
     .filter(m => m && typeof m.content === 'string')
     .map(m => ({ role: m.role === 'assistant' ? 'assistant' : 'user', content: m.content.slice(0, 1200) }));
@@ -117,7 +117,7 @@ function buildRequestBody(question, history = [], model = 'gpt-5.4-mini') {
       { role: 'system', content: CHAT_SYSTEM_PROMPT },
       { role: 'developer', content: GUIDE_CONTEXT },
       ...messages.slice(-6),
-      { role: 'user', content: `TARGET_LANGUAGE: ${languageName(detectQuestionLanguage(question))}\nLATEST_GUEST_QUESTION:\n${question}` }
+      { role: 'user', content: `TARGET_LANGUAGE: ${languageName(detectQuestionLanguage(question, preferredLanguage))}\nLATEST_GUEST_QUESTION:\n${question}` }
     ],
     prompt_cache_key: PROMPT_CACHE_KEY,
     // A medium search is enough for ordinary public facts and returns much
@@ -202,7 +202,8 @@ function publicSearchDisclosure(languageCode) {
     ko: '🔎 숙소 매뉴얼에 없는 내용이라 공개 웹 정보를 참고했습니다.\n📌 실제 운행·운영 정보는 달라질 수 있으니 Airbnb 메시지로 호스트에게 한 번 더 확인해 주세요.',
     en: '🔎 This is based on public web information, not the property manual.\n📌 Service details can change, so please reconfirm with the host through Airbnb messages.',
     ja: '🔎 宿泊施設のマニュアルにないため、公開ウェブ情報を参考にしています。\n📌 運行・営業状況は変わるため、Airbnbメッセージでホストにもご確認ください。',
-    zh: '🔎 此信息参考公开网页，并非住宿手册内容。\n📌 运营情况可能变化，请通过 Airbnb 消息向房东再次确认。'
+    zh: '🔎 此信息参考公开网页，并非住宿手册内容。\n📌 运营情况可能变化，请通过 Airbnb 消息向房东再次确认。',
+    'zh-TW': '🔎 此資訊參考公開網頁，並非住宿指南內容。\n📌 營運資訊可能變動，請透過 Airbnb 訊息向房東再次確認。'
   }[languageCode] || publicSearchDisclosure('ko');
 }
 
@@ -215,13 +216,13 @@ function addPublicSearchDisclosure(answer, languageCode) {
   return `${normalized}\n${disclosure}`;
 }
 
-function detectQuestionLanguage(question) {
+function detectQuestionLanguage(question, preferred = '') {
   const q = String(question || '');
   if (/[가-힣]/.test(q)) return 'ko';
   if (/[\u3040-\u30ff]/.test(q)) return 'ja';
-  if (/[\u3400-\u9fff]/.test(q)) return 'zh';
+  if (/[\u3400-\u9fff]/.test(q)) return preferred === 'zh-TW' || /[體臺灣訊聯絡網頁覽門樓間裡這麼為與從]/.test(q) ? 'zh-TW' : 'zh';
   if (/[a-z]/i.test(q)) return 'en';
-  return 'ko';
+  return ['ko', 'en', 'ja', 'zh', 'zh-TW'].includes(preferred) ? preferred : 'ko';
 }
 
 function languageName(code) {
@@ -229,12 +230,13 @@ function languageName(code) {
     ko: 'Korean',
     en: 'English',
     ja: 'Japanese',
-    zh: 'Chinese'
+    zh: 'Simplified Chinese',
+    'zh-TW': 'Traditional Chinese (Taiwan)'
   }[code] || 'Korean';
 }
 
-function localAnswer(question) {
-  return guestFallback.answer(question);
+function localAnswer(question, preferredLanguage = '') {
+  return guestFallback.answer(question, preferredLanguage);
 }
 
 function parseBody(req) {
@@ -255,21 +257,20 @@ module.exports = async function handler(req, res) {
   if (req.method === 'OPTIONS') return res.status(204).end();
   if (req.method !== 'POST') return res.status(405).json({ error: 'Method not allowed' });
 
+  const body = parseBody(req);
   const apiKey = process.env.OPENAI_API_KEY;
   if (!apiKey) {
-    const body = parseBody(req);
     return res.status(200).json({
       fallback: true,
-      answer: localAnswer(body.message)
+      answer: localAnswer(body.message, body.language)
     });
   }
 
   try {
-    const body = parseBody(req);
     const question = String(body.message || '').trim().slice(0, 1200);
     const history = Array.isArray(body.history) ? body.history.slice(-6) : [];
     if (!question) return res.status(400).json({ error: 'message is required' });
-    const targetLanguageCode = detectQuestionLanguage(question);
+    const targetLanguageCode = detectQuestionLanguage(question, body.language);
 
     const model = process.env.OPENAI_CONCIERGE_MODEL || 'gpt-5.4';
 
@@ -279,7 +280,7 @@ module.exports = async function handler(req, res) {
         'Authorization': `Bearer ${apiKey}`,
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify(buildRequestBody(question, history, model))
+      body: JSON.stringify(buildRequestBody(question, history, model, body.language))
     });
 
     let data = await response.json();
@@ -287,7 +288,7 @@ module.exports = async function handler(req, res) {
       console.warn('OpenAI API fallback:', response.status, data?.error?.code || data?.error?.message || 'unknown');
       return res.status(200).json({
         fallback: true,
-        answer: localAnswer(question)
+        answer: localAnswer(question, body.language)
       });
     }
 
@@ -309,7 +310,7 @@ module.exports = async function handler(req, res) {
     console.warn('Chat API fallback:', err.message || String(err));
     return res.status(200).json({
       fallback: true,
-      answer: localAnswer(parseBody(req).message)
+      answer: localAnswer(body.message, body.language)
     });
   }
 };
