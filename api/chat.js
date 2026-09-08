@@ -62,10 +62,15 @@ function extractCitedSources(output) {
 }
 
 function extractAddressMapLinks(answer) {
-  const knownAddress = GUIDE_KNOWLEDGE?.property?.address;
   const addresses = new Set();
   const normalized = String(answer || '').replace(/\s+/g, '');
-  if (knownAddress && normalized.includes(String(knownAddress).replace(/\s+/g, ''))) addresses.add(knownAddress);
+  const knownAddresses = [
+    GUIDE_KNOWLEDGE?.property?.address,
+    ...(GUIDE_KNOWLEDGE?.parking?.nearbyLots || []).map(lot => lot?.address)
+  ].filter(Boolean);
+  for (const knownAddress of knownAddresses) {
+    if (normalized.includes(String(knownAddress).replace(/\s+/g, ''))) addresses.add(knownAddress);
+  }
 
   const koreanAddress = /(?:(?:서울특별시|서울시|서울)\s+)?(?:[가-힣0-9]+(?:시|군|구)\s+){1,3}[가-힣0-9·-]+(?:로|길)\s*\d+(?:-\d+)?(?:\s*,?\s*\d+(?:층|호))?/g;
   for (const match of String(answer || '').matchAll(koreanAddress)) {
@@ -160,6 +165,8 @@ function formatGuestAnswer(value, languageCode = 'ko', question = '') {
   const normalized = normalizeAnswer(value)
     .replace(/\s*\(\[[^\]\n]+\]\([^\)\n]+\)\)?/g, '')
     .replace(/\s*\(\[[^\]\n]*\]\([^\n]*$/g, '')
+    .replace(/(?:\uB124\uC774\uBC84\s*\uC9C0\uB3C4|Naver\s*Map|\uAD6C\uAE00\s*\uC9C0\uB3C4|Google\s*Maps)\s*:\s*https?:\/\/[^\s)\]]+/gi, '')
+    .replace(/https?:\/\/[^\s)\]]+/gi, '')
     .replace(/\s*(?:【[^】\n]+】|cite[^\n]+)/g, '');
   const rawLines = (languageCode === 'ko' ? normalizeKoreanSpacing(normalized) : normalized)
     .replace(/^#{1,6}\s*/gm, '')

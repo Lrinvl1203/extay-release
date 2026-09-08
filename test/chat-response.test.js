@@ -127,6 +127,11 @@ test('only safe cited sources and exact addresses become chat links', () => {
     naver:'https://map.naver.com/p/search/%EC%84%9C%EC%9A%B8%EC%8B%9C%20%EC%9A%A9%EC%82%B0%EA%B5%AC%20%EC%8B%A0%ED%9D%A5%EB%A1%9C%2059%2C%202%EC%B8%B5',
     google:'https://www.google.com/maps/search/?api=1&query=%EC%84%9C%EC%9A%B8%EC%8B%9C%20%EC%9A%A9%EC%82%B0%EA%B5%AC%20%EC%8B%A0%ED%9D%A5%EB%A1%9C%2059%2C%202%EC%B8%B5'
   }]);
+
+  const parkingMaps = extractAddressMapLinks('가장 가까운 곳은 신흥로2길 74입니다.');
+  assert.equal(parkingMaps.length, 1);
+  assert.equal(parkingMaps[0].address, '신흥로2길 74');
+  assert.doesNotMatch(formatGuestAnswer('Naver Map: https://map.naver.com/p/search/test', 'en'), /https?:\/\//);
 });
 
 test('public-search disclosure remains complete when the model already mentions public information', () => {
