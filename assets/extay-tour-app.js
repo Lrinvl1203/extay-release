@@ -37,6 +37,7 @@
     <figure class="${compact ? 'tour-mini' : 'restaurant-photo tour-card-cover'} tour-photo-cover tour-tone-${esc(place.tone)}">
       ${place.image ? `<img src="${esc(place.image)}" alt="${esc(t(place.name))}" loading="${compact ? 'eager' : 'lazy'}">` : ''}
       ${place.image ? '<span class="tour-photo-shade" aria-hidden="true"></span>' : ''}
+      ${!compact && place.photoSource ? `<a class="tour-photo-credit" href="${esc(place.photoSource)}" target="_blank" rel="noopener noreferrer">Photo: ${esc(place.credit)} · ${esc(place.license)}</a>` : ''}
       <span class="mi tour-cover-icon" aria-hidden="true">${esc(place.icon)}</span>
       <span class="tour-cover-number">${esc(place.number)}</span>
       <span class="tour-cover-kicker">${place.host ? 'HOST’S PICK' : 'LOCAL ROUTE'}</span>

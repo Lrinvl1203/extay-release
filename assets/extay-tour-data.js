@@ -21,15 +21,39 @@
     'namdaemun-market': '/assets/extay/tours/16-namdaemun.jpg',
     myeongdong: '/assets/extay/tours/17-myeongdong.jpg',
   };
+  const PHOTO_META_BY_ID = {
+    'sinheung-market': { source: 'https://commons.wikimedia.org/wiki/File:Seoul_Yongsan_Haebangchon_20250206.jpg', credit: '서울관광재단', license: 'KOGL Type 1' },
+    'haebangchon-108': { source: 'https://commons.wikimedia.org/wiki/File:Haebangchon_(55191213112).jpg', credit: 'Lee Jeong Woo / Korea.net', license: 'CC BY-SA 4.0' },
+    'noksapyeong-park': { source: 'https://commons.wikimedia.org/wiki/File:Noksapyeong_Station_(Seoul_Subway_Line_6)_20230430_014.jpg', credit: 'Mobius6', license: 'CC BY-SA 4.0' },
+    'namsan-park': { source: 'https://commons.wikimedia.org/wiki/File:Namsan_Park_Orange_Leaves,_Seoul.jpg', credit: 'Ken Eckert', license: 'CC BY-SA 4.0' },
+    'n-seoul-tower': { source: 'https://commons.wikimedia.org/wiki/File:Namsan_Tower,_Seoul_-_Namsan2299.jpg', credit: 'lumoplank', license: 'CC0 1.0' },
+    gyeongnidan: { source: 'https://commons.wikimedia.org/wiki/File:Itaewon_Gyeongnidan-gil.JPG', credit: 'Shinae Hyun', license: 'CC BY-SA 4.0' },
+    itaewon: { source: 'https://commons.wikimedia.org/wiki/File:Itaewon_Street_(230036983).jpeg', credit: 'Jongsu Pyeon', license: 'CC BY 3.0' },
+    'huam-dong': { source: 'https://commons.wikimedia.org/wiki/File:Huam-Dong,_Seoul,_South_Korea.jpg', credit: 'Doug Sun Beams', license: 'CC BY 2.0' },
+    'baekbeom-square': { source: 'https://commons.wikimedia.org/wiki/File:Seoul_Wall_with_the_N_Seoul_Tower_in_the_Background.jpg', credit: 'Ethan Doyle White', license: 'CC BY-SA 4.0' },
+    'war-memorial': { source: 'https://commons.wikimedia.org/wiki/File:2019-04-11_War_Monument_at_The_War_Memorial_of_Korean,_Seoul.jpg', credit: 'Matt Kieffer', license: 'CC BY-SA 2.0' },
+    leeum: { source: 'https://commons.wikimedia.org/wiki/File:Leeum,_Samsung_Museum_of_Art.jpg', credit: 'takato marui', license: 'CC BY-SA 2.0' },
+    'national-museum': { source: 'https://commons.wikimedia.org/wiki/File:%EA%B5%AD%EB%A6%BD%EC%A4%91%EC%95%99%EB%B0%95%EB%AC%BC%EA%B4%80%EC%95%BC%EA%B0%84%EC%A0%84%EA%B2%BD.jpg', credit: 'Novusordo2020', license: 'CC BY-SA 4.0' },
+    'yongsan-family-park': { source: 'https://commons.wikimedia.org/wiki/File:Korea_Yongsan_Family_Park_20140421_01_(13939732142).jpg', credit: 'Korea.net / KOCIS (Jeon Han)', license: 'CC BY-SA 2.0' },
+    'nodeul-island': { source: 'https://commons.wikimedia.org/wiki/File:Nodeulseom_(14005438206).jpg', credit: 'travel oriented', license: 'CC BY-SA 2.0' },
+    seoullo: { source: 'https://commons.wikimedia.org/wiki/File:Night_View_in_Seoullo_7017_01.jpg', credit: 'YOUNGJIN KO', license: 'CC BY-SA 3.0' },
+    'namdaemun-market': { source: 'https://commons.wikimedia.org/wiki/File:Namdaemun_Market_at_night,_Seoul_(48661062586).jpg', credit: 'Matt Kieffer', license: 'CC BY-SA 2.0' },
+    myeongdong: { source: 'https://commons.wikimedia.org/wiki/File:Myeongdong_at_night.jpg', credit: 'Christian Bolz', license: 'CC BY-SA 4.0' },
+  };
   const G = (query) => `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(query)}`;
   const N = (query) => `https://map.naver.com/p/search/${encodeURIComponent(query)}`;
-  const place = (id, number, icon, tone, host, categories, query, name, travel, text, tags, official = '') => ({
-    id, number, icon, tone, host, categories, query, name, travel, text, tags, official,
-    image: PHOTO_BY_ID[id],
-    credit: 'Wikimedia Commons',
-    google: G(query),
-    naver: N(query),
-  });
+  const place = (id, number, icon, tone, host, categories, query, name, travel, text, tags, official = '') => {
+    const photo = PHOTO_META_BY_ID[id] || {};
+    return {
+      id, number, icon, tone, host, categories, query, name, travel, text, tags, official,
+      image: PHOTO_BY_ID[id],
+      photoSource: photo.source || '',
+      credit: photo.credit || '',
+      license: photo.license || '',
+      google: G(query),
+      naver: N(query),
+    };
+  };
 
   window.EXTAY_TOURS = {
     hero: '/assets/extay/crops/rooftop-namsan.jpg',
