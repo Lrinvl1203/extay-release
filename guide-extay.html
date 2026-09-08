@@ -161,9 +161,10 @@ body:not(.is-home):not(.is-gallery):not(.is-checkin):not(.is-wifi):not(.is-trans
 .editorial-kicker{margin:0 0 12px;color:#8a5a43;font-family:'Oxanium',var(--font-ko);font-size:12px;font-weight:800;line-height:1.2;letter-spacing:.16em!important;text-transform:uppercase}
 .extay-welcome h2,.extay-story h2{margin:0;color:#26382f;font-size:34px;font-weight:800;line-height:1.16;letter-spacing:-.045em;white-space:pre-line;word-break:keep-all}
 .editorial-body{margin:20px 0 0;color:#59473a;font-size:16px;font-weight:600;line-height:1.78;word-break:keep-all}
+.editorial-body-secondary{margin-top:13px;color:#6a5647}
 .extay-identity{margin-top:32px;padding:19px 0 17px;border-top:1px solid rgba(123,99,79,.38);border-bottom:1px solid rgba(123,99,79,.38);display:grid;grid-template-columns:auto minmax(38px,1fr) auto;align-items:center;gap:12px;color:#26382f;font-family:'Oxanium',var(--font-ko);font-size:17px;font-weight:750;line-height:1}
 .extay-identity i{position:relative;height:1px;background:linear-gradient(90deg,#b55d3d,rgba(181,93,61,.18));font-style:normal}
-.extay-identity i:after{content:'ABOVE THE CITY';position:absolute;left:50%;top:0;transform:translate(-50%,-50%);padding:0 8px;background:#fffaf4;color:#9b6b55;font-size:8px;font-weight:800;letter-spacing:.12em;white-space:nowrap}
+.extay-identity i:after{content:'A QUIETER SEOUL';position:absolute;left:50%;top:0;transform:translate(-50%,-50%);padding:0 8px;background:#fffaf4;color:#9b6b55;font-size:8px;font-weight:800;letter-spacing:.12em;white-space:nowrap}
 .extay-story{padding:44px var(--home-gutter) 48px;background:#efe5d8}
 .extay-story-collage{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(0,.84fr);grid-template-rows:190px 132px;gap:7px}
 .extay-story-photo{position:relative;min-width:0;margin:0;overflow:hidden;background:#d6c8b8}
@@ -177,12 +178,14 @@ body:not(.is-home):not(.is-gallery):not(.is-checkin):not(.is-wifi):not(.is-trans
 .extay-story-photo span{position:absolute;left:10px;top:10px;width:27px;height:27px;border:1px solid rgba(255,255,255,.58);border-radius:50%;background:rgba(28,35,30,.34);color:#fff;display:grid;place-items:center;font-family:'Oxanium',sans-serif;font-size:9px;font-weight:700;backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)}
 .extay-story-copy{margin-top:29px}
 .extay-story-copy .editorial-body{margin-top:17px}
-.extay-story-notes{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));margin:28px 0 0;padding:19px 0 0;border-top:1px solid rgba(123,99,79,.36);list-style:none}
-.extay-story-notes li{min-width:0;padding:0 11px;border-right:1px solid rgba(123,99,79,.25)}
-.extay-story-notes li:first-child{padding-left:0}
-.extay-story-notes li:last-child{padding-right:0;border-right:0}
-.extay-story-notes small{display:block;margin-bottom:8px;color:#b55d3d;font-family:'Oxanium',sans-serif;font-size:10px;font-weight:800;line-height:1;letter-spacing:.08em!important}
-.extay-story-notes strong{display:block;color:#3f332b;font-size:13px;font-weight:750;line-height:1.45;word-break:keep-all}
+.extay-story-notes{margin:32px 0 0;padding:0;border-top:1px solid rgba(123,99,79,.4);list-style:none}
+.extay-story-notes li{position:relative;display:grid;grid-template-columns:74px minmax(0,1fr);gap:18px;align-items:start;padding:22px 0;border-bottom:1px solid rgba(123,99,79,.28)}
+.extay-story-notes li:nth-child(2){margin-left:30px}
+.extay-story-notes small{display:flex;flex-direction:column;gap:6px;color:#b55d3d;font-family:'Oxanium',sans-serif;font-style:normal;font-weight:800;line-height:1}
+.extay-story-notes small b{font-size:36px;font-weight:600;letter-spacing:-.06em}
+.extay-story-notes small em{font-size:10px;font-style:normal;letter-spacing:.14em!important}
+.extay-story-note-copy strong{display:block;color:#3f332b;font-size:19px;font-weight:800;line-height:1.35;word-break:keep-all}
+.extay-story-note-copy p{margin:7px 0 0;color:#6a5647;font-size:14px;font-weight:600;line-height:1.65;word-break:keep-all}
 @media(hover:hover){.extay-story-photo:hover img{transform:scale(1.035)}}
 .section-kicker{color:#77685a}
 .hotel-heading{margin:0 0 22px;font-size:24px;line-height:1.18;font-weight:700;color:#221b15}
@@ -340,10 +343,38 @@ body.image-lightbox-open{overflow:hidden;touch-action:none}
 .menu-footer-note>span{display:block;font-family:var(--font-main);font-size:20px;font-weight:750;line-height:1.2}
 .menu-footer-note small{display:block;margin-top:8px;color:rgba(255,255,255,.68);font-family:'Oxanium',var(--font-ko);font-size:10px;font-weight:650;line-height:1.45;letter-spacing:.12em!important}
 .gallery-screen{background:#f7f2ec;min-height:calc(100dvh - 72px)}
-.gallery-head{padding:8px 0 20px}
+.gallery-head{padding:8px 0 24px}
 .gallery-head .section-kicker{margin-bottom:10px}
-.gallery-head h2{margin:0 0 10px;font-size:32px;line-height:1.08;color:#221b15;font-weight:800}
-.gallery-head p:last-child{margin:0;color:#6f5f50;font-size:14px;line-height:1.55}
+.gallery-head h2{margin:0;font-size:36px;line-height:1.06;color:#221b15;font-weight:800}
+.gallery-editorial-intro{margin:0 calc(var(--page-gutter) * -1) 34px;padding:32px var(--page-gutter) 30px;background:#26382f;color:#f7f0e6}
+.gallery-editorial-meta{display:flex;align-items:center;justify-content:space-between;gap:14px;margin:0 0 22px;color:#d5bda1;font-family:'Oxanium',var(--font-ko);font-size:11px;font-weight:800;line-height:1.2;letter-spacing:.14em!important}
+.gallery-editorial-intro h3{margin:0;color:#fffaf4;font-size:33px;font-weight:700;line-height:1.08;letter-spacing:-.045em;white-space:pre-line;word-break:keep-all}
+.gallery-editorial-intro>p{margin:22px 0 0;color:#e2d8cb;font-size:16px;font-weight:600;line-height:1.78;word-break:keep-all}
+.gallery-story-facts{margin:28px 0 0;padding:0;border-top:1px solid rgba(245,234,216,.25);list-style:none}
+.gallery-story-facts li{display:grid;grid-template-columns:68px 1fr;gap:16px;padding:14px 0;border-bottom:1px solid rgba(245,234,216,.18)}
+.gallery-story-facts small{color:#c99977;font-family:'Oxanium',var(--font-ko);font-size:10px;font-weight:800;letter-spacing:.12em!important}
+.gallery-story-facts strong{color:#fffaf4;font-size:14px;font-weight:700;line-height:1.45}
+.gallery-magazine{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+.gallery-spread{position:relative;margin:0;min-width:0;background:#e8ded2;overflow:hidden}
+.gallery-spread.wide{grid-column:1/-1}
+.gallery-spread.portrait{height:360px}
+.gallery-spread.landscape{height:222px}
+.gallery-spread.featured{grid-column:1/-1;height:540px}
+.gallery-spread button{width:100%;height:100%;display:block;border:0;padding:0;background:transparent;cursor:zoom-in}
+.gallery-spread img{width:100%;height:100%;display:block;object-fit:cover;transition:transform .7s cubic-bezier(.16,1,.3,1)}
+.gallery-spread.featured img{object-position:center 52%}
+.gallery-spread .gallery-index{position:absolute;top:11px;left:11px;width:30px;height:30px;border:1px solid rgba(255,255,255,.64);border-radius:50%;display:grid;place-items:center;background:rgba(30,36,31,.3);color:#fff;font-family:'Oxanium',sans-serif;font-size:9px;font-weight:800;pointer-events:none;backdrop-filter:blur(8px)}
+.gallery-spread figcaption{position:absolute;left:0;right:0;bottom:0;padding:50px 14px 14px;color:#fff;pointer-events:none;background:linear-gradient(180deg,transparent,rgba(18,16,13,.72))}
+.gallery-spread figcaption small{display:block;margin-bottom:5px;font-family:'Oxanium',var(--font-ko);font-size:9px;font-weight:800;letter-spacing:.13em!important}
+.gallery-spread figcaption strong{display:block;font-size:16px;font-weight:800;line-height:1.3}
+.gallery-spread:nth-child(2) img{object-position:center 44%}
+.gallery-spread:nth-child(3) img{object-position:center 40%}
+.gallery-spread:nth-child(4) img{object-position:center 52%}
+.gallery-spread:nth-child(8) img{object-position:center 43%}
+.gallery-quote{grid-column:1/-1;margin:26px 0 20px;padding:6px 2px 26px;border-bottom:1px solid rgba(123,99,79,.3);color:#26382f}
+.gallery-quote small{display:block;margin-bottom:12px;color:#b55d3d;font-family:'Oxanium',var(--font-ko);font-size:10px;font-weight:800;letter-spacing:.15em!important}
+.gallery-quote p{margin:0;font-size:25px;font-weight:750;line-height:1.36;letter-spacing:-.035em;white-space:pre-line;word-break:keep-all}
+@media(hover:hover){.gallery-spread:hover img{transform:scale(1.035)}}
 .gallery-thumbs{display:flex;gap:10px;overflow-x:auto;overscroll-behavior-x:contain;scroll-snap-type:x proximity;padding:4px 0 16px;margin:0 -15px 0 0}
 .gallery-thumbs::-webkit-scrollbar{display:none}
 .gallery-thumb{flex:0 0 164px;width:164px;height:188px;border:0;border-radius:12px;background:transparent;padding:0;box-shadow:none;scroll-snap-align:start;cursor:pointer}
@@ -1205,8 +1236,9 @@ body .latin-font{font-family:'Oxanium','Arial Narrow',Arial,sans-serif!important
 
         <section class="extay-welcome" aria-labelledby="editorialWelcomeTitle">
           <p class="editorial-kicker" id="editorialWelcomeKicker">WELCOME TO EXTAY</p>
-          <h2 id="editorialWelcomeTitle">서울의 높은 골목에서<br>우리만의 속도로</h2>
+          <h2 id="editorialWelcomeTitle">서울의 숨은 동네에서<br>우리만의 속도로</h2>
           <p class="editorial-body" id="editorialWelcomeBody">해방촌의 오래된 골목과 남산의 능선 사이. EXTAY Mansion은 도시의 활기에서 한 걸음 물러나, 함께 온 사람들과 천천히 머무는 집입니다.</p>
+          <p class="editorial-body editorial-body-secondary" id="editorialWelcomeBody2">창으로 스며드는 빛, 깊은 초록과 나무의 온기, 한자리에 모이기 좋은 거실까지. 서울을 충분히 누린 뒤 돌아와 긴 이야기를 이어가거나, 각자의 방에서 조용히 쉬어갈 수 있도록 공간마다 서로 다른 리듬을 담았습니다.</p>
           <div class="extay-identity" aria-hidden="true"><span>HAEBANGCHON</span><i></i><strong>SEOUL</strong></div>
         </section>
 
@@ -1240,9 +1272,9 @@ body .latin-font{font-family:'Oxanium','Arial Narrow',Arial,sans-serif!important
             <p class="editorial-body" id="editorialStoryBody">딥 그린 벽과 묵직한 우드, 작은 조명이 만든 장면마다 서로 다른 시간이 흐릅니다. 거실에 둘러앉아 이야기를 나누고, 각자의 방에서는 조용히 하루를 마무리해 보세요.</p>
           </div>
           <ol class="extay-story-notes">
-            <li><small>01 · LIVING</small><strong>함께 머무는 거실</strong></li>
-            <li><small>02 · LIGHT</small><strong>시간에 따라 달라지는 빛</strong></li>
-            <li><small>03 · REST</small><strong>포근하게 쉬는 세 개의 방</strong></li>
+            <li><small><b>01</b><em>LIVING</em></small><div class="extay-story-note-copy"><strong>함께 머무는 거실</strong><p>소파와 테이블을 중심으로 대화와 휴식이 자연스럽게 이어집니다.</p></div></li>
+            <li><small><b>02</b><em>LIGHT</em></small><div class="extay-story-note-copy"><strong>시간에 따라 달라지는 빛</strong><p>커튼 사이의 낮빛부터 작은 램프의 온기까지, 장면의 표정이 바뀝니다.</p></div></li>
+            <li><small><b>03</b><em>REST</em></small><div class="extay-story-note-copy"><strong>포근하게 쉬는 세 개의 방</strong><p>함께 여행해도 각자의 속도로 쉬어갈 수 있도록 침실을 나누었습니다.</p></div></li>
           </ol>
         </section>
 
@@ -1742,22 +1774,69 @@ body .latin-font{font-family:'Oxanium','Arial Narrow',Arial,sans-serif!important
       <section class="screen gallery-screen" data-screen="gallery">
         <div class="gallery-head">
           <p class="section-kicker">ROOM GALLERY</p>
-          <h2>객실 둘러보기</h2>
+          <h2 id="galleryPageTitle">객실 둘러보기</h2>
         </div>
-        <div class="gallery-thumbs" role="listbox" aria-label="숙소 사진 선택">
-          <button class="gallery-thumb active" type="button" role="option" aria-selected="true" data-gallery-index="0" data-full="assets/extay/crops/main-living-logo.png" data-title="거실 라운지" data-desc="따뜻한 조명과 편안한 소파가 있는 메인 거실 공간입니다." data-alt="익스테이 거실 라운지 사진"><img src="assets/extay/crops/main-living-logo.png" loading="lazy" alt=""></button>
-          <button class="gallery-thumb" type="button" role="option" aria-selected="false" data-gallery-index="1" data-full="assets/extay/dining/거실사진.avif" data-title="다이닝 & 키친" data-desc="모임과 식사를 편하게 즐길 수 있는 다이닝 공간입니다." data-alt="익스테이 다이닝과 키친 사진"><img src="assets/extay/dining/거실사진.avif" loading="lazy" alt=""></button>
-          <button class="gallery-thumb" type="button" role="option" aria-selected="false" data-gallery-index="2" data-full="assets/extay/bedroom-thumbs/bedroom1-01.webp" data-title="침실" data-desc="포근한 침구가 준비된 침실입니다." data-alt="익스테이 침실 사진"><img src="assets/extay/bedroom-thumbs/bedroom1-01.webp" loading="lazy" alt=""></button>
-          <button class="gallery-thumb" type="button" role="option" aria-selected="false" data-gallery-index="3" data-full="assets/extay/bedroom-thumbs/bedroom1-02.webp" data-title="침실" data-desc="포근한 침구가 준비된 침실입니다." data-alt="익스테이 침실 사진"><img src="assets/extay/bedroom-thumbs/bedroom1-02.webp" loading="lazy" alt=""></button>
-          <button class="gallery-thumb" type="button" role="option" aria-selected="false" data-gallery-index="4" data-full="assets/extay/bedroom-thumbs/bedroom3-01.webp" data-title="침실" data-desc="포근한 침구가 준비된 침실입니다." data-alt="익스테이 침실 사진"><img src="assets/extay/bedroom-thumbs/bedroom3-01.webp" loading="lazy" alt=""></button>
-          <button class="gallery-thumb" type="button" role="option" aria-selected="false" data-gallery-index="5" data-full="assets/extay/bedroom-thumbs/bedroom3-03.webp" data-title="침실" data-desc="포근한 침구가 준비된 침실입니다." data-alt="익스테이 침실 사진"><img src="assets/extay/bedroom-thumbs/bedroom3-03.webp" loading="lazy" alt=""></button>
-          <button class="gallery-thumb" type="button" role="option" aria-selected="false" data-gallery-index="6" data-full="assets/extay/crops/rooftop-namsan.jpg" data-title="남산 루프탑 뷰" data-desc="해방촌의 분위기와 남산타워를 함께 볼 수 있는 루프탑 공간입니다." data-alt="익스테이 루프탑 남산타워 뷰 사진"><img src="assets/extay/crops/rooftop-namsan.jpg" loading="lazy" alt=""></button>
-          <button class="gallery-thumb" type="button" role="option" aria-selected="false" data-gallery-index="7" data-full="assets/extay/crops/rooftop.jpg" data-title="루프탑" data-desc="머무는 동안 잠시 바람을 쐴 수 있는 루프탑 공간입니다." data-alt="익스테이 루프탑 사진"><img src="assets/extay/crops/rooftop.jpg" loading="lazy" alt=""></button>
+        <article class="gallery-editorial-intro" aria-labelledby="galleryStoryTitle">
+          <p class="gallery-editorial-meta"><span>STAY STORY</span><span>EXTAY · SEOUL</span></p>
+          <h3 id="galleryStoryTitle">함께하는 시간과<br>각자의 쉼이 만나는 집</h3>
+          <p id="galleryStoryBody">도시를 걷고 돌아온 저녁, 모두가 한자리에 모이는 거실과 조용히 숨을 고르는 침실이 기다립니다. 깊은 초록과 나무, 부드러운 빛으로 채운 EXTAY Mansion에서 여행의 속도를 천천히 낮춰보세요.</p>
+          <ul class="gallery-story-facts">
+            <li><small>TOGETHER</small><strong>이야기와 식사를 나누는 거실 · 다이닝</strong></li>
+            <li><small>REST</small><strong>각자의 리듬으로 쉬어가는 세 개의 침실</strong></li>
+            <li><small>VIEW</small><strong>남산과 해방촌의 공기가 닿는 루프탑</strong></li>
+          </ul>
+        </article>
+        <div class="gallery-magazine" aria-label="EXTAY Mansion 공간 화보">
+          <figure class="gallery-spread featured">
+            <button type="button" data-fullscreen-image="assets/extay/gallery-editorial/lounge-glow.webp"><img src="assets/extay/gallery-editorial/lounge-glow.webp" alt="초록 소파와 작은 조명이 있는 EXTAY 거실" loading="eager"></button><span class="gallery-index">01</span>
+            <figcaption><small>LIVING · DAYLIGHT</small><strong>햇살이 길게 머무는 거실</strong></figcaption>
+          </figure>
+          <figure class="gallery-spread portrait">
+            <button type="button" data-fullscreen-image="assets/extay/gallery-editorial/living-tree.webp"><img src="assets/extay/gallery-editorial/living-tree.webp" alt="딥 그린 벽과 따뜻한 조명의 거실" loading="lazy"></button><span class="gallery-index">02</span>
+            <figcaption><small>LIVING · NIGHT</small><strong>불을 밝히면 더 포근해지는 밤</strong></figcaption>
+          </figure>
+          <figure class="gallery-spread portrait">
+            <button type="button" data-fullscreen-image="assets/extay/gallery-editorial/bedroom-daylight.webp"><img src="assets/extay/gallery-editorial/bedroom-daylight.webp" alt="밝은 햇살과 흰 침구가 있는 침실" loading="lazy"></button><span class="gallery-index">03</span>
+            <figcaption><small>BEDROOM · REST</small><strong>가볍고 단정한 아침</strong></figcaption>
+          </figure>
+          <blockquote class="gallery-quote"><small>A HOUSE FOR TOGETHERNESS</small><p>한자리에 모였다가,<br>각자의 방으로 돌아가는 여행.</p></blockquote>
+          <figure class="gallery-spread wide landscape">
+            <button type="button" data-fullscreen-image="assets/extay/gallery-editorial/dining-table.webp"><img src="assets/extay/gallery-editorial/dining-table.webp" alt="음식과 와인이 차려진 EXTAY 다이닝 테이블" loading="lazy"></button><span class="gallery-index">04</span>
+            <figcaption><small>DINING · TABLE</small><strong>좋은 대화는 식탁에서 길어집니다</strong></figcaption>
+          </figure>
+          <figure class="gallery-spread landscape">
+            <button type="button" data-fullscreen-image="assets/extay/crops/main-living-logo.png"><img src="assets/extay/crops/main-living-logo.png" alt="EXTAY 로고가 보이는 거실 라운지" loading="lazy"></button><span class="gallery-index">05</span>
+            <figcaption><small>LOUNGE</small><strong>함께 머무는 중심</strong></figcaption>
+          </figure>
+          <figure class="gallery-spread landscape">
+            <button type="button" data-fullscreen-image="assets/extay/dining/거실사진.avif"><img src="assets/extay/dining/거실사진.avif" alt="패턴 타일과 우드 가구가 있는 다이닝 키친" loading="lazy"></button><span class="gallery-index">06</span>
+            <figcaption><small>KITCHEN</small><strong>취향이 담긴 다이닝</strong></figcaption>
+          </figure>
+          <figure class="gallery-spread portrait">
+            <button type="button" data-fullscreen-image="assets/extay/bedroom-thumbs/bedroom1-01.webp"><img src="assets/extay/bedroom-thumbs/bedroom1-01.webp" alt="편안한 침구가 준비된 첫 번째 침실" loading="lazy"></button><span class="gallery-index">07</span>
+            <figcaption><small>BEDROOM 01</small><strong>온전히 쉬는 방</strong></figcaption>
+          </figure>
+          <figure class="gallery-spread portrait">
+            <button type="button" data-fullscreen-image="assets/extay/bedroom-thumbs/bedroom1-02.webp"><img src="assets/extay/bedroom-thumbs/bedroom1-02.webp" alt="부드러운 톤의 첫 번째 침실" loading="lazy"></button><span class="gallery-index">08</span>
+            <figcaption><small>BEDROOM 01</small><strong>잠들기 좋은 온도</strong></figcaption>
+          </figure>
+          <figure class="gallery-spread landscape">
+            <button type="button" data-fullscreen-image="assets/extay/bedroom-thumbs/bedroom3-01.webp"><img src="assets/extay/bedroom-thumbs/bedroom3-01.webp" alt="차분한 조명의 세 번째 침실" loading="lazy"></button><span class="gallery-index">09</span>
+            <figcaption><small>BEDROOM 03</small><strong>고요한 하루의 끝</strong></figcaption>
+          </figure>
+          <figure class="gallery-spread landscape">
+            <button type="button" data-fullscreen-image="assets/extay/bedroom-thumbs/bedroom3-03.webp"><img src="assets/extay/bedroom-thumbs/bedroom3-03.webp" alt="편안한 침구가 있는 세 번째 침실" loading="lazy"></button><span class="gallery-index">10</span>
+            <figcaption><small>BEDROOM 03</small><strong>나만의 휴식</strong></figcaption>
+          </figure>
+          <figure class="gallery-spread portrait">
+            <button type="button" data-fullscreen-image="assets/extay/crops/rooftop-namsan.jpg"><img src="assets/extay/crops/rooftop-namsan.jpg" alt="남산타워가 보이는 EXTAY 루프탑" loading="lazy"></button><span class="gallery-index">11</span>
+            <figcaption><small>ROOFTOP · NAMSAN</small><strong>서울을 올려다보는 시간</strong></figcaption>
+          </figure>
+          <figure class="gallery-spread portrait">
+            <button type="button" data-fullscreen-image="assets/extay/crops/rooftop.jpg"><img src="assets/extay/crops/rooftop.jpg" alt="해방촌의 공기를 느끼는 루프탑" loading="lazy"></button><span class="gallery-index">12</span>
+            <figcaption><small>ROOFTOP</small><strong>잠시 바람을 쐬는 곳</strong></figcaption>
+          </figure>
         </div>
-        <figure class="gallery-viewer">
-          <div class="gallery-main-wrap"><img id="galleryMain" src="assets/extay/crops/main-living-logo.png" alt="익스테이 거실 라운지 사진" draggable="false"><span class="gallery-count" id="galleryCount">1 / 8</span><span class="gallery-swipe-hint"><span class="mi">swipe</span>좌우로 밀어 사진 보기</span></div>
-          <figcaption><strong id="galleryTitle">거실 라운지</strong><span id="galleryDesc">따뜻한 조명과 편안한 소파가 있는 메인 거실 공간입니다.</span></figcaption>
-        </figure>
       </section>
 
       <section class="screen wifi-screen" data-screen="wifi">
@@ -1988,17 +2067,22 @@ body .latin-font{font-family:'Oxanium','Arial Narrow',Arial,sans-serif!important
     Object.assign(uiText.en,{homeGalleryFeature:{count:'01/04',title:'Living Lounge',desc:'The main living space with warm lighting and a comfortable sofa.'},getting:{kicker:'GETTING HERE',title:'Location & Transportation',name:'EXTAY Mansion Haebangchon',address:'2F, 59 Sinheung-ro, Yongsan-gu, Seoul',transit:'Noksapyeong Station Exit 2, about 15 minutes on foot',naver:'Naver Map',google:'Google Maps',airportKicker:'AIRPORT ACCESS',airportTitle:'From the airport to EXTAY',restaurantKicker:'NEARBY RESTAURANTS',restaurantTitle:'Nearby Restaurants',restaurantAll:"View Host's Pick 7",restaurants:[['Western · Pasta','semolina club','A casual Western restaurant within walking distance in Haebangchon.'],['Vegan · Nearby','Vegetus','A nearby vegan restaurant that is great for a light meal.']]}});
     Object.assign(uiText.zh,{homeGalleryFeature:{count:'01/04',title:'客厅休息区',desc:'配有温暖灯光和舒适沙发的主客厅空间。'},getting:{kicker:'GETTING HERE',title:'位置与交通',name:'EXTAY Mansion Haebangchon',address:'首尔特别市龙山区新兴路59号 2楼',transit:'绿莎坪站2号出口，步行约15分钟',naver:'Naver 地图',google:'Google Maps',airportKicker:'AIRPORT ACCESS',airportTitle:'从机场前往 EXTAY',restaurantKicker:'NEARBY RESTAURANTS',restaurantTitle:'周边美食',restaurantAll:'查看房东精选7家餐厅',restaurants:[['西餐 · 意面','semolina club','位于解放村步行范围内的休闲西餐厅。'],['纯素 · 附近','Vegetus','住宿附近的纯素餐厅，适合轻松用餐。']]}});
     Object.assign(uiText.ja,{homeGalleryFeature:{count:'01/04',title:'リビングラウンジ',desc:'温かな照明と快適なソファのあるメインリビングです。'},getting:{kicker:'GETTING HERE',title:'アクセス・交通',name:'EXTAY Mansion Haebangchon',address:'ソウル特別市龍山区新興路59、2階',transit:'緑莎坪駅2番出口から徒歩約15分',naver:'Naver マップ',google:'Google Maps',airportKicker:'AIRPORT ACCESS',airportTitle:'空港からEXTAYまで',restaurantKicker:'NEARBY RESTAURANTS',restaurantTitle:'周辺グルメ',restaurantAll:'ホスト厳選7店を見る',restaurants:[['洋食 · パスタ','semolina club','解放村の徒歩圏内にあるカジュアルな洋食店です。'],['ヴィーガン · 近隣','Vegetus','宿の近くにある、軽い食事にもおすすめのヴィーガン店です。']]}});
-    Object.assign(uiText.ko,{editorial:{welcomeKicker:'WELCOME TO EXTAY',welcomeTitle:'서울의 높은 골목에서\n우리만의 속도로',welcomeBody:'해방촌의 오래된 골목과 남산의 능선 사이. EXTAY Mansion은 도시의 활기에서 한 걸음 물러나, 함께 온 사람들과 천천히 머무는 집입니다.',storyKicker:'GREEN, WOOD & LIGHT',storyTitle:'낮에는 햇살이,\n밤에는 온기가 머무는 곳',storyBody:'딥 그린 벽과 묵직한 우드, 작은 조명이 만든 장면마다 서로 다른 시간이 흐릅니다. 거실에 둘러앉아 이야기를 나누고, 각자의 방에서는 조용히 하루를 마무리해 보세요.',notes:['함께 머무는 거실','시간에 따라 달라지는 빛','포근하게 쉬는 세 개의 방'],photoLabel:'EXTAY Mansion 공간 사진',photoAlts:['딥 그린 벽과 따뜻한 조명의 EXTAY 거실','우드 테이블과 작은 조명이 있는 라운지','차분한 빛이 드는 EXTAY 침실']}});
-    Object.assign(uiText.en,{editorial:{welcomeKicker:'WELCOME TO EXTAY',welcomeTitle:'High above the city,\nat our own pace',welcomeBody:'Between the old lanes of Haebangchon and the ridge of Namsan, EXTAY Mansion steps back from the rush of Seoul so you can settle into slower time with the people you came with.',storyKicker:'GREEN, WOOD & LIGHT',storyTitle:'Sunlight by day,\nwarmth after dark',storyBody:'Deep green walls, grounded wood, and small pools of light give every corner its own rhythm. Gather around the living room, then close the day quietly in your own room.',notes:['A living room to share','Light that shifts with time','Three restful bedrooms'],photoLabel:'Photos of EXTAY Mansion',photoAlts:['EXTAY living room with deep green walls and warm lighting','Lounge with a wood table and small lamp','A softly lit EXTAY bedroom']}});
-    Object.assign(uiText.zh,{editorial:{welcomeKicker:'WELCOME TO EXTAY',welcomeTitle:'在首尔高处的巷弄里\n按自己的节奏停留',welcomeBody:'解放村的老巷与南山山脊之间，EXTAY Mansion 让您暂时离开城市的喧闹，与同行的人一起慢慢享受停留的时光。',storyKicker:'GREEN, WOOD & LIGHT',storyTitle:'白天留住阳光，\n入夜盛满温暖',storyBody:'深绿色墙面、沉稳木质与细小灯光，让每个角落流淌着不同的时间。在客厅围坐交谈，再回到各自的房间安静结束一天。',notes:['一起停留的客厅','随时间变化的光','舒适休息的三间卧室'],photoLabel:'EXTAY Mansion 空间照片',photoAlts:['深绿色墙面与温暖灯光的 EXTAY 客厅','带木桌与小灯的休息区','光线柔和的 EXTAY 卧室']}});
-    Object.assign(uiText.ja,{editorial:{welcomeKicker:'WELCOME TO EXTAY',welcomeTitle:'ソウルの高台の路地で\n私たちだけの速度へ',welcomeBody:'解放村の古い路地と南山の稜線のあいだ。EXTAY Mansionは街の賑わいから少し離れ、大切な人とゆっくり過ごすための家です。',storyKicker:'GREEN, WOOD & LIGHT',storyTitle:'昼は陽ざしが、\n夜はぬくもりが残る場所',storyBody:'深いグリーンの壁、落ち着いた木、ささやかな照明が、場所ごとに異なる時間をつくります。リビングで語らい、それぞれの部屋で静かに一日を終えてください。',notes:['一緒に過ごすリビング','時間とともに変わる光','心地よく休める3つの寝室'],photoLabel:'EXTAY Mansionの空間写真',photoAlts:['深いグリーンの壁と温かな照明のEXTAYリビング','木のテーブルと小さなランプのあるラウンジ','穏やかな光が入るEXTAYの寝室']}});
+    Object.assign(uiText.ko,{editorial:{welcomeKicker:'WELCOME TO EXTAY',welcomeTitle:'서울의 숨은 동네에서\n우리만의 속도로',welcomeBody:'해방촌의 오래된 골목과 남산의 능선 사이. EXTAY Mansion은 도시의 활기에서 한 걸음 물러나, 함께 온 사람들과 천천히 머무는 집입니다.',welcomeBody2:'창으로 스며드는 빛, 깊은 초록과 나무의 온기, 한자리에 모이기 좋은 거실까지. 서울을 충분히 누린 뒤 돌아와 긴 이야기를 이어가거나, 각자의 방에서 조용히 쉬어갈 수 있도록 공간마다 서로 다른 리듬을 담았습니다.',storyKicker:'GREEN, WOOD & LIGHT',storyTitle:'낮에는 햇살이,\n밤에는 온기가 머무는 곳',storyBody:'딥 그린 벽과 묵직한 우드, 작은 조명이 만든 장면마다 서로 다른 시간이 흐릅니다. 거실에 둘러앉아 이야기를 나누고, 각자의 방에서는 조용히 하루를 마무리해 보세요.',notes:['함께 머무는 거실','시간에 따라 달라지는 빛','포근하게 쉬는 세 개의 방'],noteDescriptions:['소파와 테이블을 중심으로 대화와 휴식이 자연스럽게 이어집니다.','커튼 사이의 낮빛부터 작은 램프의 온기까지, 장면의 표정이 바뀝니다.','함께 여행해도 각자의 속도로 쉬어갈 수 있도록 침실을 나누었습니다.'],photoLabel:'EXTAY Mansion 공간 사진',photoAlts:['딥 그린 벽과 따뜻한 조명의 EXTAY 거실','우드 테이블과 작은 조명이 있는 라운지','차분한 빛이 드는 EXTAY 침실']}});
+    Object.assign(uiText.en,{editorial:{welcomeKicker:'WELCOME TO EXTAY',welcomeTitle:'In Seoul’s hidden neighborhood,\nat our own pace',welcomeBody:'Between the storied lanes of Haebangchon and the ridge of Namsan, EXTAY Mansion steps back from the rush of Seoul so you can settle into slower time with the people you came with.',welcomeBody2:'Daylight through the windows, deep green and warm wood, and a living room made for gathering: every space holds a different rhythm, whether you linger over conversation or retreat to a quiet room after exploring Seoul.',storyKicker:'GREEN, WOOD & LIGHT',storyTitle:'Sunlight by day,\nwarmth after dark',storyBody:'Deep green walls, grounded wood, and small pools of light give every corner its own rhythm. Gather around the living room, then close the day quietly in your own room.',notes:['A living room to share','Light that shifts with time','Three restful bedrooms'],noteDescriptions:['Conversation and rest flow naturally around the sofa and table.','From filtered daylight to the glow of small lamps, the mood changes with the hour.','Three bedrooms let everyone rest at their own pace, even while traveling together.'],photoLabel:'Photos of EXTAY Mansion',photoAlts:['EXTAY living room with deep green walls and warm lighting','Lounge with a wood table and small lamp','A softly lit EXTAY bedroom']}});
+    Object.assign(uiText.zh,{editorial:{welcomeKicker:'WELCOME TO EXTAY',welcomeTitle:'在首尔隐秘的街区里\n按自己的节奏停留',welcomeBody:'解放村的老巷与南山山脊之间，EXTAY Mansion 让您暂时离开城市的喧闹，与同行的人一起慢慢享受停留的时光。',welcomeBody2:'窗边洒入的日光、深绿色与木质的温度，以及适合围坐的客厅，让每个空间都有自己的节奏。尽情感受首尔后回到这里，可以继续长谈，也可以回到房间安静休息。',storyKicker:'GREEN, WOOD & LIGHT',storyTitle:'白天留住阳光，\n入夜盛满温暖',storyBody:'深绿色墙面、沉稳木质与细小灯光，让每个角落流淌着不同的时间。在客厅围坐交谈，再回到各自的房间安静结束一天。',notes:['一起停留的客厅','随时间变化的光','舒适休息的三间卧室'],noteDescriptions:['围绕沙发与餐桌，聊天和休息自然延续。','从帘间日光到小灯的暖意，空间表情随时间变化。','即使结伴旅行，也能在三个卧室里按自己的节奏休息。'],photoLabel:'EXTAY Mansion 空间照片',photoAlts:['深绿色墙面与温暖灯光的 EXTAY 客厅','带木桌与小灯的休息区','光线柔和的 EXTAY 卧室']}});
+    Object.assign(uiText.ja,{editorial:{welcomeKicker:'WELCOME TO EXTAY',welcomeTitle:'ソウルの隠れた街で\n私たちだけのペースへ',welcomeBody:'解放村の古い路地と南山の稜線のあいだ。EXTAY Mansionは街の賑わいから少し離れ、大切な人とゆっくり過ごすための家です。',welcomeBody2:'窓から差し込む光、深いグリーンと木のぬくもり、みんなで集まりたくなるリビング。ソウルを楽しんだあとは語らいを続けたり、自分の部屋で静かに休んだりできるよう、それぞれの空間に異なるリズムを持たせました。',storyKicker:'GREEN, WOOD & LIGHT',storyTitle:'昼は陽ざしが、\n夜はぬくもりが残る場所',storyBody:'深いグリーンの壁、落ち着いた木、ささやかな照明が、場所ごとに異なる時間をつくります。リビングで語らい、それぞれの部屋で静かに一日を終えてください。',notes:['一緒に過ごすリビング','時間とともに変わる光','心地よく休める3つの寝室'],noteDescriptions:['ソファとテーブルを囲み、会話と休息が自然につながります。','カーテン越しの昼光から小さなランプの灯りまで、時間とともに表情が変わります。','一緒に旅していても、それぞれのペースで休める3つの寝室です。'],photoLabel:'EXTAY Mansionの空間写真',photoAlts:['深いグリーンの壁と温かな照明のEXTAYリビング','木のテーブルと小さなランプのあるラウンジ','穏やかな光が入るEXTAYの寝室']}});
     Object.assign(uiText.ko,{stayResident:{title:'투숙 중 자주 찾는 정보',items:['TV · 난방 · 루프탑 사용 안내','세탁기 · 건조기 사용법','쓰레기 배출 안내'],helpTitle:'도움이 필요할 때',helpCopy:'예약하신 에어비앤비 메시지를 통해 호스트에게 연락해 주세요.'}});
     Object.assign(uiText.en,{stayResident:{title:'Frequently Used During Your Stay',items:['TV · heating · rooftop guide','Washer · dryer instructions','Trash disposal guide'],helpTitle:'When you need help',helpCopy:'Please contact the host through the Airbnb messages for your reservation.'}});
     Object.assign(uiText.zh,{stayResident:{title:'入住期间常用信息',items:['电视 · 暖气 · 屋顶使用指南','洗衣机 · 烘干机使用方法','垃圾投放指南'],helpTitle:'需要帮助时',helpCopy:'请通过您预订时使用的 Airbnb 消息联系房东。'}});
     Object.assign(uiText.ja,{stayResident:{title:'滞在中によく使う情報',items:['TV・暖房・屋上の利用案内','洗濯機・乾燥機の使い方','ゴミ出し案内'],helpTitle:'お困りのとき',helpCopy:'メッセージをお送りください。'}});
     uiText['zh-TW']=traditionalize(uiText.zh);
     Object.assign(uiText['zh-TW'],{docTitle:'EXTAY 解放村民宿行動指南',docDesc:'EXTAY 解放村住宿指南行動版',langButton:'繁'});
-    uiText['zh-TW'].editorial={welcomeKicker:'WELCOME TO EXTAY',welcomeTitle:'在首爾高處的巷弄裡\n按自己的步調停留',welcomeBody:'解放村的老巷與南山稜線之間，EXTAY Mansion 讓您暫時離開城市的喧鬧，與同行的人一起慢慢享受停留時光。',storyKicker:'GREEN, WOOD & LIGHT',storyTitle:'白天留住陽光，\n入夜盛滿溫暖',storyBody:'深綠色牆面、沉穩木質與細緻燈光，讓每個角落流淌著不同的時間。在客廳圍坐交談，再回到各自的房間安靜結束一天。',notes:['一起停留的客廳','隨時間變化的光','舒適休息的三間臥室'],photoLabel:'EXTAY Mansion 空間照片',photoAlts:['深綠色牆面與溫暖燈光的 EXTAY 客廳','木桌與小燈相映的休憩區','光線柔和的 EXTAY 臥室']};
+    uiText['zh-TW'].editorial={welcomeKicker:'WELCOME TO EXTAY',welcomeTitle:'在首爾隱密的街區裡\n按自己的步調停留',welcomeBody:'解放村的老巷與南山稜線之間，EXTAY Mansion 讓您暫時離開城市的喧鬧，與同行的人一起慢慢享受停留時光。',welcomeBody2:'窗邊灑入的日光、深綠色與木質的溫度，以及適合圍坐的客廳，讓每個空間都有自己的節奏。盡情感受首爾後回到這裡，可以繼續長談，也可以回到房間安靜休息。',storyKicker:'GREEN, WOOD & LIGHT',storyTitle:'白天留住陽光，\n入夜盛滿溫暖',storyBody:'深綠色牆面、沉穩木質與細緻燈光，讓每個角落流淌著不同的時間。在客廳圍坐交談，再回到各自的房間安靜結束一天。',notes:['一起停留的客廳','隨時間變化的光','舒適休息的三間臥室'],noteDescriptions:['圍繞沙發與餐桌，聊天和休息自然延續。','從簾間日光到小燈的暖意，空間表情隨時間變化。','即使結伴旅行，也能在三個臥室裡按自己的步調休息。'],photoLabel:'EXTAY Mansion 空間照片',photoAlts:['深綠色牆面與溫暖燈光的 EXTAY 客廳','木桌與小燈相映的休憩區','光線柔和的 EXTAY 臥室']};
+    Object.assign(uiText.ko,{galleryEditorial:{title:'객실 둘러보기',storyTitle:'함께하는 시간과\n각자의 쉼이 만나는 집',storyBody:'도시를 걷고 돌아온 저녁, 모두가 한자리에 모이는 거실과 조용히 숨을 고르는 침실이 기다립니다. 깊은 초록과 나무, 부드러운 빛으로 채운 EXTAY Mansion에서 여행의 속도를 천천히 낮춰보세요.',facts:['이야기와 식사를 나누는 거실 · 다이닝','각자의 리듬으로 쉬어가는 세 개의 침실','남산과 해방촌의 공기가 닿는 루프탑'],quote:'한자리에 모였다가,\n각자의 방으로 돌아가는 여행.',captions:['햇살이 길게 머무는 거실','불을 밝히면 더 포근해지는 밤','가볍고 단정한 아침','좋은 대화는 식탁에서 길어집니다','함께 머무는 중심','취향이 담긴 다이닝','온전히 쉬는 방','잠들기 좋은 온도','고요한 하루의 끝','나만의 휴식','서울을 올려다보는 시간','잠시 바람을 쐬는 곳']}});
+    Object.assign(uiText.en,{galleryEditorial:{title:'Room Gallery',storyTitle:'A home where shared time\nmeets private rest',storyBody:'After a day in the city, return to a living room made for gathering and bedrooms made for breathing out. Deep green, warm wood, and gentle light invite you to slow the pace of your journey at EXTAY Mansion.',facts:['A living and dining room for stories and meals','Three bedrooms for resting in your own rhythm','A rooftop open to the air of Namsan and Haebangchon'],quote:'Gather in one place,\nthen return to a room of your own.',captions:['A living room where daylight lingers','A softer room after the lights come on','A light and unhurried morning','Good conversations grow longer at the table','The heart of time together','A dining room with character','A room for complete rest','Just the right mood for sleep','A quiet end to the day','Rest that is entirely yours','A moment looking up at Seoul','A place to step out for fresh air']}});
+    Object.assign(uiText.zh,{galleryEditorial:{title:'客房浏览',storyTitle:'共享时光与\n自在休息相遇的家',storyBody:'走过城市回到这里的夜晚，适合相聚的客厅与安静放松的卧室在等您。深绿色、温润木质与柔和灯光，让您在 EXTAY Mansion 慢慢放缓旅行节奏。',facts:['分享故事与餐食的客厅和餐厅','三间卧室，各自按自己的节奏休息','感受南山与解放村空气的屋顶'],quote:'相聚在一起，\n再回到属于自己的房间。',captions:['阳光久久停留的客厅','亮灯后更加温暖的夜','轻盈而从容的早晨','美好的谈话在餐桌边继续','共享时光的中心','充满品味的餐厅','彻底放松的房间','适合入睡的氛围','宁静的一天结尾','属于自己的休息','仰望首尔的片刻','暂时吹吹风的地方']}});
+    Object.assign(uiText.ja,{galleryEditorial:{title:'客室を見る',storyTitle:'一緒の時間と\nそれぞれの休息が出会う家',storyBody:'街を歩いて戻った夜、みんなが集まるリビングと静かに息をつく寝室が待っています。深いグリーン、温かな木、やわらかな光に包まれたEXTAY Mansionで、旅のペースをゆっくり落としてみてください。',facts:['会話と食事を楽しむリビング・ダイニング','それぞれのリズムで休める3つの寝室','南山と解放村の空気に触れるルーフトップ'],quote:'ひとつの場所に集まり、\nそれぞれの部屋へ戻る旅。',captions:['陽ざしが長く残るリビング','灯りをともすとさらに温かな夜','軽やかで整った朝','素敵な会話が続く食卓','一緒に過ごす中心','趣のあるダイニング','心から休める部屋','眠りにちょうどいい空気','静かな一日の終わり','自分だけの休息','ソウルを見上げる時間','少し風にあたる場所']}});
+    uiText['zh-TW'].galleryEditorial={title:'客房瀏覽',storyTitle:'共享時光與\n自在休息相遇的家',storyBody:'走過城市回到這裡的夜晚，適合相聚的客廳與安靜放鬆的臥室在等您。深綠色、溫潤木質與柔和燈光，讓您在 EXTAY Mansion 慢慢放緩旅行節奏。',facts:['分享故事與餐食的客廳和餐廳','三間臥室，各自按自己的步調休息','感受南山與解放村空氣的屋頂'],quote:'相聚在一起，\n再回到屬於自己的房間。',captions:['陽光久久停留的客廳','亮燈後更加溫暖的夜','輕盈而從容的早晨','美好的談話在餐桌邊繼續','共享時光的中心','充滿品味的餐廳','徹底放鬆的房間','適合入睡的氛圍','寧靜的一天結尾','屬於自己的休息','仰望首爾的片刻','暫時吹吹風的地方']};
     uiText['zh-TW'].stayResident.helpCopy='請透過您預訂時使用的 Airbnb 訊息聯絡房東。';
     ['ko','en','zh','zh-TW','ja'].forEach(lang=>{uiText[lang].footerCopy='SEOUL PRIVATE STAY'});
     const FULL_TEXT_I18N={
@@ -2051,8 +2135,8 @@ body .latin-font{font-family:'Oxanium','Arial Narrow',Arial,sans-serif!important
     function moveHeroSlide(delta){setHeroSlide(heroSlideIndex+delta,true)}
     function armHeroCarousel(immediate=false){if(!heroSlides.length)return;if(immediate){heroSlideIndex=0;heroAutoComplete=false}document.body.classList.add('hero-carousel-ready');updateHeroSlideState();scheduleHeroAuto()}
     function startHeroMotion(){document.body.classList.add('motion-ready','intro-home-zoom');armHeroCarousel(true);setTimeout(()=>document.body.classList.remove('intro-home-zoom'),3250)}
-    const motionSelector='.hotel-section,.extay-welcome,.extay-story,.extay-story-photo,.extay-story-copy,.quick-tile,.image-card,.concierge-hub,.gallery-head,.gallery-thumb,.gallery-viewer,.transport-hero,.transport-card,.wifi-hero,.wifi-card,.guidebook-head,.guidebook-viewer,.restaurants-hero,.restaurant-card,.faq-hero,.faq-card,.guide-detail-hero,.device,.contact-card,.checkin-hero,.checkin-card,.menu-link';
-    const staggerGroups=['.quick-access-grid','.stay-card-grid','.gallery-thumbs','.transport-stack','.wifi-stack','.faq-stack','.restaurants-list','.checkin-stack','.guide-detail-screen','.menu-panel'];
+    const motionSelector='.hotel-section,.extay-welcome,.extay-story,.extay-story-photo,.extay-story-copy,.quick-tile,.image-card,.concierge-hub,.gallery-head,.gallery-editorial-intro,.gallery-spread,.gallery-quote,.transport-hero,.transport-card,.wifi-hero,.wifi-card,.guidebook-head,.guidebook-viewer,.restaurants-hero,.restaurant-card,.faq-hero,.faq-card,.guide-detail-hero,.device,.contact-card,.checkin-hero,.checkin-card,.menu-link';
+    const staggerGroups=['.quick-access-grid','.stay-card-grid','.gallery-magazine','.transport-stack','.wifi-stack','.faq-stack','.restaurants-list','.checkin-stack','.guide-detail-screen','.menu-panel'];
     function updateHeroMotion(){const hero=q('.landing-hero'),isHome=document.body.classList.contains('is-home'),trigger=hero?Math.max(10,hero.offsetHeight-72):10;document.body.classList.toggle('hero-scrolled',isHome&&window.scrollY>=trigger)}
     function updateGalleryParallax(){if(reduceMotion)return;const vh=window.innerHeight||document.documentElement.clientHeight||720;qa('.gallery-thumb img,#galleryMain').forEach(img=>{const rect=img.getBoundingClientRect();if(rect.bottom<0||rect.top>vh)return;const center=rect.top+rect.height/2,offset=(center-vh/2)/vh,y=Math.max(-14,Math.min(14,-offset*24));img.style.setProperty('--parallax-y',`${y.toFixed(1)}px`)})}
     function requestGalleryParallax(){if(parallaxTick)return;parallaxTick=true;requestAnimationFrame(()=>{parallaxTick=false;updateGalleryParallax()})}
@@ -2119,7 +2203,8 @@ body .latin-font{font-family:'Oxanium','Arial Narrow',Arial,sans-serif!important
       document.title=tr.docTitle;
       const meta=q('meta[name="description"]'); if(meta)meta.setAttribute('content',tr.docDesc);
       q('#brandHome')?.setAttribute('aria-label',currentLang==='en'?'Go home':currentLang==='zh-TW'?'返回首頁':'홈으로 이동'); text(q('.hero .label'),tr.heroSub); text(q('.landing-hero .eyebrow'),tr.homeHeroEyebrow); text(q('#conciergeKicker'),tr.conciergeKicker); text(q('#aiTitle'),tr.aiTitle); text(q('#conciergeGreeting'),tr.conciergeGreeting); const conciergeInput=q('#conciergeAskInput'); if(conciergeInput)conciergeInput.placeholder=tr.conciergePlaceholder; const badge=LANG_BADGE[currentLang]||LANG_BADGE.ko; text(q('#langToggleText'),badge); text(q('#homeLangText'),badge); qa('.home-language-option').forEach(option=>option.setAttribute('aria-checked',String(option.dataset.language===currentLang)));renderChatLauncher();
-      if(tr.editorial){text(q('#editorialWelcomeKicker'),tr.editorial.welcomeKicker);text(q('#editorialWelcomeTitle'),tr.editorial.welcomeTitle);text(q('#editorialWelcomeBody'),tr.editorial.welcomeBody);text(q('#editorialStoryKicker'),tr.editorial.storyKicker);text(q('#editorialStoryTitle'),tr.editorial.storyTitle);text(q('#editorialStoryBody'),tr.editorial.storyBody);eachText(qa('.extay-story-notes strong'),tr.editorial.notes);const storyCollage=q('.extay-story-collage');if(storyCollage)storyCollage.setAttribute('aria-label',tr.editorial.photoLabel);qa('.extay-story-photo img').forEach((img,index)=>{if(tr.editorial.photoAlts?.[index])img.alt=tr.editorial.photoAlts[index]})}
+      if(tr.editorial){text(q('#editorialWelcomeKicker'),tr.editorial.welcomeKicker);text(q('#editorialWelcomeTitle'),tr.editorial.welcomeTitle);text(q('#editorialWelcomeBody'),tr.editorial.welcomeBody);text(q('#editorialWelcomeBody2'),tr.editorial.welcomeBody2);text(q('#editorialStoryKicker'),tr.editorial.storyKicker);text(q('#editorialStoryTitle'),tr.editorial.storyTitle);text(q('#editorialStoryBody'),tr.editorial.storyBody);eachText(qa('.extay-story-notes strong'),tr.editorial.notes);eachText(qa('.extay-story-note-copy p'),tr.editorial.noteDescriptions);const storyCollage=q('.extay-story-collage');if(storyCollage)storyCollage.setAttribute('aria-label',tr.editorial.photoLabel);qa('.extay-story-photo img').forEach((img,index)=>{if(tr.editorial.photoAlts?.[index])img.alt=tr.editorial.photoAlts[index]})}
+      if(tr.galleryEditorial){text(q('#galleryPageTitle'),tr.galleryEditorial.title);text(q('#galleryStoryTitle'),tr.galleryEditorial.storyTitle);text(q('#galleryStoryBody'),tr.galleryEditorial.storyBody);eachText(qa('.gallery-story-facts strong'),tr.galleryEditorial.facts);text(q('.gallery-quote p'),tr.galleryEditorial.quote);eachText(qa('.gallery-spread figcaption strong'),tr.galleryEditorial.captions)}
       if(tr.essentials){text(q('#essentialsKicker'),tr.essentials.kicker);text(q('#essentialsTitle'),tr.essentials.title);text(q('#essentialsSub'),tr.essentials.sub);eachText(qa('.essential-copy small'),tr.essentials.labels);eachText(qa('.essential-copy strong'),tr.essentials.values);eachText(qa('.essentials-link>span:first-child'),tr.essentials.links);text(q('#homeGalleryTitle'),tr.essentials.galleryTitle);text(q('.home-gallery-all'),tr.essentials.galleryAll)}
       if(tr.homeGalleryFeature){text(q('.home-gallery-count'),tr.homeGalleryFeature.count);text(q('.home-gallery-copy strong'),tr.homeGalleryFeature.title);text(q('.home-gallery-copy small'),tr.homeGalleryFeature.desc)}
       if(tr.getting){text(q('#gettingKicker'),tr.getting.kicker);text(q('#gettingTitle'),tr.getting.title);text(q('#gettingName'),tr.getting.name);text(q('#gettingAddress'),tr.getting.address);text(q('#gettingTransit'),tr.getting.transit);text(q('#gettingNaver'),tr.getting.naver);text(q('#gettingGoogle'),tr.getting.google);text(q('#airportAccessKicker'),tr.getting.airportKicker);text(q('#airportAccessTitle'),tr.getting.airportTitle);text(q('#nearbyPreviewKicker'),tr.getting.restaurantKicker);text(q('#nearbyPreviewTitle'),tr.getting.restaurantTitle);text(q('#nearbyPreviewAll'),tr.getting.restaurantAll);qa('.nearby-card').forEach((card,i)=>{const item=tr.getting.restaurants?.[i];if(item){text(card.querySelector('.nearby-card-label'),item[0]);text(card.querySelector('strong'),item[1]);text(card.querySelector('p'),item[2])}})}
