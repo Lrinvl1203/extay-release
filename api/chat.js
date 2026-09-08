@@ -68,7 +68,10 @@ function extractAddressMapLinks(answer) {
     GUIDE_KNOWLEDGE?.property?.address,
     ...(GUIDE_KNOWLEDGE?.parking?.nearbyLots || []).map(lot => lot?.address)
   ].filter(Boolean);
-  for (const knownAddress of knownAddresses) {
+  const mentionedKnownAddresses = knownAddresses
+    .filter(knownAddress => normalized.includes(String(knownAddress).replace(/\s+/g, '')))
+    .sort((a, b) => normalized.indexOf(String(a).replace(/\s+/g, '')) - normalized.indexOf(String(b).replace(/\s+/g, '')));
+  for (const knownAddress of mentionedKnownAddresses) {
     if (normalized.includes(String(knownAddress).replace(/\s+/g, ''))) addresses.add(knownAddress);
   }
 

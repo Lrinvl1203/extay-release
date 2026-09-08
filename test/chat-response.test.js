@@ -131,6 +131,8 @@ test('only safe cited sources and exact addresses become chat links', () => {
   const parkingMaps = extractAddressMapLinks('가장 가까운 곳은 신흥로2길 74입니다.');
   assert.equal(parkingMaps.length, 1);
   assert.equal(parkingMaps[0].address, '신흥로2길 74');
+  const nearestFirst = extractAddressMapLinks('가장 가까운 곳은 소월로20길 56입니다. 숙소 주소는 서울시 용산구 신흥로 59, 2층입니다.');
+  assert.equal(nearestFirst[0].address, '소월로20길 56');
   assert.doesNotMatch(formatGuestAnswer('Naver Map: https://map.naver.com/p/search/test', 'en'), /https?:\/\//);
 });
 
