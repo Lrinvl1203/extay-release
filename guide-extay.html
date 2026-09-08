@@ -134,8 +134,7 @@ body:not(.is-home):not(.is-gallery):not(.is-checkin):not(.is-wifi):not(.is-trans
 .hero-photo{position:absolute;inset:-1px;z-index:0;opacity:0;transform:translate3d(0,0,0) scale(1);transform-origin:center;background-position:center;background-size:cover;background-repeat:no-repeat;backface-visibility:hidden;-webkit-backface-visibility:hidden;will-change:opacity,transform;transition:opacity .72s cubic-bezier(.4,0,.2,1)}
 .hero-photo-primary{background-image:url('assets/extay/crops/main-living-logo.png')}
 .hero-photo-secondary{background-image:url('assets/extay/hero/extay-hero-02-tree.webp')}
-.hero-photo-tertiary{background-image:url('assets/extay/hero/extay-hero-03-dining-tiles.webp')}
-.hero-photo-quaternary{background-image:url('assets/extay/hero/extay-hero-04-lounge.webp')}
+.hero-photo-tertiary{background-image:url('assets/extay/hero/extay-hero-04-lounge.webp')}
 .hero-swipe-controls{position:absolute;inset:0;z-index:4;pointer-events:none}
 .hero-swipe-arrow{position:absolute;top:50%;width:42px;height:42px;border:1px solid rgba(255,255,255,.45);border-radius:50%;background:rgba(0,0,0,.12);color:#fff;display:grid;place-items:center;opacity:.86;transform:translateY(-50%);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);pointer-events:auto;cursor:pointer;transition:opacity .2s ease,background-color .2s ease}
 .hero-swipe-arrow .mi{font-size:25px}.hero-swipe-prev{left:12px}.hero-swipe-next{right:12px}
@@ -1068,7 +1067,6 @@ body:not(.motion-ready) .concierge-widget,body:has(#brandIntro.is-running,.menu-
           <span class="hero-photo hero-photo-primary is-active" aria-hidden="true"></span>
           <span class="hero-photo hero-photo-secondary" aria-hidden="true"></span>
           <span class="hero-photo hero-photo-tertiary" aria-hidden="true"></span>
-          <span class="hero-photo hero-photo-quaternary" aria-hidden="true"></span>
           <div class="hero-swipe-controls" aria-label="홈 사진 선택">
             <button class="hero-swipe-arrow hero-swipe-prev" type="button" aria-label="이전 사진"><span class="mi">chevron_left</span></button>
             <button class="hero-swipe-arrow hero-swipe-next" type="button" aria-label="다음 사진"><span class="mi">chevron_right</span></button>
@@ -1076,7 +1074,6 @@ body:not(.motion-ready) .concierge-widget,body:has(#brandIntro.is-running,.menu-
               <button class="hero-slide-bar is-active" type="button" data-hero-slide="0" aria-label="첫 번째 사진" aria-current="true"></button>
               <button class="hero-slide-bar" type="button" data-hero-slide="1" aria-label="두 번째 사진" aria-current="false"></button>
               <button class="hero-slide-bar" type="button" data-hero-slide="2" aria-label="세 번째 사진" aria-current="false"></button>
-              <button class="hero-slide-bar" type="button" data-hero-slide="3" aria-label="네 번째 사진" aria-current="false"></button>
             </div>
           </div>
           <div class="hero-panel">
@@ -1760,8 +1757,8 @@ body:not(.motion-ready) .concierge-widget,body:has(#brandIntro.is-running,.menu-
   </section>
   <div class="toast" id="toast">복사했습니다</div>
   <script src="assets/chat-fallback.js"></script>
-  <script src="assets/extay-tour-data.js?v=20260908-02"></script>
-  <script src="assets/extay-tour-app.js?v=20260908-02"></script>
+  <script src="assets/extay-tour-data.js?v=20260908-03"></script>
+  <script src="assets/extay-tour-app.js?v=20260908-03"></script>
   <script>
     const screens=[...document.querySelectorAll('.screen')], tabs=[...document.querySelectorAll('.tab')];
     const LANG_KEY='extayGuideLang';
@@ -1912,7 +1909,7 @@ body:not(.motion-ready) .concierge-widget,body:has(#brandIntro.is-running,.menu-
     const heroAutoDelay=2400;
     const heroSlides=qa('.landing-hero .hero-photo');
     const heroBars=qa('.hero-slide-bar');
-    const heroSources=['assets/extay/crops/main-living-logo.png','assets/extay/hero/extay-hero-02-tree.webp','assets/extay/hero/extay-hero-03-dining-tiles.webp','assets/extay/hero/extay-hero-04-lounge.webp'];
+    const heroSources=['assets/extay/crops/main-living-logo.png','assets/extay/hero/extay-hero-02-tree.webp','assets/extay/hero/extay-hero-04-lounge.webp'];
     function updateHeroSlideState(){heroSlides.forEach((slide,index)=>slide.classList.toggle('is-active',index===heroSlideIndex));heroBars.forEach((bar,index)=>{const active=index===heroSlideIndex;bar.classList.toggle('is-active',active);bar.setAttribute('aria-current',String(active))})}
     function scheduleHeroAuto(){clearTimeout(heroAutoTimer);if(heroAutoComplete||heroSlideIndex>=heroSlides.length-1||!document.body.classList.contains('hero-carousel-ready')||!document.body.classList.contains('is-home')||document.visibilityState==='hidden')return;heroAutoTimer=setTimeout(()=>{setHeroSlide(heroSlideIndex+1,false);if(heroSlideIndex>=heroSlides.length-1)heroAutoComplete=true;else scheduleHeroAuto()},heroAutoDelay)}
     function setHeroSlide(index,restartAuto=true){if(!heroSlides.length||!document.body.classList.contains('hero-carousel-ready'))return;heroSlideIndex=(index+heroSlides.length)%heroSlides.length;updateHeroSlideState();if(restartAuto){heroAutoComplete=true;clearTimeout(heroAutoTimer)}}

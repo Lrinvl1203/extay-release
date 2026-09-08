@@ -2,10 +2,31 @@
   'use strict';
 
   const I = (ko, en, ja = en, zh = en, zhTW = zh) => ({ ko, en, ja, zh, 'zh-TW': zhTW });
+  const PHOTO_BY_ID = {
+    'sinheung-market': '/assets/extay/tours/01-sinheung.jpg',
+    'haebangchon-108': '/assets/extay/tours/02-108-stairs.jpg',
+    'noksapyeong-park': '/assets/extay/tours/03-noksapyeong.jpg',
+    'namsan-park': '/assets/extay/tours/04-namsan.jpg',
+    'n-seoul-tower': '/assets/extay/tours/05-n-seoul-tower.jpg',
+    gyeongnidan: '/assets/extay/tours/06-gyeongnidan.jpg',
+    itaewon: '/assets/extay/tours/07-itaewon.jpg',
+    'huam-dong': '/assets/extay/tours/08-huam.jpg',
+    'baekbeom-square': '/assets/extay/tours/09-baekbeom.jpg',
+    'war-memorial': '/assets/extay/tours/10-war-memorial.jpg',
+    leeum: '/assets/extay/tours/11-leeum.jpg',
+    'national-museum': '/assets/extay/tours/12-national-museum.jpg',
+    'yongsan-family-park': '/assets/extay/tours/13-yongsan-family-park.jpg',
+    'nodeul-island': '/assets/extay/tours/14-nodeul.jpg',
+    seoullo: '/assets/extay/tours/15-seoullo.jpg',
+    'namdaemun-market': '/assets/extay/tours/16-namdaemun.jpg',
+    myeongdong: '/assets/extay/tours/17-myeongdong.jpg',
+  };
   const G = (query) => `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(query)}`;
   const N = (query) => `https://map.naver.com/p/search/${encodeURIComponent(query)}`;
   const place = (id, number, icon, tone, host, categories, query, name, travel, text, tags, official = '') => ({
     id, number, icon, tone, host, categories, query, name, travel, text, tags, official,
+    image: PHOTO_BY_ID[id],
+    credit: 'Wikimedia Commons',
     google: G(query),
     naver: N(query),
   });
