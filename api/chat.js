@@ -70,6 +70,36 @@ function buildRequestBody(question, history = [], model = 'gpt-5.4-mini') {
   };
 }
 
+function buildResearchFollowUpBody(question, preliminaryAnswer, model = 'gpt-5.4-mini') {
+  const language = languageName(detectQuestionLanguage(question));
+  return {
+    model,
+    input: [
+      { role: 'system', content: CHAT_SYSTEM_PROMPT },
+      { role: 'developer', content: GUIDE_CONTEXT },
+      { role: 'user', content: `TARGET_LANGUAGE: ${language}\nLATEST_GUEST_QUESTION:\n${question}\n\nPRELIMINARY_ANSWER:\n${String(preliminaryAnswer || '').slice(0, 6000)}\n\nRESEARCH_FOLLOW_UP:\nUse the web search tool again before answering. Replace the preliminary answer with a complete concierge answer. Fill in the practical details requested by the guest from primary sources: exact route, nearby stop, schedule, fare, operating hours, availability, transfer, or alternative as relevant. Do not repeat vague advice or tell the guest merely to check a website. For a scheduled route, audit every time against the guest's direction and boarding stop: never quote a destination-to-origin timetable as an origin-to-destination service. State only details confirmed for the requested time, direction, and location.` }
+    ],
+    prompt_cache_key: PROMPT_CACHE_KEY,
+    tools: [{ type: 'web_search_preview', search_context_size: 'high' }],
+    tool_choice: 'required',
+    temperature: 0.2,
+    max_output_tokens: 1200
+  };
+}
+
+function hasWebSearchCall(data) {
+  return (data?.output || []).some(item => item.type === 'web_search_call');
+}
+
+function mergeUsage(first, second) {
+  if (!first && !second) return undefined;
+  return {
+    input_tokens: (first?.input_tokens || 0) + (second?.input_tokens || 0),
+    cached_tokens: (first?.input_tokens_details?.cached_tokens || 0) + (second?.input_tokens_details?.cached_tokens || 0),
+    output_tokens: (first?.output_tokens || 0) + (second?.output_tokens || 0)
+  };
+}
+
 const DECORATIVE_HEADING_PATTERN = /^(?:와이파이 정보|연결 방법|체크인 시간|체크인 방법|세탁기 사용 방법|건조기 사용 방법|사용 방법|사용 전 꼭 확인해 주세요|꼭 참고해 주세요|도착 팁|추가 팁|참고|Wi-?Fi information|How to connect|Check-in time|Check-in steps|Washer|Dryer|Important|Tips)$/i;
 const TRAILING_INVITATION_PATTERN = /(?:원하시면|궁금한 점|언제든(?:지)?|도와드릴게요|편안한 .*되시|feel free|let me know|happy to help|if you(?:'d| would) like|如需|随时|いつでも|ご希望でしたら)/i;
 const KOREAN_SPACING_REPLACEMENTS = [
@@ -212,7 +242,7 @@ module.exports = async function handler(req, res) {
       body: JSON.stringify(buildRequestBody(question, history, model))
     });
 
-    const data = await response.json();
+    let data = await response.json();
     if (!response.ok) {
       console.warn('OpenAI API fallback:', response.status, data?.error?.code || data?.error?.message || 'unknown');
       return res.status(200).json({
@@ -221,15 +251,35 @@ module.exports = async function handler(req, res) {
       });
     }
 
-    const searched = (data.output || []).some(item => item.type === 'web_search_call');
+    const initialUsage = data.usage;
+    let searched = hasWebSearchCall(data);
+    let usageData = data.usage;
+    if (searched) {
+      const researchResponse = await fetch('https://api.openai.com/v1/responses', {
+        method: 'POST',
+        headers: {
+          'Authorization': `Bearer ${apiKey}`,
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(buildResearchFollowUpBody(question, extractText(data), model))
+      });
+      const researchData = await researchResponse.json();
+      if (researchResponse.ok) {
+        data = researchData;
+        searched = searched || hasWebSearchCall(researchData);
+        usageData = mergeUsage(initialUsage, researchData.usage);
+      } else {
+        console.warn('OpenAI research follow-up skipped:', researchResponse.status, researchData?.error?.code || researchData?.error?.message || 'unknown');
+      }
+    }
     const baseAnswer = formatGuestAnswer(extractText(data), targetLanguageCode, question);
     const answer = searched
       ? addPublicSearchDisclosure(baseAnswer, targetLanguageCode)
       : (baseAnswer || '답변을 만들지 못했어요. Airbnb 메시지로 호스트에게 확인해 주세요.');
-    const usage = data.usage ? {
-      input_tokens: data.usage.input_tokens,
-      cached_tokens: data.usage.input_tokens_details?.cached_tokens || 0,
-      output_tokens: data.usage.output_tokens
+    const usage = usageData ? {
+      input_tokens: usageData.input_tokens,
+      cached_tokens: usageData.input_tokens_details?.cached_tokens ?? usageData.cached_tokens ?? 0,
+      output_tokens: usageData.output_tokens
     } : undefined;
     console.info('Chat usage:', JSON.stringify({ model, knowledge_version: GUIDE_KNOWLEDGE.source.version, ...usage, searched }));
     return res.status(200).json({ answer, model, searched, usage });
@@ -245,11 +295,13 @@ module.exports = async function handler(req, res) {
 module.exports._test = {
   CHAT_SYSTEM_PROMPT,
   GUIDE_KNOWLEDGE,
+  buildResearchFollowUpBody,
   buildRequestBody,
   detectQuestionLanguage,
   formatGuestAnswer,
   addPublicSearchDisclosure,
   localAnswer,
+  mergeUsage,
   normalizeAnswer,
   normalizeKoreanSpacing,
   publicSearchDisclosure

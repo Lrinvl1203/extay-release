@@ -22,6 +22,7 @@ test('prompt asks for detailed, guest-first concierge answers', () => {
   assert.match(CHAT_SYSTEM_PROMPT, /proactively web-search/);
   assert.match(CHAT_SYSTEM_PROMPT, /additional targeted searches/);
   assert.match(CHAT_SYSTEM_PROMPT, /Match a route to the time/);
+  assert.match(CHAT_SYSTEM_PROMPT, /timetable direction and boarding stop/);
   assert.match(CHAT_SYSTEM_PROMPT, /target sentence count or line count/);
   assert.doesNotMatch(CHAT_SYSTEM_PROMPT, /Never give one-line answers/);
   assert.doesNotMatch(CHAT_SYSTEM_PROMPT, /Guest WOW Mode/);
@@ -79,19 +80,31 @@ test('public web results keep useful emoji and receive a clear manual-and-host d
   const originalInfo = console.info;
   process.env.OPENAI_API_KEY = 'test-placeholder';
   console.info = () => {};
-  global.fetch = async () => ({ok:true, json:async()=>({
-    output_text:'🚌 심야 공항버스는 공항에서 서울역 방향으로 운행하는 노선을 확인해 보세요.',
-    output:[{type:'web_search_call'}],
-    usage:{input_tokens:12000,input_tokens_details:{cached_tokens:11008},output_tokens:32}
-  })});
+  const requests = [];
+  global.fetch = async (_, options) => {
+    requests.push(JSON.parse(options.body));
+    const followUp = requests.length > 1;
+    return {ok:true, json:async()=>({
+      output_text: followUp
+        ? '🚌 N6701 심야 리무진은 서울역에서 인천공항으로 갑니다. 요금과 출발 시각은 공식 운행표에서 확인된 값으로 안내하세요.'
+        : '🚌 심야 공항버스는 공항에서 서울역 방향으로 운행하는 노선을 확인해 보세요.',
+      output:[{type:'web_search_call'}],
+      usage:{input_tokens:12000,input_tokens_details:{cached_tokens:11008},output_tokens:32}
+    })};
+  };
   let payload;
   const res = {setHeader(){}, status(){return this;}, json(body){payload=body;return body;}};
   try {
     await handler({method:'POST',body:{message:'인천공항 심야버스가 있나요?',history:[]}}, res);
     assert.equal(payload.searched, true);
     assert.match(payload.answer, /^🚌/);
+    assert.match(payload.answer, /N6701/);
     assert.match(payload.answer, /공개 웹 정보를 참고/);
     assert.match(payload.answer, /호스트에게 한 번 더 확인/);
+    assert.equal(requests.length, 2);
+    assert.equal(requests[1].tool_choice, 'required');
+    assert.match(requests[1].input.at(-1).content, /RESEARCH_FOLLOW_UP/);
+    assert.match(requests[1].input.at(-1).content, /guest's direction and boarding stop/);
   } finally {
     global.fetch = originalFetch;
     console.info = originalInfo;

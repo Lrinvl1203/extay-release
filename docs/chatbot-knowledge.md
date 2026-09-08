@@ -47,7 +47,9 @@ the Airbnb host-contact instruction.
 Every API response uses the detailed concierge format without a sentence, line,
 or character cap, and with a generous web-search/output budget. Property questions expand the supplied manual fact into
 the useful operating steps, limits, troubleshooting, and next action. Public
-questions expand into a practical researched plan. Airport routes additionally
+questions run a second, required web-search pass when the first answer searched;
+that pass replaces broad results with practical details from primary sources.
+Airport routes additionally
 need route number, useful times, fare when available, terminal note, and one
 alternative. The browser fallback remains a concise, safe backup when the API is
 unavailable.
