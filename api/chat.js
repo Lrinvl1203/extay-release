@@ -120,7 +120,12 @@ function buildRequestBody(question, history = [], model = 'gpt-5.4-mini') {
       { role: 'user', content: `TARGET_LANGUAGE: ${languageName(detectQuestionLanguage(question))}\nLATEST_GUEST_QUESTION:\n${question}` }
     ],
     prompt_cache_key: PROMPT_CACHE_KEY,
-    tools: [{ type: 'web_search_preview', search_context_size: 'high' }],
+    // A medium search is enough for ordinary public facts and returns much
+    // sooner. Timetable-sensitive transport questions keep the deeper search.
+    tools: [{
+      type: 'web_search_preview',
+      search_context_size: isScheduledTransitQuestion(question) ? 'high' : 'medium'
+    }],
     tool_choice: 'auto',
     temperature: 0.2,
     max_output_tokens: 1200

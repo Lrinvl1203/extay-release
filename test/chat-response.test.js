@@ -7,6 +7,7 @@ const handler = require('../api/chat');
 const {
   CHAT_SYSTEM_PROMPT,
   addPublicSearchDisclosure,
+  buildRequestBody,
   extractAddressMapLinks,
   extractCitedSources,
   formatGuestAnswer,
@@ -31,6 +32,11 @@ test('prompt asks for detailed, guest-first concierge answers', () => {
   assert.doesNotMatch(CHAT_SYSTEM_PROMPT, /250 characters or fewer/);
   assert.doesNotMatch(CHAT_SYSTEM_PROMPT, /Never give one-line answers/);
   assert.doesNotMatch(CHAT_SYSTEM_PROMPT, /Guest WOW Mode/);
+});
+
+test('ordinary public searches use medium context while timetable questions keep deep search', () => {
+  assert.equal(buildRequestBody('What time does the nearby museum close?').tools[0].search_context_size, 'medium');
+  assert.equal(buildRequestBody('Which airport bus can I take at 3 AM?').tools[0].search_context_size, 'high');
 });
 
 test('legacy long-form prompt is preserved for rollback', () => {
