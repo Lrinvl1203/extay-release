@@ -23,6 +23,8 @@ test('prompt asks for detailed, guest-first concierge answers', () => {
   assert.match(CHAT_SYSTEM_PROMPT, /helpful ChatGPT concierge/);
   assert.match(CHAT_SYSTEM_PROMPT, /Match a route to the time/);
   assert.match(CHAT_SYSTEM_PROMPT, /target sentence count or line count/);
+  assert.match(CHAT_SYSTEM_PROMPT, /Do not impose a character, line, or sentence limit/);
+  assert.doesNotMatch(CHAT_SYSTEM_PROMPT, /250 characters or fewer/);
   assert.doesNotMatch(CHAT_SYSTEM_PROMPT, /Never give one-line answers/);
   assert.doesNotMatch(CHAT_SYSTEM_PROMPT, /Guest WOW Mode/);
 });
