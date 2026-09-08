@@ -34,9 +34,10 @@
   });
 
   const cover = (place, compact = false) => `
-    <figure class="${compact ? 'tour-mini' : 'restaurant-photo tour-card-cover'} tour-photo-cover">
-      <img src="${esc(place.image)}" alt="${esc(t(place.name))}" loading="${compact ? 'eager' : 'lazy'}">
-      <span class="tour-photo-shade" aria-hidden="true"></span>
+    <figure class="${compact ? 'tour-mini' : 'restaurant-photo tour-card-cover'} tour-photo-cover tour-tone-${esc(place.tone)}">
+      ${place.image ? `<img src="${esc(place.image)}" alt="${esc(t(place.name))}" loading="${compact ? 'eager' : 'lazy'}">` : ''}
+      ${place.image ? '<span class="tour-photo-shade" aria-hidden="true"></span>' : ''}
+      <span class="mi tour-cover-icon" aria-hidden="true">${esc(place.icon)}</span>
       <span class="tour-cover-number">${esc(place.number)}</span>
       <span class="tour-cover-kicker">${place.host ? 'HOST’S PICK' : 'LOCAL ROUTE'}</span>
       <strong class="tour-cover-name">${esc(t(place.name))}</strong>
@@ -112,11 +113,11 @@
     if (!root) return;
     const total = DATA.places.length;
     const homeLabels = {
-      ko: ['근교 추천 투어', `근교 추천 투어 ${total}곳 보기`],
+      ko: ['근교 추천 투어', `해방촌에서 시작하는 추천 ${total}곳 보기`],
       en: ['Nearby Tours', `View ${total} nearby tours`],
       ja: ['近郊おすすめツアー', `近郊スポット${total}選を見る`],
       zh: ['附近精选路线', `查看${total}个附近景点`], "zh-TW":["附近精選路線", `檢視${total}個附近景點`],
-    }[lang()] || ['근교 추천 투어', `근교 추천 투어 ${total}곳 보기`];
+    }[lang()] || ['근교 추천 투어', `해방촌에서 시작하는 추천 ${total}곳 보기`];
     const homeTitle = $('#homeToursTitle');
     const browseLabel = $('#tourBrowseLabel');
     if (homeTitle) homeTitle.textContent = homeLabels[0];
@@ -127,9 +128,6 @@
         <span class="nearby-card-copy"><small>${esc(t(place.travel))}</small><strong>${esc(t(place.name))}</strong><span>${esc((t(place.tags) || []).slice(0, 2).join(' · '))}</span></span>
         <span class="mi">arrow_forward</span>
       </button>`).join('');
-    $$('[data-go="tours"]', root).forEach((button) => {
-      button.onclick = () => document.querySelector('[data-screen="tours"]')?.classList.add('active');
-    });
   }
 
   window.ExtayTours = { renderTours };
