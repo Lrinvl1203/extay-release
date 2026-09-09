@@ -898,6 +898,35 @@ body.guidebook-fullscreen-open{overflow:hidden;touch-action:none}
 .security-editorial-text strong{color:#26382f}
 .security-editorial-text p{color:#6d5e51}
 .rules-title-line{display:block}
+.rules-editorial{margin-top:26px;padding:0 2px 24px;font-family:var(--font-ko)}
+.rules-editorial-intro{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:18px;align-items:end;padding:9px 0 25px;border-top:1px solid rgba(117,72,54,.28);border-bottom:1px solid rgba(117,72,54,.28)}
+.rules-editorial-intro small{display:block;margin-bottom:12px;color:#a05f45;font-family:'Oxanium',var(--font-ko);font-size:11px;font-weight:800;letter-spacing:.13em}
+.rules-editorial-intro h3{margin:0;color:#26382f;font-size:29px;font-weight:800;line-height:1.15;letter-spacing:-.045em}
+.rules-editorial-count{margin:0;color:rgba(117,72,54,.2);font-family:'Oxanium',var(--font-ko);font-size:62px;font-weight:600;line-height:.8;letter-spacing:-.08em}
+.rules-editorial-lede{max-width:320px;margin:25px 0 30px;color:#5f5145;font-size:17px;font-weight:650;line-height:1.65;letter-spacing:-.025em;word-break:keep-all}
+.rules-editorial-list{display:grid;gap:0}
+.rule-spread{position:relative;display:grid;grid-template-columns:48px minmax(0,1fr);gap:15px;padding:23px 4px;border-bottom:1px solid rgba(117,72,54,.22)}
+.rule-spread-number{padding-top:2px;color:#b55d3d;font-family:'Oxanium',var(--font-ko);font-size:12px;font-weight:800;letter-spacing:.08em}
+.rule-spread-main{display:grid;grid-template-columns:42px minmax(0,1fr);gap:13px;align-items:start}
+.rules-icon{position:relative;width:42px;height:42px;display:grid;place-items:center;border:1px solid rgba(117,72,54,.24);border-radius:50%;background:#fffaf4;color:#754836}
+.rules-icon .mi{font-size:21px;color:inherit}
+.rules-icon.no-pets-icon:before{content:"";position:absolute;inset:5px;border:1.5px solid currentColor;border-radius:50%}
+.rules-icon.no-pets-icon:after{content:"";position:absolute;width:29px;height:1.5px;border-radius:999px;background:currentColor;transform:rotate(-45deg)}
+.rule-spread-copy{min-width:0}
+.rule-spread-copy>small{display:block;margin:1px 0 6px;color:#9a654e;font-family:'Oxanium',var(--font-ko);font-size:10px;font-weight:800;line-height:1.25;letter-spacing:.1em}
+.rule-spread-copy b{display:block;margin-bottom:7px;color:#7b634f;font-size:12px;font-weight:800;line-height:1.4}
+.rule-spread-copy strong{display:block;color:#26382f;font-size:16px;font-weight:800;line-height:1.55;letter-spacing:-.025em;word-break:keep-all}
+.rule-spread-copy p{margin:7px 0 0;color:#6d5e51;font-size:14px;line-height:1.6;word-break:keep-all}
+.rule-spread:nth-child(1){margin-bottom:10px;padding:25px 20px;border:0;border-radius:18px;background:#26382f;color:#fffaf4}
+.rule-spread:nth-child(1) .rule-spread-number{color:#e2a180}
+.rule-spread:nth-child(1) .rules-icon{border-color:rgba(255,250,244,.35);background:rgba(255,250,244,.08);color:#fffaf4}
+.rule-spread:nth-child(1) .rule-spread-copy>small,.rule-spread:nth-child(1) .rule-spread-copy b{color:#d9b7a3}
+.rule-spread:nth-child(1) .rule-spread-copy strong{color:#fffaf4;font-size:18px}
+.rule-spread:nth-child(2),.rule-spread:nth-child(5){margin-left:28px}
+.rule-spread:nth-child(4){margin:12px 0;padding:24px 18px;border:0;border-left:4px solid #b55d3d;background:#efe4d6}
+.rule-spread:nth-child(6){border-bottom:0}
+.rules-editorial-signoff{display:flex;align-items:center;gap:12px;margin-top:15px;color:#9a654e;font-family:'Oxanium',var(--font-ko);font-size:10px;font-weight:800;letter-spacing:.13em}
+.rules-editorial-signoff:before{content:"";width:44px;height:1px;background:#b55d3d}
 .checkin-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
 .checkin-fact{border-radius:16px;background:#f3eadf;padding:15px}
 .checkin-fact small{display:block;margin-bottom:6px;color:#8a7663;font-size:11px;font-weight:800;text-transform:uppercase}
@@ -2012,17 +2041,40 @@ body .latin-font{font-family:'Oxanium','Arial Narrow',Arial,sans-serif!important
 
       <section class="screen guide-detail-screen rules-screen" data-screen="rules">
         <article class="guide-detail-hero rules-hero"><p class="section-kicker">HOUSE RULES</p><h2 class="page-title">모두가 편안한 머무름을 위해</h2><p class="page-sub">함께 지키는 숙소 이용 안내</p></article>
-        <article class="guide-info-card rules-guide-card" aria-labelledby="rulesGuideTitle">
-          <div class="guide-card-header"><span class="guide-card-icon"><span class="mi">checklist</span></span><span class="guide-card-heading"><small>HOUSE RULES</small><h3 id="rulesGuideTitle">꼭 지켜주세요</h3></span></div>
-          <div class="guide-card-body"><div class="checkin-info-list">
-            <div class="checkin-info-row"><span class="checkin-row-icon"><span class="mi">smoke_free</span></span><small>실내 금연</small><div><strong>객실, 베란다, 현관 입구와 계단은 모두 금연 구역입니다.</strong></div></div>
-            <div class="checkin-info-row"><span class="checkin-row-icon"><span class="mi">smoking_rooms</span></span><small>흡연 장소</small><div><strong>1층 지정 장소에서만 가능</strong><p>담배꽁초는 지정된 통에 버려 주세요.</p></div></div>
-            <div class="checkin-info-row"><span class="checkin-row-icon no-pets-icon"><span class="mi">pets</span></span><small>방문자</small><div><strong>반려동물 동반과 기준 인원 외 방문자 입실은 불가합니다.</strong></div></div>
-            <div class="checkin-info-row"><span class="checkin-row-icon"><span class="mi">volume_down</span></span><small>매너타임</small><div><strong>저녁 9시 이후에는 소리를 낮춰 주세요.</strong></div></div>
-            <div class="checkin-info-row"><span class="checkin-row-icon"><span class="mi">restaurant_menu</span></span><small>간단 취사</small><div><strong>냄새가 강한 음식은 피하고 간단한 취사만 부탁드립니다.</strong></div></div>
-            <div class="checkin-info-row"><span class="checkin-row-icon"><span class="mi">dry_cleaning</span></span><small>기본 비품</small><div><strong>인원 수에 맞춰 일회용 칫솔과 수건이 제공됩니다.</strong></div></div>
-          </div></div>
-        </article>
+        <section class="rules-editorial" aria-labelledby="rulesGuideTitle">
+          <header class="rules-editorial-intro">
+            <div><small>HOUSE ETIQUETTE · 01—06</small><h3 id="rulesGuideTitle">꼭 지켜주세요</h3></div>
+            <p class="rules-editorial-count" aria-hidden="true">06</p>
+          </header>
+          <p class="rules-editorial-lede">함께 머무는 공간일수록 작은 배려가 편안함을 만듭니다.</p>
+          <div class="rules-editorial-list">
+            <article class="rule-spread">
+              <span class="rule-spread-number">01</span>
+              <div class="rule-spread-main"><span class="rules-icon" aria-hidden="true"><span class="mi">smoke_free</span></span><div class="rule-spread-copy"><small>NO SMOKING</small><b>실내 금연</b><strong>객실, 베란다, 현관 입구와 계단은 모두 금연 구역입니다.</strong></div></div>
+            </article>
+            <article class="rule-spread">
+              <span class="rule-spread-number">02</span>
+              <div class="rule-spread-main"><span class="rules-icon" aria-hidden="true"><span class="mi">smoking_rooms</span></span><div class="rule-spread-copy"><small>DESIGNATED AREA</small><b>흡연 장소</b><strong>1층 지정 장소에서만 가능</strong><p>담배꽁초는 지정된 통에 버려 주세요.</p></div></div>
+            </article>
+            <article class="rule-spread">
+              <span class="rule-spread-number">03</span>
+              <div class="rule-spread-main"><span class="rules-icon no-pets-icon" aria-hidden="true"><span class="mi">pets</span></span><div class="rule-spread-copy"><small>GUEST POLICY</small><b>방문자</b><strong>반려동물 동반과 기준 인원 외 방문자 입실은 불가합니다.</strong></div></div>
+            </article>
+            <article class="rule-spread">
+              <span class="rule-spread-number">04</span>
+              <div class="rule-spread-main"><span class="rules-icon" aria-hidden="true"><span class="mi">volume_down</span></span><div class="rule-spread-copy"><small>QUIET HOURS</small><b>매너타임</b><strong>저녁 9시 이후에는 소리를 낮춰 주세요.</strong></div></div>
+            </article>
+            <article class="rule-spread">
+              <span class="rule-spread-number">05</span>
+              <div class="rule-spread-main"><span class="rules-icon" aria-hidden="true"><span class="mi">restaurant_menu</span></span><div class="rule-spread-copy"><small>LIGHT COOKING</small><b>간단 취사</b><strong>냄새가 강한 음식은 피하고 간단한 취사만 부탁드립니다.</strong></div></div>
+            </article>
+            <article class="rule-spread">
+              <span class="rule-spread-number">06</span>
+              <div class="rule-spread-main"><span class="rules-icon" aria-hidden="true"><span class="mi">dry_cleaning</span></span><div class="rule-spread-copy"><small>AMENITIES</small><b>기본 비품</b><strong>인원 수에 맞춰 일회용 칫솔과 수건이 제공됩니다.</strong></div></div>
+            </article>
+          </div>
+          <div class="rules-editorial-signoff">THANK YOU FOR CARING</div>
+        </section>
       </section>
 
       <section class="screen guide-detail-screen" data-screen="laundry"><article class="guide-detail-hero laundry-hero"><p class="section-kicker">LAUNDRY GUIDE</p><h2 class="page-title">세탁 안내</h2></article>
@@ -2242,7 +2294,7 @@ body .latin-font{font-family:'Oxanium','Arial Narrow',Arial,sans-serif!important
     uiText['zh-TW'].stayResident.helpCopy='請透過您預訂時使用的 Airbnb 訊息聯絡房東。';
     ['ko','en','zh','zh-TW','ja'].forEach(lang=>{uiText[lang].footerCopy='SEOUL PRIVATE STAY'});
     const FULL_TEXT_I18N={
-      '모두가 편안한 머무름을 위해':['A Comfortable Stay for Everyone','为了每个人都能舒适入住','みんなが心地よく過ごすために'],'함께 지키는 숙소 이용 안내':['House guidelines we follow together','共同遵守的住宿使用指南','一緒に守る宿泊ルール'],'찾아오는 길':['Getting Here','前往住宿','アクセス'],'셀프 체크인':['Self Check-in','自助入住','セルフチェックイン'],'체크인 당일 낮 12시쯤 에어비앤비 메시지로 전송되는 개인 출입 키 번호를 확인해 주세요.':['Check the personal door code sent through Airbnb messages around noon on check-in day.','请查看入住当天中午左右通过Airbnb消息发送的个人门锁密码。','チェックイン当日の正午頃にAirbnbメッセージで届く個人用ドアコードをご確認ください。'],'체크인은 오후 4시부터 가능합니다. 주소는 서울시 용산구 신흥로 59, 2층입니다.':['Check-in is available from 4 PM. The address is 2F, 59 Sinheung-ro, Yongsan-gu, Seoul.','入住时间为下午4点起。地址是首尔市龙山区新兴路59号2楼。','チェックインは午後4時からです。住所はソウル市龍山区新興路59、2階です。'],'건물 입구에서 안내받은 키 번호를 입력하고 2층 EXTAY Mansion으로 올라와 주세요.':['Enter the provided door code at the building entrance and come up to EXTAY Mansion on the 2nd floor.','请在建筑入口输入收到的门锁密码，然后前往2楼的EXTAY Mansion。','建物入口で案内されたドアコードを入力し、2階のEXTAY Mansionへお越しください。'],'입실 후 문이 잠겼는지 확인하고, 키 번호는 예약 인원 외 다른 사람과 공유하지 마세요.':['After entering, make sure the door is locked and do not share the code with anyone outside your reservation.','进入后请确认房门已上锁，请勿向预约人员以外的任何人分享门锁密码。','入室後は施錠を確認し、ドアコードを予約者以外に共有しないでください。'],'체크아웃 안내':['Checkout Guide','退房指南','チェックアウト案内'],
+      '모두가 편안한 머무름을 위해':['A Comfortable Stay for Everyone','为了每个人都能舒适入住','みんなが心地よく過ごすために'],'함께 지키는 숙소 이용 안내':['House guidelines we follow together','共同遵守的住宿使用指南','一緒に守る宿泊ルール'],'함께 머무는 공간일수록 작은 배려가 편안함을 만듭니다.':['In a shared space, small acts of care make everyone more comfortable.','共同居住的空间里，小小的体贴能让每个人都更舒适。','一緒に過ごす空間では、小さな心配りがみんなの心地よさにつながります。'],'찾아오는 길':['Getting Here','前往住宿','アクセス'],'셀프 체크인':['Self Check-in','自助入住','セルフチェックイン'],'체크인 당일 낮 12시쯤 에어비앤비 메시지로 전송되는 개인 출입 키 번호를 확인해 주세요.':['Check the personal door code sent through Airbnb messages around noon on check-in day.','请查看入住当天中午左右通过Airbnb消息发送的个人门锁密码。','チェックイン当日の正午頃にAirbnbメッセージで届く個人用ドアコードをご確認ください。'],'체크인은 오후 4시부터 가능합니다. 주소는 서울시 용산구 신흥로 59, 2층입니다.':['Check-in is available from 4 PM. The address is 2F, 59 Sinheung-ro, Yongsan-gu, Seoul.','入住时间为下午4点起。地址是首尔市龙山区新兴路59号2楼。','チェックインは午後4時からです。住所はソウル市龍山区新興路59、2階です。'],'건물 입구에서 안내받은 키 번호를 입력하고 2층 EXTAY Mansion으로 올라와 주세요.':['Enter the provided door code at the building entrance and come up to EXTAY Mansion on the 2nd floor.','请在建筑入口输入收到的门锁密码，然后前往2楼的EXTAY Mansion。','建物入口で案内されたドアコードを入力し、2階のEXTAY Mansionへお越しください。'],'입실 후 문이 잠겼는지 확인하고, 키 번호는 예약 인원 외 다른 사람과 공유하지 마세요.':['After entering, make sure the door is locked and do not share the code with anyone outside your reservation.','进入后请确认房门已上锁，请勿向预约人员以外的任何人分享门锁密码。','入室後は施錠を確認し、ドアコードを予約者以外に共有しないでください。'],'체크아웃 안내':['Checkout Guide','退房指南','チェックアウト案内'],
       '에어비앤비 메시지에서 개인 키 번호를 확인하세요.':['Check your personal door code in Airbnb messages.','请在Airbnb消息中查看个人门锁密码。','Airbnbメッセージで個人用ドアコードをご確認ください。'],'체크인 당일 낮 12시쯤 도착합니다.':['It arrives around noon on check-in day.','密码会在入住当天中午左右送达。','チェックイン当日の正午頃に届きます。'],'오후 4시부터 EXTAY Mansion 2층으로 입실하세요.':['Enter EXTAY Mansion on the 2nd floor from 4 PM.','下午4点起可进入2楼的EXTAY Mansion。','午後4時から2階のEXTAY Mansionへご入室ください。'],'서울시 용산구 신흥로 59':['59 Sinheung-ro, Yongsan-gu, Seoul','首尔市龙山区新兴路59号','ソウル市龍山区新興路59'],'입실 후 문 잠금을 확인하세요.':['Make sure the door is locked after entering.','入住后请确认房门已上锁。','入室後はドアの施錠をご確認ください。'],'키 번호는 예약 인원 외 공유하지 마세요.':['Do not share the code outside your reservation.','请勿向预约人员以外的人分享密码。','ドアコードを予約者以外に共有しないでください。'],'좋은 머무름이었다면 별 5개와 추천 리뷰를 남겨주세요.':['If you enjoyed your stay, please leave five stars and a recommendation.','如果您喜欢这次住宿，请留下五星好评与推荐。','快適にお過ごしいただけたら、星5つとおすすめレビューをお願いします。'],'불편했던 점은 에어비앤비 메시지로 알려주세요.':['Please share anything uncomfortable through Airbnb messages.','如有不便之处，请通过Airbnb消息告诉我们。','ご不便な点はAirbnbメッセージでお知らせください。'],'설거지와 쓰레기 분리수거를 부탁드려요. 음식물은 싱크대 위 전용 통에 넣어주세요.':['Please wash dishes and sort the trash. Put food waste in the dedicated bin above the sink.','请清洗餐具并分类垃圾，厨余垃圾请放入水槽上方的专用桶。','食器洗いとゴミの分別をお願いします。生ゴミはシンク上の専用容器へ入れてください。'],'냉난방과 조명을 모두 꺼주세요.':['Turn off all heating, cooling, and lights.','请关闭所有冷暖气和照明。','冷暖房と照明をすべて消してください。'],'풍선과 가랜드 등 이벤트 장식은 정리해 주세요.':['Please remove balloons, garlands, and other event decorations.','请收拾气球、彩带等活动装饰。','風船やガーランドなどの装飾は片付けてください。'],'놓고 가는 물건을 확인하고 창문과 현관문을 닫아주세요.':['Check for belongings, then close the windows and front door.','请确认没有遗留物品，并关好窗户和玄关门。','忘れ物を確認し、窓と玄関ドアを閉めてください。'],
       '객실 둘러보기':['Room Gallery','客房浏览','客室を見る'],'좌우로 밀어 사진 보기':['Swipe left or right','左右滑动查看照片','左右にスワイプして写真を見る'],'거실 라운지':['Living Lounge','客厅休息区','リビングラウンジ'],'따뜻한 조명과 편안한 소파가 있는 메인 거실 공간입니다.':['The main living space with warm lighting and a comfortable sofa.','配有温暖灯光和舒适沙发的主客厅空间。','温かな照明と快適なソファのあるメインリビングです。'],
       '체크인 · 체크아웃 안내':['Check-in · Checkout Guide','入住 · 退房指南','チェックイン · チェックアウト案内'],'입퇴실 안내':['Arrival & Departure','入住与退房','入退室案内'],'이용 시간':['Hours','使用时间','利用時間'],'체크인 16:00 · 체크아웃 11:00':['Check-in 16:00 · Checkout 11:00','入住 16:00 · 退房 11:00','チェックイン 16:00 · チェックアウト 11:00'],'개인 키 번호는 체크인 당일 12시쯤 호스트 메시지로 안내됩니다.':['Your personal door code is sent by the host around noon on check-in day.','个人门锁密码将在入住当天中午左右由房东通过消息发送。','個人用ドアコードはチェックイン当日の正午頃にホストメッセージで届きます。'],'주소':['Address','地址','住所'],'서울시 용산구 신흥로 59, 2층':['2F, 59 Sinheung-ro, Yongsan-gu, Seoul','首尔市龙山区新兴路59号2楼','ソウル市龍山区新興路59、2階'],'입실 방식':['Entry','入住方式','入室方法'],'비대면 셀프 체크인':['Contactless self check-in','无接触自助入住','非対面セルフチェックイン'],'주차':['Parking','停车','駐車'],'건물 주차 불가':['No on-site parking','楼内不可停车','建物内駐車不可'],'주변 유료 공영주차장을 이용해 주세요.':['Please use a nearby paid public parking lot.','请使用附近的收费公共停车场。','近隣の有料公共駐車場をご利用ください。'],'짐 보관':['Luggage','行李寄存','荷物預かり'],'체크인 전 · 체크아웃 후 짐 보관 불가':['No luggage storage before check-in or after checkout','入住前及退房后不可寄存行李','チェックイン前・チェックアウト後の荷物預かり不可'],'주차 안내':['Parking Guide','停车指南','駐車案内'],'주말 점심·저녁 피크 시간에는 자리가 없을 수 있습니다.':['Parking may be full during weekend lunch and dinner peaks.','周末午餐和晚餐高峰时段可能没有空位。','週末の昼食・夕食ピーク時は満車の場合があります。'],'‘모두의주차장’ 앱을 이용하면 실시간으로 근처 유료 주차장을 검색할 수 있습니다.':['Use the Modu Parking app to find nearby paid parking in real time.','可使用“Modu Parking”应用实时搜索附近收费停车场。','「Modu Parking」アプリで近隣の有料駐車場をリアルタイム検索できます。'],'용산2가동 기계식 공용주차장':['Yongsan 2-ga Mechanical Public Parking','龙山2街洞机械式公共停车场','龍山2街洞機械式公共駐車場'],'신흥로2길 74':['74 Sinheung-ro 2-gil','新兴路2街74号','新興路2キル74'],'도보 5분 · 100m · SUV 불가 · 기계식':['5 min walk · 100m · No SUVs · Mechanical','步行5分钟 · 100米 · SUV不可 · 机械式','徒歩5分 · 100m · SUV不可 · 機械式'],'용산2가 주민센터 공용주차장':['Yongsan 2-ga Community Center Parking','龙山2街居民中心公共停车场','龍山2街住民センター公共駐車場'],'신흥로 90':['90 Sinheung-ro','新兴路90号','新興路90'],'도보 10분 · 310m · 지상주차장':['10 min walk · 310m · Outdoor lot','步行10分钟 · 310米 · 地面停车场','徒歩10分 · 310m · 平面駐車場'],'해방촌공영주차장':['Haebangchon Public Parking','解放村公共停车场','解放村公共駐車場'],'소월로20길 56':['56 Sowol-ro 20-gil','素月路20街56号','ソウォル路20キル56'],'도보 6분 · 367m · 지상주차장':['6 min walk · 367m · Outdoor lot','步行6分钟 · 367米 · 地面停车场','徒歩6分 · 367m · 平面駐車場'],'녹사평역 코인락커 안내':['Noksapyeong Station Lockers','绿莎坪站投币储物柜','緑莎坪駅コインロッカー'],'녹사평역 B1층 엘리베이터(E/V) 주변':['Near the elevator (E/V), B1, Noksapyeong Station','绿莎坪站B1层电梯（E/V）附近','緑莎坪駅B1階エレベーター（E/V）付近'],'공개 위치 정보 기준으로 편의점 7-ELEVEN 주변에 물품보관함이 있습니다.':['Public location data shows lockers near the 7-ELEVEN.','根据公开位置信息，7-ELEVEN附近设有储物柜。','公開位置情報では7-ELEVEN付近にロッカーがあります。'],'소형 15 · 중형 2 · 대형 4':['Small 15 · Medium 2 · Large 4','小型15 · 中型2 · 大型4','小型15 · 中型2 · 大型4'],'공개 데이터 기준 수량입니다. 실제 잔여함은 현장 또는 앱에서 다시 확인하세요.':['Counts are based on public data. Check live availability on site or in the app.','数量基于公开数据，请在现场或应用中确认实时余量。','公開データ上の数量です。空き状況は現地またはアプリでご確認ください。'],'T locker 또타라커 이용 권장':['T locker app recommended','推荐使用T locker应用','T lockerアプリ推奨'],'앱에서 주변 물품보관함을 검색하고, 역사별 사용 가능 여부를 확인한 뒤 예약·결제할 수 있습니다.':['Search nearby lockers, check station availability, then reserve and pay in the app.','可在应用中搜索附近储物柜、确认各站可用情况并预约付款。','アプリで周辺ロッカーと駅別の空きを確認し、予約・決済できます。'],
