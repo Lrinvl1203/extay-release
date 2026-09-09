@@ -15,7 +15,7 @@ test('guest header and menu stay unified across every route and five languages',
   assert.doesNotMatch(html, /id="(?:openGuidebookTop|langToggle|openChatTop)"/);
   assert.deepEqual(
     [...html.matchAll(/class="menu-link"[^>]*data-go="([^"]+)"/g)].map(match => match[1]),
-    ['home', 'gallery', 'transport', 'checkin', 'wifi', 'appliances', 'rules', 'restaurants', 'tours', 'laundry', 'trash', 'guidebook']
+    ['home', 'gallery', 'transport', 'checkin', 'wifi', 'appliances', 'laundry', 'trash', 'rules', 'restaurants', 'tours']
   );
   assert.match(html, /\.rules-editorial-count\{[^}]*background:transparent/);
 });

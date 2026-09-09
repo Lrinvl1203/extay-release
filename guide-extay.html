@@ -2107,12 +2107,11 @@ body .latin-font{font-family:'Oxanium','Arial Narrow',Arial,sans-serif!important
       <button class="menu-link" type="button" data-go="checkin"><span class="menu-icon"><span class="mi">login</span></span><span class="menu-copy"><strong>체크인 · 체크아웃 안내</strong><small>입실·퇴실 방법과 이용 안내</small></span><span class="menu-chevron"><span class="mi">chevron_right</span></span></button>
       <button class="menu-link" type="button" data-go="wifi"><span class="menu-icon"><span class="mi">wifi</span></span><span class="menu-copy"><strong>Wi-Fi</strong><small>네트워크 정보와 비밀번호</small></span><span class="menu-chevron"><span class="mi">chevron_right</span></span></button>
       <button class="menu-link" type="button" data-go="appliances"><span class="menu-icon"><span class="mi">tv</span></span><span class="menu-copy"><strong>TV · 난방 · 루프탑 안내</strong><small>TV · 온수 · 루프탑</small></span><span class="menu-chevron"><span class="mi">chevron_right</span></span></button>
+      <button class="menu-link" type="button" data-go="laundry"><span class="menu-icon"><span class="mi">local_laundry_service</span></span><span class="menu-copy"><strong>Laundry</strong><small>세탁기 · 건조기 사용법</small></span><span class="menu-chevron"><span class="mi">chevron_right</span></span></button>
+      <button class="menu-link" type="button" data-go="trash"><span class="menu-icon"><span class="mi">delete_outline</span></span><span class="menu-copy"><strong>쓰레기 배출</strong><small>분리수거와 배출 안내</small></span><span class="menu-chevron"><span class="mi">chevron_right</span></span></button>
       <button class="menu-link" type="button" data-go="rules"><span class="menu-icon"><span class="mi">checklist</span></span><span class="menu-copy"><strong>모두가 편안한 머무름을 위해</strong><small>함께 지키는 숙소 이용 안내</small></span><span class="menu-chevron"><span class="mi">chevron_right</span></span></button>
       <button class="menu-link" type="button" data-go="restaurants"><span class="menu-icon"><span class="mi">restaurant</span></span><span class="menu-copy"><strong>주변 맛집</strong><small>EXTAY 맨션 해방촌이 고른 주변 맛집</small></span><span class="menu-chevron"><span class="mi">chevron_right</span></span></button>
       <button class="menu-link" type="button" data-go="tours"><span class="menu-icon"><span class="mi">near_me</span></span><span class="menu-copy"><strong>추천 근교 투어</strong><small>서울에서 만나는 추천 17곳</small></span><span class="menu-chevron"><span class="mi">chevron_right</span></span></button>
-      <button class="menu-link" type="button" data-go="laundry"><span class="menu-icon"><span class="mi">local_laundry_service</span></span><span class="menu-copy"><strong>Laundry</strong><small>세탁기 · 건조기 사용법</small></span><span class="menu-chevron"><span class="mi">chevron_right</span></span></button>
-      <button class="menu-link" type="button" data-go="trash"><span class="menu-icon"><span class="mi">delete_outline</span></span><span class="menu-copy"><strong>쓰레기 배출</strong><small>분리수거와 배출 안내</small></span><span class="menu-chevron"><span class="mi">chevron_right</span></span></button>
-      <button class="menu-link" type="button" data-go="guidebook"><span class="menu-icon"><span class="mi">menu_book</span></span><span class="menu-copy"><strong>Guidebook</strong><small>한글 · 영문 PDF 보기</small></span><span class="menu-chevron"><span class="mi">chevron_right</span></span></button>
     </nav>
     <div class="menu-footer-note"><span>EXTAY Mansion</span><small>SEOUL PRIVATE STAY</small></div>
   </aside>
@@ -2300,7 +2299,7 @@ body .latin-font{font-family:'Oxanium','Arial Narrow',Arial,sans-serif!important
     uiText['zh-TW'].galleryEditorial.markerNotes=['光與溫度停留的\n家的中心。','圍坐分享餐食與\n故事的時光。','一起旅行，\n也按自己的步調休息。','近距離眺望南山與\n解放村風景的地方。'];
     uiText.ja.galleryEditorial.markerNotes=['光とぬくもりが残る\n家の中心。','食事と会話を\nともに楽しむ時間。','一緒に旅しても、\n休むペースはそれぞれに。','南山と解放村の景色を\n間近に感じる場所。'];
     uiText['zh-TW'].stayResident.helpCopy='請透過您預訂時使用的 Airbnb 訊息聯絡房東。';
-    const MENU_ORDER=[0,1,2,3,4,5,6,9,10,7,8,11];
+    const MENU_ORDER=[0,1,2,3,4,5,7,8,6,9,10];
     Object.values(uiText).forEach(copy=>{
       copy.menuTitles=MENU_ORDER.map(index=>copy.menuTitles[index]);
       copy.menuSubs=MENU_ORDER.map(index=>copy.menuSubs[index]);
