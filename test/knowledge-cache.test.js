@@ -12,6 +12,11 @@ test('browser favicon uses the current EXTAY Mansion logo', () => {
   assert.doesNotMatch(html, /rel="(?:shortcut )?icon"[^>]*extay-logo-symbol\.png/);
 });
 
+test('first-visit brand intro stays visible 1.7 times longer', () => {
+  assert.match(html, /const BRAND_INTRO_DURATION_MS=1530;/);
+  assert.match(html, /setTimeout\(\(\)=>\{intro\.classList\.add\('is-leaving'\)[\s\S]*?\},BRAND_INTRO_DURATION_MS\)/);
+});
+
 test('guest header and menu stay unified across every route and five languages', () => {
   assert.deepEqual(
     [...html.matchAll(/class="home-language-option"[^>]*data-language="([^"]+)"/g)].map(match => match[1]),
