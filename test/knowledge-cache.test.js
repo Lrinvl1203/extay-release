@@ -7,6 +7,11 @@ const handler = require('../api/chat');
 const { GUIDE_KNOWLEDGE: guide, buildRequestBody, localAnswer } = handler._test;
 const html = fs.readFileSync(path.join(__dirname, '..', 'guide-extay.html'), 'utf8');
 
+test('browser favicon uses the current EXTAY Mansion logo', () => {
+  assert.match(html, /rel="icon"[^>]*href="assets\/extay\/extay-logo-official\.png\?v=20260909"/);
+  assert.doesNotMatch(html, /rel="(?:shortcut )?icon"[^>]*extay-logo-symbol\.png/);
+});
+
 test('guest header and menu stay unified across every route and five languages', () => {
   assert.deepEqual(
     [...html.matchAll(/class="home-language-option"[^>]*data-language="([^"]+)"/g)].map(match => match[1]),
