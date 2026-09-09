@@ -7,8 +7,8 @@ const handler = require('../api/chat');
 const { GUIDE_KNOWLEDGE: guide, buildRequestBody, localAnswer } = handler._test;
 const html = fs.readFileSync(path.join(__dirname, '..', 'guide-extay.html'), 'utf8');
 
-test('browser favicon uses the cropped EXTAY-only wordmark', () => {
-  assert.match(html, /rel="icon"[^>]*href="assets\/extay\/extay-logo-tab\.png\?v=20260909b"/);
+test('browser favicon uses the cropped leading E brand mark', () => {
+  assert.match(html, /rel="icon"[^>]*href="assets\/extay\/extay-logo-tab\.png\?v=20260909c"/);
   assert.doesNotMatch(html, /rel="(?:shortcut )?icon"[^>]*extay-logo-symbol\.png/);
   assert.doesNotMatch(html, /rel="(?:shortcut )?icon"[^>]*extay-logo-official\.png/);
 });
