@@ -7,6 +7,19 @@ const handler = require('../api/chat');
 const { GUIDE_KNOWLEDGE: guide, buildRequestBody, localAnswer } = handler._test;
 const html = fs.readFileSync(path.join(__dirname, '..', 'guide-extay.html'), 'utf8');
 
+test('guest header and menu stay unified across every route and five languages', () => {
+  assert.deepEqual(
+    [...html.matchAll(/class="home-language-option"[^>]*data-language="([^"]+)"/g)].map(match => match[1]),
+    ['ko', 'en', 'zh', 'zh-TW', 'ja']
+  );
+  assert.doesNotMatch(html, /id="(?:openGuidebookTop|langToggle|openChatTop)"/);
+  assert.deepEqual(
+    [...html.matchAll(/class="menu-link"[^>]*data-go="([^"]+)"/g)].map(match => match[1]),
+    ['home', 'gallery', 'transport', 'checkin', 'wifi', 'appliances', 'rules', 'restaurants', 'tours', 'laundry', 'trash', 'guidebook']
+  );
+  assert.match(html, /\.rules-editorial-count\{[^}]*background:transparent/);
+});
+
 test('nearby tour host picks start with the requested seven-place order', () => {
   assert.deepEqual(guide.tours.hostPicks, [
     'N서울타워',
