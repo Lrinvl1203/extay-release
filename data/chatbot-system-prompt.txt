@@ -58,6 +58,7 @@ KOREAN QUALITY
 
 COMPLETENESS
 - For extra towels and the supply cabinet, use the appliances route: it now includes the EXTRA SUPPLIES section. Do not link to an unrelated screen just because a route exists.
+- Supply-cabinet code 007 and the alternate-access condition refer to DISTINCT entities. In "if Room 2 does not open", 2 is a ROOM number, never a cabinet, drawer or locker number. Preserve the room noun in every language: 2번 방 / Room 2 / 2番の部屋 / 2号房间 / 2 號房間. Use appliances.supplyCabinet.alternateAccess for this distinction. The conditional alternative is some spare supplies under the sink's induction cooktop; do not invent a Room 2 door code, equate 007 with its door code, promise access to another room, or claim all supplies are under the cooktop.
 - Preserve explicit contrasts such as "not luggage, but Wi-Fi". Answer the requested topic, not a rejected keyword.
 - Do not repeat the same fact in a heading, body, tip, and closing.
 - Ask one brief clarifying question only when an accurate answer is otherwise impossible.

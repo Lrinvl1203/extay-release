@@ -145,6 +145,14 @@
     "supplyCabinet": {
       "title": "비품 보관함",
       "password": "007",
+      "alternateAccess": {
+        "condition": "2번 방이 열리지 않을 때",
+        "entityType": "room",
+        "roomNumber": 2,
+        "roomLabels": { "ko": "2번 방", "en": "Room 2", "ja": "2番の部屋", "zh": "2号房间", "zh-TW": "2 號房間" },
+        "location": "싱크대 인덕션 아래",
+        "meaning": "2번은 방 번호이며 보관함 번호가 아니다. 일부 여분 비품의 대체 위치이며 2번 방의 도어락 코드나 출입 승인을 뜻하지 않는다."
+      },
       "items": [
         "수건",
         "휴지",
@@ -931,7 +939,7 @@
     "precedence": "PDF의 일반 쓰레기 식탁 아래 안내보다 현재 쓰레기 페이지의 베란다 안내를 우선하세요. PDF의 그림은 실제 객실 구조·비치 물품을 추가로 확정하는 근거로 사용하지 마세요."
   },
   "source": {
-    "version": "2026-10-04-extay-isolated-concierge-v6",
+    "version": "2026-10-04-extay-isolated-concierge-v7",
     "primary": "guide-extay.html",
     "screens": [
       "home",
