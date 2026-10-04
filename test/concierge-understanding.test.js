@@ -51,6 +51,13 @@ test('airport direction is preserved across five languages',()=>{
   for(const q of ['인천공항으로 가는법','숙소에서 김포공항 가려면','to airport','How do I get to Incheon Airport?','空港行き','去机场','前往機場'])assert.equal(u.analyze(q).direction,'property_to_airport',q);
   for(const q of ['인천공항에서 숙소 가는법','from airport','空港から宿','从机场到住宿','從機場到住宿'])assert.equal(u.analyze(q).direction,'airport_to_property',q);
 });
+test('outbound rail has its own direction and does not copy the inbound Seoul-bound train',()=>{
+  assert.equal(guide.transport.outboundRail.direction,'property_to_airport');
+  assert.match(guide.transport.outboundRail.route[2],/인천공항2터미널 방면/);
+  assert.match(guide.transport.outboundRail.boardingNote,/서울역행은 공항의 반대 방향/);
+  assert.doesNotMatch(guide.contact.pageStatus,/삭제|과거|임시/);
+  assert.match(handler._test.buildRequestBody('숙소에서 인천공항 가는 방법').input[0].content,/Seoul Station-bound train goes AWAY/);
+});
 test('current website supplies all twelve pages and three bedrooms',()=>{
   assert.deepEqual(pages.pages.map(p=>p.route).sort(),guide.source.screens.slice().sort());
   assert.match(pages.pages.find(p=>p.route==='home').text,/세 개의 방|세 개의 침실/);
