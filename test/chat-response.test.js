@@ -225,7 +225,9 @@ test('API-key fallback returns a concise guest answer', async () => {
   }
 
   assert.equal(statusCode, 200);
-  assert.equal(payload.fallback, true);
+  assert.equal(payload.model, 'verified-guide');
+  assert.equal(payload.searched, false);
+  assert.equal(payload.links[0].route, 'checkin');
   assert.ok(payload.answer.length <= 180);
   assert.match(payload.answer, /^체크인은 오후 4시부터/);
 });
@@ -236,7 +238,7 @@ test('browser fallback uses the same concise Korean copy', () => {
   const browser = {};
   vm.runInNewContext(fs.readFileSync(path.join(__dirname, '..', 'assets', 'chat-fallback.js'), 'utf8'), browser);
   assert.match(html, /src="assets\/chat-fallback.js"/);
-  assert.match(html, /ExtayChatFallback.answer\(question,currentLang\)/);
+  assert.match(html, /ExtayChatFallback.answer\(question,currentLang,history\)/);
   assert.doesNotMatch(html, /const extayGuideAnswers=/);
   for (const question of ['와이파이 비밀번호', '체크인 전 짐 보관', '숙소 CCTV', '체크아웃', '세탁기', '쓰레기', 'Can I leave luggage?', 'チェックアウト', '监控摄像头']) {
     assert.equal(browser.ExtayChatFallback.answer(question), localAnswer(question));

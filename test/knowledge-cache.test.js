@@ -99,8 +99,8 @@ test('current question is not duplicated by older clients and history stays boun
   const history = Array.from({length:10}, (_,i) => ({role:i%2?'assistant':'user',content:`prior ${i}`}));
   history.push({role:'user',content:'CCTV 위치'});
   const body = buildRequestBody('CCTV 위치', history);
-  assert.equal(body.input.length, 9);
-  assert.equal(body.input.filter(m => m.content.includes('CCTV 위치')).length, 1);
+  assert.equal(body.input.length, 13);
+  assert.equal(body.input.filter(m => m.role==='user' && m.content.includes('CCTV 위치')).length, 1);
   assert.equal(body.input.at(-2).content, 'prior 9');
   assert.doesNotThrow(() => buildRequestBody('Hello', [null, {role:'system'}, {content:42}]));
 });
@@ -108,10 +108,10 @@ test('current question is not duplicated by older clients and history stays boun
 test('timetable questions retain deep search while ordinary questions use a faster search budget', () => {
   const body = buildRequestBody('녹사평역에서 인천공항 새벽에 가려면 심야 리무진이 있나요?', []);
   assert.equal(body.tools[0].search_context_size, 'high');
-  assert.equal(body.max_output_tokens, 1200);
+  assert.equal(body.max_output_tokens, 8192);
   const propertyAnswer = buildRequestBody('CCTV 위치', []);
   assert.equal(propertyAnswer.tools[0].search_context_size, 'medium');
-  assert.equal(propertyAnswer.max_output_tokens, 1200);
+  assert.equal(propertyAnswer.max_output_tokens, 8192);
 });
 
 

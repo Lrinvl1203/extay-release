@@ -2,9 +2,12 @@ const fs = require('fs');
 const path = require('path');
 
 const { createHash } = require('node:crypto');
-const GUIDE_KNOWLEDGE = require('../data/guide-knowledge.json');
+const GUIDE_KNOWLEDGE = { ...require('../data/guide-knowledge.json'), pageSnapshot: require('../data/guide-pages.json') };
 const createGuestFallback = require('../lib/guest-fallback');
-const guestFallback = createGuestFallback(GUIDE_KNOWLEDGE);
+const createGuestUnderstanding = require('../lib/guest-understanding');
+const createPropertyConcierge = require('../lib/property-concierge');
+const understanding = createGuestUnderstanding();
+const guestFallback = createPropertyConcierge(GUIDE_KNOWLEDGE, understanding, createGuestFallback(GUIDE_KNOWLEDGE));
 
 function readChatSystemPrompt() {
   const candidates = [
@@ -116,8 +119,8 @@ function buildRequestBody(question, history = [], model = 'gpt-5.4-mini', prefer
     input: [
       { role: 'system', content: CHAT_SYSTEM_PROMPT },
       { role: 'developer', content: GUIDE_CONTEXT },
-      ...messages.slice(-6),
-      { role: 'user', content: `TARGET_LANGUAGE: ${languageName(detectQuestionLanguage(question, preferredLanguage))}\nLATEST_GUEST_QUESTION:\n${question}` }
+      ...messages.slice(-12),
+      { role: 'user', content: `TARGET_LANGUAGE: ${languageName(detectQuestionLanguage(question, preferredLanguage))}\nQUESTION_HINTS (not a substitute for understanding the full question): ${JSON.stringify((({intents,routes,direction,followup})=>({intents,routes,direction,followup}))(understanding.analyze(question,messages)))}\nLATEST_GUEST_QUESTION:\n${question}` }
     ],
     prompt_cache_key: PROMPT_CACHE_KEY,
     // A medium search is enough for ordinary public facts and returns much
@@ -127,8 +130,14 @@ function buildRequestBody(question, history = [], model = 'gpt-5.4-mini', prefer
       search_context_size: isScheduledTransitQuestion(question) ? 'high' : 'medium'
     }],
     tool_choice: 'auto',
-    temperature: 0.2,
-    max_output_tokens: 1200
+    reasoning: { effort: 'low' },
+    store: false,
+    max_output_tokens: 8192,
+    text: { format: { type: 'json_schema', name: 'guest_answer', strict: true, schema: {
+      type: 'object', additionalProperties: false,
+      properties: { answer: {type:'string'}, guideRoutes: {type:'array',items:{type:'string',enum:GUIDE_KNOWLEDGE.source.screens}} },
+      required:['answer','guideRoutes']
+    } } }
   };
 }
 
@@ -217,12 +226,7 @@ function addPublicSearchDisclosure(answer, languageCode) {
 }
 
 function detectQuestionLanguage(question, preferred = '') {
-  const q = String(question || '');
-  if (/[가-힣]/.test(q)) return 'ko';
-  if (/[\u3040-\u30ff]/.test(q)) return 'ja';
-  if (/[\u3400-\u9fff]/.test(q)) return preferred === 'zh-TW' || /[體臺灣訊聯絡網頁覽門樓間裡這麼為與從]/.test(q) ? 'zh-TW' : 'zh';
-  if (/[a-z]/i.test(q)) return 'en';
-  return ['ko', 'en', 'ja', 'zh', 'zh-TW'].includes(preferred) ? preferred : 'ko';
+  return understanding.language(question,preferred || 'ko');
 }
 
 function languageName(code) {
@@ -235,8 +239,18 @@ function languageName(code) {
   }[code] || 'Korean';
 }
 
-function localAnswer(question, preferredLanguage = '') {
-  return guestFallback.answer(question, preferredLanguage);
+function localAnswer(question, preferredLanguage = '', history = []) {
+  return guestFallback.answer(question, preferredLanguage || 'ko', history);
+}
+
+function decodeAnswer(data) {
+  const text=extractText(data);
+  try {const parsed=JSON.parse(text);if(typeof parsed.answer==='string')return {answer:parsed.answer,routes:Array.isArray(parsed.guideRoutes)?parsed.guideRoutes:[]};} catch (_) {}
+  return {answer:text,routes:[]};
+}
+function fallbackPayload(question,language,history) {
+  const context=understanding.analyze(question,history);
+  return {fallback:true,answer:localAnswer(question,language,history),links:guestFallback.links(context.routes,detectQuestionLanguage(question,language)),searched:false,knowledge_version:GUIDE_KNOWLEDGE.source.version};
 }
 
 function parseBody(req) {
@@ -258,18 +272,17 @@ module.exports = async function handler(req, res) {
   if (req.method !== 'POST') return res.status(405).json({ error: 'Method not allowed' });
 
   const body = parseBody(req);
+  const question = String(body.message || '').trim().slice(0, 1200);
+  const history = Array.isArray(body.history) ? body.history.filter(m=>m&&['user','assistant'].includes(m.role)&&typeof m.content==='string').slice(-12).map(m=>({role:m.role,content:m.content.slice(0,1200)})) : [];
+  if (!question) return res.status(400).json({ error: 'message is required' });
+  const direct=guestFallback.direct(question,body.language || 'ko',history);
+  if(direct) return res.status(200).json({answer:direct.answer,links:direct.links,searched:false,model:'verified-guide',knowledge_version:GUIDE_KNOWLEDGE.source.version});
   const apiKey = process.env.OPENAI_API_KEY;
   if (!apiKey) {
-    return res.status(200).json({
-      fallback: true,
-      answer: localAnswer(body.message, body.language)
-    });
+    return res.status(200).json(fallbackPayload(question,body.language,history));
   }
 
   try {
-    const question = String(body.message || '').trim().slice(0, 1200);
-    const history = Array.isArray(body.history) ? body.history.slice(-6) : [];
-    if (!question) return res.status(400).json({ error: 'message is required' });
     const targetLanguageCode = detectQuestionLanguage(question, body.language);
 
     const model = process.env.OPENAI_CONCIERGE_MODEL || 'gpt-5.4';
@@ -280,38 +293,37 @@ module.exports = async function handler(req, res) {
         'Authorization': `Bearer ${apiKey}`,
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify(buildRequestBody(question, history, model, body.language))
+      body: JSON.stringify(buildRequestBody(question, history, model, body.language)),
+      signal: AbortSignal.timeout(55000)
     });
 
     let data = await response.json();
     if (!response.ok) {
       console.warn('OpenAI API fallback:', response.status, data?.error?.code || data?.error?.message || 'unknown');
-      return res.status(200).json({
-        fallback: true,
-        answer: localAnswer(question, body.language)
-      });
+      return res.status(200).json(fallbackPayload(question,body.language,history));
     }
 
     const searched = (data.output || []).some(item => item.type === 'web_search_call');
-    const baseAnswer = formatGuestAnswer(extractText(data), targetLanguageCode, question);
+    if(data.status==='incomplete')return res.status(200).json(fallbackPayload(question,body.language,history));
+    const decoded=decodeAnswer(data);
+    const baseAnswer = formatGuestAnswer(decoded.answer, targetLanguageCode, question);
+    if(!baseAnswer)return res.status(200).json(fallbackPayload(question,body.language,history));
     const answer = searched
       ? addPublicSearchDisclosure(baseAnswer, targetLanguageCode)
       : (baseAnswer || '답변을 만들지 못했어요. Airbnb 메시지로 호스트에게 확인해 주세요.');
     const sources = searched ? extractCitedSources(data) : [];
     const maps = extractAddressMapLinks(answer);
+    const links=guestFallback.links(decoded.routes.length?decoded.routes:understanding.analyze(question,history).routes,targetLanguageCode);
     const usage = data.usage ? {
       input_tokens: data.usage.input_tokens,
       cached_tokens: data.usage.input_tokens_details?.cached_tokens || 0,
       output_tokens: data.usage.output_tokens
     } : undefined;
     console.info('Chat usage:', JSON.stringify({ model, knowledge_version: GUIDE_KNOWLEDGE.source.version, ...usage, searched }));
-    return res.status(200).json({ answer, model, searched, sources, maps, usage });
+    return res.status(200).json({ answer, model, searched, sources, maps, links, usage, knowledge_version:GUIDE_KNOWLEDGE.source.version });
   } catch (err) {
     console.warn('Chat API fallback:', err.message || String(err));
-    return res.status(200).json({
-      fallback: true,
-      answer: localAnswer(body.message, body.language)
-    });
+    return res.status(200).json(fallbackPayload(question,body.language,history));
   }
 };
 
@@ -327,5 +339,7 @@ module.exports._test = {
   localAnswer,
   normalizeAnswer,
   normalizeKoreanSpacing,
-  publicSearchDisclosure
+  publicSearchDisclosure,
+  understanding,
+  decodeAnswer
 };

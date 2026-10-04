@@ -2698,10 +2698,14 @@ body .latin-font{font-family:'Oxanium','Arial Narrow',Arial,sans-serif!important
     ];
     const SEARCH_COPY_EXTRA={zh:[['入住 · 退房指南','入住退房时间、门锁、行李寄存'],['Wi‑Fi','网络ID和密码'],['交通指南','机场、地铁和出租车路线'],['客房浏览','住宿及客房照片'],['指南书PDF','查看韩文和英文指南'],['周边美食','解放村推荐餐厅'],['近郊推荐路线','从解放村出发的首尔推荐17处'],['TV · OTT','电视遥控器和OTT使用方法'],['热水 · 供暖','热水和供暖控制'],['公共卫生间 · 屋顶','公共卫生间和屋顶指南'],['洗衣指南','洗衣机和烘干机使用方法'],['垃圾投放','厨余、回收和一般垃圾'],['联系房东','电话号码和Kakao开放聊天'],['AI住宿助理','直接询问AI住宿助理']],ja:[['チェックイン · チェックアウト案内','入退室時間、ドアロック、荷物預かり'],['Wi‑Fi','ネットワークIDとパスワード'],['交通案内','空港・地下鉄・タクシーでの行き方'],['客室を見る','宿と客室の写真'],['ガイドブックPDF','韓国語・英語ガイドを見る'],['周辺グルメ','解放村のおすすめ飲食店'],['近郊おすすめツアー','解放村から巡るソウルのおすすめ17選'],['TV · OTT','TVリモコンとOTTの使い方'],['給湯 · 暖房','給湯と暖房の操作'],['共用トイレ · ルーフトップ','共用トイレと屋上案内'],['ランドリー案内','洗濯機・乾燥機の使い方'],['ゴミ出し','生ゴミ・資源ゴミ・一般ゴミ'],['ホスト連絡先','電話番号とKakaoオープンチャット'],['AI宿泊マネージャー','AI宿泊マネージャーへ質問']]};
     SEARCH_COPY_EXTRA['zh-TW']=traditionalize(SEARCH_COPY_EXTRA.zh);
+    // Contact buttons were removed: search must not revive their legacy placeholders.
+    const hostSearch=SEARCH_ITEMS.find(item=>item.icon==='call');
+    hostSearch.ko=['호스트 연락','Airbnb 예약 메시지로 문의'];hostSearch.en=['Contact your host','Use your Airbnb booking messages'];
+    SEARCH_COPY_EXTRA.zh[12]=['联系房东','通过Airbnb预订消息联系'];SEARCH_COPY_EXTRA.ja[12]=['ホストへの連絡','Airbnb予約メッセージで連絡'];SEARCH_COPY_EXTRA['zh-TW'][12]=['聯絡房東','透過Airbnb預訂訊息聯絡'];
     function searchCopy(item){const index=SEARCH_ITEMS.indexOf(item);return item[currentLang]||SEARCH_COPY_EXTRA[currentLang]?.[index]||item.en||item.ko}
     function searchText(item){const copy=searchCopy(item);return `${copy[0]} ${copy[1]} ${(item.keys||[]).join(' ')}`.toLowerCase()}
     function normalizeSearch(value){return String(value||'').toLowerCase().replace(/\s+/g,'').trim()}
-    function searchMatches(item,query){if(!query)return item.popular;const needle=normalizeSearch(query),hay=searchText(item),compact=normalizeSearch(hay);return hay.includes(String(query).toLowerCase().trim())||compact.includes(needle)}
+    function searchMatches(item,query){if(!query)return item.popular;const needle=normalizeSearch(query),hay=searchText(item),compact=normalizeSearch(hay);return hay.includes(String(query).toLowerCase().trim())||compact.includes(needle)||window.ExtayChatFallback.analyze(query).routes.includes(item.screen)}
     function searchScore(item,query){if(!query)return item.popular?10:0;const needle=normalizeSearch(query),title=normalizeSearch(searchCopy(item)[0]);if(title===needle)return 30;if(title.startsWith(needle))return 25;if(title.includes(needle))return 20;const keyHit=(item.keys||[]).some(k=>normalizeSearch(k).includes(needle)||needle.includes(normalizeSearch(k)));return keyHit?18:10}
     function getSearchHits(query=''){return SEARCH_ITEMS.map((item,index)=>({item,index})).filter(({item})=>searchMatches(item,query)).sort((a,b)=>searchScore(b.item,query)-searchScore(a.item,query)).slice(0,9)}
     function goSearchResult(item){if(!item)return;show(item.screen||'home',item.open||'');if(item.anchor){setTimeout(()=>document.querySelector(item.anchor)?.scrollIntoView({behavior:'smooth',block:'start'}),140)}}
@@ -2713,35 +2717,40 @@ body .latin-font{font-family:'Oxanium','Arial Narrow',Arial,sans-serif!important
     function chatLinkLabel(kind){const labels={ko:{sources:'확인한 출처 링크',maps:'지도에서 위치 보기',naver:'네이버지도',google:'Google Maps'},en:{sources:'Source links',maps:'View location on a map',naver:'Naver Map',google:'Google Maps'},ja:{sources:'確認した出典リンク',maps:'地図で場所を確認',naver:'Naver Map',google:'Google Maps'},zh:{sources:'参考来源链接',maps:'在地图中查看位置',naver:'Naver Map',google:'Google Maps'}};const group=currentLang==='zh-TW'?traditionalize(labels.zh):(labels[currentLang]||{});return group[kind]||kind}
     function appendChatLink(group,label,url,kind=''){try{const parsed=new URL(url);if(!/^https?:$/.test(parsed.protocol))return;const link=document.createElement('a');link.className='chat-link'+(kind?' '+kind:'');link.href=parsed.toString();link.target='_blank';link.rel='noopener noreferrer';const icon=document.createElement('span');icon.className='mi';icon.textContent='open_in_new';link.append(icon,document.createTextNode(label));group.appendChild(link)}catch(_){}}
     function renderChatLinks(anchor,data={}){const sources=Array.isArray(data.sources)?data.sources.slice(0,3):[];const maps=Array.isArray(data.maps)?data.maps.slice(0,2):[];if(!sources.length&&!maps.length)return;const wrap=document.createElement('div');wrap.className='chat-links';if(sources.length){const group=document.createElement('div');group.className='chat-links-group';const label=document.createElement('span');label.className='chat-links-label';label.textContent=chatLinkLabel('sources');group.appendChild(label);sources.forEach(source=>appendChatLink(group,String(source.title||source.url||'').slice(0,120),source.url));if(group.querySelector('a'))wrap.appendChild(group)}if(maps.length){const group=document.createElement('div');group.className='chat-links-group';const label=document.createElement('span');label.className='chat-links-label';label.textContent=chatLinkLabel('maps');group.appendChild(label);maps.forEach(map=>{const address=String(map.address||'').trim();appendChatLink(group,`${chatLinkLabel('naver')} · ${address}`,map.naver,'map');appendChatLink(group,`${chatLinkLabel('google')} · ${address}`,map.google,'map')});if(group.querySelector('a'))wrap.appendChild(group)}if(wrap.childElementCount)anchor.after(wrap)}
-    function getLocalAnswer(question){return window.ExtayChatFallback.answer(question,currentLang)}
+    function renderGuideLinks(anchor,links=[]){const valid=links.filter(link=>link&&routeExists(link.route)).slice(0,3);if(!valid.length)return;const wrap=document.createElement('div');wrap.className='chat-links chat-guide-links';for(const item of valid){const link=document.createElement('a');link.className='chat-link';link.href='#'+item.route;link.textContent='→ '+item.label;link.addEventListener('click',event=>{event.preventDefault();show(item.route);closeChat()});wrap.appendChild(link)}anchor.after(wrap)}
+    function getLocalAnswer(question,history=[]){return window.ExtayChatFallback.answer(question,currentLang,history)}
     let chatHistory=[];
+    let chatPending=false;
     chatInput?.addEventListener('input',e=>renderChatAutocomplete(e.target.value));
     chatInput?.addEventListener('focus',e=>renderChatAutocomplete(e.target.value));
     async function submitChatQuestion(question){
       const q=String(question||'').trim();
-      if(!q)return;
+      if(!q||chatPending)return;
+      chatPending=true;chatForm.setAttribute('aria-busy','true');chatForm.querySelectorAll('button[type="submit"]').forEach(button=>button.disabled=true);
       chatInput.value='';
       renderChatAutocomplete('');
       addMsg('user',q);
-      const previousHistory=chatHistory.slice(-6);
+      const previousHistory=chatHistory.slice(-12);
       chatHistory.push({role:'user',content:q});
       const botDiv=addMsg('bot',uiText[currentLang].chat.typing,'typing');
       chatLog.scrollTop=chatLog.scrollHeight;
       try{
-        const res=await fetch('/api/chat',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({message:q,history:previousHistory,language:currentLang})});
+        const res=await fetch('/api/chat',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({message:q,history:previousHistory,language:currentLang}),signal:AbortSignal.timeout(60000)});
         if(!res.ok) throw new Error(`chat api ${res.status}`);
         const data=await res.json();
-        const answer=data.answer||getLocalAnswer(q);
+        const answer=data.answer||getLocalAnswer(q,previousHistory);
         setMsgText(botDiv,'bot',answer);
         renderChatLinks(botDiv,data);
+        renderGuideLinks(botDiv,data.links||window.ExtayChatFallback.links(window.ExtayChatFallback.analyze(q,previousHistory).routes,currentLang));
         botDiv.classList.remove('typing');
         chatHistory.push({role:'assistant',content:answer});
       }catch{
-        const answer=getLocalAnswer(q);
+        const answer=getLocalAnswer(q,previousHistory);
         setMsgText(botDiv,'bot',answer);
+        renderGuideLinks(botDiv,window.ExtayChatFallback.links(window.ExtayChatFallback.analyze(q,previousHistory).routes,currentLang));
         botDiv.classList.remove('typing');
         chatHistory.push({role:'assistant',content:answer});
-      }
+      }finally{chatPending=false;chatForm.removeAttribute('aria-busy');chatForm.querySelectorAll('button[type="submit"]').forEach(button=>button.disabled=false);chatHistory=chatHistory.slice(-24)}
       chatLog.scrollTop=chatLog.scrollHeight;
     }
     chatForm.addEventListener('submit',e=>{
