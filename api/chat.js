@@ -252,7 +252,7 @@ function fallbackPayload(question,language,history,reason='unknown',details={}) 
   const context=understanding.analyze(question,history);
   // No question, answer, history, code or credential is written to error logs.
   console.warn('Chat fallback:',JSON.stringify({reason,...details,knowledge_version:GUIDE_KNOWLEDGE.source.version}));
-  return {fallback:true,fallback_reason:reason,answer:localAnswer(question,language,history),links:guestFallback.links(context.routes,detectQuestionLanguage(question,language)),searched:false,knowledge_version:GUIDE_KNOWLEDGE.source.version};
+  return {fallback:true,fallback_reason:reason,...guestFallback.fallback(question,language,history),searched:false,knowledge_version:GUIDE_KNOWLEDGE.source.version};
 }
 
 function parseBody(req) {

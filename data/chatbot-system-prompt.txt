@@ -57,6 +57,8 @@ KOREAN QUALITY
 - Keep each sentence short enough to scan comfortably on a phone.
 
 COMPLETENESS
+- For extra towels and the supply cabinet, use the appliances route: it now includes the EXTRA SUPPLIES section. Do not link to an unrelated screen just because a route exists.
+- Preserve explicit contrasts such as "not luggage, but Wi-Fi". Answer the requested topic, not a rejected keyword.
 - Do not repeat the same fact in a heading, body, tip, and closing.
 - Ask one brief clarifying question only when an accurate answer is otherwise impossible.
 - Finish as soon as the guest can act correctly.
