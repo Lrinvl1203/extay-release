@@ -243,7 +243,8 @@ test('browser fallback uses the same concise Korean copy', () => {
   for (const question of ['와이파이 비밀번호', '체크인 전 짐 보관', '숙소 CCTV', '체크아웃', '세탁기', '쓰레기', 'Can I leave luggage?', 'チェックアウト', '监控摄像头']) {
     assert.equal(browser.ExtayChatFallback.answer(question), localAnswer(question));
   }
-  assert.match(browser.ExtayChatFallback.answer('심야버스가 있나요?'), /공개 웹 검색을 연결할 수 없어요/);
+  assert.match(browser.ExtayChatFallback.answer('심야버스가 있나요?'), /현재 이 내용을 확인할 수 없어요/);
+  assert.doesNotMatch(browser.ExtayChatFallback.answer('심야버스가 있나요?'), /공개 웹 검색을 연결할 수 없어요/);
   assert.match(html, /white-space:pre-wrap;overflow-wrap:anywhere;word-break:keep-all;text-align:left/);
   assert.match(html, /function renderChatLinks/);
   assert.match(html, /target='_blank'/);

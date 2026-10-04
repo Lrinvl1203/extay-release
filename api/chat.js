@@ -245,12 +245,14 @@ function localAnswer(question, preferredLanguage = '', history = []) {
 
 function decodeAnswer(data) {
   const text=extractText(data);
-  try {const parsed=JSON.parse(text);if(typeof parsed.answer==='string')return {answer:parsed.answer,routes:Array.isArray(parsed.guideRoutes)?parsed.guideRoutes:[]};} catch (_) {}
-  return {answer:text,routes:[]};
+  try {const parsed=JSON.parse(text);if(typeof parsed.answer==='string')return {answer:parsed.answer,routes:Array.isArray(parsed.guideRoutes)?parsed.guideRoutes:[],structured:true};} catch (_) {}
+  return {answer:text,routes:[],structured:false};
 }
-function fallbackPayload(question,language,history) {
+function fallbackPayload(question,language,history,reason='unknown',details={}) {
   const context=understanding.analyze(question,history);
-  return {fallback:true,answer:localAnswer(question,language,history),links:guestFallback.links(context.routes,detectQuestionLanguage(question,language)),searched:false,knowledge_version:GUIDE_KNOWLEDGE.source.version};
+  // No question, answer, history, code or credential is written to error logs.
+  console.warn('Chat fallback:',JSON.stringify({reason,...details,knowledge_version:GUIDE_KNOWLEDGE.source.version}));
+  return {fallback:true,fallback_reason:reason,answer:localAnswer(question,language,history),links:guestFallback.links(context.routes,detectQuestionLanguage(question,language)),searched:false,knowledge_version:GUIDE_KNOWLEDGE.source.version};
 }
 
 function parseBody(req) {
@@ -279,7 +281,7 @@ module.exports = async function handler(req, res) {
   if(direct) return res.status(200).json({answer:direct.answer,links:direct.links,searched:false,model:'verified-guide',knowledge_version:GUIDE_KNOWLEDGE.source.version});
   const apiKey = process.env.OPENAI_API_KEY;
   if (!apiKey) {
-    return res.status(200).json(fallbackPayload(question,body.language,history));
+    return res.status(200).json(fallbackPayload(question,body.language,history,'missing_api_key'));
   }
 
   try {
@@ -299,21 +301,22 @@ module.exports = async function handler(req, res) {
 
     let data = await response.json();
     if (!response.ok) {
-      console.warn('OpenAI API fallback:', response.status, data?.error?.code || data?.error?.message || 'unknown');
-      return res.status(200).json(fallbackPayload(question,body.language,history));
+      return res.status(200).json(fallbackPayload(question,body.language,history,'upstream_error',{status:response.status}));
     }
 
     const searched = (data.output || []).some(item => item.type === 'web_search_call');
-    if(data.status==='incomplete')return res.status(200).json(fallbackPayload(question,body.language,history));
+    if(data.status==='incomplete')return res.status(200).json(fallbackPayload(question,body.language,history,'incomplete_output'));
     const decoded=decodeAnswer(data);
     const baseAnswer = formatGuestAnswer(decoded.answer, targetLanguageCode, question);
-    if(!baseAnswer)return res.status(200).json(fallbackPayload(question,body.language,history));
+    if(!baseAnswer)return res.status(200).json(fallbackPayload(question,body.language,history,'empty_output'));
     const answer = searched
       ? addPublicSearchDisclosure(baseAnswer, targetLanguageCode)
       : (baseAnswer || '답변을 만들지 못했어요. Airbnb 메시지로 호스트에게 확인해 주세요.');
     const sources = searched ? extractCitedSources(data) : [];
     const maps = extractAddressMapLinks(answer);
-    const links=guestFallback.links(decoded.routes.length?decoded.routes:understanding.analyze(question,history).routes,targetLanguageCode);
+    // A structured empty array means the model deliberately found no relevant
+    // property page (for example a separately named sightseeing destination).
+    const links=guestFallback.links(decoded.structured?decoded.routes:understanding.analyze(question,history).routes,targetLanguageCode);
     const usage = data.usage ? {
       input_tokens: data.usage.input_tokens,
       cached_tokens: data.usage.input_tokens_details?.cached_tokens || 0,
@@ -322,8 +325,8 @@ module.exports = async function handler(req, res) {
     console.info('Chat usage:', JSON.stringify({ model, knowledge_version: GUIDE_KNOWLEDGE.source.version, ...usage, searched }));
     return res.status(200).json({ answer, model, searched, sources, maps, links, usage, knowledge_version:GUIDE_KNOWLEDGE.source.version });
   } catch (err) {
-    console.warn('Chat API fallback:', err.message || String(err));
-    return res.status(200).json(fallbackPayload(question,body.language,history));
+    const reason=['AbortError','TimeoutError'].includes(err?.name)?'timeout':err instanceof SyntaxError?'invalid_upstream_response':'network_error';
+    return res.status(200).json(fallbackPayload(question,body.language,history,reason));
   }
 };
 
