@@ -112,6 +112,7 @@ test('timetable questions retain deep search while ordinary questions use a fast
   const propertyAnswer = buildRequestBody('CCTV 위치', []);
   assert.equal(propertyAnswer.tools[0].search_context_size, 'medium');
   assert.equal(propertyAnswer.max_output_tokens, 8192);
+  assert.equal(buildRequestBody('숙소에서 인천공항 가는 법').tools[0].search_context_size,'medium');
 });
 
 

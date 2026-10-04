@@ -18,6 +18,7 @@
     if(context.followup||context.intents.length!==1||q.length>55||/변경|바꾸|승인|분실|잃어|찾아|도난|예외|요금|얼마|(?:if|but|lost|stolen|change|fee|cost)\b|紛失|料金|変更|丢|丟|遗失|遺失|费用|費用|更改/i.test(context.question)) return null;
     const id=context.intents[0],g=guide;
     let answer;
+    if(id==='detergent' && /^(?:(?:세탁)?세제(?:가|는)?(?:있나요|있어요|있어|비치되어있나요)?|섬유유연제(?:있나요)?|(?:isthere|is|doyouhave)?(?:laundry)?detergent(?:provided|available)?|洗剤(?:は)?(?:ありますか)?|(?:有)?洗衣(?:液|粉)(?:吗|嗎)?)$/.test(q)) answer=pick(lang,'현재 숙소 안내에는 세제·섬유유연제 비치 여부가 명시되어 있지 않아요. Airbnb 메시지로 호스트에게 확인해 주세요.', 'The guide does not confirm whether detergent or fabric softener is provided. Please ask your host through Airbnb.', '洗剤・柔軟剤の備え付けは現在の案内では確認できません。Airbnbでホストに確認してください。', '当前指南未说明是否提供洗衣液或柔顺剂，请通过Airbnb向房东确认。', '目前指南未說明是否提供洗衣精或柔軟精，請透過Airbnb向房東確認。');
     if(id==='checkin_time' && /^(?:(?:체크인|입실)(?:은|이)?(?:시간|몇시|언제)(?:인가요|에요|야|부터|부터야|부터인가요|예요|해요)?|몇시(?:에)?입실(?:해요)?|(?:whattimeis|whenis|whencan(?:i)?)(?:checkin)|checkintime|チェックイン(?:は)?(?:時間|何時)|入住(?:时间|時間|几点|幾點))$/.test(q)) answer=pick(lang,`체크인은 ${g.checkInOut.checkIn}부터예요.`, `Check-in starts at ${g.checkInOut.checkIn24}.`, `チェックインは${g.checkInOut.checkIn24}からです。`, `入住时间从${g.checkInOut.checkIn24}开始。`, `入住時間從${g.checkInOut.checkIn24}開始。`);
     if(id==='early_checkin' && /^(?:얼리체크인|earlycheckin|アーリーチェックイン|提前入住|提早入住)$/.test(q)) {
       answer=pick(lang,`정규 체크인은 ${g.checkInOut.checkIn}부터예요. 얼리 체크인 가능 여부는 Airbnb 메시지로 호스트에게 확인해 주세요. 체크인 전 숙소 내 짐 보관은 불가하며, 녹사평역 코인락커를 이용할 수 있어요.`, `Regular check-in starts at ${g.checkInOut.checkIn24}. Please ask your host through Airbnb about early check-in. The property cannot store luggage before check-in; Noksapyeong Station lockers are an alternative.`, `通常のチェックインは${g.checkInOut.checkIn24}からです。早めの入室はAirbnbでホストに確認してください。宿での荷物預かりはできませんが、緑莎坪駅のロッカーを利用できます。`, `正常入住从${g.checkInOut.checkIn24}开始。提前入住请通过Airbnb向房东确认。住宿不提供入住前行李寄存，可使用绿莎坪站储物柜。`, `正常入住從${g.checkInOut.checkIn24}開始。提前入住請透過Airbnb向房東確認。住宿不提供入住前行李寄存，可使用綠莎坪站置物櫃。`);
@@ -60,6 +61,8 @@
     ['toothbrush','rules',/칫솔|치약|toothbrush|toothpaste|歯ブラシ|歯磨き|牙刷|牙膏/i],
     ['supplies','appliances',/비품|어메니티|휴지|쓰레기봉투|supplies|amenities|cabinet|備品|アメニティ|トイレットペーパー|用品|備品櫃|纸巾|紙巾/i],
     ['washer','laundry',/세탁기|washer|washing\s*machine|洗濯機|洗衣机|洗衣機/i],
+    ['hair_dryer','appliances',/드라이기|헤어드라이어|hair\s*dryer|ドライヤー|吹风机|吹風機/i],
+    ['hair_straightener','appliances',/고데기|hair\s*straightener|curling\s*iron|ヘアアイロン|卷发棒|捲髮棒|直发器|直髮器/i],
     ['dryer','laundry',/건조기|dryer|乾燥機|烘干机|烘乾機/i],
     ['laundry','laundry',/세탁|빨래|laundry|洗濯|洗衣/i],
     ['trash','trash',/쓰레기|분리수거|재활용|음식물|trash|garbage|recycl|food waste|ゴミ|ごみ|垃圾|回收|厨余|廚餘/i],
@@ -97,6 +100,7 @@
     if (ids.some(id=>['early_checkin','checkin_time','access'].includes(id))) intents=intents.filter(x=>x[0]!=='checkin_method');
     if(ids.includes('late_checkout')) intents=intents.filter(x=>x[0]!=='checkout_time');
     if(ids.some(id=>['washer','dryer','detergent'].includes(id))) intents=intents.filter(x=>x[0]!=='laundry');
+    if(ids.includes('hair_dryer'))intents=intents.filter(x=>x[0]!=='dryer');
     if(ids.includes('transport')) intents=intents.filter(x=>!['directions','tours'].includes(x[0]));
     const outbound=/(?:숙소|여기|호텔).*(?:공항|인천|김포).*(?:가|출발)|(?:공항|인천|김포)(?:으로|까지|에)\s*가|to\s+(?:incheon|gimpo|(?:the\s+)?airport)|(?:仁川|金浦|空港).*行き|(?:去|到|前往).*(?:机场|機場)/i.test(effective);
     const inbound=/(?:공항|인천|김포)에서|from\s+(?:incheon|gimpo|(?:the\s+)?airport)|空港から|从.*机场|從.*機場/i.test(effective);

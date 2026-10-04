@@ -18,6 +18,8 @@ const synonyms={
   towel:['여분수건','타월있나요','towel','タオル','毛巾'],
   detergent:['세탁세제','detergent','洗剤','洗衣液','洗衣粉'],
   dryer:['건조기 용량','dryer capacity','乾燥機','烘干机','烘乾機'],
+  hair_dryer:['헤어 드라이기','hair dryer','ドライヤー','吹风机','吹風機'],
+  hair_straightener:['고데기','hair straightener','ヘアアイロン','卷发棒','捲髮棒'],
   contact:['호스트 연락','카카오톡','host contact','ホストへの連絡','联系房东','聯絡房東']
 };
 for(const [intent,questions] of Object.entries(synonyms))for(const q of questions)test(`meaning: ${intent} ← ${q}`,()=>assert.ok(u.analyze(q).intents.includes(intent),JSON.stringify(u.analyze(q))));
@@ -36,7 +38,9 @@ test('early arrival uses own policy and does not invent approval or prohibition'
   assert.doesNotMatch(a,/^(네|아니오)/);
 });
 test('meaning hints do not override complex questions',()=>{
-  for(const q of ['짐 보관 요금 얼마','짐 잃어버렸어요','짐 보관 안되면 택배로 보내주나요','체크인 시간 변경 가능','체크인시간에 직원이 와요?','체크인시간과 와이파이','건조기 용량','세탁세제 있나요'])assert.equal(c.direct(q),null,q);
+  for(const q of ['짐 보관 요금 얼마','짐 잃어버렸어요','짐 보관 안되면 택배로 보내주나요','체크인 시간 변경 가능','체크인시간에 직원이 와요?','체크인시간과 와이파이','건조기 용량','세제는 어디에서 살 수 있나요'])assert.equal(c.direct(q),null,q);
+  assert.doesNotMatch(c.direct('세탁세제 있나요').answer,/전원|시작|일시정지/);
+  assert.deepEqual(u.analyze('Is there a hair dryer?').routes,['appliances']);
 });
 test('follow-up is linked to recent guest topic, not matched as a new topic',()=>{
   const h=[{role:'user',content:'여분 수건 있나요?'},{role:'assistant',content:'비품 보관함에 있어요.'}];
@@ -82,7 +86,7 @@ test('structured model output reaches the UI with valid links and no public disc
   const key=process.env.OPENAI_API_KEY,fetch=global.fetch,info=console.info;process.env.OPENAI_API_KEY='test-placeholder';console.info=()=>{};
   global.fetch=async()=>({ok:true,json:async()=>({output_text:JSON.stringify({answer:'현재 안내에는 세제 비치 여부가 명시되어 있지 않아요. Airbnb로 호스트에게 확인해 주세요.',guideRoutes:['laundry']}),output:[]})});
   let payload;const res={setHeader(){},status(){return this},json(p){payload=p}};
-  try{await handler({method:'POST',body:{message:'세탁세제 있나요'}},res);assert.equal(payload.links[0].route,'laundry');assert.match(payload.answer,/세제/);assert.doesNotMatch(payload.answer,/전원 버튼|공개 웹 정보|^네/);}finally{global.fetch=fetch;console.info=info;if(key===undefined)delete process.env.OPENAI_API_KEY;else process.env.OPENAI_API_KEY=key;}
+  try{await handler({method:'POST',body:{message:'세제를 제가 가져가야 하나요?'}},res);assert.equal(payload.model,'gpt-5.4');assert.equal(payload.links[0].route,'laundry');assert.match(payload.answer,/세제/);assert.doesNotMatch(payload.answer,/전원 버튼|공개 웹 정보|^네/);}finally{global.fetch=fetch;console.info=info;if(key===undefined)delete process.env.OPENAI_API_KEY;else process.env.OPENAI_API_KEY=key;}
 });
 test('all inline browser scripts parse',()=>{
   const html=fs.readFileSync(path.join(__dirname,'../guide-extay.html'),'utf8');

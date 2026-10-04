@@ -135,7 +135,7 @@ function buildRequestBody(question, history = [], model = 'gpt-5.4-mini', prefer
     max_output_tokens: 8192,
     text: { format: { type: 'json_schema', name: 'guest_answer', strict: true, schema: {
       type: 'object', additionalProperties: false,
-      properties: { answer: {type:'string'}, guideRoutes: {type:'array',items:{type:'string',enum:GUIDE_KNOWLEDGE.source.screens}} },
+      properties: { answer: {type:'string',description:'Answer the requested fact or action naturally. No unrelated appliance steps for an availability question; no discussion of old code, removed buttons or internal data changes.'}, guideRoutes: {type:'array',items:{type:'string',enum:GUIDE_KNOWLEDGE.source.screens}} },
       required:['answer','guideRoutes']
     } } }
   };
@@ -143,7 +143,7 @@ function buildRequestBody(question, history = [], model = 'gpt-5.4-mini', prefer
 
 function isScheduledTransitQuestion(question) {
   const q = String(question || '');
-  return /(?:공항|airport|터미널|terminal|심야|새벽|첫차|막차|리무진|버스|train|bus|taxi|late|early|night|空港|机场|深夜|早朝|机场|深夜|巴士)/i.test(q);
+  return /(?:시간표|첫차|막차|심야|새벽|배차|몇\s*시|timetable|schedule|first\s*(?:train|bus)|last\s*(?:train|bus)|late.?night|midnight|\d\s*(?:am|pm)|\d{1,2}:\d{2}|時刻表|終電|始発|深夜|早朝|末班|首班|凌晨)/i.test(q);
 }
 
 const DECORATIVE_HEADING_PATTERN = /^(?:와이파이 정보|연결 방법|체크인 시간|체크인 방법|세탁기 사용 방법|건조기 사용 방법|사용 방법|사용 전 꼭 확인해 주세요|꼭 참고해 주세요|도착 팁|추가 팁|참고|Wi-?Fi information|How to connect|Check-in time|Check-in steps|Washer|Dryer|Important|Tips)$/i;
