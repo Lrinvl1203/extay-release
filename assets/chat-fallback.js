@@ -11,6 +11,10 @@
   function unconfirmed(lang) {
     return pick(lang,'현재 숙소 안내에서는 이 내용을 확인할 수 없어요. Airbnb 예약 메시지로 호스트에게 확인해 주세요.', 'The current property guide does not confirm this detail. Please ask your host through Airbnb booking messages.', '現在の宿泊案内ではこの内容を確認できません。Airbnbの予約メッセージでホストに確認してください。', '当前住宿指南未确认这项信息，请通过Airbnb预订消息向房东确认。', '目前住宿指南未確認這項資訊，請透過Airbnb訂房訊息向房東確認。');
   }
+  const isUsedTowel=question=>/사용한|쓴\s*수건|used|dirty|使用済|使った|用过|用過|脏|髒/i.test(question);
+  function usedTowelAnswer(lang) {
+    return pick(lang,'사용한 수건은 새 비품과 섞어 넣지 말아 주세요. 숙소 안내에는 사용한 수건을 둘 위치가 명시되어 있지 않으니 Airbnb 메시지로 호스트에게 확인해 주세요.', 'Please keep used towels separate from clean supplies. The guide does not state a used-towel return location; please ask your host through Airbnb.', '使用済みタオルは清潔な備品と混ぜないでください。返却場所は案内に明記されていないため、Airbnbでホストに確認してください。', '请不要把用过的毛巾和干净用品混放。指南未注明用过毛巾的放置地点，请通过Airbnb向房东确认。', '請勿將用過的毛巾與乾淨備品混放。指南未註明用過毛巾的放置地點，請透過Airbnb向房東確認。');
+  }
   function luggageAnswer(lang) {
     // Direct translations avoid an incomplete character conversion table.
     if(guide.checkInOut.luggageStorage.beforeCheckIn!==false || guide.checkInOut.luggageStorage.afterCheckOut!==false) return unconfirmed(lang);
@@ -23,10 +27,12 @@
   function direct(question,preferred='ko',history=[],forceLanguage=false) {
     const context=understanding.analyze(question,history),lang=forceLanguage?preferred:understanding.language(question,preferred);
     const q=context.question.replace(/[\s?？!！.,。]/g,'').toLowerCase();
+    const towelReturn=context.intents.includes('towel') && context.intents.every(id=>['towel','supplies'].includes(id)) && isUsedTowel(context.question) && /넣|두|놓|반납|수거|돌려|put|return|leave|collect|deposit|置|戻|返|回収|放|还|還|收/i.test(context.question) && !/말고|아니|instead|not.*(?:used|dirty)|ではなく|じゃなく|不是|而是/i.test(context.question);
     // Only fast-path known, simple facts. Nuance, multiple questions and follow-ups go to the model.
-    if(context.followup||context.intents.length!==1||q.length>55||/변경|바꾸|승인|분실|잃어|찾아|도난|예외|요금|얼마|(?:if|but|lost|stolen|change|fee|cost)\b|紛失|料金|変更|丢|丟|遗失|遺失|费用|費用|更改/i.test(context.question)) return null;
+    if(context.followup||(!towelReturn&&context.intents.length!==1)||q.length>55||/변경|바꾸|승인|분실|잃어|찾아|도난|예외|요금|얼마|(?:if|but|lost|stolen|change|fee|cost)\b|紛失|料金|変更|丢|丟|遗失|遺失|费用|費用|更改/i.test(context.question)) return null;
     const id=context.intents[0],g=guide;
     let answer;
+    if(towelReturn) answer=usedTowelAnswer(lang);
     if(id==='detergent' && /^(?:(?:세탁)?세제(?:가|는)?(?:있나요|있어요|있어|비치되어있나요)?|섬유유연제(?:있나요)?|(?:isthere|is|doyouhave)?(?:laundry)?detergent(?:provided|available)?|洗剤(?:は)?(?:ありますか)?|(?:有)?洗衣(?:液|粉)(?:吗|嗎)?)$/.test(q)) answer=pick(lang,'현재 숙소 안내에는 세제·섬유유연제 비치 여부가 명시되어 있지 않아요. Airbnb 메시지로 호스트에게 확인해 주세요.', 'The guide does not confirm whether detergent or fabric softener is provided. Please ask your host through Airbnb.', '洗剤・柔軟剤の備え付けは現在の案内では確認できません。Airbnbでホストに確認してください。', '当前指南未说明是否提供洗衣液或柔顺剂，请通过Airbnb向房东确认。', '目前指南未說明是否提供洗衣精或柔軟精，請透過Airbnb向房東確認。');
     if(id==='checkin_time' && /^(?:(?:체크인|입실)(?:은|이)?(?:시간|몇시|언제)(?:인가요|에요|야|부터|부터야|부터인가요|예요|해요)?|몇시(?:에)?입실(?:해요)?|(?:whattimeis|whenis|whencan(?:i)?)(?:checkin)|checkintime|チェックイン(?:は)?(?:時間|何時)|入住(?:时间|時間|几点|幾點))$/.test(q)) answer=pick(lang,`체크인은 ${g.checkInOut.checkIn}부터예요.`, `Check-in starts at ${g.checkInOut.checkIn24}.`, `チェックインは${g.checkInOut.checkIn24}からです。`, `入住时间从${g.checkInOut.checkIn24}开始。`, `入住時間從${g.checkInOut.checkIn24}開始。`);
     if(id==='early_checkin' && /^(?:얼리체크인|earlycheckin|アーリーチェックイン|提前入住|提早入住)$/.test(q)) {
@@ -46,7 +52,7 @@
     if(id==='luggage')return luggageAnswer(lang);
     if(['hair_dryer','hair_straightener'].includes(id))return unconfirmed(lang);
     if(id==='contact')return pick(lang,'호스트에게는 Airbnb 예약 메시지로 연락해 주세요. 공개 전화번호나 카카오톡 링크는 제공되지 않습니다.', 'Please contact your host through Airbnb booking messages. A public phone number or KakaoTalk link is not provided.', 'Airbnbの予約メッセージでホストに連絡してください。公開の電話番号やKakaoTalkリンクはありません。', '请通过Airbnb预订消息联系房东，未提供公开电话号码或KakaoTalk链接。', '請透過Airbnb訂房訊息聯絡房東，未提供公開電話號碼或KakaoTalk連結。');
-    if(id==='towel' && /사용한|쓴\s*수건|used|dirty|使用済|使った|用过|用過|脏|髒/i.test(context.effective))return pick(lang,'사용한 수건은 새 비품과 섞어 넣지 말아 주세요. 숙소 안내에는 사용한 수건을 둘 위치가 명시되어 있지 않으니 Airbnb 메시지로 호스트에게 확인해 주세요.', 'Please keep used towels separate from clean supplies. The guide does not state a used-towel return location; please ask your host through Airbnb.', '使用済みタオルは清潔な備品と混ぜないでください。返却場所は案内に明記されていないため、Airbnbでホストに確認してください。', '请不要把用过的毛巾和干净用品混放。指南未注明用过毛巾的放置地点，请通过Airbnb向房东确认。', '請勿將用過的毛巾與乾淨備品混放。指南未註明用過毛巾的放置地點，請透過Airbnb向房東確認。');
+    if(id==='towel' && isUsedTowel(context.effective))return usedTowelAnswer(lang);
     if(id==='early_checkin')return direct('얼리체크인',lang,[],true)?.answer;
     if(id==='detergent')return pick(lang,'현재 숙소 안내에는 세제·섬유유연제 비치 여부가 명시되어 있지 않아요. Airbnb 메시지로 호스트에게 확인해 주세요.', 'The guide does not confirm whether detergent or fabric softener is provided. Please ask your host through Airbnb.', '洗剤・柔軟剤の備え付けは現在の案内では確認できません。Airbnbでホストに確認してください。', '当前指南未说明是否提供洗衣液或柔顺剂，请通过Airbnb向房东确认。', '目前指南未說明是否提供洗衣精或柔軟精，請透過Airbnb向房東確認。');
     if(['washer','dryer'].includes(id)&&/용량|容量|capacity|kg|킬로/i.test(question))return pick(lang,'현재 숙소 안내에는 해당 기기의 용량이 명시되어 있지 않아요. Airbnb 메시지로 호스트에게 확인해 주세요.', 'The current guide does not state this appliance’s capacity. Please confirm with your host through Airbnb.', 'この機器の容量は現在の案内に明記されていません。Airbnbでホストに確認してください。', '当前指南未注明该设备的容量，请通过Airbnb向房东确认。', '目前指南未註明此設備的容量，請透過Airbnb向房東確認。');

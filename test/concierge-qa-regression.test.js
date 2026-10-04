@@ -45,6 +45,11 @@ for(const [q,language] of [['쓴수건 다시 비품함에 넣음 돼?','ko'],['
   const answer=concierge.answer(q,language);
   assert.match(answer,/Airbnb/);
   assert.doesNotMatch(answer,/007|인덕션|induction|IH|电磁炉|電磁爐|객실 안에|collection basket/i);
+  assert.equal(concierge.direct(q,language)?.answer,answer);
+});
+test('used towel fast reply does not swallow questions about clean towels or other topics',()=>{
+  assert.equal(concierge.direct('쓴 수건 말고 새 수건 어디 있어요?'),null);
+  assert.equal(concierge.direct('Where do used towels go and how do I use the washer?','en'),null);
 });
 
 test('luggage-room false premise is answered by the actual storage policy, not an invented room',()=>{
@@ -84,6 +89,22 @@ test('API failure paths return safe property answers and identifiable non-sensit
     assert.match(logs.join('\n'),/"status":429/);
   }finally{
     global.fetch=saved.fetch;console.warn=saved.warn;
+    if(saved.key===undefined)delete process.env.OPENAI_API_KEY;else process.env.OPENAI_API_KEY=saved.key;
+  }
+});
+
+test('missing model links for private amenities get the right guide link, but external-only directions remain unlinked',async()=>{
+  const saved={key:process.env.OPENAI_API_KEY,fetch:global.fetch,info:console.info};
+  process.env.OPENAI_API_KEY='test-placeholder';console.info=()=>{};
+  global.fetch=async()=>({ok:true,json:async()=>({output_text:JSON.stringify({answer:'현재 안내에서는 확인되지 않습니다.',guideRoutes:[]}),output:[]})});
+  try{
+    for(const [message,routes] of [['헤어드라이기 있는거 맞죠',['appliances']],['경복궁역 5번 출구로 경복궁 가는 길',[]]]){
+      let result;const res={setHeader(){},status(){return this;},json(p){result=p;return p;}};
+      await handler({method:'POST',body:{message,language:'ko'}},res);
+      assert.deepEqual(result.links.map(l=>l.route),routes);
+    }
+  }finally{
+    global.fetch=saved.fetch;console.info=saved.info;
     if(saved.key===undefined)delete process.env.OPENAI_API_KEY;else process.env.OPENAI_API_KEY=saved.key;
   }
 });

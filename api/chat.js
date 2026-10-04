@@ -316,7 +316,11 @@ module.exports = async function handler(req, res) {
     const maps = extractAddressMapLinks(answer);
     // A structured empty array means the model deliberately found no relevant
     // property page (for example a separately named sightseeing destination).
-    const links=guestFallback.links(decoded.structured?decoded.routes:understanding.analyze(question,history).routes,targetLanguageCode);
+    const context=understanding.analyze(question,history);
+    const privateTopics=['early_checkin','late_checkout','checkin_time','checkin_method','checkout_time','luggage','access','wifi','detergent','towel','toothbrush','supplies','washer','dryer','hair_dryer','hair_straightener','laundry','trash','heat','tv','rooftop','restroom','contact','gallery','rules','guidebook'];
+    const propertyOnly=!searched&&context.intents.length>0&&context.intents.every(id=>privateTopics.includes(id));
+    const routeIds=decoded.structured&&!(propertyOnly&&decoded.routes.length===0)?decoded.routes:context.routes;
+    const links=guestFallback.links(routeIds,targetLanguageCode);
     const usage = data.usage ? {
       input_tokens: data.usage.input_tokens,
       cached_tokens: data.usage.input_tokens_details?.cached_tokens || 0,
