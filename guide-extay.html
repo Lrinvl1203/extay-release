@@ -120,7 +120,7 @@ body.is-home .home-language{display:block}
 .home-language.open .home-language-btn .header-icon{transform:rotate(180deg)}
 .home-language-menu{position:absolute;top:46px;right:0;width:132px;padding:6px;border:1px solid rgba(216,198,180,.82);border-radius:15px;background:rgba(255,250,244,.98);box-shadow:0 18px 44px rgba(28,22,17,.22);display:grid;gap:2px;opacity:0;visibility:hidden;transform:translateY(-6px) scale(.97);transform-origin:top right;transition:opacity .16s ease,transform .16s ease,visibility .16s;z-index:75}
 .home-language.open .home-language-menu{opacity:1;visibility:visible;transform:translateY(0) scale(1)}
-.home-language-option{width:100%;min-height:38px;border:0;border-radius:10px;background:transparent;color:#221b15;display:flex;align-items:center;justify-content:space-between;padding:0 10px;font-size:13px;font-weight:700;cursor:pointer;text-align:left}
+.home-language-option{text-decoration:none;font-family:inherit;box-sizing:border-box;width:100%;min-height:38px;border:0;border-radius:10px;background:transparent;color:#221b15;display:flex;align-items:center;justify-content:space-between;padding:0 10px;font-size:13px;font-weight:700;cursor:pointer;text-align:left}
 .home-language-option:hover,.home-language-option:focus-visible{background:#efe4d6;outline:none}
 .home-language-option[aria-checked="true"]{background:#2b2118;color:#fff}
 .home-language-option small{color:inherit;font-size:10px;font-weight:900;opacity:.68}
@@ -1360,11 +1360,20 @@ body .latin-font{font-family:'Oxanium','Arial Narrow',Arial,sans-serif!important
 .menu-footer-note>small .latin-font{font-size:11px!important;line-height:1.45!important}
 
   </style>
+<!-- SEO START -->
+<link href="https://extay-release.vercel.app/guide-extay" hreflang="ko" rel="alternate">
+<link href="https://extay-release.vercel.app/en" hreflang="en" rel="alternate">
+<link href="https://extay-release.vercel.app/ja" hreflang="ja" rel="alternate">
+<link href="https://extay-release.vercel.app/zh-cn" hreflang="zh-Hans" rel="alternate">
+<link href="https://extay-release.vercel.app/zh-tw" hreflang="zh-Hant" rel="alternate">
+<link href="https://extay-release.vercel.app/guide-extay" hreflang="x-default" rel="alternate">
+<script type="application/ld+json" id="extay-structured-data">{"@context":"https://schema.org","@graph":[{"@type":"LodgingBusiness","@id":"https://extay-release.vercel.app/#lodging","name":"Extay Mansion Haebangchon","alternateName":"익스테이 맨션 해방촌","url":"https://extay-release.vercel.app/guide-extay","image":"https://extay-release.vercel.app/assets/extay/social/extay-mansion-haebangchon-preview-v3.jpg","address":{"@type":"PostalAddress","streetAddress":"2F, 59 Sinheung-ro","addressLocality":"Yongsan-gu","addressRegion":"Seoul","addressCountry":"KR"},"checkinTime":"16:00","checkoutTime":"11:00"},{"@type":"WebPage","@id":"https://extay-release.vercel.app/guide-extay#webpage","url":"https://extay-release.vercel.app/guide-extay","name":"익스테이 맨션 해방촌 모바일 가이드","description":"익스테이 맨션 해방촌 숙박 안내 모바일 가이드","inLanguage":"ko","about":{"@id":"https://extay-release.vercel.app/#lodging"}}]}</script>
+<!-- SEO END -->
 </head>
 <body class="is-home">
   <div class="brand-intro" id="brandIntro" aria-hidden="true"><span class="brand-intro-mark"><img src="assets/extay/extay-logo-official.png" alt=""></span></div>
   <div class="app">
-    <header class="top"><button class="icon-btn" aria-label="메뉴" id="menuTop"><svg class="header-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16" /></svg></button><h1><button class="brand-home" id="brandHome" type="button" data-go="home" aria-label="홈으로 이동"><img class="header-brand-logo" src="assets/extay/extay-logo-official.png" alt="EXTAY Mansion"></button></h1><div class="home-language" id="homeLanguage"><button class="home-language-btn" type="button" id="homeLangToggle" aria-label="언어 선택" aria-haspopup="true" aria-expanded="false"><span id="homeLangText">KR</span><svg class="header-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="m7 10 5 5 5-5" /></svg></button><div class="home-language-menu" id="homeLangMenu" role="menu" aria-label="언어 선택"><button class="home-language-option" type="button" role="menuitemradio" aria-checked="true" data-language="ko"><span>한국어</span><small>KR</small></button><button class="home-language-option" type="button" role="menuitemradio" aria-checked="false" data-language="en"><span>English</span><small>EN</small></button><button class="home-language-option" type="button" role="menuitemradio" aria-checked="false" data-language="zh"><span>简体中文</span><small>CN</small></button><button class="home-language-option" type="button" role="menuitemradio" aria-checked="false" data-language="zh-TW"><span>繁體中文</span><small>TW</small></button><button class="home-language-option" type="button" role="menuitemradio" aria-checked="false" data-language="ja"><span>日本語</span><small>JP</small></button></div></div></header>
+    <header class="top"><button class="icon-btn" aria-label="메뉴" id="menuTop"><svg class="header-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16" /></svg></button><h1><button class="brand-home" id="brandHome" type="button" data-go="home" aria-label="홈으로 이동"><img class="header-brand-logo" src="assets/extay/extay-logo-official.png" alt="EXTAY Mansion"></button></h1><div class="home-language" id="homeLanguage"><button class="home-language-btn" type="button" id="homeLangToggle" aria-label="언어 선택" aria-haspopup="true" aria-expanded="false"><span id="homeLangText">KR</span><svg class="header-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="m7 10 5 5 5-5" /></svg></button><div class="home-language-menu" id="homeLangMenu" role="menu" aria-label="언어 선택"><a class="home-language-option" href="/guide-extay" role="menuitemradio" aria-checked="true" data-language="ko"><span>한국어</span><small>KR</small></a><a class="home-language-option" href="/en" role="menuitemradio" aria-checked="false" data-language="en"><span>English</span><small>EN</small></a><a class="home-language-option" href="/zh-cn" role="menuitemradio" aria-checked="false" data-language="zh"><span>简体中文</span><small>CN</small></a><a class="home-language-option" href="/zh-tw" role="menuitemradio" aria-checked="false" data-language="zh-TW"><span>繁體中文</span><small>TW</small></a><a class="home-language-option" href="/ja" role="menuitemradio" aria-checked="false" data-language="ja"><span>日本語</span><small>JP</small></a></div></div></header>
 
     <main>
     <section class="screen active" data-screen="home">
@@ -1515,7 +1524,7 @@ body .latin-font{font-family:'Oxanium','Arial Narrow',Arial,sans-serif!important
         </section>
       </section>
 
-      <section class="screen" data-screen="checkin">
+      <section class="screen" data-screen="checkin" data-nosnippet>
         <article class="checkin-hero">
           <p class="section-kicker">SELF CHECK-IN / OUT</p>
           <h2>체크인 · 체크아웃 안내</h2>
@@ -2002,7 +2011,7 @@ body .latin-font{font-family:'Oxanium','Arial Narrow',Arial,sans-serif!important
         </div>
       </section>
 
-      <section class="screen wifi-screen" data-screen="wifi">
+      <section class="screen wifi-screen" data-screen="wifi" data-nosnippet>
         <article class="wifi-hero">
           <p class="section-kicker">IN-HOUSE WI-FI</p>
           <h2 class="page-title">Wi-Fi</h2>
@@ -2040,7 +2049,7 @@ body .latin-font{font-family:'Oxanium','Arial Narrow',Arial,sans-serif!important
         </div>
       </section>
 
-      <section class="screen guide-detail-screen" data-screen="appliances"><article class="guide-detail-hero appliances-hero"><p class="section-kicker">TV · HEATING · ROOFTOP</p><h2 class="page-title">TV · 난방 · 루프탑 안내</h2></article>
+      <section class="screen guide-detail-screen" data-screen="appliances" data-nosnippet><article class="guide-detail-hero appliances-hero"><p class="section-kicker">TV · HEATING · ROOFTOP</p><h2 class="page-title">TV · 난방 · 루프탑 안내</h2></article>
         <div class="device-card-stack">
         <article class="device" data-device="tv"><div class="device-header"><span class="circle"><span class="mi">tv</span></span><div><span class="device-eyebrow">ENTERTAINMENT</span><h3>TV · OTT 리모컨</h3></div></div><div class="device-body"><ol class="steps"><li>TV 리모컨은 외부 입력 선택이 필요할 때 사용하세요.</li><li>OTT 전용 리모컨에서 원하는 OTT를 선택한 뒤 확인 버튼을 누르세요.</li><li>화면 팝업이 뜨면 바로 실행을 선택하세요. 작동이 안 되면 전원 버튼을 3초 이상 누르거나 셋톱 전원을 10초간 분리 후 재연결하세요.</li></ol><figure class="figure"><img src="assets/extay/crops/nsm-guide.png" loading="lazy" alt="NSM OTT 사용법"></figure></div></article>
         <article class="device" data-device="boiler"><div class="device-header"><span class="circle"><span class="mi">thermostat</span></span><div><span class="device-eyebrow">HOT WATER &amp; HEATING</span><h3>온수 · 난방</h3></div></div><div class="device-body"><ol class="steps"><li>거실 스탠드 에어컨 뒤쪽의 난방 조절기를 확인하세요.</li><li>온수를 사용할 때는 온수 버튼을 눌러 주세요.</li><li>화면에 60도가 표시되면 온수가 정상적으로 작동합니다. 외출 시에는 외출 버튼 또는 전원 버튼을 눌러 주세요.</li></ol><div class="photo-grid"><figure><button class="image-zoom" type="button" data-fullscreen-image="assets/extay/crops/hot-water-guide.jpg" data-fullscreen-title="온수 조절기"><img src="assets/extay/crops/hot-water-guide.jpg" loading="lazy" alt="온수 조절기 안내"></button><figcaption>온수 조절기</figcaption></figure><figure><button class="image-zoom" type="button" data-fullscreen-image="assets/extay/crops/floorplan.jpg" data-fullscreen-title="숙소 도면"><img src="assets/extay/crops/floorplan.jpg" loading="lazy" alt="숙소 도면"></button><figcaption>숙소 도면</figcaption></figure></div></div></article>
@@ -2158,7 +2167,9 @@ body .latin-font{font-family:'Oxanium','Arial Narrow',Arial,sans-serif!important
     function readStoredLanguage(){try{return localStorage.getItem(LANG_KEY)}catch(_){return null}}
     function saveStoredLanguage(value){try{localStorage.setItem(LANG_KEY,value)}catch(_){}}
     const savedLanguage=readStoredLanguage();
-    let currentLang=LANG_ORDER.includes(savedLanguage)?savedLanguage:detectBrowserLanguage();
+    const LANGUAGE_PATHS={ko:'/guide-extay',en:'/en',ja:'/ja',zh:'/zh-cn','zh-TW':'/zh-tw'};
+    const pathLanguage=Object.keys(LANGUAGE_PATHS).find(lang=>LANGUAGE_PATHS[lang]===location.pathname.replace(/\/$/,''));
+    let currentLang=pathLanguage||(LANG_ORDER.includes(savedLanguage)?savedLanguage:detectBrowserLanguage());
     const TRADITIONAL_CHAR_MAP={"动":"動","单":"單","开":"開","书":"書","礼":"禮","宾":"賓","换":"換","语":"語","关":"關","闭":"閉","输":"輸","转":"轉","没":"沒","结":"結","请":"請","个":"個","键":"鍵","词":"詞","页":"頁","浏":"瀏","览":"覽","顶":"頂","边":"邊","荐":"薦","线":"線","画":"畫","间":"間","与":"與","从":"從","机":"機","场":"場","车":"車","网":"網","络":"絡","码":"碼","类":"類","选":"選","尔":"爾","处":"處","韩":"韓","电":"電","视":"視","丢":"丟","温":"溫","复":"復","设":"設","帮":"幫","问":"問","为":"為","汇":"匯","总":"總","达":"達","无":"無","触":"觸","绿":"綠","钟":"鐘","务":"務","确":"確","认":"認","图":"圖","联":"聯","说":"說","热":"熱","别":"別","龙":"龍","区":"區","兴":"興","号":"號","楼":"樓","内":"內","费":"費","这":"這","样":"樣","写":"寫","连":"連","败":"敗","时":"時","择":"擇","门":"門","锁":"鎖","会":"會","当":"當","约":"約","厅":"廳","进":"進","调":"調","户":"戶","规":"規","则":"則","预":"預","数":"數","访":"訪","携":"攜","带":"帶","宠":"寵","业":"業","摄":"攝","许":"許","卫":"衛","阳":"陽","台":"臺","烟":"煙","仅":"僅","简":"簡","饪":"飪","气":"氣","雾":"霧","较":"較","点":"點","静":"靜","遥":"遙","弹":"彈","运":"運","长":"長","断":"斷","节":"節","钮":"鈕","显":"顯","离":"離","够":"夠","层":"層","观":"觀","暂":"暫","让":"讓","厨":"廚","产":"產","异":"異","标":"標","准":"準","种":"種","询":"詢","紧":"緊","况":"況","东":"東","题":"題","国":"國","滞":"滯","着":"著","昼":"晝","奥":"奧","灯":"燈","适":"適","发":"發","围":"圍","闲":"閑","纯":"純","轻":"輕","给":"給","们":"們","将":"將","过":"過","届":"屆","应":"應","实":"實","币":"幣","储":"儲","据":"據","现":"現","状":"狀","检":"檢","评":"評","价":"價","励":"勵","诉":"訴","听":"聽","条":"條","馈":"饋","举":"舉","办":"辦","装":"裝","饰":"飾","遗":"遺","隐":"隱","监":"監","头":"頭","对":"對","铃":"鈴","护":"護","浓":"濃","两":"兩","铁":"鐵","议":"議","来":"來","负":"負","担":"擔","响":"響","优":"優","悦":"悅","变":"變","横":"橫","辆":"輛","顺":"順","畅":"暢","载":"載","卧":"臥","寝":"寢","话":"話","链":"鏈","稳":"穩","备":"備","试":"試","还":"還","症":"癥","饮":"飲","馆":"館","营":"營","详":"詳","汉":"漢","鸭":"鴨","锅":"鍋","饭":"飯","经":"經","团":"團","饺":"餃","肠":"腸","汤":"湯","饱":"飽","亚":"亞","柠":"檸","错":"錯","顿":"頓","洁":"潔","见":"見","赏":"賞","风":"風","几":"幾","吗":"嗎","临":"臨","参":"參","历":"歷","艺":"藝","术":"術","购":"購","阶":"階","园":"園","岩":"巖","广":"廣","争":"爭","战":"戰","纪":"紀","鹭":"鷺","岛":"島","强":"強","体":"體","专":"專","册":"冊","决":"決","击":"擊","灾":"災","启":"啟","尝":"嘗","炉":"爐","盘":"盤","称":"稱","订":"訂","谈":"談","迟":"遲","镜":"鏡","险":"險","随":"隨","频":"頻","额":"額","马":"馬"};
     const TRADITIONAL_PHRASES=[["移动指南","行動指南"],["菜单","選單"],["信息","資訊"],["网络","網路"],["视频","影片"],["房东消息","房東訊息"],["预订消息","預訂訊息"],["联系房东","聯絡房東"],["联系","聯絡"],["出租车","計程車"],["卫生间","洗手間"],["垃圾投放","垃圾丟棄"],["重新选择","重新選取"],["机顶盒","機上盒"],["程序","行程"],["指南书","指南"],["设置","設定"],["点击","點選"]];
     function toTraditionalText(value){let result=String(value??'');TRADITIONAL_PHRASES.forEach(([from,to])=>{result=result.split(from).join(to)});return result.replace(/[\u3400-\u9fff]/g,char=>TRADITIONAL_CHAR_MAP[char]||char)}
@@ -2643,7 +2654,7 @@ body .latin-font{font-family:'Oxanium','Arial Narrow',Arial,sans-serif!important
     document.querySelectorAll('[data-open-chat]').forEach(el=>el.addEventListener('click',()=>{openChat();const question=el.dataset.question;if(question)setTimeout(()=>submitChatQuestion(question),180)}));
     document.getElementById('menuTop')?.addEventListener('click',openMenu);
     document.getElementById('homeLangToggle')?.addEventListener('click',toggleLanguageMenu);
-    document.querySelectorAll('.home-language-option').forEach(option=>option.addEventListener('click',()=>setLanguage(option.dataset.language)));
+    document.querySelectorAll('.home-language-option').forEach(option=>option.addEventListener('click',event=>{if(event.metaKey||event.ctrlKey||event.shiftKey||event.altKey)return;event.preventDefault();saveStoredLanguage(option.dataset.language);location.assign(option.getAttribute('href')+location.hash)}));
     document.getElementById('closeMenu')?.addEventListener('click',closeMenuPanel);
     menuBackdropEl?.addEventListener('click',closeMenuPanel);
     document.addEventListener('keydown',e=>{if(e.key==='Escape'){closeMenuPanel();closeLanguageMenu()}});
