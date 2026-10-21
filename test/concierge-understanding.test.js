@@ -97,5 +97,8 @@ test('structured model output reaches the UI with valid links and no public disc
 });
 test('all inline browser scripts parse',()=>{
   const html=fs.readFileSync(path.join(__dirname,'../guide-extay.html'),'utf8');
-  for(const match of html.matchAll(/<script\b[^>]*>([\s\S]*?)<\/script>/g))new vm.Script(match[1]);
+  for(const match of html.matchAll(/<script\b([^>]*)>([\s\S]*?)<\/script>/g)){
+    if(/type="application\/ld\+json"/.test(match[1]))JSON.parse(match[2]);
+    else new vm.Script(match[2]);
+  }
 });

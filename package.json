@@ -3,8 +3,11 @@
   "version": "1.0.0",
   "scripts": {
     "start": "npx serve .",
-    "test": "node scripts/build-chat-fallback.js --check && node scripts/build-guide-pages.js --check && node --test --test-isolation=none test/*.test.js",
-    "build:chat": "node scripts/build-chat-fallback.js && node scripts/build-guide-pages.js"
+    "test": "node scripts/build-search-pages.js --check && node scripts/build-chat-fallback.js --check && node scripts/build-guide-pages.js --check && node --test --test-isolation=none test/*.test.js",
+    "build:chat": "node scripts/build-chat-fallback.js && node scripts/build-guide-pages.js",
+    "build:seo": "node scripts/build-search-pages.js && npm run build:chat"
   },
-  "devDependencies": {}
+  "devDependencies": {
+    "linkedom": "0.18.12"
+  }
 }
