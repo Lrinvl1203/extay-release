@@ -295,8 +295,8 @@ body:not(.is-home) .home-language-btn{border-color:rgba(123,99,79,.28);backgroun
 .home-help-copy{margin:0;padding:16px 18px 13px;color:#665646;font-size:13px;line-height:1.7;word-break:keep-all}
 .home-support-booking{min-height:58px;padding:11px 14px;border-top:1px solid rgba(216,198,180,.72);background:#efe5da;display:flex;align-items:center;justify-content:space-between;gap:16px}
 .ota-booking-hint{margin:0;color:#876f61;font-size:11px;font-weight:750;line-height:1.45}
-.airbnb-brand{flex:none;display:inline-flex;align-items:center;gap:6px;color:#ff385c;font-family:Arial,sans-serif;font-size:14px;font-weight:700;letter-spacing:-.02em}
-.airbnb-brand img{display:block;width:21px;height:21px;object-fit:contain}
+.booking-brand{flex:none;display:inline-flex;align-items:center;gap:6px;color:#30302E;text-decoration:underline;text-underline-offset:4px;font-family:Arial,sans-serif;font-size:14px;font-weight:700;letter-spacing:-.02em}
+.booking-brand img{display:block;width:21px;height:21px;object-fit:contain}
 .hotel-footer{min-height:168px;margin-top:32px;padding:34px 28px;border-radius:22px;background:linear-gradient(145deg,#2b2118 0%,#6f5a45 112%);color:#fffaf4;text-align:center;display:flex;flex-direction:column;align-items:center;justify-content:center;box-shadow:0 18px 42px rgba(43,33,24,.16)}
 .hotel-footer strong{display:block;margin:0 0 10px;font-family:var(--font-main);font-size:27px;font-weight:750;line-height:1.1;color:#fffaf4}
 .hotel-footer>.hotel-footer-tagline{font-family:'Oxanium',var(--font-ko);font-size:11px;font-weight:600;letter-spacing:.15em!important;color:rgba(255,250,244,.72)}
@@ -1340,8 +1340,8 @@ body .latin-font{font-family:'Oxanium','Arial Narrow',Arial,sans-serif!important
 .home-support-details{border-top-color:rgba(181,93,61,.25);background:#F7F1EA}
 .home-help-copy{margin:0;padding:18px;display:grid;grid-template-columns:112px minmax(0,1fr);align-items:center;gap:14px;color:#4a3329}
 .home-help-copy p{margin:0;font-size:15px;font-weight:600;line-height:1.7;word-break:keep-all}
-.airbnb-brand{display:inline-flex;width:112px;align-items:center;justify-content:flex-start;gap:7px;color:#ff385c;font-family:Arial,sans-serif!important;font-size:19px;font-weight:800;line-height:1;white-space:nowrap;overflow-wrap:normal!important}
-.airbnb-brand img{width:31px;height:31px}
+.booking-brand{display:inline-flex;width:112px;align-items:center;justify-content:flex-start;gap:7px;color:#30302E;text-decoration:underline;text-underline-offset:4px;font-family:Arial,sans-serif!important;font-size:19px;font-weight:800;line-height:1;white-space:nowrap;overflow-wrap:normal!important}
+.booking-brand img{width:31px;height:31px}
 
 .tour-home-card{height:142px;min-height:142px;grid-template-columns:1fr 1fr}
 .tour-home-card .tour-mini{width:auto;min-height:142px}
@@ -1516,8 +1516,8 @@ body .latin-font{font-family:'Oxanium','Arial Narrow',Arial,sans-serif!important
             <button class="stay-info-link" type="button" data-go="laundry"><span class="mi" aria-hidden="true">local_laundry_service</span><span>세탁기 · 건조기 사용법</span></button>
             <button class="stay-info-link" type="button" data-go="trash"><span class="mi" aria-hidden="true">delete_outline</span><span>쓰레기 배출 안내</span></button>
             <article class="home-support-card">
-              <div class="home-support-intro"><span class="home-support-icon" aria-hidden="true"><span class="mi">support_agent</span></span><div><small>NEED HELP?</small><h3 id="homeHelpTitle">도움이 필요할 때</h3></div></div>
-              <div class="home-support-details"><div class="home-help-copy"><span class="airbnb-brand" aria-label="Airbnb"><img src="assets/extay/airbnb-logo.svg" alt=""><span>airbnb</span></span><p id="homeContact">예약하신 에어비앤비 메시지를 통해 호스트에게 연락해 주세요.</p></div></div>
+              <div class="home-support-intro"><span class="home-support-icon" aria-hidden="true"><span class="mi">support_agent</span></span><div><small>BOOKING</small><h3 id="homeHelpTitle">예약 안내</h3></div></div>
+              <div class="home-support-details"><div class="home-help-copy"><a class="booking-brand" href="https://www.wehome.me/ko/rooms/2035885" target="_blank" rel="noopener noreferrer">위홈 ↗</a><p id="homeContact">위홈에서 요금과 예약 가능 날짜를 확인하세요.</p></div></div>
             </article>
           </div>
           <footer class="hotel-footer"><strong>EXTAY Mansion</strong><span class="hotel-footer-tagline">SEOUL PRIVATE STAY</span></footer>
@@ -2271,10 +2271,10 @@ body .latin-font{font-family:'Oxanium','Arial Narrow',Arial,sans-serif!important
     Object.assign(uiText.en,{editorial:{welcomeKicker:'WELCOME TO EXTAY',welcomeTitle:'In Seoul’s hidden neighborhood,\nat our own pace',welcomeBody:'Between Haebangchon and Namsan, EXTAY Mansion steps back from Seoul’s rush so you can slow down together.',welcomeBody2:'Share stories, then rest at your own pace amid daylight, deep green, and warm wood.',storyKicker:'GREEN, WOOD & LIGHT',storyTitle:'Sunlight by day,\nwarmth after dark',storyBody:'Deep green walls, grounded wood, and small pools of light give every corner its own rhythm. Gather around the living room, then close the day quietly in your own room.',notes:['A living room to share','Light that shifts with time','Three restful bedrooms'],noteDescriptions:['Conversation and rest flow naturally around the sofa and table.','From filtered daylight to the glow of small lamps, the mood changes with the hour.','Three bedrooms let everyone rest at their own pace, even while traveling together.'],photoLabel:'Photos of EXTAY Mansion',photoAlts:['EXTAY living room with deep green walls and warm lighting','Lounge with a wood table and small lamp','A softly lit EXTAY bedroom']}});
     Object.assign(uiText.zh,{editorial:{welcomeKicker:'WELCOME TO EXTAY',welcomeTitle:'在首尔隐秘的街区里\n按自己的节奏停留',welcomeBody:'解放村与南山之间，EXTAY Mansion 远离城市喧闹，让您与同行的人慢慢停留。',welcomeBody2:'在阳光、深绿色与温暖木质中分享故事，也按自己的节奏休息。',storyKicker:'GREEN, WOOD & LIGHT',storyTitle:'白天留住阳光，\n入夜盛满温暖',storyBody:'深绿色墙面、沉稳木质与细小灯光，让每个角落流淌着不同的时间。在客厅围坐交谈，再回到各自的房间安静结束一天。',notes:['一起停留的客厅','随时间变化的光','舒适休息的三间卧室'],noteDescriptions:['围绕沙发与餐桌，聊天和休息自然延续。','从帘间日光到小灯的暖意，空间表情随时间变化。','即使结伴旅行，也能在三个卧室里按自己的节奏休息。'],photoLabel:'EXTAY Mansion 空间照片',photoAlts:['深绿色墙面与温暖灯光的 EXTAY 客厅','带木桌与小灯的休息区','光线柔和的 EXTAY 卧室']}});
     Object.assign(uiText.ja,{editorial:{welcomeKicker:'WELCOME TO EXTAY',welcomeTitle:'ソウルの隠れた街で\n私たちだけのペースへ',welcomeBody:'解放村と南山のあいだ。EXTAY Mansionは街の賑わいから離れ、大切な人とゆっくり過ごす家です。',welcomeBody2:'光、深いグリーン、木のぬくもりの中で語らい、それぞれのペースで休んでください。',storyKicker:'GREEN, WOOD & LIGHT',storyTitle:'昼は陽ざしが、\n夜はぬくもりが残る場所',storyBody:'深いグリーンの壁、落ち着いた木、ささやかな照明が、場所ごとに異なる時間をつくります。リビングで語らい、それぞれの部屋で静かに一日を終えてください。',notes:['一緒に過ごすリビング','時間とともに変わる光','心地よく休める3つの寝室'],noteDescriptions:['ソファとテーブルを囲み、会話と休息が自然につながります。','カーテン越しの昼光から小さなランプの灯りまで、時間とともに表情が変わります。','一緒に旅していても、それぞれのペースで休める3つの寝室です。'],photoLabel:'EXTAY Mansionの空間写真',photoAlts:['深いグリーンの壁と温かな照明のEXTAYリビング','木のテーブルと小さなランプのあるラウンジ','穏やかな光が入るEXTAYの寝室']}});
-    Object.assign(uiText.ko,{stayResident:{title:'투숙 중 자주 찾는 정보',items:['TV · 난방 · 루프탑 사용 안내','세탁기 · 건조기 사용법','쓰레기 배출 안내'],helpTitle:'도움이 필요할 때',helpCopy:'예약하신 에어비앤비 메시지를 통해 호스트에게 연락해 주세요.'}});
-    Object.assign(uiText.en,{stayResident:{title:'Frequently Used During Your Stay',items:['TV · heating · rooftop guide','Washer · dryer instructions','Trash disposal guide'],helpTitle:'When you need help',helpCopy:'Please contact the host through the Airbnb messages for your reservation.'}});
-    Object.assign(uiText.zh,{stayResident:{title:'入住期间常用信息',items:['电视 · 暖气 · 屋顶使用指南','洗衣机 · 烘干机使用方法','垃圾投放指南'],helpTitle:'需要帮助时',helpCopy:'请通过您预订时使用的 Airbnb 消息联系房东。'}});
-    Object.assign(uiText.ja,{stayResident:{title:'滞在中によく使う情報',items:['TV・暖房・屋上の利用案内','洗濯機・乾燥機の使い方','ゴミ出し案内'],helpTitle:'お困りのとき',helpCopy:'メッセージをお送りください。'}});
+    Object.assign(uiText.ko,{stayResident:{title:'투숙 중 자주 찾는 정보',items:['TV · 난방 · 루프탑 사용 안내','세탁기 · 건조기 사용법','쓰레기 배출 안내'],helpTitle:'예약 안내',helpCopy:'위홈에서 요금과 예약 가능 날짜를 확인하세요.'}});
+    Object.assign(uiText.en,{stayResident:{title:'Frequently Used During Your Stay',items:['TV · heating · rooftop guide','Washer · dryer instructions','Trash disposal guide'],helpTitle:'Reservations',helpCopy:'Check rates and available dates on Wehome.'}});
+    Object.assign(uiText.zh,{stayResident:{title:'入住期间常用信息',items:['电视 · 暖气 · 屋顶使用指南','洗衣机 · 烘干机使用方法','垃圾投放指南'],helpTitle:'预订指南',helpCopy:'在 Wehome 查看价格和可预订日期。'}});
+    Object.assign(uiText.ja,{stayResident:{title:'滞在中によく使う情報',items:['TV・暖房・屋上の利用案内','洗濯機・乾燥機の使い方','ゴミ出し案内'],helpTitle:'ご予約案内',helpCopy:'Wehomeで料金と予約可能な日程をご確認ください。'}});
     uiText['zh-TW']=traditionalize(uiText.zh);
     Object.assign(uiText['zh-TW'],{docTitle:'EXTAY Mansion｜首爾解放村住宿指南',docDesc:'查看首爾解放村 EXTAY Mansion 的住宿資訊，包括客房照片、設施、位置與交通，以及入住和退房指南。',langButton:'繁'});
     uiText['zh-TW'].editorial={welcomeKicker:'WELCOME TO EXTAY',welcomeTitle:'在首爾隱密的街區裡\n按自己的步調停留',welcomeBody:'解放村與南山之間，EXTAY Mansion 遠離城市喧鬧，讓您與同行的人慢慢停留。',welcomeBody2:'在陽光、深綠色與溫暖木質中分享故事，也按自己的步調休息。',storyKicker:'GREEN, WOOD & LIGHT',storyTitle:'白天留住陽光，\n入夜盛滿溫暖',storyBody:'深綠色牆面、沉穩木質與細緻燈光，讓每個角落流淌著不同的時間。在客廳圍坐交談，再回到各自的房間安靜結束一天。',notes:['一起停留的客廳','隨時間變化的光','舒適休息的三間臥室'],noteDescriptions:['圍繞沙發與餐桌，聊天和休息自然延續。','從簾間日光到小燈的暖意，空間表情隨時間變化。','即使結伴旅行，也能在三個臥室裡按自己的步調休息。'],photoLabel:'EXTAY Mansion 空間照片',photoAlts:['深綠色牆面與溫暖燈光的 EXTAY 客廳','木桌與小燈相映的休憩區','光線柔和的 EXTAY 臥室']};
@@ -2293,7 +2293,8 @@ body .latin-font{font-family:'Oxanium','Arial Narrow',Arial,sans-serif!important
     uiText.zh.galleryEditorial.markerNotes=['光与温度停留的\n家的中心。','围坐分享餐食与\n故事的时光。','一起旅行，\n也按自己的节奏休息。','近距离眺望南山与\n解放村风景的地方。'];
     uiText['zh-TW'].galleryEditorial.markerNotes=['光與溫度停留的\n家的中心。','圍坐分享餐食與\n故事的時光。','一起旅行，\n也按自己的步調休息。','近距離眺望南山與\n解放村風景的地方。'];
     uiText.ja.galleryEditorial.markerNotes=['光とぬくもりが残る\n家の中心。','食事と会話を\nともに楽しむ時間。','一緒に旅しても、\n休むペースはそれぞれに。','南山と解放村の景色を\n間近に感じる場所。'];
-    uiText['zh-TW'].stayResident.helpCopy='請透過您預訂時使用的 Airbnb 訊息聯絡房東。';
+    uiText['zh-TW'].stayResident.helpTitle='預訂指南';
+    uiText['zh-TW'].stayResident.helpCopy='在 Wehome 查看價格與可預訂日期。';
     const MENU_ORDER=[0,1,2,3,4,5,7,8,6,9,10];
     Object.values(uiText).forEach(copy=>{
       copy.menuTitles=MENU_ORDER.map(index=>copy.menuTitles[index]);
@@ -2428,6 +2429,8 @@ body .latin-font{font-family:'Oxanium','Arial Narrow',Arial,sans-serif!important
       if(tr.homeGalleryFeature){text(q('.home-gallery-count'),tr.homeGalleryFeature.count);text(q('.home-gallery-copy strong'),tr.homeGalleryFeature.title);text(q('.home-gallery-copy small'),tr.homeGalleryFeature.desc)}
       if(tr.getting){text(q('#gettingKicker'),tr.getting.kicker);text(q('#gettingTitle'),tr.getting.title);text(q('#gettingName'),tr.getting.name);text(q('#gettingAddress'),tr.getting.address);text(q('#gettingTransit'),tr.getting.transit);text(q('#gettingNaver'),tr.getting.naver);text(q('#gettingGoogle'),tr.getting.google);text(q('#airportAccessKicker'),tr.getting.airportKicker);text(q('#airportAccessTitle'),tr.getting.airportTitle);text(q('#nearbyPreviewKicker'),tr.getting.restaurantKicker);text(q('#nearbyPreviewTitle'),tr.getting.restaurantTitle);text(q('#nearbyPreviewAll'),tr.getting.restaurantAll);qa('.nearby-card').forEach((card,i)=>{const item=tr.getting.restaurants?.[i];if(item){text(card.querySelector('.nearby-card-label'),item[0]);text(card.querySelector('strong'),item[1]);text(card.querySelector('p'),item[2])}})}
       if(tr.stayResident){text(q('#stayResidentTitle'),tr.stayResident.title);eachText(qa('.stay-info-link span:last-child'),tr.stayResident.items);text(q('#homeHelpTitle'),tr.stayResident.helpTitle);text(q('#homeContact'),tr.stayResident.helpCopy)}
+      const bookingLink=q('.booking-brand');
+      if(bookingLink){const bookingLocale={ko:'ko',en:'en',ja:'ja',zh:'zh','zh-TW':'tw'}[currentLang]||'ko';bookingLink.setAttribute('href','https://www.wehome.me/'+bookingLocale+'/rooms/2035885');text(bookingLink,currentLang==='ko'?'위홈 ↗':'Wehome ↗')}
       const menu=q('#menuTop'), guide=q('#openGuidebookTop'), chatTop=q('#openChatTop'), chatFab=q('#openChatFab'), close=q('#closeChat'), langBtn=q('#langToggle'), homeLangBtn=q('#homeLangToggle');
       if(menu)menu.setAttribute('aria-label',tr.menuAria); if(guide){guide.setAttribute('aria-label',tr.guideAria);guide.href=GUIDEBOOK_PDFS[currentLang==='en'?'en':'ko']} if(chatTop)chatTop.setAttribute('aria-label',tr.chatAria); if(chatFab)chatFab.setAttribute('aria-label',tr.chatFabAria); if(close)close.setAttribute('aria-label',tr.chat.close); if(langBtn)langBtn.setAttribute('aria-label',tr.langAria); if(homeLangBtn)homeLangBtn.setAttribute('aria-label',tr.langAria);
       eachText(qa('.bottom .tab span:not(.mi)'),tr.bottom);

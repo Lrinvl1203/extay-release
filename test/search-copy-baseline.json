@@ -1,10 +1,11 @@
 {
-  "sourceCommit": "4d7cb85ceae9f9899e13c46ae866e8be25f2d100",
+  "sourceCommit": "d29cae22275cd55b6f4336eeca0f39a823f46759",
+  "approvedChange": "2026-10-25: Replace only the existing support card with the verified Wehome booking link and localized booking copy.",
   "hashes": {
-    "ko": "07f7c495315abe3f1783fbb31b84db0536cd3957d7bb7ba43fd90d5ec58bf520",
-    "en": "d1511b813b9e63df77eac62b4bdfd42c5a57e3987ffdb43d538b6106464a93c3",
-    "ja": "02a68324a72d9f1c03a3207eae90be4887839fcecfc7718b091ee3f6b54211e5",
-    "zh": "32b20361a65cb59a161fe0f58c605d4df7f8f54af79e0f776c55f4c58d750b2a",
-    "zh-TW": "a42950b8e8d78144fdb8a37cc3282d9f3ea60204fcfcc35cf6a7e830b02f7025"
+    "ko": "8b2a004341f99dffb043bb97d4d67b21fc9ec629c7551067f223c7c275120b55",
+    "en": "9b056624bba35d9d8082ff49df083d247a3ff49ac85061be876cf40612f1ff5f",
+    "ja": "fff98a12f82cc0e71189ecdcd89ca87b7405d2998a461ee64ed9b29ef34e29fc",
+    "zh": "e0903146d25d3fa028c9c17a56c80b79f477991aa550725c97fa59e9c18e1ecb",
+    "zh-TW": "90137062a82d02761e2439fda3bdecf1b107cfe793543379a21ca160e570aaf6"
   }
 }
